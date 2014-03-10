@@ -1,0 +1,10 @@
+s = label Word '=' expr
+  | label 'return' expr
+  ;
+  
+label 
+  = Word ':' label
+  | Empty
+  ;
+  
+expr = Number;

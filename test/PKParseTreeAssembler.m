@@ -1,0 +1,193 @@
+//  Copyright 2010 Todd Ditchendorf
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//  http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+
+#import "PKParseTreeAssembler.h"
+#import <ParseKit/ParseKit.h>
+#import "PKParseTree.h"
+#import "PKRuleNode.h"
+#import "PKTokenNode.h"
+
+@interface PKParseTreeAssembler ()
+- (NSString *)ruleNameForSelName:(NSString *)selName withPrefix:(NSString *)pre;
+- (void)didMatchRuleNamed:(NSString *)name assembly:(PKAssembly *)a;
+- (void)willMatchRuleNamed:(NSString *)name assembly:(PKAssembly *)a;
+- (void)parser:(PKParser *)p didMatchToken:(PKAssembly *)a;
+- (PKParseTree *)currentFrom:(PKAssembly *)a;
+- (void)removeUnmatchedChildrenFrom:(PKParseTree *)n;
+
+@property (nonatomic, retain) NSMutableDictionary *ruleNames;
+@property (nonatomic, copy) NSString *assemblerPrefix;
+@property (nonatomic, copy) NSString *preassemblerPrefix;
+@property (nonatomic, copy) NSString *suffix;
+@end
+
+@implementation PKParseTreeAssembler
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.ruleNames = [NSMutableDictionary dictionary];
+        self.preassemblerPrefix = @"parser:willMatch";
+        self.assemblerPrefix = @"parser:didMatch";
+        self.suffix = @":";
+    }
+    return self;
+}
+
+
+- (void)dealloc {
+    self.ruleNames = nil;
+    self.preassemblerPrefix = nil;
+    self.assemblerPrefix = nil;
+    self.suffix = nil;
+    [super dealloc];
+}
+
+
+- (BOOL)respondsToSelector:(SEL)sel {
+    return YES;
+    if ([super respondsToSelector:sel]) {
+        return YES;
+    } else {
+        NSString *selName = NSStringFromSelector(sel);
+        if ([selName hasPrefix:assemblerPrefix] && [selName hasSuffix:suffix]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+
+- (id)performSelector:(SEL)sel withObject:(id)obj withObject:(id)obj1 {
+    NSString *selName = NSStringFromSelector(sel);
+    
+    //PKParser *p = obj;
+    PKAssembly *a = obj1;
+    
+    if ([selName hasPrefix:assemblerPrefix] && [selName hasSuffix:suffix]) {
+        [self didMatchRuleNamed:[self ruleNameForSelName:selName withPrefix:assemblerPrefix] assembly:a];
+    } else if ([selName hasPrefix:preassemblerPrefix] && [selName hasSuffix:suffix]) {
+        [self willMatchRuleNamed:[self ruleNameForSelName:selName withPrefix:preassemblerPrefix] assembly:a];
+    } else if ([super respondsToSelector:sel]) {
+        return [super performSelector:sel withObject:obj withObject:obj1];
+    } else {
+        NSAssert(0, @"");
+    }
+    return nil;
+}
+
+
+- (NSString *)ruleNameForSelName:(NSString *)selName withPrefix:(NSString *)prefix {
+    NSString *ruleName = [ruleNames objectForKey:selName];
+    
+    if (!ruleName) {
+        NSUInteger prefixLen = [prefix length];
+        PKUniChar c = (PKUniChar)[[selName lowercaseString] characterAtIndex:prefixLen];
+        NSRange r = NSMakeRange(prefixLen + 1, [selName length] - (prefixLen + [suffix length] + 1 /*:*/));
+        ruleName = [NSString stringWithFormat:@"%C%@", (unichar)c, [selName substringWithRange:r]];
+        [ruleNames setObject:ruleName forKey:selName];
+    }
+    
+    return ruleName;
+}
+
+
+- (void)willMatchRuleNamed:(NSString *)name assembly:(PKAssembly *)a {
+    //NSLog(@"%s %@ %@", __PRETTY_FUNCTION__, name, a);
+    PKParseTree *current = [self currentFrom:a];
+    if (![current isKindOfClass:[PKParseTree class]]) return;
+
+    [self parser:nil didMatchToken:a];
+    current = [current addChildRule:name];
+    a.target = current;
+}
+
+
+- (void)didMatchRuleNamed:(NSString *)name assembly:(PKAssembly *)a {
+    //NSLog(@"%s %@ %@", __PRETTY_FUNCTION__, name, a);
+    PKParseTree *current = [self currentFrom:a];
+    if (![current isKindOfClass:[PKParseTree class]]) return;
+    NSAssert([current isKindOfClass:[PKParseTree class]], @"");
+
+    NSArray *origChildren = [[[current children] mutableCopy] autorelease];
+
+    PKParseTree *oldCurrent = nil;
+    while ([current isKindOfClass:[PKRuleNode class]] && ![[(id)current name] isEqualToString:name]) {
+        oldCurrent = [[current retain] autorelease];
+        a.target = [current parent];
+        current = [self currentFrom:a];
+        [self parser:nil didMatchToken:a];        
+    }
+
+    if (oldCurrent && ![oldCurrent isMatched]) {
+        [(id)[current children] addObjectsFromArray:origChildren];
+    }
+
+    [self parser:nil didMatchToken:a];        
+    current = [self currentFrom:a];
+    
+    [self removeUnmatchedChildrenFrom:current];
+    [current setMatched:YES];
+    a.target = [current parent];
+}
+
+
+- (void)removeUnmatchedChildrenFrom:(PKParseTree *)n {
+    NSMutableArray *remove = [NSMutableArray array];
+    for (id child in [n children]) {
+        if (![child isMatched]) {
+            [remove addObject:child];
+        }
+    }
+    
+    for (id child in remove) {
+        [(id)[n children] removeObject:child];
+    }    
+}
+
+
+- (PKParseTree *)currentFrom:(PKAssembly *)a {
+    PKParseTree *current = a.target;
+    if (!current) {
+        current = [PKParseTree parseTree];
+        a.target = current;
+    }
+    return current;
+}
+
+
+- (void)parser:(PKParser *)p didMatchToken:(PKAssembly *)a {
+    //NSLog(@"%s %@", __PRETTY_FUNCTION__, a);
+    PKParseTree *current = [self currentFrom:a];
+    if (![current isKindOfClass:[PKParseTree class]]) return;
+    if ([current isMatched]) return;
+    
+    NSMutableArray *toks = [NSMutableArray arrayWithCapacity:[a.stack count]];
+    while (![a isStackEmpty]) {
+        id tok = [a pop];
+        NSAssert([tok isKindOfClass:[PKToken class]], @"");
+        [toks addObject:tok];
+    }
+
+    for (id tok in [toks reverseObjectEnumerator]) {
+        PKTokenNode *n = [current addChildToken:tok];
+        [n setMatched:YES];
+    }
+}
+
+@synthesize ruleNames;
+@synthesize preassemblerPrefix;
+@synthesize assemblerPrefix;
+@synthesize suffix;
+@end

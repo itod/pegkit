@@ -1,0 +1,18 @@
+/*
+    A Grammar for a small subset of CSS useful for syntax highlighting in an NSTextView + NSAttributedString
+*/
+
+start         = ruleset*;
+ruleset       = selectors '{' decls '}'!;
+selectors     = selector commaSelector*;
+selector      = Word;
+commaSelector = ','! selector;
+decls         = Empty | actualDecls;
+actualDecls   = decl decl*;
+decl          = property ':'! expr ';'!?;
+property      = 'color' | 'background-color' | 'font-family' | 'font-size';
+expr          = pixelValue | rgb | string | constants;
+pixelValue    = Number 'px'!;
+rgb           = 'rgb'! '(' Number ','! Number ','! Number ')'!;
+string        = QuotedString;
+constants     = 'bold' | 'normal' | 'italic';

@@ -1,0 +1,44 @@
+@symbols = '!=' '<=' '>=';
+ 
+expr = orExpr;
+ 
+orExpr = andExpr orTerm*;
+orTerm = or andExpr;
+ 
+andExpr = relExpr andTerm*;
+andTerm = and relExpr;
+ 
+relExpr = callExpr (relOp callExpr)*;
+relOp = lt | gt | eq | ne | le | ge;
+
+callExpr = primary (openParen argList? closeParen)?;
+argList = atom (comma atom)*;
+ 
+primary = atom | openParen expr closeParen;
+atom = obj | literal;
+ 
+obj = id member*;
+id = Word;
+member = dot id;
+ 
+literal = QuotedString | Number | bool;
+bool = yes | no;
+
+// TOKENS
+
+lt = '<';
+gt = '>';
+eq = '=';
+ne = '!=';
+le = '<=';
+ge = '>=';
+
+openParen = '(';
+closeParen = ')'!;
+yes = 'yes';
+no = 'no';
+
+dot = '.';
+comma = ',';
+or = 'or';
+and = 'and';
