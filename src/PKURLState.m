@@ -39,6 +39,8 @@
 - (BOOL)parseSchemeFromReader:(PKReader *)r;
 - (BOOL)parseHostFromReader:(PKReader *)r;
 - (void)parsePathFromReader:(PKReader *)r;
+@property (nonatomic) PKUniChar c;
+@property (nonatomic) PKUniChar lastChar;
 @end
 
 @implementation PKURLState
@@ -58,7 +60,7 @@
 
 
 - (void)append:(PKUniChar)ch {
-    lastChar = ch;
+    self.lastChar = ch;
     [super append:ch];
 }
 
@@ -67,19 +69,19 @@
     NSParameterAssert(r);
     [self resetWithReader:r];
     
-    lastChar = PKEOF;
-    c = cin;
+    self.lastChar = PKEOF;
+    self.c = cin;
     BOOL matched = NO;
-    if (allowsWWWPrefix && 'w' == c) {
+    if (_allowsWWWPrefix && 'w' == _c) {
         matched = [self parseWWWFromReader:r];
 
         if (!matched) {
-            if (PKEOF != c) {
+            if (PKEOF != _c) {
                 NSUInteger buffLen = [[self bufferedString] length];
                 [r unread:buffLen];
             }
             [self resetWithReader:r];
-            c = cin;
+            self.c = cin;
         }
     }
     
@@ -95,12 +97,12 @@
     
     NSString *s = [self bufferedString];
 
-    if (PKEOF != c) {
+    if (PKEOF != _c) {
         [r unread];
     } 
     
     if (matched) {
-        if ('.' == lastChar || ',' == lastChar || '-' == lastChar) {
+        if ('.' == _lastChar || ',' == _lastChar || '-' == _lastChar) {
             s = [s substringToIndex:[s length] - 1];
             [r unread];
         }
@@ -119,15 +121,15 @@
     BOOL result = NO;
     NSInteger wcount = 0;
     
-    while ('w' == c) {
+    while ('w' == _c) {
         wcount++;
-        [self append:c];
-        c = [r read];
+        [self append:_c];
+        self.c = [r read];
 
         if (3 == wcount) {
-            if ('.' == c) {
-                [self append:c];
-                c = [r read];
+            if ('.' == _c) {
+                [self append:_c];
+                self.c = [r read];
                 result = YES;
                 break;
             } else {
@@ -146,18 +148,18 @@
 
     // [[:alpha:]-]+://?
     for (;;) {
-        if (isalnum(c) || '-' == c) {
-            [self append:c];
-        } else if (':' == c) {
-            [self append:c];
+        if (isalnum(_c) || '-' == _c) {
+            [self append:_c];
+        } else if (':' == _c) {
+            [self append:_c];
             
-            c = [r read];
-            if ('/' == c) { // endgame
-                [self append:c];
-                c = [r read];
-                if ('/' == c) {
-                    [self append:c];
-                    c = [r read];
+            self.c = [r read];
+            if ('/' == _c) { // endgame
+                [self append:_c];
+                self.c = [r read];
+                if ('/' == _c) {
+                    [self append:_c];
+                    self.c = [r read];
                 }
                 result = YES;
                 break;
@@ -170,7 +172,7 @@
             break;
         }
 
-        c = [r read];
+        self.c = [r read];
     }
     
     return result;
@@ -184,19 +186,19 @@
     
     // ^[:space:]()<>
     for (;;) {
-        if (PKEOF == c || isspace(c) || '(' == c || ')' == c || '<' == c || '>' == c) {
+        if (PKEOF == _c || isspace(_c) || '(' == _c || ')' == _c || '<' == _c || '>' == _c) {
             result = hasAtLeastOneChar;
             break;
-        } else if ('/' == c && hasAtLeastOneChar/* && hasDot*/) {
+        } else if ('/' == _c && hasAtLeastOneChar/* && hasDot*/) {
             result = YES;
             break;
         } else {
-//            if ('.' == c) {
+//            if ('.' == _c) {
 //                hasDot = YES;
 //            }
             hasAtLeastOneChar = YES;
-            [self append:c];
-            c = [r read];
+            [self append:_c];
+            self.c = [r read];
         }
     }
     
@@ -208,24 +210,23 @@
     BOOL hasOpenParen = NO;
     
     for (;;) {
-        if (PKEOF == c || isspace(c) || '<' == c || '>' == c) {
+        if (PKEOF == _c || isspace(_c) || '<' == _c || '>' == _c) {
             break;
-        } else if (')' == c) {
+        } else if (')' == _c) {
             if (hasOpenParen) {
                 hasOpenParen = NO;
-                [self append:c];
+                [self append:_c];
             } else {
                 break;
             }
         } else {
             if (!hasOpenParen) {
-                hasOpenParen = ('(' == c);
+                hasOpenParen = ('(' == _c);
             }
-            [self append:c];
+            [self append:_c];
         }
-        c = [r read];
+        self.c = [r read];
     }
 }
 
-@synthesize allowsWWWPrefix;
 @end

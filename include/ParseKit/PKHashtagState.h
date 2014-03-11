@@ -19,9 +19,7 @@
  @brief      A hashtag state returns a hashtag from a reader.
  @details    
  */    
-@interface PKHashtagState : PKTokenizerState {
-    
-}
+@interface PKHashtagState : PKTokenizerState
 
 @end
 #endif

@@ -19,9 +19,7 @@
     @brief      A twitter state returns a twitter handle from a reader.
     @details    
 */    
-@interface PKTwitterState : PKTokenizerState {
-
-}
+@interface PKTwitterState : PKTokenizerState
 
 @end
 #endif

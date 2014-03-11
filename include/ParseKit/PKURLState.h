@@ -18,11 +18,7 @@
     @brief      A URL state returns a URL from a reader.
     @details    
 */    
-@interface PKURLState : PKTokenizerState {
-    PKUniChar c;
-    PKUniChar lastChar;
-    BOOL allowsWWWPrefix;
-}
+@interface PKURLState : PKTokenizerState
 
 @property (nonatomic) BOOL allowsWWWPrefix;
 @end
