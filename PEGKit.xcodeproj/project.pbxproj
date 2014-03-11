@@ -753,8 +753,6 @@
 		D3BD39761729F1DD00FC6549 /* PKSPreCallbackSyntaxLeafTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PKSPreCallbackSyntaxLeafTemplate.txt; path = res/PKSPreCallbackSyntaxLeafTemplate.txt; sourceTree = "<group>"; };
 		D3BD3A73172DC71900FC6549 /* ParseKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ParseKit-Info.plist"; path = "res/ParseKit-Info.plist"; sourceTree = "<group>"; };
 		D3BD3A75172DC75600FC6549 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D3C07E8616F5536B000FB894 /* PKResolutionPhaseVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKResolutionPhaseVisitor.h; path = src/PKResolutionPhaseVisitor.h; sourceTree = "<group>"; };
-		D3C07E8716F5536C000FB894 /* PKResolutionPhaseVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKResolutionPhaseVisitor.m; path = src/PKResolutionPhaseVisitor.m; sourceTree = "<group>"; };
 		D3C2216D0FFE8A86004514FE /* PKExclusion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKExclusion.h; path = test/PKExclusion.h; sourceTree = "<group>"; };
 		D3C221910FFE8B8C004514FE /* PKTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTypes.h; path = include/ParseKit/PKTypes.h; sourceTree = "<group>"; };
 		D3C221960FFE8B95004514FE /* PKReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKReader.h; path = include/ParseKit/PKReader.h; sourceTree = "<group>"; };
@@ -881,7 +879,6 @@
 				D3382F95171C808700CCE513 /* peg */,
 				D324B77E16F8C8F9005FE823 /* tokenize */,
 				D324B77D16F8C892005FE823 /* ast */,
-				D34BAC0F0FF87ED200D7773A /* grammar */,
 				D3A1492B16F8C7D600770DEE /* Foundation categories */,
 				089C1665FE841158C02AAC07 /* Resources */,
 				32C88DFF0371C24200C91783 /* Other Sources (not used) */,
@@ -1036,13 +1033,6 @@
 			name = ast;
 			sourceTree = "<group>";
 		};
-		D3376D7710096BDE00E4602E /* IR */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = IR;
-			sourceTree = "<group>";
-		};
 		D3382F95171C808700CCE513 /* peg */ = {
 			isa = PBXGroup;
 			children = (
@@ -1066,6 +1056,7 @@
 				D3383044171C923700CCE513 /* PGDocument.m */,
 				D3383046171C923700CCE513 /* PGDocument.xib */,
 				D3383049171C923700CCE513 /* MainMenu.xib */,
+				D34BAC0F0FF87ED200D7773A /* grammar */,
 				D3383038171C923700CCE513 /* Supporting Files */,
 			);
 			path = ParserGenApp;
@@ -1110,6 +1101,7 @@
 				D325FFBC161E4E3200D4EBCC /* ast */,
 			);
 			name = grammar;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		D34F538617421715008700F3 /* Products */ = {
@@ -1199,8 +1191,6 @@
 				D367F66A16F5570500F5E9EB /* PKBaseVisitor.m */,
 				D326129816F64ED50021845F /* PKDefinitionPhaseVisitor.h */,
 				D326129916F64ED50021845F /* PKDefinitionPhaseVisitor.m */,
-				D3C07E8616F5536B000FB894 /* PKResolutionPhaseVisitor.h */,
-				D3C07E8716F5536C000FB894 /* PKResolutionPhaseVisitor.m */,
 			);
 			name = visitor;
 			sourceTree = "<group>";
@@ -1511,7 +1501,6 @@
 				D31FE54B0E60E46100A0803E /* TDTestScaffold.m */,
 				D302272517020A4D00594F16 /* ParserGen */,
 				D37D8DD11571A4F700CDB822 /* Supporting Files */,
-				D3376D7710096BDE00E4602E /* IR */,
 				D3C0309C0EF34DD200C5ABEB /* grammar */,
 			);
 			name = "PEGKit Tests";
