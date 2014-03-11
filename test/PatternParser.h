@@ -1,6 +1,4 @@
-#import "PEGParser.h"
-
-
+#import <PEGKit/PEGParser.h>
 
 @interface PatternParser : PEGParser
 

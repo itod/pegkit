@@ -12,7 +12,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#if PEGKIT
 #import <PEGKit/PKNumberState.h>
 #import <PEGKit/PKReader.h>
 #import <PEGKit/PKToken.h>
@@ -21,16 +20,6 @@
 #import <PEGKit/PKSymbolState.h>
 #import <PEGKit/PKWhitespaceState.h>
 #import <PEGKit/PKTypes.h>
-#else
-#import "PKNumberState.h"
-#import "PKReader.h"
-#import "PKToken.h"
-#import "PKTokenizer.h"
-#import "PKSymbolRootNode.h"
-#import "PKSymbolState.h"
-#import "PKWhitespaceState.h"
-#import "PKTypes.h"
-#endif
 
 @interface PKToken ()
 @property (nonatomic, readwrite) NSUInteger offset;

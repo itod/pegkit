@@ -9,7 +9,7 @@
 #import "PKDefinitionPhaseVisitor.h"
 #import "NSString+ParseKitAdditions.h"
 #import "PEGTokenKindDescriptor.h"
-#import "PKToken.h"
+#import <PEGKit/PKToken.h>
 
 @interface PKDefinitionPhaseVisitor ()
 @end

@@ -13,11 +13,7 @@
 //  limitations under the License.
 
 #import <Foundation/Foundation.h>
-#if PEGKIT
 #import <PEGKit/PKTokenizerState.h>
-#else
-#import "PKTokenizerState.h"
-#endif
 
 @class PKSymbolRootNode;
 

@@ -12,7 +12,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#if PEGKIT
 #import <PEGKit/PKCommentState.h>
 #import <PEGKit/PKTokenizer.h>
 #import <PEGKit/PKToken.h>
@@ -20,15 +19,6 @@
 #import <PEGKit/PKSymbolRootNode.h>
 #import <PEGKit/PKSingleLineCommentState.h>
 #import <PEGKit/PKMultiLineCommentState.h>
-#else
-#import "PKCommentState.h"
-#import "PKTokenizer.h"
-#import "PKToken.h"
-#import "PKReader.h"
-#import "PKSymbolRootNode.h"
-#import "PKSingleLineCommentState.h"
-#import "PKMultiLineCommentState.h"
-#endif
 
 @interface PKToken ()
 @property (nonatomic, readwrite) NSUInteger offset;

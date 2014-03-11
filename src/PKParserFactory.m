@@ -8,7 +8,7 @@
 
 #import "PKParserFactory.h"
 #import "PKAssembly.h"
-#import "PKToken.h"
+#import <PEGKit/PKToken.h>
 
 #import "PKTokenizer.h"
 #import "PKWordState.h"

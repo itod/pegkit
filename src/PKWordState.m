@@ -12,19 +12,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#if PEGKIT
 #import <PEGKit/PKWordState.h>
 #import <PEGKit/PKReader.h>
 #import <PEGKit/PKTokenizer.h>
 #import <PEGKit/PKToken.h>
 #import <PEGKit/PKTypes.h>
-#else
-#import "PKWordState.h"
-#import "PKReader.h"
-#import "PKTokenizer.h"
-#import "PKToken.h"
-#import "PKTypes.h"
-#endif
 
 #define PKTRUE (id)kCFBooleanTrue
 #define PKFALSE (id)kCFBooleanFalse

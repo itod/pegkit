@@ -13,7 +13,7 @@
 //  limitations under the License.
 
 #import "PKTokenArraySource.h"
-#import "PKToken.h"
+#import <PEGKit/PKToken.h>
 #import "PKTokenizer.h"
 
 @interface PKTokenArraySource ()

@@ -1,5 +1,5 @@
 #import "JavaScriptWhitespaceParser.h"
-#import "PEGKit.h"
+#import <PEGKit/PEGKit.h>
 
 #define LT(i) [self LT:(i)]
 #define LA(i) [self LA:(i)]

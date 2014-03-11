@@ -7,7 +7,7 @@
 //
 
 #import "PKCompositeNode.h"
-#import "PKToken.h"
+#import <PEGKit/PKToken.h>
 
 @implementation PKCompositeNode
 

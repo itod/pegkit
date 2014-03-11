@@ -7,11 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#if PEGKIT
 #import <PEGKit/PKTokenizerState.h>
-#else
-#import "PKTokenizerState.h"
-#endif
 
 /*!
     @class      PKURLState 

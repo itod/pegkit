@@ -6,19 +6,11 @@
 //  Copyright 2010 Todd Ditchendorf. All rights reserved.
 //
 
-#if PEGKIT
 #import <PEGKit/PKURLState.h>
 #import <PEGKit/PKReader.h>
 #import <PEGKit/PKTokenizer.h>
 #import <PEGKit/PKToken.h>
 #import <PEGKit/PKTypes.h>
-#else
-#import "PKURLState.h"
-#import "PKReader.h"
-#import "PKTokenizer.h"
-#import "PKToken.h"
-#import "PKTypes.h"
-#endif
 
 // Gruber original
 //  \b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))

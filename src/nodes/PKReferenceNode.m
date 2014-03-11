@@ -7,7 +7,7 @@
 //
 
 #import "PKReferenceNode.h"
-#import "PKToken.h"
+#import <PEGKit/PKToken.h>
 
 @implementation PKReferenceNode
 

@@ -12,13 +12,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#if PEGKIT
 #import <PEGKit/PKSymbolNode.h>
 #import <PEGKit/PKSymbolRootNode.h>
-#else
-#import "PKSymbolNode.h"
-#import "PKSymbolRootNode.h"
-#endif
 
 @interface PKSymbolNode ()
 @property (nonatomic, readwrite, retain) NSString *ancestry;

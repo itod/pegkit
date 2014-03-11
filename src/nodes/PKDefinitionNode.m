@@ -7,7 +7,7 @@
 //
 
 #import "PKDefinitionNode.h"
-#import "PKToken.h"
+#import <PEGKit/PKToken.h>
 
 @implementation PKDefinitionNode
 

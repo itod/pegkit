@@ -12,15 +12,9 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#if PEGKIT
 #import <PEGKit/PKTokenizerState.h>
 #import <PEGKit/PKTokenizer.h>
 #import <PEGKit/PKReader.h>
-#else
-#import "PKTokenizerState.h"
-#import "PKTokenizer.h"
-#import "PKReader.h"
-#endif
 
 #define STATE_COUNT 256
 

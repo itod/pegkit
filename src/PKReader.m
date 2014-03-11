@@ -12,11 +12,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#if PEGKIT
 #import <PEGKit/PKReader.h>
-#else
-#import "PKReader.h"
-#endif
 
 @implementation PKReader
 

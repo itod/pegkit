@@ -12,11 +12,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#if PEGKIT
 #import <PEGKit/PKAssembly.h>
-#else
-#import "PKAssembly.h"
-#endif
 
 static NSString * const PKAssemblyDefaultDelimiter = @"/";
 static NSString * const PKAssemblyDefaultCursor = @"^";

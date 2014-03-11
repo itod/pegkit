@@ -12,11 +12,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#if PEGKIT
 #import <PEGKit/PEGKit.h>
-#else
-#import "PEGKit.h"
-#endif
 
 #define STATE_COUNT 256
 

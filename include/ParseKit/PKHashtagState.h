@@ -8,11 +8,7 @@
 
 #if PK_PLATFORM_TWITTER_STATE
 #import <Foundation/Foundation.h>
-#if PEGKIT
 #import <PEGKit/PKTokenizerState.h>
-#else
-#import "PKTokenizerState.h"
-#endif
 
 /*!
  @class      PKHashtagState

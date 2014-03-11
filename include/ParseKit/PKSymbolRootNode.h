@@ -13,11 +13,7 @@
 //  limitations under the License.
 
 #import <Foundation/Foundation.h>
-#if PEGKIT
 #import <PEGKit/PKSymbolNode.h>
-#else
-#import "PKSymbolNode.h"
-#endif
 
 @class PKReader;
 
