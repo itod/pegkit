@@ -8,7 +8,6 @@
 
 #import "PKReferenceNode.h"
 #import "PKToken.h"
-#import "PKSequence.h"
 
 @implementation PKReferenceNode
 
@@ -30,11 +29,6 @@
 
 - (void)visit:(id <PKNodeVisitor>)v; {
     [v visitReference:self];
-}
-
-
-- (Class)parserClass {
-    return [PKSequence class];
 }
 
 

@@ -38,14 +38,14 @@
 #import "PKActionNode.h"
 
 #import "PKDefinitionPhaseVisitor.h"
-#import "PKResolutionPhaseVisitor.h"
+//#import "PKResolutionPhaseVisitor.h"
 
 @interface PEGParser (PKParserFactoryAdditionsFriend)
 - (id)parseWithTokenizer:(PKTokenizer *)t assembler:(id)a error:(NSError **)outError;
 @end
 
 @interface PKParserFactory ()
-- (NSDictionary *)symbolTableFromGrammar:(NSString *)g error:(NSError **)outError;
+//- (NSDictionary *)symbolTableFromGrammar:(NSString *)g error:(NSError **)outError;
 
 - (PKTokenizer *)tokenizerForParsingGrammar;
 
@@ -176,18 +176,18 @@
 }
 
 
-- (NSDictionary *)symbolTableFromGrammar:(NSString *)g error:(NSError **)outError {
-    NSMutableDictionary *symTab = [NSMutableDictionary dictionary];
-    [self ASTFromGrammar:g symbolTable:symTab error:outError];
-
-    //NSLog(@"rootNode %@", rootNode);
-
-    PKResolutionPhaseVisitor *resv = [[[PKResolutionPhaseVisitor alloc] init] autorelease];
-    resv.symbolTable = symTab;
-    [rootNode visit:resv];
-
-    return [[symTab copy] autorelease];
-}
+//- (NSDictionary *)symbolTableFromGrammar:(NSString *)g error:(NSError **)outError {
+//    NSMutableDictionary *symTab = [NSMutableDictionary dictionary];
+//    [self ASTFromGrammar:g symbolTable:symTab error:outError];
+//
+//    //NSLog(@"rootNode %@", rootNode);
+//
+//    PKResolutionPhaseVisitor *resv = [[[PKResolutionPhaseVisitor alloc] init] autorelease];
+//    resv.symbolTable = symTab;
+//    [rootNode visit:resv];
+//
+//    return [[symTab copy] autorelease];
+//}
 
 
 - (PKAST *)ASTFromGrammar:(NSString *)g error:(NSError **)outError {

@@ -8,10 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class PKParser;
 @class PKAST;
-
-void PKReleaseSubparserTree(PKParser *p);
 
 typedef enum {
     PKParserFactoryAssemblerSettingBehaviorAll        = 0, // Default

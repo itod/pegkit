@@ -41,9 +41,4 @@
     [v visitAction:self];
 }
 
-
-- (Class)parserClass {
-    return nil;
-}
-
 @end

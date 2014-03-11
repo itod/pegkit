@@ -7,7 +7,6 @@
 //
 
 #import "PKMultipleNode.h"
-#import "PKSequence.h"
 
 @implementation PKMultipleNode
 
@@ -18,11 +17,6 @@
 
 - (void)visit:(id <PKNodeVisitor>)v; {
     [v visitMultiple:self];
-}
-
-
-- (Class)parserClass {
-    return [PKSequence class];
 }
 
 @end

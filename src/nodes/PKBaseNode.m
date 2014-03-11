@@ -16,7 +16,6 @@
 
 
 - (void)dealloc {
-    self.parser = nil;
     self.actionNode = nil;
     self.semanticPredicateNode = nil;
     self.defName = nil;
@@ -29,7 +28,6 @@
 - (id)copyWithZone:(NSZone *)zone {
     PKBaseNode *that = (PKBaseNode *)[super copyWithZone:zone];
     that->_discard = _discard;
-    that->_parser = _parser;
     that->_actionNode = [_actionNode retain];
     that->_semanticPredicateNode = [_semanticPredicateNode retain];
     that->_defName = [_defName retain];
@@ -47,10 +45,6 @@
     PKBaseNode *that = (PKBaseNode *)obj;
     
     if (_discard != that->_discard) {
-        return NO;
-    }
-    
-    if (_parser != that->_parser) {
         return NO;
     }
     
@@ -92,12 +86,6 @@
 
 - (void)visit:(id <PKNodeVisitor>)v; {
     NSAssert2(0, @"%s is an abastract method. Must be overridden in %@", __PRETTY_FUNCTION__, NSStringFromClass([self class]));
-}
-
-
-- (Class)parserClass {
-    NSAssert2(0, @"%s is an abastract method. Must be overridden in %@", __PRETTY_FUNCTION__, NSStringFromClass([self class]));
-    return Nil;
 }
 
 

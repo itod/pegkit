@@ -7,30 +7,9 @@
 //
 
 #import "PKCollectionNode.h"
-#import "PKSequence.h"
-#import "PKDelimitedString.h"
-#import "PKIntersection.h"
-#import "PKAlternation.h"
-#import "PKTrack.h"
 #import "PKToken.h"
 
-static NSDictionary *sClassTab = nil;
-
 @implementation PKCollectionNode
-
-+ (void)initialize {
-    if ([PKCollectionNode class] == self) {
-        sClassTab = [@{
-            @"." : [PKSequence class],
-            @"[" : [PKTrack class],
-            @"%" : [PKDelimitedString class],
-            @"&" : [PKIntersection class],
-            @"|" : [PKAlternation class],
-            @"{" : [PKSequence class],
-        } retain];
-    }
-}
-
 
 - (NSUInteger)type {
     return PKNodeTypeCollection;
@@ -39,14 +18,6 @@ static NSDictionary *sClassTab = nil;
 
 - (void)visit:(id <PKNodeVisitor>)v; {
     [v visitCollection:self];
-}
-
-
-- (Class)parserClass {
-    NSString *typeName = self.token.stringValue;
-    Class cls = sClassTab[typeName];
-    NSAssert1(cls, @"missing collection class for token %@", typeName);
-    return cls;
 }
 
 @end

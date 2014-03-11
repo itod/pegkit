@@ -7,52 +7,9 @@
 //
 
 #import "PKConstantNode.h"
-#import "PKAny.h"
-#import "PKEmpty.h"
-#import "PKWord.h"
-#import "PKLowercaseWord.h"
-#import "PKUppercaseWord.h"
-#import "PKNumber.h"
-#import "PKQuotedString.h"
-#import "PKSymbol.h"
-#import "PKComment.h"
-#import "PKWhitespace.h"
-#import "PKDigit.h"
-#import "PKLetter.h"
-#import "PKChar.h"
-#import "PKSpecificChar.h"
 #import "PKToken.h"
 
-static NSDictionary *sClassTab = nil;
-
 @implementation PKConstantNode
-
-+ (void)initialize {
-    if ([PKConstantNode class] == self) {
-        sClassTab = [@{
-            @"EOF"              : [PKAny class], // TODO
-            @"Word"             : [PKWord class],
-            @"LowercaseWord"    : [PKLowercaseWord class],
-            @"UppercaseWord"    : [PKUppercaseWord class],
-            @"Number"           : [PKNumber class],
-            @"QuotedString"     : [PKQuotedString class],
-            @"Symbol"           : [PKSymbol class],
-            @"Comment"          : [PKComment class],
-            @"Empty"            : [PKEmpty class],
-            @"Any"              : [PKAny class],
-            @"S"                : [PKWhitespace class],
-            @"URL"              : [PKAny class],
-            @"Email"            : [PKAny class],
-                     
-            @"Digit"            : [PKDigit class],
-            @"Letter"           : [PKLetter class],
-            @"Char"             : [PKChar class],
-            @"SpecificChar"     : [PKSpecificChar class],
-        } retain];
-    }
-}
-
-
 - (void)dealloc {
     self.literal = nil;
     self.tokenKind = nil;
@@ -80,14 +37,6 @@ static NSDictionary *sClassTab = nil;
 
 - (void)visit:(id <PKNodeVisitor>)v; {
     [v visitConstant:self];
-}
-
-
-- (Class)parserClass {
-    NSString *typeName = self.token.stringValue;
-    Class cls = sClassTab[typeName];
-    NSAssert1(cls, @"missing constant class for token %@", typeName);
-    return cls;
 }
 
 

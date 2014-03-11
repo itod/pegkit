@@ -7,8 +7,6 @@
 //
 
 #import "PKLiteralNode.h"
-#import "PKSpecificChar.h"
-#import "PKCaseInsensitiveLiteral.h"
 
 @implementation PKLiteralNode
 
@@ -25,15 +23,6 @@
 
 - (void)visit:(id <PKNodeVisitor>)v; {
     [v visitLiteral:self];
-}
-
-
-- (Class)parserClass {
-    if (_wantsCharacters) {
-        return [PKSpecificChar class];
-    } else {
-        return [PKCaseInsensitiveLiteral class];
-    }
 }
 
 

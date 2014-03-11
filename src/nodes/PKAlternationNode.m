@@ -7,7 +7,6 @@
 //
 
 #import "PKAlternationNode.h"
-#import "PKAlternation.h"
 
 @implementation PKAlternationNode
 
@@ -18,11 +17,6 @@
 
 - (void)visit:(id <PKNodeVisitor>)v; {
     [v visitAlternation:self];
-}
-
-
-- (Class)parserClass {
-    return [PKAlternation class];
 }
 
 @end

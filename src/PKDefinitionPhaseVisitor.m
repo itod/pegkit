@@ -7,7 +7,6 @@
 //
 
 #import "PKDefinitionPhaseVisitor.h"
-#import "PKCompositeParser.h"
 #import "NSString+ParseKitAdditions.h"
 #import "PEGTokenKindDescriptor.h"
 
@@ -219,28 +218,15 @@
 
     // find only child node (which represents this parser's type)
     NSAssert(1 == [node.children count], @"");
-    PKBaseNode *child = node.children[0];
     
-    // create parser
-    Class parserCls = [child parserClass];
-    PKCompositeParser *cp = [[[parserCls alloc] init] autorelease];
-
     // set name
     NSString *name = node.token.stringValue;
-    cp.name = name;
-    
-    // set assembler callback
-    if (_assembler || _preassembler) {
-        NSString *cbname = node.callbackName;
-        [self setAssemblerForParser:cp callbackName:cbname];
-    }
 
     // define in symbol table
     if (![self.symbolTable count]) {
         self.symbolTable[@"$$"] = name;
     }
-    self.symbolTable[name] = cp;
-        
+
     for (PKBaseNode *child in node.children) {
         if (_collectTokenKinds) {
             child.defName = name;
@@ -400,69 +386,69 @@
 }
 
 
-#pragma mark -
-#pragma mark Assemblers
-
-- (void)setAssemblerForParser:(PKCompositeParser *)p callbackName:(NSString *)callbackName {
-    NSString *parserName = p.name;
-    NSString *selName = callbackName;
-    
-    BOOL setOnAll = (_assemblerSettingBehavior == PKParserFactoryAssemblerSettingBehaviorAll);
-    
-    if (setOnAll) {
-        // continue
-    } else {
-        BOOL setOnExplicit = (_assemblerSettingBehavior == PKParserFactoryAssemblerSettingBehaviorExplicit);
-        if (setOnExplicit && selName) {
-            // continue
-        } else {
-            BOOL isTerminal = [p isKindOfClass:[PKTerminal class]];
-            if (!isTerminal && !setOnExplicit) return;
-            
-            BOOL setOnTerminals = (_assemblerSettingBehavior == PKParserFactoryAssemblerSettingBehaviorTerminals);
-            if (setOnTerminals && isTerminal) {
-                // continue
-            } else {
-                return;
-            }
-        }
-    }
-    
-    if (!selName) {
-        selName = [self defaultAssemblerSelectorNameForParserName:parserName];
-    }
-    
-    if (selName) {
-        SEL sel = NSSelectorFromString(selName);
-        if (_assembler && [_assembler respondsToSelector:sel]) {
-            [p setAssembler:_assembler selector:sel];
-        }
-        if (_preassembler && [_preassembler respondsToSelector:sel]) {
-            NSString *selName = [self defaultPreassemblerSelectorNameForParserName:parserName];
-            [p setPreassembler:_preassembler selector:NSSelectorFromString(selName)];
-        }
-    }
-}
-
-
-- (NSString *)defaultAssemblerSelectorNameForParserName:(NSString *)parserName {
-    return [self defaultAssemblerSelectorNameForParserName:parserName pre:NO];
-}
-
-
-- (NSString *)defaultPreassemblerSelectorNameForParserName:(NSString *)parserName {
-    return [self defaultAssemblerSelectorNameForParserName:parserName pre:YES];
-}
-
-
-- (NSString *)defaultAssemblerSelectorNameForParserName:(NSString *)parserName pre:(BOOL)isPre {
-    NSString *prefix = nil;
-    if ([parserName hasPrefix:@"@"]) {
-        return nil;
-    } else {
-        prefix = isPre ? @"parser:willMatch" :  @"parser:didMatch";
-    }
-    return [NSString stringWithFormat:@"%@%C%@:", prefix, (unichar)toupper([parserName characterAtIndex:0]), [parserName substringFromIndex:1]];
-}
+//#pragma mark -
+//#pragma mark Assemblers
+//
+//- (void)setAssemblerForParser:(PKCompositeParser *)p callbackName:(NSString *)callbackName {
+//    NSString *parserName = p.name;
+//    NSString *selName = callbackName;
+//    
+//    BOOL setOnAll = (_assemblerSettingBehavior == PKParserFactoryAssemblerSettingBehaviorAll);
+//    
+//    if (setOnAll) {
+//        // continue
+//    } else {
+//        BOOL setOnExplicit = (_assemblerSettingBehavior == PKParserFactoryAssemblerSettingBehaviorExplicit);
+//        if (setOnExplicit && selName) {
+//            // continue
+//        } else {
+//            BOOL isTerminal = [p isKindOfClass:[PKTerminal class]];
+//            if (!isTerminal && !setOnExplicit) return;
+//            
+//            BOOL setOnTerminals = (_assemblerSettingBehavior == PKParserFactoryAssemblerSettingBehaviorTerminals);
+//            if (setOnTerminals && isTerminal) {
+//                // continue
+//            } else {
+//                return;
+//            }
+//        }
+//    }
+//    
+//    if (!selName) {
+//        selName = [self defaultAssemblerSelectorNameForParserName:parserName];
+//    }
+//    
+//    if (selName) {
+//        SEL sel = NSSelectorFromString(selName);
+//        if (_assembler && [_assembler respondsToSelector:sel]) {
+//            [p setAssembler:_assembler selector:sel];
+//        }
+//        if (_preassembler && [_preassembler respondsToSelector:sel]) {
+//            NSString *selName = [self defaultPreassemblerSelectorNameForParserName:parserName];
+//            [p setPreassembler:_preassembler selector:NSSelectorFromString(selName)];
+//        }
+//    }
+//}
+//
+//
+//- (NSString *)defaultAssemblerSelectorNameForParserName:(NSString *)parserName {
+//    return [self defaultAssemblerSelectorNameForParserName:parserName pre:NO];
+//}
+//
+//
+//- (NSString *)defaultPreassemblerSelectorNameForParserName:(NSString *)parserName {
+//    return [self defaultAssemblerSelectorNameForParserName:parserName pre:YES];
+//}
+//
+//
+//- (NSString *)defaultAssemblerSelectorNameForParserName:(NSString *)parserName pre:(BOOL)isPre {
+//    NSString *prefix = nil;
+//    if ([parserName hasPrefix:@"@"]) {
+//        return nil;
+//    } else {
+//        prefix = isPre ? @"parser:willMatch" :  @"parser:didMatch";
+//    }
+//    return [NSString stringWithFormat:@"%@%C%@:", prefix, (unichar)toupper([parserName characterAtIndex:0]), [parserName substringFromIndex:1]];
+//}
 
 @end
