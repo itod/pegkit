@@ -76,17 +76,17 @@
 - (void)addStartMarker:(NSString *)start endMarker:(NSString *)end {
     NSParameterAssert([start length]);
     NSParameterAssert([end length]);
-    [startMarkers addObject:start];
-    [endMarkers addObject:end];
+    [_startMarkers addObject:start];
+    [_endMarkers addObject:end];
 }
 
 
 - (void)removeStartMarker:(NSString *)start {
     NSParameterAssert([start length]);
-    NSUInteger i = [startMarkers indexOfObject:start];
+    NSUInteger i = [_startMarkers indexOfObject:start];
     if (NSNotFound != i) {
-        [startMarkers removeObject:start];
-        [endMarkers removeObjectAtIndex:i]; // this should always be in range.
+        [_startMarkers removeObject:start];
+        [_endMarkers removeObjectAtIndex:i]; // this should always be in range.
     }
 }
 
@@ -99,11 +99,11 @@
     BOOL reportTokens = t.commentState.reportsCommentTokens;
     if (reportTokens) {
         [self resetWithReader:r];
-        [self appendString:currentStartMarker];
+        [self appendString:_currentStartMarker];
     }
     
-    NSUInteger i = [startMarkers indexOfObject:currentStartMarker];
-    NSString *currentEndSymbol = [endMarkers objectAtIndex:i];
+    NSUInteger i = [_startMarkers indexOfObject:_currentStartMarker];
+    NSString *currentEndSymbol = [_endMarkers objectAtIndex:i];
     PKUniChar e = [currentEndSymbol characterAtIndex:0];
     
     // get the definitions of all multi-char comment start and end symbols from the commentState
@@ -157,7 +157,4 @@
     }
 }
 
-@synthesize startMarkers;
-@synthesize endMarkers;
-@synthesize currentStartMarker;
 @end

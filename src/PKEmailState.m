@@ -34,6 +34,8 @@
 @interface PKEmailState ()
 - (BOOL)parseNameFromReader:(PKReader *)r;
 - (BOOL)parseHostFromReader:(PKReader *)r;
+@property (nonatomic) PKUniChar c;
+@property (nonatomic) PKUniChar lastChar;
 @end
 
 @implementation PKEmailState
@@ -44,7 +46,7 @@
 
 
 - (void)append:(PKUniChar)ch {
-    lastChar = ch;
+    self.lastChar = ch;
     [super append:ch];
 }
 
@@ -53,20 +55,20 @@
     NSParameterAssert(r);
     [self resetWithReader:r];
     
-    lastChar = PKEOF;
-    c = cin;
+    self.lastChar = PKEOF;
+    self.c = cin;
     BOOL matched = [self parseNameFromReader:r];
     if (matched) {
         matched = [self parseHostFromReader:r];
     }
 
-    if (PKEOF != c) {
+    if (PKEOF != _c) {
         [r unread];
     }
     
     NSString *s = [self bufferedString];
     if (matched) {
-        if ('.' == lastChar) {
+        if ('.' == _lastChar) {
             s = [s substringToIndex:[s length] - 1];
             [r unread];
         }
@@ -86,17 +88,17 @@
     BOOL hasAtLeastOneChar = NO;
 
     for (;;) {
-        if (PKEOF == c || isspace(c)) {
+        if (PKEOF == _c || isspace(_c)) {
             result = NO;
             break;
-        } else if ('@' == c && hasAtLeastOneChar) {
+        } else if ('@' == _c && hasAtLeastOneChar) {
             //[self append:c];
             result = YES;
             break;
         } else {
             hasAtLeastOneChar = YES;
-            [self append:c];
-            c = [r read];
+            [self append:_c];
+            self.c = [r read];
         }
     }
     
@@ -111,16 +113,16 @@
     
     // ^[:space:]()<>/"'
     for (;;) {
-        if (PKEOF == c || isspace(c) || '(' == c || ')' == c || '<' == c || '>' == c || '/' == c || '"' == c || '\'' == c) {
+        if (PKEOF == _c || isspace(_c) || '(' == _c || ')' == _c || '<' == _c || '>' == _c || '/' == _c || '"' == _c || '\'' == _c) {
             result = hasAtLeastOneChar && hasDot;
             break;
         } else {
-            if ('.' == c) {
+            if ('.' == _c) {
                 hasDot = YES;
             }
             hasAtLeastOneChar = YES;
-            [self append:c];
-            c = [r read];
+            [self append:_c];
+            self.c = [r read];
         }
     }
     

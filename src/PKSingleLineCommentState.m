@@ -66,13 +66,13 @@
 
 - (void)addStartMarker:(NSString *)start {
     NSParameterAssert([start length]);
-    [startMarkers addObject:start];
+    [_startMarkers addObject:start];
 }
 
 
 - (void)removeStartMarker:(NSString *)start {
     NSParameterAssert([start length]);
-    [startMarkers removeObject:start];
+    [_startMarkers removeObject:start];
 }
 
 
@@ -83,7 +83,7 @@
     BOOL reportTokens = t.commentState.reportsCommentTokens;
     if (reportTokens) {
         [self resetWithReader:r];
-        [self appendString:currentStartMarker];
+        [self appendString:_currentStartMarker];
     }
     
     PKUniChar c;
@@ -112,6 +112,4 @@
     }
 }
 
-@synthesize startMarkers;
-@synthesize currentStartMarker;
 @end

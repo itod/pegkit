@@ -18,9 +18,6 @@
     @brief      An email state returns an email address from a reader.
     @details    
 */
-@interface PKEmailState : PKTokenizerState {
-    PKUniChar c;
-    PKUniChar lastChar;
-}
+@interface PKEmailState : PKTokenizerState
 
 @end

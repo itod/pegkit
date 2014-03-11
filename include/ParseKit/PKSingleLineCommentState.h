@@ -19,9 +19,6 @@
 #import "PKTokenizerState.h"
 #endif
 
-@interface PKSingleLineCommentState : PKTokenizerState {
-    NSMutableArray *startMarkers;
-    NSString *currentStartMarker;
-}
+@interface PKSingleLineCommentState : PKTokenizerState
 
 @end
