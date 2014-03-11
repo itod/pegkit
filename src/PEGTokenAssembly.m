@@ -17,6 +17,7 @@
 #import <PEGKit/PKToken.h>
 
 @interface PKAssembly ()
+@property (nonatomic, assign) NSUInteger index;
 @property (nonatomic, readwrite, retain) NSString *defaultCursor;
 @end
 
@@ -69,7 +70,7 @@
 - (void)consume:(PKToken *)tok {
     if (_preservesWhitespaceTokens || !tok.isWhitespace) {
         [self push:tok];
-        ++index;
+        ++self.index;
 
         if (_gathersConsumedTokens) {
             if (!_tokens) {
@@ -104,7 +105,7 @@
 
 
 - (NSUInteger)objectsConsumed {
-    return index;
+    return self.index;
 }
 
 

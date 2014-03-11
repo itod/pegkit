@@ -23,6 +23,8 @@
 
 @property (nonatomic, retain) PKTokenizer *tokenizer;
 @property (nonatomic, copy) NSArray *tokens;
+@property (nonatomic, retain) NSString *string;
+@property (nonatomic, assign) NSUInteger index;
 @end
 
 @implementation PKTokenAssembly
@@ -80,43 +82,42 @@
 
 - (id)copyWithZone:(NSZone *)zone {
     PKTokenAssembly *a = (PKTokenAssembly *)[super copyWithZone:zone];
-    a->tokenizer = nil; // optimization
-    if (tokens) {
-        a->tokens = [tokens copyWithZone:zone];
+    a->_tokenizer = nil; // optimization
+    if (_tokens) {
+        a->_tokens = [_tokens copyWithZone:zone];
     } else {
-        a->tokens = nil;
+        a->_tokens = nil;
     }
 
-    a->preservesWhitespaceTokens = preservesWhitespaceTokens;
+    a->_preservesWhitespaceTokens = _preservesWhitespaceTokens;
     return a;
 }
 
 
 - (NSArray *)tokens {
-    if (!tokens) {
+    if (!_tokens) {
         [self tokenize];
     }
-    return tokens;
+    return _tokens;
 }
 
 
 - (id)peek {
     PKToken *tok = nil;
-    NSArray *toks = self.tokens;
     
     for (;;) {
-        if (index >= [toks count]) {
+        if (self.index >= [_tokens count]) {
             tok = nil;
             break;
         }
         
-        tok = [toks objectAtIndex:index];
-        if (!preservesWhitespaceTokens) {
+        tok = [_tokens objectAtIndex:self.index];
+        if (!_preservesWhitespaceTokens) {
             break;
         }
         if (PKTokenTypeWhitespace == tok.tokenType) {
             [self push:tok];
-            index++;
+            self.index++;
         } else {
             break;
         }
@@ -129,29 +130,29 @@
 - (id)next {
     id tok = [self peek];
     if (tok) {
-        index++;
+        self.index++;
     }
     return tok;
 }
 
 
 - (BOOL)hasMore {
-    return (index < [self.tokens count]);
+    return (self.index < [_tokens count]);
 }
 
 
 - (NSUInteger)length {
-    return [self.tokens count];
+    return [_tokens count];
 } 
 
 
 - (NSUInteger)objectsConsumed {
-    return index;
+    return self.index;
 }
 
 
 - (NSUInteger)objectsRemaining {
-    return ([self.tokens count] - index);
+    return ([_tokens count] - self.index);
 }
 
 
@@ -170,18 +171,17 @@
 - (NSString *)lastConsumedObjects:(NSUInteger)len joinedByString:(NSString *)delimiter {
     NSParameterAssert(delimiter);
     
-    NSArray *toks = self.tokens;
     NSUInteger end = self.objectsConsumed;
 
     len = MIN(end, len);
     NSUInteger loc = end - len;
 
-    NSAssert(loc < [toks count], @"");
-    NSAssert(len <= [toks count], @"");
-    NSAssert(loc + len <= [toks count], @"");
+    NSAssert(loc < [_tokens count], @"");
+    NSAssert(len <= [_tokens count], @"");
+    NSAssert(loc + len <= [_tokens count], @"");
     
     NSRange r = NSMakeRange(loc, len);
-    NSArray *objs = [toks subarrayWithRange:r];
+    NSArray *objs = [_tokens subarrayWithRange:r];
     
     NSString *s = [objs componentsJoinedByString:delimiter];
     return s;
@@ -192,15 +192,15 @@
 #pragma mark Private
 
 - (void)tokenize {
-    if (!tokenizer) {
-        self.tokenizer = [PKTokenizer tokenizerWithString:string];
+    if (!_tokenizer) {
+        self.tokenizer = [PKTokenizer tokenizerWithString:self.string];
     }
     
     NSMutableArray *a = [NSMutableArray array];
     
     PKToken *eof = [PKToken EOFToken];
     PKToken *tok = nil;
-    while ((tok = [tokenizer nextToken]) != eof) {
+    while ((tok = [_tokenizer nextToken]) != eof) {
         [a addObject:tok];
     }
 
@@ -213,12 +213,11 @@
     NSParameterAssert(start <= end);
 
     NSMutableString *s = [NSMutableString string];
-    NSArray *toks = self.tokens;
 
-    NSParameterAssert(end <= [toks count]);
+    NSParameterAssert(end <= [_tokens count]);
 
     for (NSInteger i = start; i < end; i++) {
-        PKToken *tok = [toks objectAtIndex:i];
+        PKToken *tok = [_tokens objectAtIndex:i];
         [s appendString:tok.stringValue];
         if (end - 1 != i) {
             [s appendString:delimiter];
@@ -228,7 +227,4 @@
     return [[s copy] autorelease];
 }
 
-@synthesize tokenizer;
-@synthesize tokens;
-@synthesize preservesWhitespaceTokens;
 @end

@@ -21,11 +21,7 @@
     @brief      A <tt>PKTokenAssembly</tt> is a <tt>PKAssembly</tt> whose elements are <tt>PKToken</tt>s.
     @details    <tt>PKToken</tt>s are, roughly, the chunks of text that a <tt>PKTokenizer</tt> returns.
 */
-@interface PKTokenAssembly : PKAssembly <NSCopying> {
-    PKTokenizer *tokenizer;
-    NSArray *tokens;
-    BOOL preservesWhitespaceTokens;
-}
+@interface PKTokenAssembly : PKAssembly <NSCopying>
 
 /*!
     @brief      Convenience factory method for initializing an autoreleased assembly with the tokenizer <tt>t</tt> and its string

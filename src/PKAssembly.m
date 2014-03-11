@@ -30,7 +30,7 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
 - (NSString *)lastConsumedObjects:(NSUInteger)len joinedByString:(NSString *)delimiter;
 
 @property (nonatomic, readwrite, retain) NSMutableArray *stack;
-@property (nonatomic) NSUInteger index;
+@property (nonatomic, assign) NSUInteger index;
 @property (nonatomic, retain) NSString *string;
 @property (nonatomic, retain) NSString *defaultDelimiter;
 @property (nonatomic, retain) NSString *defaultCursor;
@@ -75,32 +75,32 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
     // use of NSAllocateObject() below is a *massive* optimization over calling the designated initializer -initWithString: here.
     // this line (and this method in general) is *vital* to the overall performance of the framework. dont fuck with it.
     PKAssembly *a = NSAllocateObject([self class], 0, zone);
-    a->stack = [stack mutableCopyWithZone:zone];
-    a->string = [string retain];
+    a->_stack = [_stack mutableCopyWithZone:zone];
+    a->_string = [_string retain];
 
-    if (defaultDelimiter) {
-        a->defaultDelimiter = [defaultDelimiter retain];
+    if (_defaultDelimiter) {
+        a->_defaultDelimiter = [_defaultDelimiter retain];
     } else {
-        a->defaultDelimiter = nil;
+        a->_defaultDelimiter = nil;
     }
     
-    if (defaultCursor) {
-        a->defaultCursor = [defaultCursor retain];
+    if (_defaultCursor) {
+        a->_defaultCursor = [_defaultCursor retain];
     } else {
-        a->defaultCursor = nil;
+        a->_defaultCursor = nil;
     }
     
-    if (target) {
-        if ([target conformsToProtocol:@protocol(NSMutableCopying)]) {
-            a->target = [target mutableCopyWithZone:zone];
+    if (_target) {
+        if ([_target conformsToProtocol:@protocol(NSMutableCopying)]) {
+            a->_target = [_target mutableCopyWithZone:zone];
         } else {
-            a->target = [target copyWithZone:zone];
+            a->_target = [_target copyWithZone:zone];
         }
     } else {
-        a->target = nil;
+        a->_target = nil;
     }
 
-    a->index = index;
+    a->_index = _index;
     return a;
 }
 
@@ -111,7 +111,7 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
     }
     
     PKAssembly *a = (PKAssembly *)obj;
-    if (a->index != index) {
+    if (a->_index != _index) {
         return NO;
     }
     
@@ -119,7 +119,7 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
         return NO;
     }
 
-    if ([a.stack count] != [stack count]) {
+    if ([a.stack count] != [_stack count]) {
         return NO;
     }
     
@@ -204,8 +204,8 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
 - (id)pop {
     id result = nil;
     if (![self isStackEmpty]) {
-        result = [[[stack lastObject] retain] autorelease];
-        [stack removeLastObject];
+        result = [[[_stack lastObject] retain] autorelease];
+        [_stack removeLastObject];
     }
     return result;
 }
@@ -213,13 +213,13 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
 
 - (void)push:(id)object {
     if (object) {
-        [stack addObject:object];
+        [_stack addObject:object];
     }
 }
 
 
 - (BOOL)isStackEmpty {
-    return 0 == [stack count];
+    return 0 == [_stack count];
 }
 
 
@@ -245,27 +245,21 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
     NSMutableString *s = [NSMutableString stringWithString:@"["];
     
     NSUInteger i = 0;
-    NSUInteger len = [stack count];
+    NSUInteger len = [_stack count];
     
     NSString *fmt = @"%@, ";
-    for (id obj in stack) {
+    for (id obj in _stack) {
         if (len - 1 == i++) {
             fmt = @"%@";
         }
         [s appendFormat:fmt, obj];
     }
 
-    NSString *d = defaultDelimiter ? defaultDelimiter : PKAssemblyDefaultDelimiter;
-    NSString *c = defaultCursor ? defaultCursor : PKAssemblyDefaultCursor;
+    NSString *d = _defaultDelimiter ? _defaultDelimiter : PKAssemblyDefaultDelimiter;
+    NSString *c = _defaultCursor ? _defaultCursor : PKAssemblyDefaultCursor;
     [s appendFormat:@"]%@%@%@", [self consumedObjectsJoinedByString:d], c, [self remainingObjectsJoinedByString:d]];
     
     return [[s copy] autorelease];
 }
 
-@synthesize stack;
-@synthesize target;
-@synthesize index;
-@synthesize string;
-@synthesize defaultDelimiter;
-@synthesize defaultCursor;
 @end

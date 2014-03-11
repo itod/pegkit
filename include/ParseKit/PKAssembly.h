@@ -20,14 +20,7 @@
     @details    <p>Parsers use assemblers to record progress at recognizing language elements from assembly's string.</p>
                 <p>Note that <tt>PKAssembly</tt> is an abstract class and may not be instantiated directly. Subclasses include <tt>PKTokenAssembly</tt> and <tt>PKCharAssembly</tt>.</p>
 */
-@interface PKAssembly : NSObject <NSCopying> {
-    NSMutableArray *stack;
-    id target;
-    NSUInteger index;
-    NSString *string;
-    NSString *defaultDelimiter;
-    NSString *defaultCursor;
-}
+@interface PKAssembly : NSObject <NSCopying>
 
 /*!
     @brief      Convenience factory method for initializing an autoreleased assembly.
