@@ -13,8 +13,8 @@
 //  limitations under the License.
 
 #import "PKNegation.h"
-#import <ParseKit/PKAny.h>
-#import <ParseKit/PKDifference.h>
+#import "PKAny.h"
+#import "PKDifference.h"
 
 @interface PKParser ()
 - (NSSet *)matchAndAssemble:(NSSet *)inAssemblies;

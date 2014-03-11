@@ -6,7 +6,7 @@
 //
 //
 
-#import <ParseKit/PKPattern.h>
+#import "PKPattern.h"
 #import "PKBaseNode.h"
 
 @interface PKPatternNode : PKBaseNode

@@ -12,8 +12,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <ParseKit/PKLowercaseWord.h>
-#import <ParseKit/PKToken.h>
+#import "PKLowercaseWord.h"
+#import "PKToken.h"
 
 @implementation PKLowercaseWord
 

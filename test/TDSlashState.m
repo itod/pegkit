@@ -12,12 +12,12 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <ParseKit/TDSlashState.h>
-#import <ParseKit/PKReader.h>
-#import <ParseKit/PKTokenizer.h>
-#import <ParseKit/PKToken.h>
-#import <ParseKit/TDSlashSlashState.h>
-#import <ParseKit/TDSlashStarState.h>
+#import "TDSlashState.h"
+#import "PKReader.h"
+#import "PKTokenizer.h"
+#import "PKToken.h"
+#import "TDSlashSlashState.h"
+#import "TDSlashStarState.h"
 
 @interface TDSlashState ()
 @property (nonatomic, retain) TDSlashSlashState *slashSlashState;

@@ -10,7 +10,7 @@
 #if PEGKIT
 #import <PEGKit/PKTokenizerState.h>
 #else
-#import <ParseKit/PKTokenizerState.h>
+#import "PKTokenizerState.h"
 #endif
 
 /*!

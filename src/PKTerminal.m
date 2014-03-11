@@ -12,9 +12,9 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <ParseKit/PKTerminal.h>
-#import <ParseKit/PKAssembly.h>
-#import <ParseKit/PKToken.h>
+#import "PKTerminal.h"
+#import "PKAssembly.h"
+#import "PKToken.h"
 
 @interface PKAssembly ()
 - (id)peek;

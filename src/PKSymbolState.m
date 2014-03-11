@@ -19,11 +19,11 @@
 #import <PEGKit/PKReader.h>
 #import <PEGKit/PKTokenizer.h>
 #else
-#import <ParseKit/PKSymbolState.h>
-#import <ParseKit/PKToken.h>
-#import <ParseKit/PKSymbolRootNode.h>
-#import <ParseKit/PKReader.h>
-#import <ParseKit/PKTokenizer.h>
+#import "PKSymbolState.h"
+#import "PKToken.h"
+#import "PKSymbolRootNode.h"
+#import "PKReader.h"
+#import "PKTokenizer.h"
 #endif
 
 @interface PKToken ()

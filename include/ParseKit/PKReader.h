@@ -13,11 +13,7 @@
 //  limitations under the License.
 
 #import <Foundation/Foundation.h>
-#if PEGKIT
 #import <PEGKit/PKTypes.h>
-#else
-#import <ParseKit/PKTypes.h>
-#endif
 
 /*!
     @class      PKReader 

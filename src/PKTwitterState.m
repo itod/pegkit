@@ -15,11 +15,11 @@
 #import <PEGKit/PKTypes.h>
 
 #else
-#import <ParseKit/PKTwitterState.h>
-#import <ParseKit/PKReader.h>
-#import <ParseKit/PKTokenizer.h>
-#import <ParseKit/PKToken.h>
-#import <ParseKit/PKTypes.h>
+#import "PKTwitterState.h"
+#import "PKReader.h"
+#import "PKTokenizer.h"
+#import "PKToken.h"
+#import "PKTypes.h"
 #endif
 
 @interface PKToken ()

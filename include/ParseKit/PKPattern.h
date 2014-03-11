@@ -13,8 +13,8 @@
 //  limitations under the License.
 
 #import <Foundation/Foundation.h>
-#import <ParseKit/PKTerminal.h>
-#import <ParseKit/PKToken.h>
+#import "PKTerminal.h"
+#import "PKToken.h"
 
 typedef enum {
     PKPatternOptionsNone                    = 0,

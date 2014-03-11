@@ -12,8 +12,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <ParseKit/PKTerminal.h>
-#import <ParseKit/PKTypes.h>
+#import "PKTerminal.h"
+#import "PKTypes.h"
 
 /*!
     @class      PKSpecificChar 

@@ -13,7 +13,7 @@
 //  limitations under the License.
 
 #import <Foundation/Foundation.h>
-#import <ParseKit/PKWordState.h>
+#import "PKWordState.h"
 
 /*!
     @class      TDWordOrReservedState 

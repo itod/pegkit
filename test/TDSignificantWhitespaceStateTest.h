@@ -13,7 +13,7 @@
 //  limitations under the License.
 
 #import <SenTestingKit/SenTestingKit.h>
-#import <ParseKit/ParseKit.h>
+#import "ParseKit.h"
 
 @interface TDSignificantWhitespaceStateTest : SenTestCase {
     TDSignificantWhitespaceState *whitespaceState;

@@ -15,7 +15,7 @@
 #if PEGKIT
 #import <PEGKit/PKReader.h>
 #else
-#import <ParseKit/PKReader.h>
+#import "PKReader.h"
 #endif
 
 @implementation PKReader

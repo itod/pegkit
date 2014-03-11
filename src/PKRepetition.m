@@ -12,8 +12,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <ParseKit/PKRepetition.h>
-#import <ParseKit/PKAssembly.h>
+#import "PKRepetition.h"
+#import "PKAssembly.h"
 
 @interface PKParser ()
 - (NSSet *)matchAndAssemble:(NSSet *)inAssemblies;

@@ -12,9 +12,9 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <ParseKit/TDNonReservedWord.h>
-#import <ParseKit/TDReservedWord.h>
-#import <ParseKit/PKToken.h>
+#import "TDNonReservedWord.h"
+#import "TDReservedWord.h"
+#import "PKToken.h"
 
 @interface TDReservedWord ()
 + (NSArray *)reservedWords;

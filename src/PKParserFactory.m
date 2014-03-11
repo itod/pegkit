@@ -7,8 +7,29 @@
 //
 
 #import "PKParserFactory.h"
-#import <ParseKit/ParseKit.h>
+//#import "PKParser.h"
+//#import "PKCollectionParser.h"
+//#import "PKRepetition.h"
+//#import "PKNegation.h"
+//#import "PKAlternation.h"
+//#import "PKSequence.h"
+//#import "PKRepetition.h"
+//#import "PKDifference.h"
+//#import "PKCollectionParser.h"
+//#import "PKCollectionParser.h"
 //#import "PKGrammarParser.h"
+
+#import "PKAssembly.h"
+
+#import "PKTokenizer.h"
+#import "PKWordState.h"
+#import "PKNumberState.h"
+#import "PKQuoteState.h"
+#import "PKSymbolState.h"
+#import "PKWhitespaceState.h"
+#import "PKDelimitState.h"
+#import "PKCommentState.h"
+
 #import "ParseKitParser.h"
 #import "NSString+ParseKitAdditions.h"
 #import "NSArray+ParseKitAdditions.h"
@@ -35,87 +56,87 @@
 - (id)parseWithTokenizer:(PKTokenizer *)t assembler:(id)a error:(NSError **)outError;
 @end
 
-@interface PKParser (PKParserFactoryAdditionsFriend)
-- (void)setTokenizer:(PKTokenizer *)t;
-@end
-
-@interface PKCollectionParser ()
-@property (nonatomic, readwrite, retain) NSMutableArray *subparsers;
-@end
-
-@interface PKRepetition ()
-@property (nonatomic, readwrite, retain) PKParser *subparser;
-@end
-
-@interface PKNegation ()
-@property (nonatomic, readwrite, retain) PKParser *subparser;
-@end
-
-@interface PKDifference ()
-@property (nonatomic, readwrite, retain) PKParser *subparser;
-@property (nonatomic, readwrite, retain) PKParser *minus;
-@end
-
-@interface PKPattern ()
-@property (nonatomic, assign) PKTokenType tokenType;
-@end
-
-void PKReleaseSubparserTree(PKParser *p) {
-    if ([p isKindOfClass:[PKCollectionParser class]]) {
-        PKCollectionParser *c = (PKCollectionParser *)p;
-        NSArray *subs = c.subparsers;
-        if (subs) {
-            [subs retain];
-            c.subparsers = nil;
-            for (PKParser *s in subs) {
-                PKReleaseSubparserTree(s);
-            }
-            [subs release];
-        }
-    } else if ([p isMemberOfClass:[PKRepetition class]]) {
-        PKRepetition *r = (PKRepetition *)p;
-		PKParser *sub = r.subparser;
-        if (sub) {
-            [sub retain];
-            r.subparser = nil;
-            PKReleaseSubparserTree(sub);
-            [sub release];
-        }
-    } else if ([p isMemberOfClass:[PKNegation class]]) {
-        PKNegation *n = (PKNegation *)p;
-		PKParser *sub = n.subparser;
-        if (sub) {
-            [sub retain];
-            n.subparser = nil;
-            PKReleaseSubparserTree(sub);
-            [sub release];
-        }
-    } else if ([p isMemberOfClass:[PKDifference class]]) {
-        PKDifference *d = (PKDifference *)p;
-		PKParser *sub = d.subparser;
-        if (sub) {
-            [sub retain];
-            d.subparser = nil;
-            PKReleaseSubparserTree(sub);
-            [sub release];
-        }
-		PKParser *m = d.minus;
-        if (m) {
-            [m retain];
-            d.minus = nil;
-            PKReleaseSubparserTree(m);
-            [m release];
-        }
-    }
-}
+//@interface PKParser (PKParserFactoryAdditionsFriend)
+//- (void)setTokenizer:(PKTokenizer *)t;
+//@end
+//
+//@interface PKCollectionParser ()
+//@property (nonatomic, readwrite, retain) NSMutableArray *subparsers;
+//@end
+//
+//@interface PKRepetition ()
+//@property (nonatomic, readwrite, retain) PKParser *subparser;
+//@end
+//
+//@interface PKNegation ()
+//@property (nonatomic, readwrite, retain) PKParser *subparser;
+//@end
+//
+//@interface PKDifference ()
+//@property (nonatomic, readwrite, retain) PKParser *subparser;
+//@property (nonatomic, readwrite, retain) PKParser *minus;
+//@end
+//
+//@interface PKPattern ()
+//@property (nonatomic, assign) PKTokenType tokenType;
+//@end
+//
+//void PKReleaseSubparserTree(PKParser *p) {
+//    if ([p isKindOfClass:[PKCollectionParser class]]) {
+//        PKCollectionParser *c = (PKCollectionParser *)p;
+//        NSArray *subs = c.subparsers;
+//        if (subs) {
+//            [subs retain];
+//            c.subparsers = nil;
+//            for (PKParser *s in subs) {
+//                PKReleaseSubparserTree(s);
+//            }
+//            [subs release];
+//        }
+//    } else if ([p isMemberOfClass:[PKRepetition class]]) {
+//        PKRepetition *r = (PKRepetition *)p;
+//		PKParser *sub = r.subparser;
+//        if (sub) {
+//            [sub retain];
+//            r.subparser = nil;
+//            PKReleaseSubparserTree(sub);
+//            [sub release];
+//        }
+//    } else if ([p isMemberOfClass:[PKNegation class]]) {
+//        PKNegation *n = (PKNegation *)p;
+//		PKParser *sub = n.subparser;
+//        if (sub) {
+//            [sub retain];
+//            n.subparser = nil;
+//            PKReleaseSubparserTree(sub);
+//            [sub release];
+//        }
+//    } else if ([p isMemberOfClass:[PKDifference class]]) {
+//        PKDifference *d = (PKDifference *)p;
+//		PKParser *sub = d.subparser;
+//        if (sub) {
+//            [sub retain];
+//            d.subparser = nil;
+//            PKReleaseSubparserTree(sub);
+//            [sub release];
+//        }
+//		PKParser *m = d.minus;
+//        if (m) {
+//            [m retain];
+//            d.minus = nil;
+//            PKReleaseSubparserTree(m);
+//            [m release];
+//        }
+//    }
+//}
 
 @interface PKParserFactory ()
 - (NSDictionary *)symbolTableFromGrammar:(NSString *)g error:(NSError **)outError;
 
 - (PKTokenizer *)tokenizerForParsingGrammar;
 
-- (PKAlternation *)zeroOrOne:(PKParser *)p;
-- (PKSequence *)oneOrMore:(PKParser *)p;
+//- (PKAlternation *)zeroOrOne:(PKParser *)p;
+//- (PKSequence *)oneOrMore:(PKParser *)p;
 
 - (void)parser:(PKParser *)p didMatchTokenizerDirective:(PKAssembly *)a;
 - (void)parser:(PKParser *)p didMatchDecl:(PKAssembly *)a;
@@ -244,72 +265,72 @@ void PKReleaseSubparserTree(PKParser *p) {
 }
 
 
-- (PKAlternation *)zeroOrOne:(PKParser *)p {
-    PKAlternation *a = [PKAlternation alternation];
-    [a add:[PKEmpty empty]];
-    [a add:p];
-    return a;
-}
-
-
-- (PKSequence *)oneOrMore:(PKParser *)p {
-    PKSequence *s = [PKSequence sequence];
-    [s add:p];
-    [s add:[PKRepetition repetitionWithSubparser:p]];
-    return s;
-}
-
-
-- (PKParser *)parserFromGrammar:(NSString *)g assembler:(id)a error:(NSError **)outError {
-    return [self parserFromGrammar:g assembler:a preassembler:nil error:outError];
-}
-
-
-- (PKParser *)parserFromGrammar:(NSString *)g assembler:(id)a preassembler:(id)pa error:(NSError **)outError {
-    PKParser *result = nil;
-
-    @try {
-        self.assembler = a;
-        self.preassembler = pa;
-        
-        NSDictionary *symTab = [self symbolTableFromGrammar:g error:outError];
-        PKTokenizer *t = [self tokenizerFromGrammarSettings];
-        PKParser *start = [self parserFromSymbolTable:symTab];
-        
-        //NSLog(@"start %@", start);
-        
-        self.assembler = nil;
-        
-        if (start && [start isKindOfClass:[PKParser class]]) {
-            start.tokenizer = t;
-            result = start;
-        } else {
-            [NSException raise:@"PKGrammarException" format:NSLocalizedString(@"An unknown error occurred while parsing the grammar. The provided language grammar was invalid.", @"")];
-        }
-        
-        return result;
-
-    }
-    @catch (NSException *ex) {
-        if (outError) {
-            NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:[ex userInfo]];
-
-            // get reason
-            NSString *reason = [ex reason];
-            if ([reason length]) [userInfo setObject:reason forKey:NSLocalizedFailureReasonErrorKey];
-            
-            // get domain
-            NSString *name = [ex name];
-            NSString *domain = name ? name : @"PKGrammarException";
-
-            // convert to NSError
-            NSError *err = [NSError errorWithDomain:domain code:47 userInfo:[[userInfo copy] autorelease]];
-            *outError = err;
-        } else {
-            [ex raise];
-        }
-    }
-}
+//- (PKAlternation *)zeroOrOne:(PKParser *)p {
+//    PKAlternation *a = [PKAlternation alternation];
+//    [a add:[PKEmpty empty]];
+//    [a add:p];
+//    return a;
+//}
+//
+//
+//- (PKSequence *)oneOrMore:(PKParser *)p {
+//    PKSequence *s = [PKSequence sequence];
+//    [s add:p];
+//    [s add:[PKRepetition repetitionWithSubparser:p]];
+//    return s;
+//}
+//
+//
+//- (PKParser *)parserFromGrammar:(NSString *)g assembler:(id)a error:(NSError **)outError {
+//    return [self parserFromGrammar:g assembler:a preassembler:nil error:outError];
+//}
+//
+//
+//- (PKParser *)parserFromGrammar:(NSString *)g assembler:(id)a preassembler:(id)pa error:(NSError **)outError {
+//    PKParser *result = nil;
+//
+//    @try {
+//        self.assembler = a;
+//        self.preassembler = pa;
+//        
+//        NSDictionary *symTab = [self symbolTableFromGrammar:g error:outError];
+//        PKTokenizer *t = [self tokenizerFromGrammarSettings];
+//        PKParser *start = [self parserFromSymbolTable:symTab];
+//        
+//        //NSLog(@"start %@", start);
+//        
+//        self.assembler = nil;
+//        
+//        if (start && [start isKindOfClass:[PKParser class]]) {
+//            start.tokenizer = t;
+//            result = start;
+//        } else {
+//            [NSException raise:@"PKGrammarException" format:NSLocalizedString(@"An unknown error occurred while parsing the grammar. The provided language grammar was invalid.", @"")];
+//        }
+//        
+//        return result;
+//
+//    }
+//    @catch (NSException *ex) {
+//        if (outError) {
+//            NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:[ex userInfo]];
+//
+//            // get reason
+//            NSString *reason = [ex reason];
+//            if ([reason length]) [userInfo setObject:reason forKey:NSLocalizedFailureReasonErrorKey];
+//            
+//            // get domain
+//            NSString *name = [ex name];
+//            NSString *domain = name ? name : @"PKGrammarException";
+//
+//            // convert to NSError
+//            NSError *err = [NSError errorWithDomain:domain code:47 userInfo:[[userInfo copy] autorelease]];
+//            *outError = err;
+//        } else {
+//            [ex raise];
+//        }
+//    }
+//}
 
 
 - (NSDictionary *)symbolTableFromGrammar:(NSString *)g error:(NSError **)outError {

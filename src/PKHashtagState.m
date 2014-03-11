@@ -13,10 +13,10 @@
 #import <PEGKit/PKTokenizer.h>
 #import <PEGKit/PKToken.h>
 #else
-#import <ParseKit/PKHashtagState.h>
-#import <ParseKit/PKReader.h>
-#import <ParseKit/PKTokenizer.h>
-#import <ParseKit/PKToken.h>
+#import "PKHashtagState.h"
+#import "PKReader.h"
+#import "PKTokenizer.h"
+#import "PKToken.h"
 #endif
 
 @interface PKToken ()

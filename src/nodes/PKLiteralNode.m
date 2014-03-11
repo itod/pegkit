@@ -7,8 +7,8 @@
 //
 
 #import "PKLiteralNode.h"
-#import <ParseKit/PKSpecificChar.h>
-#import <ParseKit/PKCaseInsensitiveLiteral.h>
+#import "PKSpecificChar.h"
+#import "PKCaseInsensitiveLiteral.h"
 
 @implementation PKLiteralNode
 

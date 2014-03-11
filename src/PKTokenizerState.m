@@ -17,9 +17,9 @@
 #import <PEGKit/PKTokenizer.h>
 #import <PEGKit/PKReader.h>
 #else
-#import <ParseKit/PKTokenizerState.h>
-#import <ParseKit/PKTokenizer.h>
-#import <ParseKit/PKReader.h>
+#import "PKTokenizerState.h"
+#import "PKTokenizer.h"
+#import "PKReader.h"
 #endif
 
 #define STATE_COUNT 256

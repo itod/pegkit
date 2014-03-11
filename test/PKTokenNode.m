@@ -13,7 +13,7 @@
 //  limitations under the License.
 
 #import "PKTokenNode.h"
-#import <ParseKit/PKToken.h>
+#import "PKToken.h"
 
 @interface PKTokenNode ()
 @property (nonatomic, retain, readwrite) PKToken *token;

@@ -13,8 +13,8 @@
 //  limitations under the License.
 
 #import <Foundation/Foundation.h>
-#import <ParseKit/PKWhitespaceState.h>
-#import <ParseKit/PKToken.h>
+#import "PKWhitespaceState.h"
+#import "PKToken.h"
 
 // NOTE: this class is not currently in use or included in the Framework. It is an example of how to add a new token type
 

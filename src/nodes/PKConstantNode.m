@@ -7,7 +7,21 @@
 //
 
 #import "PKConstantNode.h"
-#import <ParseKit/ParseKit.h>
+#import "PKAny.h"
+#import "PKEmpty.h"
+#import "PKWord.h"
+#import "PKLowercaseWord.h"
+#import "PKUppercaseWord.h"
+#import "PKNumber.h"
+#import "PKQuotedString.h"
+#import "PKSymbol.h"
+#import "PKComment.h"
+#import "PKWhitespace.h"
+#import "PKDigit.h"
+#import "PKLetter.h"
+#import "PKChar.h"
+#import "PKSpecificChar.h"
+#import "PKToken.h"
 
 static NSDictionary *sClassTab = nil;
 

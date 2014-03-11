@@ -18,10 +18,10 @@
 #import <PEGKit/PKToken.h>
 #import <PEGKit/PKTypes.h>
 #else
-#import <ParseKit/PKQuoteState.h>
-#import <ParseKit/PKReader.h>
-#import <ParseKit/PKToken.h>
-#import <ParseKit/PKTypes.h>
+#import "PKQuoteState.h"
+#import "PKReader.h"
+#import "PKToken.h"
+#import "PKTypes.h"
 #endif
 
 @interface PKToken ()

@@ -15,7 +15,7 @@
 #if PEGKIT
 #import <PEGKit/PKAssembly.h>
 #else
-#import <ParseKit/PKAssembly.h>
+#import "PKAssembly.h"
 #endif
 
 static NSString * const PKAssemblyDefaultDelimiter = @"/";

@@ -12,9 +12,9 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <ParseKit/PKTokenAssembly.h>
-#import <ParseKit/PKTokenizer.h>
-#import <ParseKit/PKToken.h>
+#import "PKTokenAssembly.h"
+#import "PKTokenizer.h"
+#import "PKToken.h"
 
 @interface PKTokenAssembly ()
 - (id)initWithString:(NSString *)s tokenzier:(PKTokenizer *)t tokenArray:(NSArray *)a;

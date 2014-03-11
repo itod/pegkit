@@ -12,8 +12,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <ParseKit/PKAny.h>
-#import <ParseKit/PKToken.h>
+#import "PKAny.h"
+#import "PKToken.h"
 
 @implementation PKAny
 

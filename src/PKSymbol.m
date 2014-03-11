@@ -12,8 +12,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <ParseKit/PKSymbol.h>
-#import <ParseKit/PKToken.h>
+#import "PKSymbol.h"
+#import "PKToken.h"
 
 @interface PKTerminal ()
 @property (nonatomic, readwrite, copy) NSString *string;

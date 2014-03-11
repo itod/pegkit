@@ -7,7 +7,10 @@
 //
 
 #import "PKCompositeNode.h"
-#import <ParseKit/ParseKit.h>
+#import "PKRepetition.h"
+#import "PKNegation.h"
+#import "PKDifference.h"
+#import "PKToken.h"
 
 static NSDictionary *sClassTab = nil;
 

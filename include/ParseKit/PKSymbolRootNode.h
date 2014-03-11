@@ -16,7 +16,7 @@
 #if PEGKIT
 #import <PEGKit/PKSymbolNode.h>
 #else
-#import <ParseKit/PKSymbolNode.h>
+#import "PKSymbolNode.h"
 #endif
 
 @class PKReader;

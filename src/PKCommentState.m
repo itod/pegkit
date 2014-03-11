@@ -21,13 +21,13 @@
 #import <PEGKit/PKSingleLineCommentState.h>
 #import <PEGKit/PKMultiLineCommentState.h>
 #else
-#import <ParseKit/PKCommentState.h>
-#import <ParseKit/PKTokenizer.h>
-#import <ParseKit/PKToken.h>
-#import <ParseKit/PKReader.h>
-#import <ParseKit/PKSymbolRootNode.h>
-#import <ParseKit/PKSingleLineCommentState.h>
-#import <ParseKit/PKMultiLineCommentState.h>
+#import "PKCommentState.h"
+#import "PKTokenizer.h"
+#import "PKToken.h"
+#import "PKReader.h"
+#import "PKSymbolRootNode.h"
+#import "PKSingleLineCommentState.h"
+#import "PKMultiLineCommentState.h"
 #endif
 
 @interface PKToken ()

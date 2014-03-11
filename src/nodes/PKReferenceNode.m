@@ -7,8 +7,8 @@
 //
 
 #import "PKReferenceNode.h"
-#import <ParseKit/PKToken.h>
-#import <ParseKit/PKSequence.h>
+#import "PKToken.h"
+#import "PKSequence.h"
 
 @implementation PKReferenceNode
 

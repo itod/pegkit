@@ -13,7 +13,7 @@
 //  limitations under the License.
 
 #import "PKWhitespace.h"
-#import <ParseKit/PKToken.h>
+#import "PKToken.h"
 
 @implementation PKWhitespace
 

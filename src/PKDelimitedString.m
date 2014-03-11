@@ -12,8 +12,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <ParseKit/PKDelimitedString.h>
-#import <ParseKit/PKToken.h>
+#import "PKDelimitedString.h"
+#import "PKToken.h"
 
 @interface PKDelimitedString ()
 @property (nonatomic, retain) NSString *startMarker;

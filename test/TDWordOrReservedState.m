@@ -12,7 +12,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <ParseKit/TDWordOrReservedState.h>
+#import "TDWordOrReservedState.h"
 
 @interface TDWordOrReservedState ()
 @property (nonatomic, retain) NSMutableSet *reservedWords;

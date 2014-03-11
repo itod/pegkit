@@ -13,7 +13,7 @@
 //  limitations under the License.
 
 #import <Foundation/Foundation.h>
-#import <ParseKit/PKTokenizerState.h>
+#import "PKTokenizerState.h"
 
 @class TDSlashSlashState;
 @class TDSlashStarState;

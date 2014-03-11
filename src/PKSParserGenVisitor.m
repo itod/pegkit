@@ -7,9 +7,9 @@
 //
 
 #import "PKSParserGenVisitor.h"
-#import <ParseKit/ParseKit.h>
+//#import "ParseKit.h"
 
-#import <ParseKit/PEGParser.h>
+#import "PEGParser.h"
 #import "PEGTokenKindDescriptor.h"
 #import "NSString+ParseKitAdditions.h"
 

@@ -12,8 +12,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <ParseKit/PKNumber.h>
-#import <ParseKit/PKToken.h>
+#import "PKNumber.h"
+#import "PKToken.h"
 
 @implementation PKNumber
 

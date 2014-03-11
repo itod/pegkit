@@ -19,11 +19,11 @@
 #import <PEGKit/PKToken.h>
 #import <PEGKit/PKTypes.h>
 #else
-#import <ParseKit/PKWordState.h>
-#import <ParseKit/PKReader.h>
-#import <ParseKit/PKTokenizer.h>
-#import <ParseKit/PKToken.h>
-#import <ParseKit/PKTypes.h>
+#import "PKWordState.h"
+#import "PKReader.h"
+#import "PKTokenizer.h"
+#import "PKToken.h"
+#import "PKTypes.h"
 #endif
 
 #define PKTRUE (id)kCFBooleanTrue

@@ -13,7 +13,7 @@
 //  limitations under the License.
 
 #import "PKParseTreeAssembler.h"
-#import <ParseKit/ParseKit.h>
+#import "ParseKit.h"
 #import "PKParseTree.h"
 #import "PKRuleNode.h"
 #import "PKTokenNode.h"

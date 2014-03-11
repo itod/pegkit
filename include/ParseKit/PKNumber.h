@@ -13,7 +13,7 @@
 //  limitations under the License.
 
 #import <Foundation/Foundation.h>
-#import <ParseKit/PKTerminal.h>
+#import "PKTerminal.h"
 
 /*!
     @class      PKNumber

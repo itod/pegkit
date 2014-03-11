@@ -21,13 +21,13 @@
 #import <PEGKit/PKSymbolRootNode.h>
 #import <PEGKit/PKTypes.h>
 #else
-#import <ParseKit/PKDelimitState.h>
-#import <ParseKit/PKReader.h>
-#import <ParseKit/PKTokenizer.h>
-#import <ParseKit/PKToken.h>
-#import <ParseKit/PKWhitespaceState.h>
-#import <ParseKit/PKSymbolRootNode.h>
-#import <ParseKit/PKTypes.h>
+#import "PKDelimitState.h"
+#import "PKReader.h"
+#import "PKTokenizer.h"
+#import "PKToken.h"
+#import "PKWhitespaceState.h"
+#import "PKSymbolRootNode.h"
+#import "PKTypes.h"
 #endif
 
 #import "PKDelimitDescriptorCollection.h"

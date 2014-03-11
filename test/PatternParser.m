@@ -1,5 +1,5 @@
 #import "PatternParser.h"
-#import <ParseKit/ParseKit.h>
+#import "ParseKit.h"
 
 #define LT(i) [self LT:(i)]
 #define LA(i) [self LA:(i)]

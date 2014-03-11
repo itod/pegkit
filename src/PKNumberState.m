@@ -22,14 +22,14 @@
 #import <PEGKit/PKWhitespaceState.h>
 #import <PEGKit/PKTypes.h>
 #else
-#import <ParseKit/PKNumberState.h>
-#import <ParseKit/PKReader.h>
-#import <ParseKit/PKToken.h>
-#import <ParseKit/PKTokenizer.h>
-#import <ParseKit/PKSymbolRootNode.h>
-#import <ParseKit/PKSymbolState.h>
-#import <ParseKit/PKWhitespaceState.h>
-#import <ParseKit/PKTypes.h>
+#import "PKNumberState.h"
+#import "PKReader.h"
+#import "PKToken.h"
+#import "PKTokenizer.h"
+#import "PKSymbolRootNode.h"
+#import "PKSymbolState.h"
+#import "PKWhitespaceState.h"
+#import "PKTypes.h"
 #endif
 
 @interface PKToken ()

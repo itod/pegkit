@@ -12,8 +12,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <ParseKit/PKLetter.h>
-#import <ParseKit/PKTypes.h>
+#import "PKLetter.h"
+#import "PKTypes.h"
 
 @implementation PKLetter
 

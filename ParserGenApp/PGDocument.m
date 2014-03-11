@@ -7,7 +7,7 @@
 //
 
 #import "PGDocument.h"
-#import <ParseKit/ParseKit.h>
+//#import <PEGKit/PEGKit.h>
 #import "PKSParserGenVisitor.h"
 
 @interface PGDocument ()

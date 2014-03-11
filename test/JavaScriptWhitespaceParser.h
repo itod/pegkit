@@ -1,4 +1,4 @@
-#import <ParseKit/PEGParser.h>
+#import "PEGParser.h"
 
 enum {
     JAVASCRIPTWHITESPACE_TOKEN_KIND_PIPE = 14,

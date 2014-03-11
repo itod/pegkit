@@ -13,7 +13,7 @@
 //  limitations under the License.
 
 #import "PKIntersection.h"
-#import <ParseKit/PKAssembly.h>
+#import "PKAssembly.h"
 #import "NSMutableSet+ParseKitAdditions.h"
 
 @interface PKParser ()

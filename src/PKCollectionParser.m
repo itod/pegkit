@@ -12,7 +12,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <ParseKit/PKCollectionParser.h>
+#import "PKCollectionParser.h"
 
 @interface PKCollectionParser ()
 + (PKCollectionParser *)collectionParserWithFirst:(PKParser *)p1 rest:(va_list)rest;

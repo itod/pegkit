@@ -16,8 +16,8 @@
 #import <PEGKit/PKSymbolNode.h>
 #import <PEGKit/PKSymbolRootNode.h>
 #else
-#import <ParseKit/PKSymbolNode.h>
-#import <ParseKit/PKSymbolRootNode.h>
+#import "PKSymbolNode.h"
+#import "PKSymbolRootNode.h"
 #endif
 
 @interface PKSymbolNode ()

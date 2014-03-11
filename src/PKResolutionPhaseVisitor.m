@@ -7,7 +7,17 @@
 //
 
 #import "PKResolutionPhaseVisitor.h"
-#import <ParseKit/ParseKit.h>
+#import "PKTerminal.h"
+#import "PKDelimitedString.h"
+#import "PKPattern.h"
+#import "PKCompositeParser.h"
+#import "PKCollectionParser.h"
+#import "PKAlternation.h"
+#import "PKEmpty.h"
+#import "PKSequence.h"
+#import "PKRepetition.h"
+#import "PKSpecificChar.h"
+#import "PKLiteral.h"
 #import "NSString+ParseKitAdditions.h"
 
 @interface PKTerminal ()
