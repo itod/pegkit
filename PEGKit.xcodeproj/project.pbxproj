@@ -1759,6 +1759,7 @@
 		D3BD39761729F1DD00FC6549 /* PKSPreCallbackSyntaxLeafTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PKSPreCallbackSyntaxLeafTemplate.txt; path = res/PKSPreCallbackSyntaxLeafTemplate.txt; sourceTree = "<group>"; };
 		D3BD3A6B172DAA2500FC6549 /* JavaScriptSyntaxParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaScriptSyntaxParser.h; path = demoapp/JavaScriptSyntaxParser.h; sourceTree = "<group>"; };
 		D3BD3A6C172DAA2500FC6549 /* JavaScriptSyntaxParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaScriptSyntaxParser.m; path = demoapp/JavaScriptSyntaxParser.m; sourceTree = "<group>"; };
+		D3BD3A70172DC58400FC6549 /* ParseKit_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ParseKit_Prefix.pch; path = src/ParseKit_Prefix.pch; sourceTree = "<group>"; };
 		D3BD3A71172DC58400FC6549 /* ParseKitMobile_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ParseKitMobile_Prefix.pch; path = src/ParseKitMobile_Prefix.pch; sourceTree = "<group>"; };
 		D3BD3A73172DC71900FC6549 /* ParseKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ParseKit-Info.plist"; path = "res/ParseKit-Info.plist"; sourceTree = "<group>"; };
 		D3BD3A75172DC75600FC6549 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2037,6 +2038,7 @@
 			isa = PBXGroup;
 			children = (
 				D3F8A4E217582AC600056188 /* PEGKit_Prefix.pch */,
+				D3BD3A70172DC58400FC6549 /* ParseKit_Prefix.pch */,
 				D3BD3A71172DC58400FC6549 /* ParseKitMobile_Prefix.pch */,
 				D3C221910FFE8B8C004514FE /* PKTypes.h */,
 				D3C221990FFE8B9D004514FE /* PKAssembly.h */,
