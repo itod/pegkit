@@ -19,12 +19,7 @@
     @class      PKReader 
     @brief      A character-stream reader that allows characters to be pushed back into the stream.
 */
-@interface PKReader : NSObject {
-    NSString *string;
-    NSInputStream *stream;
-    NSUInteger offset;
-    NSUInteger length;
-}
+@interface PKReader : NSObject
 
 /*!
     @brief      Designated Initializer. Initializes a reader with a given string.
@@ -60,7 +55,12 @@
     @brief      This reader's string.
 */
 @property (nonatomic, copy) NSString *string;
-@property (nonatomic, retain) NSStream *stream;
+
+/*!
+    @property   stream
+    @brief      Alternative to using `string`. Support for streaming input.
+*/
+@property (nonatomic, retain) NSInputStream *stream;
 
 /*!
     @property   offset

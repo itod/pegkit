@@ -270,7 +270,6 @@
 		D3E9B2CD1891714100AC0974 /* PKAST.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DAC2173C645C00A5E050 /* PKAST.m */; };
 		D3E9B2CE1891714400AC0974 /* PKAST.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A1492816F8C6BD00770DEE /* PKAST.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3F8121A161AA5BC00DEA1CB /* TDTestScaffold.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FE54B0E60E46100A0803E /* TDTestScaffold.m */; };
-		D3F8A3DC175817DF00056188 /* RegexKitLite.h in Headers */ = {isa = PBXBuildFile; fileRef = D36C55FC0FD3617B00141CB7 /* RegexKitLite.h */; };
 		D3F8A3DE175817DF00056188 /* PKTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221910FFE8B8C004514FE /* PKTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3F8A3DF175817DF00056188 /* PKReader.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221960FFE8B95004514FE /* PKReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3F8A3E0175817DF00056188 /* PKAssembly.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221990FFE8B9D004514FE /* PKAssembly.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -552,8 +551,6 @@
 		D3633A2D170A6E9700C0966D /* nspredicate2.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nspredicate2.grammar; path = res/nspredicate2.grammar; sourceTree = "<group>"; };
 		D367F66916F5570500F5E9EB /* PKBaseVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKBaseVisitor.h; path = src/PKBaseVisitor.h; sourceTree = "<group>"; };
 		D367F66A16F5570500F5E9EB /* PKBaseVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKBaseVisitor.m; path = src/PKBaseVisitor.m; sourceTree = "<group>"; };
-		D36C55FC0FD3617B00141CB7 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegexKitLite.h; path = src/RegexKitLite.h; sourceTree = "<group>"; };
-		D36C55FD0FD3617B00141CB7 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegexKitLite.m; path = src/RegexKitLite.m; sourceTree = "<group>"; };
 		D36C560B0FD363D500141CB7 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = /usr/lib/libicucore.dylib; sourceTree = "<absolute>"; };
 		D36E68B1171F378B007B4353 /* JavaScriptParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaScriptParserTest.h; path = test/JavaScriptParserTest.h; sourceTree = "<group>"; };
 		D36E68B2171F378B007B4353 /* JavaScriptParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaScriptParserTest.m; path = test/JavaScriptParserTest.m; sourceTree = "<group>"; };
@@ -1125,15 +1122,6 @@
 			name = symbol;
 			sourceTree = "<group>";
 		};
-		D36C55FB0FD3616200141CB7 /* regex */ = {
-			isa = PBXGroup;
-			children = (
-				D36C55FC0FD3617B00141CB7 /* RegexKitLite.h */,
-				D36C55FD0FD3617B00141CB7 /* RegexKitLite.m */,
-			);
-			name = regex;
-			sourceTree = "<group>";
-		};
 		D37D8DD11571A4F700CDB822 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1443,7 +1431,6 @@
 			children = (
 				D341846A0E5209A60081B0DC /* tokenizer */,
 				D3541F870DFB105900429B4F /* states */,
-				D36C55FB0FD3616200141CB7 /* regex */,
 			);
 			name = tokens;
 			sourceTree = "<group>";
@@ -1455,7 +1442,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3F8A3DC175817DF00056188 /* RegexKitLite.h in Headers */,
 				D3F8A3DE175817DF00056188 /* PKTypes.h in Headers */,
 				D3F8A3DF175817DF00056188 /* PKReader.h in Headers */,
 				D3F8A3E0175817DF00056188 /* PKAssembly.h in Headers */,

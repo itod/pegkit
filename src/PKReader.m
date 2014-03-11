@@ -14,6 +14,11 @@
 
 #import <PEGKit/PKReader.h>
 
+@interface PKReader ()
+@property (nonatomic) NSUInteger offset;
+@property (nonatomic) NSUInteger length;
+@end
+
 @implementation PKReader
 
 - (id)init {
@@ -30,7 +35,7 @@
 }
 
 
-- (id)initWithStream:(NSStream *)s {
+- (id)initWithStream:(NSInputStream *)s {
     self = [super init];
     if (self) {
         self.stream = s;
@@ -47,58 +52,48 @@
 
 
 - (NSString *)debugDescription {
-    NSString *buff = [NSString stringWithFormat:@"%@^%@", [string substringToIndex:offset], [string substringFromIndex:offset]];
+    NSString *buff = [NSString stringWithFormat:@"%@^%@", [_string substringToIndex:_offset], [_string substringFromIndex:_offset]];
     return [NSString stringWithFormat:@"<%@ %p `%@`>", [self class], self, buff];
 }
 
 
-- (NSString *)string {
-    return [[string retain] autorelease];
-}
-
-
-- (NSStream *)stream {
-    return [[stream retain] autorelease];
-}
-
-
 - (void)setString:(NSString *)s {
-    NSAssert(!stream, @"");
+    NSAssert(!_stream, @"");
     
-    if (string != s) {
-        [string autorelease];
-        string = [s copy];
-        length = [string length];
+    if (_string != s) {
+        [_string autorelease];
+        _string = [s copy];
+        self.length = [_string length];
     }
     // reset cursor
-    offset = 0;
+    self.offset = 0;
 }
 
 
 - (void)setStream:(NSInputStream *)s {
-    NSAssert(!string, @"");
+    NSAssert(!_string, @"");
 
-    if (stream != s) {
-        [stream autorelease];
-        stream = [s retain];
-        length = NSNotFound;
+    if (_stream != s) {
+        [_stream autorelease];
+        _stream = [s retain];
+        _length = NSNotFound;
     }
     // reset cursor
-    offset = 0;
+    self.offset = 0;
 }
 
 
 - (PKUniChar)read {
     PKUniChar result = PKEOF;
     
-    if (string) {
-        if (length && offset < length) {
-            result = [string characterAtIndex:offset++];
+    if (_string) {
+        if (_length && _offset < _length) {
+            result = [_string characterAtIndex:self.offset++];
         }
     } else {
         NSUInteger maxLen = 1; // 2 for wide char?
         uint8_t c;
-        if ([stream read:&c maxLength:maxLen]) {
+        if ([_stream read:&c maxLength:maxLen]) {
             result = (PKUniChar)c;
         }
     }
@@ -108,7 +103,7 @@
 
 
 - (void)unread {
-    offset = (0 == offset) ? 0 : offset - 1;
+    self.offset = (0 == _offset) ? 0 : _offset - 1;
 }
 
 
@@ -118,5 +113,4 @@
     }
 }
 
-@synthesize offset;
 @end
