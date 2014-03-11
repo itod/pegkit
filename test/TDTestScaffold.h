@@ -14,7 +14,7 @@
 
 #import <Foundation/Foundation.h>
 #import <SenTestingKit/SenTestingKit.h>
-#import <ParseKit/ParseKit.h>
+#import <PEGKit/PEGKit.h>
 #import <OCMock/OCMock.h>
 
 #define TDTrue(e) STAssertTrue((e), @"")

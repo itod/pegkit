@@ -255,12 +255,6 @@
 		D37D8DDF1571A57300CDB822 /* PKParseTreeAssembler.m in Sources */ = {isa = PBXBuildFile; fileRef = D36934581038DE5300527AF3 /* PKParseTreeAssembler.m */; };
 		D37D8DE01571A57300CDB822 /* PKRuleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D369345A1038DE5300527AF3 /* PKRuleNode.m */; };
 		D37D8DE11571A57300CDB822 /* PKTokenNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D369345C1038DE5300527AF3 /* PKTokenNode.m */; };
-		D37D8DE21571A57300CDB822 /* TDParseTreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F55F601025737D00DD6DB1 /* TDParseTreeTest.m */; };
-		D37D8DE81571A57300CDB822 /* TDMiniCSSAssembler.m in Sources */ = {isa = PBXBuildFile; fileRef = D385FD410F05A88C00DB2946 /* TDMiniCSSAssembler.m */; };
-		D37D8DE91571A57300CDB822 /* TDMiniCSSAssemblerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D385FD430F05A88C00DB2946 /* TDMiniCSSAssemblerTest.m */; };
-		D37D8DEA1571A57300CDB822 /* TDGenericAssembler.m in Sources */ = {isa = PBXBuildFile; fileRef = D385F9890F046FE900DB2946 /* TDGenericAssembler.m */; };
-		D37D8DEB1571A57300CDB822 /* TDGenericAssemblerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D385FA220F04971400DB2946 /* TDGenericAssemblerTest.m */; };
-		D37D8DEC1571A57300CDB822 /* TDSyntaxHighlighter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DDDA860F0779FD00A58000 /* TDSyntaxHighlighter.m */; };
 		D37D8E351571A5A200CDB822 /* css.css in Resources */ = {isa = PBXBuildFile; fileRef = D380B5370F0D7DDE0009EC13 /* css.css */; };
 		D37D8E361571A5A200CDB822 /* css.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D380B5080F0D71A90009EC13 /* css.grammar */; };
 		D37D8E371571A5A200CDB822 /* example.css in Resources */ = {isa = PBXBuildFile; fileRef = D380B5930F0D82F60009EC13 /* example.css */; };
@@ -805,15 +799,7 @@
 		D383498A0F0C0CF30055E4E0 /* json_with_comments.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = json_with_comments.grammar; path = res/json_with_comments.grammar; sourceTree = "<group>"; };
 		D38349BB0F0C0D910055E4E0 /* json_with_comments.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = json_with_comments.css; path = res/json_with_comments.css; sourceTree = "<group>"; };
 		D3834A470F0C14B60055E4E0 /* yahoo_with_comments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = yahoo_with_comments.json; path = res/yahoo_with_comments.json; sourceTree = "<group>"; };
-		D385F9880F046FE900DB2946 /* TDGenericAssembler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDGenericAssembler.h; path = test/TDGenericAssembler.h; sourceTree = "<group>"; };
-		D385F9890F046FE900DB2946 /* TDGenericAssembler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDGenericAssembler.m; path = test/TDGenericAssembler.m; sourceTree = "<group>"; };
-		D385FA210F04971400DB2946 /* TDGenericAssemblerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDGenericAssemblerTest.h; path = test/TDGenericAssemblerTest.h; sourceTree = "<group>"; };
-		D385FA220F04971400DB2946 /* TDGenericAssemblerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDGenericAssemblerTest.m; path = test/TDGenericAssemblerTest.m; sourceTree = "<group>"; };
 		D385FA240F04993500DB2946 /* json.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = json.css; path = res/json.css; sourceTree = "<group>"; };
-		D385FD400F05A88C00DB2946 /* TDMiniCSSAssembler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDMiniCSSAssembler.h; path = test/TDMiniCSSAssembler.h; sourceTree = "<group>"; };
-		D385FD410F05A88C00DB2946 /* TDMiniCSSAssembler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDMiniCSSAssembler.m; path = test/TDMiniCSSAssembler.m; sourceTree = "<group>"; };
-		D385FD420F05A88C00DB2946 /* TDMiniCSSAssemblerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDMiniCSSAssemblerTest.h; path = test/TDMiniCSSAssemblerTest.h; sourceTree = "<group>"; };
-		D385FD430F05A88C00DB2946 /* TDMiniCSSAssemblerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDMiniCSSAssemblerTest.m; path = test/TDMiniCSSAssemblerTest.m; sourceTree = "<group>"; };
 		D385FD6B0F05A99900DB2946 /* mini_css.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mini_css.grammar; path = res/mini_css.grammar; sourceTree = "<group>"; };
 		D38BC88E1710AF6D00BF530D /* PKSMethodMemoizationTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PKSMethodMemoizationTemplate.txt; path = res/PKSMethodMemoizationTemplate.txt; sourceTree = "<group>"; };
 		D38BC891171494CD00BF530D /* GreedParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GreedParserTest.h; path = test/GreedParserTest.h; sourceTree = "<group>"; };
@@ -1005,8 +991,6 @@
 		D3C4FAEA173C40E8006B7654 /* PKNodeVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKNodeVisitor.h; path = src/PKNodeVisitor.h; sourceTree = "<group>"; };
 		D3D01CA90EFDB89900C24DDE /* json_with_discards.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = json_with_discards.grammar; path = res/json_with_discards.grammar; sourceTree = "<group>"; };
 		D3DCB4C20EF6015300DE5110 /* json.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = json.grammar; path = res/json.grammar; sourceTree = "<group>"; };
-		D3DDDA850F0779FD00A58000 /* TDSyntaxHighlighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDSyntaxHighlighter.h; path = test/TDSyntaxHighlighter.h; sourceTree = "<group>"; };
-		D3DDDA860F0779FD00A58000 /* TDSyntaxHighlighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDSyntaxHighlighter.m; path = test/TDSyntaxHighlighter.m; sourceTree = "<group>"; };
 		D3DDDC230F085C5400A58000 /* TDSlashSlashState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDSlashSlashState.h; path = test/TDSlashSlashState.h; sourceTree = "<group>"; };
 		D3DDDC240F085C5400A58000 /* TDSlashSlashState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDSlashSlashState.m; path = test/TDSlashSlashState.m; sourceTree = "<group>"; };
 		D3DDDC250F085C5400A58000 /* TDSlashStarState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDSlashStarState.h; path = test/TDSlashStarState.h; sourceTree = "<group>"; };
@@ -1014,8 +998,6 @@
 		D3DDDC270F085C5400A58000 /* TDSlashState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDSlashState.h; path = test/TDSlashState.h; sourceTree = "<group>"; };
 		D3DDDC280F085C5400A58000 /* TDSlashState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDSlashState.m; path = test/TDSlashState.m; sourceTree = "<group>"; };
 		D3F0E2470FFE8EB900C9DF74 /* PKQuoteState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKQuoteState.h; path = include/ParseKit/PKQuoteState.h; sourceTree = "<group>"; };
-		D3F55F5F1025737D00DD6DB1 /* TDParseTreeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDParseTreeTest.h; path = test/TDParseTreeTest.h; sourceTree = "<group>"; };
-		D3F55F601025737D00DD6DB1 /* TDParseTreeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDParseTreeTest.m; path = test/TDParseTreeTest.m; sourceTree = "<group>"; };
 		D3F741430EF8E96A00559B9F /* xpath1_0.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = xpath1_0.grammar; path = res/xpath1_0.grammar; sourceTree = "<group>"; };
 		D3F741BD0EF9F28D00559B9F /* css2_1.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = css2_1.grammar; path = res/css2_1.grammar; sourceTree = "<group>"; };
 		D3F8A48D175817DF00056188 /* PEGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PEGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1282,20 +1264,10 @@
 			name = ast;
 			sourceTree = "<group>";
 		};
-		D3376D1110091C6C00E4602E /* ParseTree */ = {
-			isa = PBXGroup;
-			children = (
-				D3F55F5F1025737D00DD6DB1 /* TDParseTreeTest.h */,
-				D3F55F601025737D00DD6DB1 /* TDParseTreeTest.m */,
-			);
-			name = ParseTree;
-			sourceTree = "<group>";
-		};
 		D3376D7710096BDE00E4602E /* IR */ = {
 			isa = PBXGroup;
 			children = (
 				D3F5619C1026374400DD6DB1 /* ir */,
-				D3376D1110091C6C00E4602E /* ParseTree */,
 			);
 			name = IR;
 			sourceTree = "<group>";
@@ -1756,16 +1728,6 @@
 				D380AFC20F0C56000009EC13 /* example.html */,
 				D3F741430EF8E96A00559B9F /* xpath1_0.grammar */,
 				D3D01CA90EFDB89900C24DDE /* json_with_discards.grammar */,
-				D385FD400F05A88C00DB2946 /* TDMiniCSSAssembler.h */,
-				D385FD410F05A88C00DB2946 /* TDMiniCSSAssembler.m */,
-				D385FD420F05A88C00DB2946 /* TDMiniCSSAssemblerTest.h */,
-				D385FD430F05A88C00DB2946 /* TDMiniCSSAssemblerTest.m */,
-				D385F9880F046FE900DB2946 /* TDGenericAssembler.h */,
-				D385F9890F046FE900DB2946 /* TDGenericAssembler.m */,
-				D385FA210F04971400DB2946 /* TDGenericAssemblerTest.h */,
-				D385FA220F04971400DB2946 /* TDGenericAssemblerTest.m */,
-				D3DDDA850F0779FD00A58000 /* TDSyntaxHighlighter.h */,
-				D3DDDA860F0779FD00A58000 /* TDSyntaxHighlighter.m */,
 				D353899B0FEAC94400926552 /* c.grammar */,
 				D353899D0FEAC96B00926552 /* objc.grammar */,
 				D355C8830FEB4B94006A91A4 /* proto.grammar */,
@@ -2522,12 +2484,6 @@
 				D37D8DDF1571A57300CDB822 /* PKParseTreeAssembler.m in Sources */,
 				D37D8DE01571A57300CDB822 /* PKRuleNode.m in Sources */,
 				D37D8DE11571A57300CDB822 /* PKTokenNode.m in Sources */,
-				D37D8DE21571A57300CDB822 /* TDParseTreeTest.m in Sources */,
-				D37D8DE81571A57300CDB822 /* TDMiniCSSAssembler.m in Sources */,
-				D37D8DE91571A57300CDB822 /* TDMiniCSSAssemblerTest.m in Sources */,
-				D37D8DEA1571A57300CDB822 /* TDGenericAssembler.m in Sources */,
-				D37D8DEB1571A57300CDB822 /* TDGenericAssemblerTest.m in Sources */,
-				D37D8DEC1571A57300CDB822 /* TDSyntaxHighlighter.m in Sources */,
 				D3F8121A161AA5BC00DEA1CB /* TDTestScaffold.m in Sources */,
 				D3B22A521702B04300446945 /* ElementParser.m in Sources */,
 				D3B22A561703D03900446945 /* ExpressionParser.m in Sources */,
