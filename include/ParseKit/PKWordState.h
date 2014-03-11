@@ -32,9 +32,7 @@
 @endcode
                 <p>as well as: minus sign <tt>-</tt>, underscore <tt>_</tt>, and apostrophe <tt>'</tt>.</p>
 */
-@interface PKWordState : PKTokenizerState {
-    NSMutableArray *wordChars;
-}
+@interface PKWordState : PKTokenizerState
 
 /*!
     @brief      Establish characters in the given range as valid characters for part of a word after the first character. Note that the tokenizer must determine which characters are valid as the beginning character of a word.

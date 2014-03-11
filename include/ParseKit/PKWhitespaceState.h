@@ -24,10 +24,7 @@
     @brief      A whitespace state ignores whitespace (such as blanks and tabs), and returns the tokenizer's next token.
     @details    By default, all characters from 0 to 32 are whitespace.
 */
-@interface PKWhitespaceState : PKTokenizerState {
-    NSMutableArray *whitespaceChars;
-    BOOL reportsWhitespaceTokens;
-}
+@interface PKWhitespaceState : PKTokenizerState
 
 /*!
     @brief      Informs whether the given character is recognized as whitespace (and therefore ignored) by this state.

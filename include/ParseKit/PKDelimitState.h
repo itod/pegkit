@@ -26,12 +26,7 @@
     @brief      A delimit state returns a delimited string token from a reader
     @details    This state will collect characters until it sees a match to the end marker that corresponds to the start marker the tokenizer used to switch to this state.
 */
-@interface PKDelimitState : PKTokenizerState {
-    PKSymbolRootNode *rootNode;
-    BOOL balancesEOFTerminatedStrings;
-
-    PKDelimitDescriptorCollection *collection;
-}
+@interface PKDelimitState : PKTokenizerState
 
 /*!
     @brief      Adds the given strings as a delimited string start and end markers. both may be multi-char

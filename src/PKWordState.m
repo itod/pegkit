@@ -52,7 +52,7 @@
     if (self) {
         self.wordChars = [NSMutableArray arrayWithCapacity:256];
         for (NSInteger i = 0; i < 256; i++) {
-            [wordChars addObject:PKFALSE];
+            [_wordChars addObject:PKFALSE];
         }
         
         [self setWordChars:YES from: 'a' to: 'z'];
@@ -74,21 +74,21 @@
 
 
 - (void)setWordChars:(BOOL)yn from:(PKUniChar)start to:(PKUniChar)end {
-    NSUInteger len = [wordChars count];
+    NSUInteger len = [_wordChars count];
     if (start > len || end > len || start < 0 || end < 0) {
         [NSException raise:@"PKWordStateNotSupportedException" format:@"PKWordState only supports setting word chars for chars in the latin1 set (under 256)"];
     }
     
     id obj = yn ? PKTRUE : PKFALSE;
     for (NSInteger i = start; i <= end; i++) {
-        [wordChars replaceObjectAtIndex:i withObject:obj];
+        [_wordChars replaceObjectAtIndex:i withObject:obj];
     }
 }
 
 
 - (BOOL)isWordChar:(PKUniChar)c {    
-    if (c > PKEOF && c < [wordChars count] - 1) {
-        return (PKTRUE == [wordChars objectAtIndex:c]);
+    if (c > PKEOF && c < [_wordChars count] - 1) {
+        return (PKTRUE == [_wordChars objectAtIndex:c]);
     }
 
     if (c >= 0x2000 && c <= 0x2BFF) { // various symbols
@@ -128,6 +128,4 @@
     return tok;
 }
 
-
-@synthesize wordChars;
 @end

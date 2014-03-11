@@ -55,7 +55,7 @@
         const NSUInteger len = 255;
         self.whitespaceChars = [NSMutableArray arrayWithCapacity:len];
         for (NSUInteger i = 0; i <= len; i++) {
-            [whitespaceChars addObject:PKFALSE];
+            [_whitespaceChars addObject:PKFALSE];
         }
         
         [self setWhitespaceChars:YES from:0 to:' '];
@@ -71,29 +71,29 @@
 
 
 - (void)setWhitespaceChars:(BOOL)yn from:(PKUniChar)start to:(PKUniChar)end {
-    NSUInteger len = [whitespaceChars count];
+    NSUInteger len = [_whitespaceChars count];
     if (start > len || end > len || start < 0 || end < 0) {
         [NSException raise:@"PKWhitespaceStateNotSupportedException" format:@"PKWhitespaceState only supports setting word chars for chars in the latin1 set (under 256)"];
     }
 
     id obj = yn ? PKTRUE : PKFALSE;
     for (NSUInteger i = start; i <= end; i++) {
-        [whitespaceChars replaceObjectAtIndex:i withObject:obj];
+        [_whitespaceChars replaceObjectAtIndex:i withObject:obj];
     }
 }
 
 
 - (BOOL)isWhitespaceChar:(PKUniChar)cin {
-    if (cin < 0 || cin > [whitespaceChars count] - 1) {
+    if (cin < 0 || cin > [_whitespaceChars count] - 1) {
         return NO;
     }
-    return PKTRUE == [whitespaceChars objectAtIndex:cin];
+    return PKTRUE == [_whitespaceChars objectAtIndex:cin];
 }
 
 
 - (PKToken *)nextTokenFromReader:(PKReader *)r startingWith:(PKUniChar)cin tokenizer:(PKTokenizer *)t {
     NSParameterAssert(r);
-    if (reportsWhitespaceTokens) {
+    if (_reportsWhitespaceTokens) {
         [self resetWithReader:r];
     }
     
@@ -102,7 +102,7 @@
         if ('\n' == c) {
             t.lineNumber++;
         }
-        if (reportsWhitespaceTokens) {
+        if (_reportsWhitespaceTokens) {
             [self append:c];
         }
         c = [r read];
@@ -111,7 +111,7 @@
         [r unread];
     }
     
-    if (reportsWhitespaceTokens) {
+    if (_reportsWhitespaceTokens) {
         PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeWhitespace stringValue:[self bufferedString] floatValue:0.0];
         tok.offset = offset;
         return tok;
@@ -120,7 +120,5 @@
     }
 }
 
-@synthesize whitespaceChars;
-@synthesize reportsWhitespaceTokens;
 @end
 

@@ -81,15 +81,15 @@
     NSParameterAssert([start length]);
 
     // add markers to root node
-    [rootNode add:start];
+    [_rootNode add:start];
     if ([end length]) {
-        [rootNode add:end];
+        [_rootNode add:end];
     }
     
     // add descriptor to collection
     PKDelimitDescriptor *desc = [PKDelimitDescriptor descriptorWithStartMarker:start endMarker:end characterSet:set];
-    NSAssert(collection, @"");
-    [collection add:desc];
+    NSAssert(_collection, @"");
+    [_collection add:desc];
 }
 
 
@@ -97,11 +97,11 @@
     NSParameterAssert(r);
     NSParameterAssert(t);
     
-    NSString *startMarker = [rootNode nextSymbol:r startingWith:cin];
+    NSString *startMarker = [_rootNode nextSymbol:r startingWith:cin];
     NSArray *descs = nil;
     
     if ([startMarker length]) {
-        descs = [collection descriptorsForStartMarker:startMarker];
+        descs = [_collection descriptorsForStartMarker:startMarker];
         
         if (![descs count]) {
             [r unread:[startMarker length] - 1];
@@ -150,7 +150,7 @@
         c = [r read];
         //NSLog(@"%C", (UniChar)c);
         if (PKEOF == c) {
-            if (hasEndMarkers && balancesEOFTerminatedStrings) {
+            if (hasEndMarkers && _balancesEOFTerminatedStrings) {
                 [self appendString:[descs[0] endMarker]];
                 break;
             } else if (hasEndMarkers) {
@@ -198,7 +198,7 @@
                 endMarker = [selectedDesc endMarker];
                 charSet = [selectedDesc characterSet];
                 
-                peek = [rootNode nextSymbol:r startingWith:c];
+                peek = [_rootNode nextSymbol:r startingWith:c];
                 //NSLog(@"%@ %@", peek, [self bufferedString]);
                 
                 if ([startMarker isEqualToString:peek]) {
@@ -213,7 +213,7 @@
                 charSet = [selectedDesc characterSet];
                 
                 if (!peek) {
-                    peek = [rootNode nextSymbol:r startingWith:c];
+                    peek = [_rootNode nextSymbol:r startingWith:c];
                 }
                 //NSLog(@"%@ %@", peek, [self bufferedString]);
 
@@ -289,7 +289,4 @@
     return tok;
 }
 
-@synthesize rootNode;
-@synthesize balancesEOFTerminatedStrings;
-@synthesize collection;
 @end

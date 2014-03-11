@@ -521,7 +521,6 @@
 		D33DC19F11656952004CE58C /* PKTwitterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTwitterState.h; path = include/ParseKit/PKTwitterState.h; sourceTree = "<group>"; };
 		D34BAD9B0FF9C95800D7773A /* PKReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKReader.m; path = src/PKReader.m; sourceTree = "<group>"; };
 		D34BADA00FF9C9B000D7773A /* PKAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKAssembly.m; path = src/PKAssembly.m; sourceTree = "<group>"; };
-		D34BAE8B0FF9D15100D7773A /* PKTokenAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKTokenAssembly.m; path = src/PKTokenAssembly.m; sourceTree = "<group>"; };
 		D34BAE950FF9D20900D7773A /* PKToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKToken.m; path = src/PKToken.m; sourceTree = "<group>"; };
 		D34BAE970FF9D20900D7773A /* PKTokenArraySource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKTokenArraySource.m; path = src/PKTokenArraySource.m; sourceTree = "<group>"; };
 		D34BAE990FF9D20900D7773A /* PKTokenizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKTokenizer.m; path = src/PKTokenizer.m; sourceTree = "<group>"; };
@@ -755,7 +754,6 @@
 		D3C221910FFE8B8C004514FE /* PKTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTypes.h; path = include/ParseKit/PKTypes.h; sourceTree = "<group>"; };
 		D3C221960FFE8B95004514FE /* PKReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKReader.h; path = include/ParseKit/PKReader.h; sourceTree = "<group>"; };
 		D3C221990FFE8B9D004514FE /* PKAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKAssembly.h; path = include/ParseKit/PKAssembly.h; sourceTree = "<group>"; };
-		D3C221C00FFE8BFF004514FE /* PKTokenAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTokenAssembly.h; path = include/ParseKit/PKTokenAssembly.h; sourceTree = "<group>"; };
 		D3C221C30FFE8C07004514FE /* PKToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKToken.h; path = include/ParseKit/PKToken.h; sourceTree = "<group>"; };
 		D3C221C60FFE8C0D004514FE /* PKTokenArraySource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTokenArraySource.h; path = include/ParseKit/PKTokenArraySource.h; sourceTree = "<group>"; };
 		D3C221C90FFE8C15004514FE /* PKTokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTokenizer.h; path = include/ParseKit/PKTokenizer.h; sourceTree = "<group>"; };
@@ -1516,8 +1514,6 @@
 		D3C7D8740A411F8E005DD154 /* tokens */ = {
 			isa = PBXGroup;
 			children = (
-				D3C221C00FFE8BFF004514FE /* PKTokenAssembly.h */,
-				D34BAE8B0FF9D15100D7773A /* PKTokenAssembly.m */,
 				D341846A0E5209A60081B0DC /* tokenizer */,
 				D3541F870DFB105900429B4F /* states */,
 				D36C55FB0FD3616200141CB7 /* regex */,
