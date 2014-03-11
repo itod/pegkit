@@ -15,7 +15,7 @@
 #if PEGKIT
 #import <PEGKit/PEGKit.h>
 #else
-#import "ParseKit.h"
+#import "PEGKit.h"
 #endif
 
 #define STATE_COUNT 256

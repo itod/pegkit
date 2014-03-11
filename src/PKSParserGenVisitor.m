@@ -7,7 +7,7 @@
 //
 
 #import "PKSParserGenVisitor.h"
-//#import "ParseKit.h"
+#import "PKToken.h"
 
 #import "PEGParser.h"
 #import "PEGTokenKindDescriptor.h"

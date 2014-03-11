@@ -6,11 +6,9 @@
 //
 //
 
-#import "PKPattern.h"
 #import "PKBaseNode.h"
 
 @interface PKPatternNode : PKBaseNode
 
 @property (nonatomic, retain) NSString *string;
-@property (nonatomic, assign) PKPatternOptions options;
 @end
