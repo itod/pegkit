@@ -49,7 +49,7 @@
 		D3383042171C923700CCE513 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D3383040171C923700CCE513 /* Credits.rtf */; };
 		D3383045171C923700CCE513 /* PGDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = D3383044171C923700CCE513 /* PGDocument.m */; };
 		D3383048171C923700CCE513 /* PGDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3383046171C923700CCE513 /* PGDocument.xib */; };
-		D338304B171C923700CCE513 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3383049171C923700CCE513 /* MainMenu.xib */; };
+		D338304B171C923700CCE513 /* PGMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3383049171C923700CCE513 /* PGMainMenu.xib */; };
 		D3383052171CA2DC00CCE513 /* expression.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3B986AD1700D3A9000CBCAE /* expression.grammar */; };
 		D3383053171CA2EC00CCE513 /* PGParserGenVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D30226F9170202DD00594F16 /* PGParserGenVisitor.m */; };
 		D3383054171CA2ED00CCE513 /* PGParserGenVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D30226F9170202DD00594F16 /* PGParserGenVisitor.m */; };
@@ -500,7 +500,7 @@
 		D3383043171C923700CCE513 /* PGDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGDocument.h; sourceTree = "<group>"; };
 		D3383044171C923700CCE513 /* PGDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGDocument.m; sourceTree = "<group>"; };
 		D3383047171C923700CCE513 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PGDocument.xib; sourceTree = "<group>"; };
-		D338304A171C923700CCE513 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		D338304A171C923700CCE513 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PGMainMenu.xib; sourceTree = "<group>"; };
 		D33830B8171CA50F00CCE513 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegexKitLite.h; path = lib/MGTemplateEngine/RegexKitLite.h; sourceTree = "<group>"; };
 		D33830B9171CA50F00CCE513 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegexKitLite.m; path = lib/MGTemplateEngine/RegexKitLite.m; sourceTree = "<group>"; };
 		D33830C7171DBE8A00CCE513 /* named_action.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = named_action.grammar; path = res/named_action.grammar; sourceTree = "<group>"; };
@@ -1006,10 +1006,10 @@
 		D3383037171C923700CCE513 /* ParserGenApp */ = {
 			isa = PBXGroup;
 			children = (
+				D3383049171C923700CCE513 /* PGMainMenu.xib */,
 				D3383043171C923700CCE513 /* PGDocument.h */,
 				D3383044171C923700CCE513 /* PGDocument.m */,
 				D3383046171C923700CCE513 /* PGDocument.xib */,
-				D3383049171C923700CCE513 /* MainMenu.xib */,
 				D3A1492A16F8C79600770DEE /* visitor */,
 				D325FFBC161E4E3200D4EBCC /* ast */,
 				D34BAC0F0FF87ED200D7773A /* factory */,
@@ -1604,7 +1604,7 @@
 				D338303C171C923700CCE513 /* InfoPlist.strings in Resources */,
 				D3383042171C923700CCE513 /* Credits.rtf in Resources */,
 				D3383048171C923700CCE513 /* PGDocument.xib in Resources */,
-				D338304B171C923700CCE513 /* MainMenu.xib in Resources */,
+				D338304B171C923700CCE513 /* PGMainMenu.xib in Resources */,
 				D3383052171CA2DC00CCE513 /* expression.grammar in Resources */,
 				D338308F171CA3BB00CCE513 /* PGClassInterfaceTemplate.txt in Resources */,
 				D3383090171CA3BB00CCE513 /* PGClassImplementationTemplate.txt in Resources */,
@@ -2002,12 +2002,12 @@
 			name = PGDocument.xib;
 			sourceTree = "<group>";
 		};
-		D3383049171C923700CCE513 /* MainMenu.xib */ = {
+		D3383049171C923700CCE513 /* PGMainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D338304A171C923700CCE513 /* en */,
 			);
-			name = MainMenu.xib;
+			name = PGMainMenu.xib;
 			sourceTree = "<group>";
 		};
 		D3BD3A74172DC75600FC6549 /* InfoPlist.strings */ = {
