@@ -245,7 +245,7 @@
     vars[CLASS_NAME] = className;
 
     // do interface (header)
-    NSString *intTemplate = [self templateStringNamed:@"PKSClassInterfaceTemplate"];
+    NSString *intTemplate = [self templateStringNamed:@"PGClassInterfaceTemplate"];
     self.interfaceOutputString = [_engine processTemplate:intTemplate withVariables:vars];
     
     // do impl (.m)
@@ -269,7 +269,7 @@
     vars[PARSE_TREE] = @((_preassemblerSettingBehavior == PKParserFactoryAssemblerSettingBehaviorSyntax || _assemblerSettingBehavior == PKParserFactoryAssemblerSettingBehaviorSyntax));
     
     
-    NSString *implTemplate = [self templateStringNamed:@"PKSClassImplementationTemplate"];
+    NSString *implTemplate = [self templateStringNamed:@"PGClassImplementationTemplate"];
     self.implementationOutputString = [_engine processTemplate:implTemplate withVariables:vars];
 
     //NSLog(@"%@", _interfaceOutputString);
@@ -281,7 +281,7 @@
     if (!actNode || self.isSpeculating) return @"";
     
     id vars = @{ACTION_BODY: actNode.source, DEPTH: @(_depth)};
-    NSString *result = [_engine processTemplate:[self templateStringNamed:@"PKSActionTemplate"] withVariables:vars];
+    NSString *result = [_engine processTemplate:[self templateStringNamed:@"PGActionTemplate"] withVariables:vars];
 
     return result;
 }
@@ -291,7 +291,7 @@
     // determine if we should include an assembler callback call
     BOOL fireCallback = NO;
     BOOL isTerminal = 1 == [node.children count] && [[self concreteNodeForNode:node.children[0]] isTerminal];
-    NSString *templateName = isPre ? @"PKSPreCallbackTemplate" : @"PKSPostCallbackTemplate";
+    NSString *templateName = isPre ? @"PGPreCallbackTemplate" : @"PGPostCallbackTemplate";
     
     BOOL flag = isPre ? _preassemblerSettingBehavior : _assemblerSettingBehavior;
 
@@ -308,9 +308,9 @@
         case PKParserFactoryAssemblerSettingBehaviorSyntax: {
             fireCallback = YES;
             if (isTerminal) {
-                templateName = isPre ? @"PKSPreCallbackSyntaxLeafTemplate" : @"PKSPostCallbackSyntaxLeafTemplate";
+                templateName = isPre ? @"PGPreCallbackSyntaxLeafTemplate" : @"PGPostCallbackSyntaxLeafTemplate";
             } else {
-                templateName = isPre ? @"PKSPreCallbackSyntaxInteriorTemplate" : @"PKSPostCallbackSyntaxInteriorTemplate";
+                templateName = isPre ? @"PGPreCallbackSyntaxInteriorTemplate" : @"PGPostCallbackSyntaxInteriorTemplate";
             }
         } break;
         default:
@@ -364,12 +364,12 @@
     if (isStartMethod) {
         NSInteger depth = _depth + (_enableAutomaticErrorRecovery ? 1 : 0);
         id eofVars = @{DEPTH: @(depth)};
-        NSString *eofCallStr = [_engine processTemplate:[self templateStringNamed:@"PKSEOFCallTemplate"] withVariables:eofVars];
+        NSString *eofCallStr = [_engine processTemplate:[self templateStringNamed:@"PGEOFCallTemplate"] withVariables:eofVars];
         [childStr appendString:eofCallStr];
         
         if (_enableAutomaticErrorRecovery) {
             id resyncVars = @{DEPTH: @(_depth), CHILD_STRING: childStr};
-            NSString *newChildStr = [_engine processTemplate:[self templateStringNamed:@"PKSTryAndRecoverEOFTemplate"] withVariables:resyncVars];
+            NSString *newChildStr = [_engine processTemplate:[self templateStringNamed:@"PGTryAndRecoverEOFTemplate"] withVariables:resyncVars];
             [childStr setString:newChildStr];
         }
     }
@@ -396,9 +396,9 @@
 
     NSString *templateName = nil;
     if (self.enableMemoization) {
-        templateName = @"PKSMethodMemoizationTemplate";
+        templateName = @"PGMethodMemoizationTemplate";
     } else {
-        templateName = @"PKSMethodTemplate";
+        templateName = @"PGMethodTemplate";
     }
 
     NSString *template = [self templateStringNamed:templateName];
@@ -423,7 +423,7 @@
     NSMutableString *output = [NSMutableString string];
     [output appendString:[self semanticPredicateForNode:node throws:YES]];
     
-    NSString *template = [self templateStringNamed:@"PKSMethodCallTemplate"];
+    NSString *template = [self templateStringNamed:@"PGMethodCallTemplate"];
     [output appendString:[_engine processTemplate:template withVariables:vars]];
     
     [output appendString:[self actionStringFrom:node.actionNode]];
@@ -482,9 +482,9 @@
 
     NSString *templateName = nil;
     if (_enableHybridDFA && [self isLL1:child]) { // ????
-        templateName = @"PKSNegationPredictTemplate";
+        templateName = @"PGNegationPredictTemplate";
     } else {
-        templateName = @"PKSNegationSpeculateTemplate";
+        templateName = @"PGNegationSpeculateTemplate";
     }
     
     [output appendString:[_engine processTemplate:[self templateStringNamed:templateName] withVariables:vars]];
@@ -542,10 +542,10 @@
     
     NSString *templateName = nil;
     if (isLL1) { // ????
-        templateName = @"PKSRepetitionPredictTemplate";
+        templateName = @"PGRepetitionPredictTemplate";
     } else {
         vars[IF_TEST] = ifTest;
-        templateName = @"PKSRepetitionSpeculateTemplate";
+        templateName = @"PGRepetitionSpeculateTemplate";
     }
     
     // repetition
@@ -634,7 +634,7 @@
             
             PEGTokenKindDescriptor *desc = [(PKConstantNode *)concreteNode tokenKind];
             id resyncVars = @{TOKEN_KIND: desc, DEPTH: @(_depth - 1), CHILD_STRING: partialChildStr, TERMINAL_CALL_STRING: terminalCallStr};
-            NSString *tryAndResyncStr = [_engine processTemplate:[self templateStringNamed:@"PKSTryAndRecoverTemplate"] withVariables:resyncVars];
+            NSString *tryAndResyncStr = [_engine processTemplate:[self templateStringNamed:@"PGTryAndRecoverTemplate"] withVariables:resyncVars];
             
             [childStr appendString:tryAndResyncStr];
             
@@ -675,9 +675,9 @@
         
         NSString *templateName = nil;
         if (throws) {
-            templateName = isStat ? @"PKSSemanticPredicateTestAndThrowStatTemplate" : @"PKSSemanticPredicateTestAndThrowExprTemplate";
+            templateName = isStat ? @"PGSemanticPredicateTestAndThrowStatTemplate" : @"PGSemanticPredicateTestAndThrowExprTemplate";
         } else {
-            templateName = isStat ? @"PKSSemanticPredicateTestStatTemplate" : @"PKSSemanticPredicateTestExprTemplate";
+            templateName = isStat ? @"PGSemanticPredicateTestStatTemplate" : @"PGSemanticPredicateTestExprTemplate";
         }
         
         result = [_engine processTemplate:[self templateStringNamed:templateName] withVariables:@{PREDICATE_BODY: predBody, DEPTH: @(self.depth)}];
@@ -715,7 +715,7 @@
         vars[NEEDS_BACKTRACK] = @(_needsBacktracking);
 
         // process template. cannot test `idx` here to determine `if` vs `else` due to possible Empty child borking `idx`
-        NSString *templateName = [result length] ? @"PKSPredictElseIfTemplate" : @"PKSPredictIfTemplate";
+        NSString *templateName = [result length] ? @"PGPredictElseIfTemplate" : @"PGPredictIfTemplate";
         NSString *output = [_engine processTemplate:[self templateStringNamed:templateName] withVariables:vars];
         [result appendString:output];
         
@@ -767,7 +767,7 @@
         vars[CHILD_STRING] = ifTest;
         
         // process template. cannot test `idx` here to determine `if` vs `else` due to possible Empty child borking `idx`
-        NSString *templateName = [result length] ? @"PKSSpeculateElseIfTemplate" : @"PKSSpeculateIfTemplate";
+        NSString *templateName = [result length] ? @"PGSpeculateElseIfTemplate" : @"PGSpeculateIfTemplate";
         NSString *output = [_engine processTemplate:[self templateStringNamed:templateName] withVariables:vars];
 
         [result appendString:output];
@@ -828,9 +828,9 @@
     
     NSString *elseStr = nil;
     if (node.hasEmptyAlternative) {
-        elseStr = [_engine processTemplate:[self templateStringNamed:@"PKSPredictEndIfTemplate"] withVariables:vars];
+        elseStr = [_engine processTemplate:[self templateStringNamed:@"PGPredictEndIfTemplate"] withVariables:vars];
     } else {
-        elseStr = [_engine processTemplate:[self templateStringNamed:@"PKSPredictElseTemplate"] withVariables:vars];
+        elseStr = [_engine processTemplate:[self templateStringNamed:@"PGPredictElseTemplate"] withVariables:vars];
     }
     [childStr appendString:elseStr];
 
@@ -878,9 +878,9 @@
 
     NSString *templateName = nil;
     if (isLL1) { // ????
-        templateName = @"PKSOptionalPredictTemplate";
+        templateName = @"PGOptionalPredictTemplate";
     } else {
-        templateName = @"PKSOptionalSpeculateTemplate";
+        templateName = @"PGOptionalSpeculateTemplate";
     }
     
     [output appendString:[_engine processTemplate:[self templateStringNamed:templateName] withVariables:vars]];
@@ -969,9 +969,9 @@
 
     NSString *templateName = nil;
     if (isLL1) { // ????
-        templateName = @"PKSMultiplePredictTemplate";
+        templateName = @"PGMultiplePredictTemplate";
     } else {
-        templateName = @"PKSMultipleSpeculateTemplate";
+        templateName = @"PGMultipleSpeculateTemplate";
     }
     
     [output appendString:[_engine processTemplate:[self templateStringNamed:templateName] withVariables:vars]];
@@ -998,7 +998,7 @@
     NSMutableString *output = [NSMutableString string];
     [output appendString:[self semanticPredicateForNode:node throws:YES]];
     
-    NSString *template = [self templateStringNamed:@"PKSConstantMethodCallTemplate"];
+    NSString *template = [self templateStringNamed:@"PGConstantMethodCallTemplate"];
     [output appendString:[_engine processTemplate:template withVariables:vars]];
     
     [output appendString:[self actionStringFrom:node.actionNode]];
@@ -1021,7 +1021,7 @@
     NSMutableString *output = [NSMutableString string];
     [output appendString:[self semanticPredicateForNode:node throws:YES]];
     
-    NSString *template = [self templateStringNamed:@"PKSMatchCallTemplate"];
+    NSString *template = [self templateStringNamed:@"PGMatchCallTemplate"];
     [output appendString:[_engine processTemplate:template withVariables:vars]];
     
     [output appendString:[self actionStringFrom:node.actionNode]];
@@ -1047,7 +1047,7 @@
     NSMutableString *output = [NSMutableString string];
     [output appendString:[self semanticPredicateForNode:node throws:YES]];
     
-    NSString *template = [self templateStringNamed:@"PKSMatchDelimitedStringTemplate"];
+    NSString *template = [self templateStringNamed:@"PGMatchDelimitedStringTemplate"];
     [output appendString:[_engine processTemplate:template withVariables:vars]];
     
     [output appendString:[self actionStringFrom:node.actionNode]];
@@ -1072,7 +1072,7 @@
     NSMutableString *output = [NSMutableString string];
     [output appendString:[self semanticPredicateForNode:node throws:YES]];
     
-    NSString *template = [self templateStringNamed:@"PKSMatchPatternTemplate"];
+    NSString *template = [self templateStringNamed:@"PGMatchPatternTemplate"];
     [output appendString:[_engine processTemplate:template withVariables:vars]];
     
     [output appendString:[self actionStringFrom:node.actionNode]];
