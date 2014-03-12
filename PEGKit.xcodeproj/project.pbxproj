@@ -760,6 +760,7 @@
 		089C1665FE841158C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D3503E1C18D0B89C002F3F5B /* PEGKit_Prefix.pch */,
 				D3F8A4921758187300056188 /* PEGKit-Info.plist */,
 				D3BD3A74172DC75600FC6549 /* InfoPlist.strings */,
 			);
@@ -769,7 +770,6 @@
 		08FB77AEFE84172EC02AAC07 /* PEGKit */ = {
 			isa = PBXGroup;
 			children = (
-				D3503E1C18D0B89C002F3F5B /* PEGKit_Prefix.pch */,
 				D3F8A4A017581A3C00056188 /* PEGKit.h */,
 				D3C221910FFE8B8C004514FE /* PKTypes.h */,
 				D3382F98171C80E100CCE513 /* PKParser.h */,

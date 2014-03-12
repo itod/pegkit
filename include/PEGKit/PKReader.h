@@ -29,6 +29,12 @@
 */
 - (id)initWithString:(NSString *)s;
 
+/*!
+    @brief      Initializes a reader with a given input stream.
+    @details    Support for streaming input.
+    @param      s stream from which to read
+    @result     an initialized reader
+*/
 - (id)initWithStream:(NSInputStream *)s;
 
 /*!
