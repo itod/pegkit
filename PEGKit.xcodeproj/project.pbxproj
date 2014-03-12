@@ -446,7 +446,6 @@
 		D30DA18B1725BB5700A1A3EC /* RecoverySingleTokenInsertionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecoverySingleTokenInsertionTest.h; path = test/RecoverySingleTokenInsertionTest.h; sourceTree = "<group>"; };
 		D30DA18C1725BB5700A1A3EC /* RecoverySingleTokenInsertionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecoverySingleTokenInsertionTest.m; path = test/RecoverySingleTokenInsertionTest.m; sourceTree = "<group>"; };
 		D30DA18E1725CBE000A1A3EC /* PGConstantMethodCallTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGConstantMethodCallTemplate.txt; path = res/PGConstantMethodCallTemplate.txt; sourceTree = "<group>"; };
-		D30DA1911726028500A1A3EC /* RecoveryResyncSetTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecoveryResyncSetTest.h; path = test/RecoveryResyncSetTest.h; sourceTree = "<group>"; };
 		D30DA1921726028500A1A3EC /* RecoveryResyncSetTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecoveryResyncSetTest.m; path = test/RecoveryResyncSetTest.m; sourceTree = "<group>"; };
 		D30DA1941727059C00A1A3EC /* PGEOFCallTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGEOFCallTemplate.txt; path = res/PGEOFCallTemplate.txt; sourceTree = "<group>"; };
 		D30DA1971727410700A1A3EC /* PGTryAndRecoverTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGTryAndRecoverTemplate.txt; path = res/PGTryAndRecoverTemplate.txt; sourceTree = "<group>"; };
@@ -459,7 +458,6 @@
 		D31FE54B0E60E46100A0803E /* TDTestScaffold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTestScaffold.m; path = test/TDTestScaffold.m; sourceTree = "<group>"; };
 		D326129816F64ED50021845F /* PGDefinitionPhaseVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGDefinitionPhaseVisitor.h; path = src/PGDefinitionPhaseVisitor.h; sourceTree = "<group>"; };
 		D326129916F64ED50021845F /* PGDefinitionPhaseVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGDefinitionPhaseVisitor.m; path = src/PGDefinitionPhaseVisitor.m; sourceTree = "<group>"; };
-		D3344F4717405B4B00598362 /* JSRecoveryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSRecoveryTest.h; path = test/JSRecoveryTest.h; sourceTree = "<group>"; };
 		D3344F4817405B4B00598362 /* JSRecoveryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSRecoveryTest.m; path = test/JSRecoveryTest.m; sourceTree = "<group>"; };
 		D33724D816FA62D400D30459 /* PKDelimitDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKDelimitDescriptor.h; path = src/PKDelimitDescriptor.h; sourceTree = "<group>"; };
 		D33724D916FA62D400D30459 /* PKDelimitDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKDelimitDescriptor.m; path = src/PKDelimitDescriptor.m; sourceTree = "<group>"; };
@@ -519,7 +517,6 @@
 		D34BAFD80FF9E95500D7773A /* PGParserFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGParserFactory.m; path = src/PGParserFactory.m; sourceTree = "<group>"; };
 		D34F538517421715008700F3 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = lib/OCMock/OCMock.xcodeproj; sourceTree = "<group>"; };
 		D34F539C1742C57E008700F3 /* JavaScriptWhitespaceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaScriptWhitespaceParser.h; path = test/JavaScriptWhitespaceParser.h; sourceTree = "<group>"; };
-		D34F53A517430232008700F3 /* CrockfordParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrockfordParserTest.h; path = test/CrockfordParserTest.h; sourceTree = "<group>"; };
 		D34F53A617430232008700F3 /* CrockfordParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CrockfordParserTest.m; path = test/CrockfordParserTest.m; sourceTree = "<group>"; };
 		D34F53AA17430249008700F3 /* CrockfordParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrockfordParser.h; path = test/CrockfordParser.h; sourceTree = "<group>"; };
 		D34F53AB17430249008700F3 /* CrockfordParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CrockfordParser.m; path = test/CrockfordParser.m; sourceTree = "<group>"; };
@@ -628,12 +625,10 @@
 		D3B5C84118D0049C00CCE33A /* example.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = example.html; path = res/example.html; sourceTree = SOURCE_ROOT; };
 		D3B5EA7517470F4F00733A26 /* GreedyFailureParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GreedyFailureParser.h; path = test/GreedyFailureParser.h; sourceTree = "<group>"; };
 		D3B5EA7617470F4F00733A26 /* GreedyFailureParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GreedyFailureParser.m; path = test/GreedyFailureParser.m; sourceTree = "<group>"; };
-		D3B5EA7A17470F5600733A26 /* GreedyFailureParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GreedyFailureParserTest.h; path = test/GreedyFailureParserTest.h; sourceTree = "<group>"; };
 		D3B5EA7B17470F5600733A26 /* GreedyFailureParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GreedyFailureParserTest.m; path = test/GreedyFailureParserTest.m; sourceTree = "<group>"; };
 		D3B5EA7D1747101700733A26 /* greedy_failure.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = greedy_failure.grammar; path = res/greedy_failure.grammar; sourceTree = "<group>"; };
 		D3B5EA7F1747515D00733A26 /* GreedyFailureNestedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GreedyFailureNestedParser.h; path = test/GreedyFailureNestedParser.h; sourceTree = "<group>"; };
 		D3B5EA801747515D00733A26 /* GreedyFailureNestedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GreedyFailureNestedParser.m; path = test/GreedyFailureNestedParser.m; sourceTree = "<group>"; };
-		D3B5EA821747518600733A26 /* GreedyFailureNestedParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GreedyFailureNestedParserTest.h; path = test/GreedyFailureNestedParserTest.h; sourceTree = "<group>"; };
 		D3B5EA831747518600733A26 /* GreedyFailureNestedParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GreedyFailureNestedParserTest.m; path = test/GreedyFailureNestedParserTest.m; sourceTree = "<group>"; };
 		D3B5EA85174751BD00733A26 /* greedy_failure_nested.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = greedy_failure_nested.grammar; path = res/greedy_failure_nested.grammar; sourceTree = "<group>"; };
 		D3B63A231706508400BA9DBF /* PGSpeculateIfTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGSpeculateIfTemplate.txt; path = res/PGSpeculateIfTemplate.txt; sourceTree = "<group>"; };
@@ -1229,15 +1224,10 @@
 		D3B22A591703D08B00446945 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				D3B5EA821747518600733A26 /* GreedyFailureNestedParserTest.h */,
 				D3B5EA831747518600733A26 /* GreedyFailureNestedParserTest.m */,
-				D3B5EA7A17470F5600733A26 /* GreedyFailureParserTest.h */,
 				D3B5EA7B17470F5600733A26 /* GreedyFailureParserTest.m */,
-				D34F53A517430232008700F3 /* CrockfordParserTest.h */,
 				D34F53A617430232008700F3 /* CrockfordParserTest.m */,
-				D3344F4717405B4B00598362 /* JSRecoveryTest.h */,
 				D3344F4817405B4B00598362 /* JSRecoveryTest.m */,
-				D30DA1911726028500A1A3EC /* RecoveryResyncSetTest.h */,
 				D30DA1921726028500A1A3EC /* RecoveryResyncSetTest.m */,
 				D30DA18B1725BB5700A1A3EC /* RecoverySingleTokenInsertionTest.h */,
 				D30DA18C1725BB5700A1A3EC /* RecoverySingleTokenInsertionTest.m */,

@@ -5,13 +5,13 @@
 //
 //
 
-#import "JSRecoveryTest.h"
+#import "TDTestScaffold.h"
 #import "PGParserGenVisitor.h"
 #import "PGRootNode.h"
 #import "JavaScriptParser.h"
 #import "JavaScriptWhitespaceParser.h"
 
-@interface JSRecoveryTest ()
+@interface JSRecoveryTest : SenTestCase
 @property (nonatomic, retain) PEGParser *parser;
 @property (nonatomic, retain) id mock;
 @end

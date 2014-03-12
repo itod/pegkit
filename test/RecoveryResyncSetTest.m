@@ -5,13 +5,13 @@
 //
 //
 
-#import "RecoveryResyncSetTest.h"
+#import "TDTestScaffold.h"
 #import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PGRootNode.h"
 #import "ElementAssignParser.h"
 
-@interface RecoveryResyncSetTest ()
+@interface RecoveryResyncSetTest : SenTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
