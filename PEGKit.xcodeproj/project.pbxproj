@@ -310,7 +310,6 @@
 		D3F8A487175817DF00056188 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30DA19E17284EC100A1A3EC /* Foundation.framework */; };
 		D3F8A488175817DF00056188 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D36C560B0FD363D500141CB7 /* libicucore.dylib */; };
 		D3F8A4A117581A3C00056188 /* PEGKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D3F8A4A017581A3C00056188 /* PEGKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D3F8A4E317582AC600056188 /* PEGKit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D3F8A4E217582AC600056188 /* PEGKit_Prefix.pch */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -500,6 +499,7 @@
 		D34F53AA17430249008700F3 /* CrockfordParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrockfordParser.h; path = test/CrockfordParser.h; sourceTree = "<group>"; };
 		D34F53AB17430249008700F3 /* CrockfordParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CrockfordParser.m; path = test/CrockfordParser.m; sourceTree = "<group>"; };
 		D34F53AD174302A4008700F3 /* crockford.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = crockford.grammar; path = res/crockford.grammar; sourceTree = "<group>"; };
+		D3503E1C18D0B89C002F3F5B /* PEGKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEGKit_Prefix.pch; sourceTree = "<group>"; };
 		D35F4A8511643630003811F3 /* PKEmailState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEmailState.m; path = src/PKEmailState.m; sourceTree = "<group>"; };
 		D35F4A8611643630003811F3 /* PKURLState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKURLState.m; path = src/PKURLState.m; sourceTree = "<group>"; };
 		D35F4A8B11643662003811F3 /* PKEmailState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEmailState.h; path = include/PEGKit/PKEmailState.h; sourceTree = SOURCE_ROOT; };
@@ -688,7 +688,6 @@
 		D3F8A48D175817DF00056188 /* PEGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PEGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F8A4921758187300056188 /* PEGKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PEGKit-Info.plist"; path = "res/PEGKit-Info.plist"; sourceTree = "<group>"; };
 		D3F8A4A017581A3C00056188 /* PEGKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PEGKit.h; path = include/PEGKit/PEGKit.h; sourceTree = SOURCE_ROOT; };
-		D3F8A4E217582AC600056188 /* PEGKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PEGKit_Prefix.pch; path = src/PEGKit_Prefix.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -770,7 +769,7 @@
 		08FB77AEFE84172EC02AAC07 /* PEGKit */ = {
 			isa = PBXGroup;
 			children = (
-				D3F8A4E217582AC600056188 /* PEGKit_Prefix.pch */,
+				D3503E1C18D0B89C002F3F5B /* PEGKit_Prefix.pch */,
 				D3F8A4A017581A3C00056188 /* PEGKit.h */,
 				D3C221910FFE8B8C004514FE /* PKTypes.h */,
 				D3382F98171C80E100CCE513 /* PKParser.h */,
@@ -1313,7 +1312,6 @@
 				D3F8A41D175817DF00056188 /* PKParser.h in Headers */,
 				D3F8A420175817DF00056188 /* PKRecognitionException.h in Headers */,
 				D3F8A4A117581A3C00056188 /* PEGKit.h in Headers */,
-				D3F8A4E317582AC600056188 /* PEGKit_Prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2020,7 +2018,7 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = src/PEGKit_Prefix.pch;
+				GCC_PREFIX_HEADER = PEGKit_Prefix.pch;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "res/PEGKit-Info.plist";
 				LLVM_LTO = NO;
@@ -2041,7 +2039,7 @@
 				FRAMEWORK_VERSION = A;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = src/PEGKit_Prefix.pch;
+				GCC_PREFIX_HEADER = PEGKit_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NS_BLOCK_ASSERTIONS,
 					NDEBUG,
