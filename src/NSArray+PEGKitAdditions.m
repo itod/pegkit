@@ -1,14 +1,14 @@
 //
-//  NSArray+ParseKitAdditions.m
+//  NSArray+PEGKitAdditions.m
 //  ParseKit
 //
 //  Created by Todd Ditchendorf on 12/16/08.
 //  Copyright 2009 Todd Ditchendorf. All rights reserved.
 //
 
-#import "NSArray+ParseKitAdditions.h"
+#import "NSArray+PEGKitAdditions.h"
 
-@implementation NSArray (ParseKitAdditions)
+@implementation NSArray (PEGKitAdditions)
 
 - (NSArray *)reversedArray {
     return [[[self reversedMutableArray] copy] autorelease];

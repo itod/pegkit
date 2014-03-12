@@ -12,8 +12,8 @@
 #import "PKRootNode.h"
 #import "TDNSPredicateParser.h"
 
-#import "NSString+ParseKitAdditions.h"
-#import "NSArray+ParseKitAdditions.h"
+#import "NSString+PEGKitAdditions.h"
+#import "NSArray+PEGKitAdditions.h"
 
 @interface TDNSPredicateParserTest ()
 @property (nonatomic, retain) PKParserFactory *factory;

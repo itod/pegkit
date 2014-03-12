@@ -20,8 +20,8 @@
 #import "PKCommentState.h"
 
 #import "ParseKitParser.h"
-#import "NSString+ParseKitAdditions.h"
-#import "NSArray+ParseKitAdditions.h"
+#import "NSString+PEGKitAdditions.h"
+#import "NSArray+PEGKitAdditions.h"
 
 #import "PKBaseNode.h"
 #import "PKRootNode.h"

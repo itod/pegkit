@@ -1,5 +1,5 @@
 //
-//  NSMutableSet+ParseKitAdditions.h
+//  NSMutableSet+PEGKitAdditions.h
 //  ParseKit
 //
 //  Created by Todd Ditchendorf on 4/5/13.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSMutableSet (ParseKitAdditions)
+@interface NSMutableSet (PEGKitAdditions)
 - (void)unionSetTestingEquality:(NSSet *)s;
 - (void)intersectSetTestingEquality:(NSSet *)s;
 - (void)minusSetTestingEquality:(NSSet *)s;

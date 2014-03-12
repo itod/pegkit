@@ -1,14 +1,14 @@
 //
-//  NSString+ParseKitAdditions.m
+//  NSString+PEGKitAdditions.m
 //  ParseKit
 //
 //  Created by Todd Ditchendorf on 11/5/08.
 //  Copyright 2009 Todd Ditchendorf. All rights reserved.
 //
 
-#import "NSString+ParseKitAdditions.h"
+#import "NSString+PEGKitAdditions.h"
 
-@implementation NSString (ParseKitAdditions)
+@implementation NSString (PEGKitAdditions)
 
 - (NSString *)stringByTrimmingQuotes {
     NSUInteger len = [self length];

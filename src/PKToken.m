@@ -14,7 +14,7 @@
 
 #import <PEGKit/PKToken.h>
 #import <PEGKit/PKTypes.h>
-#import "NSString+ParseKitAdditions.h"
+#import "NSString+PEGKitAdditions.h"
 
 @interface PKTokenEOF : PKToken {}
 + (PKTokenEOF *)instance;

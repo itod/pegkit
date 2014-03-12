@@ -1,14 +1,14 @@
 //
-//  NSMutableSet+ParseKitAdditions.m
+//  NSMutableSet+PEGKitAdditions.m
 //  ParseKit
 //
 //  Created by Todd Ditchendorf on 4/5/13.
 //
 //
 
-#import "NSMutableSet+ParseKitAdditions.h"
+#import "NSMutableSet+PEGKitAdditions.h"
 
-@implementation NSMutableSet (ParseKitAdditions)
+@implementation NSMutableSet (PEGKitAdditions)
 
 - (void)unionSetTestingEquality:(NSSet *)s {
     NSMutableSet *all = [NSMutableSet setWithSet:self];

@@ -12,7 +12,7 @@
 #import <PEGKit/PKWhitespaceState.h>
 #import <PEGKit/PEGTokenAssembly.h>
 #import <PEGKit/PEGRecognitionException.h>
-#import "NSArray+ParseKitAdditions.h"
+#import "NSArray+PEGKitAdditions.h"
 
 #define FAILED -1
 #define NUM_DISPLAY_OBJS 6

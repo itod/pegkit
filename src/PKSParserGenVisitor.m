@@ -11,7 +11,7 @@
 
 #import <PEGKit/PEGParser.h>
 #import "PEGTokenKindDescriptor.h"
-#import "NSString+ParseKitAdditions.h"
+#import "NSString+PEGKitAdditions.h"
 
 #import "MGTemplateEngine.h"
 #import "ICUTemplateMatcher.h"

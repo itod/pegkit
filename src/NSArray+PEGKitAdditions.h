@@ -1,5 +1,5 @@
 //
-//  NSArray+ParseKitAdditions.h
+//  NSArray+PEGKitAdditions.h
 //  ParseKit
 //
 //  Created by Todd Ditchendorf on 12/16/08.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray (ParseKitAdditions)
+@interface NSArray (PEGKitAdditions)
 - (NSArray *)reversedArray;
 - (NSMutableArray *)reversedMutableArray;
 @end
