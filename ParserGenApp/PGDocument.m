@@ -11,7 +11,7 @@
 #import "PGParserGenVisitor.h"
 
 @interface PGDocument ()
-@property (nonatomic, retain) PKParserFactory *factory;
+@property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PKRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
 @end
@@ -21,7 +21,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.factory = [PKParserFactory factory];
+        self.factory = [PGParserFactory factory];
         _factory.collectTokenKinds = YES;
         
         self.enableARC = YES;
@@ -32,8 +32,8 @@
         self.destinationPath = [@"~/Desktop" stringByExpandingTildeInPath];
         self.parserName = @"ExpressionParser";
         
-        self.preassemblerSettingBehavior = PKParserFactoryAssemblerSettingBehaviorNone;
-        self.assemblerSettingBehavior = PKParserFactoryAssemblerSettingBehaviorAll;
+        self.preassemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorNone;
+        self.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorAll;
         
         NSString *path = [[NSBundle mainBundle] pathForResource:@"expression" ofType:@"grammar"];
         self.grammar = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];

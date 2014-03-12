@@ -1,6 +1,6 @@
 //
 //  PEGRecognitionException.h
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 3/28/13.
 //

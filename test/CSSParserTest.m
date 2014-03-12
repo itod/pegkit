@@ -8,13 +8,13 @@
 //
 
 #import "CSSParserTest.h"
-#import "PKParserFactory.h"
+#import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PKRootNode.h"
 #import "CSSParser.h"
 
 @interface CSSParserTest ()
-@property (nonatomic, retain) PKParserFactory *factory;
+@property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PKRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
 @property (nonatomic, retain) CSSParser *parser;
@@ -23,7 +23,7 @@
 @implementation CSSParserTest
 
 - (void)setUp {
-    self.factory = [PKParserFactory factory];
+    self.factory = [PGParserFactory factory];
     _factory.collectTokenKinds = YES;
 
     NSError *err = nil;
@@ -35,7 +35,7 @@
     _root.grammarName = @"CSS";
     
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
-    _visitor.assemblerSettingBehavior = PKParserFactoryAssemblerSettingBehaviorTerminals;
+    _visitor.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorTerminals;
     [_root visit:_visitor];
     
     self.parser = [[[CSSParser alloc] init] autorelease];

@@ -1,6 +1,6 @@
 //
 //  PKNodeMultiple.m
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 10/5/12.
 //

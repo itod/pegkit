@@ -1,38 +1,38 @@
 
 //
-//  ParseKitParserTest.m
-//  ParseKit
+//  PEGKitParserTest.m
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 3/27/13.
 //
 //
 
-#import "ParseKitParserTest.h"
-#import "PKParserFactory.h"
+#import "PEGKitParserTest.h"
+#import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PKRootNode.h"
-#import "ParseKitParser.h"
+#import "PEGKitParser.h"
 
-@interface ParseKitParserTest ()
-@property (nonatomic, retain) PKParserFactory *factory;
+@interface PEGKitParserTest ()
+@property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PKRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
-@property (nonatomic, retain) ParseKitParser *parser;
+@property (nonatomic, retain) PEGKitParser *parser;
 @end
 
-@implementation ParseKitParserTest
+@implementation PEGKitParserTest
 
 - (void)setUp {
-    self.factory = [PKParserFactory factory];
+    self.factory = [PGParserFactory factory];
     _factory.collectTokenKinds = YES;
 
     NSError *err = nil;
-    NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:@"parsekit" ofType:@"grammar"];
+    NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:@"pegkit" ofType:@"grammar"];
     NSString *g = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
     
     err = nil;
     self.root = (id)[_factory ASTFromGrammar:g error:&err];
-    _root.grammarName = @"ParseKit";
+    _root.grammarName = @"PEGKit";
     
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     _visitor.enableMemoization = NO;
@@ -41,16 +41,16 @@
     _visitor.enableARC = NO;
     [_root visit:_visitor];
     
-    self.parser = [[[ParseKitParser alloc] init] autorelease];
+    self.parser = [[[PEGKitParser alloc] init] autorelease];
 
 #if TD_EMIT
-    path = [[NSString stringWithFormat:@"%s/src/ParseKitParser.h", getenv("PWD")] stringByExpandingTildeInPath];
+    path = [[NSString stringWithFormat:@"%s/src/PEGKitParser.h", getenv("PWD")] stringByExpandingTildeInPath];
     err = nil;
     if (![_visitor.interfaceOutputString writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&err]) {
         NSLog(@"%@", err);
     }
 
-    path = [[NSString stringWithFormat:@"%s/src/ParseKitParser.m", getenv("PWD")] stringByExpandingTildeInPath];
+    path = [[NSString stringWithFormat:@"%s/src/PEGKitParser.m", getenv("PWD")] stringByExpandingTildeInPath];
 
     err = nil;
     if (![_visitor.implementationOutputString writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&err]) {

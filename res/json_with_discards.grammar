@@ -1,7 +1,7 @@
 /*
     A Grammar for JSON which specifies which tokens should be discarded
     
-    Feed this to -[PKParserFactory parserFromGrammar:assembler:] along with a reference
+    Feed this to -[PGParserFactory parserFromGrammar:assembler:] along with a reference
     to an assembler (a call back delegate), and it will return a PKParser object which can 
     parse strings conforming to this language/grammar.
     

@@ -8,13 +8,13 @@
 //
 
 #import "HTMLParserTest.h"
-#import "PKParserFactory.h"
+#import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PKRootNode.h"
 #import "HTMLParser.h"
 
 @interface HTMLParserTest ()
-@property (nonatomic, retain) PKParserFactory *factory;
+@property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PKRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
 @property (nonatomic, retain) HTMLParser *parser;
@@ -23,7 +23,7 @@
 @implementation HTMLParserTest
 
 - (void)setUp {
-    self.factory = [PKParserFactory factory];
+    self.factory = [PGParserFactory factory];
     _factory.collectTokenKinds = YES;
 
     NSError *err = nil;
@@ -35,7 +35,7 @@
     _root.grammarName = @"HTML";
     
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
-    _visitor.assemblerSettingBehavior = PKParserFactoryAssemblerSettingBehaviorTerminals;
+    _visitor.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorTerminals;
     [_root visit:_visitor];
     
     self.parser = [[[HTMLParser alloc] init] autorelease];

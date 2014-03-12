@@ -1,20 +1,20 @@
 
 //
 //  DreadedParserTest.m
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 3/27/13.
 //
 //
 
 #import "DreadedParserTest.h"
-#import "PKParserFactory.h"
+#import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PKRootNode.h"
 #import "DreadedParser.h"
 
 @interface DreadedParserTest ()
-@property (nonatomic, retain) PKParserFactory *factory;
+@property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PKRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
 @property (nonatomic, retain) DreadedParser *parser;
@@ -23,7 +23,7 @@
 @implementation DreadedParserTest
 
 - (void)setUp {
-    self.factory = [PKParserFactory factory];
+    self.factory = [PGParserFactory factory];
     _factory.collectTokenKinds = YES;
 
     NSError *err = nil;

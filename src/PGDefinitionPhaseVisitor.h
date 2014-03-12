@@ -1,19 +1,19 @@
 //
 //  PKDefinitionPhaseVisitor.h
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 10/4/12.
 //
 //
 
 #import "PGBaseVisitor.h"
-#import "PKParserFactory.h"
+#import "PGParserFactory.h"
 
-@interface PKDefinitionPhaseVisitor : PGBaseVisitor
+@interface PGDefinitionPhaseVisitor : PGBaseVisitor
 
 @property (nonatomic, retain) id assembler;
 @property (nonatomic, retain) id preassembler;
-@property (nonatomic, assign) PKParserFactoryAssemblerSettingBehavior assemblerSettingBehavior;
+@property (nonatomic, assign) PGParserFactoryAssemblerSettingBehavior assemblerSettingBehavior;
 
 @property (nonatomic, retain) NSMutableDictionary *tokenKinds;
 @property (nonatomic, assign) BOOL collectTokenKinds;

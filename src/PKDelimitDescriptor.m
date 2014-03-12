@@ -1,6 +1,6 @@
 //
 //  PKDelimitDescriptor.m
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 3/20/13.
 //

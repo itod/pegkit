@@ -8,13 +8,13 @@
 //
 
 #import "NamedActionParserTest.h"
-#import "PKParserFactory.h"
+#import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PKRootNode.h"
 #import "NamedActionParser.h"
 
 @interface NamedActionParserTest ()
-@property (nonatomic, retain) PKParserFactory *factory;
+@property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PKRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
 @property (nonatomic, retain) NamedActionParser *parser;
@@ -23,7 +23,7 @@
 @implementation NamedActionParserTest
 
 - (void)setUp {
-    self.factory = [PKParserFactory factory];
+    self.factory = [PGParserFactory factory];
     _factory.collectTokenKinds = YES;
 
     NSError *err = nil;

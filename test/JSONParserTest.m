@@ -8,13 +8,13 @@
 //
 
 #import "JSONParserTest.h"
-#import "PKParserFactory.h"
+#import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PKRootNode.h"
 #import "JSONParser.h"
 
 @interface JSONParserTest ()
-@property (nonatomic, retain) PKParserFactory *factory;
+@property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PKRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
 @property (nonatomic, retain) JSONParser *parser;
@@ -23,7 +23,7 @@
 @implementation JSONParserTest
 
 - (void)setUp {
-    self.factory = [PKParserFactory factory];
+    self.factory = [PGParserFactory factory];
     _factory.collectTokenKinds = YES;
 
     NSError *err = nil;
@@ -35,7 +35,7 @@
     _root.grammarName = @"JSON";
     
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
-    _visitor.assemblerSettingBehavior = PKParserFactoryAssemblerSettingBehaviorTerminals;
+    _visitor.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorTerminals;
     _visitor.enableMemoization = NO;
     [_root visit:_visitor];
 #if TD_EMIT

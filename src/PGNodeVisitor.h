@@ -1,6 +1,6 @@
 //
-//  PKNodeVisitor.h
-//  ParseKit
+//  PGNodeVisitor.h
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 10/7/12.
 //

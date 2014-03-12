@@ -1,6 +1,6 @@
 //
 //  PKSParserGenVisitor.m
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 3/16/13.
 //
@@ -66,8 +66,8 @@
     if (self) {
         self.enableHybridDFA = YES;
         self.enableMemoization = YES;
-        self.preassemblerSettingBehavior = PKParserFactoryAssemblerSettingBehaviorNone;
-        self.assemblerSettingBehavior = PKParserFactoryAssemblerSettingBehaviorAll;
+        self.preassemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorNone;
+        self.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorAll;
         
         [self setUpTemplateEngine];
     }
@@ -266,7 +266,7 @@
     vars[RULE_METHOD_NAMES] = self.ruleMethodNames;
     vars[ENABLE_MEMOIZATION] = @(self.enableMemoization);
     vars[ENABLE_ERROR_RECOVERY] = @(self.enableAutomaticErrorRecovery);
-    vars[PARSE_TREE] = @((_preassemblerSettingBehavior == PKParserFactoryAssemblerSettingBehaviorSyntax || _assemblerSettingBehavior == PKParserFactoryAssemblerSettingBehaviorSyntax));
+    vars[PARSE_TREE] = @((_preassemblerSettingBehavior == PGParserFactoryAssemblerSettingBehaviorSyntax || _assemblerSettingBehavior == PGParserFactoryAssemblerSettingBehaviorSyntax));
     
     
     NSString *implTemplate = [self templateStringNamed:@"PGClassImplementationTemplate"];
@@ -296,16 +296,16 @@
     BOOL flag = isPre ? _preassemblerSettingBehavior : _assemblerSettingBehavior;
 
     switch (flag) {
-        case PKParserFactoryAssemblerSettingBehaviorNone:
+        case PGParserFactoryAssemblerSettingBehaviorNone:
             fireCallback = NO;
             break;
-        case PKParserFactoryAssemblerSettingBehaviorAll:
+        case PGParserFactoryAssemblerSettingBehaviorAll:
             fireCallback = YES;
             break;
-        case PKParserFactoryAssemblerSettingBehaviorTerminals: {
+        case PGParserFactoryAssemblerSettingBehaviorTerminals: {
             fireCallback = isTerminal;
         } break;
-        case PKParserFactoryAssemblerSettingBehaviorSyntax: {
+        case PGParserFactoryAssemblerSettingBehaviorSyntax: {
             fireCallback = YES;
             if (isTerminal) {
                 templateName = isPre ? @"PGPreCallbackSyntaxLeafTemplate" : @"PGPostCallbackSyntaxLeafTemplate";

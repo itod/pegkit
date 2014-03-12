@@ -1,6 +1,6 @@
 //
 //  PKTwitterState.h
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 4/1/10.
 //  Copyright 2010 Todd Ditchendorf. All rights reserved.

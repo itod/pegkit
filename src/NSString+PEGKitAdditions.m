@@ -1,6 +1,6 @@
 //
 //  NSString+PEGKitAdditions.m
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 11/5/08.
 //  Copyright 2009 Todd Ditchendorf. All rights reserved.

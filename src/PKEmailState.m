@@ -1,6 +1,6 @@
 //
 //  PKEmailState.m
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 3/31/10.
 //  Copyright 2010 Todd Ditchendorf. All rights reserved.

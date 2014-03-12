@@ -1,6 +1,6 @@
 //
 //  PKNodeReference.m
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 10/4/12.
 //

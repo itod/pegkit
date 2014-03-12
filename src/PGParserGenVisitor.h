@@ -1,13 +1,13 @@
 //
 //  PKSParserGenVisitor.h
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 3/16/13.
 //
 //
 
 #import "PGBaseVisitor.h"
-#import "PKParserFactory.h"
+#import "PGParserFactory.h"
 #import "MGTemplateEngine.h"
 
 @interface PGParserGenVisitor : PGBaseVisitor <MGTemplateEngineDelegate>
@@ -25,6 +25,6 @@
 @property (nonatomic, assign) BOOL enableHybridDFA;
 @property (nonatomic, assign) BOOL enableMemoization;
 @property (nonatomic, assign) BOOL enableAutomaticErrorRecovery;
-@property (nonatomic, assign) PKParserFactoryAssemblerSettingBehavior preassemblerSettingBehavior;
-@property (nonatomic, assign) PKParserFactoryAssemblerSettingBehavior assemblerSettingBehavior;
+@property (nonatomic, assign) PGParserFactoryAssemblerSettingBehavior preassemblerSettingBehavior;
+@property (nonatomic, assign) PGParserFactoryAssemblerSettingBehavior assemblerSettingBehavior;
 @end

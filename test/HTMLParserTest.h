@@ -1,6 +1,6 @@
 //
 //  HTMLParserTest.h
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 3/27/13.
 //

@@ -1,19 +1,19 @@
 //
 //  ElementParserTest.m
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 3/27/13.
 //
 //
 
 #import "ElementParserTest.h"
-#import "PKParserFactory.h"
+#import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PKRootNode.h"
 #import "ElementParser.h"
 
 @interface ElementParserTest ()
-@property (nonatomic, retain) PKParserFactory *factory;
+@property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PKRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
 @end
@@ -21,7 +21,7 @@
 @implementation ElementParserTest
 
 - (void)setUp {
-    self.factory = [PKParserFactory factory];
+    self.factory = [PGParserFactory factory];
     _factory.collectTokenKinds = YES;
     
     NSError *err = nil;

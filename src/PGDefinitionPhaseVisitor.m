@@ -1,20 +1,20 @@
 //
 //  PKDefinitionPhaseVisitor.m
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 10/4/12.
 //
 //
 
-#import "PKDefinitionPhaseVisitor.h"
+#import "PGDefinitionPhaseVisitor.h"
 #import "NSString+PEGKitAdditions.h"
 #import "PEGTokenKindDescriptor.h"
 #import <PEGKit/PKToken.h>
 
-@interface PKDefinitionPhaseVisitor ()
+@interface PGDefinitionPhaseVisitor ()
 @end
 
-@implementation PKDefinitionPhaseVisitor
+@implementation PGDefinitionPhaseVisitor
 
 - (void)dealloc {
     self.assembler = nil;
@@ -394,19 +394,19 @@
 //    NSString *parserName = p.name;
 //    NSString *selName = callbackName;
 //    
-//    BOOL setOnAll = (_assemblerSettingBehavior == PKParserFactoryAssemblerSettingBehaviorAll);
+//    BOOL setOnAll = (_assemblerSettingBehavior == PGParserFactoryAssemblerSettingBehaviorAll);
 //    
 //    if (setOnAll) {
 //        // continue
 //    } else {
-//        BOOL setOnExplicit = (_assemblerSettingBehavior == PKParserFactoryAssemblerSettingBehaviorExplicit);
+//        BOOL setOnExplicit = (_assemblerSettingBehavior == PGParserFactoryAssemblerSettingBehaviorExplicit);
 //        if (setOnExplicit && selName) {
 //            // continue
 //        } else {
 //            BOOL isTerminal = [p isKindOfClass:[PKTerminal class]];
 //            if (!isTerminal && !setOnExplicit) return;
 //            
-//            BOOL setOnTerminals = (_assemblerSettingBehavior == PKParserFactoryAssemblerSettingBehaviorTerminals);
+//            BOOL setOnTerminals = (_assemblerSettingBehavior == PGParserFactoryAssemblerSettingBehaviorTerminals);
 //            if (setOnTerminals && isTerminal) {
 //                // continue
 //            } else {

@@ -1,25 +1,15 @@
 //
-//  PKParserFactory.m
-//  ParseKit
+//  PGParserFactory.m
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 12/12/08.
 //  Copyright 2009 Todd Ditchendorf All rights reserved.
 //
 
-#import "PKParserFactory.h"
-#import "PKAssembly.h"
-#import <PEGKit/PKToken.h>
+#import "PGParserFactory.h"
+#import <PEGKit/PEGKit.h>
 
-#import "PKTokenizer.h"
-#import "PKWordState.h"
-#import "PKNumberState.h"
-#import "PKQuoteState.h"
-#import "PKSymbolState.h"
-#import "PKWhitespaceState.h"
-#import "PKDelimitState.h"
-#import "PKCommentState.h"
-
-#import "ParseKitParser.h"
+#import "PEGKitParser.h"
 #import "NSString+PEGKitAdditions.h"
 #import "NSArray+PEGKitAdditions.h"
 
@@ -38,14 +28,13 @@
 #import "PKMultipleNode.h"
 #import "PKActionNode.h"
 
-#import "PKDefinitionPhaseVisitor.h"
-//#import "PKResolutionPhaseVisitor.h"
+#import "PGDefinitionPhaseVisitor.h"
 
-@interface PEGParser (PKParserFactoryAdditionsFriend)
+@interface PEGParser (PGParserFactoryAdditionsFriend)
 - (id)parseWithTokenizer:(PKTokenizer *)t assembler:(id)a error:(NSError **)outError;
 @end
 
-@interface PKParserFactory ()
+@interface PGParserFactory ()
 //- (NSDictionary *)symbolTableFromGrammar:(NSString *)g error:(NSError **)outError;
 
 - (PKTokenizer *)tokenizerForParsingGrammar;
@@ -74,8 +63,7 @@
 - (void)parser:(PEGParser *)p didMatchOrTerm:(PKAssembly *)a;
 - (void)parser:(PEGParser *)p didMatchNegatedPrimaryExpr:(PKAssembly *)a;
 
-//@property (nonatomic, retain) PKGrammarParser *grammarParser;
-@property (nonatomic, retain) ParseKitParser *grammarParser;
+@property (nonatomic, retain) PEGKitParser *grammarParser;
 @property (nonatomic, assign) id assembler;
 @property (nonatomic, assign) id preassembler;
 
@@ -106,18 +94,17 @@
 @property (nonatomic, retain) PKToken *predicateToken;
 @end
 
-@implementation PKParserFactory
+@implementation PGParserFactory
 
-+ (PKParserFactory *)factory {
-    return [[[PKParserFactory alloc] init] autorelease];
++ (PGParserFactory *)factory {
+    return [[[PGParserFactory alloc] init] autorelease];
 }
 
 
 - (id)init {
     self = [super init];
     if (self) {
-//        self.grammarParser = [[[PKGrammarParser alloc] initWithAssembler:self] autorelease];
-        self.grammarParser = [[[ParseKitParser alloc] init] autorelease];
+        self.grammarParser = [[[PEGKitParser alloc] init] autorelease];
         
         self.equals     = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"=" floatValue:0.0];
         self.curly      = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"{" floatValue:0.0];
@@ -141,7 +128,7 @@
         self.delimToken = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"%{" floatValue:0.0];
         self.predicateToken = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"}?" floatValue:0.0];
         
-        self.assemblerSettingBehavior = PKParserFactoryAssemblerSettingBehaviorAll;
+        self.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorAll;
     }
     return self;
 }
@@ -177,20 +164,6 @@
 }
 
 
-//- (NSDictionary *)symbolTableFromGrammar:(NSString *)g error:(NSError **)outError {
-//    NSMutableDictionary *symTab = [NSMutableDictionary dictionary];
-//    [self ASTFromGrammar:g symbolTable:symTab error:outError];
-//
-//    //NSLog(@"rootNode %@", rootNode);
-//
-//    PKResolutionPhaseVisitor *resv = [[[PKResolutionPhaseVisitor alloc] init] autorelease];
-//    resv.symbolTable = symTab;
-//    [rootNode visit:resv];
-//
-//    return [[symTab copy] autorelease];
-//}
-
-
 - (PKAST *)ASTFromGrammar:(NSString *)g error:(NSError **)outError {
     NSMutableDictionary *symTab = [NSMutableDictionary dictionary];
     return [self ASTFromGrammar:g symbolTable:symTab error:outError];
@@ -208,7 +181,7 @@
 //    grammarParser.parser.tokenizer = t;
 //    [grammarParser.parser parse:g error:outError];
         
-    PKDefinitionPhaseVisitor *defv = [[[PKDefinitionPhaseVisitor alloc] init] autorelease];
+    PGDefinitionPhaseVisitor *defv = [[[PGDefinitionPhaseVisitor alloc] init] autorelease];
     defv.symbolTable = symTab;
     defv.assembler = self.assembler;
     defv.preassembler = self.preassembler;

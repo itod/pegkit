@@ -1,20 +1,20 @@
 
 //
 //  OptionalParserTest.m
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 3/27/13.
 //
 //
 
 #import "OptionalParserTest.h"
-#import "PKParserFactory.h"
+#import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PKRootNode.h"
 #import "OptionalParser.h"
 
 @interface OptionalParserTest ()
-@property (nonatomic, retain) PKParserFactory *factory;
+@property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PKRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
 @property (nonatomic, retain) OptionalParser *parser;
@@ -23,7 +23,7 @@
 @implementation OptionalParserTest
 
 - (void)setUp {
-    self.factory = [PKParserFactory factory];
+    self.factory = [PGParserFactory factory];
     _factory.collectTokenKinds = YES;
 
     NSError *err = nil;

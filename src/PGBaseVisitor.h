@@ -1,12 +1,12 @@
 //
 //  PKBaseVisitor.h
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 3/16/13.
 //
 //
 
-#import "PKNodeVisitor.h"
+#import "PGNodeVisitor.h"
 
 // convenience
 #import "PKBaseNode.h"

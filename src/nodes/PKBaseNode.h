@@ -1,13 +1,13 @@
 //
 //  PKNode.h
-//  ParseKit
+//  PEGKit
 //
 //  Created by Todd Ditchendorf on 10/4/12.
 //
 //
 
 #import "PKAST.h"
-#import "PKNodeVisitor.h" // convenience
+#import "PGNodeVisitor.h" // convenience
 
 typedef enum NSUInteger {
     PKNodeTypeRoot = 0,

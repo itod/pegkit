@@ -40,7 +40,7 @@ colon         = ':';
     
     closeCurly = '}'!;
     
-    Feed this grammar to -[PKParserFactory parserFromGrammar:assembler:] along with a reference
+    Feed this grammar to -[PGParserFactory parserFromGrammar:assembler:] along with a reference
     to an assembler (a call back delegate), and it will return a PKParser object which can 
     parse strings conforming to this language/grammar.
         
