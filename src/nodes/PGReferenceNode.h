@@ -6,8 +6,8 @@
 //
 //
 
-#import "PKBaseNode.h"
+#import "PGBaseNode.h"
 
-@interface PKReferenceNode : PKBaseNode
+@interface PGReferenceNode : PGBaseNode
 
 @end

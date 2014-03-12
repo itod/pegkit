@@ -6,9 +6,9 @@
 //
 //
 
-#import "PKBaseNode.h"
+#import "PGBaseNode.h"
 
-@interface PKPatternNode : PKBaseNode
+@interface PGPatternNode : PGBaseNode
 
 @property (nonatomic, retain) NSString *string;
 @end

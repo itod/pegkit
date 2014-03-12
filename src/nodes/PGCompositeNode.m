@@ -6,13 +6,13 @@
 //
 //
 
-#import "PKCompositeNode.h"
+#import "PGCompositeNode.h"
 #import <PEGKit/PKToken.h>
 
-@implementation PKCompositeNode
+@implementation PGCompositeNode
 
 - (NSUInteger)type {
-    return PKNodeTypeComposite;
+    return PGNodeTypeComposite;
 }
 
 

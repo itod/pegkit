@@ -6,11 +6,11 @@
 //
 //
 
-#import "PKBaseNode.h"
+#import "PGBaseNode.h"
 
 @class PEGTokenKindDescriptor;
 
-@interface PKLiteralNode : PKBaseNode
+@interface PGLiteralNode : PGBaseNode
 
 @property (nonatomic, assign) BOOL wantsCharacters;
 @property (nonatomic, retain) PEGTokenKindDescriptor *tokenKind;

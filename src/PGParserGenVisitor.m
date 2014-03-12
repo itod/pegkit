@@ -51,9 +51,9 @@
 @interface PGParserGenVisitor ()
 - (void)push:(NSMutableString *)mstr;
 - (NSMutableString *)pop;
-- (NSArray *)sortedLookaheadSetForNode:(PKBaseNode *)node;
+- (NSArray *)sortedLookaheadSetForNode:(PGBaseNode *)node;
 - (NSArray *)sortedArrayFromLookaheadSet:(NSSet *)set;
-- (NSSet *)lookaheadSetForNode:(PKBaseNode *)node;
+- (NSSet *)lookaheadSetForNode:(PGBaseNode *)node;
 
 @property (nonatomic, retain) NSMutableArray *outputStringStack;
 @property (nonatomic, retain) NSString *currentDefName;
@@ -123,7 +123,7 @@
 }
 
 
-- (NSArray *)sortedLookaheadSetForNode:(PKBaseNode *)node {
+- (NSArray *)sortedLookaheadSetForNode:(PGBaseNode *)node {
     return [self sortedArrayFromLookaheadSet:[self lookaheadSetForNode:node]];
 }
 
@@ -137,41 +137,41 @@
 }
 
 
-- (NSSet *)lookaheadSetForNode:(PKBaseNode *)node {
+- (NSSet *)lookaheadSetForNode:(PGBaseNode *)node {
     NSParameterAssert(node);
     NSAssert(self.symbolTable, @"");
 
     NSMutableSet *set = [NSMutableSet set];
     
     switch (node.type) {
-        case PKNodeTypeConstant: {
-            PKConstantNode *constNode = (PKConstantNode *)node;
+        case PGNodeTypeConstant: {
+            PGConstantNode *constNode = (PGConstantNode *)node;
             [set addObject:constNode.tokenKind];
         } break;
-        case PKNodeTypeLiteral: {
-            PKLiteralNode *litNode = (PKLiteralNode *)node;
+        case PGNodeTypeLiteral: {
+            PGLiteralNode *litNode = (PGLiteralNode *)node;
             [set addObject:litNode.tokenKind];
         } break;
-        case PKNodeTypeDelimited: {
-            PKDelimitedNode *delimNode = (PKDelimitedNode *)node;
+        case PGNodeTypeDelimited: {
+            PGDelimitedNode *delimNode = (PGDelimitedNode *)node;
             [set addObject:delimNode.tokenKind];
         } break;
-        case PKNodeTypeReference: {
+        case PGNodeTypeReference: {
             NSString *name = node.token.stringValue;
-            PKDefinitionNode *defNode = self.symbolTable[name];
+            PGDefinitionNode *defNode = self.symbolTable[name];
             //NSAssert1(defNode, @"Grammar is missing rule named: `%@`", name);
             if (!defNode) {
                 [NSException raise:@"PKParseException" format:@"Unknown rule name: `%@` in rule: `%@`", name, _currentDefName];
             }
             [set unionSet:[self lookaheadSetForNode:defNode]];
         } break;
-        case PKNodeTypeAlternation: {
-            for (PKBaseNode *child in node.children) {
+        case PGNodeTypeAlternation: {
+            for (PGBaseNode *child in node.children) {
                 [set unionSet:[self lookaheadSetForNode:child]];
             }
         } break;
-//        case PKNodeTypeDefinition:
-//        case PKNodeTypeCollection: {
+//        case PGNodeTypeDefinition:
+//        case PGNodeTypeCollection: {
 //            for (PKBaseNode *child in node.children) {
 //                NSSet *childSet = [self lookaheadSetForNode:child];
 //                [set unionSet:childSet];
@@ -184,7 +184,7 @@
 //            }
 //        } break;
         default: {
-            for (PKBaseNode *child in node.children) {
+            for (PGBaseNode *child in node.children) {
                 [set unionSet:[self lookaheadSetForNode:child]];
                 break; // single look ahead. to implement full LL(*), this would need to be enhanced here.
             }
@@ -195,13 +195,13 @@
 }
 
 
-- (void)setUpSymbolTableFromRoot:(PKRootNode *)node {
+- (void)setUpSymbolTableFromRoot:(PGRootNode *)node {
     
     NSUInteger c = [node.children count];
     
     NSMutableDictionary *symTab = [NSMutableDictionary dictionaryWithCapacity:c];
     
-    for (PKBaseNode *child in node.children) {
+    for (PGBaseNode *child in node.children) {
         NSString *key = child.token.stringValue;
         symTab[key] = child;
     }
@@ -213,7 +213,7 @@
 #pragma mark -
 #pragma mark PKVisitor
 
-- (void)visitRoot:(PKRootNode *)node {
+- (void)visitRoot:(PGRootNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     NSParameterAssert(node);
     //NSAssert(_enableHybridDFA ,@"");
@@ -253,7 +253,7 @@
     NSMutableString *childStr = [NSMutableString string];
     
     // recurse
-    for (PKBaseNode *child in node.children) {
+    for (PGBaseNode *child in node.children) {
         [child visit:self];
         
         // pop
@@ -277,7 +277,7 @@
 }
 
 
-- (NSString *)actionStringFrom:(PKActionNode *)actNode {
+- (NSString *)actionStringFrom:(PGActionNode *)actNode {
     if (!actNode || self.isSpeculating) return @"";
     
     id vars = @{ACTION_BODY: actNode.source, DEPTH: @(_depth)};
@@ -287,7 +287,7 @@
 }
 
 
-- (NSString *)callbackStringForNode:(PKBaseNode *)node methodName:(NSString *)methodName isPre:(BOOL)isPre {
+- (NSString *)callbackStringForNode:(PGBaseNode *)node methodName:(NSString *)methodName isPre:(BOOL)isPre {
     // determine if we should include an assembler callback call
     BOOL fireCallback = NO;
     BOOL isTerminal = 1 == [node.children count] && [[self concreteNodeForNode:node.children[0]] isTerminal];
@@ -329,7 +329,7 @@
 }
 
 
-- (void)visitDefinition:(PKDefinitionNode *)node {
+- (void)visitDefinition:(PGDefinitionNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     self.depth = 1; // 1 for the try/catch wrapper
@@ -352,7 +352,7 @@
     if (isStartMethod && _enableAutomaticErrorRecovery) self.depth++;
 
     // recurse
-    for (PKBaseNode *child in node.children) {
+    for (PGBaseNode *child in node.children) {
         [child visit:self];
 
         // pop
@@ -409,7 +409,7 @@
 }
 
 
-- (void)visitReference:(PKReferenceNode *)node {
+- (void)visitReference:(PGReferenceNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
         
     // stup vars
@@ -433,7 +433,7 @@
 }
 
 
-- (void)visitComposite:(PKCompositeNode *)node {
+- (void)visitComposite:(PGCompositeNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     NSAssert(1 == [node.token.stringValue length], @"");
@@ -452,11 +452,11 @@
 }
 
 
-- (void)visitNegation:(PKCompositeNode *)node {
+- (void)visitNegation:(PGCompositeNode *)node {
     
     // recurse
     NSAssert(1 == [node.children count], @"");
-    PKBaseNode *child = node.children[0];
+    PGBaseNode *child = node.children[0];
     
     NSArray *set = [self sortedLookaheadSetForNode:child];
     
@@ -505,13 +505,13 @@
 }
 
 
-- (void)visitRepetition:(PKCompositeNode *)node {
+- (void)visitRepetition:(PGCompositeNode *)node {
     // setup vars
     id vars = [NSMutableDictionary dictionary];
     vars[DEPTH] = @(_depth);
     
     NSAssert(1 == [node.children count], @"");
-    PKBaseNode *child = node.children[0];
+    PGBaseNode *child = node.children[0];
     
     NSArray *set = [self sortedLookaheadSetForNode:child];
 
@@ -563,7 +563,7 @@
 }
 
 
-- (void)visitCollection:(PKCollectionNode *)node {
+- (void)visitCollection:(PGCollectionNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     NSAssert(1 == [node.token.stringValue length], @"");
@@ -579,7 +579,7 @@
 }
 
 
-- (void)visitSequence:(PKCollectionNode *)node {
+- (void)visitSequence:(PGCollectionNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     // setup vars
@@ -596,23 +596,23 @@
     BOOL hasTerminal = NO;
     
     NSMutableArray *concreteChildren = [NSMutableArray arrayWithCapacity:[node.children count]];
-    for (PKBaseNode *child in node.children) {
-        PKBaseNode *concreteNode = [self concreteNodeForNode:child];
+    for (PGBaseNode *child in node.children) {
+        PGBaseNode *concreteNode = [self concreteNodeForNode:child];
         if (!concreteNode) {
             NSString *missingName = [child.name substringFromIndex:1];
             [NSException raise:@"PKParseException" format:@"Unknown rule name: `%@` in rule: `%@`", missingName, _currentDefName];
         }
-        if ([concreteNode isKindOfClass:[PKLiteralNode class]] && [concreteChildren count]) hasTerminal = YES;
+        if ([concreteNode isKindOfClass:[PGLiteralNode class]] && [concreteChildren count]) hasTerminal = YES;
         [concreteChildren addObject:concreteNode];
     }
 
     // recurse
     BOOL depthIncreased = NO;
     NSUInteger i = 0;
-    for (PKBaseNode *child in node.children) {
-        PKBaseNode *concreteNode = concreteChildren[i];
+    for (PGBaseNode *child in node.children) {
+        PGBaseNode *concreteNode = concreteChildren[i];
         
-        BOOL isCurrentChildLiteral = [concreteNode isKindOfClass:[PKLiteralNode class]];
+        BOOL isCurrentChildLiteral = [concreteNode isKindOfClass:[PGLiteralNode class]];
         if (0 == i && !isCurrentChildLiteral) {
             partialCount++;
         }
@@ -632,7 +632,7 @@
         
         if (_enableAutomaticErrorRecovery && isCurrentChildLiteral && partialCount > 0) {
             
-            PEGTokenKindDescriptor *desc = [(PKConstantNode *)concreteNode tokenKind];
+            PEGTokenKindDescriptor *desc = [(PGConstantNode *)concreteNode tokenKind];
             id resyncVars = @{TOKEN_KIND: desc, DEPTH: @(_depth - 1), CHILD_STRING: partialChildStr, TERMINAL_CALL_STRING: terminalCallStr};
             NSString *tryAndResyncStr = [_engine processTemplate:[self templateStringNamed:@"PGTryAndRecoverTemplate"] withVariables:resyncVars];
             
@@ -665,7 +665,7 @@
 }
 
 
-- (NSString *)semanticPredicateForNode:(PKBaseNode *)node throws:(BOOL)throws {
+- (NSString *)semanticPredicateForNode:(PGBaseNode *)node throws:(BOOL)throws {
     NSString *result = @"";
     
     if (node.semanticPredicateNode) {
@@ -688,18 +688,18 @@
 }
 
 
-- (BOOL)isEmptyNode:(PKBaseNode *)node {
+- (BOOL)isEmptyNode:(PGBaseNode *)node {
     return [node.token.stringValue isEqualToString:@"Empty"];
 }
 
 
-- (NSMutableString *)recurseAlt:(PKAlternationNode *)node la:(NSMutableArray *)lookaheadSets {
+- (NSMutableString *)recurseAlt:(PGAlternationNode *)node la:(NSMutableArray *)lookaheadSets {
     // setup child str buffer
     NSMutableString *result = [NSMutableString string];
     
     // recurse
     NSUInteger idx = 0;
-    for (PKBaseNode *child in node.children) {
+    for (PGBaseNode *child in node.children) {
         if ([self isEmptyNode:child]) {
             node.hasEmptyAlternative = YES;
             ++idx;
@@ -733,13 +733,13 @@
 }
 
 
-- (NSMutableString *)recurseAltForBracktracking:(PKAlternationNode *)node {
+- (NSMutableString *)recurseAltForBracktracking:(PGAlternationNode *)node {
     // setup child str buffer
     NSMutableString *result = [NSMutableString string];
     
     // recurse
     NSUInteger idx = 0;
-    for (PKBaseNode *child in node.children) {
+    for (PGBaseNode *child in node.children) {
         if ([self isEmptyNode:child]) {
             node.hasEmptyAlternative = YES;
             ++idx;
@@ -780,7 +780,7 @@
 }
 
 
-- (void)visitAlternation:(PKAlternationNode *)node {
+- (void)visitAlternation:(PGAlternationNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     NSMutableString *childStr = nil;
@@ -789,7 +789,7 @@
         // first fetch all child lookahead sets
         NSMutableArray *lookaheadSets = [NSMutableArray arrayWithCapacity:[node.children count]];
         
-        for (PKBaseNode *child in node.children) {
+        for (PGBaseNode *child in node.children) {
             NSSet *set = [self lookaheadSetForNode:child];
             [lookaheadSets addObject:set];
         }
@@ -839,12 +839,12 @@
 }
 
 
-- (void)visitOptional:(PKOptionalNode *)node {
+- (void)visitOptional:(PGOptionalNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
 
     // recurse
     NSAssert(1 == [node.children count], @"");
-    PKBaseNode *child = node.children[0];
+    PGBaseNode *child = node.children[0];
     
     NSArray *set = [self sortedLookaheadSetForNode:child];
     
@@ -894,14 +894,14 @@
 
 
 // if inNode is a #ref or $def, resolve to actual concrete node.
-- (PKBaseNode *)concreteNodeForNode:(PKBaseNode *)inNode {
-    PKBaseNode *node = inNode;
-    while ([node isKindOfClass:[PKReferenceNode class]] || [node isKindOfClass:[PKDefinitionNode class]]) {
-        while ([node isKindOfClass:[PKReferenceNode class]]) {
+- (PGBaseNode *)concreteNodeForNode:(PGBaseNode *)inNode {
+    PGBaseNode *node = inNode;
+    while ([node isKindOfClass:[PGReferenceNode class]] || [node isKindOfClass:[PGDefinitionNode class]]) {
+        while ([node isKindOfClass:[PGReferenceNode class]]) {
             node = self.symbolTable[node.token.stringValue];
         }
         
-        if ([node isKindOfClass:[PKDefinitionNode class]]) {
+        if ([node isKindOfClass:[PGDefinitionNode class]]) {
             NSAssert(1 == [node.children count], @"");
             node = node.children[0];
         }
@@ -910,13 +910,13 @@
 }
 
 
-- (BOOL)isLL1:(PKBaseNode *)inNode {
+- (BOOL)isLL1:(PGBaseNode *)inNode {
     BOOL result = YES;
     
-    PKBaseNode *node = [self concreteNodeForNode:inNode];
+    PGBaseNode *node = [self concreteNodeForNode:inNode];
     
-    if ([node isKindOfClass:[PKAlternationNode class]]) {
-        for (PKBaseNode *child in node.children) {
+    if ([node isKindOfClass:[PGAlternationNode class]]) {
+        for (PGBaseNode *child in node.children) {
             if (![self isLL1:child]) {
                 result = NO;
                 break;
@@ -930,12 +930,12 @@
 }
 
 
-- (void)visitMultiple:(PKMultipleNode *)node {
+- (void)visitMultiple:(PGMultipleNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     // recurse
     NSAssert(1 == [node.children count], @"");
-    PKBaseNode *child = node.children[0];
+    PGBaseNode *child = node.children[0];
     
     NSArray *set = [self sortedLookaheadSetForNode:child];
     
@@ -984,7 +984,7 @@
 }
 
 
-- (void)visitConstant:(PKConstantNode *)node {
+- (void)visitConstant:(PGConstantNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
    
     // stup vars
@@ -1008,7 +1008,7 @@
 }
 
 
-- (void)visitLiteral:(PKLiteralNode *)node {
+- (void)visitLiteral:(PGLiteralNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     // stup vars
@@ -1031,7 +1031,7 @@
 }
 
 
-- (void)visitDelimited:(PKDelimitedNode *)node {
+- (void)visitDelimited:(PGDelimitedNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     // stup vars
@@ -1057,7 +1057,7 @@
 }
 
 
-- (void)visitPattern:(PKPatternNode *)node {
+- (void)visitPattern:(PGPatternNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     // stup vars
@@ -1082,7 +1082,7 @@
 }
 
 
-- (void)visitAction:(PKActionNode *)node {
+- (void)visitAction:(PGActionNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     NSAssert2(0, @"%s must be implemented in %@", __PRETTY_FUNCTION__, [self class]);

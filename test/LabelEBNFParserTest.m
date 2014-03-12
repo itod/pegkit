@@ -9,12 +9,12 @@
 #import "LabelEBNFParserTest.h"
 #import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
-#import "PKRootNode.h"
+#import "PGRootNode.h"
 #import "LabelEBNFParser.h"
 
 @interface LabelEBNFParserTest ()
 @property (nonatomic, retain) PGParserFactory *factory;
-@property (nonatomic, retain) PKRootNode *root;
+@property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
 @property (nonatomic, retain) LabelEBNFParser *parser;
 @end

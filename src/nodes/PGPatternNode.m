@@ -6,12 +6,12 @@
 //
 //
 
-#import "PKPatternNode.h"
+#import "PGPatternNode.h"
 
-@implementation PKPatternNode
+@implementation PGPatternNode
 
 - (NSUInteger)type {
-    return PKNodeTypePattern;
+    return PGNodeTypePattern;
 }
 
 

@@ -6,12 +6,12 @@
 //
 //
 
-#import "PKActionNode.h"
+#import "PGActionNode.h"
 
-@implementation PKActionNode
+@implementation PGActionNode
 
 - (id)copyWithZone:(NSZone *)zone {
-    PKActionNode *that = (PKActionNode *)[super copyWithZone:zone];
+    PGActionNode *that = (PGActionNode *)[super copyWithZone:zone];
     that->_source = [_source retain];
     return that;
 }
@@ -22,7 +22,7 @@
         return NO;
     }
     
-    PKActionNode *that = (PKActionNode *)obj;
+    PGActionNode *that = (PGActionNode *)obj;
     
     if (![_source isEqualToString:that->_source]) {
         return NO;
@@ -33,7 +33,7 @@
 
 
 - (NSUInteger)type {
-    return PKNodeTypeAction;
+    return PGNodeTypeAction;
 }
 
 

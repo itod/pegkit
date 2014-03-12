@@ -6,11 +6,11 @@
 //
 //
 
-#import "PKBaseNode.h"
+#import "PGBaseNode.h"
 
 @class PEGTokenKindDescriptor;
 
-@interface PKDelimitedNode : PKBaseNode
+@interface PGDelimitedNode : PGBaseNode
 @property (nonatomic, retain) NSString *startMarker;
 @property (nonatomic, retain) NSString *endMarker;
 @property (nonatomic, retain) PEGTokenKindDescriptor *tokenKind;

@@ -8,35 +8,35 @@
 
 #import <Foundation/Foundation.h>
 
-@class PKBaseNode;
-@class PKRootNode;
-@class PKDefinitionNode;
-@class PKReferenceNode;
-@class PKConstantNode;
-@class PKLiteralNode;
-@class PKDelimitedNode;
-@class PKPatternNode;
-@class PKCompositeNode;
-@class PKCollectionNode;
-@class PKAlternationNode;
-@class PKOptionalNode;
-@class PKMultipleNode;
-@class PKActionNode;
+@class PGBaseNode;
+@class PGRootNode;
+@class PGDefinitionNode;
+@class PGReferenceNode;
+@class PGConstantNode;
+@class PGLiteralNode;
+@class PGDelimitedNode;
+@class PGPatternNode;
+@class PGCompositeNode;
+@class PGCollectionNode;
+@class PGAlternationNode;
+@class PGOptionalNode;
+@class PGMultipleNode;
+@class PGActionNode;
 
 @protocol PGNodeVisitor <NSObject>
-- (void)visitRoot:(PKRootNode *)node;
-- (void)visitDefinition:(PKDefinitionNode *)node;
-- (void)visitReference:(PKReferenceNode *)node;
-- (void)visitConstant:(PKConstantNode *)node;
-- (void)visitLiteral:(PKLiteralNode *)node;
-- (void)visitDelimited:(PKDelimitedNode *)node;
-- (void)visitPattern:(PKPatternNode *)node;
-- (void)visitComposite:(PKCompositeNode *)node;
-- (void)visitCollection:(PKCollectionNode *)node;
-- (void)visitAlternation:(PKAlternationNode *)node;
-- (void)visitOptional:(PKOptionalNode *)node;
-- (void)visitMultiple:(PKMultipleNode *)node;
-- (void)visitAction:(PKActionNode *)node;
+- (void)visitRoot:(PGRootNode *)node;
+- (void)visitDefinition:(PGDefinitionNode *)node;
+- (void)visitReference:(PGReferenceNode *)node;
+- (void)visitConstant:(PGConstantNode *)node;
+- (void)visitLiteral:(PGLiteralNode *)node;
+- (void)visitDelimited:(PGDelimitedNode *)node;
+- (void)visitPattern:(PGPatternNode *)node;
+- (void)visitComposite:(PGCompositeNode *)node;
+- (void)visitCollection:(PGCollectionNode *)node;
+- (void)visitAlternation:(PGAlternationNode *)node;
+- (void)visitOptional:(PGOptionalNode *)node;
+- (void)visitMultiple:(PGMultipleNode *)node;
+- (void)visitAction:(PGActionNode *)node;
 
-@property (nonatomic, retain) PKBaseNode *rootNode;
+@property (nonatomic, retain) PGBaseNode *rootNode;
 @end

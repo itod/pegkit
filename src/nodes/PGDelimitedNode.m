@@ -6,9 +6,9 @@
 //
 //
 
-#import "PKDelimitedNode.h"
+#import "PGDelimitedNode.h"
 
-@implementation PKDelimitedNode
+@implementation PGDelimitedNode
 
 - (void)dealloc {
     self.startMarker = nil;
@@ -19,7 +19,7 @@
 
 
 - (id)copyWithZone:(NSZone *)zone {
-    PKDelimitedNode *that = (PKDelimitedNode *)[super copyWithZone:zone];
+    PGDelimitedNode *that = (PGDelimitedNode *)[super copyWithZone:zone];
     that->_startMarker = [_startMarker retain];
     that->_endMarker = [_endMarker retain];
     that->_tokenKind = [_tokenKind retain];
@@ -32,7 +32,7 @@
         return NO;
     }
     
-    PKDelimitedNode *that = (PKDelimitedNode *)obj;
+    PGDelimitedNode *that = (PGDelimitedNode *)obj;
     
     if (![_startMarker isEqual:that->_startMarker]) {
         return NO;
@@ -52,7 +52,7 @@
 
 
 - (NSUInteger)type {
-    return PKNodeTypeDelimited;
+    return PGNodeTypeDelimited;
 }
 
 

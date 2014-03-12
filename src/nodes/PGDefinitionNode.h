@@ -6,9 +6,9 @@
 //
 //
 
-#import "PKBaseNode.h"
+#import "PGBaseNode.h"
 
-@interface PKDefinitionNode : PKBaseNode
+@interface PGDefinitionNode : PGBaseNode
 
 @property (nonatomic, retain) NSString *callbackName;
 @end

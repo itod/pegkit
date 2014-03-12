@@ -6,8 +6,8 @@
 //
 //
 
-#import "PKCollectionNode.h"
+#import "PGCollectionNode.h"
 
-@interface PKMultipleNode : PKCollectionNode
+@interface PGMultipleNode : PGCollectionNode
 
 @end

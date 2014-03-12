@@ -9,25 +9,25 @@
 #import "PGNodeVisitor.h"
 
 // convenience
-#import "PKBaseNode.h"
-#import "PKRootNode.h"
-#import "PKDefinitionNode.h"
-#import "PKReferenceNode.h"
-#import "PKConstantNode.h"
-#import "PKDelimitedNode.h"
-#import "PKLiteralNode.h"
-#import "PKPatternNode.h"
-#import "PKCompositeNode.h"
-#import "PKCollectionNode.h"
-#import "PKAlternationNode.h"
-#import "PKOptionalNode.h"
-#import "PKMultipleNode.h"
-#import "PKActionNode.h"
+#import "PGBaseNode.h"
+#import "PGRootNode.h"
+#import "PGDefinitionNode.h"
+#import "PGReferenceNode.h"
+#import "PGConstantNode.h"
+#import "PGDelimitedNode.h"
+#import "PGLiteralNode.h"
+#import "PGPatternNode.h"
+#import "PGCompositeNode.h"
+#import "PGCollectionNode.h"
+#import "PGAlternationNode.h"
+#import "PGOptionalNode.h"
+#import "PGMultipleNode.h"
+#import "PGActionNode.h"
 
 @interface PGBaseVisitor : NSObject <PGNodeVisitor>
 
-- (void)recurse:(PKBaseNode *)node;
+- (void)recurse:(PGBaseNode *)node;
 
-@property (nonatomic, retain) PKBaseNode *rootNode;
+@property (nonatomic, retain) PGBaseNode *rootNode;
 @property (nonatomic, retain) NSMutableDictionary *symbolTable;
 @end

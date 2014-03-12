@@ -6,10 +6,10 @@
 //
 //
 
-#import "PKConstantNode.h"
+#import "PGConstantNode.h"
 #import <PEGKit/PKToken.h>
 
-@implementation PKConstantNode
+@implementation PGConstantNode
 - (void)dealloc {
     self.literal = nil;
     self.tokenKind = nil;
@@ -18,7 +18,7 @@
 
 
 - (NSUInteger)type {
-    return PKNodeTypeConstant;
+    return PGNodeTypeConstant;
 }
 
 

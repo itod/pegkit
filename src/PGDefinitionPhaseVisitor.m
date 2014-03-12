@@ -46,7 +46,7 @@
 }
 
 
-- (void)visitRoot:(PKRootNode *)node {
+- (void)visitRoot:(PGRootNode *)node {
     NSParameterAssert(node);
     NSAssert(self.symbolTable, @"");
     
@@ -214,7 +214,7 @@
 }
 
 
-- (void)visitDefinition:(PKDefinitionNode *)node {
+- (void)visitDefinition:(PGDefinitionNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
 
     // find only child node (which represents this parser's type)
@@ -228,7 +228,7 @@
         self.symbolTable[@"$$"] = name;
     }
 
-    for (PKBaseNode *child in node.children) {
+    for (PGBaseNode *child in node.children) {
         if (_collectTokenKinds) {
             child.defName = name;
         }
@@ -237,27 +237,27 @@
 }
 
 
-- (void)visitReference:(PKReferenceNode *)node {
+- (void)visitReference:(PGReferenceNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
 
 }
 
 
-- (void)visitComposite:(PKCompositeNode *)node {
-    //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
-    
-    [self recurse:node];
-}
-
-
-- (void)visitCollection:(PKCollectionNode *)node {
+- (void)visitComposite:(PGCompositeNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     [self recurse:node];
 }
 
 
-- (void)visitAlternation:(PKAlternationNode *)node {
+- (void)visitCollection:(PGCollectionNode *)node {
+    //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
+    
+    [self recurse:node];
+}
+
+
+- (void)visitAlternation:(PGAlternationNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
 
     NSAssert(2 == [node.children count], @"");
@@ -265,11 +265,11 @@
     BOOL simplify = NO;
     
     do {
-        PKBaseNode *lhs = node.children[0];
-        simplify = PKNodeTypeAlternation == lhs.type;
+        PGBaseNode *lhs = node.children[0];
+        simplify = PGNodeTypeAlternation == lhs.type;
         
         // nested Alts should always be on the lhs. never on rhs.
-        NSAssert(PKNodeTypeAlternation != [(PKBaseNode *)node.children[1] type], @"");
+        NSAssert(PGNodeTypeAlternation != [(PGBaseNode *)node.children[1] type], @"");
         
         if (simplify) {
             [node replaceChild:lhs withChildren:lhs.children];
@@ -280,21 +280,21 @@
 }
 
 
-- (void)visitOptional:(PKOptionalNode *)node {
+- (void)visitOptional:(PGOptionalNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
 
     [self recurse:node];
 }
 
 
-- (void)visitMultiple:(PKMultipleNode *)node {
+- (void)visitMultiple:(PGMultipleNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
 
     [self recurse:node];
 }
 
 
-- (void)visitConstant:(PKConstantNode *)node {
+- (void)visitConstant:(PGConstantNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
 
     if (_collectTokenKinds) {
@@ -313,7 +313,7 @@
 }
 
 
-- (void)visitLiteral:(PKLiteralNode *)node {
+- (void)visitLiteral:(PGLiteralNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
  
     if (_collectTokenKinds) {
@@ -344,7 +344,7 @@
 }
 
 
-- (void)visitDelimited:(PKDelimitedNode *)node {
+- (void)visitDelimited:(PGDelimitedNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     if (_collectTokenKinds) {
@@ -375,13 +375,13 @@
 }
 
 
-- (void)visitPattern:(PKPatternNode *)node {
+- (void)visitPattern:(PGPatternNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
 }
 
 
-- (void)visitAction:(PKActionNode *)node {
+- (void)visitAction:(PGActionNode *)node {
     NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
 }

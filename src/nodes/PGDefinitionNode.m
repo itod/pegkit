@@ -6,10 +6,10 @@
 //
 //
 
-#import "PKDefinitionNode.h"
+#import "PGDefinitionNode.h"
 #import <PEGKit/PKToken.h>
 
-@implementation PKDefinitionNode
+@implementation PGDefinitionNode
 
 - (void)dealloc {
     self.callbackName = nil;
@@ -18,7 +18,7 @@
 
 
 - (id)copyWithZone:(NSZone *)zone {
-    PKDefinitionNode *that = (PKDefinitionNode *)[super copyWithZone:zone];
+    PGDefinitionNode *that = (PGDefinitionNode *)[super copyWithZone:zone];
     that->_callbackName = [_callbackName copyWithZone:zone];
     return that;
 }
@@ -29,7 +29,7 @@
         return NO;
     }
     
-    PKDefinitionNode *that = (PKDefinitionNode *)obj;
+    PGDefinitionNode *that = (PGDefinitionNode *)obj;
     
     if (![_callbackName isEqual:that->_callbackName]) {
         return NO;
@@ -40,7 +40,7 @@
 
 
 - (NSUInteger)type {
-    return PKNodeTypeDefinition;
+    return PGNodeTypeDefinition;
 }
 
 

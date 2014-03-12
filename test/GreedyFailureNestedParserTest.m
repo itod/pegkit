@@ -10,12 +10,12 @@
 #import "GreedyFailureNestedParserTest.h"
 #import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
-#import "PKRootNode.h"
+#import "PGRootNode.h"
 #import "GreedyFailureNestedParser.h"
 
 @interface GreedyFailureNestedParserTest ()
 @property (nonatomic, retain) PGParserFactory *factory;
-@property (nonatomic, retain) PKRootNode *root;
+@property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
 @property (nonatomic, retain) GreedyFailureNestedParser *parser;
 @property (nonatomic, retain) id mock;

@@ -8,20 +8,20 @@
 
 #import "PGBaseVisitor.h"
 
-#import "PKBaseNode.h"
-#import "PKRootNode.h"
-#import "PKDefinitionNode.h"
-#import "PKReferenceNode.h"
-#import "PKConstantNode.h"
-#import "PKDelimitedNode.h"
-#import "PKLiteralNode.h"
-#import "PKPatternNode.h"
-#import "PKCompositeNode.h"
-#import "PKCollectionNode.h"
-#import "PKAlternationNode.h"
-#import "PKOptionalNode.h"
-#import "PKMultipleNode.h"
-#import "PKActionNode.h"
+#import "PGBaseNode.h"
+#import "PGRootNode.h"
+#import "PGDefinitionNode.h"
+#import "PGReferenceNode.h"
+#import "PGConstantNode.h"
+#import "PGDelimitedNode.h"
+#import "PGLiteralNode.h"
+#import "PGPatternNode.h"
+#import "PGCompositeNode.h"
+#import "PGCollectionNode.h"
+#import "PGAlternationNode.h"
+#import "PGOptionalNode.h"
+#import "PGMultipleNode.h"
+#import "PGActionNode.h"
 
 @implementation PGBaseVisitor
 
@@ -32,86 +32,86 @@
 }
 
 
-- (void)recurse:(PKBaseNode *)node {
-    for (PKBaseNode *child in node.children) {
+- (void)recurse:(PGBaseNode *)node {
+    for (PGBaseNode *child in node.children) {
         [child visit:self];
     }
 }
 
 
-- (void)visitRoot:(PKRootNode *)node {
+- (void)visitRoot:(PGRootNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
 
 }
 
 
-- (void)visitDefinition:(PKDefinitionNode *)node {
-    //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
-    
-}
-
-
-- (void)visitReference:(PKReferenceNode *)node {
+- (void)visitDefinition:(PGDefinitionNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
 }
 
 
-- (void)visitComposite:(PKCompositeNode *)node {
+- (void)visitReference:(PGReferenceNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
 }
 
 
-- (void)visitCollection:(PKCollectionNode *)node {
+- (void)visitComposite:(PGCompositeNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
 }
 
 
-- (void)visitAlternation:(PKAlternationNode *)node {
+- (void)visitCollection:(PGCollectionNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
 }
 
 
-- (void)visitOptional:(PKOptionalNode *)node {
+- (void)visitAlternation:(PGAlternationNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
 }
 
 
-- (void)visitMultiple:(PKMultipleNode *)node {
+- (void)visitOptional:(PGOptionalNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
 }
 
 
-- (void)visitConstant:(PKConstantNode *)node {
+- (void)visitMultiple:(PGMultipleNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
 }
 
 
-- (void)visitLiteral:(PKLiteralNode *)node {
+- (void)visitConstant:(PGConstantNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
 }
 
 
-- (void)visitDelimited:(PKDelimitedNode *)node {
+- (void)visitLiteral:(PGLiteralNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
 }
 
 
-- (void)visitPattern:(PKPatternNode *)node {
+- (void)visitDelimited:(PGDelimitedNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
 }
 
 
-- (void)visitAction:(PKActionNode *)node {
+- (void)visitPattern:(PGPatternNode *)node {
+    //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
+    
+}
+
+
+- (void)visitAction:(PGActionNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
 }

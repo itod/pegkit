@@ -6,9 +6,9 @@
 //
 //
 
-#import "PKRootNode.h"
+#import "PGRootNode.h"
 
-@implementation PKRootNode
+@implementation PGRootNode
 
 - (void)dealloc {
     self.grammarName = nil;
@@ -19,7 +19,7 @@
 
 
 - (NSUInteger)type {
-    return PKNodeTypeRoot;
+    return PGNodeTypeRoot;
 }
 
 

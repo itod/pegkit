@@ -12,7 +12,7 @@
 
 @interface PGDocument ()
 @property (nonatomic, retain) PGParserFactory *factory;
-@property (nonatomic, retain) PKRootNode *root;
+@property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
 @end
 

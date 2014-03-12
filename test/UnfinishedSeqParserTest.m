@@ -10,12 +10,12 @@
 #import "UnfinishedSeqParserTest.h"
 #import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
-#import "PKRootNode.h"
+#import "PGRootNode.h"
 #import "UnfinishedSeqParser.h"
 
 @interface UnfinishedSeqParserTest ()
 @property (nonatomic, retain) PGParserFactory *factory;
-@property (nonatomic, retain) PKRootNode *root;
+@property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
 @property (nonatomic, retain) UnfinishedSeqParser *parser;
 @end

@@ -10,12 +10,12 @@
 #import "CSSParserTest.h"
 #import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
-#import "PKRootNode.h"
+#import "PGRootNode.h"
 #import "CSSParser.h"
 
 @interface CSSParserTest ()
 @property (nonatomic, retain) PGParserFactory *factory;
-@property (nonatomic, retain) PKRootNode *root;
+@property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
 @property (nonatomic, retain) CSSParser *parser;
 @end

@@ -1,22 +1,22 @@
 //
-//  PKNodeOptional.m
+//  PKNodeMultiple.m
 //  PEGKit
 //
 //  Created by Todd Ditchendorf on 10/5/12.
 //
 //
 
-#import "PKOptionalNode.h"
+#import "PGMultipleNode.h"
 
-@implementation PKOptionalNode
+@implementation PGMultipleNode
 
 - (NSUInteger)type {
-    return PKNodeTypeOptional;
+    return PGNodeTypeMultiple;
 }
 
 
 - (void)visit:(id <PGNodeVisitor>)v; {
-    [v visitOptional:self];
+    [v visitMultiple:self];
 }
 
 @end

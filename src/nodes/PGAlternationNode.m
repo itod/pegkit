@@ -6,12 +6,12 @@
 //
 //
 
-#import "PKAlternationNode.h"
+#import "PGAlternationNode.h"
 
-@implementation PKAlternationNode
+@implementation PGAlternationNode
 
 - (NSUInteger)type {
-    return PKNodeTypeAlternation;
+    return PGNodeTypeAlternation;
 }
 
 

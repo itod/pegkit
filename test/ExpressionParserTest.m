@@ -9,12 +9,12 @@
 #import "ExpressionParserTest.h"
 #import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
-#import "PKRootNode.h"
+#import "PGRootNode.h"
 #import "ExpressionParser.h"
 
 @interface ExpressionParserTest ()
 @property (nonatomic, retain) PGParserFactory *factory;
-@property (nonatomic, retain) PKRootNode *root;
+@property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
 @end
 

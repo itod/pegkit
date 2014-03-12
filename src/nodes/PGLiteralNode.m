@@ -6,9 +6,9 @@
 //
 //
 
-#import "PKLiteralNode.h"
+#import "PGLiteralNode.h"
 
-@implementation PKLiteralNode
+@implementation PGLiteralNode
 
 - (void)dealloc {
     self.tokenKind = nil;
@@ -17,7 +17,7 @@
 
 
 - (NSUInteger)type {
-    return PKNodeTypeLiteral;
+    return PGNodeTypeLiteral;
 }
 
 

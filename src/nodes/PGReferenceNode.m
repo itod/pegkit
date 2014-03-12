@@ -6,10 +6,10 @@
 //
 //
 
-#import "PKReferenceNode.h"
+#import "PGReferenceNode.h"
 #import <PEGKit/PKToken.h>
 
-@implementation PKReferenceNode
+@implementation PGReferenceNode
 
 - (void)dealloc {
     [super dealloc];
@@ -17,7 +17,7 @@
 
 
 - (NSUInteger)type {
-    return PKNodeTypeReference;
+    return PGNodeTypeReference;
 }
 
 

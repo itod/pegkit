@@ -7,7 +7,7 @@
 
 #import "JSRecoveryTest.h"
 #import "PGParserGenVisitor.h"
-#import "PKRootNode.h"
+#import "PGRootNode.h"
 #import "JavaScriptParser.h"
 #import "JavaScriptWhitespaceParser.h"
 

@@ -6,9 +6,9 @@
 //
 //
 
-#import "PKCollectionNode.h"
+#import "PGCollectionNode.h"
 
-@interface PKAlternationNode : PKCollectionNode
+@interface PGAlternationNode : PGCollectionNode
 
 @property (nonatomic, assign) BOOL hasEmptyAlternative;
 @end

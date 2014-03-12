@@ -6,9 +6,9 @@
 //
 //
 
-#import "PKBaseNode.h"
+#import "PGBaseNode.h"
 
-@implementation PKBaseNode
+@implementation PGBaseNode
 
 + (id)nodeWithToken:(PKToken *)tok {
     return [[[self alloc] initWithToken:tok] autorelease];
@@ -26,7 +26,7 @@
 
 
 - (id)copyWithZone:(NSZone *)zone {
-    PKBaseNode *that = (PKBaseNode *)[super copyWithZone:zone];
+    PGBaseNode *that = (PGBaseNode *)[super copyWithZone:zone];
     that->_discard = _discard;
     that->_actionNode = [_actionNode retain];
     that->_semanticPredicateNode = [_semanticPredicateNode retain];
@@ -42,7 +42,7 @@
         return NO;
     }
 
-    PKBaseNode *that = (PKBaseNode *)obj;
+    PGBaseNode *that = (PGBaseNode *)obj;
     
     if (_discard != that->_discard) {
         return NO;
@@ -64,7 +64,7 @@
 }
 
 
-- (void)replaceChild:(PKBaseNode *)oldChild withChild:(PKBaseNode *)newChild {
+- (void)replaceChild:(PGBaseNode *)oldChild withChild:(PGBaseNode *)newChild {
     NSParameterAssert(oldChild);
     NSParameterAssert(newChild);
     NSUInteger idx = [self.children indexOfObject:oldChild];
@@ -73,7 +73,7 @@
 }
 
 
-- (void)replaceChild:(PKBaseNode *)oldChild withChildren:(NSArray *)newChildren {
+- (void)replaceChild:(PGBaseNode *)oldChild withChildren:(NSArray *)newChildren {
     NSParameterAssert(oldChild);
     NSParameterAssert(newChildren);
 

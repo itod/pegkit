@@ -9,7 +9,7 @@
 #import "TDNSPredicateParserTest.h"
 #import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
-#import "PKRootNode.h"
+#import "PGRootNode.h"
 #import "TDNSPredicateParser.h"
 
 #import "NSString+PEGKitAdditions.h"
@@ -17,7 +17,7 @@
 
 @interface TDNSPredicateParserTest ()
 @property (nonatomic, retain) PGParserFactory *factory;
-@property (nonatomic, retain) PKRootNode *root;
+@property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
 @property (nonatomic, retain) TDNSPredicateParser *parser;
 @property (nonatomic, retain) PKAssembly *res;

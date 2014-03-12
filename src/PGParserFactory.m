@@ -13,20 +13,20 @@
 #import "NSString+PEGKitAdditions.h"
 #import "NSArray+PEGKitAdditions.h"
 
-#import "PKBaseNode.h"
-#import "PKRootNode.h"
-#import "PKDefinitionNode.h"
-#import "PKReferenceNode.h"
-#import "PKConstantNode.h"
-#import "PKLiteralNode.h"
-#import "PKDelimitedNode.h"
-#import "PKPatternNode.h"
-#import "PKCompositeNode.h"
-#import "PKCollectionNode.h"
-#import "PKAlternationNode.h"
-#import "PKOptionalNode.h"
-#import "PKMultipleNode.h"
-#import "PKActionNode.h"
+#import "PGBaseNode.h"
+#import "PGRootNode.h"
+#import "PGDefinitionNode.h"
+#import "PGReferenceNode.h"
+#import "PGConstantNode.h"
+#import "PGLiteralNode.h"
+#import "PGDelimitedNode.h"
+#import "PGPatternNode.h"
+#import "PGCompositeNode.h"
+#import "PGCollectionNode.h"
+#import "PGAlternationNode.h"
+#import "PGOptionalNode.h"
+#import "PGMultipleNode.h"
+#import "PGActionNode.h"
 
 #import "PGDefinitionPhaseVisitor.h"
 
@@ -69,7 +69,7 @@
 
 @property (nonatomic, retain) NSMutableDictionary *directiveTab;
 
-@property (nonatomic, retain) PKRootNode *rootNode;
+@property (nonatomic, retain) PGRootNode *rootNode;
 @property (nonatomic, assign) BOOL wantsCharacters;
 @property (nonatomic, retain) PKToken *equals;
 @property (nonatomic, retain) PKToken *curly;
@@ -172,7 +172,7 @@
 
 - (PKAST *)ASTFromGrammar:(NSString *)g symbolTable:(NSMutableDictionary *)symTab error:(NSError **)outError {
     self.directiveTab = [NSMutableDictionary dictionary];
-    self.rootNode = [PKRootNode nodeWithToken:rootToken];
+    self.rootNode = [PGRootNode nodeWithToken:rootToken];
     
     PKTokenizer *t = [self tokenizerForParsingGrammar];
     t.string = g;
@@ -264,7 +264,7 @@
     NSAssert([tok.stringValue length], @"");
     //NSAssert(islower([tok.stringValue characterAtIndex:0]), @"");
 
-    PKDefinitionNode *node = [PKDefinitionNode nodeWithToken:tok];
+    PGDefinitionNode *node = [PGDefinitionNode nodeWithToken:tok];
     [a push:node];
 }
 
@@ -276,17 +276,17 @@
 
     [a pop]; // '='
     
-    PKDefinitionNode *defNode = [a pop];
-    NSAssert([defNode isKindOfClass:[PKDefinitionNode class]], @"");
+    PGDefinitionNode *defNode = [a pop];
+    NSAssert([defNode isKindOfClass:[PGDefinitionNode class]], @"");
         
-    PKBaseNode *node = nil;
+    PGBaseNode *node = nil;
     
     if (1 == [nodes count]) {
         node = [nodes lastObject];
     } else {
-        PKCollectionNode *seqNode = [PKCollectionNode nodeWithToken:seqToken];
-        for (PKBaseNode *child in [nodes reverseObjectEnumerator]) {
-            NSAssert([child isKindOfClass:[PKBaseNode class]], @"");
+        PGCollectionNode *seqNode = [PGCollectionNode nodeWithToken:seqToken];
+        for (PGBaseNode *child in [nodes reverseObjectEnumerator]) {
+            NSAssert([child isKindOfClass:[PGBaseNode class]], @"");
             [seqNode addChild:child];
         }
         node = seqNode;
@@ -305,20 +305,20 @@
     NSAssert([nodes count], @"");
     [a pop]; // pop '['
     
-    PKCollectionNode *trackNode = [PKCollectionNode nodeWithToken:trackToken];
+    PGCollectionNode *trackNode = [PGCollectionNode nodeWithToken:trackToken];
 
     if ([nodes count] > 1) {
-        for (PKBaseNode *child in [nodes reverseObjectEnumerator]) {
-            NSAssert([child isKindOfClass:[PKBaseNode class]], @"");
+        for (PGBaseNode *child in [nodes reverseObjectEnumerator]) {
+            NSAssert([child isKindOfClass:[PGBaseNode class]], @"");
             [trackNode addChild:child];
         }
     } else if ([nodes count]) {
-        PKBaseNode *node = [nodes lastObject];
+        PGBaseNode *node = [nodes lastObject];
         if (seqToken == node.token) {
-            PKCollectionNode *seqNode = (PKCollectionNode *)node;
-            NSAssert([seqNode isKindOfClass:[PKCollectionNode class]], @"");
+            PGCollectionNode *seqNode = (PGCollectionNode *)node;
+            NSAssert([seqNode isKindOfClass:[PGCollectionNode class]], @"");
 
-            for (PKBaseNode *child in seqNode.children) {
+            for (PGBaseNode *child in seqNode.children) {
                 [trackNode addChild:child];
             }
         } else {
@@ -337,14 +337,14 @@
     NSAssert([nodes count], @"");
     [a pop]; // pop '('
     
-    PKBaseNode *node = nil;
+    PGBaseNode *node = nil;
     
     if (1 == [nodes count]) {
         node = [nodes lastObject];
     } else {
-        PKCollectionNode *seqNode = [PKCollectionNode nodeWithToken:seqToken];
-        for (PKBaseNode *child in [nodes reverseObjectEnumerator]) {
-            NSAssert([child isKindOfClass:[PKBaseNode class]], @"");
+        PGCollectionNode *seqNode = [PGCollectionNode nodeWithToken:seqToken];
+        for (PGBaseNode *child in [nodes reverseObjectEnumerator]) {
+            NSAssert([child isKindOfClass:[PGBaseNode class]], @"");
             [seqNode addChild:child];
         }
         node = seqNode;
@@ -360,8 +360,8 @@
     PKToken *selNameTok1 = [a pop];
     NSString *selName = [NSString stringWithFormat:@"%@:%@:", selNameTok1.stringValue, selNameTok2.stringValue];
     
-    PKDefinitionNode *defNode = [a pop];
-    NSAssert([defNode isKindOfClass:[PKDefinitionNode class]] ,@"");
+    PGDefinitionNode *defNode = [a pop];
+    NSAssert([defNode isKindOfClass:[PGDefinitionNode class]] ,@"");
     
     defNode.callbackName = selName;
     [a push:defNode];
@@ -395,7 +395,7 @@
     }
     s = [s stringByTrimmingQuotes];
 
-    PKPatternNode *patNode = [PKPatternNode nodeWithToken:tok];
+    PGPatternNode *patNode = [PGPatternNode nodeWithToken:tok];
     patNode.string = s;
 
     [a push:patNode];
@@ -405,8 +405,8 @@
 - (void)parser:(PEGParser *)p didMatchDiscard:(PKAssembly *)a {
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
 
-    PKBaseNode *node = [a pop];
-    NSAssert([node isKindOfClass:[PKBaseNode class]], @"");
+    PGBaseNode *node = [a pop];
+    NSAssert([node isKindOfClass:[PGBaseNode class]], @"");
     node.discard = YES;
     [a push:node];
 }
@@ -416,11 +416,11 @@
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
     PKToken *tok = [a pop];
 
-    PKLiteralNode *litNode = nil;
+    PGLiteralNode *litNode = nil;
     
     NSAssert(tok.isQuotedString, @"");
     NSAssert([tok.stringValue length], @"");
-    litNode = [PKLiteralNode nodeWithToken:tok];
+    litNode = [PGLiteralNode nodeWithToken:tok];
     litNode.wantsCharacters = self.wantsCharacters;
 
     [a push:litNode];
@@ -439,7 +439,7 @@
     NSAssert([tok.stringValue length], @"");
     NSAssert(islower([tok.stringValue characterAtIndex:0]), @"");
 
-    PKReferenceNode *node = [PKReferenceNode nodeWithToken:tok];
+    PGReferenceNode *node = [PGReferenceNode nodeWithToken:tok];
     [a push:node];
 }
 
@@ -448,7 +448,7 @@
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
     PKToken *tok = [a pop];
     
-    PKConstantNode *node = [PKConstantNode nodeWithToken:tok];
+    PGConstantNode *node = [PGConstantNode nodeWithToken:tok];
     [a push:node];
 }
 
@@ -460,7 +460,7 @@
     
     PKToken *classTok = [a pop]; // pop 'Symbol'
     
-    PKConstantNode *constNode = [PKConstantNode nodeWithToken:classTok];
+    PGConstantNode *constNode = [PGConstantNode nodeWithToken:classTok];
     constNode.literal = literal;
     
     [a push:constNode];
@@ -480,7 +480,7 @@
         end = [[[toks objectAtIndex:0] stringValue] stringByTrimmingQuotes];
     }
 
-    PKDelimitedNode *delimNode = [PKDelimitedNode nodeWithToken:delimToken];
+    PGDelimitedNode *delimNode = [PGDelimitedNode nodeWithToken:delimToken];
     delimNode.startMarker = start;
     delimNode.endMarker = end;
     
@@ -490,12 +490,12 @@
 
 - (void)parser:(PEGParser *)p didMatchDifference:(PKAssembly *)a {
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
-    PKBaseNode *minusNode = [a pop];
-    PKBaseNode *subNode = [a pop];
-    NSAssert([minusNode isKindOfClass:[PKBaseNode class]], @"");
-    NSAssert([subNode isKindOfClass:[PKBaseNode class]], @"");
+    PGBaseNode *minusNode = [a pop];
+    PGBaseNode *subNode = [a pop];
+    NSAssert([minusNode isKindOfClass:[PGBaseNode class]], @"");
+    NSAssert([subNode isKindOfClass:[PGBaseNode class]], @"");
     
-    PKCompositeNode *diffNode = [PKCompositeNode nodeWithToken:diffToken];
+    PGCompositeNode *diffNode = [PGCompositeNode nodeWithToken:diffToken];
     [diffNode addChild:subNode];
     [diffNode addChild:minusNode];
     
@@ -510,7 +510,7 @@
     NSAssert(sourceTok.isDelimitedString, @"");
     
     id obj = [a pop];
-    PKBaseNode *ownerNode = nil;
+    PGBaseNode *ownerNode = nil;
     
     NSString *key = nil;
     
@@ -525,12 +525,12 @@
         
         [a push:ownerNode];
         [a push:eqTok]; // put '=' back
-    } else if ([obj isKindOfClass:[PKBaseNode class]]) {
+    } else if ([obj isKindOfClass:[PGBaseNode class]]) {
         // post action
         key = @"actionNode";
 
-        ownerNode = (PKBaseNode *)obj;
-        NSAssert([ownerNode isKindOfClass:[PKBaseNode class]], @"");
+        ownerNode = (PGBaseNode *)obj;
+        NSAssert([ownerNode isKindOfClass:[PGBaseNode class]], @"");
         
         [a push:ownerNode];
     } else if ([obj isKindOfClass:[PKToken class]]) {
@@ -553,7 +553,7 @@
         source = [sourceTok.stringValue substringWithRange:NSMakeRange(1, len - 2)];
     }
     
-    PKActionNode *actNode = [PKActionNode nodeWithToken:curly];
+    PGActionNode *actNode = [PGActionNode nodeWithToken:curly];
     actNode.source = source;
     [ownerNode setValue:actNode forKey:key];
 }
@@ -563,12 +563,12 @@
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
     
     id possibleNode = [a pop];
-    if ([possibleNode isKindOfClass:[PKBaseNode class]]) {
-        PKBaseNode *node = (PKBaseNode *)possibleNode;
+    if ([possibleNode isKindOfClass:[PGBaseNode class]]) {
+        PGBaseNode *node = (PGBaseNode *)possibleNode;
         
         id possiblePred = [a pop];
-        if ([possiblePred isKindOfClass:[PKActionNode class]]) {
-            PKActionNode *predNode = (PKActionNode *)possiblePred;
+        if ([possiblePred isKindOfClass:[PGActionNode class]]) {
+            PGActionNode *predNode = (PGActionNode *)possiblePred;
             //NSLog(@"%@", predNode.source);
             node.semanticPredicateNode = predNode;
         } else {
@@ -595,7 +595,7 @@
         source = [sourceTok.stringValue substringWithRange:NSMakeRange(1, len - 3)];
     }
     
-    PKActionNode *predNode = [PKActionNode nodeWithToken:predicateToken];
+    PGActionNode *predNode = [PGActionNode nodeWithToken:predicateToken];
     predNode.source = source;
     
     [a push:predNode];
@@ -604,12 +604,12 @@
 
 - (void)parser:(PEGParser *)p didMatchIntersection:(PKAssembly *)a {
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
-    PKBaseNode *predicateNode = [a pop];
-    PKBaseNode *subNode = [a pop];
-    NSAssert([predicateNode isKindOfClass:[PKBaseNode class]], @"");
-    NSAssert([subNode isKindOfClass:[PKBaseNode class]], @"");
+    PGBaseNode *predicateNode = [a pop];
+    PGBaseNode *subNode = [a pop];
+    NSAssert([predicateNode isKindOfClass:[PGBaseNode class]], @"");
+    NSAssert([subNode isKindOfClass:[PGBaseNode class]], @"");
     
-    PKCollectionNode *interNode = [PKCollectionNode nodeWithToken:intToken];
+    PGCollectionNode *interNode = [PGCollectionNode nodeWithToken:intToken];
     [interNode addChild:subNode];
     [interNode addChild:predicateNode];
     
@@ -620,10 +620,10 @@
 - (void)parser:(PEGParser *)p didMatchPhraseStar:(PKAssembly *)a {
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
     
-    PKBaseNode *subNode = [a pop];
-    NSAssert([subNode isKindOfClass:[PKBaseNode class]], @"");
+    PGBaseNode *subNode = [a pop];
+    NSAssert([subNode isKindOfClass:[PGBaseNode class]], @"");
     
-    PKCompositeNode *repNode = [PKCompositeNode nodeWithToken:repToken];
+    PGCompositeNode *repNode = [PGCompositeNode nodeWithToken:repToken];
     [repNode addChild:subNode];
     
     [a push:repNode];
@@ -633,10 +633,10 @@
 - (void)parser:(PEGParser *)p didMatchPhrasePlus:(PKAssembly *)a {
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
     
-    PKBaseNode *subNode = [a pop];
-    NSAssert([subNode isKindOfClass:[PKBaseNode class]], @"");
+    PGBaseNode *subNode = [a pop];
+    NSAssert([subNode isKindOfClass:[PGBaseNode class]], @"");
     
-    PKMultipleNode *multiNode = [PKMultipleNode nodeWithToken:multiToken];
+    PGMultipleNode *multiNode = [PGMultipleNode nodeWithToken:multiToken];
     [multiNode addChild:subNode];
     
     [a push:multiNode];
@@ -646,10 +646,10 @@
 - (void)parser:(PEGParser *)p didMatchPhraseQuestion:(PKAssembly *)a {
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
     
-    PKBaseNode *subNode = [a pop];
-    NSAssert([subNode isKindOfClass:[PKBaseNode class]], @"");
+    PGBaseNode *subNode = [a pop];
+    NSAssert([subNode isKindOfClass:[PGBaseNode class]], @"");
     
-    PKOptionalNode *optNode = [PKOptionalNode nodeWithToken:optToken];
+    PGOptionalNode *optNode = [PGOptionalNode nodeWithToken:optToken];
     [optNode addChild:subNode];
     
     [a push:optNode];
@@ -659,10 +659,10 @@
 - (void)parser:(PEGParser *)p didMatchNegatedPrimaryExpr:(PKAssembly *)a {
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
 
-    PKBaseNode *subNode = [a pop];
-    NSAssert([subNode isKindOfClass:[PKBaseNode class]], @"");
+    PGBaseNode *subNode = [a pop];
+    NSAssert([subNode isKindOfClass:[PGBaseNode class]], @"");
     
-    PKCompositeNode *negNode = [PKCompositeNode nodeWithToken:negToken];
+    PGCompositeNode *negNode = [PGCompositeNode nodeWithToken:negToken];
     [negNode addChild:subNode];
     
     [a push:negNode];
@@ -695,31 +695,31 @@
     NSAssert(orTok.isSymbol, @"");
     NSAssert([orTok.stringValue isEqualToString:@"|"], @"");
 
-    PKAlternationNode *orNode = [PKAlternationNode nodeWithToken:orTok];
+    PGAlternationNode *orNode = [PGAlternationNode nodeWithToken:orTok];
     
-    PKBaseNode *left = nil;
+    PGBaseNode *left = nil;
 
     NSMutableArray *lhsNodes = [self objectsAbove:paren or:equals in:a];
     if (1 == [lhsNodes count]) {
         left = [lhsNodes lastObject];
     } else {
-        PKCollectionNode *seqNode = [PKCollectionNode nodeWithToken:seqToken];
-        for (PKBaseNode *child in [lhsNodes reverseObjectEnumerator]) {
-            NSAssert([child isKindOfClass:[PKBaseNode class]], @"");
+        PGCollectionNode *seqNode = [PGCollectionNode nodeWithToken:seqToken];
+        for (PGBaseNode *child in [lhsNodes reverseObjectEnumerator]) {
+            NSAssert([child isKindOfClass:[PGBaseNode class]], @"");
             [seqNode addChild:child];
         }
         left = seqNode;
     }
     [orNode addChild:left];
 
-    PKBaseNode *right = nil;
+    PGBaseNode *right = nil;
 
     if (1 == [rhsNodes count]) {
         right = [rhsNodes lastObject];
     } else {
-        PKCollectionNode *seqNode = [PKCollectionNode nodeWithToken:seqToken];
-        for (PKBaseNode *child in [rhsNodes reverseObjectEnumerator]) {
-            NSAssert([child isKindOfClass:[PKBaseNode class]], @"");
+        PGCollectionNode *seqNode = [PGCollectionNode nodeWithToken:seqToken];
+        for (PGBaseNode *child in [rhsNodes reverseObjectEnumerator]) {
+            NSAssert([child isKindOfClass:[PGBaseNode class]], @"");
             [seqNode addChild:child];
         }
         right = seqNode;

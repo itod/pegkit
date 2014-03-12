@@ -6,8 +6,8 @@
 //
 //
 
-#import "PKAlternationNode.h"
+#import "PGAlternationNode.h"
 
-@interface PKOptionalNode : PKAlternationNode
+@interface PGOptionalNode : PGAlternationNode
 
 @end

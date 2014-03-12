@@ -229,34 +229,34 @@
 		D3CC548D18CF9282006715D6 /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
 		D3CC548F18CF92B5006715D6 /* PGBaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D367F66A16F5570500F5E9EB /* PGBaseVisitor.m */; };
 		D3CC549018CF92B8006715D6 /* PGBaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D367F66A16F5570500F5E9EB /* PGBaseVisitor.m */; };
-		D3CC549518CF92CA006715D6 /* PKBaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA57173C639B00A5E050 /* PKBaseNode.m */; };
-		D3CC549618CF92CA006715D6 /* PKRootNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA6D173C639B00A5E050 /* PKRootNode.m */; };
-		D3CC549718CF92CA006715D6 /* PKDefinitionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5F173C639B00A5E050 /* PKDefinitionNode.m */; };
-		D3CC549818CF92CA006715D6 /* PKReferenceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA6B173C639B00A5E050 /* PKReferenceNode.m */; };
-		D3CC549918CF92CA006715D6 /* PKActionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA53173C639B00A5E050 /* PKActionNode.m */; };
-		D3CC549A18CF92CA006715D6 /* PKConstantNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5D173C639B00A5E050 /* PKConstantNode.m */; };
-		D3CC549B18CF92CA006715D6 /* PKLiteralNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA63173C639B00A5E050 /* PKLiteralNode.m */; };
-		D3CC549C18CF92CA006715D6 /* PKDelimitedNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA61173C639B00A5E050 /* PKDelimitedNode.m */; };
-		D3CC549D18CF92CA006715D6 /* PKPatternNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA69173C639B00A5E050 /* PKPatternNode.m */; };
-		D3CC549E18CF92CA006715D6 /* PKCompositeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5B173C639B00A5E050 /* PKCompositeNode.m */; };
-		D3CC549F18CF92CA006715D6 /* PKCollectionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA59173C639B00A5E050 /* PKCollectionNode.m */; };
-		D3CC54A018CF92CA006715D6 /* PKAlternationNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA55173C639B00A5E050 /* PKAlternationNode.m */; };
-		D3CC54A118CF92CA006715D6 /* PKMultipleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA65173C639B00A5E050 /* PKMultipleNode.m */; };
-		D3CC54A218CF92CA006715D6 /* PKOptionalNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA67173C639B00A5E050 /* PKOptionalNode.m */; };
-		D3CC54A318CF92CA006715D6 /* PKBaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA57173C639B00A5E050 /* PKBaseNode.m */; };
-		D3CC54A418CF92CA006715D6 /* PKRootNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA6D173C639B00A5E050 /* PKRootNode.m */; };
-		D3CC54A518CF92CA006715D6 /* PKDefinitionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5F173C639B00A5E050 /* PKDefinitionNode.m */; };
-		D3CC54A618CF92CA006715D6 /* PKReferenceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA6B173C639B00A5E050 /* PKReferenceNode.m */; };
-		D3CC54A718CF92CA006715D6 /* PKActionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA53173C639B00A5E050 /* PKActionNode.m */; };
-		D3CC54A818CF92CA006715D6 /* PKConstantNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5D173C639B00A5E050 /* PKConstantNode.m */; };
-		D3CC54A918CF92CA006715D6 /* PKLiteralNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA63173C639B00A5E050 /* PKLiteralNode.m */; };
-		D3CC54AA18CF92CA006715D6 /* PKDelimitedNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA61173C639B00A5E050 /* PKDelimitedNode.m */; };
-		D3CC54AB18CF92CA006715D6 /* PKPatternNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA69173C639B00A5E050 /* PKPatternNode.m */; };
-		D3CC54AC18CF92CA006715D6 /* PKCompositeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5B173C639B00A5E050 /* PKCompositeNode.m */; };
-		D3CC54AD18CF92CA006715D6 /* PKCollectionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA59173C639B00A5E050 /* PKCollectionNode.m */; };
-		D3CC54AE18CF92CA006715D6 /* PKAlternationNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA55173C639B00A5E050 /* PKAlternationNode.m */; };
-		D3CC54AF18CF92CA006715D6 /* PKMultipleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA65173C639B00A5E050 /* PKMultipleNode.m */; };
-		D3CC54B018CF92CA006715D6 /* PKOptionalNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA67173C639B00A5E050 /* PKOptionalNode.m */; };
+		D3CC549518CF92CA006715D6 /* PGBaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA57173C639B00A5E050 /* PGBaseNode.m */; };
+		D3CC549618CF92CA006715D6 /* PGRootNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA6D173C639B00A5E050 /* PGRootNode.m */; };
+		D3CC549718CF92CA006715D6 /* PGDefinitionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5F173C639B00A5E050 /* PGDefinitionNode.m */; };
+		D3CC549818CF92CA006715D6 /* PGReferenceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA6B173C639B00A5E050 /* PGReferenceNode.m */; };
+		D3CC549918CF92CA006715D6 /* PGActionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA53173C639B00A5E050 /* PGActionNode.m */; };
+		D3CC549A18CF92CA006715D6 /* PGConstantNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5D173C639B00A5E050 /* PGConstantNode.m */; };
+		D3CC549B18CF92CA006715D6 /* PGLiteralNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA63173C639B00A5E050 /* PGLiteralNode.m */; };
+		D3CC549C18CF92CA006715D6 /* PGDelimitedNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA61173C639B00A5E050 /* PGDelimitedNode.m */; };
+		D3CC549D18CF92CA006715D6 /* PGPatternNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA69173C639B00A5E050 /* PGPatternNode.m */; };
+		D3CC549E18CF92CA006715D6 /* PGCompositeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5B173C639B00A5E050 /* PGCompositeNode.m */; };
+		D3CC549F18CF92CA006715D6 /* PGCollectionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA59173C639B00A5E050 /* PGCollectionNode.m */; };
+		D3CC54A018CF92CA006715D6 /* PGAlternationNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA55173C639B00A5E050 /* PGAlternationNode.m */; };
+		D3CC54A118CF92CA006715D6 /* PGMultipleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA65173C639B00A5E050 /* PGMultipleNode.m */; };
+		D3CC54A218CF92CA006715D6 /* PGOptionalNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA67173C639B00A5E050 /* PGOptionalNode.m */; };
+		D3CC54A318CF92CA006715D6 /* PGBaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA57173C639B00A5E050 /* PGBaseNode.m */; };
+		D3CC54A418CF92CA006715D6 /* PGRootNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA6D173C639B00A5E050 /* PGRootNode.m */; };
+		D3CC54A518CF92CA006715D6 /* PGDefinitionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5F173C639B00A5E050 /* PGDefinitionNode.m */; };
+		D3CC54A618CF92CA006715D6 /* PGReferenceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA6B173C639B00A5E050 /* PGReferenceNode.m */; };
+		D3CC54A718CF92CA006715D6 /* PGActionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA53173C639B00A5E050 /* PGActionNode.m */; };
+		D3CC54A818CF92CA006715D6 /* PGConstantNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5D173C639B00A5E050 /* PGConstantNode.m */; };
+		D3CC54A918CF92CA006715D6 /* PGLiteralNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA63173C639B00A5E050 /* PGLiteralNode.m */; };
+		D3CC54AA18CF92CA006715D6 /* PGDelimitedNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA61173C639B00A5E050 /* PGDelimitedNode.m */; };
+		D3CC54AB18CF92CA006715D6 /* PGPatternNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA69173C639B00A5E050 /* PGPatternNode.m */; };
+		D3CC54AC18CF92CA006715D6 /* PGCompositeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5B173C639B00A5E050 /* PGCompositeNode.m */; };
+		D3CC54AD18CF92CA006715D6 /* PGCollectionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA59173C639B00A5E050 /* PGCollectionNode.m */; };
+		D3CC54AE18CF92CA006715D6 /* PGAlternationNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA55173C639B00A5E050 /* PGAlternationNode.m */; };
+		D3CC54AF18CF92CA006715D6 /* PGMultipleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA65173C639B00A5E050 /* PGMultipleNode.m */; };
+		D3CC54B018CF92CA006715D6 /* PGOptionalNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA67173C639B00A5E050 /* PGOptionalNode.m */; };
 		D3CC54EC18CF9326006715D6 /* PEGKitParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DACB173C64A600A5E050 /* PEGKitParser.m */; };
 		D3CC54EE18CF9326006715D6 /* PEGKitParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DACB173C64A600A5E050 /* PEGKitParser.m */; };
 		D3CC54FB18CF9934006715D6 /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
@@ -563,34 +563,34 @@
 		D36E68C01720C848007B4353 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = test/HTMLParser.h; sourceTree = "<group>"; };
 		D36E68C11720C84C007B4353 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = test/HTMLParser.m; sourceTree = "<group>"; };
 		D36E9F860E5A795400496BD3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = /usr/lib/libxml2.dylib; sourceTree = "<absolute>"; };
-		D375DA52173C639B00A5E050 /* PKActionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKActionNode.h; path = src/nodes/PKActionNode.h; sourceTree = "<group>"; };
-		D375DA53173C639B00A5E050 /* PKActionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKActionNode.m; path = src/nodes/PKActionNode.m; sourceTree = "<group>"; };
-		D375DA54173C639B00A5E050 /* PKAlternationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKAlternationNode.h; path = src/nodes/PKAlternationNode.h; sourceTree = "<group>"; };
-		D375DA55173C639B00A5E050 /* PKAlternationNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKAlternationNode.m; path = src/nodes/PKAlternationNode.m; sourceTree = "<group>"; };
-		D375DA56173C639B00A5E050 /* PKBaseNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKBaseNode.h; path = src/nodes/PKBaseNode.h; sourceTree = "<group>"; };
-		D375DA57173C639B00A5E050 /* PKBaseNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKBaseNode.m; path = src/nodes/PKBaseNode.m; sourceTree = "<group>"; };
-		D375DA58173C639B00A5E050 /* PKCollectionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKCollectionNode.h; path = src/nodes/PKCollectionNode.h; sourceTree = "<group>"; };
-		D375DA59173C639B00A5E050 /* PKCollectionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKCollectionNode.m; path = src/nodes/PKCollectionNode.m; sourceTree = "<group>"; };
-		D375DA5A173C639B00A5E050 /* PKCompositeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKCompositeNode.h; path = src/nodes/PKCompositeNode.h; sourceTree = "<group>"; };
-		D375DA5B173C639B00A5E050 /* PKCompositeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKCompositeNode.m; path = src/nodes/PKCompositeNode.m; sourceTree = "<group>"; };
-		D375DA5C173C639B00A5E050 /* PKConstantNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKConstantNode.h; path = src/nodes/PKConstantNode.h; sourceTree = "<group>"; };
-		D375DA5D173C639B00A5E050 /* PKConstantNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKConstantNode.m; path = src/nodes/PKConstantNode.m; sourceTree = "<group>"; };
-		D375DA5E173C639B00A5E050 /* PKDefinitionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKDefinitionNode.h; path = src/nodes/PKDefinitionNode.h; sourceTree = "<group>"; };
-		D375DA5F173C639B00A5E050 /* PKDefinitionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKDefinitionNode.m; path = src/nodes/PKDefinitionNode.m; sourceTree = "<group>"; };
-		D375DA60173C639B00A5E050 /* PKDelimitedNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKDelimitedNode.h; path = src/nodes/PKDelimitedNode.h; sourceTree = "<group>"; };
-		D375DA61173C639B00A5E050 /* PKDelimitedNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKDelimitedNode.m; path = src/nodes/PKDelimitedNode.m; sourceTree = "<group>"; };
-		D375DA62173C639B00A5E050 /* PKLiteralNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKLiteralNode.h; path = src/nodes/PKLiteralNode.h; sourceTree = "<group>"; };
-		D375DA63173C639B00A5E050 /* PKLiteralNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKLiteralNode.m; path = src/nodes/PKLiteralNode.m; sourceTree = "<group>"; };
-		D375DA64173C639B00A5E050 /* PKMultipleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKMultipleNode.h; path = src/nodes/PKMultipleNode.h; sourceTree = "<group>"; };
-		D375DA65173C639B00A5E050 /* PKMultipleNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKMultipleNode.m; path = src/nodes/PKMultipleNode.m; sourceTree = "<group>"; };
-		D375DA66173C639B00A5E050 /* PKOptionalNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKOptionalNode.h; path = src/nodes/PKOptionalNode.h; sourceTree = "<group>"; };
-		D375DA67173C639B00A5E050 /* PKOptionalNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKOptionalNode.m; path = src/nodes/PKOptionalNode.m; sourceTree = "<group>"; };
-		D375DA68173C639B00A5E050 /* PKPatternNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKPatternNode.h; path = src/nodes/PKPatternNode.h; sourceTree = "<group>"; };
-		D375DA69173C639B00A5E050 /* PKPatternNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKPatternNode.m; path = src/nodes/PKPatternNode.m; sourceTree = "<group>"; };
-		D375DA6A173C639B00A5E050 /* PKReferenceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKReferenceNode.h; path = src/nodes/PKReferenceNode.h; sourceTree = "<group>"; };
-		D375DA6B173C639B00A5E050 /* PKReferenceNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKReferenceNode.m; path = src/nodes/PKReferenceNode.m; sourceTree = "<group>"; };
-		D375DA6C173C639B00A5E050 /* PKRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKRootNode.h; path = src/nodes/PKRootNode.h; sourceTree = "<group>"; };
-		D375DA6D173C639B00A5E050 /* PKRootNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKRootNode.m; path = src/nodes/PKRootNode.m; sourceTree = "<group>"; };
+		D375DA52173C639B00A5E050 /* PGActionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGActionNode.h; path = src/nodes/PGActionNode.h; sourceTree = "<group>"; };
+		D375DA53173C639B00A5E050 /* PGActionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGActionNode.m; path = src/nodes/PGActionNode.m; sourceTree = "<group>"; };
+		D375DA54173C639B00A5E050 /* PGAlternationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGAlternationNode.h; path = src/nodes/PGAlternationNode.h; sourceTree = "<group>"; };
+		D375DA55173C639B00A5E050 /* PGAlternationNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGAlternationNode.m; path = src/nodes/PGAlternationNode.m; sourceTree = "<group>"; };
+		D375DA56173C639B00A5E050 /* PGBaseNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGBaseNode.h; path = src/nodes/PGBaseNode.h; sourceTree = "<group>"; };
+		D375DA57173C639B00A5E050 /* PGBaseNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGBaseNode.m; path = src/nodes/PGBaseNode.m; sourceTree = "<group>"; };
+		D375DA58173C639B00A5E050 /* PGCollectionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGCollectionNode.h; path = src/nodes/PGCollectionNode.h; sourceTree = "<group>"; };
+		D375DA59173C639B00A5E050 /* PGCollectionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGCollectionNode.m; path = src/nodes/PGCollectionNode.m; sourceTree = "<group>"; };
+		D375DA5A173C639B00A5E050 /* PGCompositeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGCompositeNode.h; path = src/nodes/PGCompositeNode.h; sourceTree = "<group>"; };
+		D375DA5B173C639B00A5E050 /* PGCompositeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGCompositeNode.m; path = src/nodes/PGCompositeNode.m; sourceTree = "<group>"; };
+		D375DA5C173C639B00A5E050 /* PGConstantNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGConstantNode.h; path = src/nodes/PGConstantNode.h; sourceTree = "<group>"; };
+		D375DA5D173C639B00A5E050 /* PGConstantNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGConstantNode.m; path = src/nodes/PGConstantNode.m; sourceTree = "<group>"; };
+		D375DA5E173C639B00A5E050 /* PGDefinitionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGDefinitionNode.h; path = src/nodes/PGDefinitionNode.h; sourceTree = "<group>"; };
+		D375DA5F173C639B00A5E050 /* PGDefinitionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGDefinitionNode.m; path = src/nodes/PGDefinitionNode.m; sourceTree = "<group>"; };
+		D375DA60173C639B00A5E050 /* PGDelimitedNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGDelimitedNode.h; path = src/nodes/PGDelimitedNode.h; sourceTree = "<group>"; };
+		D375DA61173C639B00A5E050 /* PGDelimitedNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGDelimitedNode.m; path = src/nodes/PGDelimitedNode.m; sourceTree = "<group>"; };
+		D375DA62173C639B00A5E050 /* PGLiteralNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGLiteralNode.h; path = src/nodes/PGLiteralNode.h; sourceTree = "<group>"; };
+		D375DA63173C639B00A5E050 /* PGLiteralNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGLiteralNode.m; path = src/nodes/PGLiteralNode.m; sourceTree = "<group>"; };
+		D375DA64173C639B00A5E050 /* PGMultipleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMultipleNode.h; path = src/nodes/PGMultipleNode.h; sourceTree = "<group>"; };
+		D375DA65173C639B00A5E050 /* PGMultipleNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMultipleNode.m; path = src/nodes/PGMultipleNode.m; sourceTree = "<group>"; };
+		D375DA66173C639B00A5E050 /* PGOptionalNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGOptionalNode.h; path = src/nodes/PGOptionalNode.h; sourceTree = "<group>"; };
+		D375DA67173C639B00A5E050 /* PGOptionalNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGOptionalNode.m; path = src/nodes/PGOptionalNode.m; sourceTree = "<group>"; };
+		D375DA68173C639B00A5E050 /* PGPatternNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPatternNode.h; path = src/nodes/PGPatternNode.h; sourceTree = "<group>"; };
+		D375DA69173C639B00A5E050 /* PGPatternNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPatternNode.m; path = src/nodes/PGPatternNode.m; sourceTree = "<group>"; };
+		D375DA6A173C639B00A5E050 /* PGReferenceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGReferenceNode.h; path = src/nodes/PGReferenceNode.h; sourceTree = "<group>"; };
+		D375DA6B173C639B00A5E050 /* PGReferenceNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGReferenceNode.m; path = src/nodes/PGReferenceNode.m; sourceTree = "<group>"; };
+		D375DA6C173C639B00A5E050 /* PGRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGRootNode.h; path = src/nodes/PGRootNode.h; sourceTree = "<group>"; };
+		D375DA6D173C639B00A5E050 /* PGRootNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGRootNode.m; path = src/nodes/PGRootNode.m; sourceTree = "<group>"; };
 		D375DAC2173C645C00A5E050 /* PKAST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKAST.m; path = src/PKAST.m; sourceTree = "<group>"; };
 		D375DACA173C649900A5E050 /* PEGKitParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PEGKitParser.h; path = src/PEGKitParser.h; sourceTree = "<group>"; };
 		D375DACB173C64A600A5E050 /* PEGKitParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PEGKitParser.m; path = src/PEGKitParser.m; sourceTree = "<group>"; };
@@ -955,36 +955,37 @@
 		D325FFBC161E4E3200D4EBCC /* ast */ = {
 			isa = PBXGroup;
 			children = (
-				D375DA56173C639B00A5E050 /* PKBaseNode.h */,
-				D375DA57173C639B00A5E050 /* PKBaseNode.m */,
-				D375DA6C173C639B00A5E050 /* PKRootNode.h */,
-				D375DA6D173C639B00A5E050 /* PKRootNode.m */,
-				D375DA5E173C639B00A5E050 /* PKDefinitionNode.h */,
-				D375DA5F173C639B00A5E050 /* PKDefinitionNode.m */,
-				D375DA6A173C639B00A5E050 /* PKReferenceNode.h */,
-				D375DA6B173C639B00A5E050 /* PKReferenceNode.m */,
-				D375DA52173C639B00A5E050 /* PKActionNode.h */,
-				D375DA53173C639B00A5E050 /* PKActionNode.m */,
-				D375DA5C173C639B00A5E050 /* PKConstantNode.h */,
-				D375DA5D173C639B00A5E050 /* PKConstantNode.m */,
-				D375DA62173C639B00A5E050 /* PKLiteralNode.h */,
-				D375DA63173C639B00A5E050 /* PKLiteralNode.m */,
-				D375DA60173C639B00A5E050 /* PKDelimitedNode.h */,
-				D375DA61173C639B00A5E050 /* PKDelimitedNode.m */,
-				D375DA68173C639B00A5E050 /* PKPatternNode.h */,
-				D375DA69173C639B00A5E050 /* PKPatternNode.m */,
-				D375DA5A173C639B00A5E050 /* PKCompositeNode.h */,
-				D375DA5B173C639B00A5E050 /* PKCompositeNode.m */,
-				D375DA58173C639B00A5E050 /* PKCollectionNode.h */,
-				D375DA59173C639B00A5E050 /* PKCollectionNode.m */,
-				D375DA54173C639B00A5E050 /* PKAlternationNode.h */,
-				D375DA55173C639B00A5E050 /* PKAlternationNode.m */,
-				D375DA64173C639B00A5E050 /* PKMultipleNode.h */,
-				D375DA65173C639B00A5E050 /* PKMultipleNode.m */,
-				D375DA66173C639B00A5E050 /* PKOptionalNode.h */,
-				D375DA67173C639B00A5E050 /* PKOptionalNode.m */,
+				D375DA56173C639B00A5E050 /* PGBaseNode.h */,
+				D375DA57173C639B00A5E050 /* PGBaseNode.m */,
+				D375DA6C173C639B00A5E050 /* PGRootNode.h */,
+				D375DA6D173C639B00A5E050 /* PGRootNode.m */,
+				D375DA5E173C639B00A5E050 /* PGDefinitionNode.h */,
+				D375DA5F173C639B00A5E050 /* PGDefinitionNode.m */,
+				D375DA6A173C639B00A5E050 /* PGReferenceNode.h */,
+				D375DA6B173C639B00A5E050 /* PGReferenceNode.m */,
+				D375DA52173C639B00A5E050 /* PGActionNode.h */,
+				D375DA53173C639B00A5E050 /* PGActionNode.m */,
+				D375DA5C173C639B00A5E050 /* PGConstantNode.h */,
+				D375DA5D173C639B00A5E050 /* PGConstantNode.m */,
+				D375DA62173C639B00A5E050 /* PGLiteralNode.h */,
+				D375DA63173C639B00A5E050 /* PGLiteralNode.m */,
+				D375DA60173C639B00A5E050 /* PGDelimitedNode.h */,
+				D375DA61173C639B00A5E050 /* PGDelimitedNode.m */,
+				D375DA68173C639B00A5E050 /* PGPatternNode.h */,
+				D375DA69173C639B00A5E050 /* PGPatternNode.m */,
+				D375DA5A173C639B00A5E050 /* PGCompositeNode.h */,
+				D375DA5B173C639B00A5E050 /* PGCompositeNode.m */,
+				D375DA58173C639B00A5E050 /* PGCollectionNode.h */,
+				D375DA59173C639B00A5E050 /* PGCollectionNode.m */,
+				D375DA54173C639B00A5E050 /* PGAlternationNode.h */,
+				D375DA55173C639B00A5E050 /* PGAlternationNode.m */,
+				D375DA64173C639B00A5E050 /* PGMultipleNode.h */,
+				D375DA65173C639B00A5E050 /* PGMultipleNode.m */,
+				D375DA66173C639B00A5E050 /* PGOptionalNode.h */,
+				D375DA67173C639B00A5E050 /* PGOptionalNode.m */,
 			);
 			name = ast;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		D3382F95171C808700CCE513 /* peg */ = {
@@ -1009,7 +1010,9 @@
 				D3383044171C923700CCE513 /* PGDocument.m */,
 				D3383046171C923700CCE513 /* PGDocument.xib */,
 				D3383049171C923700CCE513 /* MainMenu.xib */,
-				D34BAC0F0FF87ED200D7773A /* grammar */,
+				D3A1492A16F8C79600770DEE /* visitor */,
+				D325FFBC161E4E3200D4EBCC /* ast */,
+				D34BAC0F0FF87ED200D7773A /* factory */,
 				D3383038171C923700CCE513 /* Supporting Files */,
 			);
 			path = ParserGenApp;
@@ -1042,20 +1045,16 @@
 			name = tokenizer;
 			sourceTree = "<group>";
 		};
-		D34BAC0F0FF87ED200D7773A /* grammar */ = {
+		D34BAC0F0FF87ED200D7773A /* factory */ = {
 			isa = PBXGroup;
 			children = (
 				D3C222290FFE8DAC004514FE /* PGParserFactory.h */,
 				D34BAFD80FF9E95500D7773A /* PGParserFactory.m */,
-				D30226F8170202DD00594F16 /* PGParserGenVisitor.h */,
-				D30226F9170202DD00594F16 /* PGParserGenVisitor.m */,
-				D30B8F4F170CFF16001796F4 /* pegkit.grammar */,
 				D375DACA173C649900A5E050 /* PEGKitParser.h */,
 				D375DACB173C64A600A5E050 /* PEGKitParser.m */,
-				D3A1492A16F8C79600770DEE /* visitor */,
-				D325FFBC161E4E3200D4EBCC /* ast */,
+				D30B8F4F170CFF16001796F4 /* pegkit.grammar */,
 			);
-			name = grammar;
+			name = factory;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -1137,8 +1136,11 @@
 				D367F66A16F5570500F5E9EB /* PGBaseVisitor.m */,
 				D326129816F64ED50021845F /* PGDefinitionPhaseVisitor.h */,
 				D326129916F64ED50021845F /* PGDefinitionPhaseVisitor.m */,
+				D30226F8170202DD00594F16 /* PGParserGenVisitor.h */,
+				D30226F9170202DD00594F16 /* PGParserGenVisitor.m */,
 			);
 			name = visitor;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		D3A1492B16F8C7D600770DEE /* Foundation categories */ = {
@@ -1785,31 +1787,31 @@
 			files = (
 				D338303E171C923700CCE513 /* main.m in Sources */,
 				D3383045171C923700CCE513 /* PGDocument.m in Sources */,
-				D3CC54A418CF92CA006715D6 /* PKRootNode.m in Sources */,
+				D3CC54A418CF92CA006715D6 /* PGRootNode.m in Sources */,
 				D3383054171CA2ED00CCE513 /* PGParserGenVisitor.m in Sources */,
 				D33830B2171CA46200CCE513 /* MGTemplateEngine.m in Sources */,
 				D3CC550618CF9D5E006715D6 /* PGDefinitionPhaseVisitor.m in Sources */,
 				D33830B3171CA46200CCE513 /* MGTemplateStandardMarkers.m in Sources */,
 				D33830B4171CA46200CCE513 /* MGTemplateStandardFilters.m in Sources */,
-				D3CC54A518CF92CA006715D6 /* PKDefinitionNode.m in Sources */,
-				D3CC54AE18CF92CA006715D6 /* PKAlternationNode.m in Sources */,
-				D3CC54A918CF92CA006715D6 /* PKLiteralNode.m in Sources */,
-				D3CC54A618CF92CA006715D6 /* PKReferenceNode.m in Sources */,
-				D3CC54AC18CF92CA006715D6 /* PKCompositeNode.m in Sources */,
-				D3CC54A718CF92CA006715D6 /* PKActionNode.m in Sources */,
-				D3CC54AF18CF92CA006715D6 /* PKMultipleNode.m in Sources */,
-				D3CC54A318CF92CA006715D6 /* PKBaseNode.m in Sources */,
+				D3CC54A518CF92CA006715D6 /* PGDefinitionNode.m in Sources */,
+				D3CC54AE18CF92CA006715D6 /* PGAlternationNode.m in Sources */,
+				D3CC54A918CF92CA006715D6 /* PGLiteralNode.m in Sources */,
+				D3CC54A618CF92CA006715D6 /* PGReferenceNode.m in Sources */,
+				D3CC54AC18CF92CA006715D6 /* PGCompositeNode.m in Sources */,
+				D3CC54A718CF92CA006715D6 /* PGActionNode.m in Sources */,
+				D3CC54AF18CF92CA006715D6 /* PGMultipleNode.m in Sources */,
+				D3CC54A318CF92CA006715D6 /* PGBaseNode.m in Sources */,
 				D3CC549018CF92B8006715D6 /* PGBaseVisitor.m in Sources */,
 				D33830B5171CA46200CCE513 /* ICUTemplateMatcher.m in Sources */,
 				D33830B6171CA46200CCE513 /* NSArray_DeepMutableCopy.m in Sources */,
 				D33830B7171CA46200CCE513 /* NSDictionary_DeepMutableCopy.m in Sources */,
-				D3CC54B018CF92CA006715D6 /* PKOptionalNode.m in Sources */,
+				D3CC54B018CF92CA006715D6 /* PGOptionalNode.m in Sources */,
 				D3CC54FE18CF9990006715D6 /* PGParserFactory.m in Sources */,
-				D3CC54AD18CF92CA006715D6 /* PKCollectionNode.m in Sources */,
-				D3CC54AA18CF92CA006715D6 /* PKDelimitedNode.m in Sources */,
+				D3CC54AD18CF92CA006715D6 /* PGCollectionNode.m in Sources */,
+				D3CC54AA18CF92CA006715D6 /* PGDelimitedNode.m in Sources */,
 				D3CC54EE18CF9326006715D6 /* PEGKitParser.m in Sources */,
-				D3CC54AB18CF92CA006715D6 /* PKPatternNode.m in Sources */,
-				D3CC54A818CF92CA006715D6 /* PKConstantNode.m in Sources */,
+				D3CC54AB18CF92CA006715D6 /* PGPatternNode.m in Sources */,
+				D3CC54A818CF92CA006715D6 /* PGConstantNode.m in Sources */,
 				D33830BB171CA50F00CCE513 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1818,7 +1820,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3CC549A18CF92CA006715D6 /* PKConstantNode.m in Sources */,
+				D3CC549A18CF92CA006715D6 /* PGConstantNode.m in Sources */,
 				D3F8121A161AA5BC00DEA1CB /* TDTestScaffold.m in Sources */,
 				D3B22A521702B04300446945 /* ElementParser.m in Sources */,
 				D3B22A561703D03900446945 /* ExpressionParser.m in Sources */,
@@ -1841,13 +1843,13 @@
 				D3B63A6B170A065700BA9DBF /* LabelEBNFParser.m in Sources */,
 				D3B63A70170A3F7900BA9DBF /* OptionalParserTest.m in Sources */,
 				D3B63A75170A3FF000BA9DBF /* OptionalParser.m in Sources */,
-				D3CC549818CF92CA006715D6 /* PKReferenceNode.m in Sources */,
+				D3CC549818CF92CA006715D6 /* PGReferenceNode.m in Sources */,
 				D3B63A7C170A55DE00BA9DBF /* MultipleParser.m in Sources */,
 				D3B63A7F170A560900BA9DBF /* MultipleParserTest.m in Sources */,
 				D3B63A82170A671F00BA9DBF /* AltParserTest.m in Sources */,
 				D3B63A87170A676A00BA9DBF /* AltParser.m in Sources */,
 				D3B63A8A170A6B5C00BA9DBF /* TDNSPredicateParserTest.m in Sources */,
-				D3CC549B18CF92CA006715D6 /* PKLiteralNode.m in Sources */,
+				D3CC549B18CF92CA006715D6 /* PGLiteralNode.m in Sources */,
 				D3B63A8D170A6BBC00BA9DBF /* TDNSPredicateParser.m in Sources */,
 				D30B8F3D170CA594001796F4 /* DreadedParser.m in Sources */,
 				D30B8F40170CA59A001796F4 /* DreadedParserTest.m in Sources */,
@@ -1859,10 +1861,10 @@
 				D30B8F5E170D001E001796F4 /* DelimitedParser.m in Sources */,
 				D30B8F65170D0EB0001796F4 /* PatternParserTest.m in Sources */,
 				D30B8F6A170D0EEB001796F4 /* PatternParser.m in Sources */,
-				D3CC549918CF92CA006715D6 /* PKActionNode.m in Sources */,
+				D3CC549918CF92CA006715D6 /* PGActionNode.m in Sources */,
 				D38BC893171494CE00BF530D /* GreedParserTest.m in Sources */,
-				D3CC549D18CF92CA006715D6 /* PKPatternNode.m in Sources */,
-				D3CC54A118CF92CA006715D6 /* PKMultipleNode.m in Sources */,
+				D3CC549D18CF92CA006715D6 /* PGPatternNode.m in Sources */,
+				D3CC54A118CF92CA006715D6 /* PGMultipleNode.m in Sources */,
 				D38BC898171494FE00BF530D /* GreedParser.m in Sources */,
 				D38BC8A11714A75B00BF530D /* UnfinishedSeqParser.m in Sources */,
 				D38BC8A61714A78800BF530D /* UnfinishedSeqParserTest.m in Sources */,
@@ -1883,13 +1885,13 @@
 				D33830CE171DBEE200CCE513 /* NamedActionParserTest.m in Sources */,
 				D36E68B3171F378B007B4353 /* JavaScriptParserTest.m in Sources */,
 				D36E68B6171F37D7007B4353 /* JavaScriptParser.m in Sources */,
-				D3CC549618CF92CA006715D6 /* PKRootNode.m in Sources */,
+				D3CC549618CF92CA006715D6 /* PGRootNode.m in Sources */,
 				D3CC54EC18CF9326006715D6 /* PEGKitParser.m in Sources */,
 				D36E68B9172074EF007B4353 /* CSSParserTest.m in Sources */,
-				D3CC54A018CF92CA006715D6 /* PKAlternationNode.m in Sources */,
+				D3CC54A018CF92CA006715D6 /* PGAlternationNode.m in Sources */,
 				D36E68BC17207542007B4353 /* CSSParser.m in Sources */,
-				D3CC549518CF92CA006715D6 /* PKBaseNode.m in Sources */,
-				D3CC549718CF92CA006715D6 /* PKDefinitionNode.m in Sources */,
+				D3CC549518CF92CA006715D6 /* PGBaseNode.m in Sources */,
+				D3CC549718CF92CA006715D6 /* PGDefinitionNode.m in Sources */,
 				D36E68BF1720C840007B4353 /* HTMLParserTest.m in Sources */,
 				D36E68C21720C84F007B4353 /* HTMLParser.m in Sources */,
 				D30DA1771724AD0100A1A3EC /* JSONParser.m in Sources */,
@@ -1898,11 +1900,11 @@
 				D30DA18D1725BB5700A1A3EC /* RecoverySingleTokenInsertionTest.m in Sources */,
 				D30DA1931726028500A1A3EC /* RecoveryResyncSetTest.m in Sources */,
 				D3344F4917405B4B00598362 /* JSRecoveryTest.m in Sources */,
-				D3CC549F18CF92CA006715D6 /* PKCollectionNode.m in Sources */,
+				D3CC549F18CF92CA006715D6 /* PGCollectionNode.m in Sources */,
 				D34F53A717430232008700F3 /* CrockfordParserTest.m in Sources */,
-				D3CC549E18CF92CA006715D6 /* PKCompositeNode.m in Sources */,
-				D3CC549C18CF92CA006715D6 /* PKDelimitedNode.m in Sources */,
-				D3CC54A218CF92CA006715D6 /* PKOptionalNode.m in Sources */,
+				D3CC549E18CF92CA006715D6 /* PGCompositeNode.m in Sources */,
+				D3CC549C18CF92CA006715D6 /* PGDelimitedNode.m in Sources */,
+				D3CC54A218CF92CA006715D6 /* PGOptionalNode.m in Sources */,
 				D34F53AC17430249008700F3 /* CrockfordParser.m in Sources */,
 				D3B5EA7717470F4F00733A26 /* GreedyFailureParser.m in Sources */,
 				D3B5EA7C17470F5600733A26 /* GreedyFailureParserTest.m in Sources */,
