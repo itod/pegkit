@@ -165,6 +165,7 @@
 		D3B5C84218D0049C00CCE33A /* example.html in Resources */ = {isa = PBXBuildFile; fileRef = D3B5C84118D0049C00CCE33A /* example.html */; };
 		D3B5C84918D0ACD400CCE33A /* PGTokenKindDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D3382FA1171C811B00CCE513 /* PGTokenKindDescriptor.m */; };
 		D3B5C84A18D0ACD500CCE33A /* PGTokenKindDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D3382FA1171C811B00CCE513 /* PGTokenKindDescriptor.m */; };
+		D3B5C84B18D0B16E00CCE33A /* PGParserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAFD80FF9E95500D7773A /* PGParserFactory.m */; };
 		D3B5EA7717470F4F00733A26 /* GreedyFailureParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B5EA7617470F4F00733A26 /* GreedyFailureParser.m */; };
 		D3B5EA7C17470F5600733A26 /* GreedyFailureParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B5EA7B17470F5600733A26 /* GreedyFailureParserTest.m */; };
 		D3B5EA7E1747101700733A26 /* greedy_failure.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3B5EA7D1747101700733A26 /* greedy_failure.grammar */; };
@@ -248,7 +249,6 @@
 		D3CC54EE18CF9326006715D6 /* PEGKitParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DACB173C64A600A5E050 /* PEGKitParser.m */; };
 		D3CC54FB18CF9934006715D6 /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
 		D3CC54FC18CF993B006715D6 /* PEGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
-		D3CC54FD18CF9990006715D6 /* PGParserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAFD80FF9E95500D7773A /* PGParserFactory.m */; };
 		D3CC54FE18CF9990006715D6 /* PGParserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAFD80FF9E95500D7773A /* PGParserFactory.m */; };
 		D3CC550518CF9D5D006715D6 /* PGDefinitionPhaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D326129916F64ED50021845F /* PGDefinitionPhaseVisitor.m */; };
 		D3CC550618CF9D5E006715D6 /* PGDefinitionPhaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D326129916F64ED50021845F /* PGDefinitionPhaseVisitor.m */; };
@@ -448,19 +448,19 @@
 		D326129816F64ED50021845F /* PGDefinitionPhaseVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGDefinitionPhaseVisitor.h; path = src/PGDefinitionPhaseVisitor.h; sourceTree = "<group>"; };
 		D326129916F64ED50021845F /* PGDefinitionPhaseVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGDefinitionPhaseVisitor.m; path = src/PGDefinitionPhaseVisitor.m; sourceTree = "<group>"; };
 		D3344F4817405B4B00598362 /* JSRecoveryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSRecoveryTest.m; path = test/JSRecoveryTest.m; sourceTree = "<group>"; };
-		D33724D816FA62D400D30459 /* PKDelimitDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKDelimitDescriptor.h; path = src/PKDelimitDescriptor.h; sourceTree = "<group>"; };
+		D33724D816FA62D400D30459 /* PKDelimitDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKDelimitDescriptor.h; path = src/PKDelimitDescriptor.h; sourceTree = SOURCE_ROOT; };
 		D33724D916FA62D400D30459 /* PKDelimitDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKDelimitDescriptor.m; path = src/PKDelimitDescriptor.m; sourceTree = "<group>"; };
-		D33724E816FA635700D30459 /* PKDelimitDescriptorCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKDelimitDescriptorCollection.h; path = src/PKDelimitDescriptorCollection.h; sourceTree = "<group>"; };
+		D33724E816FA635700D30459 /* PKDelimitDescriptorCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKDelimitDescriptorCollection.h; path = src/PKDelimitDescriptorCollection.h; sourceTree = SOURCE_ROOT; };
 		D33724E916FA635700D30459 /* PKDelimitDescriptorCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKDelimitDescriptorCollection.m; path = src/PKDelimitDescriptorCollection.m; sourceTree = "<group>"; };
 		D337F07D15D5AE7B00C83AED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = test/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		D337F07F15D5AE9000C83AED /* Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Tests-Info.plist"; path = "test/Tests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D337F08015D5AE9000C83AED /* Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Tests-Prefix.pch"; path = "test/Tests-Prefix.pch"; sourceTree = SOURCE_ROOT; };
-		D3382F98171C80E100CCE513 /* PKParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKParser.h; path = include/ParseKit/PKParser.h; sourceTree = "<group>"; };
+		D3382F98171C80E100CCE513 /* PKParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKParser.h; path = include/PEGKit/PKParser.h; sourceTree = SOURCE_ROOT; };
 		D3382F9A171C80EB00CCE513 /* PKParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKParser.m; path = src/PKParser.m; sourceTree = "<group>"; };
 		D3382FA0171C811B00CCE513 /* PGTokenKindDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGTokenKindDescriptor.h; path = src/PGTokenKindDescriptor.h; sourceTree = "<group>"; };
 		D3382FA1171C811B00CCE513 /* PGTokenKindDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGTokenKindDescriptor.m; path = src/PGTokenKindDescriptor.m; sourceTree = "<group>"; };
 		D3382FD6171C8C9100CCE513 /* PKRecognitionException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKRecognitionException.m; path = src/PKRecognitionException.m; sourceTree = "<group>"; };
-		D3382FD9171C8CB200CCE513 /* PKRecognitionException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKRecognitionException.h; path = include/ParseKit/PKRecognitionException.h; sourceTree = "<group>"; };
+		D3382FD9171C8CB200CCE513 /* PKRecognitionException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKRecognitionException.h; path = include/PEGKit/PKRecognitionException.h; sourceTree = SOURCE_ROOT; };
 		D338302F171C923700CCE513 /* ParserGenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParserGenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3383039171C923700CCE513 /* ParserGenApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ParserGenApp-Info.plist"; sourceTree = "<group>"; };
 		D338303B171C923700CCE513 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -478,7 +478,7 @@
 		D33830CA171DBEB100CCE513 /* NamedActionParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NamedActionParser.m; path = test/NamedActionParser.m; sourceTree = "<group>"; };
 		D33830CD171DBEE200CCE513 /* NamedActionParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NamedActionParserTest.m; path = test/NamedActionParserTest.m; sourceTree = "<group>"; };
 		D33DC1971165634F004CE58C /* PKTwitterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKTwitterState.m; path = src/PKTwitterState.m; sourceTree = "<group>"; };
-		D33DC19F11656952004CE58C /* PKTwitterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTwitterState.h; path = include/ParseKit/PKTwitterState.h; sourceTree = "<group>"; };
+		D33DC19F11656952004CE58C /* PKTwitterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTwitterState.h; path = include/PEGKit/PKTwitterState.h; sourceTree = SOURCE_ROOT; };
 		D34BAD9B0FF9C95800D7773A /* PKReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKReader.m; path = src/PKReader.m; sourceTree = "<group>"; };
 		D34BADA00FF9C9B000D7773A /* PKAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKAssembly.m; path = src/PKAssembly.m; sourceTree = "<group>"; };
 		D34BAE950FF9D20900D7773A /* PKToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKToken.m; path = src/PKToken.m; sourceTree = "<group>"; };
@@ -500,7 +500,7 @@
 		D34BAFD40FF9E95500D7773A /* NSArray+PEGKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+PEGKitAdditions.m"; path = "src/NSArray+PEGKitAdditions.m"; sourceTree = "<group>"; };
 		D34BAFD50FF9E95500D7773A /* NSString+PEGKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+PEGKitAdditions.h"; path = "src/NSString+PEGKitAdditions.h"; sourceTree = "<group>"; };
 		D34BAFD60FF9E95500D7773A /* NSString+PEGKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+PEGKitAdditions.m"; path = "src/NSString+PEGKitAdditions.m"; sourceTree = "<group>"; };
-		D34BAFD80FF9E95500D7773A /* PGParserFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = PGParserFactory.m; path = src/PGParserFactory.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D34BAFD80FF9E95500D7773A /* PGParserFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = PGParserFactory.m; path = src/PGParserFactory.m; sourceTree = "<group>"; };
 		D34F538517421715008700F3 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = lib/OCMock/OCMock.xcodeproj; sourceTree = "<group>"; };
 		D34F539C1742C57E008700F3 /* JavaScriptWhitespaceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaScriptWhitespaceParser.h; path = test/JavaScriptWhitespaceParser.h; sourceTree = "<group>"; };
 		D34F53A617430232008700F3 /* CrockfordParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CrockfordParserTest.m; path = test/CrockfordParserTest.m; sourceTree = "<group>"; };
@@ -509,8 +509,8 @@
 		D34F53AD174302A4008700F3 /* crockford.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = crockford.grammar; path = res/crockford.grammar; sourceTree = "<group>"; };
 		D35F4A8511643630003811F3 /* PKEmailState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEmailState.m; path = src/PKEmailState.m; sourceTree = "<group>"; };
 		D35F4A8611643630003811F3 /* PKURLState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKURLState.m; path = src/PKURLState.m; sourceTree = "<group>"; };
-		D35F4A8B11643662003811F3 /* PKEmailState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEmailState.h; path = include/ParseKit/PKEmailState.h; sourceTree = "<group>"; };
-		D35F4A8C11643662003811F3 /* PKURLState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKURLState.h; path = include/ParseKit/PKURLState.h; sourceTree = "<group>"; };
+		D35F4A8B11643662003811F3 /* PKEmailState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEmailState.h; path = include/PEGKit/PKEmailState.h; sourceTree = SOURCE_ROOT; };
+		D35F4A8C11643662003811F3 /* PKURLState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKURLState.h; path = include/PEGKit/PKURLState.h; sourceTree = SOURCE_ROOT; };
 		D3633A2D170A6E9700C0966D /* nspredicate2.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nspredicate2.grammar; path = res/nspredicate2.grammar; sourceTree = "<group>"; };
 		D367F66916F5570500F5E9EB /* PGBaseVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGBaseVisitor.h; path = src/PGBaseVisitor.h; sourceTree = "<group>"; };
 		D367F66A16F5570500F5E9EB /* PGBaseVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGBaseVisitor.m; path = src/PGBaseVisitor.m; sourceTree = "<group>"; };
@@ -559,7 +559,7 @@
 		D37D8DC61571A4F700CDB822 /* PEGKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PEGKitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37D8DC81571A4F700CDB822 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		D37F23201453841100A98014 /* PKHashtagState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKHashtagState.m; path = src/PKHashtagState.m; sourceTree = "<group>"; };
-		D37F232A1453842800A98014 /* PKHashtagState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKHashtagState.h; path = include/ParseKit/PKHashtagState.h; sourceTree = "<group>"; };
+		D37F232A1453842800A98014 /* PKHashtagState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKHashtagState.h; path = include/PEGKit/PKHashtagState.h; sourceTree = SOURCE_ROOT; };
 		D380AFBC0F0C54B60009EC13 /* html.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = html.grammar; path = res/html.grammar; sourceTree = "<group>"; };
 		D380B5080F0D71A90009EC13 /* css.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = css.grammar; path = res/css.grammar; sourceTree = "<group>"; };
 		D383498A0F0C0CF30055E4E0 /* json_with_comments.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = json_with_comments.grammar; path = res/json_with_comments.grammar; sourceTree = "<group>"; };
@@ -580,7 +580,7 @@
 		D38BC8B01716006C00BF530D /* SemanticPredicateParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticPredicateParser.m; path = test/SemanticPredicateParser.m; sourceTree = "<group>"; };
 		D38BC8B21716008D00BF530D /* semantic_predicate.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = semantic_predicate.grammar; path = res/semantic_predicate.grammar; sourceTree = "<group>"; };
 		D38BC8B5171600A900BF530D /* SemanticPredicateParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticPredicateParserTest.m; path = test/SemanticPredicateParserTest.m; sourceTree = "<group>"; };
-		D3A1492816F8C6BD00770DEE /* PKAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKAST.h; path = include/ParseKit/PKAST.h; sourceTree = "<group>"; };
+		D3A1492816F8C6BD00770DEE /* PKAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKAST.h; path = include/PEGKit/PKAST.h; sourceTree = SOURCE_ROOT; };
 		D3B22A3517023F1200446945 /* PGMethodTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGMethodTemplate.txt; path = res/PGMethodTemplate.txt; sourceTree = "<group>"; };
 		D3B22A37170241F500446945 /* PGMethodCallTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGMethodCallTemplate.txt; path = res/PGMethodCallTemplate.txt; sourceTree = "<group>"; };
 		D3B22A3917025EA300446945 /* elements.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = elements.grammar; path = res/elements.grammar; sourceTree = "<group>"; };
@@ -665,29 +665,29 @@
 		D3BD39751729F1DD00FC6549 /* PGPostCallbackSyntaxLeafTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGPostCallbackSyntaxLeafTemplate.txt; path = res/PGPostCallbackSyntaxLeafTemplate.txt; sourceTree = "<group>"; };
 		D3BD39761729F1DD00FC6549 /* PGPreCallbackSyntaxLeafTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGPreCallbackSyntaxLeafTemplate.txt; path = res/PGPreCallbackSyntaxLeafTemplate.txt; sourceTree = "<group>"; };
 		D3BD3A75172DC75600FC6549 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D3C221910FFE8B8C004514FE /* PKTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTypes.h; path = include/ParseKit/PKTypes.h; sourceTree = "<group>"; };
-		D3C221960FFE8B95004514FE /* PKReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKReader.h; path = include/ParseKit/PKReader.h; sourceTree = "<group>"; };
-		D3C221990FFE8B9D004514FE /* PKAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKAssembly.h; path = include/ParseKit/PKAssembly.h; sourceTree = "<group>"; };
-		D3C221C30FFE8C07004514FE /* PKToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKToken.h; path = include/ParseKit/PKToken.h; sourceTree = "<group>"; };
-		D3C221C60FFE8C0D004514FE /* PKTokenArraySource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTokenArraySource.h; path = include/ParseKit/PKTokenArraySource.h; sourceTree = "<group>"; };
-		D3C221C90FFE8C15004514FE /* PKTokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTokenizer.h; path = include/ParseKit/PKTokenizer.h; sourceTree = "<group>"; };
-		D3C221CC0FFE8C1B004514FE /* PKTokenizerState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTokenizerState.h; path = include/ParseKit/PKTokenizerState.h; sourceTree = "<group>"; };
-		D3C221CF0FFE8C24004514FE /* PKNumberState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKNumberState.h; path = include/ParseKit/PKNumberState.h; sourceTree = "<group>"; };
-		D3C221D50FFE8C35004514FE /* PKSymbolState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolState.h; path = include/ParseKit/PKSymbolState.h; sourceTree = "<group>"; };
-		D3C221D80FFE8C3D004514FE /* PKWordState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKWordState.h; path = include/ParseKit/PKWordState.h; sourceTree = "<group>"; };
-		D3C221DB0FFE8C43004514FE /* PKWhitespaceState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKWhitespaceState.h; path = include/ParseKit/PKWhitespaceState.h; sourceTree = "<group>"; };
-		D3C221DE0FFE8C49004514FE /* PKDelimitState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKDelimitState.h; path = include/ParseKit/PKDelimitState.h; sourceTree = "<group>"; };
-		D3C221E10FFE8C4E004514FE /* PKCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKCommentState.h; path = include/ParseKit/PKCommentState.h; sourceTree = "<group>"; };
-		D3C221E40FFE8C56004514FE /* PKSingleLineCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSingleLineCommentState.h; path = include/ParseKit/PKSingleLineCommentState.h; sourceTree = "<group>"; };
-		D3C221E70FFE8C60004514FE /* PKMultiLineCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKMultiLineCommentState.h; path = include/ParseKit/PKMultiLineCommentState.h; sourceTree = "<group>"; };
-		D3C221EA0FFE8C69004514FE /* PKSymbolNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolNode.h; path = include/ParseKit/PKSymbolNode.h; sourceTree = "<group>"; };
-		D3C221ED0FFE8C6F004514FE /* PKSymbolRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolRootNode.h; path = include/ParseKit/PKSymbolRootNode.h; sourceTree = "<group>"; };
-		D3C222290FFE8DAC004514FE /* PGParserFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGParserFactory.h; path = include/ParseKit/PGParserFactory.h; sourceTree = "<group>"; };
+		D3C221910FFE8B8C004514FE /* PKTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTypes.h; path = include/PEGKit/PKTypes.h; sourceTree = SOURCE_ROOT; };
+		D3C221960FFE8B95004514FE /* PKReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKReader.h; path = include/PEGKit/PKReader.h; sourceTree = SOURCE_ROOT; };
+		D3C221990FFE8B9D004514FE /* PKAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKAssembly.h; path = include/PEGKit/PKAssembly.h; sourceTree = SOURCE_ROOT; };
+		D3C221C30FFE8C07004514FE /* PKToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKToken.h; path = include/PEGKit/PKToken.h; sourceTree = SOURCE_ROOT; };
+		D3C221C60FFE8C0D004514FE /* PKTokenArraySource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTokenArraySource.h; path = include/PEGKit/PKTokenArraySource.h; sourceTree = SOURCE_ROOT; };
+		D3C221C90FFE8C15004514FE /* PKTokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTokenizer.h; path = include/PEGKit/PKTokenizer.h; sourceTree = SOURCE_ROOT; };
+		D3C221CC0FFE8C1B004514FE /* PKTokenizerState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTokenizerState.h; path = include/PEGKit/PKTokenizerState.h; sourceTree = SOURCE_ROOT; };
+		D3C221CF0FFE8C24004514FE /* PKNumberState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKNumberState.h; path = include/PEGKit/PKNumberState.h; sourceTree = SOURCE_ROOT; };
+		D3C221D50FFE8C35004514FE /* PKSymbolState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolState.h; path = include/PEGKit/PKSymbolState.h; sourceTree = SOURCE_ROOT; };
+		D3C221D80FFE8C3D004514FE /* PKWordState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKWordState.h; path = include/PEGKit/PKWordState.h; sourceTree = SOURCE_ROOT; };
+		D3C221DB0FFE8C43004514FE /* PKWhitespaceState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKWhitespaceState.h; path = include/PEGKit/PKWhitespaceState.h; sourceTree = SOURCE_ROOT; };
+		D3C221DE0FFE8C49004514FE /* PKDelimitState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKDelimitState.h; path = include/PEGKit/PKDelimitState.h; sourceTree = SOURCE_ROOT; };
+		D3C221E10FFE8C4E004514FE /* PKCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKCommentState.h; path = include/PEGKit/PKCommentState.h; sourceTree = SOURCE_ROOT; };
+		D3C221E40FFE8C56004514FE /* PKSingleLineCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSingleLineCommentState.h; path = include/PEGKit/PKSingleLineCommentState.h; sourceTree = SOURCE_ROOT; };
+		D3C221E70FFE8C60004514FE /* PKMultiLineCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKMultiLineCommentState.h; path = include/PEGKit/PKMultiLineCommentState.h; sourceTree = SOURCE_ROOT; };
+		D3C221EA0FFE8C69004514FE /* PKSymbolNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolNode.h; path = include/PEGKit/PKSymbolNode.h; sourceTree = SOURCE_ROOT; };
+		D3C221ED0FFE8C6F004514FE /* PKSymbolRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolRootNode.h; path = include/PEGKit/PKSymbolRootNode.h; sourceTree = SOURCE_ROOT; };
+		D3C222290FFE8DAC004514FE /* PGParserFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGParserFactory.h; path = include/PEGKit/PGParserFactory.h; sourceTree = "<group>"; };
 		D3C4FAEA173C40E8006B7654 /* PGNodeVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGNodeVisitor.h; path = src/PGNodeVisitor.h; sourceTree = "<group>"; };
-		D3F0E2470FFE8EB900C9DF74 /* PKQuoteState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKQuoteState.h; path = include/ParseKit/PKQuoteState.h; sourceTree = "<group>"; };
+		D3F0E2470FFE8EB900C9DF74 /* PKQuoteState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKQuoteState.h; path = include/PEGKit/PKQuoteState.h; sourceTree = SOURCE_ROOT; };
 		D3F8A48D175817DF00056188 /* PEGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PEGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F8A4921758187300056188 /* PEGKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PEGKit-Info.plist"; path = "res/PEGKit-Info.plist"; sourceTree = "<group>"; };
-		D3F8A4A017581A3C00056188 /* PEGKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PEGKit.h; path = include/ParseKit/PEGKit.h; sourceTree = "<group>"; };
+		D3F8A4A017581A3C00056188 /* PEGKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PEGKit.h; path = include/PEGKit/PEGKit.h; sourceTree = SOURCE_ROOT; };
 		D3F8A4E217582AC600056188 /* PEGKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PEGKit_Prefix.pch; path = src/PEGKit_Prefix.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -862,7 +862,7 @@
 				D375DAC2173C645C00A5E050 /* PKAST.m */,
 			);
 			name = ast;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		D324B77E16F8C8F9005FE823 /* tokenize */ = {
 			isa = PBXGroup;
@@ -872,7 +872,7 @@
 				D3541F870DFB105900429B4F /* states */,
 			);
 			name = tokenize;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		D325FFBC161E4E3200D4EBCC /* ast */ = {
 			isa = PBXGroup;
@@ -950,7 +950,7 @@
 				D34BAE9B0FF9D20900D7773A /* PKTokenizerState.m */,
 			);
 			name = tokenizer;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		D34BAC0F0FF87ED200D7773A /* factory */ = {
 			isa = PBXGroup;
@@ -1011,7 +1011,7 @@
 				D3541F890DFB108300429B4F /* symbol */,
 			);
 			name = states;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		D3541F890DFB108300429B4F /* symbol */ = {
 			isa = PBXGroup;
@@ -1022,7 +1022,7 @@
 				D34BAF260FF9DF9900D7773A /* PKSymbolRootNode.m */,
 			);
 			name = symbol;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		D37D8DD11571A4F700CDB822 /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -1276,7 +1276,7 @@
 				D34BAD9B0FF9C95800D7773A /* PKReader.m */,
 			);
 			name = io;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -1651,6 +1651,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3B5C84B18D0B16E00CCE33A /* PGParserFactory.m in Sources */,
 				D3CC549A18CF92CA006715D6 /* PGConstantNode.m in Sources */,
 				D3F8121A161AA5BC00DEA1CB /* TDTestScaffold.m in Sources */,
 				D3B22A521702B04300446945 /* ElementParser.m in Sources */,
@@ -1658,7 +1659,6 @@
 				D3B22A561703D03900446945 /* ExpressionParser.m in Sources */,
 				D3B22A5D1703DA8000446945 /* ElementParserTest.m in Sources */,
 				D3B22A621703DE2000446945 /* ExpressionParserTest.m in Sources */,
-				D3CC54FD18CF9990006715D6 /* PGParserFactory.m in Sources */,
 				D3083AB91705F09B00DA6F95 /* ElementAssignParserTest.m in Sources */,
 				D3083ABC1705F16000DA6F95 /* ElementAssignParser.m in Sources */,
 				D3B63A3417079F5200BA9DBF /* ExpressionParserActionsTest.m in Sources */,
