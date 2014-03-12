@@ -439,11 +439,8 @@
 		D30B8F6B170D111B001796F4 /* PGPatternPrefixTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGPatternPrefixTemplate.txt; path = res/PGPatternPrefixTemplate.txt; sourceTree = "<group>"; };
 		D30DA1751724AD0100A1A3EC /* JSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONParser.h; path = test/JSONParser.h; sourceTree = "<group>"; };
 		D30DA1761724AD0100A1A3EC /* JSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONParser.m; path = test/JSONParser.m; sourceTree = "<group>"; };
-		D30DA1781724ADE700A1A3EC /* JSONParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONParserTest.h; path = test/JSONParserTest.h; sourceTree = "<group>"; };
 		D30DA1791724ADE700A1A3EC /* JSONParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONParserTest.m; path = test/JSONParserTest.m; sourceTree = "<group>"; };
-		D30DA1881725B6A800A1A3EC /* RecoverySingleTokenDeletionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecoverySingleTokenDeletionTest.h; path = test/RecoverySingleTokenDeletionTest.h; sourceTree = "<group>"; };
 		D30DA1891725B6A800A1A3EC /* RecoverySingleTokenDeletionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecoverySingleTokenDeletionTest.m; path = test/RecoverySingleTokenDeletionTest.m; sourceTree = "<group>"; };
-		D30DA18B1725BB5700A1A3EC /* RecoverySingleTokenInsertionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecoverySingleTokenInsertionTest.h; path = test/RecoverySingleTokenInsertionTest.h; sourceTree = "<group>"; };
 		D30DA18C1725BB5700A1A3EC /* RecoverySingleTokenInsertionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecoverySingleTokenInsertionTest.m; path = test/RecoverySingleTokenInsertionTest.m; sourceTree = "<group>"; };
 		D30DA18E1725CBE000A1A3EC /* PGConstantMethodCallTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGConstantMethodCallTemplate.txt; path = res/PGConstantMethodCallTemplate.txt; sourceTree = "<group>"; };
 		D30DA1921726028500A1A3EC /* RecoveryResyncSetTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecoveryResyncSetTest.m; path = test/RecoveryResyncSetTest.m; sourceTree = "<group>"; };
@@ -537,7 +534,6 @@
 		D36E68B8172074EF007B4353 /* CSSParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSParserTest.m; path = test/CSSParserTest.m; sourceTree = "<group>"; };
 		D36E68BA17207542007B4353 /* CSSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSParser.h; path = test/CSSParser.h; sourceTree = "<group>"; };
 		D36E68BB17207542007B4353 /* CSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSParser.m; path = test/CSSParser.m; sourceTree = "<group>"; };
-		D36E68BD1720C83B007B4353 /* HTMLParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParserTest.h; path = test/HTMLParserTest.h; sourceTree = "<group>"; };
 		D36E68BE1720C83C007B4353 /* HTMLParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParserTest.m; path = test/HTMLParserTest.m; sourceTree = "<group>"; };
 		D36E68C01720C848007B4353 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = test/HTMLParser.h; sourceTree = "<group>"; };
 		D36E68C11720C84C007B4353 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = test/HTMLParser.m; sourceTree = "<group>"; };
@@ -1229,13 +1225,9 @@
 				D34F53A617430232008700F3 /* CrockfordParserTest.m */,
 				D3344F4817405B4B00598362 /* JSRecoveryTest.m */,
 				D30DA1921726028500A1A3EC /* RecoveryResyncSetTest.m */,
-				D30DA18B1725BB5700A1A3EC /* RecoverySingleTokenInsertionTest.h */,
 				D30DA18C1725BB5700A1A3EC /* RecoverySingleTokenInsertionTest.m */,
-				D30DA1881725B6A800A1A3EC /* RecoverySingleTokenDeletionTest.h */,
 				D30DA1891725B6A800A1A3EC /* RecoverySingleTokenDeletionTest.m */,
-				D30DA1781724ADE700A1A3EC /* JSONParserTest.h */,
 				D30DA1791724ADE700A1A3EC /* JSONParserTest.m */,
-				D36E68BD1720C83B007B4353 /* HTMLParserTest.h */,
 				D36E68BE1720C83C007B4353 /* HTMLParserTest.m */,
 				D36E68B7172074EF007B4353 /* CSSParserTest.h */,
 				D36E68B8172074EF007B4353 /* CSSParserTest.m */,

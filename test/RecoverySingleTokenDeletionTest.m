@@ -5,13 +5,13 @@
 //
 //
 
-#import "RecoverySingleTokenDeletionTest.h"
+#import "TDTestScaffold.h"
 #import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PGRootNode.h"
 #import "ElementAssignParser.h"
 
-@interface RecoverySingleTokenDeletionTest ()
+@interface RecoverySingleTokenDeletionTest : SenTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
