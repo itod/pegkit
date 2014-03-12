@@ -13,16 +13,14 @@
 //  limitations under the License.
 
 #import <PEGKit/PKAssembly.h>
+#import <PEGKit/PKTokenizer.h>
+#import <PEGKit/PKToken.h>
 
 static NSString * const PKAssemblyDefaultDelimiter = @"/";
 static NSString * const PKAssemblyDefaultCursor = @"^";
 
 @interface PKAssembly ()
-- (id)peek;
-- (id)next;
-- (BOOL)hasMore;
 - (NSString *)consumedObjectsJoinedByString:(NSString *)delimiter;
-- (NSString *)remainingObjectsJoinedByString:(NSString *)delimiter;
 - (NSString *)lastConsumedObjects:(NSUInteger)len joinedByString:(NSString *)delimiter;
 
 @property (nonatomic, readwrite, retain) NSMutableArray *stack;
@@ -30,15 +28,22 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
 @property (nonatomic, retain) NSString *string;
 @property (nonatomic, retain) NSString *defaultDelimiter;
 @property (nonatomic, retain) NSString *defaultCursor;
-@property (nonatomic, readonly) NSUInteger length;
 @property (nonatomic, readonly) NSUInteger objectsConsumed;
-@property (nonatomic, readonly) NSUInteger objectsRemaining;
+
+- (void)consume:(PKToken *)tok;
+@property (nonatomic, retain) PKTokenizer *tokenizer;
+@property (nonatomic, retain) NSMutableArray *tokens;
 @end
 
 @implementation PKAssembly
 
 + (PKAssembly *)assemblyWithString:(NSString *)s {
     return [[[self alloc] initWithString:s] autorelease];
+}
+
+
++ (PKAssembly *)assemblyWithTokenizer:(PKTokenizer *)t {
+    return [[[self alloc] initWithTokenzier:t] autorelease];
 }
 
 
@@ -57,12 +62,29 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
 }
 
 
+- (id)initWithTokenzier:(PKTokenizer *)t {
+    self = [self initWithString:nil];
+    if (self) {
+        self.tokenizer = t;
+#if defined(NDEBUG)
+        self.gathersConsumedTokens = NO;
+        self.defaultCursor = @"";
+#else
+        self.gathersConsumedTokens = YES;
+#endif
+    }
+    return self;
+}
+
+
 - (void)dealloc {
     self.stack = nil;
     self.string = nil;
     self.target = nil;
     self.defaultDelimiter = nil;
     self.defaultCursor = nil;
+    self.tokenizer = nil;
+    self.tokens = nil;
     [super dealloc];
 }
 
@@ -73,18 +95,11 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
     PKAssembly *a = NSAllocateObject([self class], 0, zone);
     a->_stack = [_stack mutableCopyWithZone:zone];
     a->_string = [_string retain];
-
-    if (_defaultDelimiter) {
-        a->_defaultDelimiter = [_defaultDelimiter retain];
-    } else {
-        a->_defaultDelimiter = nil;
-    }
-    
-    if (_defaultCursor) {
-        a->_defaultCursor = [_defaultCursor retain];
-    } else {
-        a->_defaultCursor = nil;
-    }
+    a->_defaultDelimiter = [_defaultDelimiter retain];
+    a->_defaultCursor = [_defaultCursor retain];
+    a->_tokenizer = nil; // optimization
+    a->_preservesWhitespaceTokens = _preservesWhitespaceTokens;
+	a->_tokens = [_tokens mutableCopy];
     
     if (_target) {
         if ([_target conformsToProtocol:@protocol(NSMutableCopying)]) {
@@ -97,6 +112,7 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
     }
 
     a->_index = _index;
+	
     return a;
 }
 
@@ -111,19 +127,11 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
         return NO;
     }
     
-    if ([a length] != [self length]) {
-        return NO;
-    }
-
     if ([a.stack count] != [_stack count]) {
         return NO;
     }
     
     if (a.objectsConsumed != self.objectsConsumed) {
-        return NO;
-    }
-    
-    if (a.objectsRemaining != self.objectsRemaining) {
         return NO;
     }
     
@@ -135,65 +143,22 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
     //        return NO;
     //    }
     //    
-    //    if (![[self remainingObjectsJoinedByString:@""] isEqualToString:[a remainingObjectsJoinedByString:@""]]) {
-    //        return NO;
-    //    }
-    
     return YES;
 }
 
 
-- (id)next {
-    NSAssert1(0, @"%s must be overriden", __PRETTY_FUNCTION__);
-    return nil;
-}
+- (void)consume:(PKToken *)tok {
+    if (_preservesWhitespaceTokens || !tok.isWhitespace) {
+        [self push:tok];
+        ++self.index;
 
-
-- (BOOL)hasMore {
-    NSAssert1(0, @"%s must be overriden", __PRETTY_FUNCTION__);
-    return NO;
-}
-
-
-- (NSString *)consumedObjectsJoinedByString:(NSString *)delimiter {
-    NSAssert1(0, @"%s must be overriden", __PRETTY_FUNCTION__);
-    return nil;
-}
-
-
-- (NSString *)remainingObjectsJoinedByString:(NSString *)delimiter {
-    NSAssert1(0, @"%s must be overriden", __PRETTY_FUNCTION__);
-    return nil;
-}
-
-
-- (NSString *)lastConsumedObjects:(NSUInteger)len joinedByString:(NSString *)delimiter {
-    NSAssert1(0, @"%s must be overriden", __PRETTY_FUNCTION__);
-    return nil;
-}
-
-
-- (NSUInteger)length {
-    NSAssert1(0, @"%s must be overriden", __PRETTY_FUNCTION__);
-    return 0;
-}
-
-
-- (NSUInteger)objectsConsumed {
-    NSAssert1(0, @"%s must be overriden", __PRETTY_FUNCTION__);
-    return 0;
-}
-
-
-- (NSUInteger)objectsRemaining {
-    NSAssert1(0, @"%s must be overriden", __PRETTY_FUNCTION__);
-    return 0;
-}
-
-
-- (id)peek {
-    NSAssert1(0, @"%s must be overriden", __PRETTY_FUNCTION__);
-    return nil;
+        if (_gathersConsumedTokens) {
+            if (!_tokens) {
+                self.tokens = [NSMutableArray array];
+            }
+            [_tokens addObject:tok];
+        }
+    }
 }
 
 
@@ -253,7 +218,67 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
 
     NSString *d = _defaultDelimiter ? _defaultDelimiter : PKAssemblyDefaultDelimiter;
     NSString *c = _defaultCursor ? _defaultCursor : PKAssemblyDefaultCursor;
-    [s appendFormat:@"]%@%@%@", [self consumedObjectsJoinedByString:d], c, [self remainingObjectsJoinedByString:d]];
+    [s appendFormat:@"]%@%@", [self consumedObjectsJoinedByString:d], c];
+    
+    return [[s copy] autorelease];
+}
+
+
+- (NSUInteger)objectsConsumed {
+    return self.index;
+}
+
+
+- (NSString *)consumedObjectsJoinedByString:(NSString *)delimiter {
+    NSParameterAssert(delimiter);
+    return [self objectsFrom:0 to:self.objectsConsumed separatedBy:delimiter];
+}
+
+
+- (NSString *)lastConsumedObjects:(NSUInteger)len joinedByString:(NSString *)delimiter {
+    NSParameterAssert(delimiter);
+    
+    if (!_gathersConsumedTokens) return @"";
+
+    NSUInteger end = self.objectsConsumed;
+
+    len = MIN(end, len);
+    NSUInteger loc = end - len;
+
+    NSAssert(loc < [_tokens count], @"");
+    NSAssert(len <= [_tokens count], @"");
+    NSAssert(loc + len <= [_tokens count], @"");
+    
+    NSRange r = NSMakeRange(loc, len);
+    NSArray *objs = [_tokens subarrayWithRange:r];
+    
+    NSString *s = [objs componentsJoinedByString:delimiter];
+    return s;
+}
+
+
+#pragma mark -
+#pragma mark Private
+
+- (NSString *)objectsFrom:(NSUInteger)start to:(NSUInteger)end separatedBy:(NSString *)delimiter {
+    NSParameterAssert(delimiter);
+    NSParameterAssert(start <= end);
+    
+    if (!_gathersConsumedTokens) return @"";
+
+    NSMutableString *s = [NSMutableString string];
+
+    NSParameterAssert(end <= [_tokens count]);
+
+    for (NSInteger i = start; i < end; i++) {
+        PKToken *tok = [_tokens objectAtIndex:i];
+        if (PKTokenTypeEOF != tok.tokenType) {
+            [s appendString:tok.stringValue];
+            if (end - 1 != i) {
+                [s appendString:delimiter];
+            }
+        }
+    }
     
     return [[s copy] autorelease];
 }

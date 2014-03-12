@@ -101,17 +101,17 @@
 //    TDEqualObjects(@"[1]foo^", [_res description]);
 //    
 //    t.string = @"bar";
-//    a = [PKTokenAssembly assemblyWithTokenizer:t];
+//    a = [PKAssembly assemblyWithTokenizer:t];
 //    res = [[eval.parser parserNamed:@"keyPath"] completeMatchFor:a];
 //    TDEqualObjects(@"[0]bar^", [res description]);
 //    
 //    t.string = @"baz";
-//    a = [PKTokenAssembly assemblyWithTokenizer:t];
+//    a = [PKAssembly assemblyWithTokenizer:t];
 //    res = [[eval.parser parserNamed:@"keyPath"] completeMatchFor:a];
 //    TDEqualObjects(@"[0]baz^", [res description]);
 //    
 //    t.string = @"foo.bar";
-//    a = [PKTokenAssembly assemblyWithTokenizer:t];
+//    a = [PKAssembly assemblyWithTokenizer:t];
 //    res = [[eval.parser parserNamed:@"keyPath"] completeMatchFor:a];
 //    TDEqualObjects(@"[0]foo.bar^", [res description]);
 //}

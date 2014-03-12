@@ -45,6 +45,6 @@
 
 // peg
 #import <PEGKit/PKParser.h>
-#import <PEGKit/PKTokenAssembly.h>
+#import <PEGKit/PKAssembly.h>
 #import <PEGKit/PKRecognitionException.h>
 

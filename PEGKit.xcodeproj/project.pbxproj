@@ -250,8 +250,6 @@
 		D3CC54FE18CF9990006715D6 /* PGParserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAFD80FF9E95500D7773A /* PGParserFactory.m */; };
 		D3CC550518CF9D5D006715D6 /* PGDefinitionPhaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D326129916F64ED50021845F /* PGDefinitionPhaseVisitor.m */; };
 		D3CC550618CF9D5E006715D6 /* PGDefinitionPhaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D326129916F64ED50021845F /* PGDefinitionPhaseVisitor.m */; };
-		D3CC550C18CFD17E006715D6 /* PKTokenAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = D3382F9E171C810B00CCE513 /* PKTokenAssembly.m */; };
-		D3CC550D18CFD180006715D6 /* PKTokenAssembly.h in Headers */ = {isa = PBXBuildFile; fileRef = D3382F9C171C80F900CCE513 /* PKTokenAssembly.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3E9B2CD1891714100AC0974 /* PKAST.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DAC2173C645C00A5E050 /* PKAST.m */; };
 		D3E9B2CE1891714400AC0974 /* PKAST.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A1492816F8C6BD00770DEE /* PKAST.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3F8121A161AA5BC00DEA1CB /* TDTestScaffold.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FE54B0E60E46100A0803E /* TDTestScaffold.m */; };
@@ -459,8 +457,6 @@
 		D337F08015D5AE9000C83AED /* Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Tests-Prefix.pch"; path = "test/Tests-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		D3382F98171C80E100CCE513 /* PKParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKParser.h; path = include/ParseKit/PKParser.h; sourceTree = "<group>"; };
 		D3382F9A171C80EB00CCE513 /* PKParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKParser.m; path = src/PKParser.m; sourceTree = "<group>"; };
-		D3382F9C171C80F900CCE513 /* PKTokenAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTokenAssembly.h; path = include/ParseKit/PKTokenAssembly.h; sourceTree = "<group>"; };
-		D3382F9E171C810B00CCE513 /* PKTokenAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKTokenAssembly.m; path = src/PKTokenAssembly.m; sourceTree = "<group>"; };
 		D3382FA0171C811B00CCE513 /* PKTokenKindDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKTokenKindDescriptor.h; path = src/PKTokenKindDescriptor.h; sourceTree = "<group>"; };
 		D3382FA1171C811B00CCE513 /* PKTokenKindDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKTokenKindDescriptor.m; path = src/PKTokenKindDescriptor.m; sourceTree = "<group>"; };
 		D3382FD6171C8C9100CCE513 /* PKRecognitionException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKRecognitionException.m; path = src/PKRecognitionException.m; sourceTree = "<group>"; };
@@ -915,8 +911,6 @@
 			children = (
 				D3382F98171C80E100CCE513 /* PKParser.h */,
 				D3382F9A171C80EB00CCE513 /* PKParser.m */,
-				D3382F9C171C80F900CCE513 /* PKTokenAssembly.h */,
-				D3382F9E171C810B00CCE513 /* PKTokenAssembly.m */,
 				D3382FA0171C811B00CCE513 /* PKTokenKindDescriptor.h */,
 				D3382FA1171C811B00CCE513 /* PKTokenKindDescriptor.m */,
 				D3382FD9171C8CB200CCE513 /* PKRecognitionException.h */,
@@ -1315,7 +1309,6 @@
 				D3F8A3F1175817DF00056188 /* PKTokenizerState.h in Headers */,
 				D3F8A3F2175817DF00056188 /* PKNumberState.h in Headers */,
 				D3F8A3F3175817DF00056188 /* PKSymbolState.h in Headers */,
-				D3CC550D18CFD180006715D6 /* PKTokenAssembly.h in Headers */,
 				D3F8A3F4175817DF00056188 /* PKWordState.h in Headers */,
 				D3F8A3F5175817DF00056188 /* PKWhitespaceState.h in Headers */,
 				D3F8A3F6175817DF00056188 /* PKDelimitState.h in Headers */,
@@ -1776,7 +1769,6 @@
 				D3F8A433175817DF00056188 /* PKAssembly.m in Sources */,
 				D3F8A441175817DF00056188 /* PKToken.m in Sources */,
 				D3F8A443175817DF00056188 /* PKTokenizer.m in Sources */,
-				D3CC550C18CFD17E006715D6 /* PKTokenAssembly.m in Sources */,
 				D3F8A444175817DF00056188 /* PKTokenizerState.m in Sources */,
 				D3F8A445175817DF00056188 /* PKCommentState.m in Sources */,
 				D3F8A446175817DF00056188 /* PKDelimitState.m in Sources */,
