@@ -106,27 +106,27 @@
     if (self) {
         self.grammarParser = [[[PEGKitParser alloc] init] autorelease];
         
-        self.equals     = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"=" floatValue:0.0];
-        self.curly      = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"{" floatValue:0.0];
-        self.paren      = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"(" floatValue:0.0];
-        self.square     = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"[" floatValue:0.0];
+        self.equals     = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"=" doubleValue:0.0];
+        self.curly      = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"{" doubleValue:0.0];
+        self.paren      = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"(" doubleValue:0.0];
+        self.square     = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"[" doubleValue:0.0];
 
-        self.rootToken  = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"ROOT" floatValue:0.0];
-        self.defToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"$" floatValue:0.0];
-        self.refToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"#" floatValue:0.0];
-        self.seqToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"." floatValue:0.0];
-        self.orToken    = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"|" floatValue:0.0];
-        self.trackToken = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"[" floatValue:0.0];
-        self.diffToken  = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"-" floatValue:0.0];
-        self.intToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"&" floatValue:0.0];
-        self.optToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"?" floatValue:0.0];
-        self.multiToken = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"+" floatValue:0.0];
-        self.repToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"*" floatValue:0.0];
-        self.cardToken  = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"{" floatValue:0.0];
-        self.negToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"~" floatValue:0.0];
-        self.litToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"'" floatValue:0.0];
-        self.delimToken = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"%{" floatValue:0.0];
-        self.predicateToken = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"}?" floatValue:0.0];
+        self.rootToken  = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"ROOT" doubleValue:0.0];
+        self.defToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"$" doubleValue:0.0];
+        self.refToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"#" doubleValue:0.0];
+        self.seqToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"." doubleValue:0.0];
+        self.orToken    = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"|" doubleValue:0.0];
+        self.trackToken = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"[" doubleValue:0.0];
+        self.diffToken  = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"-" doubleValue:0.0];
+        self.intToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"&" doubleValue:0.0];
+        self.optToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"?" doubleValue:0.0];
+        self.multiToken = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"+" doubleValue:0.0];
+        self.repToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"*" doubleValue:0.0];
+        self.cardToken  = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"{" doubleValue:0.0];
+        self.negToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"~" doubleValue:0.0];
+        self.litToken   = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"'" doubleValue:0.0];
+        self.delimToken = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"%{" doubleValue:0.0];
+        self.predicateToken = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"}?" doubleValue:0.0];
         
         self.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorAll;
     }

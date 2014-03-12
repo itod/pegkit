@@ -398,7 +398,7 @@
 
 
 - (double)LF:(NSInteger)i {
-    return [LT(i) floatValue];
+    return [LT(i) doubleValue];
 }
 
 
@@ -736,7 +736,7 @@
     if ([obj respondsToSelector:@selector(doubleValue)]) {
         return [obj doubleValue];
     } else {
-        return [(PKToken *)obj floatValue];
+        return [(PKToken *)obj doubleValue];
     }
 }
 

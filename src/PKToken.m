@@ -27,7 +27,7 @@ static PKTokenEOF *EOFToken = nil;
 + (PKTokenEOF *)instance {
     @synchronized(self) {
         if (!EOFToken) { 
-            EOFToken = [[self alloc] initWithTokenType:PKTokenTypeEOF stringValue:@"«EOF»" floatValue:0.0];
+            EOFToken = [[self alloc] initWithTokenType:PKTokenTypeEOF stringValue:@"«EOF»" doubleValue:0.0];
         }
     }
     return EOFToken;
@@ -67,7 +67,7 @@ static PKTokenEOF *EOFToken = nil;
 @property (nonatomic, readwrite) BOOL isHashtag;
 #endif
 
-@property (nonatomic, readwrite) PKFloat floatValue;
+@property (nonatomic, readwrite) double doubleValue;
 @property (nonatomic, readwrite, copy) NSString *stringValue;
 @property (nonatomic, readwrite) PKTokenType tokenType;
 @property (nonatomic, readwrite, copy) id value;
@@ -83,19 +83,19 @@ static PKTokenEOF *EOFToken = nil;
 }
 
 
-+ (PKToken *)tokenWithTokenType:(PKTokenType)t stringValue:(NSString *)s floatValue:(PKFloat)n {
-    return [[[self alloc] initWithTokenType:t stringValue:s floatValue:n] autorelease];
++ (PKToken *)tokenWithTokenType:(PKTokenType)t stringValue:(NSString *)s doubleValue:(double)n {
+    return [[[self alloc] initWithTokenType:t stringValue:s doubleValue:n] autorelease];
 }
 
 
 // designated initializer
-- (id)initWithTokenType:(PKTokenType)t stringValue:(NSString *)s floatValue:(PKFloat)n {
+- (id)initWithTokenType:(PKTokenType)t stringValue:(NSString *)s doubleValue:(double)n {
     //NSParameterAssert(s);
     self = [super init];
     if (self) {
         self.tokenType = t;
         self.stringValue = s;
-        self.floatValue = n;
+        self.doubleValue = n;
         self.offset = NSNotFound;
         self.lineNumber = NSNotFound;
         
@@ -155,7 +155,7 @@ static PKTokenEOF *EOFToken = nil;
     }
     
     if (isNumber) {
-        return floatValue == tok->floatValue;
+        return doubleValue == tok->doubleValue;
     } else {
         if (ignoringCase) {
             return (NSOrderedSame == [stringValue caseInsensitiveCompare:tok->stringValue]);
@@ -175,7 +175,7 @@ static PKTokenEOF *EOFToken = nil;
     if (!value) {
         id v = nil;
         if (isNumber) {
-            v = [NSNumber numberWithDouble:floatValue];
+            v = [NSNumber numberWithDouble:doubleValue];
         } else {
             v = stringValue;
         }
@@ -238,7 +238,7 @@ static PKTokenEOF *EOFToken = nil;
 @synthesize isTwitter;
 @synthesize isHashtag;
 #endif
-@synthesize floatValue;
+@synthesize doubleValue;
 @synthesize stringValue;
 @synthesize tokenType;
 @synthesize tokenKind;

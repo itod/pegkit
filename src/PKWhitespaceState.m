@@ -104,7 +104,7 @@
     }
     
     if (_reportsWhitespaceTokens) {
-        PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeWhitespace stringValue:[self bufferedString] floatValue:0.0];
+        PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeWhitespace stringValue:[self bufferedString] doubleValue:0.0];
         tok.offset = offset;
         return tok;
     } else {

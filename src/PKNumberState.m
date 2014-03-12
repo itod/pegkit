@@ -55,8 +55,8 @@
 @end
 
 @interface PKNumberState ()
-- (PKFloat)absorbDigitsFromReader:(PKReader *)r;
-- (PKFloat)value;
+- (double)absorbDigitsFromReader:(PKReader *)r;
+- (double)value;
 - (void)parseLeftSideFromReader:(PKReader *)r;
 - (void)parseRightSideFromReader:(PKReader *)r;
 - (void)parseExponentFromReader:(PKReader *)r;
@@ -297,7 +297,7 @@
     if (!gotADigit) {
         if (prefix && '0' == originalCin) {
             [r unread];
-            tok = [PKToken tokenWithTokenType:PKTokenTypeNumber stringValue:@"0" floatValue:0.0];
+            tok = [PKToken tokenWithTokenType:PKTokenTypeNumber stringValue:@"0" doubleValue:0.0];
         } else {
             if ((originalCin == positivePrefix || originalCin == negativePrefix) && PKEOF != c) { // ??
                 [r unread];
@@ -347,12 +347,12 @@
         if (PKEOF != c) [r unread];
         
         // apply negative
-        if (isNegative) floatValue = -floatValue;
+        if (isNegative) doubleValue = -doubleValue;
 
         // apply suffix
         if (suffix) [self applySuffixFromReader:r];
         
-        tok = [PKToken tokenWithTokenType:PKTokenTypeNumber stringValue:[self bufferedString] floatValue:[self value]];
+        tok = [PKToken tokenWithTokenType:PKTokenTypeNumber stringValue:[self bufferedString] doubleValue:[self value]];
     }
     tok.offset = offset;
     
@@ -360,14 +360,14 @@
 }
 
 
-- (PKFloat)value {
-    PKFloat result = floatValue;
+- (double)value {
+    double result = doubleValue;
     
     for (NSUInteger i = 0; i < exp; i++) {
         if (isNegativeExp) {
-            result /= ((PKFloat)base);
+            result /= ((double)base);
         } else {
-            result *= ((PKFloat)base);
+            result *= ((double)base);
         }
     }
     
@@ -375,9 +375,9 @@
 }
 
 
-- (PKFloat)absorbDigitsFromReader:(PKReader *)r {
-    PKFloat divideBy = 1.0;
-    PKFloat v = 0.0;
+- (double)absorbDigitsFromReader:(PKReader *)r {
+    double divideBy = 1.0;
+    double v = 0.0;
     BOOL isDigit = NO;
     BOOL isHexAlpha = NO;
     
@@ -416,7 +416,7 @@
 
 - (void)parseLeftSideFromReader:(PKReader *)r {
     isFraction = NO;
-    floatValue = [self absorbDigitsFromReader:r];
+    doubleValue = [self absorbDigitsFromReader:r];
 }
 
 
@@ -433,7 +433,7 @@
             if (nextIsDigit) {
                 c = [r read];
                 isFraction = YES;
-                floatValue += [self absorbDigitsFromReader:r];
+                doubleValue += [self absorbDigitsFromReader:r];
             }
         }
     }
@@ -491,7 +491,7 @@
     c = cin;
     gotADigit = NO;
     isFraction = NO;
-    floatValue = (PKFloat)0.0;
+    doubleValue = (double)0.0;
     exp = 0;
     isNegativeExp = NO;
 }

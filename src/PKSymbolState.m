@@ -128,7 +128,7 @@
 
 
 - (PKToken *)symbolTokenWithSymbol:(NSString *)s {
-    PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:s floatValue:0.0];
+    PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:s doubleValue:0.0];
     tok.offset = offset;
     return tok;
 }

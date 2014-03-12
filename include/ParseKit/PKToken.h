@@ -53,7 +53,7 @@ typedef enum {
     @details    For example, a typical tokenizer would break the string <tt>"1.23 &lt;= 12.3"</tt> into three tokens: the number <tt>1.23</tt>, a less-than-or-equal symbol, and the number <tt>12.3</tt>. A token is a receptacle, and relies on a tokenizer to decide precisely how to divide a string into tokens.
 */
 @interface PKToken : NSObject <NSCopying> {
-    PKFloat floatValue;
+    double doubleValue;
     NSString *stringValue;
     PKTokenType tokenType;
     NSInteger tokenKind;
@@ -90,7 +90,7 @@ typedef enum {
     @param      n the number falue of this token.
     @result     an autoreleased initialized token.
 */
-+ (PKToken *)tokenWithTokenType:(PKTokenType)t stringValue:(NSString *)s floatValue:(PKFloat)n;
++ (PKToken *)tokenWithTokenType:(PKTokenType)t stringValue:(NSString *)s doubleValue:(double)n;
 
 /*!
     @brief      Designated initializer. Constructs a token of the indicated type and associated string or numeric values.
@@ -99,7 +99,7 @@ typedef enum {
     @param      n the number falue of this token.
     @result     an autoreleased initialized token.
 */
-- (id)initWithTokenType:(PKTokenType)t stringValue:(NSString *)s floatValue:(PKFloat)n;
+- (id)initWithTokenType:(PKTokenType)t stringValue:(NSString *)s doubleValue:(double)n;
 
 /*!
     @brief      Returns true if the supplied object is an equivalent <tt>PKToken</tt>, ignoring differences in case.
@@ -196,10 +196,10 @@ typedef enum {
 @property (nonatomic, readonly) PKTokenType tokenType;
 
 /*!
-    @property   floatValue
+    @property   doubleValue
     @brief      The numeric value of this token.
 */
-@property (nonatomic, readonly) PKFloat floatValue;
+@property (nonatomic, readonly) double doubleValue;
 
 /*!
     @property   stringValue

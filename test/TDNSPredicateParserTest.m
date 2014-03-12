@@ -70,7 +70,7 @@
 #endif
 
     self.tab = [NSMutableDictionary dictionary];
-    self.openCurly = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"{" floatValue:0];
+    self.openCurly = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"{" doubleValue:0];
     
     self.parser = [[[TDNSPredicateParser alloc] init] autorelease];
 }
@@ -240,9 +240,9 @@
 
 
 - (void)parser:(PKParser *)p didMatchNumComparisonPredicate:(PKAssembly *)a {
-    PKFloat n2 = [(PKToken *)[a pop] floatValue];
+    double n2 = [(PKToken *)[a pop] doubleValue];
     NSString *op = [[a pop] stringValue];
-    PKFloat n1 = [(PKToken *)[a pop] floatValue];
+    double n1 = [(PKToken *)[a pop] doubleValue];
     
     BOOL result = NO;
     if ([op isEqualToString:@"<"]) {
@@ -380,7 +380,7 @@
 
 
 - (void)parser:(PKParser *)p didMatchNum:(PKAssembly *)a {
-    [a push:[NSNumber numberWithFloat:[(PKToken *)[a pop] floatValue]]];
+    [a push:[NSNumber numberWithFloat:[(PKToken *)[a pop] doubleValue]]];
 }
 
 

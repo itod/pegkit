@@ -16,5 +16,3 @@
 typedef int32_t PKUniChar;
 
 #define PKEOF (PKUniChar)-1
-
-typedef double PKFloat;

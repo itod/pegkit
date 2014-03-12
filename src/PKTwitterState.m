@@ -65,7 +65,7 @@
     
     NSString *s = [self bufferedString];
     if (matched) {
-        PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeTwitter stringValue:s floatValue:0.0];
+        PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeTwitter stringValue:s doubleValue:0.0];
         tok.offset = offset;
         return tok;
     } else {

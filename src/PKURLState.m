@@ -99,7 +99,7 @@
             [r unread];
         }
         
-        PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeURL stringValue:s floatValue:0.0];
+        PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeURL stringValue:s doubleValue:0.0];
         tok.offset = offset;
         return tok;
     } else {

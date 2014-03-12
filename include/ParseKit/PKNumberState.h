@@ -39,7 +39,7 @@
     NSUInteger base;
     PKUniChar originalCin;
     PKUniChar c;
-    PKFloat floatValue;
+    double doubleValue;
 
     NSUInteger exp;
     BOOL isNegativeExp;
