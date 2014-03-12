@@ -44,13 +44,13 @@
     self.parser = [[[PEGKitParser alloc] init] autorelease];
 
 #if TD_EMIT
-    path = [[NSString stringWithFormat:@"%s/src/PEGKitParser.h", getenv("PWD")] stringByExpandingTildeInPath];
+    path = [[NSString stringWithFormat:@"%s/ParserGenApp/PEGKitParser.h", getenv("PWD")] stringByExpandingTildeInPath];
     err = nil;
     if (![_visitor.interfaceOutputString writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&err]) {
         NSLog(@"%@", err);
     }
 
-    path = [[NSString stringWithFormat:@"%s/src/PEGKitParser.m", getenv("PWD")] stringByExpandingTildeInPath];
+    path = [[NSString stringWithFormat:@"%s/ParserGenApp/PEGKitParser.m", getenv("PWD")] stringByExpandingTildeInPath];
 
     err = nil;
     if (![_visitor.implementationOutputString writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&err]) {
