@@ -89,61 +89,25 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
 }
 
 
-- (id)copyWithZone:(NSZone *)zone {
-    // use of NSAllocateObject() below is a *massive* optimization over calling the designated initializer -initWithString: here.
-    // this line (and this method in general) is *vital* to the overall performance of the framework. dont fuck with it.
-    PKAssembly *a = NSAllocateObject([self class], 0, zone);
-    a->_stack = [_stack mutableCopyWithZone:zone];
-    a->_string = [_string retain];
-    a->_defaultDelimiter = [_defaultDelimiter retain];
-    a->_defaultCursor = [_defaultCursor retain];
-    a->_tokenizer = nil; // optimization
-    a->_preservesWhitespaceTokens = _preservesWhitespaceTokens;
-	a->_tokens = [_tokens mutableCopy];
+- (NSString *)description {
+    NSMutableString *s = [NSMutableString stringWithString:@"["];
     
-    if (_target) {
-        if ([_target conformsToProtocol:@protocol(NSMutableCopying)]) {
-            a->_target = [_target mutableCopyWithZone:zone];
-        } else {
-            a->_target = [_target copyWithZone:zone];
+    NSUInteger i = 0;
+    NSUInteger len = [_stack count];
+    
+    NSString *fmt = @"%@, ";
+    for (id obj in _stack) {
+        if (len - 1 == i++) {
+            fmt = @"%@";
         }
-    } else {
-        a->_target = nil;
-    }
-
-    a->_index = _index;
-	
-    return a;
-}
-
-
-- (BOOL)isEqual:(id)obj {
-    if (![obj isMemberOfClass:[self class]]) {
-        return NO;
+        [s appendFormat:fmt, obj];
     }
     
-    PKAssembly *a = (PKAssembly *)obj;
-    if (a->_index != _index) {
-        return NO;
-    }
+    NSString *d = _defaultDelimiter ? _defaultDelimiter : PKAssemblyDefaultDelimiter;
+    NSString *c = _defaultCursor ? _defaultCursor : PKAssemblyDefaultCursor;
+    [s appendFormat:@"]%@%@", [self consumedObjectsJoinedByString:d], c];
     
-    if ([a.stack count] != [_stack count]) {
-        return NO;
-    }
-    
-    if (a.objectsConsumed != self.objectsConsumed) {
-        return NO;
-    }
-    
-    // this assert will (And should) pass. but it massively slows down performance.
-    //NSAssert([[self description] isEqualToString:[a description]], @"");
-
-    // These are cheaper ways (2-step) of acheiving the same check. but are apparently unnecessary.
-    //    if (![[self consumedObjectsJoinedByString:@""] isEqualToString:[a consumedObjectsJoinedByString:@""]]) {
-    //        return NO;
-    //    }
-    //    
-    return YES;
+    return [[s copy] autorelease];
 }
 
 
@@ -199,28 +163,6 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
     }
     
     return result;
-}
-
-
-- (NSString *)description {
-    NSMutableString *s = [NSMutableString stringWithString:@"["];
-    
-    NSUInteger i = 0;
-    NSUInteger len = [_stack count];
-    
-    NSString *fmt = @"%@, ";
-    for (id obj in _stack) {
-        if (len - 1 == i++) {
-            fmt = @"%@";
-        }
-        [s appendFormat:fmt, obj];
-    }
-
-    NSString *d = _defaultDelimiter ? _defaultDelimiter : PKAssemblyDefaultDelimiter;
-    NSString *c = _defaultCursor ? _defaultCursor : PKAssemblyDefaultCursor;
-    [s appendFormat:@"]%@%@", [self consumedObjectsJoinedByString:d], c];
-    
-    return [[s copy] autorelease];
 }
 
 
