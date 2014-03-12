@@ -9,14 +9,14 @@
 
 #import "OptionalParserTest.h"
 #import "PKParserFactory.h"
-#import "PKSParserGenVisitor.h"
+#import "PGParserGenVisitor.h"
 #import "PKRootNode.h"
 #import "OptionalParser.h"
 
 @interface OptionalParserTest ()
 @property (nonatomic, retain) PKParserFactory *factory;
 @property (nonatomic, retain) PKRootNode *root;
-@property (nonatomic, retain) PKSParserGenVisitor *visitor;
+@property (nonatomic, retain) PGParserGenVisitor *visitor;
 @property (nonatomic, retain) OptionalParser *parser;
 @end
 
@@ -34,7 +34,7 @@
     self.root = (id)[_factory ASTFromGrammar:g error:&err];
     _root.grammarName = @"Optional";
     
-    self.visitor = [[[PKSParserGenVisitor alloc] init] autorelease];
+    self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
     self.parser = [[[OptionalParser alloc] init] autorelease];

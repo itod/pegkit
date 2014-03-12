@@ -6,10 +6,10 @@
 //
 //
 
-#import "PKBaseVisitor.h"
+#import "PGBaseVisitor.h"
 #import "PKParserFactory.h"
 
-@interface PKDefinitionPhaseVisitor : PKBaseVisitor
+@interface PKDefinitionPhaseVisitor : PGBaseVisitor
 
 @property (nonatomic, retain) id assembler;
 @property (nonatomic, retain) id preassembler;

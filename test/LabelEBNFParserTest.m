@@ -8,14 +8,14 @@
 
 #import "LabelEBNFParserTest.h"
 #import "PKParserFactory.h"
-#import "PKSParserGenVisitor.h"
+#import "PGParserGenVisitor.h"
 #import "PKRootNode.h"
 #import "LabelEBNFParser.h"
 
 @interface LabelEBNFParserTest ()
 @property (nonatomic, retain) PKParserFactory *factory;
 @property (nonatomic, retain) PKRootNode *root;
-@property (nonatomic, retain) PKSParserGenVisitor *visitor;
+@property (nonatomic, retain) PGParserGenVisitor *visitor;
 @property (nonatomic, retain) LabelEBNFParser *parser;
 @end
 
@@ -33,7 +33,7 @@
     self.root = (id)[_factory ASTFromGrammar:g error:&err];
     _root.grammarName = @"LabelEBNF";
     
-    self.visitor = [[[PKSParserGenVisitor alloc] init] autorelease];
+    self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
     self.parser = [[[LabelEBNFParser alloc] init] autorelease];

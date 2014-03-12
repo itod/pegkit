@@ -15,7 +15,7 @@
 }
 
 
-- (void)visit:(id <PKNodeVisitor>)v; {
+- (void)visit:(id <PGNodeVisitor>)v; {
     [v visitPattern:self];
 }
 

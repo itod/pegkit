@@ -29,7 +29,7 @@ typedef enum NSUInteger {
 @interface PKBaseNode : PKAST
 + (id)nodeWithToken:(PKToken *)tok;
 
-- (void)visit:(id <PKNodeVisitor>)v;
+- (void)visit:(id <PGNodeVisitor>)v;
 
 - (void)replaceChild:(PKBaseNode *)oldChild withChild:(PKBaseNode *)newChild;
 - (void)replaceChild:(PKBaseNode *)oldChild withChildren:(NSArray *)newChildren;

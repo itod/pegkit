@@ -24,7 +24,7 @@
 #import "PKMultipleNode.h"
 #import "PKActionNode.h"
 
-@interface PKBaseVisitor : NSObject <PKNodeVisitor>
+@interface PGBaseVisitor : NSObject <PGNodeVisitor>
 
 - (void)recurse:(PKBaseNode *)node;
 

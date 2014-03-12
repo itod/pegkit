@@ -23,7 +23,7 @@
 }
 
 
-- (void)visit:(id <PKNodeVisitor>)v {
+- (void)visit:(id <PGNodeVisitor>)v {
     [v visitRoot:self];
 }
 

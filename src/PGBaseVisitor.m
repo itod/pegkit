@@ -6,7 +6,7 @@
 //
 //
 
-#import "PKBaseVisitor.h"
+#import "PGBaseVisitor.h"
 
 #import "PKBaseNode.h"
 #import "PKRootNode.h"
@@ -23,7 +23,7 @@
 #import "PKMultipleNode.h"
 #import "PKActionNode.h"
 
-@implementation PKBaseVisitor
+@implementation PGBaseVisitor
 
 - (void)dealloc {
     self.rootNode = nil;

@@ -9,14 +9,14 @@
 
 #import "SemanticPredicateParserTest.h"
 #import "PKParserFactory.h"
-#import "PKSParserGenVisitor.h"
+#import "PGParserGenVisitor.h"
 #import "PKRootNode.h"
 #import "SemanticPredicateParser.h"
 
 @interface SemanticPredicateParserTest ()
 @property (nonatomic, retain) PKParserFactory *factory;
 @property (nonatomic, retain) PKRootNode *root;
-@property (nonatomic, retain) PKSParserGenVisitor *visitor;
+@property (nonatomic, retain) PGParserGenVisitor *visitor;
 @property (nonatomic, retain) SemanticPredicateParser *parser;
 @end
 
@@ -34,7 +34,7 @@
     self.root = (id)[_factory ASTFromGrammar:g error:&err];
     _root.grammarName = @"SemanticPredicate";
     
-    self.visitor = [[[PKSParserGenVisitor alloc] init] autorelease];
+    self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
     self.parser = [[[SemanticPredicateParser alloc] init] autorelease];

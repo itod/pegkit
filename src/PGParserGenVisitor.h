@@ -6,11 +6,11 @@
 //
 //
 
-#import "PKBaseVisitor.h"
+#import "PGBaseVisitor.h"
 #import "PKParserFactory.h"
 #import "MGTemplateEngine.h"
 
-@interface PKSParserGenVisitor : PKBaseVisitor <MGTemplateEngineDelegate>
+@interface PGParserGenVisitor : PGBaseVisitor <MGTemplateEngineDelegate>
 
 @property (nonatomic, retain) MGTemplateEngine *engine;
 @property (nonatomic, retain) NSString *interfaceOutputString;

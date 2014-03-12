@@ -84,7 +84,7 @@
 }
 
 
-- (void)visit:(id <PKNodeVisitor>)v; {
+- (void)visit:(id <PGNodeVisitor>)v; {
     NSAssert2(0, @"%s is an abastract method. Must be overridden in %@", __PRETTY_FUNCTION__, NSStringFromClass([self class]));
 }
 

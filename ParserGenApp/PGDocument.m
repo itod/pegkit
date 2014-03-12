@@ -8,12 +8,12 @@
 
 #import "PGDocument.h"
 //#import <PEGKit/PEGKit.h>
-#import "PKSParserGenVisitor.h"
+#import "PGParserGenVisitor.h"
 
 @interface PGDocument ()
 @property (nonatomic, retain) PKParserFactory *factory;
 @property (nonatomic, retain) PKRootNode *root;
-@property (nonatomic, retain) PKSParserGenVisitor *visitor;
+@property (nonatomic, retain) PGParserGenVisitor *visitor;
 @end
 
 @implementation PGDocument
@@ -221,7 +221,7 @@
     
     _root.grammarName = self.parserName;
     
-    self.visitor = [[[PKSParserGenVisitor alloc] init] autorelease];
+    self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     _visitor.enableARC = _enableARC;
     _visitor.enableHybridDFA = _enableHybridDFA; //NSAssert(_enableHybridDFA, @"");
     _visitor.enableMemoization = _enableMemoization;

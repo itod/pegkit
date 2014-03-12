@@ -23,7 +23,7 @@
 @class PKMultipleNode;
 @class PKActionNode;
 
-@protocol PKNodeVisitor <NSObject>
+@protocol PGNodeVisitor <NSObject>
 - (void)visitRoot:(PKRootNode *)node;
 - (void)visitDefinition:(PKDefinitionNode *)node;
 - (void)visitReference:(PKReferenceNode *)node;

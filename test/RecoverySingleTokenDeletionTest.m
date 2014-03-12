@@ -7,14 +7,14 @@
 
 #import "RecoverySingleTokenDeletionTest.h"
 #import "PKParserFactory.h"
-#import "PKSParserGenVisitor.h"
+#import "PGParserGenVisitor.h"
 #import "PKRootNode.h"
 #import "ElementAssignParser.h"
 
 @interface RecoverySingleTokenDeletionTest ()
 @property (nonatomic, retain) PKParserFactory *factory;
 @property (nonatomic, retain) PKRootNode *root;
-@property (nonatomic, retain) PKSParserGenVisitor *visitor;
+@property (nonatomic, retain) PGParserGenVisitor *visitor;
 @property (nonatomic, retain) ElementAssignParser *parser;
 @end
 

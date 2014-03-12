@@ -6,7 +6,7 @@
 //
 //
 
-#import "PKSParserGenVisitor.h"
+#import "PGParserGenVisitor.h"
 #import <PEGKit/PKToken.h>
 
 #import <PEGKit/PEGParser.h>
@@ -48,7 +48,7 @@
 #define SUFFIX @"suffix"
 #define PATTERN @"pattern"
 
-@interface PKSParserGenVisitor ()
+@interface PGParserGenVisitor ()
 - (void)push:(NSMutableString *)mstr;
 - (NSMutableString *)pop;
 - (NSArray *)sortedLookaheadSetForNode:(PKBaseNode *)node;
@@ -59,7 +59,7 @@
 @property (nonatomic, retain) NSString *currentDefName;
 @end
 
-@implementation PKSParserGenVisitor
+@implementation PGParserGenVisitor
 
 - (id)init {
     self = [super init];
