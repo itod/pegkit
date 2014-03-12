@@ -6,13 +6,13 @@
 //
 //
 
-#import "MiniMathParserTest.h"
+#import "TDTestScaffold.h"
 #import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PGRootNode.h"
 #import "MiniMathParser.h"
 
-@interface MiniMathParserTest ()
+@interface MiniMathParserTest : SenTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

@@ -6,13 +6,13 @@
 //
 //
 
-#import "ExpressionParserActionsTest.h"
+#import "TDTestScaffold.h"
 #import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PGRootNode.h"
 #import "ExpressionActionsParser.h"
 
-@interface ExpressionParserActionsTest ()
+@interface ExpressionParserActionsTest : SenTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

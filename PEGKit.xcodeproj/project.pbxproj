@@ -404,7 +404,6 @@
 		D3022714170208C800594F16 /* NSDictionary_DeepMutableCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDictionary_DeepMutableCopy.m; path = lib/MGTemplateEngine/NSDictionary_DeepMutableCopy.m; sourceTree = "<group>"; };
 		D302272A17020F9400594F16 /* PGClassImplementationTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGClassImplementationTemplate.txt; path = res/PGClassImplementationTemplate.txt; sourceTree = "<group>"; };
 		D3083AB51705F05C00DA6F95 /* elementsAssign.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = elementsAssign.grammar; path = res/elementsAssign.grammar; sourceTree = "<group>"; };
-		D3083AB71705F09B00DA6F95 /* ElementAssignParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementAssignParserTest.h; path = test/ElementAssignParserTest.h; sourceTree = "<group>"; };
 		D3083AB81705F09B00DA6F95 /* ElementAssignParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementAssignParserTest.m; path = test/ElementAssignParserTest.m; sourceTree = "<group>"; };
 		D3083ABA1705F16000DA6F95 /* ElementAssignParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementAssignParser.h; path = test/ElementAssignParser.h; sourceTree = "<group>"; };
 		D3083ABB1705F16000DA6F95 /* ElementAssignParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementAssignParser.m; path = test/ElementAssignParser.m; sourceTree = "<group>"; };
@@ -601,10 +600,8 @@
 		D3B22A531702B14000446945 /* ElementParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementParser.h; path = test/ElementParser.h; sourceTree = "<group>"; };
 		D3B22A541703D03700446945 /* ExpressionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpressionParser.h; path = test/ExpressionParser.h; sourceTree = "<group>"; };
 		D3B22A551703D03800446945 /* ExpressionParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpressionParser.m; path = test/ExpressionParser.m; sourceTree = "<group>"; };
-		D3B22A5B1703DA8000446945 /* ElementParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementParserTest.h; path = test/ElementParserTest.h; sourceTree = "<group>"; };
 		D3B22A5C1703DA8000446945 /* ElementParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementParserTest.m; path = test/ElementParserTest.m; sourceTree = "<group>"; };
 		D3B22A5E1703DB9700446945 /* PGClassInterfaceTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGClassInterfaceTemplate.txt; path = res/PGClassInterfaceTemplate.txt; sourceTree = "<group>"; };
-		D3B22A601703DE2000446945 /* ExpressionParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpressionParserTest.h; path = test/ExpressionParserTest.h; sourceTree = "<group>"; };
 		D3B22A611703DE2000446945 /* ExpressionParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpressionParserTest.m; path = test/ExpressionParserTest.m; sourceTree = "<group>"; };
 		D3B5C84118D0049C00CCE33A /* example.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = example.html; path = res/example.html; sourceTree = SOURCE_ROOT; };
 		D3B5EA7517470F4F00733A26 /* GreedyFailureParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GreedyFailureParser.h; path = test/GreedyFailureParser.h; sourceTree = "<group>"; };
@@ -618,7 +615,6 @@
 		D3B63A231706508400BA9DBF /* PGSpeculateIfTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGSpeculateIfTemplate.txt; path = res/PGSpeculateIfTemplate.txt; sourceTree = "<group>"; };
 		D3B63A251706509800BA9DBF /* PGSpeculateElseIfTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGSpeculateElseIfTemplate.txt; path = res/PGSpeculateElseIfTemplate.txt; sourceTree = "<group>"; };
 		D3B63A3017075C3000BA9DBF /* PGActionTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGActionTemplate.txt; path = res/PGActionTemplate.txt; sourceTree = "<group>"; };
-		D3B63A3217079F5100BA9DBF /* ExpressionParserActionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpressionParserActionsTest.h; path = test/ExpressionParserActionsTest.h; sourceTree = "<group>"; };
 		D3B63A3317079F5100BA9DBF /* ExpressionParserActionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpressionParserActionsTest.m; path = test/ExpressionParserActionsTest.m; sourceTree = "<group>"; };
 		D3B63A3517079F7A00BA9DBF /* expressionActions.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = expressionActions.grammar; path = res/expressionActions.grammar; sourceTree = "<group>"; };
 		D3B63A3717079FE000BA9DBF /* ExpressionActionsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpressionActionsParser.h; path = test/ExpressionActionsParser.h; sourceTree = "<group>"; };
@@ -626,25 +622,21 @@
 		D3B63A3A1708C80600BA9DBF /* PGSemanticPredicateTestExprTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGSemanticPredicateTestExprTemplate.txt; path = res/PGSemanticPredicateTestExprTemplate.txt; sourceTree = "<group>"; };
 		D3B63A3C1708C98B00BA9DBF /* PGSemanticPredicateTestStatTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGSemanticPredicateTestStatTemplate.txt; path = res/PGSemanticPredicateTestStatTemplate.txt; sourceTree = "<group>"; };
 		D3B63A3E170910AA00BA9DBF /* methods.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = methods.grammar; path = res/methods.grammar; sourceTree = "<group>"; };
-		D3B63A40170910D100BA9DBF /* MethodsParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MethodsParserTest.h; path = test/MethodsParserTest.h; sourceTree = "<group>"; };
 		D3B63A41170910D100BA9DBF /* MethodsParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MethodsParserTest.m; path = test/MethodsParserTest.m; sourceTree = "<group>"; };
 		D3B63A431709111800BA9DBF /* MethodsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MethodsParser.h; path = test/MethodsParser.h; sourceTree = "<group>"; };
 		D3B63A441709111900BA9DBF /* MethodsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MethodsParser.m; path = test/MethodsParser.m; sourceTree = "<group>"; };
 		D3B63A461709152F00BA9DBF /* methods_factored.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = methods_factored.grammar; path = res/methods_factored.grammar; sourceTree = "<group>"; };
 		D3B63A481709155600BA9DBF /* MethodsFactoredParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MethodsFactoredParser.h; path = test/MethodsFactoredParser.h; sourceTree = "<group>"; };
 		D3B63A491709155700BA9DBF /* MethodsFactoredParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MethodsFactoredParser.m; path = test/MethodsFactoredParser.m; sourceTree = "<group>"; };
-		D3B63A4B1709155D00BA9DBF /* MethodsFactoredParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MethodsFactoredParserTest.h; path = test/MethodsFactoredParserTest.h; sourceTree = "<group>"; };
 		D3B63A4C1709155D00BA9DBF /* MethodsFactoredParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MethodsFactoredParserTest.m; path = test/MethodsFactoredParserTest.m; sourceTree = "<group>"; };
 		D3B63A4E170918E700BA9DBF /* PGPredictEndIfTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGPredictEndIfTemplate.txt; path = res/PGPredictEndIfTemplate.txt; sourceTree = "<group>"; };
 		D3B63A5017091FCA00BA9DBF /* PGSemanticPredicateTestAndThrowExprTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGSemanticPredicateTestAndThrowExprTemplate.txt; path = res/PGSemanticPredicateTestAndThrowExprTemplate.txt; sourceTree = "<group>"; };
 		D3B63A5117091FCB00BA9DBF /* PGSemanticPredicateTestAndThrowStatTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGSemanticPredicateTestAndThrowStatTemplate.txt; path = res/PGSemanticPredicateTestAndThrowStatTemplate.txt; sourceTree = "<group>"; };
 		D3B63A541709F88500BA9DBF /* minimath.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = minimath.grammar; path = res/minimath.grammar; sourceTree = "<group>"; };
-		D3B63A561709F89F00BA9DBF /* MiniMathParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniMathParserTest.h; path = test/MiniMathParserTest.h; sourceTree = "<group>"; };
 		D3B63A571709F89F00BA9DBF /* MiniMathParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniMathParserTest.m; path = test/MiniMathParserTest.m; sourceTree = "<group>"; };
 		D3B63A591709F8D400BA9DBF /* MiniMathParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniMathParser.h; path = test/MiniMathParser.h; sourceTree = "<group>"; };
 		D3B63A5A1709F8D600BA9DBF /* MiniMathParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniMathParser.m; path = test/MiniMathParser.m; sourceTree = "<group>"; };
 		D3B63A5D170A04C700BA9DBF /* LabelRecursiveParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LabelRecursiveParserTest.m; path = test/LabelRecursiveParserTest.m; sourceTree = "<group>"; };
-		D3B63A5F170A050600BA9DBF /* LabelEBNFParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LabelEBNFParserTest.h; path = test/LabelEBNFParserTest.h; sourceTree = "<group>"; };
 		D3B63A60170A050700BA9DBF /* LabelEBNFParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LabelEBNFParserTest.m; path = test/LabelEBNFParserTest.m; sourceTree = "<group>"; };
 		D3B63A62170A062100BA9DBF /* label_ebnf.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = label_ebnf.grammar; path = res/label_ebnf.grammar; sourceTree = "<group>"; };
 		D3B63A63170A062100BA9DBF /* label_recursive.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = label_recursive.grammar; path = res/label_recursive.grammar; sourceTree = "<group>"; };
@@ -666,7 +658,6 @@
 		D3B63A83170A674F00BA9DBF /* alternate.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = alternate.grammar; path = res/alternate.grammar; sourceTree = "<group>"; };
 		D3B63A85170A676300BA9DBF /* AltParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AltParser.h; path = test/AltParser.h; sourceTree = "<group>"; };
 		D3B63A86170A676700BA9DBF /* AltParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AltParser.m; path = test/AltParser.m; sourceTree = "<group>"; };
-		D3B63A88170A6B5400BA9DBF /* TDNSPredicateParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDNSPredicateParserTest.h; path = test/TDNSPredicateParserTest.h; sourceTree = "<group>"; };
 		D3B63A89170A6B5800BA9DBF /* TDNSPredicateParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDNSPredicateParserTest.m; path = test/TDNSPredicateParserTest.m; sourceTree = "<group>"; };
 		D3B63A8B170A6BB100BA9DBF /* TDNSPredicateParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDNSPredicateParser.h; path = test/TDNSPredicateParser.h; sourceTree = "<group>"; };
 		D3B63A8C170A6BB600BA9DBF /* TDNSPredicateParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDNSPredicateParser.m; path = test/TDNSPredicateParser.m; sourceTree = "<group>"; };
@@ -1229,23 +1220,14 @@
 				D3B63A6F170A3F7700BA9DBF /* OptionalParserTest.m */,
 				D30B8F49170CFAAD001796F4 /* NegationParserTest.m */,
 				D3B63A5D170A04C700BA9DBF /* LabelRecursiveParserTest.m */,
-				D3B63A5F170A050600BA9DBF /* LabelEBNFParserTest.h */,
 				D3B63A60170A050700BA9DBF /* LabelEBNFParserTest.m */,
-				D3B63A561709F89F00BA9DBF /* MiniMathParserTest.h */,
 				D3B63A571709F89F00BA9DBF /* MiniMathParserTest.m */,
-				D3B63A4B1709155D00BA9DBF /* MethodsFactoredParserTest.h */,
 				D3B63A4C1709155D00BA9DBF /* MethodsFactoredParserTest.m */,
-				D3B63A40170910D100BA9DBF /* MethodsParserTest.h */,
 				D3B63A41170910D100BA9DBF /* MethodsParserTest.m */,
-				D3B22A5B1703DA8000446945 /* ElementParserTest.h */,
 				D3B22A5C1703DA8000446945 /* ElementParserTest.m */,
-				D3083AB71705F09B00DA6F95 /* ElementAssignParserTest.h */,
 				D3083AB81705F09B00DA6F95 /* ElementAssignParserTest.m */,
-				D3B22A601703DE2000446945 /* ExpressionParserTest.h */,
 				D3B22A611703DE2000446945 /* ExpressionParserTest.m */,
-				D3B63A3217079F5100BA9DBF /* ExpressionParserActionsTest.h */,
 				D3B63A3317079F5100BA9DBF /* ExpressionParserActionsTest.m */,
-				D3B63A88170A6B5400BA9DBF /* TDNSPredicateParserTest.h */,
 				D3B63A89170A6B5800BA9DBF /* TDNSPredicateParserTest.m */,
 			);
 			name = Tests;

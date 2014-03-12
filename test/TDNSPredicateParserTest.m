@@ -6,7 +6,7 @@
 //
 //
 
-#import "TDNSPredicateParserTest.h"
+#import "TDTestScaffold.h"
 #import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PGRootNode.h"
@@ -15,7 +15,11 @@
 #import "NSString+PEGKitAdditions.h"
 #import "NSArray+PEGKitAdditions.h"
 
-@interface TDNSPredicateParserTest ()
+@protocol TDKeyPathResolver <NSObject>
+- (id)resolvedValueForKeyPath:(NSString *)s;
+@end
+
+@interface TDNSPredicateParserTest : SenTestCase <TDKeyPathResolver>
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
