@@ -411,13 +411,11 @@
 		D3083ABD1705F73500DA6F95 /* PGMethodSpeculateTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGMethodSpeculateTemplate.txt; path = res/PGMethodSpeculateTemplate.txt; sourceTree = "<group>"; };
 		D30B8F3B170CA594001796F4 /* DreadedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DreadedParser.h; path = test/DreadedParser.h; sourceTree = "<group>"; };
 		D30B8F3C170CA594001796F4 /* DreadedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DreadedParser.m; path = test/DreadedParser.m; sourceTree = "<group>"; };
-		D30B8F3E170CA59A001796F4 /* DreadedParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DreadedParserTest.h; path = test/DreadedParserTest.h; sourceTree = "<group>"; };
 		D30B8F3F170CA59A001796F4 /* DreadedParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DreadedParserTest.m; path = test/DreadedParserTest.m; sourceTree = "<group>"; };
 		D30B8F41170CA5D6001796F4 /* dreaded.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dreaded.grammar; path = res/dreaded.grammar; sourceTree = "<group>"; };
 		D30B8F43170CFA8C001796F4 /* NegationParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NegationParser.h; path = test/NegationParser.h; sourceTree = "<group>"; };
 		D30B8F44170CFA8C001796F4 /* NegationParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NegationParser.m; path = test/NegationParser.m; sourceTree = "<group>"; };
 		D30B8F46170CFA9A001796F4 /* negation.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = negation.grammar; path = res/negation.grammar; sourceTree = "<group>"; };
-		D30B8F48170CFAAC001796F4 /* NegationParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NegationParserTest.h; path = test/NegationParserTest.h; sourceTree = "<group>"; };
 		D30B8F49170CFAAD001796F4 /* NegationParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NegationParserTest.m; path = test/NegationParserTest.m; sourceTree = "<group>"; };
 		D30B8F4B170CFB93001796F4 /* PGNegationSpeculateTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGNegationSpeculateTemplate.txt; path = res/PGNegationSpeculateTemplate.txt; sourceTree = "<group>"; };
 		D30B8F4D170CFBCC001796F4 /* PGNegationPredictTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGNegationPredictTemplate.txt; path = res/PGNegationPredictTemplate.txt; sourceTree = "<group>"; };
@@ -645,7 +643,6 @@
 		D3B63A571709F89F00BA9DBF /* MiniMathParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniMathParserTest.m; path = test/MiniMathParserTest.m; sourceTree = "<group>"; };
 		D3B63A591709F8D400BA9DBF /* MiniMathParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniMathParser.h; path = test/MiniMathParser.h; sourceTree = "<group>"; };
 		D3B63A5A1709F8D600BA9DBF /* MiniMathParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniMathParser.m; path = test/MiniMathParser.m; sourceTree = "<group>"; };
-		D3B63A5C170A04C600BA9DBF /* LabelRecursiveParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LabelRecursiveParserTest.h; path = test/LabelRecursiveParserTest.h; sourceTree = "<group>"; };
 		D3B63A5D170A04C700BA9DBF /* LabelRecursiveParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LabelRecursiveParserTest.m; path = test/LabelRecursiveParserTest.m; sourceTree = "<group>"; };
 		D3B63A5F170A050600BA9DBF /* LabelEBNFParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LabelEBNFParserTest.h; path = test/LabelEBNFParserTest.h; sourceTree = "<group>"; };
 		D3B63A60170A050700BA9DBF /* LabelEBNFParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LabelEBNFParserTest.m; path = test/LabelEBNFParserTest.m; sourceTree = "<group>"; };
@@ -656,7 +653,6 @@
 		D3B63A69170A065300BA9DBF /* LabelEBNFParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LabelEBNFParser.h; path = test/LabelEBNFParser.h; sourceTree = "<group>"; };
 		D3B63A6A170A065500BA9DBF /* LabelEBNFParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LabelEBNFParser.m; path = test/LabelEBNFParser.m; sourceTree = "<group>"; };
 		D3B63A6C170A1F6C00BA9DBF /* PGRepetitionPredictTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGRepetitionPredictTemplate.txt; path = res/PGRepetitionPredictTemplate.txt; sourceTree = "<group>"; };
-		D3B63A6E170A3F7500BA9DBF /* OptionalParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionalParserTest.h; path = test/OptionalParserTest.h; sourceTree = "<group>"; };
 		D3B63A6F170A3F7700BA9DBF /* OptionalParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionalParserTest.m; path = test/OptionalParserTest.m; sourceTree = "<group>"; };
 		D3B63A71170A3FCE00BA9DBF /* optional.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = optional.grammar; path = res/optional.grammar; sourceTree = "<group>"; };
 		D3B63A73170A3FE900BA9DBF /* OptionalParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionalParser.h; path = test/OptionalParser.h; sourceTree = "<group>"; };
@@ -665,9 +661,7 @@
 		D3B63A78170A55C100BA9DBF /* multiple.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = multiple.grammar; path = res/multiple.grammar; sourceTree = "<group>"; };
 		D3B63A7A170A55D700BA9DBF /* MultipleParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultipleParser.h; path = test/MultipleParser.h; sourceTree = "<group>"; };
 		D3B63A7B170A55DB00BA9DBF /* MultipleParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipleParser.m; path = test/MultipleParser.m; sourceTree = "<group>"; };
-		D3B63A7D170A560200BA9DBF /* MultipleParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultipleParserTest.h; path = test/MultipleParserTest.h; sourceTree = "<group>"; };
 		D3B63A7E170A560500BA9DBF /* MultipleParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipleParserTest.m; path = test/MultipleParserTest.m; sourceTree = "<group>"; };
-		D3B63A80170A671800BA9DBF /* AltParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AltParserTest.h; path = test/AltParserTest.h; sourceTree = "<group>"; };
 		D3B63A81170A671C00BA9DBF /* AltParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AltParserTest.m; path = test/AltParserTest.m; sourceTree = "<group>"; };
 		D3B63A83170A674F00BA9DBF /* alternate.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = alternate.grammar; path = res/alternate.grammar; sourceTree = "<group>"; };
 		D3B63A85170A676300BA9DBF /* AltParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AltParser.h; path = test/AltParser.h; sourceTree = "<group>"; };
@@ -1229,17 +1223,11 @@
 				D38BC8A81714AF1B00BF530D /* DotQuestionParserTest.m */,
 				D30B8F58170CFFFD001796F4 /* DelimitedParserTest.m */,
 				D30B8F52170CFF2A001796F4 /* PEGKitParserTest.m */,
-				D30B8F3E170CA59A001796F4 /* DreadedParserTest.h */,
 				D30B8F3F170CA59A001796F4 /* DreadedParserTest.m */,
-				D3B63A80170A671800BA9DBF /* AltParserTest.h */,
 				D3B63A81170A671C00BA9DBF /* AltParserTest.m */,
-				D3B63A7D170A560200BA9DBF /* MultipleParserTest.h */,
 				D3B63A7E170A560500BA9DBF /* MultipleParserTest.m */,
-				D3B63A6E170A3F7500BA9DBF /* OptionalParserTest.h */,
 				D3B63A6F170A3F7700BA9DBF /* OptionalParserTest.m */,
-				D30B8F48170CFAAC001796F4 /* NegationParserTest.h */,
 				D30B8F49170CFAAD001796F4 /* NegationParserTest.m */,
-				D3B63A5C170A04C600BA9DBF /* LabelRecursiveParserTest.h */,
 				D3B63A5D170A04C700BA9DBF /* LabelRecursiveParserTest.m */,
 				D3B63A5F170A050600BA9DBF /* LabelEBNFParserTest.h */,
 				D3B63A60170A050700BA9DBF /* LabelEBNFParserTest.m */,
