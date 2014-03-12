@@ -51,8 +51,6 @@
 		D3383048171C923700CCE513 /* PGDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3383046171C923700CCE513 /* PGDocument.xib */; };
 		D338304B171C923700CCE513 /* PGMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3383049171C923700CCE513 /* PGMainMenu.xib */; };
 		D3383052171CA2DC00CCE513 /* expression.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3B986AD1700D3A9000CBCAE /* expression.grammar */; };
-		D3383053171CA2EC00CCE513 /* PGParserGenVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D30226F9170202DD00594F16 /* PGParserGenVisitor.m */; };
-		D3383054171CA2ED00CCE513 /* PGParserGenVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D30226F9170202DD00594F16 /* PGParserGenVisitor.m */; };
 		D3383072171CA3BA00CCE513 /* PGClassInterfaceTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3B22A5E1703DB9700446945 /* PGClassInterfaceTemplate.txt */; };
 		D3383073171CA3BA00CCE513 /* PGClassImplementationTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D302272A17020F9400594F16 /* PGClassImplementationTemplate.txt */; };
 		D3383074171CA3BA00CCE513 /* PGActionTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3B63A3017075C3000BA9DBF /* PGActionTemplate.txt */; };
@@ -139,6 +137,46 @@
 		D36E68BC17207542007B4353 /* CSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E68BB17207542007B4353 /* CSSParser.m */; };
 		D36E68BF1720C840007B4353 /* HTMLParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E68BE1720C83C007B4353 /* HTMLParserTest.m */; };
 		D36E68C21720C84F007B4353 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E68C11720C84C007B4353 /* HTMLParser.m */; };
+		D376F6C118D0B3990064C888 /* PGActionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6A618D0B3990064C888 /* PGActionNode.m */; };
+		D376F6C218D0B3990064C888 /* PGActionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6A618D0B3990064C888 /* PGActionNode.m */; };
+		D376F6C318D0B3990064C888 /* PGAlternationNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6A818D0B3990064C888 /* PGAlternationNode.m */; };
+		D376F6C418D0B3990064C888 /* PGAlternationNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6A818D0B3990064C888 /* PGAlternationNode.m */; };
+		D376F6C518D0B3990064C888 /* PGBaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6AA18D0B3990064C888 /* PGBaseNode.m */; };
+		D376F6C618D0B3990064C888 /* PGBaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6AA18D0B3990064C888 /* PGBaseNode.m */; };
+		D376F6C718D0B3990064C888 /* PGCollectionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6AC18D0B3990064C888 /* PGCollectionNode.m */; };
+		D376F6C818D0B3990064C888 /* PGCollectionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6AC18D0B3990064C888 /* PGCollectionNode.m */; };
+		D376F6C918D0B3990064C888 /* PGCompositeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6AE18D0B3990064C888 /* PGCompositeNode.m */; };
+		D376F6CA18D0B3990064C888 /* PGCompositeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6AE18D0B3990064C888 /* PGCompositeNode.m */; };
+		D376F6CB18D0B3990064C888 /* PGConstantNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6B018D0B3990064C888 /* PGConstantNode.m */; };
+		D376F6CC18D0B3990064C888 /* PGConstantNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6B018D0B3990064C888 /* PGConstantNode.m */; };
+		D376F6CD18D0B3990064C888 /* PGDefinitionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6B218D0B3990064C888 /* PGDefinitionNode.m */; };
+		D376F6CE18D0B3990064C888 /* PGDefinitionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6B218D0B3990064C888 /* PGDefinitionNode.m */; };
+		D376F6CF18D0B3990064C888 /* PGDelimitedNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6B418D0B3990064C888 /* PGDelimitedNode.m */; };
+		D376F6D018D0B3990064C888 /* PGDelimitedNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6B418D0B3990064C888 /* PGDelimitedNode.m */; };
+		D376F6D118D0B3990064C888 /* PGLiteralNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6B618D0B3990064C888 /* PGLiteralNode.m */; };
+		D376F6D218D0B3990064C888 /* PGLiteralNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6B618D0B3990064C888 /* PGLiteralNode.m */; };
+		D376F6D318D0B3990064C888 /* PGMultipleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6B818D0B3990064C888 /* PGMultipleNode.m */; };
+		D376F6D418D0B3990064C888 /* PGMultipleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6B818D0B3990064C888 /* PGMultipleNode.m */; };
+		D376F6D518D0B3990064C888 /* PGOptionalNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6BA18D0B3990064C888 /* PGOptionalNode.m */; };
+		D376F6D618D0B3990064C888 /* PGOptionalNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6BA18D0B3990064C888 /* PGOptionalNode.m */; };
+		D376F6D718D0B3990064C888 /* PGPatternNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6BC18D0B3990064C888 /* PGPatternNode.m */; };
+		D376F6D818D0B3990064C888 /* PGPatternNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6BC18D0B3990064C888 /* PGPatternNode.m */; };
+		D376F6D918D0B3990064C888 /* PGReferenceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6BE18D0B3990064C888 /* PGReferenceNode.m */; };
+		D376F6DA18D0B3990064C888 /* PGReferenceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6BE18D0B3990064C888 /* PGReferenceNode.m */; };
+		D376F6DB18D0B3990064C888 /* PGRootNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6C018D0B3990064C888 /* PGRootNode.m */; };
+		D376F6DC18D0B3990064C888 /* PGRootNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6C018D0B3990064C888 /* PGRootNode.m */; };
+		D376F6DE18D0B5020064C888 /* PGParserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6DD18D0B5020064C888 /* PGParserFactory.m */; };
+		D376F6DF18D0B5020064C888 /* PGParserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6DD18D0B5020064C888 /* PGParserFactory.m */; };
+		D376F6E218D0B5090064C888 /* PEGKitParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6E118D0B5090064C888 /* PEGKitParser.m */; };
+		D376F6E318D0B5090064C888 /* PEGKitParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6E118D0B5090064C888 /* PEGKitParser.m */; };
+		D376F6ED18D0B5190064C888 /* PGBaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6E518D0B5190064C888 /* PGBaseVisitor.m */; };
+		D376F6EE18D0B5190064C888 /* PGBaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6E518D0B5190064C888 /* PGBaseVisitor.m */; };
+		D376F6EF18D0B5190064C888 /* PGDefinitionPhaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6E718D0B5190064C888 /* PGDefinitionPhaseVisitor.m */; };
+		D376F6F018D0B5190064C888 /* PGDefinitionPhaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6E718D0B5190064C888 /* PGDefinitionPhaseVisitor.m */; };
+		D376F6F118D0B5190064C888 /* PGParserGenVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6EA18D0B5190064C888 /* PGParserGenVisitor.m */; };
+		D376F6F218D0B5190064C888 /* PGParserGenVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6EA18D0B5190064C888 /* PGParserGenVisitor.m */; };
+		D376F6F318D0B5190064C888 /* PGTokenKindDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6EC18D0B5190064C888 /* PGTokenKindDescriptor.m */; };
+		D376F6F418D0B5190064C888 /* PGTokenKindDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6EC18D0B5190064C888 /* PGTokenKindDescriptor.m */; };
 		D37D8DC91571A4F700CDB822 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37D8DC81571A4F700CDB822 /* SenTestingKit.framework */; };
 		D37D8E361571A5A200CDB822 /* css.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D380B5080F0D71A90009EC13 /* css.grammar */; };
 		D37D8E391571A5A200CDB822 /* html.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D380AFBC0F0C54B60009EC13 /* html.grammar */; };
@@ -163,9 +201,6 @@
 		D3B22A5D1703DA8000446945 /* ElementParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B22A5C1703DA8000446945 /* ElementParserTest.m */; };
 		D3B22A621703DE2000446945 /* ExpressionParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B22A611703DE2000446945 /* ExpressionParserTest.m */; };
 		D3B5C84218D0049C00CCE33A /* example.html in Resources */ = {isa = PBXBuildFile; fileRef = D3B5C84118D0049C00CCE33A /* example.html */; };
-		D3B5C84918D0ACD400CCE33A /* PGTokenKindDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D3382FA1171C811B00CCE513 /* PGTokenKindDescriptor.m */; };
-		D3B5C84A18D0ACD500CCE33A /* PGTokenKindDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D3382FA1171C811B00CCE513 /* PGTokenKindDescriptor.m */; };
-		D3B5C84B18D0B16E00CCE33A /* PGParserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAFD80FF9E95500D7773A /* PGParserFactory.m */; };
 		D3B5EA7717470F4F00733A26 /* GreedyFailureParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B5EA7617470F4F00733A26 /* GreedyFailureParser.m */; };
 		D3B5EA7C17470F5600733A26 /* GreedyFailureParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B5EA7B17470F5600733A26 /* GreedyFailureParserTest.m */; };
 		D3B5EA7E1747101700733A26 /* greedy_failure.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3B5EA7D1747101700733A26 /* greedy_failure.grammar */; };
@@ -215,43 +250,8 @@
 		D3BD397B1729F2ED00FC6549 /* PGPreCallbackSyntaxLeafTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3BD39761729F1DD00FC6549 /* PGPreCallbackSyntaxLeafTemplate.txt */; };
 		D3BD397C1729F2F100FC6549 /* PGPostCallbackSyntaxLeafTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3BD39751729F1DD00FC6549 /* PGPostCallbackSyntaxLeafTemplate.txt */; };
 		D3CC548D18CF9282006715D6 /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
-		D3CC548F18CF92B5006715D6 /* PGBaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D367F66A16F5570500F5E9EB /* PGBaseVisitor.m */; };
-		D3CC549018CF92B8006715D6 /* PGBaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D367F66A16F5570500F5E9EB /* PGBaseVisitor.m */; };
-		D3CC549518CF92CA006715D6 /* PGBaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA57173C639B00A5E050 /* PGBaseNode.m */; };
-		D3CC549618CF92CA006715D6 /* PGRootNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA6D173C639B00A5E050 /* PGRootNode.m */; };
-		D3CC549718CF92CA006715D6 /* PGDefinitionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5F173C639B00A5E050 /* PGDefinitionNode.m */; };
-		D3CC549818CF92CA006715D6 /* PGReferenceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA6B173C639B00A5E050 /* PGReferenceNode.m */; };
-		D3CC549918CF92CA006715D6 /* PGActionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA53173C639B00A5E050 /* PGActionNode.m */; };
-		D3CC549A18CF92CA006715D6 /* PGConstantNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5D173C639B00A5E050 /* PGConstantNode.m */; };
-		D3CC549B18CF92CA006715D6 /* PGLiteralNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA63173C639B00A5E050 /* PGLiteralNode.m */; };
-		D3CC549C18CF92CA006715D6 /* PGDelimitedNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA61173C639B00A5E050 /* PGDelimitedNode.m */; };
-		D3CC549D18CF92CA006715D6 /* PGPatternNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA69173C639B00A5E050 /* PGPatternNode.m */; };
-		D3CC549E18CF92CA006715D6 /* PGCompositeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5B173C639B00A5E050 /* PGCompositeNode.m */; };
-		D3CC549F18CF92CA006715D6 /* PGCollectionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA59173C639B00A5E050 /* PGCollectionNode.m */; };
-		D3CC54A018CF92CA006715D6 /* PGAlternationNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA55173C639B00A5E050 /* PGAlternationNode.m */; };
-		D3CC54A118CF92CA006715D6 /* PGMultipleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA65173C639B00A5E050 /* PGMultipleNode.m */; };
-		D3CC54A218CF92CA006715D6 /* PGOptionalNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA67173C639B00A5E050 /* PGOptionalNode.m */; };
-		D3CC54A318CF92CA006715D6 /* PGBaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA57173C639B00A5E050 /* PGBaseNode.m */; };
-		D3CC54A418CF92CA006715D6 /* PGRootNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA6D173C639B00A5E050 /* PGRootNode.m */; };
-		D3CC54A518CF92CA006715D6 /* PGDefinitionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5F173C639B00A5E050 /* PGDefinitionNode.m */; };
-		D3CC54A618CF92CA006715D6 /* PGReferenceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA6B173C639B00A5E050 /* PGReferenceNode.m */; };
-		D3CC54A718CF92CA006715D6 /* PGActionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA53173C639B00A5E050 /* PGActionNode.m */; };
-		D3CC54A818CF92CA006715D6 /* PGConstantNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5D173C639B00A5E050 /* PGConstantNode.m */; };
-		D3CC54A918CF92CA006715D6 /* PGLiteralNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA63173C639B00A5E050 /* PGLiteralNode.m */; };
-		D3CC54AA18CF92CA006715D6 /* PGDelimitedNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA61173C639B00A5E050 /* PGDelimitedNode.m */; };
-		D3CC54AB18CF92CA006715D6 /* PGPatternNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA69173C639B00A5E050 /* PGPatternNode.m */; };
-		D3CC54AC18CF92CA006715D6 /* PGCompositeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA5B173C639B00A5E050 /* PGCompositeNode.m */; };
-		D3CC54AD18CF92CA006715D6 /* PGCollectionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA59173C639B00A5E050 /* PGCollectionNode.m */; };
-		D3CC54AE18CF92CA006715D6 /* PGAlternationNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA55173C639B00A5E050 /* PGAlternationNode.m */; };
-		D3CC54AF18CF92CA006715D6 /* PGMultipleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA65173C639B00A5E050 /* PGMultipleNode.m */; };
-		D3CC54B018CF92CA006715D6 /* PGOptionalNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DA67173C639B00A5E050 /* PGOptionalNode.m */; };
-		D3CC54EC18CF9326006715D6 /* PEGKitParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DACB173C64A600A5E050 /* PEGKitParser.m */; };
-		D3CC54EE18CF9326006715D6 /* PEGKitParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DACB173C64A600A5E050 /* PEGKitParser.m */; };
 		D3CC54FB18CF9934006715D6 /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
 		D3CC54FC18CF993B006715D6 /* PEGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
-		D3CC54FE18CF9990006715D6 /* PGParserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAFD80FF9E95500D7773A /* PGParserFactory.m */; };
-		D3CC550518CF9D5D006715D6 /* PGDefinitionPhaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D326129916F64ED50021845F /* PGDefinitionPhaseVisitor.m */; };
-		D3CC550618CF9D5E006715D6 /* PGDefinitionPhaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D326129916F64ED50021845F /* PGDefinitionPhaseVisitor.m */; };
 		D3E9B2CD1891714100AC0974 /* PKAST.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DAC2173C645C00A5E050 /* PKAST.m */; };
 		D3E9B2CE1891714400AC0974 /* PKAST.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A1492816F8C6BD00770DEE /* PKAST.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3F8121A161AA5BC00DEA1CB /* TDTestScaffold.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FE54B0E60E46100A0803E /* TDTestScaffold.m */; };
@@ -383,8 +383,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D30226F8170202DD00594F16 /* PGParserGenVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGParserGenVisitor.h; path = src/PGParserGenVisitor.h; sourceTree = "<group>"; };
-		D30226F9170202DD00594F16 /* PGParserGenVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGParserGenVisitor.m; path = src/PGParserGenVisitor.m; sourceTree = "<group>"; };
 		D3022705170208C800594F16 /* DeepMutableCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeepMutableCopy.h; path = lib/MGTemplateEngine/DeepMutableCopy.h; sourceTree = "<group>"; };
 		D3022706170208C800594F16 /* ICUTemplateMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICUTemplateMatcher.h; path = lib/MGTemplateEngine/ICUTemplateMatcher.h; sourceTree = "<group>"; };
 		D3022707170208C800594F16 /* ICUTemplateMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICUTemplateMatcher.m; path = lib/MGTemplateEngine/ICUTemplateMatcher.m; sourceTree = "<group>"; };
@@ -445,8 +443,6 @@
 		D31C40A41779634700A1B8B7 /* JavaScriptWhitespaceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaScriptWhitespaceParser.m; path = test/JavaScriptWhitespaceParser.m; sourceTree = "<group>"; };
 		D31FE54A0E60E46100A0803E /* TDTestScaffold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTestScaffold.h; path = test/TDTestScaffold.h; sourceTree = "<group>"; };
 		D31FE54B0E60E46100A0803E /* TDTestScaffold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTestScaffold.m; path = test/TDTestScaffold.m; sourceTree = "<group>"; };
-		D326129816F64ED50021845F /* PGDefinitionPhaseVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGDefinitionPhaseVisitor.h; path = src/PGDefinitionPhaseVisitor.h; sourceTree = "<group>"; };
-		D326129916F64ED50021845F /* PGDefinitionPhaseVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGDefinitionPhaseVisitor.m; path = src/PGDefinitionPhaseVisitor.m; sourceTree = "<group>"; };
 		D3344F4817405B4B00598362 /* JSRecoveryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSRecoveryTest.m; path = test/JSRecoveryTest.m; sourceTree = "<group>"; };
 		D33724D816FA62D400D30459 /* PKDelimitDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKDelimitDescriptor.h; path = src/PKDelimitDescriptor.h; sourceTree = SOURCE_ROOT; };
 		D33724D916FA62D400D30459 /* PKDelimitDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKDelimitDescriptor.m; path = src/PKDelimitDescriptor.m; sourceTree = "<group>"; };
@@ -457,8 +453,6 @@
 		D337F08015D5AE9000C83AED /* Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Tests-Prefix.pch"; path = "test/Tests-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		D3382F98171C80E100CCE513 /* PKParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKParser.h; path = include/PEGKit/PKParser.h; sourceTree = SOURCE_ROOT; };
 		D3382F9A171C80EB00CCE513 /* PKParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKParser.m; path = src/PKParser.m; sourceTree = "<group>"; };
-		D3382FA0171C811B00CCE513 /* PGTokenKindDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGTokenKindDescriptor.h; path = src/PGTokenKindDescriptor.h; sourceTree = "<group>"; };
-		D3382FA1171C811B00CCE513 /* PGTokenKindDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGTokenKindDescriptor.m; path = src/PGTokenKindDescriptor.m; sourceTree = "<group>"; };
 		D3382FD6171C8C9100CCE513 /* PKRecognitionException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKRecognitionException.m; path = src/PKRecognitionException.m; sourceTree = "<group>"; };
 		D3382FD9171C8CB200CCE513 /* PKRecognitionException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKRecognitionException.h; path = include/PEGKit/PKRecognitionException.h; sourceTree = SOURCE_ROOT; };
 		D338302F171C923700CCE513 /* ParserGenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParserGenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -500,7 +494,6 @@
 		D34BAFD40FF9E95500D7773A /* NSArray+PEGKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+PEGKitAdditions.m"; path = "src/NSArray+PEGKitAdditions.m"; sourceTree = "<group>"; };
 		D34BAFD50FF9E95500D7773A /* NSString+PEGKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+PEGKitAdditions.h"; path = "src/NSString+PEGKitAdditions.h"; sourceTree = "<group>"; };
 		D34BAFD60FF9E95500D7773A /* NSString+PEGKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+PEGKitAdditions.m"; path = "src/NSString+PEGKitAdditions.m"; sourceTree = "<group>"; };
-		D34BAFD80FF9E95500D7773A /* PGParserFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = PGParserFactory.m; path = src/PGParserFactory.m; sourceTree = "<group>"; };
 		D34F538517421715008700F3 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = lib/OCMock/OCMock.xcodeproj; sourceTree = "<group>"; };
 		D34F539C1742C57E008700F3 /* JavaScriptWhitespaceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaScriptWhitespaceParser.h; path = test/JavaScriptWhitespaceParser.h; sourceTree = "<group>"; };
 		D34F53A617430232008700F3 /* CrockfordParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CrockfordParserTest.m; path = test/CrockfordParserTest.m; sourceTree = "<group>"; };
@@ -512,8 +505,6 @@
 		D35F4A8B11643662003811F3 /* PKEmailState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEmailState.h; path = include/PEGKit/PKEmailState.h; sourceTree = SOURCE_ROOT; };
 		D35F4A8C11643662003811F3 /* PKURLState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKURLState.h; path = include/PEGKit/PKURLState.h; sourceTree = SOURCE_ROOT; };
 		D3633A2D170A6E9700C0966D /* nspredicate2.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nspredicate2.grammar; path = res/nspredicate2.grammar; sourceTree = "<group>"; };
-		D367F66916F5570500F5E9EB /* PGBaseVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGBaseVisitor.h; path = src/PGBaseVisitor.h; sourceTree = "<group>"; };
-		D367F66A16F5570500F5E9EB /* PGBaseVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGBaseVisitor.m; path = src/PGBaseVisitor.m; sourceTree = "<group>"; };
 		D36C560B0FD363D500141CB7 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = /usr/lib/libicucore.dylib; sourceTree = "<absolute>"; };
 		D36E68B2171F378B007B4353 /* JavaScriptParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaScriptParserTest.m; path = test/JavaScriptParserTest.m; sourceTree = "<group>"; };
 		D36E68B4171F37D7007B4353 /* JavaScriptParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaScriptParser.h; path = test/JavaScriptParser.h; sourceTree = "<group>"; };
@@ -525,37 +516,48 @@
 		D36E68C01720C848007B4353 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = test/HTMLParser.h; sourceTree = "<group>"; };
 		D36E68C11720C84C007B4353 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = test/HTMLParser.m; sourceTree = "<group>"; };
 		D36E9F860E5A795400496BD3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = /usr/lib/libxml2.dylib; sourceTree = "<absolute>"; };
-		D375DA52173C639B00A5E050 /* PGActionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGActionNode.h; path = src/nodes/PGActionNode.h; sourceTree = "<group>"; };
-		D375DA53173C639B00A5E050 /* PGActionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGActionNode.m; path = src/nodes/PGActionNode.m; sourceTree = "<group>"; };
-		D375DA54173C639B00A5E050 /* PGAlternationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGAlternationNode.h; path = src/nodes/PGAlternationNode.h; sourceTree = "<group>"; };
-		D375DA55173C639B00A5E050 /* PGAlternationNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGAlternationNode.m; path = src/nodes/PGAlternationNode.m; sourceTree = "<group>"; };
-		D375DA56173C639B00A5E050 /* PGBaseNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGBaseNode.h; path = src/nodes/PGBaseNode.h; sourceTree = "<group>"; };
-		D375DA57173C639B00A5E050 /* PGBaseNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGBaseNode.m; path = src/nodes/PGBaseNode.m; sourceTree = "<group>"; };
-		D375DA58173C639B00A5E050 /* PGCollectionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGCollectionNode.h; path = src/nodes/PGCollectionNode.h; sourceTree = "<group>"; };
-		D375DA59173C639B00A5E050 /* PGCollectionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGCollectionNode.m; path = src/nodes/PGCollectionNode.m; sourceTree = "<group>"; };
-		D375DA5A173C639B00A5E050 /* PGCompositeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGCompositeNode.h; path = src/nodes/PGCompositeNode.h; sourceTree = "<group>"; };
-		D375DA5B173C639B00A5E050 /* PGCompositeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGCompositeNode.m; path = src/nodes/PGCompositeNode.m; sourceTree = "<group>"; };
-		D375DA5C173C639B00A5E050 /* PGConstantNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGConstantNode.h; path = src/nodes/PGConstantNode.h; sourceTree = "<group>"; };
-		D375DA5D173C639B00A5E050 /* PGConstantNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGConstantNode.m; path = src/nodes/PGConstantNode.m; sourceTree = "<group>"; };
-		D375DA5E173C639B00A5E050 /* PGDefinitionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGDefinitionNode.h; path = src/nodes/PGDefinitionNode.h; sourceTree = "<group>"; };
-		D375DA5F173C639B00A5E050 /* PGDefinitionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGDefinitionNode.m; path = src/nodes/PGDefinitionNode.m; sourceTree = "<group>"; };
-		D375DA60173C639B00A5E050 /* PGDelimitedNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGDelimitedNode.h; path = src/nodes/PGDelimitedNode.h; sourceTree = "<group>"; };
-		D375DA61173C639B00A5E050 /* PGDelimitedNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGDelimitedNode.m; path = src/nodes/PGDelimitedNode.m; sourceTree = "<group>"; };
-		D375DA62173C639B00A5E050 /* PGLiteralNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGLiteralNode.h; path = src/nodes/PGLiteralNode.h; sourceTree = "<group>"; };
-		D375DA63173C639B00A5E050 /* PGLiteralNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGLiteralNode.m; path = src/nodes/PGLiteralNode.m; sourceTree = "<group>"; };
-		D375DA64173C639B00A5E050 /* PGMultipleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMultipleNode.h; path = src/nodes/PGMultipleNode.h; sourceTree = "<group>"; };
-		D375DA65173C639B00A5E050 /* PGMultipleNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMultipleNode.m; path = src/nodes/PGMultipleNode.m; sourceTree = "<group>"; };
-		D375DA66173C639B00A5E050 /* PGOptionalNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGOptionalNode.h; path = src/nodes/PGOptionalNode.h; sourceTree = "<group>"; };
-		D375DA67173C639B00A5E050 /* PGOptionalNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGOptionalNode.m; path = src/nodes/PGOptionalNode.m; sourceTree = "<group>"; };
-		D375DA68173C639B00A5E050 /* PGPatternNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPatternNode.h; path = src/nodes/PGPatternNode.h; sourceTree = "<group>"; };
-		D375DA69173C639B00A5E050 /* PGPatternNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPatternNode.m; path = src/nodes/PGPatternNode.m; sourceTree = "<group>"; };
-		D375DA6A173C639B00A5E050 /* PGReferenceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGReferenceNode.h; path = src/nodes/PGReferenceNode.h; sourceTree = "<group>"; };
-		D375DA6B173C639B00A5E050 /* PGReferenceNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGReferenceNode.m; path = src/nodes/PGReferenceNode.m; sourceTree = "<group>"; };
-		D375DA6C173C639B00A5E050 /* PGRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGRootNode.h; path = src/nodes/PGRootNode.h; sourceTree = "<group>"; };
-		D375DA6D173C639B00A5E050 /* PGRootNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGRootNode.m; path = src/nodes/PGRootNode.m; sourceTree = "<group>"; };
 		D375DAC2173C645C00A5E050 /* PKAST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKAST.m; path = src/PKAST.m; sourceTree = "<group>"; };
-		D375DACA173C649900A5E050 /* PEGKitParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PEGKitParser.h; path = src/PEGKitParser.h; sourceTree = "<group>"; };
-		D375DACB173C64A600A5E050 /* PEGKitParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PEGKitParser.m; path = src/PEGKitParser.m; sourceTree = "<group>"; };
+		D376F6A518D0B3990064C888 /* PGActionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGActionNode.h; path = ParserGenApp/nodes/PGActionNode.h; sourceTree = SOURCE_ROOT; };
+		D376F6A618D0B3990064C888 /* PGActionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGActionNode.m; path = ParserGenApp/nodes/PGActionNode.m; sourceTree = SOURCE_ROOT; };
+		D376F6A718D0B3990064C888 /* PGAlternationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGAlternationNode.h; path = ParserGenApp/nodes/PGAlternationNode.h; sourceTree = SOURCE_ROOT; };
+		D376F6A818D0B3990064C888 /* PGAlternationNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGAlternationNode.m; path = ParserGenApp/nodes/PGAlternationNode.m; sourceTree = SOURCE_ROOT; };
+		D376F6A918D0B3990064C888 /* PGBaseNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGBaseNode.h; path = ParserGenApp/nodes/PGBaseNode.h; sourceTree = SOURCE_ROOT; };
+		D376F6AA18D0B3990064C888 /* PGBaseNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGBaseNode.m; path = ParserGenApp/nodes/PGBaseNode.m; sourceTree = SOURCE_ROOT; };
+		D376F6AB18D0B3990064C888 /* PGCollectionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGCollectionNode.h; path = ParserGenApp/nodes/PGCollectionNode.h; sourceTree = SOURCE_ROOT; };
+		D376F6AC18D0B3990064C888 /* PGCollectionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGCollectionNode.m; path = ParserGenApp/nodes/PGCollectionNode.m; sourceTree = SOURCE_ROOT; };
+		D376F6AD18D0B3990064C888 /* PGCompositeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGCompositeNode.h; path = ParserGenApp/nodes/PGCompositeNode.h; sourceTree = SOURCE_ROOT; };
+		D376F6AE18D0B3990064C888 /* PGCompositeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGCompositeNode.m; path = ParserGenApp/nodes/PGCompositeNode.m; sourceTree = SOURCE_ROOT; };
+		D376F6AF18D0B3990064C888 /* PGConstantNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGConstantNode.h; path = ParserGenApp/nodes/PGConstantNode.h; sourceTree = SOURCE_ROOT; };
+		D376F6B018D0B3990064C888 /* PGConstantNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGConstantNode.m; path = ParserGenApp/nodes/PGConstantNode.m; sourceTree = SOURCE_ROOT; };
+		D376F6B118D0B3990064C888 /* PGDefinitionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGDefinitionNode.h; path = ParserGenApp/nodes/PGDefinitionNode.h; sourceTree = SOURCE_ROOT; };
+		D376F6B218D0B3990064C888 /* PGDefinitionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGDefinitionNode.m; path = ParserGenApp/nodes/PGDefinitionNode.m; sourceTree = SOURCE_ROOT; };
+		D376F6B318D0B3990064C888 /* PGDelimitedNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGDelimitedNode.h; path = ParserGenApp/nodes/PGDelimitedNode.h; sourceTree = SOURCE_ROOT; };
+		D376F6B418D0B3990064C888 /* PGDelimitedNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGDelimitedNode.m; path = ParserGenApp/nodes/PGDelimitedNode.m; sourceTree = SOURCE_ROOT; };
+		D376F6B518D0B3990064C888 /* PGLiteralNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGLiteralNode.h; path = ParserGenApp/nodes/PGLiteralNode.h; sourceTree = SOURCE_ROOT; };
+		D376F6B618D0B3990064C888 /* PGLiteralNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGLiteralNode.m; path = ParserGenApp/nodes/PGLiteralNode.m; sourceTree = SOURCE_ROOT; };
+		D376F6B718D0B3990064C888 /* PGMultipleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMultipleNode.h; path = ParserGenApp/nodes/PGMultipleNode.h; sourceTree = SOURCE_ROOT; };
+		D376F6B818D0B3990064C888 /* PGMultipleNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMultipleNode.m; path = ParserGenApp/nodes/PGMultipleNode.m; sourceTree = SOURCE_ROOT; };
+		D376F6B918D0B3990064C888 /* PGOptionalNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGOptionalNode.h; path = ParserGenApp/nodes/PGOptionalNode.h; sourceTree = SOURCE_ROOT; };
+		D376F6BA18D0B3990064C888 /* PGOptionalNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGOptionalNode.m; path = ParserGenApp/nodes/PGOptionalNode.m; sourceTree = SOURCE_ROOT; };
+		D376F6BB18D0B3990064C888 /* PGPatternNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPatternNode.h; path = ParserGenApp/nodes/PGPatternNode.h; sourceTree = SOURCE_ROOT; };
+		D376F6BC18D0B3990064C888 /* PGPatternNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPatternNode.m; path = ParserGenApp/nodes/PGPatternNode.m; sourceTree = SOURCE_ROOT; };
+		D376F6BD18D0B3990064C888 /* PGReferenceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGReferenceNode.h; path = ParserGenApp/nodes/PGReferenceNode.h; sourceTree = SOURCE_ROOT; };
+		D376F6BE18D0B3990064C888 /* PGReferenceNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGReferenceNode.m; path = ParserGenApp/nodes/PGReferenceNode.m; sourceTree = SOURCE_ROOT; };
+		D376F6BF18D0B3990064C888 /* PGRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGRootNode.h; path = ParserGenApp/nodes/PGRootNode.h; sourceTree = SOURCE_ROOT; };
+		D376F6C018D0B3990064C888 /* PGRootNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGRootNode.m; path = ParserGenApp/nodes/PGRootNode.m; sourceTree = SOURCE_ROOT; };
+		D376F6DD18D0B5020064C888 /* PGParserFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGParserFactory.m; path = ParserGenApp/PGParserFactory.m; sourceTree = "<group>"; };
+		D376F6E018D0B5090064C888 /* PEGKitParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PEGKitParser.h; path = ParserGenApp/PEGKitParser.h; sourceTree = "<group>"; };
+		D376F6E118D0B5090064C888 /* PEGKitParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PEGKitParser.m; path = ParserGenApp/PEGKitParser.m; sourceTree = "<group>"; };
+		D376F6E418D0B5190064C888 /* PGBaseVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGBaseVisitor.h; path = ParserGenApp/PGBaseVisitor.h; sourceTree = "<group>"; };
+		D376F6E518D0B5190064C888 /* PGBaseVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGBaseVisitor.m; path = ParserGenApp/PGBaseVisitor.m; sourceTree = "<group>"; };
+		D376F6E618D0B5190064C888 /* PGDefinitionPhaseVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGDefinitionPhaseVisitor.h; path = ParserGenApp/PGDefinitionPhaseVisitor.h; sourceTree = "<group>"; };
+		D376F6E718D0B5190064C888 /* PGDefinitionPhaseVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGDefinitionPhaseVisitor.m; path = ParserGenApp/PGDefinitionPhaseVisitor.m; sourceTree = "<group>"; };
+		D376F6E818D0B5190064C888 /* PGNodeVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGNodeVisitor.h; path = ParserGenApp/PGNodeVisitor.h; sourceTree = "<group>"; };
+		D376F6E918D0B5190064C888 /* PGParserGenVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGParserGenVisitor.h; path = ParserGenApp/PGParserGenVisitor.h; sourceTree = "<group>"; };
+		D376F6EA18D0B5190064C888 /* PGParserGenVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGParserGenVisitor.m; path = ParserGenApp/PGParserGenVisitor.m; sourceTree = "<group>"; };
+		D376F6EB18D0B5190064C888 /* PGTokenKindDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGTokenKindDescriptor.h; path = ParserGenApp/PGTokenKindDescriptor.h; sourceTree = "<group>"; };
+		D376F6EC18D0B5190064C888 /* PGTokenKindDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGTokenKindDescriptor.m; path = ParserGenApp/PGTokenKindDescriptor.m; sourceTree = "<group>"; };
+		D376F6F518D0B5700064C888 /* PGParserFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PGParserFactory.h; path = ParserGenApp/PGParserFactory.h; sourceTree = "<group>"; };
 		D37D8DC61571A4F700CDB822 /* PEGKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PEGKitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37D8DC81571A4F700CDB822 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		D37F23201453841100A98014 /* PKHashtagState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKHashtagState.m; path = src/PKHashtagState.m; sourceTree = "<group>"; };
@@ -682,8 +684,6 @@
 		D3C221E70FFE8C60004514FE /* PKMultiLineCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKMultiLineCommentState.h; path = include/PEGKit/PKMultiLineCommentState.h; sourceTree = SOURCE_ROOT; };
 		D3C221EA0FFE8C69004514FE /* PKSymbolNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolNode.h; path = include/PEGKit/PKSymbolNode.h; sourceTree = SOURCE_ROOT; };
 		D3C221ED0FFE8C6F004514FE /* PKSymbolRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolRootNode.h; path = include/PEGKit/PKSymbolRootNode.h; sourceTree = SOURCE_ROOT; };
-		D3C222290FFE8DAC004514FE /* PGParserFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGParserFactory.h; path = include/PEGKit/PGParserFactory.h; sourceTree = "<group>"; };
-		D3C4FAEA173C40E8006B7654 /* PGNodeVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGNodeVisitor.h; path = src/PGNodeVisitor.h; sourceTree = "<group>"; };
 		D3F0E2470FFE8EB900C9DF74 /* PKQuoteState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKQuoteState.h; path = include/PEGKit/PKQuoteState.h; sourceTree = SOURCE_ROOT; };
 		D3F8A48D175817DF00056188 /* PEGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PEGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F8A4921758187300056188 /* PEGKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PEGKit-Info.plist"; path = "res/PEGKit-Info.plist"; sourceTree = "<group>"; };
@@ -877,34 +877,34 @@
 		D325FFBC161E4E3200D4EBCC /* ast */ = {
 			isa = PBXGroup;
 			children = (
-				D375DA56173C639B00A5E050 /* PGBaseNode.h */,
-				D375DA57173C639B00A5E050 /* PGBaseNode.m */,
-				D375DA6C173C639B00A5E050 /* PGRootNode.h */,
-				D375DA6D173C639B00A5E050 /* PGRootNode.m */,
-				D375DA5E173C639B00A5E050 /* PGDefinitionNode.h */,
-				D375DA5F173C639B00A5E050 /* PGDefinitionNode.m */,
-				D375DA6A173C639B00A5E050 /* PGReferenceNode.h */,
-				D375DA6B173C639B00A5E050 /* PGReferenceNode.m */,
-				D375DA52173C639B00A5E050 /* PGActionNode.h */,
-				D375DA53173C639B00A5E050 /* PGActionNode.m */,
-				D375DA5C173C639B00A5E050 /* PGConstantNode.h */,
-				D375DA5D173C639B00A5E050 /* PGConstantNode.m */,
-				D375DA62173C639B00A5E050 /* PGLiteralNode.h */,
-				D375DA63173C639B00A5E050 /* PGLiteralNode.m */,
-				D375DA60173C639B00A5E050 /* PGDelimitedNode.h */,
-				D375DA61173C639B00A5E050 /* PGDelimitedNode.m */,
-				D375DA68173C639B00A5E050 /* PGPatternNode.h */,
-				D375DA69173C639B00A5E050 /* PGPatternNode.m */,
-				D375DA5A173C639B00A5E050 /* PGCompositeNode.h */,
-				D375DA5B173C639B00A5E050 /* PGCompositeNode.m */,
-				D375DA58173C639B00A5E050 /* PGCollectionNode.h */,
-				D375DA59173C639B00A5E050 /* PGCollectionNode.m */,
-				D375DA54173C639B00A5E050 /* PGAlternationNode.h */,
-				D375DA55173C639B00A5E050 /* PGAlternationNode.m */,
-				D375DA64173C639B00A5E050 /* PGMultipleNode.h */,
-				D375DA65173C639B00A5E050 /* PGMultipleNode.m */,
-				D375DA66173C639B00A5E050 /* PGOptionalNode.h */,
-				D375DA67173C639B00A5E050 /* PGOptionalNode.m */,
+				D376F6A918D0B3990064C888 /* PGBaseNode.h */,
+				D376F6AA18D0B3990064C888 /* PGBaseNode.m */,
+				D376F6BF18D0B3990064C888 /* PGRootNode.h */,
+				D376F6C018D0B3990064C888 /* PGRootNode.m */,
+				D376F6A518D0B3990064C888 /* PGActionNode.h */,
+				D376F6A618D0B3990064C888 /* PGActionNode.m */,
+				D376F6A718D0B3990064C888 /* PGAlternationNode.h */,
+				D376F6A818D0B3990064C888 /* PGAlternationNode.m */,
+				D376F6AB18D0B3990064C888 /* PGCollectionNode.h */,
+				D376F6AC18D0B3990064C888 /* PGCollectionNode.m */,
+				D376F6AD18D0B3990064C888 /* PGCompositeNode.h */,
+				D376F6AE18D0B3990064C888 /* PGCompositeNode.m */,
+				D376F6AF18D0B3990064C888 /* PGConstantNode.h */,
+				D376F6B018D0B3990064C888 /* PGConstantNode.m */,
+				D376F6B118D0B3990064C888 /* PGDefinitionNode.h */,
+				D376F6B218D0B3990064C888 /* PGDefinitionNode.m */,
+				D376F6B318D0B3990064C888 /* PGDelimitedNode.h */,
+				D376F6B418D0B3990064C888 /* PGDelimitedNode.m */,
+				D376F6B518D0B3990064C888 /* PGLiteralNode.h */,
+				D376F6B618D0B3990064C888 /* PGLiteralNode.m */,
+				D376F6B718D0B3990064C888 /* PGMultipleNode.h */,
+				D376F6B818D0B3990064C888 /* PGMultipleNode.m */,
+				D376F6B918D0B3990064C888 /* PGOptionalNode.h */,
+				D376F6BA18D0B3990064C888 /* PGOptionalNode.m */,
+				D376F6BB18D0B3990064C888 /* PGPatternNode.h */,
+				D376F6BC18D0B3990064C888 /* PGPatternNode.m */,
+				D376F6BD18D0B3990064C888 /* PGReferenceNode.h */,
+				D376F6BE18D0B3990064C888 /* PGReferenceNode.m */,
 			);
 			name = ast;
 			path = ..;
@@ -955,10 +955,10 @@
 		D34BAC0F0FF87ED200D7773A /* factory */ = {
 			isa = PBXGroup;
 			children = (
-				D3C222290FFE8DAC004514FE /* PGParserFactory.h */,
-				D34BAFD80FF9E95500D7773A /* PGParserFactory.m */,
-				D375DACA173C649900A5E050 /* PEGKitParser.h */,
-				D375DACB173C64A600A5E050 /* PEGKitParser.m */,
+				D376F6F518D0B5700064C888 /* PGParserFactory.h */,
+				D376F6DD18D0B5020064C888 /* PGParserFactory.m */,
+				D376F6E018D0B5090064C888 /* PEGKitParser.h */,
+				D376F6E118D0B5090064C888 /* PEGKitParser.m */,
 				D30B8F4F170CFF16001796F4 /* pegkit.grammar */,
 			);
 			name = factory;
@@ -1039,15 +1039,15 @@
 		D3A1492A16F8C79600770DEE /* visitor */ = {
 			isa = PBXGroup;
 			children = (
-				D3C4FAEA173C40E8006B7654 /* PGNodeVisitor.h */,
-				D367F66916F5570500F5E9EB /* PGBaseVisitor.h */,
-				D367F66A16F5570500F5E9EB /* PGBaseVisitor.m */,
-				D326129816F64ED50021845F /* PGDefinitionPhaseVisitor.h */,
-				D326129916F64ED50021845F /* PGDefinitionPhaseVisitor.m */,
-				D30226F8170202DD00594F16 /* PGParserGenVisitor.h */,
-				D30226F9170202DD00594F16 /* PGParserGenVisitor.m */,
-				D3382FA0171C811B00CCE513 /* PGTokenKindDescriptor.h */,
-				D3382FA1171C811B00CCE513 /* PGTokenKindDescriptor.m */,
+				D376F6E818D0B5190064C888 /* PGNodeVisitor.h */,
+				D376F6E418D0B5190064C888 /* PGBaseVisitor.h */,
+				D376F6E518D0B5190064C888 /* PGBaseVisitor.m */,
+				D376F6E618D0B5190064C888 /* PGDefinitionPhaseVisitor.h */,
+				D376F6E718D0B5190064C888 /* PGDefinitionPhaseVisitor.m */,
+				D376F6E918D0B5190064C888 /* PGParserGenVisitor.h */,
+				D376F6EA18D0B5190064C888 /* PGParserGenVisitor.m */,
+				D376F6EB18D0B5190064C888 /* PGTokenKindDescriptor.h */,
+				D376F6EC18D0B5190064C888 /* PGTokenKindDescriptor.m */,
 			);
 			name = visitor;
 			path = ..;
@@ -1615,34 +1615,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D376F6E318D0B5090064C888 /* PEGKitParser.m in Sources */,
+				D376F6D018D0B3990064C888 /* PGDelimitedNode.m in Sources */,
 				D338303E171C923700CCE513 /* main.m in Sources */,
+				D376F6D418D0B3990064C888 /* PGMultipleNode.m in Sources */,
+				D376F6CC18D0B3990064C888 /* PGConstantNode.m in Sources */,
 				D3383045171C923700CCE513 /* PGDocument.m in Sources */,
-				D3CC54A418CF92CA006715D6 /* PGRootNode.m in Sources */,
-				D3383054171CA2ED00CCE513 /* PGParserGenVisitor.m in Sources */,
 				D33830B2171CA46200CCE513 /* MGTemplateEngine.m in Sources */,
-				D3CC550618CF9D5E006715D6 /* PGDefinitionPhaseVisitor.m in Sources */,
+				D376F6CA18D0B3990064C888 /* PGCompositeNode.m in Sources */,
+				D376F6F418D0B5190064C888 /* PGTokenKindDescriptor.m in Sources */,
+				D376F6C218D0B3990064C888 /* PGActionNode.m in Sources */,
 				D33830B3171CA46200CCE513 /* MGTemplateStandardMarkers.m in Sources */,
+				D376F6F018D0B5190064C888 /* PGDefinitionPhaseVisitor.m in Sources */,
+				D376F6CE18D0B3990064C888 /* PGDefinitionNode.m in Sources */,
+				D376F6DF18D0B5020064C888 /* PGParserFactory.m in Sources */,
+				D376F6DA18D0B3990064C888 /* PGReferenceNode.m in Sources */,
 				D33830B4171CA46200CCE513 /* MGTemplateStandardFilters.m in Sources */,
-				D3B5C84A18D0ACD500CCE33A /* PGTokenKindDescriptor.m in Sources */,
-				D3CC54A518CF92CA006715D6 /* PGDefinitionNode.m in Sources */,
-				D3CC54AE18CF92CA006715D6 /* PGAlternationNode.m in Sources */,
-				D3CC54A918CF92CA006715D6 /* PGLiteralNode.m in Sources */,
-				D3CC54A618CF92CA006715D6 /* PGReferenceNode.m in Sources */,
-				D3CC54AC18CF92CA006715D6 /* PGCompositeNode.m in Sources */,
-				D3CC54A718CF92CA006715D6 /* PGActionNode.m in Sources */,
-				D3CC54AF18CF92CA006715D6 /* PGMultipleNode.m in Sources */,
-				D3CC54A318CF92CA006715D6 /* PGBaseNode.m in Sources */,
-				D3CC549018CF92B8006715D6 /* PGBaseVisitor.m in Sources */,
 				D33830B5171CA46200CCE513 /* ICUTemplateMatcher.m in Sources */,
 				D33830B6171CA46200CCE513 /* NSArray_DeepMutableCopy.m in Sources */,
+				D376F6EE18D0B5190064C888 /* PGBaseVisitor.m in Sources */,
 				D33830B7171CA46200CCE513 /* NSDictionary_DeepMutableCopy.m in Sources */,
-				D3CC54B018CF92CA006715D6 /* PGOptionalNode.m in Sources */,
-				D3CC54FE18CF9990006715D6 /* PGParserFactory.m in Sources */,
-				D3CC54AD18CF92CA006715D6 /* PGCollectionNode.m in Sources */,
-				D3CC54AA18CF92CA006715D6 /* PGDelimitedNode.m in Sources */,
-				D3CC54EE18CF9326006715D6 /* PEGKitParser.m in Sources */,
-				D3CC54AB18CF92CA006715D6 /* PGPatternNode.m in Sources */,
-				D3CC54A818CF92CA006715D6 /* PGConstantNode.m in Sources */,
+				D376F6DC18D0B3990064C888 /* PGRootNode.m in Sources */,
+				D376F6C818D0B3990064C888 /* PGCollectionNode.m in Sources */,
+				D376F6C418D0B3990064C888 /* PGAlternationNode.m in Sources */,
+				D376F6D218D0B3990064C888 /* PGLiteralNode.m in Sources */,
+				D376F6D618D0B3990064C888 /* PGOptionalNode.m in Sources */,
+				D376F6C618D0B3990064C888 /* PGBaseNode.m in Sources */,
+				D376F6F218D0B5190064C888 /* PGParserGenVisitor.m in Sources */,
+				D376F6D818D0B3990064C888 /* PGPatternNode.m in Sources */,
 				D33830BB171CA50F00CCE513 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1651,19 +1651,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3B5C84B18D0B16E00CCE33A /* PGParserFactory.m in Sources */,
-				D3CC549A18CF92CA006715D6 /* PGConstantNode.m in Sources */,
+				D376F6DE18D0B5020064C888 /* PGParserFactory.m in Sources */,
 				D3F8121A161AA5BC00DEA1CB /* TDTestScaffold.m in Sources */,
 				D3B22A521702B04300446945 /* ElementParser.m in Sources */,
-				D3B5C84918D0ACD400CCE33A /* PGTokenKindDescriptor.m in Sources */,
+				D376F6D318D0B3990064C888 /* PGMultipleNode.m in Sources */,
 				D3B22A561703D03900446945 /* ExpressionParser.m in Sources */,
 				D3B22A5D1703DA8000446945 /* ElementParserTest.m in Sources */,
+				D376F6C518D0B3990064C888 /* PGBaseNode.m in Sources */,
 				D3B22A621703DE2000446945 /* ExpressionParserTest.m in Sources */,
 				D3083AB91705F09B00DA6F95 /* ElementAssignParserTest.m in Sources */,
 				D3083ABC1705F16000DA6F95 /* ElementAssignParser.m in Sources */,
 				D3B63A3417079F5200BA9DBF /* ExpressionParserActionsTest.m in Sources */,
 				D3B63A3917079FE100BA9DBF /* ExpressionActionsParser.m in Sources */,
+				D376F6C118D0B3990064C888 /* PGActionNode.m in Sources */,
 				D3B63A42170910D100BA9DBF /* MethodsParserTest.m in Sources */,
+				D376F6F318D0B5190064C888 /* PGTokenKindDescriptor.m in Sources */,
 				D3B63A451709111A00BA9DBF /* MethodsParser.m in Sources */,
 				D3B63A4A1709155900BA9DBF /* MethodsFactoredParser.m in Sources */,
 				D3B63A4D1709155D00BA9DBF /* MethodsFactoredParserTest.m in Sources */,
@@ -1672,31 +1674,29 @@
 				D3B63A5E170A04C800BA9DBF /* LabelRecursiveParserTest.m in Sources */,
 				D3B63A61170A050800BA9DBF /* LabelEBNFParserTest.m in Sources */,
 				D3B63A68170A064300BA9DBF /* LabelRecursiveParser.m in Sources */,
+				D376F6CB18D0B3990064C888 /* PGConstantNode.m in Sources */,
 				D3B63A6B170A065700BA9DBF /* LabelEBNFParser.m in Sources */,
 				D3B63A70170A3F7900BA9DBF /* OptionalParserTest.m in Sources */,
+				D376F6E218D0B5090064C888 /* PEGKitParser.m in Sources */,
 				D3B63A75170A3FF000BA9DBF /* OptionalParser.m in Sources */,
-				D3CC549818CF92CA006715D6 /* PGReferenceNode.m in Sources */,
 				D3B63A7C170A55DE00BA9DBF /* MultipleParser.m in Sources */,
+				D376F6C918D0B3990064C888 /* PGCompositeNode.m in Sources */,
 				D3B63A7F170A560900BA9DBF /* MultipleParserTest.m in Sources */,
 				D3B63A82170A671F00BA9DBF /* AltParserTest.m in Sources */,
 				D3B63A87170A676A00BA9DBF /* AltParser.m in Sources */,
 				D3B63A8A170A6B5C00BA9DBF /* TDNSPredicateParserTest.m in Sources */,
-				D3CC549B18CF92CA006715D6 /* PGLiteralNode.m in Sources */,
+				D376F6CD18D0B3990064C888 /* PGDefinitionNode.m in Sources */,
 				D3B63A8D170A6BBC00BA9DBF /* TDNSPredicateParser.m in Sources */,
 				D30B8F3D170CA594001796F4 /* DreadedParser.m in Sources */,
 				D30B8F40170CA59A001796F4 /* DreadedParserTest.m in Sources */,
 				D30B8F45170CFA8C001796F4 /* NegationParser.m in Sources */,
-				D3CC548F18CF92B5006715D6 /* PGBaseVisitor.m in Sources */,
 				D30B8F4A170CFAAD001796F4 /* NegationParserTest.m in Sources */,
 				D30B8F53170CFF2B001796F4 /* PEGKitParserTest.m in Sources */,
 				D30B8F59170CFFFE001796F4 /* DelimitedParserTest.m in Sources */,
 				D30B8F5E170D001E001796F4 /* DelimitedParser.m in Sources */,
 				D30B8F65170D0EB0001796F4 /* PatternParserTest.m in Sources */,
 				D30B8F6A170D0EEB001796F4 /* PatternParser.m in Sources */,
-				D3CC549918CF92CA006715D6 /* PGActionNode.m in Sources */,
 				D38BC893171494CE00BF530D /* GreedParserTest.m in Sources */,
-				D3CC549D18CF92CA006715D6 /* PGPatternNode.m in Sources */,
-				D3CC54A118CF92CA006715D6 /* PGMultipleNode.m in Sources */,
 				D38BC898171494FE00BF530D /* GreedParser.m in Sources */,
 				D38BC8A11714A75B00BF530D /* UnfinishedSeqParser.m in Sources */,
 				D38BC8A61714A78800BF530D /* UnfinishedSeqParserTest.m in Sources */,
@@ -1704,45 +1704,45 @@
 				D38BC8AE1714AF5900BF530D /* DotQuestionParser.m in Sources */,
 				D38BC8B11716006D00BF530D /* SemanticPredicateParser.m in Sources */,
 				D38BC8B6171600A900BF530D /* SemanticPredicateParserTest.m in Sources */,
-				D3383053171CA2EC00CCE513 /* PGParserGenVisitor.m in Sources */,
-				D3CC550518CF9D5D006715D6 /* PGDefinitionPhaseVisitor.m in Sources */,
+				D376F6EF18D0B5190064C888 /* PGDefinitionPhaseVisitor.m in Sources */,
+				D376F6D518D0B3990064C888 /* PGOptionalNode.m in Sources */,
 				D33830BA171CA50F00CCE513 /* RegexKitLite.m in Sources */,
 				D33830BE171CA55300CCE513 /* MGTemplateEngine.m in Sources */,
+				D376F6D118D0B3990064C888 /* PGLiteralNode.m in Sources */,
 				D33830BF171CA55300CCE513 /* MGTemplateStandardMarkers.m in Sources */,
 				D33830C0171CA55300CCE513 /* MGTemplateStandardFilters.m in Sources */,
 				D33830C1171CA55300CCE513 /* ICUTemplateMatcher.m in Sources */,
 				D33830C2171CA55300CCE513 /* NSArray_DeepMutableCopy.m in Sources */,
+				D376F6F118D0B5190064C888 /* PGParserGenVisitor.m in Sources */,
 				D33830C3171CA55300CCE513 /* NSDictionary_DeepMutableCopy.m in Sources */,
 				D33830CB171DBEB100CCE513 /* NamedActionParser.m in Sources */,
 				D33830CE171DBEE200CCE513 /* NamedActionParserTest.m in Sources */,
 				D36E68B3171F378B007B4353 /* JavaScriptParserTest.m in Sources */,
 				D36E68B6171F37D7007B4353 /* JavaScriptParser.m in Sources */,
-				D3CC549618CF92CA006715D6 /* PGRootNode.m in Sources */,
-				D3CC54EC18CF9326006715D6 /* PEGKitParser.m in Sources */,
+				D376F6C718D0B3990064C888 /* PGCollectionNode.m in Sources */,
 				D36E68B9172074EF007B4353 /* CSSParserTest.m in Sources */,
-				D3CC54A018CF92CA006715D6 /* PGAlternationNode.m in Sources */,
+				D376F6CF18D0B3990064C888 /* PGDelimitedNode.m in Sources */,
 				D36E68BC17207542007B4353 /* CSSParser.m in Sources */,
-				D3CC549518CF92CA006715D6 /* PGBaseNode.m in Sources */,
-				D3CC549718CF92CA006715D6 /* PGDefinitionNode.m in Sources */,
 				D36E68BF1720C840007B4353 /* HTMLParserTest.m in Sources */,
 				D36E68C21720C84F007B4353 /* HTMLParser.m in Sources */,
+				D376F6D918D0B3990064C888 /* PGReferenceNode.m in Sources */,
 				D30DA1771724AD0100A1A3EC /* JSONParser.m in Sources */,
 				D30DA17A1724ADE700A1A3EC /* JSONParserTest.m in Sources */,
 				D30DA18A1725B6A800A1A3EC /* RecoverySingleTokenDeletionTest.m in Sources */,
 				D30DA18D1725BB5700A1A3EC /* RecoverySingleTokenInsertionTest.m in Sources */,
+				D376F6DB18D0B3990064C888 /* PGRootNode.m in Sources */,
+				D376F6D718D0B3990064C888 /* PGPatternNode.m in Sources */,
 				D30DA1931726028500A1A3EC /* RecoveryResyncSetTest.m in Sources */,
 				D3344F4917405B4B00598362 /* JSRecoveryTest.m in Sources */,
-				D3CC549F18CF92CA006715D6 /* PGCollectionNode.m in Sources */,
 				D34F53A717430232008700F3 /* CrockfordParserTest.m in Sources */,
-				D3CC549E18CF92CA006715D6 /* PGCompositeNode.m in Sources */,
-				D3CC549C18CF92CA006715D6 /* PGDelimitedNode.m in Sources */,
-				D3CC54A218CF92CA006715D6 /* PGOptionalNode.m in Sources */,
 				D34F53AC17430249008700F3 /* CrockfordParser.m in Sources */,
 				D3B5EA7717470F4F00733A26 /* GreedyFailureParser.m in Sources */,
 				D3B5EA7C17470F5600733A26 /* GreedyFailureParserTest.m in Sources */,
+				D376F6C318D0B3990064C888 /* PGAlternationNode.m in Sources */,
 				D3B5EA811747515D00733A26 /* GreedyFailureNestedParser.m in Sources */,
 				D3B5EA841747518600733A26 /* GreedyFailureNestedParserTest.m in Sources */,
 				D31C40A51779634700A1B8B7 /* JavaScriptWhitespaceParser.m in Sources */,
+				D376F6ED18D0B5190064C888 /* PGBaseVisitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
