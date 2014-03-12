@@ -10,7 +10,7 @@
 #import <PEGKit/PKToken.h>
 
 #import <PEGKit/PKParser.h>
-#import "PKTokenKindDescriptor.h"
+#import "PGTokenKindDescriptor.h"
 #import "NSString+PEGKitAdditions.h"
 
 #import "MGTemplateEngine.h"
@@ -129,7 +129,7 @@
 
 
 - (NSArray *)sortedArrayFromLookaheadSet:(NSSet *)set {
-    NSArray *result = [[set allObjects] sortedArrayUsingComparator:^NSComparisonResult(PKTokenKindDescriptor *desc1, PKTokenKindDescriptor *desc2) {
+    NSArray *result = [[set allObjects] sortedArrayUsingComparator:^NSComparisonResult(PGTokenKindDescriptor *desc1, PGTokenKindDescriptor *desc2) {
         return [desc1.name compare:desc2.name];
     }];
     
@@ -228,7 +228,7 @@
     self.startMethodName = node.startMethodName;
     
     // add namespace to token kinds
-    for (PKTokenKindDescriptor *desc in node.tokenKinds) {
+    for (PGTokenKindDescriptor *desc in node.tokenKinds) {
         NSString *newName = [NSString stringWithFormat:@"%@_%@", [node.grammarName uppercaseString], desc.name];
         desc.name = newName;
     }
@@ -632,7 +632,7 @@
         
         if (_enableAutomaticErrorRecovery && isCurrentChildLiteral && partialCount > 0) {
             
-            PKTokenKindDescriptor *desc = [(PGConstantNode *)concreteNode tokenKind];
+            PGTokenKindDescriptor *desc = [(PGConstantNode *)concreteNode tokenKind];
             id resyncVars = @{TOKEN_KIND: desc, DEPTH: @(_depth - 1), CHILD_STRING: partialChildStr, TERMINAL_CALL_STRING: terminalCallStr};
             NSString *tryAndResyncStr = [_engine processTemplate:[self templateStringNamed:@"PGTryAndRecoverTemplate"] withVariables:resyncVars];
             

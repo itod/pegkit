@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PKTokenKindDescriptor : NSObject
+@interface PGTokenKindDescriptor : NSObject
 
-+ (PKTokenKindDescriptor *)descriptorWithStringValue:(NSString *)s name:(NSString *)name;
-+ (PKTokenKindDescriptor *)anyDescriptor;
-+ (PKTokenKindDescriptor *)eofDescriptor;
++ (PGTokenKindDescriptor *)descriptorWithStringValue:(NSString *)s name:(NSString *)name;
++ (PGTokenKindDescriptor *)anyDescriptor;
++ (PGTokenKindDescriptor *)eofDescriptor;
 
 + (void)clearCache;
 
