@@ -7,13 +7,13 @@
 //
 //
 
-#import "SemanticPredicateParserTest.h"
+#import "TDTestScaffold.h"
 #import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PGRootNode.h"
 #import "SemanticPredicateParser.h"
 
-@interface SemanticPredicateParserTest ()
+@interface SemanticPredicateParserTest : SenTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

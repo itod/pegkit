@@ -7,13 +7,13 @@
 //
 //
 
-#import "NamedActionParserTest.h"
+#import "TDTestScaffold.h"
 #import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PGRootNode.h"
 #import "NamedActionParser.h"
 
-@interface NamedActionParserTest ()
+@interface NamedActionParserTest : SenTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

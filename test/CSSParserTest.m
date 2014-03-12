@@ -7,13 +7,13 @@
 //
 //
 
-#import "CSSParserTest.h"
+#import "TDTestScaffold.h"
 #import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
 #import "PGRootNode.h"
 #import "CSSParser.h"
 
-@interface CSSParserTest ()
+@interface CSSParserTest : SenTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
