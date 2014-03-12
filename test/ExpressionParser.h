@@ -1,4 +1,4 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 enum {
     EXPRESSION_TOKEN_KIND_GE = 14,
@@ -17,7 +17,7 @@ enum {
     EXPRESSION_TOKEN_KIND_AND,
 };
 
-@interface ExpressionParser : PEGParser
+@interface ExpressionParser : PKParser
 
 @end
 

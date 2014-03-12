@@ -23,16 +23,16 @@
 
 @implementation GreedyFailureNestedParserTest
 
-- (void)parser:(PEGParser *)p didFailToMatch:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didFailToMatch:(PKAssembly *)a {}
 
-- (void)parser:(PEGParser *)p didMatchLcurly:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchRcurly:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchName:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchColon:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchValue:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchComma:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchStructure:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchStructs:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchLcurly:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchRcurly:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchName:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchColon:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchValue:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchComma:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchStructure:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchStructs:(PKAssembly *)a {}
 
 - (void)dealloc {
     self.factory = nil;

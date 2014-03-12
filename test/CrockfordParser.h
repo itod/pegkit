@@ -1,4 +1,4 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 enum {
     CROCKFORD_TOKEN_KIND_OPEN_CURLY = 14,
@@ -51,7 +51,7 @@ enum {
     CROCKFORD_TOKEN_KIND_LE,
 };
 
-@interface CrockfordParser : PEGParser
+@interface CrockfordParser : PKParser
 
 @end
 

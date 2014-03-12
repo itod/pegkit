@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PEGRecognitionException : NSException
+@interface PKRecognitionException : NSException
 
 - (id)init; // use me
 

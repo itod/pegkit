@@ -1,4 +1,4 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 enum {
     ELEMENTASSIGN_TOKEN_KIND_RBRACKET = 14,
@@ -9,7 +9,7 @@ enum {
     ELEMENTASSIGN_TOKEN_KIND_DOT,
 };
 
-@interface ElementAssignParser : PEGParser
+@interface ElementAssignParser : PKParser
 
 @end
 

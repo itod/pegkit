@@ -12,7 +12,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <PEGKit/PEGTokenAssembly.h>
+#import <PEGKit/PKTokenAssembly.h>
 #import <PEGKit/PKTokenizer.h>
 #import <PEGKit/PKToken.h>
 
@@ -21,15 +21,15 @@
 @property (nonatomic, readwrite, retain) NSString *defaultCursor;
 @end
 
-@interface PEGTokenAssembly ()
+@interface PKTokenAssembly ()
 - (void)consume:(PKToken *)tok;
 @property (nonatomic, retain) PKTokenizer *tokenizer;
 @property (nonatomic, retain) NSMutableArray *tokens;
 @end
 
-@implementation PEGTokenAssembly
+@implementation PKTokenAssembly
 
-+ (PEGTokenAssembly *)assemblyWithTokenizer:(PKTokenizer *)t {
++ (PKTokenAssembly *)assemblyWithTokenizer:(PKTokenizer *)t {
     return [[[self alloc] initWithTokenzier:t] autorelease];
 }
 
@@ -59,7 +59,7 @@
 - (id)copyWithZone:(NSZone *)zone {
     NSAssert2(0, @"%s why are you copying me??? %@", __PRETTY_FUNCTION__, [self class]);
     
-    PEGTokenAssembly *a = (PEGTokenAssembly *)[super copyWithZone:zone];
+    PKTokenAssembly *a = (PKTokenAssembly *)[super copyWithZone:zone];
     a->_tokenizer = nil; // optimization
     a->_preservesWhitespaceTokens = _preservesWhitespaceTokens;
     if (_tokens) a->_tokens = [_tokens mutableCopy];

@@ -8,10 +8,10 @@
 
 #import "PGBaseNode.h"
 
-@class PEGTokenKindDescriptor;
+@class PKTokenKindDescriptor;
 
 @interface PGLiteralNode : PGBaseNode
 
 @property (nonatomic, assign) BOOL wantsCharacters;
-@property (nonatomic, retain) PEGTokenKindDescriptor *tokenKind;
+@property (nonatomic, retain) PKTokenKindDescriptor *tokenKind;
 @end

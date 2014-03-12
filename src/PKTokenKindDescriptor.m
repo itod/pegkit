@@ -1,38 +1,38 @@
 //
-//  PEGTokenKindDescriptor.m
+//  PKTokenKindDescriptor.m
 //  PEGKit
 //
 //  Created by Todd Ditchendorf on 3/27/13.
 //
 //
 
-#import "PEGTokenKindDescriptor.h"
-#import <PEGKit/PEGParser.h>
+#import "PKTokenKindDescriptor.h"
+#import <PEGKit/PKParser.h>
 
 static NSMutableDictionary *sCache = nil;
-static PEGTokenKindDescriptor *sAnyDesc = nil;
-static PEGTokenKindDescriptor *sEOFDesc = nil;
+static PKTokenKindDescriptor *sAnyDesc = nil;
+static PKTokenKindDescriptor *sEOFDesc = nil;
 
-@implementation PEGTokenKindDescriptor
+@implementation PKTokenKindDescriptor
 
 + (void)initialize {
-    if ([PEGTokenKindDescriptor class] == self) {
+    if ([PKTokenKindDescriptor class] == self) {
         sCache = [[NSMutableDictionary alloc] init];
         
-        sAnyDesc = [[PEGTokenKindDescriptor descriptorWithStringValue:@"TOKEN_KIND_BUILTIN_ANY" name:@"TOKEN_KIND_BUILTIN_ANY"] retain];
-        sEOFDesc = [[PEGTokenKindDescriptor descriptorWithStringValue:@"TOKEN_KIND_BUILTIN_EOR" name:@"TOKEN_KIND_BUILTIN_EOF"] retain];
+        sAnyDesc = [[PKTokenKindDescriptor descriptorWithStringValue:@"TOKEN_KIND_BUILTIN_ANY" name:@"TOKEN_KIND_BUILTIN_ANY"] retain];
+        sEOFDesc = [[PKTokenKindDescriptor descriptorWithStringValue:@"TOKEN_KIND_BUILTIN_EOR" name:@"TOKEN_KIND_BUILTIN_EOF"] retain];
     }
 }
 
 
-+ (PEGTokenKindDescriptor *)descriptorWithStringValue:(NSString *)s name:(NSString *)name {
++ (PKTokenKindDescriptor *)descriptorWithStringValue:(NSString *)s name:(NSString *)name {
     NSParameterAssert(s);
     NSParameterAssert(name);
     
-    PEGTokenKindDescriptor *desc = sCache[name];
+    PKTokenKindDescriptor *desc = sCache[name];
     
     if (!desc) {
-        desc = [[[PEGTokenKindDescriptor alloc] init] autorelease];
+        desc = [[[PKTokenKindDescriptor alloc] init] autorelease];
         desc.stringValue = s;
         desc.name = name;
         
@@ -43,13 +43,13 @@ static PEGTokenKindDescriptor *sEOFDesc = nil;
 }
 
 
-+ (PEGTokenKindDescriptor *)anyDescriptor {
++ (PKTokenKindDescriptor *)anyDescriptor {
     NSAssert(sAnyDesc, @"");
     return sAnyDesc;
 }
 
 
-+ (PEGTokenKindDescriptor *)eofDescriptor {
++ (PKTokenKindDescriptor *)eofDescriptor {
     NSAssert(sEOFDesc, @"");
     return sEOFDesc;
 }
@@ -77,7 +77,7 @@ static PEGTokenKindDescriptor *sEOFDesc = nil;
         return NO;
     }
     
-    PEGTokenKindDescriptor *that = (PEGTokenKindDescriptor *)obj;
+    PKTokenKindDescriptor *that = (PKTokenKindDescriptor *)obj;
     
     if (![_stringValue isEqualToString:that->_stringValue]) {
         return NO;

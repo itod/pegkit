@@ -27,7 +27,7 @@
 #define LOG(obj) do { NSLog(@"%@", (obj)); } while (0);
 #define PRINT(str) do { printf("%s\n", (str)); } while (0);
 
-@interface PEGParser ()
+@interface PKParser ()
 @property (nonatomic, retain) NSMutableDictionary *_tokenKindTab;
 
 - (BOOL)popBool;

@@ -1,17 +1,17 @@
 //
-//  PEGParser.m
+//  PKParser.m
 //  PEGKit
 //
 //  Created by Todd Ditchendorf on 3/26/13.
 //
 //
 
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 #import <PEGKit/PKToken.h>
 #import <PEGKit/PKTokenizer.h>
 #import <PEGKit/PKWhitespaceState.h>
-#import <PEGKit/PEGTokenAssembly.h>
-#import <PEGKit/PEGRecognitionException.h>
+#import <PEGKit/PKTokenAssembly.h>
+#import <PEGKit/PKRecognitionException.h>
 #import "NSArray+PEGKitAdditions.h"
 
 #define FAILED -1
@@ -21,17 +21,17 @@
 #define LA(i) [self LA:(i)]
 
 @interface NSObject ()
-- (void)parser:(PEGParser *)p didFailToMatch:(PKAssembly *)a;
+- (void)parser:(PKParser *)p didFailToMatch:(PKAssembly *)a;
 @end
 
-@interface PEGTokenAssembly ()
+@interface PKTokenAssembly ()
 - (void)consume:(PKToken *)tok;
 @property (nonatomic, readwrite, retain) NSMutableArray *stack;
 @end
 
-@interface PEGParser ()
+@interface PKParser ()
 @property (nonatomic, assign) id assembler; // weak ref
-@property (nonatomic, retain) PEGRecognitionException *exception;
+@property (nonatomic, retain) PKRecognitionException *exception;
 @property (nonatomic, retain) NSMutableArray *lookahead;
 @property (nonatomic, retain) NSMutableArray *markers;
 @property (nonatomic, assign) NSInteger p;
@@ -81,7 +81,7 @@
 - (void)clearMemo;
 @end
 
-@implementation PEGParser
+@implementation PKParser
 
 - (id)init {
     self = [super init];
@@ -89,7 +89,7 @@
         self.enableActions = YES;
         
         // create a single exception for reuse in control flow
-        self.exception = [[[PEGRecognitionException alloc] init] autorelease];
+        self.exception = [[[PKRecognitionException alloc] init] autorelease];
         
         self.tokenKindTab = [NSMutableDictionary dictionary];
 
@@ -214,7 +214,7 @@
     // setup
     self.assembler = a;
     self.tokenizer = t;
-    self.assembly = [PEGTokenAssembly assemblyWithTokenizer:_tokenizer];
+    self.assembly = [PKTokenAssembly assemblyWithTokenizer:_tokenizer];
     
     self.tokenizer.delegate = self;
     
@@ -254,7 +254,7 @@
         [result autorelease]; // -1
 
     }
-    @catch (PEGRecognitionException *rex) {
+    @catch (PKRecognitionException *rex) {
         NSString *domain = @"PKParseException";
         NSString *reason = [rex currentReason];
         NSLog(@"%@", reason);
@@ -617,7 +617,7 @@
     @try {
         if (block) block();
     }
-    @catch (PEGRecognitionException *ex) {
+    @catch (PKRecognitionException *ex) {
         success = NO;
     }
     
@@ -644,7 +644,7 @@
     @try {
         block();
     }
-    @catch (PEGRecognitionException *ex) {
+    @catch (PKRecognitionException *ex) {
         if ([self resync]) {
             completion();
         } else {
@@ -681,7 +681,7 @@
     if (self.isSpeculating && [self alreadyParsedRule:memoization]) return;
                                 
     @try { [self performSelector:ruleSelector]; }
-    @catch (PEGRecognitionException *ex) { failed = YES; @throw ex; }
+    @catch (PKRecognitionException *ex) { failed = YES; @throw ex; }
     @finally {
         if (self.isSpeculating) [self memoize:memoization atIndex:startTokenIndex failed:failed];
     }

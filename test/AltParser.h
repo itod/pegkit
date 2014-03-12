@@ -1,4 +1,4 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 enum {
     ALT_TOKEN_KIND_FOO = 14,
@@ -6,7 +6,7 @@ enum {
     ALT_TOKEN_KIND_BAZ,
 };
 
-@interface AltParser : PEGParser
+@interface AltParser : PKParser
 
 @end
 

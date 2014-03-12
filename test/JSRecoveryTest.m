@@ -12,7 +12,7 @@
 #import "JavaScriptWhitespaceParser.h"
 
 @interface JSRecoveryTest : SenTestCase
-@property (nonatomic, retain) PEGParser *parser;
+@property (nonatomic, retain) PKParser *parser;
 @property (nonatomic, retain) id mock;
 @end
 
@@ -24,24 +24,24 @@
     [super dealloc];
 }
 
-- (void)parser:(PEGParser *)p didMatchVar:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchIdentifier:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchVariable:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchVariables:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchVarVariables:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchVariablesOrExpr:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchSemi:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchVariablesOrExprStmt:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchStmt:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchFunction:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchOpenParen:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchCloseParen:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchParamListOpt:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchFunc:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchElement:(PKAssembly *)a {}
-- (void)parser:(PEGParser *)p didMatchProgram:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchVar:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchIdentifier:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchVariable:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchVariables:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchVarVariables:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchVariablesOrExpr:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchSemi:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchVariablesOrExprStmt:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchStmt:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchFunction:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchOpenParen:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchCloseParen:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchParamListOpt:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchFunc:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchElement:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didMatchProgram:(PKAssembly *)a {}
 
-- (void)parser:(PEGParser *)p didFailToMatch:(PKAssembly *)a {}
+- (void)parser:(PKParser *)p didFailToMatch:(PKAssembly *)a {}
 
 - (void)setUp {
     self.mock = [OCMockObject mockForClass:[JSRecoveryTest class]];

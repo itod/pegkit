@@ -44,7 +44,7 @@
 #import <PEGKit/PKAST.h>
 
 // peg
-#import <PEGKit/PEGParser.h>
-#import <PEGKit/PEGTokenAssembly.h>
-#import <PEGKit/PEGRecognitionException.h>
+#import <PEGKit/PKParser.h>
+#import <PEGKit/PKTokenAssembly.h>
+#import <PEGKit/PKRecognitionException.h>
 

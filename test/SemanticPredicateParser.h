@@ -1,8 +1,8 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 
 
-@interface SemanticPredicateParser : PEGParser
+@interface SemanticPredicateParser : PKParser
 
 @end
 

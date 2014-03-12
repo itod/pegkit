@@ -1,4 +1,4 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 enum {
     GREEDYFAILURE_TOKEN_KIND_LCURLY = 14,
@@ -6,7 +6,7 @@ enum {
     GREEDYFAILURE_TOKEN_KIND_COLON,
 };
 
-@interface GreedyFailureParser : PEGParser
+@interface GreedyFailureParser : PKParser
 
 @end
 

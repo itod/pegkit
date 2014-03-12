@@ -1,4 +1,4 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 enum {
     MINIMATH_TOKEN_KIND_PLUS = 14,
@@ -6,7 +6,7 @@ enum {
     MINIMATH_TOKEN_KIND_CARET,
 };
 
-@interface MiniMathParser : PEGParser
+@interface MiniMathParser : PKParser
 
 @end
 

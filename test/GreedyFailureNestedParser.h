@@ -1,4 +1,4 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 enum {
     GREEDYFAILURENESTED_TOKEN_KIND_COMMA = 14,
@@ -7,7 +7,7 @@ enum {
     GREEDYFAILURENESTED_TOKEN_KIND_LCURLY,
 };
 
-@interface GreedyFailureNestedParser : PEGParser
+@interface GreedyFailureNestedParser : PKParser
 
 @end
 

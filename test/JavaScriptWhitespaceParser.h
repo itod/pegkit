@@ -1,4 +1,4 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 enum {
     JAVASCRIPTWHITESPACE_TOKEN_KIND_PIPE = 14,
@@ -72,7 +72,7 @@ enum {
     JAVASCRIPTWHITESPACE_TOKEN_KIND_OPENCURLY,
 };
 
-@interface JavaScriptWhitespaceParser : PEGParser
+@interface JavaScriptWhitespaceParser : PKParser
 
 @end
 

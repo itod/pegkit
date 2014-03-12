@@ -8,7 +8,7 @@
 
 #import "PGDefinitionPhaseVisitor.h"
 #import "NSString+PEGKitAdditions.h"
-#import "PEGTokenKindDescriptor.h"
+#import "PKTokenKindDescriptor.h"
 #import <PEGKit/PKToken.h>
 
 @interface PGDefinitionPhaseVisitor ()
@@ -51,7 +51,7 @@
     NSAssert(self.symbolTable, @"");
     
     if (_collectTokenKinds) {
-        [PEGTokenKindDescriptor clearCache];
+        [PKTokenKindDescriptor clearCache];
         self.tokenKinds = [NSMutableDictionary dictionary];
         self.fallbackDefNameCounter = 1;
         self.defaultDefNameTab = [[@{
@@ -304,7 +304,7 @@
         name = [NSString stringWithFormat:@"TOKEN_KIND_BUILTIN_%@", [name uppercaseString]];
         NSAssert([name length], @"");
 
-        PEGTokenKindDescriptor *kind = [PEGTokenKindDescriptor descriptorWithStringValue:name name:name]; // yes, use name for both
+        PKTokenKindDescriptor *kind = [PKTokenKindDescriptor descriptorWithStringValue:name name:name]; // yes, use name for both
         
         //_tokenKinds[name] = kind; do not add constants here.
         node.tokenKind = kind;
@@ -323,7 +323,7 @@
 
         NSString *name = nil;
         
-        PEGTokenKindDescriptor *desc = _tokenKinds[strVal];
+        PKTokenKindDescriptor *desc = _tokenKinds[strVal];
         if (desc) {
             name = desc.name;
         }
@@ -336,7 +336,7 @@
         }
         
         NSAssert([name length], @"");
-        PEGTokenKindDescriptor *kind = [PEGTokenKindDescriptor descriptorWithStringValue:strVal name:name];
+        PKTokenKindDescriptor *kind = [PKTokenKindDescriptor descriptorWithStringValue:strVal name:name];
         
         _tokenKinds[strVal] = kind;
         node.tokenKind = kind;
@@ -354,7 +354,7 @@
         
         NSString *name = nil;
         
-        PEGTokenKindDescriptor *desc = _tokenKinds[strVal];
+        PKTokenKindDescriptor *desc = _tokenKinds[strVal];
         if (desc) {
             name = desc.name;
         }
@@ -367,7 +367,7 @@
         }
         
         NSAssert([name length], @"");
-        PEGTokenKindDescriptor *kind = [PEGTokenKindDescriptor descriptorWithStringValue:strVal name:name];
+        PKTokenKindDescriptor *kind = [PKTokenKindDescriptor descriptorWithStringValue:strVal name:name];
         
         _tokenKinds[strVal] = kind;
         node.tokenKind = kind;

@@ -1,5 +1,5 @@
 //
-//  PEGParser.h
+//  PKParser.h
 //  PEGKit
 //
 //  Created by Todd Ditchendorf on 3/26/13.
@@ -11,7 +11,7 @@
 #import <PEGKit/PKTokenizer.h>
 
 @class PKToken;
-@class PEGTokenAssembly;
+@class PKTokenAssembly;
 
 typedef id   (^PKSActionBlock)   (void);
 typedef void (^PKSSpeculateBlock)(void);
@@ -38,7 +38,7 @@ enum {
     TOKEN_KIND_BUILTIN_ANY = 13,
 };
 
-@interface PEGParser : NSObject <PKTokenizerDelegate>
+@interface PKParser : NSObject <PKTokenizerDelegate>
 
 - (id)parseString:(NSString *)input assembler:(id)a error:(NSError **)outErr;
 - (id)parseStream:(NSInputStream *)input assembler:(id)a error:(NSError **)outErr;
@@ -48,10 +48,10 @@ enum {
 @property (nonatomic, assign) BOOL enableAutomaticErrorRecovery; // default NO
 
 @property (nonatomic, retain) PKTokenizer *tokenizer;
-@property (nonatomic, retain) PEGTokenAssembly *assembly;
+@property (nonatomic, retain) PKTokenAssembly *assembly;
 @end
 
-@interface PEGParser (Subclass)
+@interface PKParser (Subclass)
 
 // lookahead
 - (PKToken *)LT:(NSInteger)i;

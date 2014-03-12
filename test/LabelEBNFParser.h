@@ -1,4 +1,4 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 enum {
     LABELEBNF_TOKEN_KIND_EQUALS = 14,
@@ -6,7 +6,7 @@ enum {
     LABELEBNF_TOKEN_KIND_COLON,
 };
 
-@interface LabelEBNFParser : PEGParser
+@interface LabelEBNFParser : PKParser
 
 @end
 

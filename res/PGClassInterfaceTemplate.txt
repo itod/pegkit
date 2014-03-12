@@ -1,10 +1,10 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 {%if tokenKinds.@count %}enum {{%/if%}
 {%for kind in tokenKinds %}    {{kind.name}}{%if 0 = currentLoop.currentIndex %} = {{startIndex}}{%/if%},
 {%/for%}{%if tokenKinds.@count %}};
 {%/if%}
-@interface {{className}} : PEGParser
+@interface {{className}} : PKParser
 
 @end
 

@@ -1,10 +1,10 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 enum {
     NEGATION_TOKEN_KIND_FOO = 14,
 };
 
-@interface NegationParser : PEGParser
+@interface NegationParser : PKParser
 
 @end
 

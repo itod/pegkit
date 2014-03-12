@@ -1,4 +1,4 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 enum {
     JSON_TOKEN_KIND_FALSE = 14,
@@ -12,7 +12,7 @@ enum {
     JSON_TOKEN_KIND_COLON,
 };
 
-@interface JSONParser : PEGParser
+@interface JSONParser : PKParser
 
 @end
 

@@ -18,18 +18,18 @@
 @class PKToken;
 
 /*!
-    @class      PEGTokenAssembly
-    @brief      A <tt>PEGTokenAssembly</tt> is a <tt>PKAssembly</tt> whose elements are <tt>PKToken</tt>s.
+    @class      PKTokenAssembly
+    @brief      A <tt>PKTokenAssembly</tt> is a <tt>PKAssembly</tt> whose elements are <tt>PKToken</tt>s.
     @details    <tt>PKToken</tt>s are, roughly, the chunks of text that a <tt>PKTokenizer</tt> returns.
 */
-@interface PEGTokenAssembly : PKAssembly <NSCopying>
+@interface PKTokenAssembly : PKAssembly <NSCopying>
 
 /*!
     @brief      Convenience factory method for initializing an autoreleased assembly with the tokenizer <tt>t</tt> and its string
     @param      t tokenizer whose string will be worked on
     @result     an initialized autoreleased assembly
 */
-+ (PEGTokenAssembly *)assemblyWithTokenizer:(PKTokenizer *)t;
++ (PKTokenAssembly *)assemblyWithTokenizer:(PKTokenizer *)t;
 
 /*!
     @brief      Initializes an assembly with the tokenizer <tt>t</tt> and its string

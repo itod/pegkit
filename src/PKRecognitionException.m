@@ -6,9 +6,9 @@
 //
 //
 
-#import <PEGKit/PEGRecognitionException.h>
+#import <PEGKit/PKRecognitionException.h>
 
-@implementation PEGRecognitionException
+@implementation PKRecognitionException
 
 - (id)init {
     self = [super initWithName:NSStringFromClass([self class]) reason:nil userInfo:nil];

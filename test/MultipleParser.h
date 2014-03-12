@@ -1,11 +1,11 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 enum {
     MULTIPLE_TOKEN_KIND_A = 14,
     MULTIPLE_TOKEN_KIND_B,
 };
 
-@interface MultipleParser : PEGParser
+@interface MultipleParser : PKParser
 
 @end
 

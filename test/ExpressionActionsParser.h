@@ -1,4 +1,4 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 enum {
     EXPRESSIONACTIONS_TOKEN_KIND_NO = 14,
@@ -19,7 +19,7 @@ enum {
     EXPRESSIONACTIONS_TOKEN_KIND_YES_UPPER,
 };
 
-@interface ExpressionActionsParser : PEGParser
+@interface ExpressionActionsParser : PKParser
 
 @end
 

@@ -101,7 +101,7 @@
 }
 
 
-- (void)parser:(PEGParser *)p didMatchStat:(PKAssembly *)a {
+- (void)parser:(PKParser *)p didMatchStat:(PKAssembly *)a {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, a);
     [a push:@"flag"];
 }

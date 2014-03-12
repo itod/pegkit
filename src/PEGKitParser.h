@@ -1,4 +1,4 @@
-#import <PEGKit/PEGParser.h>
+#import <PEGKit/PKParser.h>
 
 enum {
     PEGKIT_TOKEN_KIND_SYMBOL_TITLE = 14,
@@ -42,7 +42,7 @@ enum {
     PEGKIT_TOKEN_KIND_DELIMOPEN,
 };
 
-@interface PEGKitParser : PEGParser
+@interface PEGKitParser : PKParser
 
 @end
 
