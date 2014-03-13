@@ -63,8 +63,6 @@
 		D317C0E618D1F4050036BE75 /* PKURLState.h in Headers */ = {isa = PBXBuildFile; fileRef = D35F4A8C11643662003811F3 /* PKURLState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D317C0E718D1F4050036BE75 /* PKTwitterState.h in Headers */ = {isa = PBXBuildFile; fileRef = D33DC19F11656952004CE58C /* PKTwitterState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D317C0E818D1F4050036BE75 /* PKHashtagState.h in Headers */ = {isa = PBXBuildFile; fileRef = D37F232A1453842800A98014 /* PKHashtagState.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D317C0E918D1F4050036BE75 /* PKSymbolNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221EA0FFE8C69004514FE /* PKSymbolNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D317C0EA18D1F4050036BE75 /* PKSymbolRootNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221ED0FFE8C6F004514FE /* PKSymbolRootNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D317C10A18D1F48A0036BE75 /* PKParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3382F9A171C80EB00CCE513 /* PKParser.m */; };
 		D317C10B18D1F48A0036BE75 /* PKAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BADA00FF9C9B000D7773A /* PKAssembly.m */; };
 		D317C10C18D1F48A0036BE75 /* PKRecognitionException.m in Sources */ = {isa = PBXBuildFile; fileRef = D3382FD6171C8C9100CCE513 /* PKRecognitionException.m */; };
@@ -122,6 +120,8 @@
 		D317C18218D1F6550036BE75 /* PKAST.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DAC2173C645C00A5E050 /* PKAST.m */; };
 		D317C18318D1F6550036BE75 /* NSArray+PEGKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAFD40FF9E95500D7773A /* NSArray+PEGKitAdditions.m */; };
 		D317C18418D1F6550036BE75 /* NSString+PEGKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAFD60FF9E95500D7773A /* NSString+PEGKitAdditions.m */; };
+		D317C18F18D1F9230036BE75 /* PKSymbolNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D317C18D18D1F9230036BE75 /* PKSymbolNode.h */; };
+		D317C19018D1F9230036BE75 /* PKSymbolRootNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D317C18E18D1F9230036BE75 /* PKSymbolRootNode.h */; };
 		D31C40A51779634700A1B8B7 /* JavaScriptWhitespaceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C40A41779634700A1B8B7 /* JavaScriptWhitespaceParser.m */; };
 		D3344F4917405B4B00598362 /* JSRecoveryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3344F4817405B4B00598362 /* JSRecoveryTest.m */; };
 		D337F07E15D5AE7B00C83AED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D337F07C15D5AE7B00C83AED /* InfoPlist.strings */; };
@@ -507,6 +507,8 @@
 		D317C12B18D1F5EB0036BE75 /* liblibPEGKitIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibPEGKitIOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D317C12C18D1F5EB0036BE75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D317C13C18D1F5EB0036BE75 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		D317C18D18D1F9230036BE75 /* PKSymbolNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolNode.h; path = src/PKSymbolNode.h; sourceTree = "<group>"; };
+		D317C18E18D1F9230036BE75 /* PKSymbolRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolRootNode.h; path = src/PKSymbolRootNode.h; sourceTree = "<group>"; };
 		D31A15250F6DE449002AFDF1 /* javascript.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = javascript.grammar; path = res/javascript.grammar; sourceTree = "<group>"; };
 		D31C40A41779634700A1B8B7 /* JavaScriptWhitespaceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaScriptWhitespaceParser.m; path = test/JavaScriptWhitespaceParser.m; sourceTree = "<group>"; };
 		D31FE54A0E60E46100A0803E /* TDTestScaffold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTestScaffold.h; path = test/TDTestScaffold.h; sourceTree = "<group>"; };
@@ -755,8 +757,6 @@
 		D3C221E10FFE8C4E004514FE /* PKCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKCommentState.h; path = include/PEGKit/PKCommentState.h; sourceTree = SOURCE_ROOT; };
 		D3C221E40FFE8C56004514FE /* PKSingleLineCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSingleLineCommentState.h; path = include/PEGKit/PKSingleLineCommentState.h; sourceTree = SOURCE_ROOT; };
 		D3C221E70FFE8C60004514FE /* PKMultiLineCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKMultiLineCommentState.h; path = include/PEGKit/PKMultiLineCommentState.h; sourceTree = SOURCE_ROOT; };
-		D3C221EA0FFE8C69004514FE /* PKSymbolNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolNode.h; path = include/PEGKit/PKSymbolNode.h; sourceTree = SOURCE_ROOT; };
-		D3C221ED0FFE8C6F004514FE /* PKSymbolRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolRootNode.h; path = include/PEGKit/PKSymbolRootNode.h; sourceTree = SOURCE_ROOT; };
 		D3F0E2470FFE8EB900C9DF74 /* PKQuoteState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKQuoteState.h; path = include/PEGKit/PKQuoteState.h; sourceTree = SOURCE_ROOT; };
 		D3F8A48D175817DF00056188 /* PEGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PEGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F8A4921758187300056188 /* PEGKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PEGKit-Info.plist"; path = "res/PEGKit-Info.plist"; sourceTree = "<group>"; };
@@ -1104,9 +1104,9 @@
 		D3541F890DFB108300429B4F /* symbol */ = {
 			isa = PBXGroup;
 			children = (
-				D3C221EA0FFE8C69004514FE /* PKSymbolNode.h */,
+				D317C18D18D1F9230036BE75 /* PKSymbolNode.h */,
 				D34BAF240FF9DF9900D7773A /* PKSymbolNode.m */,
-				D3C221ED0FFE8C6F004514FE /* PKSymbolRootNode.h */,
+				D317C18E18D1F9230036BE75 /* PKSymbolRootNode.h */,
 				D34BAF260FF9DF9900D7773A /* PKSymbolRootNode.m */,
 			);
 			name = symbol;
@@ -1403,8 +1403,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D317C0D518D1F4050036BE75 /* PKParser.h in Headers */,
+				D317C18F18D1F9230036BE75 /* PKSymbolNode.h in Headers */,
 				D317C0DE18D1F4050036BE75 /* PKSymbolState.h in Headers */,
-				D317C0EA18D1F4050036BE75 /* PKSymbolRootNode.h in Headers */,
+				D317C19018D1F9230036BE75 /* PKSymbolRootNode.h in Headers */,
 				D317C0E118D1F4050036BE75 /* PKDelimitState.h in Headers */,
 				D317C0DB18D1F4050036BE75 /* PKTokenizerState.h in Headers */,
 				D317C0D718D1F4050036BE75 /* PKRecognitionException.h in Headers */,
@@ -1430,7 +1431,6 @@
 				D3F8A41B175817DF00056188 /* PKDelimitDescriptorCollection.h in Headers */,
 				D317C0DD18D1F4050036BE75 /* PKQuoteState.h in Headers */,
 				D317C0D818D1F4050036BE75 /* PKReader.h in Headers */,
-				D317C0E918D1F4050036BE75 /* PKSymbolNode.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2435,6 +2435,7 @@
 				D317C14B18D1F5EB0036BE75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		D338304E171C923700CCE513 /* Build configuration list for PBXNativeTarget "ParserGenApp" */ = {
 			isa = XCConfigurationList;

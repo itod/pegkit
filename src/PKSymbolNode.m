@@ -16,10 +16,10 @@
 #import <PEGKit/PKSymbolRootNode.h>
 
 @interface PKSymbolNode ()
-@property (nonatomic, readwrite, retain) NSString *ancestry;
+@property (nonatomic, retain, readwrite) NSString *ancestry;
 @property (nonatomic, assign) PKSymbolNode *parent;  // this must be 'assign' to avoid retain loop leak
 @property (nonatomic, retain) NSMutableDictionary *children;
-@property (nonatomic) PKUniChar character;
+@property (nonatomic, assign) PKUniChar character;
 @property (nonatomic, retain) NSString *string;
 
 - (void)determineAncestry;
@@ -36,7 +36,7 @@
 
         // this private property is an optimization. 
         // cache the NSString for the char to prevent it being constantly recreated in -determineAncestry
-        self.string = [NSString stringWithFormat:@"%C", (unichar)character];
+        self.string = [NSString stringWithFormat:@"%C", (unichar)_character];
 
         [self determineAncestry];
     }
@@ -45,7 +45,7 @@
 
 
 - (void)dealloc {
-    parent = nil; // makes clang static analyzer happy
+    self.parent = nil;
     self.ancestry = nil;
     self.string = nil;
     self.children = nil;
@@ -54,8 +54,8 @@
 
 
 - (void)determineAncestry {
-    if (PKEOF == parent.character) { // optimization for sinlge-char symbol (parent is symbol root node)
-        self.ancestry = string;
+    if (PKEOF == _parent.character) { // optimization for sinlge-char symbol (parent is symbol root node)
+        self.ancestry = _string;
     } else {
         NSMutableString *result = [NSMutableString string];
         
@@ -75,9 +75,4 @@
     return [NSString stringWithFormat:@"<PKSymbolNode %@>", self.ancestry];
 }
 
-@synthesize ancestry;
-@synthesize parent;
-@synthesize character;
-@synthesize string;
-@synthesize children;
 @end

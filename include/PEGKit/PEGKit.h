@@ -18,7 +18,7 @@
 #import <PEGKit/PKTypes.h>
 #import <PEGKit/PKReader.h>
 
-// tokens
+// tokenizing
 #import <PEGKit/PKToken.h>
 #import <PEGKit/PKTokenizer.h>
 #import <PEGKit/PKTokenizerState.h>
@@ -27,18 +27,16 @@
 #import <PEGKit/PKDelimitState.h>
 #import <PEGKit/PKURLState.h>
 #import <PEGKit/PKEmailState.h>
+#import <PEGKit/PKCommentState.h>
+#import <PEGKit/PKSingleLineCommentState.h>
+#import <PEGKit/PKMultiLineCommentState.h>
+#import <PEGKit/PKSymbolState.h>
+#import <PEGKit/PKWordState.h>
+#import <PEGKit/PKWhitespaceState.h>
 #if PK_PLATFORM_TWITTER_STATE
 #import <PEGKit/PKTwitterState.h>
 #import <PEGKit/PKHashtagState.h>
 #endif
-#import <PEGKit/PKCommentState.h>
-#import <PEGKit/PKSingleLineCommentState.h>
-#import <PEGKit/PKMultiLineCommentState.h>
-#import <PEGKit/PKSymbolNode.h>
-#import <PEGKit/PKSymbolRootNode.h>
-#import <PEGKit/PKSymbolState.h>
-#import <PEGKit/PKWordState.h>
-#import <PEGKit/PKWhitespaceState.h>
 
 // ast
 #import <PEGKit/PKAST.h>

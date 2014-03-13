@@ -15,8 +15,6 @@
 #import <Foundation/Foundation.h>
 #import <PEGKit/PKTokenizerState.h>
 
-@class PKSymbolRootNode;
-
 /*!
     @class      PKSymbolState 
     @brief      The idea of a symbol is a character that stands on its own, such as an ampersand or a parenthesis.
