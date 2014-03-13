@@ -22,8 +22,7 @@
     @brief      This class is a special case of a <tt>PKSymbolNode</tt>.
     @details    This class is a special case of a <tt>PKSymbolNode</tt>. A <tt>PKSymbolRootNode</tt> object has no symbol of its own, but has children that represent all possible symbols.
 */
-@interface PKSymbolRootNode : PKSymbolNode {
-}
+@interface PKSymbolRootNode : PKSymbolNode
 
 /*!
     @brief      Adds the given string as a multi-character symbol.
