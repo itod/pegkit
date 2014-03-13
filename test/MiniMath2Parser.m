@@ -6,17 +6,17 @@
 #define LS(i) [self LS:(i)]
 #define LF(i) [self LF:(i)]
 
-#define POP()       [self.assembly pop]
-#define POP_STR()   [self popString]
-#define POP_TOK()   [self popToken]
-#define POP_BOOL()  [self popBool]
-#define POP_INT()   [self popInteger]
-#define POP_FLOAT() [self popDouble]
+#define POP()        [self.assembly pop]
+#define POP_STR()    [self popString]
+#define POP_TOK()    [self popToken]
+#define POP_BOOL()   [self popBool]
+#define POP_INT()    [self popInteger]
+#define POP_DOUBLE() [self popDouble]
 
-#define PUSH(obj)     [self.assembly push:(id)(obj)]
-#define PUSH_BOOL(yn) [self pushBool:(BOOL)(yn)]
-#define PUSH_INT(i)   [self pushInteger:(NSInteger)(i)]
-#define PUSH_FLOAT(f) [self pushDouble:(double)(f)]
+#define PUSH(obj)      [self.assembly push:(id)(obj)]
+#define PUSH_BOOL(yn)  [self pushBool:(BOOL)(yn)]
+#define PUSH_INT(i)    [self pushInteger:(NSInteger)(i)]
+#define PUSH_DOUBLE(d) [self pushDouble:(double)(d)]
 
 #define EQ(a, b) [(a) isEqual:(b)]
 #define NE(a, b) (![(a) isEqual:(b)])
@@ -93,7 +93,7 @@
         [self multExpr_]; 
         [self execute:(id)^{
         
-    PUSH_FLOAT(POP_FLOAT() + POP_FLOAT());
+    PUSH_DOUBLE(POP_DOUBLE() + POP_DOUBLE());
 
         }];
     }
@@ -108,7 +108,7 @@
         [self primary_]; 
         [self execute:(id)^{
          
-    PUSH_FLOAT(POP_FLOAT() * POP_FLOAT());
+    PUSH_DOUBLE(POP_DOUBLE() * POP_DOUBLE());
 
         }];
     }
@@ -134,7 +134,7 @@
     [self matchNumber:NO]; 
     [self execute:(id)^{
      
-    PUSH_FLOAT(POP_FLOAT()); 
+    PUSH_DOUBLE(POP_DOUBLE()); 
 
     }];
 
