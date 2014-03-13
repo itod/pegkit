@@ -17,8 +17,8 @@
 #import <PEGKit/PKReader.h>
 #import <PEGKit/PKTokenizer.h>
 #import <PEGKit/PKToken.h>
-#import <PEGKit/PKSymbolRootNode.h>
 #import <PEGKit/PKTypes.h>
+#import "PKSymbolRootNode.h"
 
 @interface PKToken ()
 @property (nonatomic, readwrite) NSUInteger offset;

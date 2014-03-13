@@ -13,7 +13,7 @@
 //  limitations under the License.
 
 #import <PEGKit/PKReader.h>
-#import <PEGKit/PKSymbolRootNode.h>
+#import "PKSymbolRootNode.h"
 
 @interface PKSymbolNode ()
 @property (nonatomic, retain) NSMutableDictionary *children;

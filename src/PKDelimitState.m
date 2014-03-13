@@ -17,8 +17,8 @@
 #import <PEGKit/PKTokenizer.h>
 #import <PEGKit/PKToken.h>
 #import <PEGKit/PKWhitespaceState.h>
-#import <PEGKit/PKSymbolRootNode.h>
 #import <PEGKit/PKTypes.h>
+#import "PKSymbolRootNode.h"
 
 #import "PKDelimitDescriptorCollection.h"
 #import "PKDelimitDescriptor.h"
