@@ -122,6 +122,9 @@
 		D317C18418D1F6550036BE75 /* NSString+PEGKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAFD60FF9E95500D7773A /* NSString+PEGKitAdditions.m */; };
 		D317C18F18D1F9230036BE75 /* PKSymbolNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D317C18D18D1F9230036BE75 /* PKSymbolNode.h */; };
 		D317C19018D1F9230036BE75 /* PKSymbolRootNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D317C18E18D1F9230036BE75 /* PKSymbolRootNode.h */; };
+		D317C1B418D206730036BE75 /* minimath2.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D317C1B318D206730036BE75 /* minimath2.grammar */; };
+		D317C1B818D206890036BE75 /* MiniMath2ParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D317C1B718D206890036BE75 /* MiniMath2ParserTest.m */; };
+		D317C1BB18D207870036BE75 /* MiniMath2Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = D317C1BA18D207870036BE75 /* MiniMath2Parser.m */; };
 		D31C40A51779634700A1B8B7 /* JavaScriptWhitespaceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C40A41779634700A1B8B7 /* JavaScriptWhitespaceParser.m */; };
 		D3344F4917405B4B00598362 /* JSRecoveryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3344F4817405B4B00598362 /* JSRecoveryTest.m */; };
 		D337F07E15D5AE7B00C83AED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D337F07C15D5AE7B00C83AED /* InfoPlist.strings */; };
@@ -509,6 +512,10 @@
 		D317C13C18D1F5EB0036BE75 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		D317C18D18D1F9230036BE75 /* PKSymbolNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolNode.h; path = src/PKSymbolNode.h; sourceTree = "<group>"; };
 		D317C18E18D1F9230036BE75 /* PKSymbolRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolRootNode.h; path = src/PKSymbolRootNode.h; sourceTree = "<group>"; };
+		D317C1B318D206730036BE75 /* minimath2.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = minimath2.grammar; path = res/minimath2.grammar; sourceTree = "<group>"; };
+		D317C1B718D206890036BE75 /* MiniMath2ParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniMath2ParserTest.m; path = test/MiniMath2ParserTest.m; sourceTree = "<group>"; };
+		D317C1B918D207870036BE75 /* MiniMath2Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniMath2Parser.h; path = test/MiniMath2Parser.h; sourceTree = "<group>"; };
+		D317C1BA18D207870036BE75 /* MiniMath2Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniMath2Parser.m; path = test/MiniMath2Parser.m; sourceTree = "<group>"; };
 		D31A15250F6DE449002AFDF1 /* javascript.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = javascript.grammar; path = res/javascript.grammar; sourceTree = "<group>"; };
 		D31C40A41779634700A1B8B7 /* JavaScriptWhitespaceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaScriptWhitespaceParser.m; path = test/JavaScriptWhitespaceParser.m; sourceTree = "<group>"; };
 		D31FE54A0E60E46100A0803E /* TDTestScaffold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTestScaffold.h; path = test/TDTestScaffold.h; sourceTree = "<group>"; };
@@ -1269,6 +1276,8 @@
 				D3B63A6A170A065500BA9DBF /* LabelEBNFParser.m */,
 				D3B63A591709F8D400BA9DBF /* MiniMathParser.h */,
 				D3B63A5A1709F8D600BA9DBF /* MiniMathParser.m */,
+				D317C1B918D207870036BE75 /* MiniMath2Parser.h */,
+				D317C1BA18D207870036BE75 /* MiniMath2Parser.m */,
 				D3B63A481709155600BA9DBF /* MethodsFactoredParser.h */,
 				D3B63A491709155700BA9DBF /* MethodsFactoredParser.m */,
 				D3B63A431709111800BA9DBF /* MethodsParser.h */,
@@ -1317,6 +1326,7 @@
 				D3B63A5D170A04C700BA9DBF /* LabelRecursiveParserTest.m */,
 				D3B63A60170A050700BA9DBF /* LabelEBNFParserTest.m */,
 				D3B63A571709F89F00BA9DBF /* MiniMathParserTest.m */,
+				D317C1B718D206890036BE75 /* MiniMath2ParserTest.m */,
 				D3B63A4C1709155D00BA9DBF /* MethodsFactoredParserTest.m */,
 				D3B63A41170910D100BA9DBF /* MethodsParserTest.m */,
 				D3B22A5C1703DA8000446945 /* ElementParserTest.m */,
@@ -1353,6 +1363,7 @@
 				D3B63A62170A062100BA9DBF /* label_ebnf.grammar */,
 				D3B63A63170A062100BA9DBF /* label_recursive.grammar */,
 				D3B63A541709F88500BA9DBF /* minimath.grammar */,
+				D317C1B318D206730036BE75 /* minimath2.grammar */,
 				D3B63A3E170910AA00BA9DBF /* methods.grammar */,
 				D3B63A461709152F00BA9DBF /* methods_factored.grammar */,
 				D3B63A3517079F7A00BA9DBF /* expressionActions.grammar */,
@@ -1657,6 +1668,7 @@
 				D337F07E15D5AE7B00C83AED /* InfoPlist.strings in Resources */,
 				D3B986AE1700D3A9000CBCAE /* expression.grammar in Resources */,
 				D3B22A3A17025EA300446945 /* elements.grammar in Resources */,
+				D317C1B418D206730036BE75 /* minimath2.grammar in Resources */,
 				D3083AB61705F05C00DA6F95 /* elementsAssign.grammar in Resources */,
 				D3B63A3617079F7A00BA9DBF /* expressionActions.grammar in Resources */,
 				D3B63A3F170910AA00BA9DBF /* methods.grammar in Resources */,
@@ -1922,7 +1934,9 @@
 				D38BC8A11714A75B00BF530D /* UnfinishedSeqParser.m in Sources */,
 				D38BC8A61714A78800BF530D /* UnfinishedSeqParserTest.m in Sources */,
 				D38BC8A91714AF1B00BF530D /* DotQuestionParserTest.m in Sources */,
+				D317C1BB18D207870036BE75 /* MiniMath2Parser.m in Sources */,
 				D38BC8AE1714AF5900BF530D /* DotQuestionParser.m in Sources */,
+				D317C1B818D206890036BE75 /* MiniMath2ParserTest.m in Sources */,
 				D38BC8B11716006D00BF530D /* SemanticPredicateParser.m in Sources */,
 				D38BC8B6171600A900BF530D /* SemanticPredicateParserTest.m in Sources */,
 				D376F6EF18D0B5190064C888 /* PGDefinitionPhaseVisitor.m in Sources */,

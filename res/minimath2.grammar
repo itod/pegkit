@@ -1,0 +1,12 @@
+start = expr;
+expr = addExpr;
+addExpr = multExpr ('+'! multExpr {
+    PUSH_FLOAT(POP_FLOAT() + POP_FLOAT());
+})*;
+multExpr = primary ('*'! primary { 
+    PUSH_FLOAT(POP_FLOAT() * POP_FLOAT());
+})*;
+primary = atom | '('! expr ')'!;
+atom = Number { 
+    PUSH_FLOAT(POP_FLOAT()); 
+};
