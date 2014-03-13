@@ -43,7 +43,7 @@
 // ast
 #import <PEGKit/PKAST.h>
 
-// peg
+// parsing
 #import <PEGKit/PKParser.h>
 #import <PEGKit/PKAssembly.h>
 #import <PEGKit/PKRecognitionException.h>
