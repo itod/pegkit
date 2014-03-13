@@ -95,7 +95,8 @@
 }
 
 - (void)start {
-    [self s_];
+    [self s_]; 
+    [self matchEOF:YES]; 
 }
 
 - (void)__s {
@@ -104,7 +105,6 @@
         [self ab_]; 
     } while ([self speculate:^{ [self ab_]; }]);
     [self a_]; 
-    [self matchEOF:YES]; 
 
     [self fireAssemblerSelector:@selector(parser:didMatchS:)];
 }

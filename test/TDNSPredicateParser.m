@@ -387,7 +387,8 @@
 }
 
 - (void)start {
-    [self start_];
+    [self start_]; 
+    [self matchEOF:YES]; 
 }
 
 - (void)__start {
@@ -414,7 +415,6 @@
     do {
         [self expr_]; 
     } while ([self speculate:^{ [self expr_]; }]);
-    [self matchEOF:YES]; 
 
     [self fireAssemblerSelector:@selector(parser:didMatchStart:)];
 }

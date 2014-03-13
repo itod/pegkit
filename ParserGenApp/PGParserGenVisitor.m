@@ -24,7 +24,8 @@
 #define ENABLE_MEMOIZATION @"enableMemoization"
 #define ENABLE_ERROR_RECOVERY @"enableAutomaticErrorRecovery"
 #define PARSE_TREE @"parseTree"
-#define START_METHOD @"startMethod"
+#define START_METHOD_NAME @"startMethodName"
+#define START_METHOD_BODY @"startMethodBody"
 #define METHODS @"methods"
 #define METHOD_NAME @"methodName"
 #define METHOD_BODY @"methodBody"
@@ -260,14 +261,29 @@
         [childStr appendString:[self pop]];
     }
     
+    // start method
+    NSString *startTemplate = [self templateStringNamed:@"PGMethodCallTemplate"];
+    NSInteger depth = _depth + (_enableAutomaticErrorRecovery ? 1 : 0);
+    NSMutableString *startMethodBodyStr = [NSMutableString stringWithString:[_engine processTemplate:startTemplate withVariables:@{DEPTH: @(depth), METHOD_NAME: _startMethodName}]];
+
+    id eofVars = @{DEPTH: @(depth)};
+    NSString *eofCallStr = [_engine processTemplate:[self templateStringNamed:@"PGEOFCallTemplate"] withVariables:eofVars];
+    [startMethodBodyStr appendString:eofCallStr];
+    
+    if (_enableAutomaticErrorRecovery) {
+        id recoverVars = @{DEPTH: @(_depth), CHILD_STRING: startMethodBodyStr};
+        NSString *recoverStr = [_engine processTemplate:[self templateStringNamed:@"PGTryAndRecoverEOFTemplate"] withVariables:recoverVars];
+        [startMethodBodyStr setString:recoverStr];
+    }
+
     // merge
-    vars[START_METHOD] = _startMethodName;
+    vars[START_METHOD_NAME] = _startMethodName;
+    vars[START_METHOD_BODY] = startMethodBodyStr;
     vars[METHODS] = childStr;
     vars[RULE_METHOD_NAMES] = self.ruleMethodNames;
     vars[ENABLE_MEMOIZATION] = @(self.enableMemoization);
     vars[ENABLE_ERROR_RECOVERY] = @(self.enableAutomaticErrorRecovery);
     vars[PARSE_TREE] = @((_preassemblerSettingBehavior == PGParserFactoryAssemblerSettingBehaviorSyntax || _assemblerSettingBehavior == PGParserFactoryAssemblerSettingBehaviorSyntax));
-    
     
     NSString *implTemplate = [self templateStringNamed:@"PGClassImplementationTemplate"];
     self.implementationOutputString = [_engine processTemplate:implTemplate withVariables:vars];
@@ -337,8 +353,6 @@
     // setup vars
     id vars = [NSMutableDictionary dictionary];
     NSString *methodName = node.token.stringValue;
-    
-    BOOL isStartMethod = [methodName isEqualToString:_startMethodName];
     [self.ruleMethodNames addObject:methodName];
 
     vars[METHOD_NAME] = methodName;
@@ -349,8 +363,6 @@
     
     [childStr appendString:[self actionStringFrom:node.actionNode]];
     
-    if (isStartMethod && _enableAutomaticErrorRecovery) self.depth++;
-
     // recurse
     for (PGBaseNode *child in node.children) {
         [child visit:self];
@@ -359,21 +371,6 @@
         [childStr appendString:[self pop]];
     }
     
-    if (isStartMethod && _enableAutomaticErrorRecovery) self.depth--;
-    
-    if (isStartMethod) {
-        NSInteger depth = _depth + (_enableAutomaticErrorRecovery ? 1 : 0);
-        id eofVars = @{DEPTH: @(depth)};
-        NSString *eofCallStr = [_engine processTemplate:[self templateStringNamed:@"PGEOFCallTemplate"] withVariables:eofVars];
-        [childStr appendString:eofCallStr];
-        
-        if (_enableAutomaticErrorRecovery) {
-            id resyncVars = @{DEPTH: @(_depth), CHILD_STRING: childStr};
-            NSString *newChildStr = [_engine processTemplate:[self templateStringNamed:@"PGTryAndRecoverEOFTemplate"] withVariables:resyncVars];
-            [childStr setString:newChildStr];
-        }
-    }
-
     if (node.before) {
         [childStr insertString:[self actionStringFrom:node.before] atIndex:0];
     }

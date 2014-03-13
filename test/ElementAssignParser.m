@@ -81,19 +81,19 @@
 }
 
 - (void)start {
-    [self start_];
-}
-
-- (void)start_ {
-    
     [self tryAndRecover:TOKEN_KIND_BUILTIN_EOF block:^{
-        do {
-            [self stat_]; 
-        } while ([self speculate:^{ [self stat_]; }]);
+        [self start_]; 
         [self matchEOF:YES]; 
     } completion:^{
         [self matchEOF:YES];
     }];
+}
+
+- (void)start_ {
+    
+    do {
+        [self stat_]; 
+    } while ([self speculate:^{ [self stat_]; }]);
 
     [self fireAssemblerSelector:@selector(parser:didMatchStart:)];
 }

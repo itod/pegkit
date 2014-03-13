@@ -91,7 +91,8 @@
 }
 
 - (void)start {
-    [self start_];
+    [self start_]; 
+    [self matchEOF:YES]; 
 }
 
 - (void)__start {
@@ -111,7 +112,6 @@
     } else {
         [self raise:@"No viable alternative found in rule 'start'."];
     }
-    [self matchEOF:YES]; 
 
     [self fireAssemblerSelector:@selector(parser:didMatchStart:)];
 }

@@ -175,13 +175,13 @@
 }
 
 - (void)start {
-    [self expr_];
+    [self expr_]; 
+    [self matchEOF:YES]; 
 }
 
 - (void)__expr {
     
     [self orExpr_]; 
-    [self matchEOF:YES]; 
 
     [self fireAssemblerSelector:@selector(parser:didMatchExpr:)];
 }

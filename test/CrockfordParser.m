@@ -165,7 +165,12 @@
 }
 
 - (void)start {
-    [self program_];
+        [self tryAndRecover:TOKEN_KIND_BUILTIN_EOF block:^{
+            [self program_]; 
+            [self matchEOF:YES]; 
+        } completion:^{
+            [self matchEOF:YES];
+        }];
 }
 
 - (void)program_ {
@@ -218,12 +223,7 @@
         [t.delimitState addStartMarker:@"/" endMarker:@"/" allowedCharacterSet:cs];
 
     }];
-    [self tryAndRecover:TOKEN_KIND_BUILTIN_EOF block:^{
-        [self stmts_]; 
-        [self matchEOF:YES]; 
-    } completion:^{
-        [self matchEOF:YES];
-    }];
+    [self stmts_]; 
 
     [self fireAssemblerSelector:@selector(parser:didMatchProgram:)];
 }

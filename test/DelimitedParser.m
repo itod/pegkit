@@ -85,7 +85,8 @@
 }
 
 - (void)start {
-    [self start_];
+    [self start_]; 
+    [self matchEOF:YES]; 
 }
 
 - (void)__start {
@@ -99,7 +100,6 @@
 
     }];
     [self s_]; 
-    [self matchEOF:YES]; 
 
     [self fireAssemblerSelector:@selector(parser:didMatchStart:)];
 }

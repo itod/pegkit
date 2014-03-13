@@ -77,19 +77,19 @@
 }
 
 - (void)start {
-    [self structs_];
-}
-
-- (void)structs_ {
-    
     [self tryAndRecover:TOKEN_KIND_BUILTIN_EOF block:^{
-        do {
-            [self structure_]; 
-        } while ([self speculate:^{ [self structure_]; }]);
+        [self structs_]; 
         [self matchEOF:YES]; 
     } completion:^{
         [self matchEOF:YES];
     }];
+}
+
+- (void)structs_ {
+    
+    do {
+        [self structure_]; 
+    } while ([self speculate:^{ [self structure_]; }]);
 
     [self fireAssemblerSelector:@selector(parser:didMatchStructs:)];
 }

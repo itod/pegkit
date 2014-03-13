@@ -95,7 +95,8 @@
 }
 
 - (void)start {
-    [self s_];
+    [self s_]; 
+    [self matchEOF:YES]; 
 }
 
 - (void)__s {
@@ -105,7 +106,6 @@
     }
     [self foo_]; 
     [self bar_]; 
-    [self matchEOF:YES]; 
 
     [self fireAssemblerSelector:@selector(parser:didMatchS:)];
 }

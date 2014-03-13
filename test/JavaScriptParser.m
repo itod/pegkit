@@ -207,7 +207,12 @@
 }
 
 - (void)start {
-    [self program_];
+    [self tryAndRecover:TOKEN_KIND_BUILTIN_EOF block:^{
+        [self program_]; 
+        [self matchEOF:YES]; 
+    } completion:^{
+        [self matchEOF:YES];
+    }];
 }
 
 - (void)program_ {
@@ -253,14 +258,9 @@
         [t.commentState addMultiLineStartMarker:@"/*" endMarker:@"*/"];
 
     }];
-    [self tryAndRecover:TOKEN_KIND_BUILTIN_EOF block:^{
-        do {
-            [self element_]; 
-        } while ([self speculate:^{ [self element_]; }]);
-        [self matchEOF:YES]; 
-    } completion:^{
-        [self matchEOF:YES];
-    }];
+    do {
+        [self element_]; 
+    } while ([self speculate:^{ [self element_]; }]);
 
     [self fireAssemblerSelector:@selector(parser:didMatchProgram:)];
 }

@@ -267,7 +267,8 @@
 }
 
 - (void)start {
-    [self stylesheet_];
+    [self stylesheet_]; 
+    [self matchEOF:YES]; 
 }
 
 - (void)__stylesheet {
@@ -319,7 +320,6 @@
     while ([self speculate:^{ [self ruleset_]; }]) {
         [self ruleset_]; 
     }
-    [self matchEOF:YES]; 
 
 }
 

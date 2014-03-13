@@ -83,7 +83,8 @@
 }
 
 - (void)start {
-    [self start_];
+    [self start_]; 
+    [self matchEOF:YES]; 
 }
 
 - (void)__start {
@@ -91,7 +92,6 @@
     do {
         [self nonReserved_]; 
     } while ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]);
-    [self matchEOF:YES]; 
 
     [self fireAssemblerSelector:@selector(parser:didMatchStart:)];
 }

@@ -109,7 +109,8 @@
 }
 
 - (void)start {
-    [self lists_];
+    [self lists_]; 
+    [self matchEOF:YES]; 
 }
 
 - (void)__lists {
@@ -117,7 +118,6 @@
     do {
         [self list_]; 
     } while ([self speculate:^{ [self list_]; }]);
-    [self matchEOF:YES]; 
 
     [self fireAssemblerSelector:@selector(parser:didMatchLists:)];
 }

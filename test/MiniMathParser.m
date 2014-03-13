@@ -97,7 +97,8 @@
 }
 
 - (void)start {
-    [self expr_];
+    [self expr_]; 
+    [self matchEOF:YES]; 
 }
 
 - (void)__expr {
@@ -110,7 +111,6 @@
          PUSH_FLOAT(POP_FLOAT()+POP_FLOAT()); 
         }];
     }
-    [self matchEOF:YES]; 
 
     [self fireAssemblerSelector:@selector(parser:didMatchExpr:)];
 }

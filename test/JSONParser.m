@@ -85,7 +85,8 @@
 }
 
 - (void)start {
-    [self start_];
+    [self start_]; 
+    [self matchEOF:YES]; 
 }
 
 - (void)start_ {
@@ -114,7 +115,6 @@
     if ([self predicts:TOKEN_KIND_BUILTIN_COMMENT, 0]) {
         [self comment_]; 
     }
-    [self matchEOF:YES]; 
 
 }
 

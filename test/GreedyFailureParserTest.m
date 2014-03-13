@@ -125,7 +125,7 @@
 //    [[_mock expect] parser:_parser didMatchRcurly:OCMOCK_ANY];
 //    [[_mock expect] parser:_parser didMatchStructure:OCMOCK_ANY];
 
-    [[_mock expect] parser:_parser didMatchStructs:OCMOCK_ANY];
+    //[[_mock expect] parser:_parser didMatchStructs:OCMOCK_ANY];
     
     [[[_mock stub] andDo:^(NSInvocation *invoc) {
         PKAssembly *a = nil;
@@ -186,7 +186,7 @@
         
     }] parser:_parser didMatchValue:OCMOCK_ANY];
 
-    [[_mock expect] parser:_parser didMatchStructs:OCMOCK_ANY];
+    //[[_mock expect] parser:_parser didMatchStructs:OCMOCK_ANY];
     
     [[[_mock stub] andDo:^(NSInvocation *invoc) {
         PKAssembly *a = nil;

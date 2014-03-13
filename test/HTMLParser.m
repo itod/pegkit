@@ -203,7 +203,8 @@
 }
 
 - (void)start {
-    [self start_];
+    [self start_]; 
+    [self matchEOF:YES]; 
 }
 
 - (void)__start {
@@ -241,7 +242,6 @@
     while ([self speculate:^{ [self anything_]; }]) {
         [self anything_]; 
     }
-    [self matchEOF:YES]; 
 
 }
 
