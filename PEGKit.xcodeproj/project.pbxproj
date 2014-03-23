@@ -221,6 +221,7 @@
 		D36E68BC17207542007B4353 /* CSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E68BB17207542007B4353 /* CSSParser.m */; };
 		D36E68BF1720C840007B4353 /* HTMLParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E68BE1720C83C007B4353 /* HTMLParserTest.m */; };
 		D36E68C21720C84F007B4353 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E68C11720C84C007B4353 /* HTMLParser.m */; };
+		D37214C718DF391500525058 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D366C56718D1F29D00AF3EFB /* XCTest.framework */; };
 		D376F6C118D0B3990064C888 /* PGActionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6A618D0B3990064C888 /* PGActionNode.m */; };
 		D376F6C218D0B3990064C888 /* PGActionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6A618D0B3990064C888 /* PGActionNode.m */; };
 		D376F6C318D0B3990064C888 /* PGAlternationNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6A818D0B3990064C888 /* PGAlternationNode.m */; };
@@ -801,9 +802,10 @@
 			files = (
 				D381AADC15D5953A004F690C /* libxml2.dylib in Frameworks */,
 				D30DA1A417284F9900A1A3EC /* libicucore.dylib in Frameworks */,
-				D30DA1A117284EFF00A1A3EC /* Cocoa.framework in Frameworks */,
 				D3CC548D18CF9282006715D6 /* PEGKit.framework in Frameworks */,
 				D34F539717421743008700F3 /* OCMock.framework in Frameworks */,
+				D37214C718DF391500525058 /* XCTest.framework in Frameworks */,
+				D30DA1A117284EFF00A1A3EC /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2087,6 +2089,7 @@
 		1DEB91B208733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -2099,6 +2102,7 @@
 		1DEB91B308733DA50010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -2110,7 +2114,6 @@
 		D317C14A18D1F5EB0036BE75 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2150,7 +2153,6 @@
 		D317C14B18D1F5EB0036BE75 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2185,7 +2187,6 @@
 		D338304C171C923700CCE513 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -2218,7 +2219,6 @@
 		D338304D171C923700CCE513 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -2244,7 +2244,6 @@
 		D366C57518D1F29E00AF3EFB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -2279,7 +2278,6 @@
 		D366C57618D1F29E00AF3EFB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -2308,14 +2306,8 @@
 		D37D8DDA1571A4F700CDB822 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\\\"$(DEVELOPER_LIBRARY_DIR)/Frameworks/\\\"",
-					"\\\"$(SRCROOT)/lib\\\"",
-					"$(inherited)",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -2329,10 +2321,6 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(LIBXML_PATH)",
-					"$(SRCROOT)/include",
-				);
 				INFOPLIST_FILE = "test/Tests-Info.plist";
 				LIBXML_PATH = "\"/usr/include/libxml2/\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
@@ -2347,24 +2335,14 @@
 		D37D8DDB1571A4F700CDB822 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\\\"$(DEVELOPER_LIBRARY_DIR)/Frameworks/\\\"",
-					"\\\"$(SRCROOT)/lib\\\"",
-					"$(inherited)",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "test/Tests-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(LIBXML_PATH)",
-					"$(SRCROOT)/include",
-				);
 				INFOPLIST_FILE = "test/Tests-Info.plist";
 				LIBXML_PATH = "\"/usr/include/libxml2/\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
