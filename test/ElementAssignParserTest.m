@@ -12,7 +12,7 @@
 #import "PGRootNode.h"
 #import "ElementAssignParser.h"
 
-@interface ElementAssignParserTest : SenTestCase
+@interface ElementAssignParserTest : XCTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

@@ -13,7 +13,7 @@
 #import "PGRootNode.h"
 #import "CrockfordParser.h"
 
-@interface CrockfordParserTest : SenTestCase
+@interface CrockfordParserTest : XCTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

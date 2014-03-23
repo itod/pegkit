@@ -13,7 +13,7 @@
 //  limitations under the License.
 
 #import <Foundation/Foundation.h>
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <PEGKit/PEGKit.h>
 #import <OCMock/OCMock.h>
 

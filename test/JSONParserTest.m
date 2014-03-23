@@ -13,7 +13,7 @@
 #import "PGRootNode.h"
 #import "JSONParser.h"
 
-@interface JSONParserTest : SenTestCase
+@interface JSONParserTest : XCTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

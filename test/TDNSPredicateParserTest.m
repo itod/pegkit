@@ -19,7 +19,7 @@
 - (id)resolvedValueForKeyPath:(NSString *)s;
 @end
 
-@interface TDNSPredicateParserTest : SenTestCase <TDKeyPathResolver>
+@interface TDNSPredicateParserTest : XCTestCase <TDKeyPathResolver>
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

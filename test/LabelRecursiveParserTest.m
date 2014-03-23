@@ -13,7 +13,7 @@
 #import "PGRootNode.h"
 #import "LabelRecursiveParser.h"
 
-@interface LabelRecursiveParserTest : SenTestCase
+@interface LabelRecursiveParserTest : XCTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

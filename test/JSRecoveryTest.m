@@ -11,7 +11,7 @@
 #import "JavaScriptParser.h"
 #import "JavaScriptWhitespaceParser.h"
 
-@interface JSRecoveryTest : SenTestCase
+@interface JSRecoveryTest : XCTestCase
 @property (nonatomic, retain) PKParser *parser;
 @property (nonatomic, retain) id mock;
 @end

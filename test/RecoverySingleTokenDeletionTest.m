@@ -11,7 +11,7 @@
 #import "PGRootNode.h"
 #import "ElementAssignParser.h"
 
-@interface RecoverySingleTokenDeletionTest : SenTestCase
+@interface RecoverySingleTokenDeletionTest : XCTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

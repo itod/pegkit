@@ -12,7 +12,7 @@
 #import "PGRootNode.h"
 #import "MiniMathParser.h"
 
-@interface MiniMathParserTest : SenTestCase
+@interface MiniMathParserTest : XCTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

@@ -13,7 +13,7 @@
 #import "PGRootNode.h"
 #import "JavaScriptParser.h"
 
-@interface JavaScriptParserTest : SenTestCase
+@interface JavaScriptParserTest : XCTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

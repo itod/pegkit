@@ -13,7 +13,7 @@
 #import "PGRootNode.h"
 #import "NamedActionParser.h"
 
-@interface NamedActionParserTest : SenTestCase
+@interface NamedActionParserTest : XCTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

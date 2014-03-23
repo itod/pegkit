@@ -13,7 +13,7 @@
 #import "PGRootNode.h"
 #import "AltParser.h"
 
-@interface AltParserTest : SenTestCase
+@interface AltParserTest : XCTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

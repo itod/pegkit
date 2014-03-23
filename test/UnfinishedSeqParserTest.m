@@ -13,7 +13,7 @@
 #import "PGRootNode.h"
 #import "UnfinishedSeqParser.h"
 
-@interface UnfinishedSeqParserTest : SenTestCase
+@interface UnfinishedSeqParserTest : XCTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

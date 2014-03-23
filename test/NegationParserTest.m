@@ -13,7 +13,7 @@
 #import "PGRootNode.h"
 #import "NegationParser.h"
 
-@interface NegationParserTest : SenTestCase
+@interface NegationParserTest : XCTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

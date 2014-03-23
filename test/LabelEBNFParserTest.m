@@ -12,7 +12,7 @@
 #import "PGRootNode.h"
 #import "LabelEBNFParser.h"
 
-@interface LabelEBNFParserTest : SenTestCase
+@interface LabelEBNFParserTest : XCTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;

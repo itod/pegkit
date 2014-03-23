@@ -261,7 +261,6 @@
 		D376F6F218D0B5190064C888 /* PGParserGenVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6EA18D0B5190064C888 /* PGParserGenVisitor.m */; };
 		D376F6F318D0B5190064C888 /* PGTokenKindDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6EC18D0B5190064C888 /* PGTokenKindDescriptor.m */; };
 		D376F6F418D0B5190064C888 /* PGTokenKindDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6EC18D0B5190064C888 /* PGTokenKindDescriptor.m */; };
-		D37D8DC91571A4F700CDB822 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37D8DC81571A4F700CDB822 /* SenTestingKit.framework */; };
 		D37D8E361571A5A200CDB822 /* css.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D380B5080F0D71A90009EC13 /* css.grammar */; };
 		D37D8E391571A5A200CDB822 /* html.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D380AFBC0F0C54B60009EC13 /* html.grammar */; };
 		D37D8E3D1571A5A200CDB822 /* json_with_comments.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D383498A0F0C0CF30055E4E0 /* json_with_comments.grammar */; };
@@ -641,8 +640,7 @@
 		D376F6EB18D0B5190064C888 /* PGTokenKindDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGTokenKindDescriptor.h; path = ParserGenApp/PGTokenKindDescriptor.h; sourceTree = "<group>"; };
 		D376F6EC18D0B5190064C888 /* PGTokenKindDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGTokenKindDescriptor.m; path = ParserGenApp/PGTokenKindDescriptor.m; sourceTree = "<group>"; };
 		D376F6F518D0B5700064C888 /* PGParserFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PGParserFactory.h; path = ParserGenApp/PGParserFactory.h; sourceTree = "<group>"; };
-		D37D8DC61571A4F700CDB822 /* PEGKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PEGKitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D37D8DC81571A4F700CDB822 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		D37D8DC61571A4F700CDB822 /* PEGKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PEGKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37F23201453841100A98014 /* PKHashtagState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKHashtagState.m; path = src/PKHashtagState.m; sourceTree = "<group>"; };
 		D37F232A1453842800A98014 /* PKHashtagState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKHashtagState.h; path = include/PEGKit/PKHashtagState.h; sourceTree = SOURCE_ROOT; };
 		D380AFBC0F0C54B60009EC13 /* html.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = html.grammar; path = res/html.grammar; sourceTree = "<group>"; };
@@ -804,7 +802,6 @@
 				D381AADC15D5953A004F690C /* libxml2.dylib in Frameworks */,
 				D30DA1A417284F9900A1A3EC /* libicucore.dylib in Frameworks */,
 				D30DA1A117284EFF00A1A3EC /* Cocoa.framework in Frameworks */,
-				D37D8DC91571A4F700CDB822 /* SenTestingKit.framework in Frameworks */,
 				D3CC548D18CF9282006715D6 /* PEGKit.framework in Frameworks */,
 				D34F539717421743008700F3 /* OCMock.framework in Frameworks */,
 			);
@@ -824,7 +821,7 @@
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D37D8DC61571A4F700CDB822 /* PEGKitTests.octest */,
+				D37D8DC61571A4F700CDB822 /* PEGKitTests.xctest */,
 				D338302F171C923700CCE513 /* ParserGenApp.app */,
 				D3F8A48D175817DF00056188 /* PEGKit.framework */,
 				D366C55418D1F29D00AF3EFB /* liblibPEGKitOSX.a */,
@@ -891,7 +888,6 @@
 				D36C560B0FD363D500141CB7 /* libicucore.dylib */,
 				D30DA1A017284EFF00A1A3EC /* Cocoa.framework */,
 				D30DA19E17284EC100A1A3EC /* Foundation.framework */,
-				D37D8DC81571A4F700CDB822 /* SenTestingKit.framework */,
 			);
 			name = Desktop;
 			sourceTree = "<group>";
@@ -1519,8 +1515,8 @@
 			);
 			name = PEGKitTests;
 			productName = NewTests;
-			productReference = D37D8DC61571A4F700CDB822 /* PEGKitTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = D37D8DC61571A4F700CDB822 /* PEGKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		D3F8A3DA175817DF00056188 /* PEGKit */ = {
 			isa = PBXNativeTarget;
@@ -2316,8 +2312,9 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks/\"",
-					"\"$(SRCROOT)/lib\"",
+					"\\\"$(DEVELOPER_LIBRARY_DIR)/Frameworks/\\\"",
+					"\\\"$(SRCROOT)/lib\\\"",
+					"$(inherited)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2344,7 +2341,6 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -2355,8 +2351,9 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks/\"",
-					"\"$(SRCROOT)/lib\"",
+					"\\\"$(DEVELOPER_LIBRARY_DIR)/Frameworks/\\\"",
+					"\\\"$(SRCROOT)/lib\\\"",
+					"$(inherited)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -2376,7 +2373,6 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

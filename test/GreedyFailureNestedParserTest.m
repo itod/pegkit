@@ -13,7 +13,7 @@
 #import "PGRootNode.h"
 #import "GreedyFailureNestedParser.h"
 
-@interface GreedyFailureNestedParserTest : SenTestCase
+@interface GreedyFailureNestedParserTest : XCTestCase
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
