@@ -37,9 +37,7 @@
 		D30DA1991727410900A1A3EC /* PGTryAndRecoverTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D30DA1971727410700A1A3EC /* PGTryAndRecoverTemplate.txt */; };
 		D30DA19B17274BF400A1A3EC /* PGTryAndRecoverEOFTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D30DA19A17274BF100A1A3EC /* PGTryAndRecoverEOFTemplate.txt */; };
 		D30DA19C17274BF400A1A3EC /* PGTryAndRecoverEOFTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D30DA19A17274BF100A1A3EC /* PGTryAndRecoverEOFTemplate.txt */; };
-		D30DA1A117284EFF00A1A3EC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30DA1A017284EFF00A1A3EC /* Cocoa.framework */; };
 		D30DA1A417284F9900A1A3EC /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D36C560B0FD363D500141CB7 /* libicucore.dylib */; };
-		D30DA1AE1728510100A1A3EC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30DA1A017284EFF00A1A3EC /* Cocoa.framework */; };
 		D30DA1AF1728515E00A1A3EC /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D36C560B0FD363D500141CB7 /* libicucore.dylib */; };
 		D317C0D318D1F4050036BE75 /* PEGKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D3F8A4A017581A3C00056188 /* PEGKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D317C0D418D1F4050036BE75 /* PKTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221910FFE8B8C004514FE /* PKTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -91,8 +89,6 @@
 		D317C12318D1F49F0036BE75 /* NSString+PEGKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAFD60FF9E95500D7773A /* NSString+PEGKitAdditions.m */; };
 		D317C12418D1F4A10036BE75 /* PKHashtagState.m in Sources */ = {isa = PBXBuildFile; fileRef = D37F23201453841100A98014 /* PKHashtagState.m */; };
 		D317C12518D1F4A20036BE75 /* PKHashtagState.m in Sources */ = {isa = PBXBuildFile; fileRef = D37F23201453841100A98014 /* PKHashtagState.m */; };
-		D317C12618D1F4C10036BE75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D366C55918D1F29D00AF3EFB /* Foundation.framework */; };
-		D317C12D18D1F5EB0036BE75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D317C12C18D1F5EB0036BE75 /* Foundation.framework */; };
 		D317C16A18D1F6550036BE75 /* PKParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3382F9A171C80EB00CCE513 /* PKParser.m */; };
 		D317C16B18D1F6550036BE75 /* PKAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BADA00FF9C9B000D7773A /* PKAssembly.m */; };
 		D317C16C18D1F6550036BE75 /* PKRecognitionException.m in Sources */ = {isa = PBXBuildFile; fileRef = D3382FD6171C8C9100CCE513 /* PKRecognitionException.m */; };
@@ -210,7 +206,6 @@
 		D33830C8171DBE8A00CCE513 /* named_action.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D33830C7171DBE8A00CCE513 /* named_action.grammar */; };
 		D33830CB171DBEB100CCE513 /* NamedActionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D33830CA171DBEB100CCE513 /* NamedActionParser.m */; };
 		D33830CE171DBEE200CCE513 /* NamedActionParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D33830CD171DBEE200CCE513 /* NamedActionParserTest.m */; };
-		D34F539717421743008700F3 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D34F538C17421715008700F3 /* OCMock.framework */; };
 		D34F53A717430232008700F3 /* CrockfordParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D34F53A617430232008700F3 /* CrockfordParserTest.m */; };
 		D34F53AC17430249008700F3 /* CrockfordParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D34F53AB17430249008700F3 /* CrockfordParser.m */; };
 		D34F53AE174302A4008700F3 /* crockford.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D34F53AD174302A4008700F3 /* crockford.grammar */; };
@@ -222,6 +217,9 @@
 		D36E68BF1720C840007B4353 /* HTMLParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E68BE1720C83C007B4353 /* HTMLParserTest.m */; };
 		D36E68C21720C84F007B4353 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E68C11720C84C007B4353 /* HTMLParser.m */; };
 		D37214C718DF391500525058 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D366C56718D1F29D00AF3EFB /* XCTest.framework */; };
+		D37214CB18DF3B0100525058 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37214CA18DF3B0100525058 /* OCMock.framework */; };
+		D37214CE18DF3BBE00525058 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37214CD18DF3BBE00525058 /* Foundation.framework */; };
+		D37214D018DF3BDC00525058 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37214CF18DF3BDC00525058 /* Cocoa.framework */; };
 		D376F6C118D0B3990064C888 /* PGActionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6A618D0B3990064C888 /* PGActionNode.m */; };
 		D376F6C218D0B3990064C888 /* PGActionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6A618D0B3990064C888 /* PGActionNode.m */; };
 		D376F6C318D0B3990064C888 /* PGAlternationNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6A818D0B3990064C888 /* PGAlternationNode.m */; };
@@ -373,34 +371,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D34F538B17421715008700F3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D34F538517421715008700F3 /* OCMock.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 030EF0A814632FD000B04273;
-			remoteInfo = OCMock;
-		};
-		D34F538D17421715008700F3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D34F538517421715008700F3 /* OCMock.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 030EF0C014632FD000B04273;
-			remoteInfo = OCMockTests;
-		};
-		D34F538F17421715008700F3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D34F538517421715008700F3 /* OCMock.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 030EF0DC14632FF700B04273;
-			remoteInfo = OCMockLib;
-		};
-		D34F53921742173D008700F3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D34F538517421715008700F3 /* OCMock.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 030EF0A714632FD000B04273;
-			remoteInfo = OCMock;
-		};
 		D3CC548B18CF927F006715D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -506,10 +476,7 @@
 		D30DA1971727410700A1A3EC /* PGTryAndRecoverTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGTryAndRecoverTemplate.txt; path = res/PGTryAndRecoverTemplate.txt; sourceTree = "<group>"; };
 		D30DA19A17274BF100A1A3EC /* PGTryAndRecoverEOFTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGTryAndRecoverEOFTemplate.txt; path = res/PGTryAndRecoverEOFTemplate.txt; sourceTree = "<group>"; };
 		D30DA19E17284EC100A1A3EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D30DA1A017284EFF00A1A3EC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D317C12B18D1F5EB0036BE75 /* liblibPEGKitIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibPEGKitIOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D317C12C18D1F5EB0036BE75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D317C13C18D1F5EB0036BE75 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		D317C18D18D1F9230036BE75 /* PKSymbolNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolNode.h; path = src/PKSymbolNode.h; sourceTree = "<group>"; };
 		D317C18E18D1F9230036BE75 /* PKSymbolRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolRootNode.h; path = src/PKSymbolRootNode.h; sourceTree = "<group>"; };
 		D317C1B318D206730036BE75 /* minimath2.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = minimath2.grammar; path = res/minimath2.grammar; sourceTree = "<group>"; };
@@ -570,7 +537,6 @@
 		D34BAFD40FF9E95500D7773A /* NSArray+PEGKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+PEGKitAdditions.m"; path = "src/NSArray+PEGKitAdditions.m"; sourceTree = "<group>"; };
 		D34BAFD50FF9E95500D7773A /* NSString+PEGKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+PEGKitAdditions.h"; path = "src/NSString+PEGKitAdditions.h"; sourceTree = "<group>"; };
 		D34BAFD60FF9E95500D7773A /* NSString+PEGKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+PEGKitAdditions.m"; path = "src/NSString+PEGKitAdditions.m"; sourceTree = "<group>"; };
-		D34F538517421715008700F3 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = lib/OCMock/OCMock.xcodeproj; sourceTree = "<group>"; };
 		D34F539C1742C57E008700F3 /* JavaScriptWhitespaceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaScriptWhitespaceParser.h; path = test/JavaScriptWhitespaceParser.h; sourceTree = "<group>"; };
 		D34F53A617430232008700F3 /* CrockfordParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CrockfordParserTest.m; path = test/CrockfordParserTest.m; sourceTree = "<group>"; };
 		D34F53AA17430249008700F3 /* CrockfordParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrockfordParser.h; path = test/CrockfordParser.h; sourceTree = "<group>"; };
@@ -583,10 +549,6 @@
 		D35F4A8C11643662003811F3 /* PKURLState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKURLState.h; path = include/PEGKit/PKURLState.h; sourceTree = SOURCE_ROOT; };
 		D3633A2D170A6E9700C0966D /* nspredicate2.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nspredicate2.grammar; path = res/nspredicate2.grammar; sourceTree = "<group>"; };
 		D366C55418D1F29D00AF3EFB /* liblibPEGKitOSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibPEGKitOSX.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D366C55618D1F29D00AF3EFB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		D366C55918D1F29D00AF3EFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D366C55A18D1F29D00AF3EFB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		D366C55B18D1F29D00AF3EFB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		D366C56718D1F29D00AF3EFB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D36C560B0FD363D500141CB7 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = /usr/lib/libicucore.dylib; sourceTree = "<absolute>"; };
 		D36E68B2171F378B007B4353 /* JavaScriptParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaScriptParserTest.m; path = test/JavaScriptParserTest.m; sourceTree = "<group>"; };
@@ -599,6 +561,9 @@
 		D36E68C01720C848007B4353 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = test/HTMLParser.h; sourceTree = "<group>"; };
 		D36E68C11720C84C007B4353 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = test/HTMLParser.m; sourceTree = "<group>"; };
 		D36E9F860E5A795400496BD3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = /usr/lib/libxml2.dylib; sourceTree = "<absolute>"; };
+		D37214CA18DF3B0100525058 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = lib/OCMock/OCMock.framework; sourceTree = "<group>"; };
+		D37214CD18DF3BBE00525058 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D37214CF18DF3BDC00525058 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D375DAC2173C645C00A5E050 /* PKAST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKAST.m; path = src/PKAST.m; sourceTree = "<group>"; };
 		D376F6A518D0B3990064C888 /* PGActionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGActionNode.h; path = ParserGenApp/nodes/PGActionNode.h; sourceTree = SOURCE_ROOT; };
 		D376F6A618D0B3990064C888 /* PGActionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGActionNode.m; path = ParserGenApp/nodes/PGActionNode.m; sourceTree = SOURCE_ROOT; };
@@ -774,7 +739,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D317C12D18D1F5EB0036BE75 /* Foundation.framework in Frameworks */,
+				D37214CE18DF3BBE00525058 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,9 +747,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3CC54FB18CF9934006715D6 /* PEGKit.framework in Frameworks */,
 				D30DA1AF1728515E00A1A3EC /* libicucore.dylib in Frameworks */,
-				D30DA1AE1728510100A1A3EC /* Cocoa.framework in Frameworks */,
+				D3CC54FB18CF9934006715D6 /* PEGKit.framework in Frameworks */,
+				D37214D018DF3BDC00525058 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,7 +757,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D317C12618D1F4C10036BE75 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,10 +766,9 @@
 			files = (
 				D381AADC15D5953A004F690C /* libxml2.dylib in Frameworks */,
 				D30DA1A417284F9900A1A3EC /* libicucore.dylib in Frameworks */,
+				D37214CB18DF3B0100525058 /* OCMock.framework in Frameworks */,
 				D3CC548D18CF9282006715D6 /* PEGKit.framework in Frameworks */,
-				D34F539717421743008700F3 /* OCMock.framework in Frameworks */,
 				D37214C718DF391500525058 /* XCTest.framework in Frameworks */,
-				D30DA1A117284EFF00A1A3EC /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -835,12 +798,10 @@
 		0867D691FE84028FC02AAC07 /* TODParseKit */ = {
 			isa = PBXGroup;
 			children = (
-				D34F538517421715008700F3 /* OCMock.xcodeproj */,
 				08FB77AEFE84172EC02AAC07 /* PEGKit */,
 				D3C7D8220A411F31005DD154 /* PEGKit Tests */,
 				D3383037171C923700CCE513 /* ParserGenApp */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
-				D366C55518D1F29D00AF3EFB /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
 			name = TODParseKit;
@@ -849,6 +810,7 @@
 		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				D37214CC18DF3B1F00525058 /* Mobile */,
 				1058C7B0FEA5585E11CA2CBB /* Desktop */,
 			);
 			name = "External Frameworks and Libraries";
@@ -888,8 +850,10 @@
 			children = (
 				D36E9F860E5A795400496BD3 /* libxml2.dylib */,
 				D36C560B0FD363D500141CB7 /* libicucore.dylib */,
-				D30DA1A017284EFF00A1A3EC /* Cocoa.framework */,
+				D37214CA18DF3B0100525058 /* OCMock.framework */,
+				D366C56718D1F29D00AF3EFB /* XCTest.framework */,
 				D30DA19E17284EC100A1A3EC /* Foundation.framework */,
+				D37214CF18DF3BDC00525058 /* Cocoa.framework */,
 			);
 			name = Desktop;
 			sourceTree = "<group>";
@@ -1058,16 +1022,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		D34F538617421715008700F3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D34F538C17421715008700F3 /* OCMock.framework */,
-				D34F538E17421715008700F3 /* OCMockTests.octest */,
-				D34F539017421715008700F3 /* libOCMock.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		D3541F870DFB105900429B4F /* states */ = {
 			isa = PBXGroup;
 			children = (
@@ -1117,26 +1071,12 @@
 			name = symbol;
 			sourceTree = SOURCE_ROOT;
 		};
-		D366C55518D1F29D00AF3EFB /* Frameworks */ = {
+		D37214CC18DF3B1F00525058 /* Mobile */ = {
 			isa = PBXGroup;
 			children = (
-				D366C55618D1F29D00AF3EFB /* Cocoa.framework */,
-				D366C56718D1F29D00AF3EFB /* XCTest.framework */,
-				D317C12C18D1F5EB0036BE75 /* Foundation.framework */,
-				D317C13C18D1F5EB0036BE75 /* UIKit.framework */,
-				D366C55818D1F29D00AF3EFB /* Other Frameworks */,
+				D37214CD18DF3BBE00525058 /* Foundation.framework */,
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D366C55818D1F29D00AF3EFB /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D366C55918D1F29D00AF3EFB /* Foundation.framework */,
-				D366C55A18D1F29D00AF3EFB /* CoreData.framework */,
-				D366C55B18D1F29D00AF3EFB /* AppKit.framework */,
-			);
-			name = "Other Frameworks";
+			name = Mobile;
 			sourceTree = "<group>";
 		};
 		D37D8DD11571A4F700CDB822 /* Supporting Files */ = {
@@ -1513,7 +1453,6 @@
 			);
 			dependencies = (
 				D3CC548C18CF927F006715D6 /* PBXTargetDependency */,
-				D34F53931742173D008700F3 /* PBXTargetDependency */,
 			);
 			name = PEGKitTests;
 			productName = NewTests;
@@ -1563,12 +1502,6 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* TODParseKit */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = D34F538617421715008700F3 /* Products */;
-					ProjectRef = D34F538517421715008700F3 /* OCMock.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D3F8A3DA175817DF00056188 /* PEGKit */,
@@ -1579,30 +1512,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		D34F538C17421715008700F3 /* OCMock.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OCMock.framework;
-			remoteRef = D34F538B17421715008700F3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D34F538E17421715008700F3 /* OCMockTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = OCMockTests.octest;
-			remoteRef = D34F538D17421715008700F3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D34F539017421715008700F3 /* libOCMock.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libOCMock.a;
-			remoteRef = D34F538F17421715008700F3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D338302D171C923700CCE513 /* Resources */ = {
@@ -2017,11 +1926,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D34F53931742173D008700F3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OCMock;
-			targetProxy = D34F53921742173D008700F3 /* PBXContainerItemProxy */;
-		};
 		D3CC548C18CF927F006715D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D3F8A3DA175817DF00056188 /* PEGKit */;
@@ -2308,6 +2212,10 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib/OCMock",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -2337,6 +2245,10 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib/OCMock",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
