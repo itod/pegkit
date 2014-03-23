@@ -274,7 +274,9 @@ done:
     NSString *title = NSLocalizedString(@"Error parsing grammar", @"");
     NSString *msg = [error localizedFailureReason];
     NSString *defaultButton = NSLocalizedString(@"OK", @"");
-    NSRunAlertPanel(title, msg, defaultButton, nil, nil);
+    NSString *altButton = nil;
+    NSString *otherButton = nil;
+    NSRunAlertPanel(title, @"%@", defaultButton, altButton, otherButton, msg);
 }
 
 @end

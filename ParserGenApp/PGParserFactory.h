@@ -10,13 +10,13 @@
 
 @class PKAST;
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, PGParserFactoryAssemblerSettingBehavior) {
     PGParserFactoryAssemblerSettingBehaviorAll        = 0, // Default
     PGParserFactoryAssemblerSettingBehaviorNone       = 1,
     PGParserFactoryAssemblerSettingBehaviorTerminals  = 2,
     PGParserFactoryAssemblerSettingBehaviorExplicit   = 3,
     PGParserFactoryAssemblerSettingBehaviorSyntax     = 4,
-} PGParserFactoryAssemblerSettingBehavior;
+};
 
 @interface PGParserFactory : NSObject
 
