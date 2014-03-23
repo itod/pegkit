@@ -382,74 +382,8 @@
 
 
 - (void)visitAction:(PGActionNode *)node {
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
+    //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
 }
-
-
-//#pragma mark -
-//#pragma mark Assemblers
-//
-//- (void)setAssemblerForParser:(PKCompositeParser *)p callbackName:(NSString *)callbackName {
-//    NSString *parserName = p.name;
-//    NSString *selName = callbackName;
-//    
-//    BOOL setOnAll = (_assemblerSettingBehavior == PGParserFactoryAssemblerSettingBehaviorAll);
-//    
-//    if (setOnAll) {
-//        // continue
-//    } else {
-//        BOOL setOnExplicit = (_assemblerSettingBehavior == PGParserFactoryAssemblerSettingBehaviorExplicit);
-//        if (setOnExplicit && selName) {
-//            // continue
-//        } else {
-//            BOOL isTerminal = [p isKindOfClass:[PKTerminal class]];
-//            if (!isTerminal && !setOnExplicit) return;
-//            
-//            BOOL setOnTerminals = (_assemblerSettingBehavior == PGParserFactoryAssemblerSettingBehaviorTerminals);
-//            if (setOnTerminals && isTerminal) {
-//                // continue
-//            } else {
-//                return;
-//            }
-//        }
-//    }
-//    
-//    if (!selName) {
-//        selName = [self defaultAssemblerSelectorNameForParserName:parserName];
-//    }
-//    
-//    if (selName) {
-//        SEL sel = NSSelectorFromString(selName);
-//        if (_assembler && [_assembler respondsToSelector:sel]) {
-//            [p setAssembler:_assembler selector:sel];
-//        }
-//        if (_preassembler && [_preassembler respondsToSelector:sel]) {
-//            NSString *selName = [self defaultPreassemblerSelectorNameForParserName:parserName];
-//            [p setPreassembler:_preassembler selector:NSSelectorFromString(selName)];
-//        }
-//    }
-//}
-//
-//
-//- (NSString *)defaultAssemblerSelectorNameForParserName:(NSString *)parserName {
-//    return [self defaultAssemblerSelectorNameForParserName:parserName pre:NO];
-//}
-//
-//
-//- (NSString *)defaultPreassemblerSelectorNameForParserName:(NSString *)parserName {
-//    return [self defaultAssemblerSelectorNameForParserName:parserName pre:YES];
-//}
-//
-//
-//- (NSString *)defaultAssemblerSelectorNameForParserName:(NSString *)parserName pre:(BOOL)isPre {
-//    NSString *prefix = nil;
-//    if ([parserName hasPrefix:@"@"]) {
-//        return nil;
-//    } else {
-//        prefix = isPre ? @"parser:willMatch" :  @"parser:didMatch";
-//    }
-//    return [NSString stringWithFormat:@"%@%C%@:", prefix, (unichar)toupper([parserName characterAtIndex:0]), [parserName substringFromIndex:1]];
-//}
 
 @end
