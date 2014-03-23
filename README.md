@@ -18,6 +18,6 @@ A tutorial for [using PEGKit in your iOS applications is available on GitHub](ht
 
 PEGKit is a re-write of an earlier framework by the same author called [ParseKit](http://parsekit.com). ParseKit should generally be considered deprecated, and PEGKit should probably be used for all future development.
 
-* ***[ParseKit](http://parsekit.com)*** produces **dynamic**, **non-deterministic** parsers **at runtime**. The parsers produced by ParseKit are slow (they exhibit exponential performance characteristics -- although they had some interesting properties which are useful in very rare circumstances).
+* ***[ParseKit](http://parsekit.com)*** produces **dynamic**, **non-deterministic** parsers **at runtime**. The parsers produced by ParseKit exhibit poor (exponential) performance characteristics -- although they have some interesting properties which are useful in very rare circumstances.
 
-* ***PEGKit*** produces **static** ObjC source code for **deterministic** ([PEG](http://en.wikipedia.org/wiki/Parsing_expression_grammar)) memoizing parsers **at design time** which you can then compile into your project. The parsers produced by PEGKit are fast (linear performance characteristics).
+* ***PEGKit*** produces **static** ObjC source code for **deterministic** ([PEG](http://en.wikipedia.org/wiki/Parsing_expression_grammar)) memoizing parsers **at design time** which you can then compile into your project. The parsers produced by PEGKit exhibit good (linear) performance characteristics.
