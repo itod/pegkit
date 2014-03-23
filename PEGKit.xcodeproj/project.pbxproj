@@ -476,7 +476,7 @@
 		D30DA1971727410700A1A3EC /* PGTryAndRecoverTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGTryAndRecoverTemplate.txt; path = res/PGTryAndRecoverTemplate.txt; sourceTree = "<group>"; };
 		D30DA19A17274BF100A1A3EC /* PGTryAndRecoverEOFTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGTryAndRecoverEOFTemplate.txt; path = res/PGTryAndRecoverEOFTemplate.txt; sourceTree = "<group>"; };
 		D30DA19E17284EC100A1A3EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D317C12B18D1F5EB0036BE75 /* liblibPEGKitIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibPEGKitIOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D317C12B18D1F5EB0036BE75 /* libPEGKitIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPEGKitIOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D317C18D18D1F9230036BE75 /* PKSymbolNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolNode.h; path = src/PKSymbolNode.h; sourceTree = "<group>"; };
 		D317C18E18D1F9230036BE75 /* PKSymbolRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSymbolRootNode.h; path = src/PKSymbolRootNode.h; sourceTree = "<group>"; };
 		D317C1B318D206730036BE75 /* minimath2.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = minimath2.grammar; path = res/minimath2.grammar; sourceTree = "<group>"; };
@@ -548,7 +548,7 @@
 		D35F4A8B11643662003811F3 /* PKEmailState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEmailState.h; path = include/PEGKit/PKEmailState.h; sourceTree = SOURCE_ROOT; };
 		D35F4A8C11643662003811F3 /* PKURLState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKURLState.h; path = include/PEGKit/PKURLState.h; sourceTree = SOURCE_ROOT; };
 		D3633A2D170A6E9700C0966D /* nspredicate2.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nspredicate2.grammar; path = res/nspredicate2.grammar; sourceTree = "<group>"; };
-		D366C55418D1F29D00AF3EFB /* liblibPEGKitOSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibPEGKitOSX.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D366C55418D1F29D00AF3EFB /* libPEGKitOSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPEGKitOSX.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D366C56718D1F29D00AF3EFB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D36C560B0FD363D500141CB7 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = /usr/lib/libicucore.dylib; sourceTree = "<absolute>"; };
 		D36E68B2171F378B007B4353 /* JavaScriptParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaScriptParserTest.m; path = test/JavaScriptParserTest.m; sourceTree = "<group>"; };
@@ -789,8 +789,8 @@
 				D37D8DC61571A4F700CDB822 /* PEGKitTests.xctest */,
 				D338302F171C923700CCE513 /* ParserGenApp.app */,
 				D3F8A48D175817DF00056188 /* PEGKit.framework */,
-				D366C55418D1F29D00AF3EFB /* liblibPEGKitOSX.a */,
-				D317C12B18D1F5EB0036BE75 /* liblibPEGKitIOS.a */,
+				D366C55418D1F29D00AF3EFB /* libPEGKitOSX.a */,
+				D317C12B18D1F5EB0036BE75 /* libPEGKitIOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1400,7 +1400,7 @@
 			);
 			name = libPEGKitIOS;
 			productName = libPEGKitIOS;
-			productReference = D317C12B18D1F5EB0036BE75 /* liblibPEGKitIOS.a */;
+			productReference = D317C12B18D1F5EB0036BE75 /* libPEGKitIOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D338302E171C923700CCE513 /* ParserGenApp */ = {
@@ -1436,7 +1436,7 @@
 			);
 			name = libPEGKitOSX;
 			productName = libPEGKitOSX;
-			productReference = D366C55418D1F29D00AF3EFB /* liblibPEGKitOSX.a */;
+			productReference = D366C55418D1F29D00AF3EFB /* libPEGKitOSX.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D37D8DC51571A4F700CDB822 /* PEGKitTests */ = {
@@ -2048,7 +2048,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PEGKitIOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -2081,7 +2081,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PEGKitIOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
@@ -2175,7 +2175,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PEGKitOSX;
 			};
 			name = Debug;
 		};
@@ -2203,7 +2203,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PEGKitOSX;
 			};
 			name = Release;
 		};
