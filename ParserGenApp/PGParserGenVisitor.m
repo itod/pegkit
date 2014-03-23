@@ -330,7 +330,7 @@
             }
         } break;
         default:
-            NSAssert1(0, @"unsupported assembler callback setting behavior %d", _preassemblerSettingBehavior);
+            NSAssert1(0, @"unsupported assembler callback setting behavior %lu", _preassemblerSettingBehavior);
             break;
     }
     
