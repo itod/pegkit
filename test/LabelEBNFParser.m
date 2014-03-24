@@ -112,7 +112,7 @@
         [self raise:@"No viable alternative found in rule 's'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchS:)];
+    [self fireDelegateSelector:@selector(parser:didMatchS:)];
 }
 
 - (void)s_ {
@@ -126,7 +126,7 @@
         [self match:LABELEBNF_TOKEN_KIND_COLON discard:NO]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchLabel:)];
+    [self fireDelegateSelector:@selector(parser:didMatchLabel:)];
 }
 
 - (void)label_ {
@@ -137,7 +137,7 @@
     
     [self matchNumber:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchExpr:)];
 }
 
 - (void)expr_ {

@@ -121,7 +121,7 @@
         [self method_]; 
     } while ([self speculate:^{ [self method_]; }]);
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStart:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
 
 - (void)start_ {
@@ -144,7 +144,7 @@
         [self raise:@"No viable alternative found in rule 'method'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchMethod:)];
+    [self fireDelegateSelector:@selector(parser:didMatchMethod:)];
 }
 
 - (void)method_ {
@@ -161,7 +161,7 @@
         [self raise:@"No viable alternative found in rule 'type'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchType:)];
+    [self fireDelegateSelector:@selector(parser:didMatchType:)];
 }
 
 - (void)type_ {
@@ -178,7 +178,7 @@
         }
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchArgs:)];
+    [self fireDelegateSelector:@selector(parser:didMatchArgs:)];
 }
 
 - (void)args_ {
@@ -190,7 +190,7 @@
     [self match:METHODSFACTORED_TOKEN_KIND_INT discard:NO]; 
     [self matchWord:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchArg:)];
+    [self fireDelegateSelector:@selector(parser:didMatchArg:)];
 }
 
 - (void)arg_ {

@@ -361,7 +361,7 @@
 }
 
 
-- (void)fireAssemblerSelector:(SEL)sel {
+- (void)fireDelegateSelector:(SEL)sel {
     if (self.isSpeculating) return;
     
     if (_assembler && [_assembler respondsToSelector:sel]) {
@@ -561,7 +561,7 @@
             result = [_resyncSet containsObject:@(lt.tokenKind)];
 
             if (result) {
-                [self fireAssemblerSelector:@selector(parser:didFailToMatch:)];
+                [self fireDelegateSelector:@selector(parser:didFailToMatch:)];
                 break;
             }
             

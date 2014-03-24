@@ -97,7 +97,7 @@
         [self raise:@"negation test failed in s"];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchS:)];
+    [self fireDelegateSelector:@selector(parser:didMatchS:)];
 }
 
 - (void)s_ {
@@ -108,7 +108,7 @@
     
     [self match:NEGATION_TOKEN_KIND_FOO discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchFoo:)];
+    [self fireDelegateSelector:@selector(parser:didMatchFoo:)];
 }
 
 - (void)foo_ {

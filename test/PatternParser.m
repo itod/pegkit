@@ -92,7 +92,7 @@
         [self raise:@"pattern test failed in s"];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchS:)];
+    [self fireDelegateSelector:@selector(parser:didMatchS:)];
 }
 
 - (void)s {

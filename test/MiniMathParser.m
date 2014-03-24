@@ -112,7 +112,7 @@
         }];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchExpr:)];
 }
 
 - (void)expr_ {
@@ -130,7 +130,7 @@
         }];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchMult:)];
+    [self fireDelegateSelector:@selector(parser:didMatchMult:)];
 }
 
 - (void)mult_ {
@@ -155,7 +155,7 @@
         }];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPow:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPow:)];
 }
 
 - (void)pow_ {
@@ -169,7 +169,7 @@
     PUSH_DOUBLE(POP_DOUBLE());
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAtom:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAtom:)];
 }
 
 - (void)atom_ {

@@ -225,7 +225,7 @@
     }];
     [self stmts_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchProgram:)];
+    [self fireDelegateSelector:@selector(parser:didMatchProgram:)];
 }
 
 - (void)arrayLiteral_ {
@@ -244,7 +244,7 @@
         [self match:CROCKFORD_TOKEN_KIND_CLOSE_BRACKET discard:NO]; 
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchArrayLiteral:)];
+    [self fireDelegateSelector:@selector(parser:didMatchArrayLiteral:)];
 }
 
 - (void)block_ {
@@ -259,7 +259,7 @@
         [self match:CROCKFORD_TOKEN_KIND_CLOSE_CURLY discard:NO]; 
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchBlock:)];
+    [self fireDelegateSelector:@selector(parser:didMatchBlock:)];
 }
 
 - (void)breakStmt_ {
@@ -274,7 +274,7 @@
         [self match:CROCKFORD_TOKEN_KIND_SEMI_COLON discard:NO]; 
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchBreakStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchBreakStmt:)];
 }
 
 - (void)caseClause_ {
@@ -290,7 +290,7 @@
     } while ([self speculate:^{ [self match:CROCKFORD_TOKEN_KIND_CASE discard:NO]; [self tryAndRecover:CROCKFORD_TOKEN_KIND_COLON block:^{ [self expr_]; [self match:CROCKFORD_TOKEN_KIND_COLON discard:NO]; } completion:^{ [self match:CROCKFORD_TOKEN_KIND_COLON discard:NO]; }];}]);
     [self stmts_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCaseClause:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCaseClause:)];
 }
 
 - (void)disruptiveStmt_ {
@@ -305,7 +305,7 @@
         [self raise:@"No viable alternative found in rule 'disruptiveStmt'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchDisruptiveStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchDisruptiveStmt:)];
 }
 
 - (void)doStmt_ {
@@ -334,21 +334,21 @@
         [self match:CROCKFORD_TOKEN_KIND_SEMI_COLON discard:NO]; 
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchDoStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchDoStmt:)];
 }
 
 - (void)escapedChar_ {
     
     [self matchSymbol:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchEscapedChar:)];
+    [self fireDelegateSelector:@selector(parser:didMatchEscapedChar:)];
 }
 
 - (void)exponent_ {
     
     [self matchNumber:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchExponent:)];
+    [self fireDelegateSelector:@selector(parser:didMatchExponent:)];
 }
 
 - (void)expr_ {
@@ -380,7 +380,7 @@
         [self raise:@"No viable alternative found in rule 'expr'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchExpr:)];
 }
 
 - (void)exprStmt_ {
@@ -427,7 +427,7 @@
         [self raise:@"No viable alternative found in rule 'exprStmt'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchExprStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchExprStmt:)];
 }
 
 - (void)forStmt_ {
@@ -476,14 +476,14 @@
                         [self raise:@"No viable alternative found in rule 'forStmt'."];
                     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchForStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchForStmt:)];
 }
 
 - (void)fraction_ {
     
     [self matchNumber:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchFraction:)];
+    [self fireDelegateSelector:@selector(parser:didMatchFraction:)];
 }
 
 - (void)function_ {
@@ -493,7 +493,7 @@
     [self parameters_]; 
     [self functionBody_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchFunction:)];
+    [self fireDelegateSelector:@selector(parser:didMatchFunction:)];
 }
 
 - (void)functionBody_ {
@@ -506,7 +506,7 @@
         [self match:CROCKFORD_TOKEN_KIND_CLOSE_CURLY discard:NO]; 
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchFunctionBody:)];
+    [self fireDelegateSelector:@selector(parser:didMatchFunctionBody:)];
 }
 
 - (void)functionLiteral_ {
@@ -518,7 +518,7 @@
     [self parameters_]; 
     [self functionBody_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchFunctionLiteral:)];
+    [self fireDelegateSelector:@selector(parser:didMatchFunctionLiteral:)];
 }
 
 - (void)ifStmt_ {
@@ -544,7 +544,7 @@
             [self block_]; 
         }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchIfStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchIfStmt:)];
 }
 
 - (void)infixOp_ {
@@ -579,14 +579,14 @@
         [self raise:@"No viable alternative found in rule 'infixOp'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchInfixOp:)];
+    [self fireDelegateSelector:@selector(parser:didMatchInfixOp:)];
 }
 
 - (void)integer_ {
     
     [self matchNumber:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchInteger:)];
+    [self fireDelegateSelector:@selector(parser:didMatchInteger:)];
 }
 
 - (void)invocation_ {
@@ -605,7 +605,7 @@
         [self match:CROCKFORD_TOKEN_KIND_CLOSE_PAREN discard:NO]; 
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchInvocation:)];
+    [self fireDelegateSelector:@selector(parser:didMatchInvocation:)];
 }
 
 - (void)literal_ {
@@ -626,21 +626,21 @@
         [self raise:@"No viable alternative found in rule 'literal'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchLiteral:)];
+    [self fireDelegateSelector:@selector(parser:didMatchLiteral:)];
 }
 
 - (void)name_ {
     
     [self matchWord:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchName:)];
+    [self fireDelegateSelector:@selector(parser:didMatchName:)];
 }
 
 - (void)numberLiteral_ {
     
     [self matchNumber:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNumberLiteral:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNumberLiteral:)];
 }
 
 - (void)objectLiteral_ {
@@ -659,7 +659,7 @@
         [self match:CROCKFORD_TOKEN_KIND_CLOSE_CURLY discard:NO]; 
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchObjectLiteral:)];
+    [self fireDelegateSelector:@selector(parser:didMatchObjectLiteral:)];
 }
 
 - (void)nameValPair_ {
@@ -678,7 +678,7 @@
     }];
         [self expr_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNameValPair:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNameValPair:)];
 }
 
 - (void)parameters_ {
@@ -697,7 +697,7 @@
         [self match:CROCKFORD_TOKEN_KIND_CLOSE_PAREN discard:NO]; 
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchParameters:)];
+    [self fireDelegateSelector:@selector(parser:didMatchParameters:)];
 }
 
 - (void)prefixOp_ {
@@ -710,7 +710,7 @@
         [self raise:@"No viable alternative found in rule 'prefixOp'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPrefixOp:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPrefixOp:)];
 }
 
 - (void)refinement_ {
@@ -730,7 +730,7 @@
         [self raise:@"No viable alternative found in rule 'refinement'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchRefinement:)];
+    [self fireDelegateSelector:@selector(parser:didMatchRefinement:)];
 }
 
 - (void)regexLiteral_ {
@@ -740,14 +740,14 @@
         [self regexMods_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchRegexLiteral:)];
+    [self fireDelegateSelector:@selector(parser:didMatchRegexLiteral:)];
 }
 
 - (void)regexBody_ {
     
     [self match:CROCKFORD_TOKEN_KIND_REGEXBODY discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchRegexBody:)];
+    [self fireDelegateSelector:@selector(parser:didMatchRegexBody:)];
 }
 
 - (void)regexMods_ {
@@ -755,7 +755,7 @@
     [self testAndThrow:(id)^{ return MATCHES_IGNORE_CASE(@"[imxs]+", LS(1)); }]; 
     [self matchWord:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchRegexMods:)];
+    [self fireDelegateSelector:@selector(parser:didMatchRegexMods:)];
 }
 
 - (void)returnStmt_ {
@@ -770,7 +770,7 @@
         [self match:CROCKFORD_TOKEN_KIND_SEMI_COLON discard:NO]; 
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchReturnStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchReturnStmt:)];
 }
 
 - (void)stmts_ {
@@ -779,7 +779,7 @@
         [self stmt_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStmts:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStmts:)];
 }
 
 - (void)stmt_ {
@@ -794,7 +794,7 @@
         [self raise:@"No viable alternative found in rule 'stmt'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStmt:)];
 }
 
 - (void)nonFunction_ {
@@ -832,14 +832,14 @@
         [self raise:@"No viable alternative found in rule 'nonFunction'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNonFunction:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNonFunction:)];
 }
 
 - (void)stringLiteral_ {
     
     [self matchQuotedString:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStringLiteral:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStringLiteral:)];
 }
 
 - (void)switchStmt_ {
@@ -882,7 +882,7 @@
                 [self match:CROCKFORD_TOKEN_KIND_CLOSE_CURLY discard:NO]; 
             }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchSwitchStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchSwitchStmt:)];
 }
 
 - (void)throwStmt_ {
@@ -895,7 +895,7 @@
         [self match:CROCKFORD_TOKEN_KIND_SEMI_COLON discard:NO]; 
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchThrowStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchThrowStmt:)];
 }
 
 - (void)tryStmt_ {
@@ -924,7 +924,7 @@
             [self block_]; 
         }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchTryStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchTryStmt:)];
 }
 
 - (void)varStmt_ {
@@ -943,7 +943,7 @@
         }];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchVarStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchVarStmt:)];
 }
 
 - (void)nameExprPair_ {
@@ -954,7 +954,7 @@
         [self expr_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNameExprPair:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNameExprPair:)];
 }
 
 - (void)whileStmt_ {
@@ -973,7 +973,7 @@
     }];
         [self block_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchWhileStmt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchWhileStmt:)];
 }
 
 @end

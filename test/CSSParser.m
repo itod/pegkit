@@ -393,7 +393,7 @@
     
     [self matchWord:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchSelectorWord:)];
+    [self fireDelegateSelector:@selector(parser:didMatchSelectorWord:)];
 }
 
 - (void)selectorWord_ {
@@ -404,7 +404,7 @@
     
     [self matchQuotedString:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchSelectorQuotedString:)];
+    [self fireDelegateSelector:@selector(parser:didMatchSelectorQuotedString:)];
 }
 
 - (void)selectorQuotedString_ {
@@ -467,7 +467,7 @@
     
     [self matchWord:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchProperty:)];
+    [self fireDelegateSelector:@selector(parser:didMatchProperty:)];
 }
 
 - (void)property_ {
@@ -524,7 +524,7 @@
     
     [self match:CSS_TOKEN_KIND_URLLOWER discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchUrlLower:)];
+    [self fireDelegateSelector:@selector(parser:didMatchUrlLower:)];
 }
 
 - (void)urlLower_ {
@@ -535,7 +535,7 @@
     
     [self match:CSS_TOKEN_KIND_URLUPPER discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchUrlUpper:)];
+    [self fireDelegateSelector:@selector(parser:didMatchUrlUpper:)];
 }
 
 - (void)urlUpper_ {
@@ -574,7 +574,7 @@
     
     [self matchQuotedString:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchString:)];
+    [self fireDelegateSelector:@selector(parser:didMatchString:)];
 }
 
 - (void)string_ {
@@ -585,7 +585,7 @@
     
     [self matchWord:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchConstant:)];
+    [self fireDelegateSelector:@selector(parser:didMatchConstant:)];
 }
 
 - (void)constant_ {
@@ -596,7 +596,7 @@
     
     [self match:CSS_TOKEN_KIND_OPENCURLY discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchOpenCurly:)];
+    [self fireDelegateSelector:@selector(parser:didMatchOpenCurly:)];
 }
 
 - (void)openCurly_ {
@@ -607,7 +607,7 @@
     
     [self match:CSS_TOKEN_KIND_CLOSECURLY discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCloseCurly:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCloseCurly:)];
 }
 
 - (void)closeCurly_ {
@@ -618,7 +618,7 @@
     
     [self match:CSS_TOKEN_KIND_OPENBRACKET discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchOpenBracket:)];
+    [self fireDelegateSelector:@selector(parser:didMatchOpenBracket:)];
 }
 
 - (void)openBracket_ {
@@ -629,7 +629,7 @@
     
     [self match:CSS_TOKEN_KIND_CLOSEBRACKET discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCloseBracket:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCloseBracket:)];
 }
 
 - (void)closeBracket_ {
@@ -640,7 +640,7 @@
     
     [self match:CSS_TOKEN_KIND_EQ discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchEq:)];
+    [self fireDelegateSelector:@selector(parser:didMatchEq:)];
 }
 
 - (void)eq_ {
@@ -651,7 +651,7 @@
     
     [self match:CSS_TOKEN_KIND_COMMA discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchComma:)];
+    [self fireDelegateSelector:@selector(parser:didMatchComma:)];
 }
 
 - (void)comma_ {
@@ -662,7 +662,7 @@
     
     [self match:CSS_TOKEN_KIND_COLON discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchColon:)];
+    [self fireDelegateSelector:@selector(parser:didMatchColon:)];
 }
 
 - (void)colon_ {
@@ -673,7 +673,7 @@
     
     [self match:CSS_TOKEN_KIND_SEMI discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchSemi:)];
+    [self fireDelegateSelector:@selector(parser:didMatchSemi:)];
 }
 
 - (void)semi_ {
@@ -684,7 +684,7 @@
     
     [self match:CSS_TOKEN_KIND_OPENPAREN discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchOpenParen:)];
+    [self fireDelegateSelector:@selector(parser:didMatchOpenParen:)];
 }
 
 - (void)openParen_ {
@@ -695,7 +695,7 @@
     
     [self match:CSS_TOKEN_KIND_CLOSEPAREN discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCloseParen:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCloseParen:)];
 }
 
 - (void)closeParen_ {
@@ -706,7 +706,7 @@
     
     [self match:CSS_TOKEN_KIND_GT discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchGt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchGt:)];
 }
 
 - (void)gt_ {
@@ -717,7 +717,7 @@
     
     [self match:CSS_TOKEN_KIND_TILDE discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchTilde:)];
+    [self fireDelegateSelector:@selector(parser:didMatchTilde:)];
 }
 
 - (void)tilde_ {
@@ -728,7 +728,7 @@
     
     [self match:CSS_TOKEN_KIND_PIPE discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPipe:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPipe:)];
 }
 
 - (void)pipe_ {
@@ -739,7 +739,7 @@
     
     [self match:CSS_TOKEN_KIND_FWDSLASH discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchFwdSlash:)];
+    [self fireDelegateSelector:@selector(parser:didMatchFwdSlash:)];
 }
 
 - (void)fwdSlash_ {
@@ -750,7 +750,7 @@
     
     [self match:CSS_TOKEN_KIND_HASH discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchHash:)];
+    [self fireDelegateSelector:@selector(parser:didMatchHash:)];
 }
 
 - (void)hash_ {
@@ -761,7 +761,7 @@
     
     [self match:CSS_TOKEN_KIND_DOT discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchDot:)];
+    [self fireDelegateSelector:@selector(parser:didMatchDot:)];
 }
 
 - (void)dot_ {
@@ -772,7 +772,7 @@
     
     [self match:CSS_TOKEN_KIND_AT discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAt:)];
 }
 
 - (void)at_ {
@@ -783,7 +783,7 @@
     
     [self match:CSS_TOKEN_KIND_BANG discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchBang:)];
+    [self fireDelegateSelector:@selector(parser:didMatchBang:)];
 }
 
 - (void)bang_ {
@@ -794,7 +794,7 @@
     
     [self matchNumber:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNum:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNum:)];
 }
 
 - (void)num_ {

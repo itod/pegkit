@@ -93,7 +93,7 @@ enum {
 - (id)execute:(PKSActionBlock)block;
 
 // assembler callbacks
-- (void)fireAssemblerSelector:(SEL)sel;
+- (void)fireDelegateSelector:(SEL)sel;
 
 // memoization
 - (void)parseRule:(SEL)ruleSelector withMemo:(NSMutableDictionary *)memoization;

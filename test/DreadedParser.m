@@ -106,7 +106,7 @@
         [self raise:@"No viable alternative found in rule 's'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchS:)];
+    [self fireDelegateSelector:@selector(parser:didMatchS:)];
 }
 
 - (void)s_ {
@@ -117,7 +117,7 @@
     
     [self match:DREADED_TOKEN_KIND_A discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchA:)];
+    [self fireDelegateSelector:@selector(parser:didMatchA:)];
 }
 
 - (void)a_ {
@@ -128,7 +128,7 @@
     
     [self match:DREADED_TOKEN_KIND_B discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchB:)];
+    [self fireDelegateSelector:@selector(parser:didMatchB:)];
 }
 
 - (void)b_ {

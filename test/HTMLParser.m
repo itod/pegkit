@@ -319,7 +319,7 @@
     
     [self match:HTML_TOKEN_KIND_SCRIPTTAGNAME discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchScriptTagName:)];
+    [self fireDelegateSelector:@selector(parser:didMatchScriptTagName:)];
 }
 
 - (void)scriptTagName_ {
@@ -384,7 +384,7 @@
     
     [self match:HTML_TOKEN_KIND_STYLETAGNAME discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStyleTagName:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStyleTagName:)];
 }
 
 - (void)styleTagName_ {
@@ -409,7 +409,7 @@
     
     [self match:HTML_TOKEN_KIND_PROCINSTR discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchProcInstr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchProcInstr:)];
 }
 
 - (void)procInstr_ {
@@ -420,7 +420,7 @@
     
     [self match:HTML_TOKEN_KIND_DOCTYPE discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchDoctype:)];
+    [self fireDelegateSelector:@selector(parser:didMatchDoctype:)];
 }
 
 - (void)doctype_ {
@@ -431,7 +431,7 @@
     
     [self matchAny:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchText:)];
+    [self fireDelegateSelector:@selector(parser:didMatchText:)];
 }
 
 - (void)text_ {
@@ -504,7 +504,7 @@
     
     [self matchWord:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchTagName:)];
+    [self fireDelegateSelector:@selector(parser:didMatchTagName:)];
 }
 
 - (void)tagName_ {
@@ -531,7 +531,7 @@
     
     [self matchWord:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAttrName:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAttrName:)];
 }
 
 - (void)attrName_ {
@@ -558,7 +558,7 @@
     
     [self match:HTML_TOKEN_KIND_EQ discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchEq:)];
+    [self fireDelegateSelector:@selector(parser:didMatchEq:)];
 }
 
 - (void)eq_ {
@@ -569,7 +569,7 @@
     
     [self match:HTML_TOKEN_KIND_LT discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchLt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchLt:)];
 }
 
 - (void)lt_ {
@@ -580,7 +580,7 @@
     
     [self match:HTML_TOKEN_KIND_GT discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchGt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchGt:)];
 }
 
 - (void)gt_ {
@@ -591,7 +591,7 @@
     
     [self match:HTML_TOKEN_KIND_FWDSLASH discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchFwdSlash:)];
+    [self fireDelegateSelector:@selector(parser:didMatchFwdSlash:)];
 }
 
 - (void)fwdSlash_ {
@@ -602,7 +602,7 @@
     
     [self matchComment:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchComment:)];
+    [self fireDelegateSelector:@selector(parser:didMatchComment:)];
 }
 
 - (void)comment_ {

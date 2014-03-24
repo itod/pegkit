@@ -183,7 +183,7 @@
     
     [self orExpr_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchExpr:)];
 }
 
 - (void)expr_ {
@@ -197,7 +197,7 @@
         [self orTerm_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchOrExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchOrExpr:)];
 }
 
 - (void)orExpr_ {
@@ -216,7 +216,7 @@
 
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchOrTerm:)];
+    [self fireDelegateSelector:@selector(parser:didMatchOrTerm:)];
 }
 
 - (void)orTerm_ {
@@ -230,7 +230,7 @@
         [self andTerm_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAndExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAndExpr:)];
 }
 
 - (void)andExpr_ {
@@ -249,7 +249,7 @@
 
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAndTerm:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAndTerm:)];
 }
 
 - (void)andTerm_ {
@@ -263,7 +263,7 @@
         [self relOpTerm_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchRelExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchRelExpr:)];
 }
 
 - (void)relExpr_ {
@@ -288,7 +288,7 @@
         [self raise:@"No viable alternative found in rule 'relOp'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchRelOp:)];
+    [self fireDelegateSelector:@selector(parser:didMatchRelOp:)];
 }
 
 - (void)relOp_ {
@@ -314,7 +314,7 @@
 
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchRelOpTerm:)];
+    [self fireDelegateSelector:@selector(parser:didMatchRelOpTerm:)];
 }
 
 - (void)relOpTerm_ {
@@ -332,7 +332,7 @@
         [self match:EXPRESSIONACTIONS_TOKEN_KIND_CLOSE_PAREN discard:NO]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCallExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCallExpr:)];
 }
 
 - (void)callExpr_ {
@@ -347,7 +347,7 @@
         [self atom_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchArgList:)];
+    [self fireDelegateSelector:@selector(parser:didMatchArgList:)];
 }
 
 - (void)argList_ {
@@ -366,7 +366,7 @@
         [self raise:@"No viable alternative found in rule 'primary'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPrimary:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPrimary:)];
 }
 
 - (void)primary_ {
@@ -383,7 +383,7 @@
         [self raise:@"No viable alternative found in rule 'atom'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAtom:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAtom:)];
 }
 
 - (void)atom_ {
@@ -397,7 +397,7 @@
         [self member_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchObj:)];
+    [self fireDelegateSelector:@selector(parser:didMatchObj:)];
 }
 
 - (void)obj_ {
@@ -408,7 +408,7 @@
     
     [self matchWord:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchId:)];
+    [self fireDelegateSelector:@selector(parser:didMatchId:)];
 }
 
 - (void)id_ {
@@ -420,7 +420,7 @@
     [self match:EXPRESSIONACTIONS_TOKEN_KIND_DOT discard:NO]; 
     [self id_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchMember:)];
+    [self fireDelegateSelector:@selector(parser:didMatchMember:)];
 }
 
 - (void)member_ {
@@ -449,7 +449,7 @@
         [self raise:@"No viable alternative found in rule 'literal'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchLiteral:)];
+    [self fireDelegateSelector:@selector(parser:didMatchLiteral:)];
 }
 
 - (void)literal_ {
@@ -471,7 +471,7 @@
         [self raise:@"No viable alternative found in rule 'bool'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchBool:)];
+    [self fireDelegateSelector:@selector(parser:didMatchBool:)];
 }
 
 - (void)bool_ {

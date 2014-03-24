@@ -95,7 +95,7 @@
         [self stat_]; 
     } while ([self speculate:^{ [self stat_]; }]);
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStart:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
 
 - (void)stat_ {
@@ -118,7 +118,7 @@
         [self raise:@"No viable alternative found in rule 'stat'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStat:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStat:)];
 }
 
 - (void)assign_ {
@@ -131,7 +131,7 @@
     }];
         [self list_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAssign:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAssign:)];
 }
 
 - (void)list_ {
@@ -144,7 +144,7 @@
         [self rbracket_]; 
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchList:)];
+    [self fireDelegateSelector:@selector(parser:didMatchList:)];
 }
 
 - (void)elements_ {
@@ -155,7 +155,7 @@
         [self element_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchElements:)];
+    [self fireDelegateSelector:@selector(parser:didMatchElements:)];
 }
 
 - (void)element_ {
@@ -168,49 +168,49 @@
         [self raise:@"No viable alternative found in rule 'element'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchElement:)];
+    [self fireDelegateSelector:@selector(parser:didMatchElement:)];
 }
 
 - (void)lbracket_ {
     
     [self match:ELEMENTASSIGN_TOKEN_KIND_LBRACKET discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchLbracket:)];
+    [self fireDelegateSelector:@selector(parser:didMatchLbracket:)];
 }
 
 - (void)rbracket_ {
     
     [self match:ELEMENTASSIGN_TOKEN_KIND_RBRACKET discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchRbracket:)];
+    [self fireDelegateSelector:@selector(parser:didMatchRbracket:)];
 }
 
 - (void)comma_ {
     
     [self match:ELEMENTASSIGN_TOKEN_KIND_COMMA discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchComma:)];
+    [self fireDelegateSelector:@selector(parser:didMatchComma:)];
 }
 
 - (void)eq_ {
     
     [self match:ELEMENTASSIGN_TOKEN_KIND_EQ discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchEq:)];
+    [self fireDelegateSelector:@selector(parser:didMatchEq:)];
 }
 
 - (void)dot_ {
     
     [self match:ELEMENTASSIGN_TOKEN_KIND_DOT discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchDot:)];
+    [self fireDelegateSelector:@selector(parser:didMatchDot:)];
 }
 
 - (void)semi_ {
     
     [self match:ELEMENTASSIGN_TOKEN_KIND_SEMI discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchSemi:)];
+    [self fireDelegateSelector:@selector(parser:didMatchSemi:)];
 }
 
 @end

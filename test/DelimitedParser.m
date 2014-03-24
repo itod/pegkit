@@ -101,7 +101,7 @@
     }];
     [self s_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStart:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
 
 - (void)start_ {
@@ -112,7 +112,7 @@
     
     [self match:DELIMITED_TOKEN_KIND_S discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchS:)];
+    [self fireDelegateSelector:@selector(parser:didMatchS:)];
 }
 
 - (void)s_ {

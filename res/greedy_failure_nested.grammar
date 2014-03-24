@@ -16,7 +16,7 @@
         [self rcurly];
     }];
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStructure:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStructure:)];
 }
 */
 

@@ -155,7 +155,7 @@
         [self statement_]; 
     } while ([self speculate:^{ [self statement_]; }]);
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStart:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
 
 - (void)statement_ {
@@ -168,7 +168,7 @@
         [self raise:@"No viable alternative found in rule 'statement'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStatement:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStatement:)];
 }
 
 - (void)tokenizerDirective_ {
@@ -187,7 +187,7 @@
     } while ([self predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]);
     [self match:PEGKIT_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchTokenizerDirective:)];
+    [self fireDelegateSelector:@selector(parser:didMatchTokenizerDirective:)];
 }
 
 - (void)decl_ {
@@ -203,14 +203,14 @@
     [self expr_]; 
     [self match:PEGKIT_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchDecl:)];
+    [self fireDelegateSelector:@selector(parser:didMatchDecl:)];
 }
 
 - (void)production_ {
     
     [self varProduction_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchProduction:)];
+    [self fireDelegateSelector:@selector(parser:didMatchProduction:)];
 }
 
 - (void)namedAction_ {
@@ -225,28 +225,28 @@
     }
     [self action_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNamedAction:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNamedAction:)];
 }
 
 - (void)beforeKey_ {
     
     [self match:PEGKIT_TOKEN_KIND_BEFOREKEY discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchBeforeKey:)];
+    [self fireDelegateSelector:@selector(parser:didMatchBeforeKey:)];
 }
 
 - (void)afterKey_ {
     
     [self match:PEGKIT_TOKEN_KIND_AFTERKEY discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAfterKey:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAfterKey:)];
 }
 
 - (void)varProduction_ {
     
     [self matchWord:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchVarProduction:)];
+    [self fireDelegateSelector:@selector(parser:didMatchVarProduction:)];
 }
 
 - (void)expr_ {
@@ -256,7 +256,7 @@
         [self orTerm_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchExpr:)];
 }
 
 - (void)term_ {
@@ -269,7 +269,7 @@
         [self nextFactor_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchTerm:)];
+    [self fireDelegateSelector:@selector(parser:didMatchTerm:)];
 }
 
 - (void)orTerm_ {
@@ -277,7 +277,7 @@
     [self match:PEGKIT_TOKEN_KIND_PIPE discard:NO]; 
     [self term_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchOrTerm:)];
+    [self fireDelegateSelector:@selector(parser:didMatchOrTerm:)];
 }
 
 - (void)factor_ {
@@ -298,14 +298,14 @@
         [self action_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchFactor:)];
+    [self fireDelegateSelector:@selector(parser:didMatchFactor:)];
 }
 
 - (void)nextFactor_ {
     
     [self factor_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNextFactor:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNextFactor:)];
 }
 
 - (void)phrase_ {
@@ -315,42 +315,42 @@
         [self predicate_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPhrase:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPhrase:)];
 }
 
 - (void)phraseStar_ {
     
     [self match:PEGKIT_TOKEN_KIND_PHRASESTAR discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPhraseStar:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPhraseStar:)];
 }
 
 - (void)phrasePlus_ {
     
     [self match:PEGKIT_TOKEN_KIND_PHRASEPLUS discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPhrasePlus:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPhrasePlus:)];
 }
 
 - (void)phraseQuestion_ {
     
     [self match:PEGKIT_TOKEN_KIND_PHRASEQUESTION discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPhraseQuestion:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPhraseQuestion:)];
 }
 
 - (void)action_ {
     
     [self match:PEGKIT_TOKEN_KIND_ACTION discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAction:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAction:)];
 }
 
 - (void)semanticPredicate_ {
     
     [self match:PEGKIT_TOKEN_KIND_SEMANTICPREDICATE discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchSemanticPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchSemanticPredicate:)];
 }
 
 - (void)predicate_ {
@@ -363,7 +363,7 @@
         [self raise:@"No viable alternative found in rule 'predicate'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPredicate:)];
 }
 
 - (void)intersection_ {
@@ -371,7 +371,7 @@
     [self match:PEGKIT_TOKEN_KIND_AMPERSAND discard:YES]; 
     [self primaryExpr_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchIntersection:)];
+    [self fireDelegateSelector:@selector(parser:didMatchIntersection:)];
 }
 
 - (void)difference_ {
@@ -379,7 +379,7 @@
     [self match:PEGKIT_TOKEN_KIND_MINUS discard:YES]; 
     [self primaryExpr_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchDifference:)];
+    [self fireDelegateSelector:@selector(parser:didMatchDifference:)];
 }
 
 - (void)primaryExpr_ {
@@ -392,7 +392,7 @@
         [self raise:@"No viable alternative found in rule 'primaryExpr'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPrimaryExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPrimaryExpr:)];
 }
 
 - (void)negatedPrimaryExpr_ {
@@ -400,7 +400,7 @@
     [self match:PEGKIT_TOKEN_KIND_TILDE discard:YES]; 
     [self barePrimaryExpr_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNegatedPrimaryExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNegatedPrimaryExpr:)];
 }
 
 - (void)barePrimaryExpr_ {
@@ -415,7 +415,7 @@
         [self raise:@"No viable alternative found in rule 'barePrimaryExpr'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchBarePrimaryExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchBarePrimaryExpr:)];
 }
 
 - (void)subSeqExpr_ {
@@ -424,7 +424,7 @@
     [self expr_]; 
     [self match:PEGKIT_TOKEN_KIND_CLOSE_PAREN discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchSubSeqExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchSubSeqExpr:)];
 }
 
 - (void)subTrackExpr_ {
@@ -433,7 +433,7 @@
     [self expr_]; 
     [self match:PEGKIT_TOKEN_KIND_CLOSE_BRACKET discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchSubTrackExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchSubTrackExpr:)];
 }
 
 - (void)atomicValue_ {
@@ -443,7 +443,7 @@
         [self discard_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAtomicValue:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAtomicValue:)];
 }
 
 - (void)parser_ {
@@ -462,14 +462,14 @@
         [self raise:@"No viable alternative found in rule 'parser'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchParser:)];
+    [self fireDelegateSelector:@selector(parser:didMatchParser:)];
 }
 
 - (void)discard_ {
     
     [self match:PEGKIT_TOKEN_KIND_DISCARD discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchDiscard:)];
+    [self fireDelegateSelector:@selector(parser:didMatchDiscard:)];
 }
 
 - (void)pattern_ {
@@ -482,21 +482,21 @@
         [self raise:@"No viable alternative found in rule 'pattern'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPattern:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPattern:)];
 }
 
 - (void)patternNoOpts_ {
     
     [self match:PEGKIT_TOKEN_KIND_PATTERNNOOPTS discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPatternNoOpts:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPatternNoOpts:)];
 }
 
 - (void)patternIgnoreCase_ {
     
     [self match:PEGKIT_TOKEN_KIND_PATTERNIGNORECASE discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPatternIgnoreCase:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPatternIgnoreCase:)];
 }
 
 - (void)delimitedString_ {
@@ -509,14 +509,14 @@
     }
     [self match:PEGKIT_TOKEN_KIND_CLOSE_CURLY discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchDelimitedString:)];
+    [self fireDelegateSelector:@selector(parser:didMatchDelimitedString:)];
 }
 
 - (void)literal_ {
     
     [self matchQuotedString:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchLiteral:)];
+    [self fireDelegateSelector:@selector(parser:didMatchLiteral:)];
 }
 
 - (void)constant_ {
@@ -555,21 +555,21 @@
         [self raise:@"No viable alternative found in rule 'constant'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchConstant:)];
+    [self fireDelegateSelector:@selector(parser:didMatchConstant:)];
 }
 
 - (void)variable_ {
     
     [self matchWord:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchVariable:)];
+    [self fireDelegateSelector:@selector(parser:didMatchVariable:)];
 }
 
 - (void)delimOpen_ {
     
     [self match:PEGKIT_TOKEN_KIND_DELIMOPEN discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchDelimOpen:)];
+    [self fireDelegateSelector:@selector(parser:didMatchDelimOpen:)];
 }
 
 @end

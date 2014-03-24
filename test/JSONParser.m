@@ -171,7 +171,7 @@
     
     [self matchQuotedString:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPropertyName:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPropertyName:)];
 }
 
 - (void)array_ {
@@ -241,84 +241,84 @@
     
     [self matchComment:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchComment:)];
+    [self fireDelegateSelector:@selector(parser:didMatchComment:)];
 }
 
 - (void)string_ {
     
     [self matchQuotedString:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchString:)];
+    [self fireDelegateSelector:@selector(parser:didMatchString:)];
 }
 
 - (void)number_ {
     
     [self matchNumber:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNumber:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNumber:)];
 }
 
 - (void)nullLiteral_ {
     
     [self match:JSON_TOKEN_KIND_NULLLITERAL discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNullLiteral:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNullLiteral:)];
 }
 
 - (void)true_ {
     
     [self match:JSON_TOKEN_KIND_TRUE discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchTrue:)];
+    [self fireDelegateSelector:@selector(parser:didMatchTrue:)];
 }
 
 - (void)false_ {
     
     [self match:JSON_TOKEN_KIND_FALSE discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchFalse:)];
+    [self fireDelegateSelector:@selector(parser:didMatchFalse:)];
 }
 
 - (void)openCurly_ {
     
     [self match:JSON_TOKEN_KIND_OPENCURLY discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchOpenCurly:)];
+    [self fireDelegateSelector:@selector(parser:didMatchOpenCurly:)];
 }
 
 - (void)closeCurly_ {
     
     [self match:JSON_TOKEN_KIND_CLOSECURLY discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCloseCurly:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCloseCurly:)];
 }
 
 - (void)openBracket_ {
     
     [self match:JSON_TOKEN_KIND_OPENBRACKET discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchOpenBracket:)];
+    [self fireDelegateSelector:@selector(parser:didMatchOpenBracket:)];
 }
 
 - (void)closeBracket_ {
     
     [self match:JSON_TOKEN_KIND_CLOSEBRACKET discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCloseBracket:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCloseBracket:)];
 }
 
 - (void)comma_ {
     
     [self match:JSON_TOKEN_KIND_COMMA discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchComma:)];
+    [self fireDelegateSelector:@selector(parser:didMatchComma:)];
 }
 
 - (void)colon_ {
     
     [self match:JSON_TOKEN_KIND_COLON discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchColon:)];
+    [self fireDelegateSelector:@selector(parser:didMatchColon:)];
 }
 
 @end

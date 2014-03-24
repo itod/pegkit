@@ -101,7 +101,7 @@
     [self b_]; 
     [self a_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStart:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
 
 - (void)start_ {
@@ -112,7 +112,7 @@
     
     [self match:UNFINISHEDSEQ_TOKEN_KIND_A discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchA:)];
+    [self fireDelegateSelector:@selector(parser:didMatchA:)];
 }
 
 - (void)a_ {
@@ -123,7 +123,7 @@
     
     [self match:UNFINISHEDSEQ_TOKEN_KIND_B discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchB:)];
+    [self fireDelegateSelector:@selector(parser:didMatchB:)];
 }
 
 - (void)b_ {

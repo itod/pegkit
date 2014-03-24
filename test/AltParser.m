@@ -117,7 +117,7 @@
     
     [self s_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStart:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
 
 - (void)start_ {
@@ -134,7 +134,7 @@
         [self raise:@"No viable alternative found in rule 's'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchS:)];
+    [self fireDelegateSelector:@selector(parser:didMatchS:)];
 }
 
 - (void)s_ {
@@ -146,7 +146,7 @@
     [self foo_]; 
     [self baz_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchA:)];
+    [self fireDelegateSelector:@selector(parser:didMatchA:)];
 }
 
 - (void)a_ {
@@ -164,7 +164,7 @@
         [self raise:@"No viable alternative found in rule 'b'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchB:)];
+    [self fireDelegateSelector:@selector(parser:didMatchB:)];
 }
 
 - (void)b_ {
@@ -175,7 +175,7 @@
     
     [self match:ALT_TOKEN_KIND_FOO discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchFoo:)];
+    [self fireDelegateSelector:@selector(parser:didMatchFoo:)];
 }
 
 - (void)foo_ {
@@ -186,7 +186,7 @@
     
     [self match:ALT_TOKEN_KIND_BAR discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchBar:)];
+    [self fireDelegateSelector:@selector(parser:didMatchBar:)];
 }
 
 - (void)bar_ {
@@ -197,7 +197,7 @@
     
     [self match:ALT_TOKEN_KIND_BAZ discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchBaz:)];
+    [self fireDelegateSelector:@selector(parser:didMatchBaz:)];
 }
 
 - (void)baz_ {

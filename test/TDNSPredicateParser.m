@@ -416,7 +416,7 @@
         [self expr_]; 
     } while ([self speculate:^{ [self expr_]; }]);
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStart:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
 
 - (void)start_ {
@@ -430,7 +430,7 @@
         [self orOrTerm_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchExpr:)];
 }
 
 - (void)expr_ {
@@ -442,7 +442,7 @@
     [self orKeyword_]; 
     [self orTerm_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchOrOrTerm:)];
+    [self fireDelegateSelector:@selector(parser:didMatchOrOrTerm:)];
 }
 
 - (void)orOrTerm_ {
@@ -456,7 +456,7 @@
         [self andAndTerm_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchOrTerm:)];
+    [self fireDelegateSelector:@selector(parser:didMatchOrTerm:)];
 }
 
 - (void)orTerm_ {
@@ -468,7 +468,7 @@
     [self andKeyword_]; 
     [self andTerm_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAndAndTerm:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAndAndTerm:)];
 }
 
 - (void)andAndTerm_ {
@@ -485,7 +485,7 @@
         [self raise:@"No viable alternative found in rule 'andTerm'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAndTerm:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAndTerm:)];
 }
 
 - (void)andTerm_ {
@@ -498,7 +498,7 @@
     [self expr_]; 
     [self match:TDNSPREDICATE_TOKEN_KIND_CLOSE_PAREN discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCompoundExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCompoundExpr:)];
 }
 
 - (void)compoundExpr_ {
@@ -515,7 +515,7 @@
         [self raise:@"No viable alternative found in rule 'primaryExpr'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPrimaryExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPrimaryExpr:)];
 }
 
 - (void)primaryExpr_ {
@@ -527,7 +527,7 @@
     [self notKeyword_]; 
     [self predicate_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNegatedPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNegatedPredicate:)];
 }
 
 - (void)negatedPredicate_ {
@@ -548,7 +548,7 @@
         [self raise:@"No viable alternative found in rule 'predicate'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchPredicate:)];
 }
 
 - (void)predicate_ {
@@ -571,7 +571,7 @@
         [self raise:@"No viable alternative found in rule 'value'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchValue:)];
+    [self fireDelegateSelector:@selector(parser:didMatchValue:)];
 }
 
 - (void)value_ {
@@ -582,7 +582,7 @@
     
     [self matchQuotedString:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchString:)];
+    [self fireDelegateSelector:@selector(parser:didMatchString:)];
 }
 
 - (void)string_ {
@@ -593,7 +593,7 @@
     
     [self matchNumber:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNum:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNum:)];
 }
 
 - (void)num_ {
@@ -610,7 +610,7 @@
         [self raise:@"No viable alternative found in rule 'bool'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchBool:)];
+    [self fireDelegateSelector:@selector(parser:didMatchBool:)];
 }
 
 - (void)bool_ {
@@ -621,7 +621,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_TRUE discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchTrue:)];
+    [self fireDelegateSelector:@selector(parser:didMatchTrue:)];
 }
 
 - (void)true_ {
@@ -632,7 +632,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_FALSE discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchFalse:)];
+    [self fireDelegateSelector:@selector(parser:didMatchFalse:)];
 }
 
 - (void)false_ {
@@ -645,7 +645,7 @@
     [self arrayContentsOpt_]; 
     [self match:TDNSPREDICATE_TOKEN_KIND_CLOSE_CURLY discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchArray:)];
+    [self fireDelegateSelector:@selector(parser:didMatchArray:)];
 }
 
 - (void)array_ {
@@ -658,7 +658,7 @@
         [self arrayContents_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchArrayContentsOpt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchArrayContentsOpt:)];
 }
 
 - (void)arrayContentsOpt_ {
@@ -672,7 +672,7 @@
         [self commaValue_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchArrayContents:)];
+    [self fireDelegateSelector:@selector(parser:didMatchArrayContents:)];
 }
 
 - (void)arrayContents_ {
@@ -684,7 +684,7 @@
     [self match:TDNSPREDICATE_TOKEN_KIND_COMMA discard:YES]; 
     [self value_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCommaValue:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCommaValue:)];
 }
 
 - (void)commaValue_ {
@@ -695,7 +695,7 @@
     
     [self matchWord:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchKeyPath:)];
+    [self fireDelegateSelector:@selector(parser:didMatchKeyPath:)];
 }
 
 - (void)keyPath_ {
@@ -712,7 +712,7 @@
         [self raise:@"No viable alternative found in rule 'comparisonPredicate'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchComparisonPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchComparisonPredicate:)];
 }
 
 - (void)comparisonPredicate_ {
@@ -725,7 +725,7 @@
     [self comparisonOp_]; 
     [self numComparisonValue_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNumComparisonPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNumComparisonPredicate:)];
 }
 
 - (void)numComparisonPredicate_ {
@@ -742,7 +742,7 @@
         [self raise:@"No viable alternative found in rule 'numComparisonValue'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNumComparisonValue:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNumComparisonValue:)];
 }
 
 - (void)numComparisonValue_ {
@@ -769,7 +769,7 @@
         [self raise:@"No viable alternative found in rule 'comparisonOp'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchComparisonOp:)];
+    [self fireDelegateSelector:@selector(parser:didMatchComparisonOp:)];
 }
 
 - (void)comparisonOp_ {
@@ -786,7 +786,7 @@
         [self raise:@"No viable alternative found in rule 'eq'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchEq:)];
+    [self fireDelegateSelector:@selector(parser:didMatchEq:)];
 }
 
 - (void)eq_ {
@@ -797,7 +797,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_GT discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchGt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchGt:)];
 }
 
 - (void)gt_ {
@@ -808,7 +808,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_LT discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchLt:)];
+    [self fireDelegateSelector:@selector(parser:didMatchLt:)];
 }
 
 - (void)lt_ {
@@ -825,7 +825,7 @@
         [self raise:@"No viable alternative found in rule 'gtEq'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchGtEq:)];
+    [self fireDelegateSelector:@selector(parser:didMatchGtEq:)];
 }
 
 - (void)gtEq_ {
@@ -842,7 +842,7 @@
         [self raise:@"No viable alternative found in rule 'ltEq'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchLtEq:)];
+    [self fireDelegateSelector:@selector(parser:didMatchLtEq:)];
 }
 
 - (void)ltEq_ {
@@ -859,7 +859,7 @@
         [self raise:@"No viable alternative found in rule 'notEq'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNotEq:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNotEq:)];
 }
 
 - (void)notEq_ {
@@ -870,7 +870,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_BETWEEN discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchBetween:)];
+    [self fireDelegateSelector:@selector(parser:didMatchBetween:)];
 }
 
 - (void)between_ {
@@ -895,7 +895,7 @@
         [self raise:@"No viable alternative found in rule 'collectionComparisonPredicate'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCollectionComparisonPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCollectionComparisonPredicate:)];
 }
 
 - (void)collectionComparisonPredicate_ {
@@ -909,7 +909,7 @@
     [self lt_]; 
     [self value_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCollectionLtPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCollectionLtPredicate:)];
 }
 
 - (void)collectionLtPredicate_ {
@@ -923,7 +923,7 @@
     [self gt_]; 
     [self value_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCollectionGtPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCollectionGtPredicate:)];
 }
 
 - (void)collectionGtPredicate_ {
@@ -937,7 +937,7 @@
     [self ltEq_]; 
     [self value_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCollectionLtEqPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCollectionLtEqPredicate:)];
 }
 
 - (void)collectionLtEqPredicate_ {
@@ -951,7 +951,7 @@
     [self gtEq_]; 
     [self value_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCollectionGtEqPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCollectionGtEqPredicate:)];
 }
 
 - (void)collectionGtEqPredicate_ {
@@ -965,7 +965,7 @@
     [self eq_]; 
     [self value_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCollectionEqPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCollectionEqPredicate:)];
 }
 
 - (void)collectionEqPredicate_ {
@@ -979,7 +979,7 @@
     [self notEq_]; 
     [self value_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCollectionNotEqPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCollectionNotEqPredicate:)];
 }
 
 - (void)collectionNotEqPredicate_ {
@@ -996,7 +996,7 @@
         [self raise:@"No viable alternative found in rule 'boolPredicate'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchBoolPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchBoolPredicate:)];
 }
 
 - (void)boolPredicate_ {
@@ -1007,7 +1007,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_TRUEPREDICATE discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchTruePredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchTruePredicate:)];
 }
 
 - (void)truePredicate_ {
@@ -1018,7 +1018,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_FALSEPREDICATE discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchFalsePredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchFalsePredicate:)];
 }
 
 - (void)falsePredicate_ {
@@ -1035,7 +1035,7 @@
         [self raise:@"No viable alternative found in rule 'andKeyword'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAndKeyword:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAndKeyword:)];
 }
 
 - (void)andKeyword_ {
@@ -1052,7 +1052,7 @@
         [self raise:@"No viable alternative found in rule 'orKeyword'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchOrKeyword:)];
+    [self fireDelegateSelector:@selector(parser:didMatchOrKeyword:)];
 }
 
 - (void)orKeyword_ {
@@ -1069,7 +1069,7 @@
         [self raise:@"No viable alternative found in rule 'notKeyword'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNotKeyword:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNotKeyword:)];
 }
 
 - (void)notKeyword_ {
@@ -1082,7 +1082,7 @@
     [self stringTestOp_]; 
     [self value_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStringTestPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStringTestPredicate:)];
 }
 
 - (void)stringTestPredicate_ {
@@ -1105,7 +1105,7 @@
         [self raise:@"No viable alternative found in rule 'stringTestOp'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStringTestOp:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStringTestOp:)];
 }
 
 - (void)stringTestOp_ {
@@ -1116,7 +1116,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_BEGINSWITH discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchBeginswith:)];
+    [self fireDelegateSelector:@selector(parser:didMatchBeginswith:)];
 }
 
 - (void)beginswith_ {
@@ -1127,7 +1127,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_CONTAINS discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchContains:)];
+    [self fireDelegateSelector:@selector(parser:didMatchContains:)];
 }
 
 - (void)contains_ {
@@ -1138,7 +1138,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_ENDSWITH discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchEndswith:)];
+    [self fireDelegateSelector:@selector(parser:didMatchEndswith:)];
 }
 
 - (void)endswith_ {
@@ -1149,7 +1149,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_LIKE discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchLike:)];
+    [self fireDelegateSelector:@selector(parser:didMatchLike:)];
 }
 
 - (void)like_ {
@@ -1160,7 +1160,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_MATCHES discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchMatches:)];
+    [self fireDelegateSelector:@selector(parser:didMatchMatches:)];
 }
 
 - (void)matches_ {
@@ -1173,7 +1173,7 @@
     [self inKeyword_]; 
     [self collection_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCollectionTestPredicate:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCollectionTestPredicate:)];
 }
 
 - (void)collectionTestPredicate_ {
@@ -1190,7 +1190,7 @@
         [self raise:@"No viable alternative found in rule 'collection'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchCollection:)];
+    [self fireDelegateSelector:@selector(parser:didMatchCollection:)];
 }
 
 - (void)collection_ {
@@ -1201,7 +1201,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_INKEYWORD discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchInKeyword:)];
+    [self fireDelegateSelector:@selector(parser:didMatchInKeyword:)];
 }
 
 - (void)inKeyword_ {
@@ -1222,7 +1222,7 @@
         [self raise:@"No viable alternative found in rule 'aggregateOp'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAggregateOp:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAggregateOp:)];
 }
 
 - (void)aggregateOp_ {
@@ -1233,7 +1233,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_ANY discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAny:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAny:)];
 }
 
 - (void)any_ {
@@ -1244,7 +1244,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_SOME discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchSome:)];
+    [self fireDelegateSelector:@selector(parser:didMatchSome:)];
 }
 
 - (void)some_ {
@@ -1255,7 +1255,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_ALL discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchAll:)];
+    [self fireDelegateSelector:@selector(parser:didMatchAll:)];
 }
 
 - (void)all_ {
@@ -1266,7 +1266,7 @@
     
     [self match:TDNSPREDICATE_TOKEN_KIND_NONE discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNone:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNone:)];
 }
 
 - (void)none_ {

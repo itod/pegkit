@@ -119,7 +119,7 @@
         [self list_]; 
     } while ([self speculate:^{ [self list_]; }]);
 
-    [self fireAssemblerSelector:@selector(parser:didMatchLists:)];
+    [self fireDelegateSelector:@selector(parser:didMatchLists:)];
 }
 
 - (void)lists_ {
@@ -132,7 +132,7 @@
     [self elements_]; 
     [self rbracket_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchList:)];
+    [self fireDelegateSelector:@selector(parser:didMatchList:)];
 }
 
 - (void)list_ {
@@ -147,7 +147,7 @@
         [self element_]; 
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchElements:)];
+    [self fireDelegateSelector:@selector(parser:didMatchElements:)];
 }
 
 - (void)elements_ {
@@ -164,7 +164,7 @@
         [self raise:@"No viable alternative found in rule 'element'."];
     }
 
-    [self fireAssemblerSelector:@selector(parser:didMatchElement:)];
+    [self fireDelegateSelector:@selector(parser:didMatchElement:)];
 }
 
 - (void)element_ {
@@ -175,7 +175,7 @@
     
     [self match:ELEMENT_TOKEN_KIND_LBRACKET discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchLbracket:)];
+    [self fireDelegateSelector:@selector(parser:didMatchLbracket:)];
 }
 
 - (void)lbracket_ {
@@ -186,7 +186,7 @@
     
     [self match:ELEMENT_TOKEN_KIND_RBRACKET discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchRbracket:)];
+    [self fireDelegateSelector:@selector(parser:didMatchRbracket:)];
 }
 
 - (void)rbracket_ {
@@ -197,7 +197,7 @@
     
     [self match:ELEMENT_TOKEN_KIND_COMMA discard:YES]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchComma:)];
+    [self fireDelegateSelector:@selector(parser:didMatchComma:)];
 }
 
 - (void)comma_ {

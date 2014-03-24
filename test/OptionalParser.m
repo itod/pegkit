@@ -107,7 +107,7 @@
     [self foo_]; 
     [self bar_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchS:)];
+    [self fireDelegateSelector:@selector(parser:didMatchS:)];
 }
 
 - (void)s_ {
@@ -120,7 +120,7 @@
     [self bar_]; 
     [self bar_]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchExpr:)];
+    [self fireDelegateSelector:@selector(parser:didMatchExpr:)];
 }
 
 - (void)expr_ {
@@ -131,7 +131,7 @@
     
     [self match:OPTIONAL_TOKEN_KIND_FOO discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchFoo:)];
+    [self fireDelegateSelector:@selector(parser:didMatchFoo:)];
 }
 
 - (void)foo_ {
@@ -142,7 +142,7 @@
     
     [self match:OPTIONAL_TOKEN_KIND_BAR discard:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchBar:)];
+    [self fireDelegateSelector:@selector(parser:didMatchBar:)];
 }
 
 - (void)bar_ {

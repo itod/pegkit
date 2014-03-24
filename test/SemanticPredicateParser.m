@@ -93,7 +93,7 @@
         [self nonReserved_]; 
     } while ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]);
 
-    [self fireAssemblerSelector:@selector(parser:didMatchStart:)];
+    [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
 
 - (void)start_ {
@@ -105,7 +105,7 @@
     [self testAndThrow:(id)^{ return ![@[@"goto", @"const"] containsObject:LS(1)]; }]; 
     [self matchWord:NO]; 
 
-    [self fireAssemblerSelector:@selector(parser:didMatchNonReserved:)];
+    [self fireDelegateSelector:@selector(parser:didMatchNonReserved:)];
 }
 
 - (void)nonReserved_ {
