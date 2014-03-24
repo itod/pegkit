@@ -35,7 +35,7 @@
     _root.grammarName = @"HTML";
     
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
-    _visitor.delegateCallbacksOn = PGParserFactoryDelegateCallbacksOnTerminals;
+    _visitor.delegatePostMatchCallbacksOn = PGParserFactoryDelegateCallbacksOnTerminals;
     [_root visit:_visitor];
     
     self.parser = [[[HTMLParser alloc] initWithDelegate:self] autorelease];

@@ -222,7 +222,7 @@ DQ
                             </menu>
                         </popUpButtonCell>
                         <connections>
-                            <binding destination="-2" name="selectedTag" keyPath="assemblerSettingBehavior" id="100098"/>
+                            <binding destination="-2" name="selectedTag" keyPath="delegatePostMatchCallbacksOn" id="bwx-3b-JXM"/>
                         </connections>
                     </popUpButton>
                     <textField verticalHuggingPriority="750" id="100100">
@@ -250,7 +250,7 @@ DQ
                             </menu>
                         </popUpButtonCell>
                         <connections>
-                            <binding destination="-2" name="selectedTag" keyPath="preassemblerSettingBehavior" id="100110"/>
+                            <binding destination="-2" name="selectedTag" keyPath="delegatePreMatchCallbacksOn" id="4nM-tO-IN5"/>
                         </connections>
                     </popUpButton>
                     <button id="100111">
@@ -281,7 +281,7 @@ DQ
                             <outlet property="nextKeyView" destination="100027" id="100118"/>
                         </connections>
                     </button>
-                    <button id="tyg-kO-SmW">
+                    <button hidden="YES" id="tyg-kO-SmW">
                         <rect key="frame" x="365" y="255" width="94" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Hybrid DFA" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="b3R-ab-NcA">

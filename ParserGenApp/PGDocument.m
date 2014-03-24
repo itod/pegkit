@@ -32,8 +32,8 @@
         self.destinationPath = [@"~/Desktop" stringByExpandingTildeInPath];
         self.parserName = @"ExpressionParser";
         
-        self.predelegateCallbacksOn = PGParserFactoryDelegateCallbacksOnNone;
-        self.delegateCallbacksOn = PGParserFactoryDelegateCallbacksOnAll;
+        self.delegatePreMatchCallbacksOn = PGParserFactoryDelegateCallbacksOnNone;
+        self.delegatePostMatchCallbacksOn = PGParserFactoryDelegateCallbacksOnAll;
         
         NSString *path = [[NSBundle mainBundle] pathForResource:@"expression" ofType:@"grammar"];
         self.grammar = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
@@ -92,8 +92,8 @@
     tab[@"enableHybridDFA"] = @(_enableHybridDFA);
     tab[@"enableMemoization"] = @(_enableMemoization);
     tab[@"enableAutomaticErrorRecovery"] = @(_enableAutomaticErrorRecovery);
-    tab[@"predelegateCallbacksOn"] = @(_predelegateCallbacksOn);
-    tab[@"delegateCallbacksOn"] = @(_delegateCallbacksOn);
+    tab[@"delegatePreMatchCallbacksOn"] = @(_delegatePreMatchCallbacksOn);
+    tab[@"delegatePostMatchCallbacksOn"] = @(_delegatePostMatchCallbacksOn);
     
     //NSLog(@"%@", tab);
     
@@ -115,8 +115,8 @@
     self.enableHybridDFA = [tab[@"enableHybridDFA"] boolValue];
     self.enableMemoization = [tab[@"enableMemoization"] boolValue];
     self.enableAutomaticErrorRecovery = [tab[@"enableAutomaticErrorRecovery"] boolValue];
-    self.predelegateCallbacksOn = [tab[@"predelegateCallbacksOn"] integerValue];
-    self.delegateCallbacksOn = [tab[@"delegateCallbacksOn"] integerValue];
+    self.delegatePreMatchCallbacksOn = [tab[@"delegatePreMatchCallbacksOn"] integerValue];
+    self.delegatePostMatchCallbacksOn = [tab[@"delegatePostMatchCallbacksOn"] integerValue];
     
     return YES;
 }
@@ -226,8 +226,8 @@
     _visitor.enableHybridDFA = _enableHybridDFA; //NSAssert(_enableHybridDFA, @"");
     _visitor.enableMemoization = _enableMemoization;
     _visitor.enableAutomaticErrorRecovery = _enableAutomaticErrorRecovery;
-    _visitor.predelegateCallbacksOn = _predelegateCallbacksOn;
-    _visitor.delegateCallbacksOn = _delegateCallbacksOn;
+    _visitor.delegatePreMatchCallbacksOn = _delegatePreMatchCallbacksOn;
+    _visitor.delegatePostMatchCallbacksOn = _delegatePostMatchCallbacksOn;
     
     @try {
         [_root visit:_visitor];

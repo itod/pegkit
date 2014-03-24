@@ -17,8 +17,6 @@
 @implementation PGDefinitionPhaseVisitor
 
 - (void)dealloc {
-    self.assembler = nil;
-    self.preassembler = nil;
     self.tokenKinds = nil;
     self.defaultDefNameTab = nil;
     [super dealloc];

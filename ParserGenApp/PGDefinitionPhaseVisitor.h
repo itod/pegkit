@@ -11,10 +11,7 @@
 
 @interface PGDefinitionPhaseVisitor : PGBaseVisitor
 
-@property (nonatomic, retain) id assembler;
-@property (nonatomic, retain) id preassembler;
-@property (nonatomic, assign) PGParserFactoryDelegateCallbacksOn delegateCallbacksOn;
-
+@property (nonatomic, assign) PGParserFactoryDelegateCallbacksOn delegatePostMatchCallbacksOn;
 @property (nonatomic, retain) NSMutableDictionary *tokenKinds;
 @property (nonatomic, assign) BOOL collectTokenKinds;
 @property (nonatomic, retain) NSMutableDictionary *defaultDefNameTab;

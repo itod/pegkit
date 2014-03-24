@@ -25,6 +25,6 @@
 @property (nonatomic, assign) BOOL enableHybridDFA;
 @property (nonatomic, assign) BOOL enableMemoization;
 @property (nonatomic, assign) BOOL enableAutomaticErrorRecovery;
-@property (nonatomic, assign) PGParserFactoryDelegateCallbacksOn predelegateCallbacksOn;
-@property (nonatomic, assign) PGParserFactoryDelegateCallbacksOn delegateCallbacksOn;
+@property (nonatomic, assign) PGParserFactoryDelegateCallbacksOn delegatePreMatchCallbacksOn;
+@property (nonatomic, assign) PGParserFactoryDelegateCallbacksOn delegatePostMatchCallbacksOn;
 @end

@@ -67,8 +67,8 @@
     if (self) {
         self.enableHybridDFA = YES;
         self.enableMemoization = YES;
-        self.predelegateCallbacksOn = PGParserFactoryDelegateCallbacksOnNone;
-        self.delegateCallbacksOn = PGParserFactoryDelegateCallbacksOnAll;
+        self.delegatePreMatchCallbacksOn = PGParserFactoryDelegateCallbacksOnNone;
+        self.delegatePostMatchCallbacksOn = PGParserFactoryDelegateCallbacksOnAll;
         
         [self setUpTemplateEngine];
     }
@@ -283,7 +283,7 @@
     vars[RULE_METHOD_NAMES] = self.ruleMethodNames;
     vars[ENABLE_MEMOIZATION] = @(self.enableMemoization);
     vars[ENABLE_ERROR_RECOVERY] = @(self.enableAutomaticErrorRecovery);
-    vars[PARSE_TREE] = @((_predelegateCallbacksOn == PGParserFactoryDelegateCallbacksOnSyntax || _delegateCallbacksOn == PGParserFactoryDelegateCallbacksOnSyntax));
+    vars[PARSE_TREE] = @((_delegatePreMatchCallbacksOn == PGParserFactoryDelegateCallbacksOnSyntax || _delegatePostMatchCallbacksOn == PGParserFactoryDelegateCallbacksOnSyntax));
     
     NSString *implTemplate = [self templateStringNamed:@"PGClassImplementationTemplate"];
     self.implementationOutputString = [_engine processTemplate:implTemplate withVariables:vars];
@@ -309,7 +309,7 @@
     BOOL isTerminal = 1 == [node.children count] && [[self concreteNodeForNode:node.children[0]] isTerminal];
     NSString *templateName = isPre ? @"PGPreCallbackTemplate" : @"PGPostCallbackTemplate";
     
-    BOOL flag = isPre ? _predelegateCallbacksOn : _delegateCallbacksOn;
+    BOOL flag = isPre ? _delegatePreMatchCallbacksOn : _delegatePostMatchCallbacksOn;
 
     switch (flag) {
         case PGParserFactoryDelegateCallbacksOnNone:
@@ -330,7 +330,7 @@
             }
         } break;
         default:
-            NSAssert1(0, @"unsupported assembler callback setting behavior %lu", _predelegateCallbacksOn);
+            NSAssert1(0, @"unsupported assembler callback setting behavior %lu", _delegatePreMatchCallbacksOn);
             break;
     }
     

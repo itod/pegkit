@@ -24,6 +24,6 @@ typedef NS_ENUM(NSUInteger, PGParserFactoryDelegateCallbacksOn) {
 
 - (PKAST *)ASTFromGrammar:(NSString *)g error:(NSError **)outError;
 
-@property (nonatomic, assign) PGParserFactoryDelegateCallbacksOn delegateCallbacksOn;
+@property (nonatomic, assign) PGParserFactoryDelegateCallbacksOn delegatePostMatchCallbacksOn;
 @property (nonatomic, assign) BOOL collectTokenKinds;
 @end

@@ -56,7 +56,7 @@
     _root.grammarName = @"GreedyFailure";
     
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
-    _visitor.delegateCallbacksOn = PGParserFactoryDelegateCallbacksOnAll;
+    _visitor.delegatePostMatchCallbacksOn = PGParserFactoryDelegateCallbacksOnAll;
     _visitor.enableAutomaticErrorRecovery = YES;
     _visitor.enableMemoization = NO;
     

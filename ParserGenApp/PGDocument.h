@@ -24,8 +24,8 @@
 @property (nonatomic, assign) BOOL enableHybridDFA;
 @property (nonatomic, assign) BOOL enableMemoization;
 @property (nonatomic, assign) BOOL enableAutomaticErrorRecovery;
-@property (nonatomic, assign) NSInteger predelegateCallbacksOn;
-@property (nonatomic, assign) NSInteger delegateCallbacksOn;
+@property (nonatomic, assign) NSInteger delegatePreMatchCallbacksOn;
+@property (nonatomic, assign) NSInteger delegatePostMatchCallbacksOn;
 
 @property (nonatomic, retain) IBOutlet NSTextView *textView;
 @end

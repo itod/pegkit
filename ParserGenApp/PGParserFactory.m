@@ -64,9 +64,6 @@
 - (void)parser:(PKParser *)p didMatchNegatedPrimaryExpr:(PKAssembly *)a;
 
 @property (nonatomic, retain) PEGKitParser *grammarParser;
-@property (nonatomic, assign) id assembler;
-@property (nonatomic, assign) id preassembler;
-
 @property (nonatomic, retain) NSMutableDictionary *directiveTab;
 
 @property (nonatomic, retain) PGRootNode *rootNode;
@@ -128,7 +125,7 @@
         self.delimToken = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"%{" doubleValue:0.0];
         self.predicateToken = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"}?" doubleValue:0.0];
         
-        self.delegateCallbacksOn = PGParserFactoryDelegateCallbacksOnAll;
+        self.delegatePostMatchCallbacksOn = PGParserFactoryDelegateCallbacksOnAll;
     }
     return self;
 }
@@ -136,9 +133,6 @@
 
 - (void)dealloc {
     self.grammarParser = nil;
-    self.assembler = nil;
-    self.preassembler = nil;
-    
     self.directiveTab = nil;
     self.rootNode = nil;
     self.equals = nil;
@@ -183,9 +177,7 @@
         
     PGDefinitionPhaseVisitor *defv = [[[PGDefinitionPhaseVisitor alloc] init] autorelease];
     defv.symbolTable = symTab;
-    defv.assembler = self.assembler;
-    defv.preassembler = self.preassembler;
-    defv.delegateCallbacksOn = self.delegateCallbacksOn;
+    defv.delegatePostMatchCallbacksOn = self.delegatePostMatchCallbacksOn;
     defv.collectTokenKinds = self.collectTokenKinds;
     [rootNode visit:defv];
 
@@ -730,8 +722,6 @@
 }
 
 @synthesize grammarParser;
-@synthesize assembler;
-@synthesize preassembler;
 
 @synthesize directiveTab;
 @synthesize rootNode;
@@ -758,5 +748,5 @@
 @synthesize delimToken;
 @synthesize predicateToken;
 
-@synthesize delegateCallbacksOn;
+@synthesize delegatePostMatchCallbacksOn;
 @end
