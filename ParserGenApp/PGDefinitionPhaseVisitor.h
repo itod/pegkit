@@ -13,7 +13,7 @@
 
 @property (nonatomic, retain) id assembler;
 @property (nonatomic, retain) id preassembler;
-@property (nonatomic, assign) PGParserFactoryAssemblerSettingBehavior assemblerSettingBehavior;
+@property (nonatomic, assign) PGParserFactoryDelegateCallbacksOn delegateCallbacksOn;
 
 @property (nonatomic, retain) NSMutableDictionary *tokenKinds;
 @property (nonatomic, assign) BOOL collectTokenKinds;

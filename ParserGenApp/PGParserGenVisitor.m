@@ -67,8 +67,8 @@
     if (self) {
         self.enableHybridDFA = YES;
         self.enableMemoization = YES;
-        self.preassemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorNone;
-        self.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorAll;
+        self.predelegateCallbacksOn = PGParserFactoryDelegateCallbacksOnNone;
+        self.delegateCallbacksOn = PGParserFactoryDelegateCallbacksOnAll;
         
         [self setUpTemplateEngine];
     }
@@ -283,7 +283,7 @@
     vars[RULE_METHOD_NAMES] = self.ruleMethodNames;
     vars[ENABLE_MEMOIZATION] = @(self.enableMemoization);
     vars[ENABLE_ERROR_RECOVERY] = @(self.enableAutomaticErrorRecovery);
-    vars[PARSE_TREE] = @((_preassemblerSettingBehavior == PGParserFactoryAssemblerSettingBehaviorSyntax || _assemblerSettingBehavior == PGParserFactoryAssemblerSettingBehaviorSyntax));
+    vars[PARSE_TREE] = @((_predelegateCallbacksOn == PGParserFactoryDelegateCallbacksOnSyntax || _delegateCallbacksOn == PGParserFactoryDelegateCallbacksOnSyntax));
     
     NSString *implTemplate = [self templateStringNamed:@"PGClassImplementationTemplate"];
     self.implementationOutputString = [_engine processTemplate:implTemplate withVariables:vars];
@@ -309,19 +309,19 @@
     BOOL isTerminal = 1 == [node.children count] && [[self concreteNodeForNode:node.children[0]] isTerminal];
     NSString *templateName = isPre ? @"PGPreCallbackTemplate" : @"PGPostCallbackTemplate";
     
-    BOOL flag = isPre ? _preassemblerSettingBehavior : _assemblerSettingBehavior;
+    BOOL flag = isPre ? _predelegateCallbacksOn : _delegateCallbacksOn;
 
     switch (flag) {
-        case PGParserFactoryAssemblerSettingBehaviorNone:
+        case PGParserFactoryDelegateCallbacksOnNone:
             fireCallback = NO;
             break;
-        case PGParserFactoryAssemblerSettingBehaviorAll:
+        case PGParserFactoryDelegateCallbacksOnAll:
             fireCallback = YES;
             break;
-        case PGParserFactoryAssemblerSettingBehaviorTerminals: {
+        case PGParserFactoryDelegateCallbacksOnTerminals: {
             fireCallback = isTerminal;
         } break;
-        case PGParserFactoryAssemblerSettingBehaviorSyntax: {
+        case PGParserFactoryDelegateCallbacksOnSyntax: {
             fireCallback = YES;
             if (isTerminal) {
                 templateName = isPre ? @"PGPreCallbackSyntaxLeafTemplate" : @"PGPostCallbackSyntaxLeafTemplate";
@@ -330,7 +330,7 @@
             }
         } break;
         default:
-            NSAssert1(0, @"unsupported assembler callback setting behavior %lu", _preassemblerSettingBehavior);
+            NSAssert1(0, @"unsupported assembler callback setting behavior %lu", _predelegateCallbacksOn);
             break;
     }
     

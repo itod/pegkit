@@ -35,7 +35,7 @@
     
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     _visitor.enableMemoization = NO;
-    _visitor.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorNone;
+    _visitor.delegateCallbacksOn = PGParserFactoryDelegateCallbacksOnNone;
     [_root visit:_visitor];
     
     self.parser = [[[MiniMath2Parser alloc] initWithDelegate:self] autorelease];

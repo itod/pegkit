@@ -57,7 +57,7 @@
     _root.grammarName = @"GreedyFailureNested";
     
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
-    _visitor.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorAll;
+    _visitor.delegateCallbacksOn = PGParserFactoryDelegateCallbacksOnAll;
     _visitor.enableAutomaticErrorRecovery = YES;
     _visitor.enableMemoization = NO;
     

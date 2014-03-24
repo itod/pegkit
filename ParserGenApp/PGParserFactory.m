@@ -128,7 +128,7 @@
         self.delimToken = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"%{" doubleValue:0.0];
         self.predicateToken = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"}?" doubleValue:0.0];
         
-        self.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorAll;
+        self.delegateCallbacksOn = PGParserFactoryDelegateCallbacksOnAll;
     }
     return self;
 }
@@ -185,7 +185,7 @@
     defv.symbolTable = symTab;
     defv.assembler = self.assembler;
     defv.preassembler = self.preassembler;
-    defv.assemblerSettingBehavior = self.assemblerSettingBehavior;
+    defv.delegateCallbacksOn = self.delegateCallbacksOn;
     defv.collectTokenKinds = self.collectTokenKinds;
     [rootNode visit:defv];
 
@@ -758,5 +758,5 @@
 @synthesize delimToken;
 @synthesize predicateToken;
 
-@synthesize assemblerSettingBehavior;
+@synthesize delegateCallbacksOn;
 @end

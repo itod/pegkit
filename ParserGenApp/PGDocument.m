@@ -32,8 +32,8 @@
         self.destinationPath = [@"~/Desktop" stringByExpandingTildeInPath];
         self.parserName = @"ExpressionParser";
         
-        self.preassemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorNone;
-        self.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorAll;
+        self.predelegateCallbacksOn = PGParserFactoryDelegateCallbacksOnNone;
+        self.delegateCallbacksOn = PGParserFactoryDelegateCallbacksOnAll;
         
         NSString *path = [[NSBundle mainBundle] pathForResource:@"expression" ofType:@"grammar"];
         self.grammar = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
@@ -92,8 +92,8 @@
     tab[@"enableHybridDFA"] = @(_enableHybridDFA);
     tab[@"enableMemoization"] = @(_enableMemoization);
     tab[@"enableAutomaticErrorRecovery"] = @(_enableAutomaticErrorRecovery);
-    tab[@"preassemblerSettingBehavior"] = @(_preassemblerSettingBehavior);
-    tab[@"assemblerSettingBehavior"] = @(_assemblerSettingBehavior);
+    tab[@"predelegateCallbacksOn"] = @(_predelegateCallbacksOn);
+    tab[@"delegateCallbacksOn"] = @(_delegateCallbacksOn);
     
     //NSLog(@"%@", tab);
     
@@ -115,8 +115,8 @@
     self.enableHybridDFA = [tab[@"enableHybridDFA"] boolValue];
     self.enableMemoization = [tab[@"enableMemoization"] boolValue];
     self.enableAutomaticErrorRecovery = [tab[@"enableAutomaticErrorRecovery"] boolValue];
-    self.preassemblerSettingBehavior = [tab[@"preassemblerSettingBehavior"] integerValue];
-    self.assemblerSettingBehavior = [tab[@"assemblerSettingBehavior"] integerValue];
+    self.predelegateCallbacksOn = [tab[@"predelegateCallbacksOn"] integerValue];
+    self.delegateCallbacksOn = [tab[@"delegateCallbacksOn"] integerValue];
     
     return YES;
 }
@@ -226,8 +226,8 @@
     _visitor.enableHybridDFA = _enableHybridDFA; //NSAssert(_enableHybridDFA, @"");
     _visitor.enableMemoization = _enableMemoization;
     _visitor.enableAutomaticErrorRecovery = _enableAutomaticErrorRecovery;
-    _visitor.preassemblerSettingBehavior = _preassemblerSettingBehavior;
-    _visitor.assemblerSettingBehavior = _assemblerSettingBehavior;
+    _visitor.predelegateCallbacksOn = _predelegateCallbacksOn;
+    _visitor.delegateCallbacksOn = _delegateCallbacksOn;
     
     @try {
         [_root visit:_visitor];

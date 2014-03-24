@@ -35,7 +35,7 @@
     _root.grammarName = @"JSON";
     
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
-    _visitor.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorTerminals;
+    _visitor.delegateCallbacksOn = PGParserFactoryDelegateCallbacksOnTerminals;
     _visitor.enableMemoization = NO;
     [_root visit:_visitor];
 #if TD_EMIT

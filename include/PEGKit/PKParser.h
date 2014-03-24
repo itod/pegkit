@@ -45,7 +45,7 @@ enum {
 - (id)parseString:(NSString *)input error:(NSError **)outErr;
 - (id)parseStream:(NSInputStream *)input error:(NSError **)outErr;
 
-@property (nonatomic, assign) id assembler; // weak ref
+@property (nonatomic, assign) id delegate; // weak ref
 @property (nonatomic, retain) PKTokenizer *tokenizer;
 @property (nonatomic, retain) PKAssembly *assembly;
 

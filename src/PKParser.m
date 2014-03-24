@@ -94,7 +94,7 @@
     
     self = [super init];
     if (self) {
-        self.assembler = d;
+        self.delegate = d;
         self.enableActions = YES;
         
         // create a single exception for reuse in control flow
@@ -125,7 +125,7 @@
 
 
 - (void)dealloc {
-    self.assembler = nil;
+    self.delegate = nil;
     self.tokenizer = nil;
     self.assembly = nil;
     self.exception = nil;
@@ -221,7 +221,7 @@
     id result = nil;
     
     // setup
-    NSAssert(_assembler, @"");
+    NSAssert(_delegate, @"");
     self.tokenizer = t;
     self.assembly = [PKAssembly assemblyWithTokenizer:_tokenizer];
     
@@ -364,8 +364,8 @@
 - (void)fireDelegateSelector:(SEL)sel {
     if (self.isSpeculating) return;
     
-    if (_assembler && [_assembler respondsToSelector:sel]) {
-        [_assembler performSelector:sel withObject:self withObject:_assembly];
+    if (_delegate && [_delegate respondsToSelector:sel]) {
+        [_delegate performSelector:sel withObject:self withObject:_assembly];
     }
 }
 
@@ -373,8 +373,8 @@
 - (void)fireSyntaxSelector:(SEL)sel withRuleName:(NSString *)ruleName {
     if (self.isSpeculating) return;
     
-    if (_assembler && [_assembler respondsToSelector:sel]) {
-        [_assembler performSelector:sel withObject:self withObject:ruleName];
+    if (_delegate && [_delegate respondsToSelector:sel]) {
+        [_delegate performSelector:sel withObject:self withObject:ruleName];
     }
 }
 

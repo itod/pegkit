@@ -10,12 +10,12 @@
 
 @class PKAST;
 
-typedef NS_ENUM(NSUInteger, PGParserFactoryAssemblerSettingBehavior) {
-    PGParserFactoryAssemblerSettingBehaviorAll        = 0, // Default
-    PGParserFactoryAssemblerSettingBehaviorNone       = 1,
-    PGParserFactoryAssemblerSettingBehaviorTerminals  = 2,
-    PGParserFactoryAssemblerSettingBehaviorExplicit   = 3,
-    PGParserFactoryAssemblerSettingBehaviorSyntax     = 4,
+typedef NS_ENUM(NSUInteger, PGParserFactoryDelegateCallbacksOn) {
+    PGParserFactoryDelegateCallbacksOnAll        = 0, // Default
+    PGParserFactoryDelegateCallbacksOnNone       = 1,
+    PGParserFactoryDelegateCallbacksOnTerminals  = 2,
+    PGParserFactoryDelegateCallbacksOnExplicit   = 3,
+    PGParserFactoryDelegateCallbacksOnSyntax     = 4,
 };
 
 @interface PGParserFactory : NSObject
@@ -24,6 +24,6 @@ typedef NS_ENUM(NSUInteger, PGParserFactoryAssemblerSettingBehavior) {
 
 - (PKAST *)ASTFromGrammar:(NSString *)g error:(NSError **)outError;
 
-@property (nonatomic, assign) PGParserFactoryAssemblerSettingBehavior assemblerSettingBehavior;
+@property (nonatomic, assign) PGParserFactoryDelegateCallbacksOn delegateCallbacksOn;
 @property (nonatomic, assign) BOOL collectTokenKinds;
 @end
