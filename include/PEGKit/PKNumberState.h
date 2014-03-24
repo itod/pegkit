@@ -31,36 +31,7 @@
     @details    This state's idea of a number allows an optional, initial minus sign, followed by one or more digits. A decimal point and another string of digits may follow these digits.
                 If <tt>allowsScientificNotation</tt> is YES (default is NO) this state allows 'e' or 'E' followed by an (optionally explicityly positive or negative) integer to represent 10 to the indicated power. For example, this state will recognize <tt>1e2</tt> as equaling <tt>100</tt>.</p>
 */
-@interface PKNumberState : PKTokenizerState {
-    BOOL allowsTrailingDecimalSeparator;
-    BOOL allowsScientificNotation;
-    BOOL allowsOctalNotation;
-    BOOL allowsFloatingPoint;
-    
-    PKUniChar positivePrefix;
-    PKUniChar negativePrefix;
-    PKUniChar decimalSeparator;
-    
-    BOOL isFraction;
-    BOOL isNegative;
-    BOOL gotADigit;
-    NSUInteger base;
-    PKUniChar originalCin;
-    PKUniChar c;
-    double doubleValue;
-
-    NSUInteger exp;
-    BOOL isNegativeExp;
-
-    PKSymbolRootNode *prefixRootNode;
-    PKSymbolRootNode *suffixRootNode;
-    NSMutableDictionary *radixForPrefix;
-    NSMutableDictionary *radixForSuffix;
-    NSMutableDictionary *separatorsForRadix;
-    
-    NSString *prefix;
-    NSString *suffix;
-}
+@interface PKNumberState : PKTokenizerState
 
 - (void)addPrefix:(NSString *)s forRadix:(NSUInteger)r;
 - (void)removePrefix:(NSString *)s;
