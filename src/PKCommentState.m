@@ -35,6 +35,7 @@
 @interface PKTokenizerState ()
 - (void)resetWithReader:(PKReader *)r;
 - (PKTokenizerState *)nextTokenizerStateFor:(PKUniChar)c tokenizer:(PKTokenizer *)t;
+@property (nonatomic) NSUInteger offset;
 @end
 
 @interface PKCommentState ()
@@ -123,13 +124,13 @@
             multiLineState.currentStartMarker = symbol;
             tok = [multiLineState nextTokenFromReader:r startingWith:cin tokenizer:t];
             if (tok.isComment) {
-                tok.offset = offset;
+                tok.offset = self.offset;
             }
         } else if ([singleLineState.startMarkers containsObject:symbol]) {
             singleLineState.currentStartMarker = symbol;
             tok = [singleLineState nextTokenFromReader:r startingWith:cin tokenizer:t];
             if (tok.isComment) {
-                tok.offset = offset;
+                tok.offset = self.offset;
             }
         }
         

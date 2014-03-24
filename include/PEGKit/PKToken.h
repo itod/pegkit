@@ -60,30 +60,7 @@ typedef enum {
     @brief      A token represents a logical chunk of a string.
     @details    For example, a typical tokenizer would break the string <tt>"1.23 &lt;= 12.3"</tt> into three tokens: the number <tt>1.23</tt>, a less-than-or-equal symbol, and the number <tt>12.3</tt>. A token is a receptacle, and relies on a tokenizer to decide precisely how to divide a string into tokens.
 */
-@interface PKToken : NSObject <NSCopying> {
-    double doubleValue;
-    NSString *stringValue;
-    PKTokenType tokenType;
-    NSInteger tokenKind;
-    
-    BOOL isNumber;
-    BOOL isQuotedString;
-    BOOL isSymbol;
-    BOOL isWord;
-    BOOL isWhitespace;
-    BOOL isComment;
-    BOOL isDelimitedString;
-    BOOL isURL;
-    BOOL isEmail;
-#if PK_PLATFORM_TWITTER_STATE
-    BOOL isTwitter;
-    BOOL isHashtag;
-#endif
-    
-    id value;
-    NSUInteger offset;
-    NSUInteger lineNumber;
-}
+@interface PKToken : NSObject <NSCopying>
 
 /*!
     @brief      Factory method for creating a singleton <tt>PKToken</tt> used to indicate that there are no more tokens.

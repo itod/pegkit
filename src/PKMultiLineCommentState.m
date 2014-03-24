@@ -37,6 +37,7 @@
 - (void)append:(PKUniChar)c;
 - (void)appendString:(NSString *)s;
 - (NSString *)bufferedString;
+@property (nonatomic) NSUInteger offset;
 @end
 
 @interface PKCommentState ()
@@ -148,7 +149,7 @@
 
     if (reportTokens) {
         PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeComment stringValue:[self bufferedString] doubleValue:0.0];
-        tok.offset = offset;
+        tok.offset = self.offset;
         return tok;
     } else {
         return [t nextToken];

@@ -278,7 +278,7 @@
     }
     
     PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeDelimitedString stringValue:[self bufferedString] doubleValue:0.0];
-    tok.offset = offset;
+    tok.offset = self.offset;
     
     NSString *tokenKindKey = [NSString stringWithFormat:@"%@,%@", selectedDesc.startMarker, selectedDesc.endMarker];
     NSInteger tokenKind = [t tokenKindForStringValue:tokenKindKey];

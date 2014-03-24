@@ -62,17 +62,17 @@
     NSParameterAssert(start >= 0 && start < STATE_COUNT);
     NSParameterAssert(end >= 0 && end < STATE_COUNT);
     
-    if (!fallbackStates) {
+    if (!_fallbackStates) {
         self.fallbackStates = [NSMutableArray arrayWithCapacity:STATE_COUNT];
 
         for (NSInteger i = 0; i < STATE_COUNT; i++) {
-            [fallbackStates addObject:[NSNull null]];
+            [_fallbackStates addObject:[NSNull null]];
         }
         
     }
 
     for (NSInteger i = start; i <= end; i++) {
-        [fallbackStates replaceObjectAtIndex:i withObject:state];
+        [_fallbackStates replaceObjectAtIndex:i withObject:state];
     }
 }
 
@@ -85,41 +85,38 @@
 
 - (void)append:(PKUniChar)c {
     NSParameterAssert(c != PKEOF);
-    [stringbuf appendFormat:@"%C", (unichar)c];
+    NSAssert(_stringbuf, @"");
+    [_stringbuf appendFormat:@"%C", (unichar)c];
 }
 
 
 - (void)appendString:(NSString *)s {
     NSParameterAssert(s);
-    [stringbuf appendString:s];
+    NSAssert(_stringbuf, @"");
+    [_stringbuf appendString:s];
 }
 
 
 - (NSString *)bufferedString {
-    return [[stringbuf copy] autorelease];
+    return [[_stringbuf copy] autorelease];
 }
 
 
 - (PKTokenizerState *)nextTokenizerStateFor:(PKUniChar)c tokenizer:(PKTokenizer *)t {
     NSParameterAssert(c < STATE_COUNT);
     
-    if (fallbackStates) {
-        id obj = [fallbackStates objectAtIndex:c];
+    if (_fallbackStates) {
+        id obj = [_fallbackStates objectAtIndex:c];
         if ([NSNull null] != obj) {
             return obj;
         }
     }
     
-    if (fallbackState) {
-        return fallbackState;
+    if (_fallbackState) {
+        return _fallbackState;
     } else {
         return [t defaultTokenizerStateFor:c];
     }
 }
 
-@synthesize stringbuf;
-@synthesize offset;
-@synthesize fallbackState;
-@synthesize fallbackStates;
-@synthesize disabled;
 @end

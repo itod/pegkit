@@ -138,7 +138,7 @@ static PKTokenEOF *EOFToken = nil;
 
 
 - (NSUInteger)hash {
-    return [stringValue hash];
+    return [_stringValue hash];
 }
 
 
@@ -158,17 +158,17 @@ static PKTokenEOF *EOFToken = nil;
     }
     
     PKToken *tok = (PKToken *)obj;
-    if (tokenType != tok->tokenType) {
+    if (_tokenType != tok->_tokenType) {
         return NO;
     }
     
-    if (isNumber) {
-        return doubleValue == tok->doubleValue;
+    if (_isNumber) {
+        return _doubleValue == tok->_doubleValue;
     } else {
         if (ignoringCase) {
-            return (NSOrderedSame == [stringValue caseInsensitiveCompare:tok->stringValue]);
+            return (NSOrderedSame == [_stringValue caseInsensitiveCompare:tok->_stringValue]);
         } else {
-            return [stringValue isEqualToString:tok->stringValue];
+            return [_stringValue isEqualToString:tok->_stringValue];
         }
     }
 }
@@ -180,48 +180,48 @@ static PKTokenEOF *EOFToken = nil;
 
 
 - (id)value {
-    if (!value) {
+    if (!_value) {
         id v = nil;
-        if (isNumber) {
-            v = [NSNumber numberWithDouble:doubleValue];
+        if (_isNumber) {
+            v = [NSNumber numberWithDouble:_doubleValue];
         } else {
-            v = stringValue;
+            v = _stringValue;
         }
         self.value = v;
     }
-    return value;
+    return _value;
 }
 
 
 - (NSString *)quotedStringValue {
-    return [stringValue stringByTrimmingQuotes];
+    return [_stringValue stringByTrimmingQuotes];
 }
 
 
 - (NSString *)debugDescription {
     NSString *typeString = nil;
-    if (self.isNumber) {
+    if (_isNumber) {
         typeString = @"Number";
-    } else if (self.isQuotedString) {
+    } else if (_isQuotedString) {
         typeString = @"Quoted String";
-    } else if (self.isSymbol) {
+    } else if (_isSymbol) {
         typeString = @"Symbol";
-    } else if (self.isWord) {
+    } else if (_isWord) {
         typeString = @"Word";
-    } else if (self.isWhitespace) {
+    } else if (_isWhitespace) {
         typeString = @"Whitespace";
-    } else if (self.isComment) {
+    } else if (_isComment) {
         typeString = @"Comment";
-    } else if (self.isDelimitedString) {
+    } else if (_isDelimitedString) {
         typeString = @"Delimited String";
-    } else if (self.isURL) {
+    } else if (_isURL) {
         typeString = @"URL";
-    } else if (self.isEmail) {
+    } else if (_isEmail) {
         typeString = @"Email";
 #if PK_PLATFORM_TWITTER_STATE
-    } else if (self.isTwitter) {
+    } else if (_isTwitter) {
         typeString = @"Twitter";
-    } else if (self.isHashtag) {
+    } else if (_isHashtag) {
         typeString = @"Hashtag";
 #endif
     }
@@ -230,27 +230,7 @@ static PKTokenEOF *EOFToken = nil;
 
 
 - (NSString *)description {
-    return stringValue;
+    return _stringValue;
 }
 
-@synthesize isNumber;
-@synthesize isQuotedString;
-@synthesize isSymbol;
-@synthesize isWord;
-@synthesize isWhitespace;
-@synthesize isComment;
-@synthesize isDelimitedString;
-@synthesize isURL;
-@synthesize isEmail;
-#if PK_PLATFORM_TWITTER_STATE
-@synthesize isTwitter;
-@synthesize isHashtag;
-#endif
-@synthesize doubleValue;
-@synthesize stringValue;
-@synthesize tokenType;
-@synthesize tokenKind;
-@synthesize value;
-@synthesize offset;
-@synthesize lineNumber;
 @end

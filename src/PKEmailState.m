@@ -35,6 +35,7 @@
 - (void)append:(PKUniChar)c;
 - (NSString *)bufferedString;
 - (PKTokenizerState *)nextTokenizerStateFor:(PKUniChar)c tokenizer:(PKTokenizer *)t;
+@property (nonatomic) NSUInteger offset;
 @end
 
 @interface PKEmailState ()
@@ -80,7 +81,7 @@
         }
         
         PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeEmail stringValue:s doubleValue:0.0];
-        tok.offset = offset;
+        tok.offset = self.offset;
         return tok;
     } else {
         [r unread:[s length] - 1];

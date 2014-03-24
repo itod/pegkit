@@ -34,6 +34,7 @@
 - (void)append:(PKUniChar)c;
 - (NSString *)bufferedString;
 - (PKTokenizerState *)nextTokenizerStateFor:(PKUniChar)c tokenizer:(PKTokenizer *)t;
+@property (nonatomic) NSUInteger offset;
 @end
 
 @implementation PKQuoteState
@@ -93,7 +94,7 @@
     } while (c != cin);
     
     PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeQuotedString stringValue:[self bufferedString] doubleValue:0.0];
-    tok.offset = offset;
+    tok.offset = self.offset;
     return tok;
 }
 

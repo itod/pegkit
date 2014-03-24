@@ -60,6 +60,7 @@
 
 @property (nonatomic, retain) NSString *prefix;
 @property (nonatomic, retain) NSString *suffix;
+@property (nonatomic) NSUInteger offset;
 @end
 
 @interface PKNumberState ()
@@ -362,7 +363,7 @@
         
         tok = [PKToken tokenWithTokenType:PKTokenTypeNumber stringValue:[self bufferedString] doubleValue:[self value]];
     }
-    tok.offset = offset;
+    tok.offset = self.offset;
     
     return tok;
 }

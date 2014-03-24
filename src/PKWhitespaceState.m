@@ -41,6 +41,7 @@
 - (void)resetWithReader:(PKReader *)r;
 - (void)append:(PKUniChar)c;
 - (NSString *)bufferedString;
+@property (nonatomic) NSUInteger offset;
 @end
 
 @interface PKWhitespaceState ()
@@ -113,7 +114,7 @@
     
     if (_reportsWhitespaceTokens) {
         PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeWhitespace stringValue:[self bufferedString] doubleValue:0.0];
-        tok.offset = offset;
+        tok.offset = self.offset;
         return tok;
     } else {
         return [t nextToken];

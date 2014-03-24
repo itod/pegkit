@@ -33,6 +33,7 @@
 @interface PKTokenizerState ()
 - (void)resetWithReader:(PKReader *)r;
 - (PKTokenizerState *)nextTokenizerStateFor:(PKUniChar)c tokenizer:(PKTokenizer *)t;
+@property (nonatomic) NSUInteger offset;
 @end
 
 @interface PKSymbolState ()
@@ -137,7 +138,7 @@
 
 - (PKToken *)symbolTokenWithSymbol:(NSString *)s {
     PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:s doubleValue:0.0];
-    tok.offset = offset;
+    tok.offset = self.offset;
     return tok;
 }
 

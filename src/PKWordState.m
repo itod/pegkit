@@ -37,6 +37,7 @@
 - (void)resetWithReader:(PKReader *)r;
 - (void)append:(PKUniChar)c;
 - (NSString *)bufferedString;
+@property (nonatomic) NSUInteger offset;
 @end
 
 @interface PKWordState () 
@@ -124,7 +125,7 @@
     }
     
     PKToken *tok = [PKToken tokenWithTokenType:PKTokenTypeWord stringValue:[self bufferedString] doubleValue:0.0];
-    tok.offset = offset;
+    tok.offset = self.offset;
     return tok;
 }
 

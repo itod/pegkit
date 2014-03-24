@@ -32,13 +32,7 @@
     @brief      A <tt>PKTokenizerState</tt> returns a token, given a reader, an initial character read from the reader, and a tokenizer that is conducting an overall tokenization of the reader.
     @details    The tokenizer will typically have a character state table that decides which state to use, depending on an initial character. If a single character is insufficient, a state such as <tt>PKCommentState</tt> will read a second character, and may delegate to another state, such as <tt>PKSingleLineCommentState</tt>. This prospect of delegation is the reason that the <tt>-nextToken</tt> method has a tokenizer argument.
 */
-@interface PKTokenizerState : NSObject {
-    NSMutableString *stringbuf;
-    NSUInteger offset;
-    PKTokenizerState *fallbackState;
-    NSMutableArray *fallbackStates;
-    BOOL disabled;
-}
+@interface PKTokenizerState : NSObject
 
 /*!
     @brief      Return a token that represents a logical piece of a reader.

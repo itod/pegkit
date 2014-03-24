@@ -71,32 +71,7 @@
 @endcode
                 <p>In addition to allowing modification of the state table, this class makes each of the states above available. Some of these states are customizable. For example, wordState allows customization of what characters can be part of a word, after the first character.</p>
 */
-@interface PKTokenizer : NSObject <NSFastEnumeration> {
-    NSString *string;
-    NSInputStream *stream;
-    PKReader *reader;
-    
-    NSMutableArray *tokenizerStates;
-    
-    PKNumberState *numberState;
-    PKQuoteState *quoteState;
-    PKCommentState *commentState;
-    PKSymbolState *symbolState;
-    PKWhitespaceState *whitespaceState;
-    PKWordState *wordState;
-    PKDelimitState *delimitState;
-    PKURLState *URLState;
-#if PK_PLATFORM_EMAIL_STATE
-    PKEmailState *emailState;
-#endif
-#if PK_PLATFORM_TWITTER_STATE
-    PKTwitterState *twitterState;
-    PKHashtagState *hashtagState;
-#endif
-    
-    NSUInteger lineNumber;
-    id <PKTokenizerDelegate>delegate;
-}
+@interface PKTokenizer : NSObject <NSFastEnumeration>
 
 /*!
     @brief      Convenience factory method. Sets string from which to to read to <tt>nil</tt>.
