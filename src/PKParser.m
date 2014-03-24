@@ -30,6 +30,7 @@
 @end
 
 @interface PKParser ()
+@property (nonatomic, assign, readwrite) id delegate; // weak ref
 @property (nonatomic, retain) PKRecognitionException *exception;
 @property (nonatomic, retain) NSMutableArray *lookahead;
 @property (nonatomic, retain) NSMutableArray *markers;
