@@ -61,7 +61,6 @@
 
 //- (void)testFoo {
 //    ElementAssignParser *p = [[[ElementAssignParser alloc] initWithDelegate:self] autorelease];
-//    p.assembler = self;
 //    
 //    PKAssembly *res = [p parse:@"[1, [2,3],4]" error:nil];
 //    

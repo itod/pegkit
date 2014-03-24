@@ -304,7 +304,7 @@
 
 
 - (NSString *)callbackStringForNode:(PGBaseNode *)node methodName:(NSString *)methodName isPre:(BOOL)isPre {
-    // determine if we should include an assembler callback call
+    // determine if we should include delegate callback call
     BOOL fireCallback = NO;
     BOOL isTerminal = 1 == [node.children count] && [[self concreteNodeForNode:node.children[0]] isTerminal];
     NSString *templateName = isPre ? @"PGPreCallbackTemplate" : @"PGPostCallbackTemplate";
@@ -330,7 +330,7 @@
             }
         } break;
         default:
-            NSAssert1(0, @"unsupported assembler callback setting behavior %lu", _delegatePreMatchCallbacksOn);
+            NSAssert1(0, @"unsupported delegate callback setting behavior %lu", isPre ? _delegatePreMatchCallbacksOn : _delegatePostMatchCallbacksOn);
             break;
     }
     

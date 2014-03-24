@@ -19,7 +19,7 @@
 /*!
     @class      PKAssembly 
     @brief      An Abstract class. A <tt>PKAssembly</tt> maintains a stream of language elements along with stack and target objects.
-    @details    <p>Parsers use assemblers to record progress at recognizing language elements from assembly's string.</p>
+    @details    <p>Parsers use delegates to record progress at recognizing language elements from assembly's string.</p>
                 <p>Note that <tt>PKAssembly</tt> is an abstract class and may not be instantiated directly. Subclasses include <tt>PKAssembly</tt> and <tt>PKCharAssembly</tt>.</p>
 */
 @interface PKAssembly : NSObject

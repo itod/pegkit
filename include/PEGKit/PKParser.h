@@ -92,7 +92,7 @@ enum {
 // actions
 - (id)execute:(PKSActionBlock)block;
 
-// assembler callbacks
+// delegate callbacks
 - (void)fireDelegateSelector:(SEL)sel;
 
 // memoization
