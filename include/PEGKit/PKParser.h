@@ -40,15 +40,18 @@ enum {
 
 @interface PKParser : NSObject <PKTokenizerDelegate>
 
-- (id)parseString:(NSString *)input assembler:(id)a error:(NSError **)outErr;
-- (id)parseStream:(NSInputStream *)input assembler:(id)a error:(NSError **)outErr;
+- (id)initWithAssembler:(id)a;
+
+- (id)parseString:(NSString *)input error:(NSError **)outErr;
+- (id)parseStream:(NSInputStream *)input error:(NSError **)outErr;
+
+@property (nonatomic, assign) id assembler; // weak ref
+@property (nonatomic, retain) PKTokenizer *tokenizer;
+@property (nonatomic, retain) PKAssembly *assembly;
 
 @property (nonatomic, assign) BOOL silentlyConsumesWhitespace;
 @property (nonatomic, assign) BOOL enableActions; // default YES
 @property (nonatomic, assign) BOOL enableAutomaticErrorRecovery; // default NO
-
-@property (nonatomic, retain) PKTokenizer *tokenizer;
-@property (nonatomic, retain) PKAssembly *assembly;
 @end
 
 @interface PKParser (Subclass)

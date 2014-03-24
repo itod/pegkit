@@ -38,7 +38,7 @@
     _visitor.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorNone;
     [_root visit:_visitor];
     
-    self.parser = [[[MiniMath2Parser alloc] init] autorelease];
+    self.parser = [[[MiniMath2Parser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/MiniMath2Parser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -63,7 +63,7 @@
 //    _parser.enableActions = NO;
 //    
 //    NSError *err = nil;
-//    PKAssembly *res = [_parser parseString:@"1+2" assembler:nil error:&err];
+//    PKAssembly *res = [_parser parseString:@"1+2" error:&err];
 //    
 //    TDEqualObjects(@"[1, 2]1/+/2^", [res description]);
 //}
@@ -72,7 +72,7 @@
 //    _parser.enableActions = NO;
 //    
 //    NSError *err = nil;
-//    PKAssembly *res = [_parser parseString:@"3*4" assembler:nil error:&err];
+//    PKAssembly *res = [_parser parseString:@"3*4" error:&err];
 //    
 //    TDEqualObjects(@"[3, 4]3/*/4^", [res description]);
 //}
@@ -81,7 +81,7 @@
 //    _parser.enableActions = NO;
 //    
 //    NSError *err = nil;
-//    PKAssembly *res = [_parser parseString:@"1+2*3+4" assembler:nil error:&err];
+//    PKAssembly *res = [_parser parseString:@"1+2*3+4" error:&err];
 //    
 //    TDEqualObjects(@"[1, 2, 3, 4]1/+/2/*/3/+/4^", [res description]);
 //}
@@ -90,7 +90,7 @@
     _parser.enableActions = YES;
     
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"(2+2)" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"(2+2)" error:&err];
     
     TDEqualObjects(@"[4](/2/+/2/)^", [res description]);
 }
@@ -99,7 +99,7 @@
 //    _parser.enableActions = YES;
 //    
 //    NSError *err = nil;
-//    PKAssembly *res = [_parser parseString:@"(2+2)*3" assembler:nil error:&err];
+//    PKAssembly *res = [_parser parseString:@"(2+2)*3" error:&err];
 //    
 //    TDEqualObjects(@"[2, 2, 3]2/+/2/*/3^", [res description]);
 //}
@@ -108,7 +108,7 @@
 //    _parser.enableActions = YES;
 //    
 //    NSError *err = nil;
-//    PKAssembly *res = [_parser parseString:@"1+2" assembler:nil error:&err];
+//    PKAssembly *res = [_parser parseString:@"1+2" error:&err];
 //    
 //    TDEqualObjects(@"[3]1/+/2^", [res description]);
 //}
@@ -117,7 +117,7 @@
 //    _parser.enableActions = YES;
 //    
 //    NSError *err = nil;
-//    PKAssembly *res = [_parser parseString:@"3*4" assembler:nil error:&err];
+//    PKAssembly *res = [_parser parseString:@"3*4" error:&err];
 //    
 //    TDEqualObjects(@"[12]3/*/4^", [res description]);
 //}
@@ -126,7 +126,7 @@
 //    _parser.enableActions = YES;
 //    
 //    NSError *err = nil;
-//    PKAssembly *res = [_parser parseString:@"1+2*3+4" assembler:nil error:&err];
+//    PKAssembly *res = [_parser parseString:@"1+2*3+4" error:&err];
 //    
 //    TDEqualObjects(@"[11]1/+/2/*/3/+/4^", [res description]);
 //}

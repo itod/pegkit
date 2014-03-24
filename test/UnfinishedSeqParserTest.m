@@ -37,7 +37,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[UnfinishedSeqParser alloc] init] autorelease];
+    self.parser = [[[UnfinishedSeqParser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/UnfinishedSeqParser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -60,7 +60,7 @@
 
 - (void)testAB {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"a b" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"a b" error:&err];
     
     //TDEqualObjects(@"[a, b]a/b^", [res description]);
     TDNil(res);
@@ -68,7 +68,7 @@
 
 - (void)testABA {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"a b a" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"a b a" error:&err];
     
     TDEqualObjects(@"[a, b, a]a/b/a^", [res description]);
 }

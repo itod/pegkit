@@ -36,7 +36,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[MethodsFactoredParser alloc] init] autorelease];
+    self.parser = [[[MethodsFactoredParser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/MethodsFactoredParser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -61,7 +61,7 @@
 
 - (void)testAddDecl {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"int add(int a);" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"int add(int a);" error:&err];
     
     TDEqualObjects(@"[int, add, (, int, a, ), ;]int/add/(/int/a/)/;^", [res description]);
 }
@@ -69,7 +69,7 @@
 
 - (void)testAddDef {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"int add(int a) { }" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"int add(int a) { }" error:&err];
     
     TDEqualObjects(@"[int, add, (, int, a, ), {, }]int/add/(/int/a/)/{/}^", [res description]);
 }

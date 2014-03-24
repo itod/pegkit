@@ -37,7 +37,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[MultipleParser alloc] init] autorelease];
+    self.parser = [[[MultipleParser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/MultipleParser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -60,21 +60,21 @@
 
 - (void)testABA {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"a b a" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"a b a" error:&err];
     
     TDEqualObjects(@"[a, b, a]a/b/a^", [res description]);
 }
 
 - (void)testABA2 {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"a b a b a" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"a b a b a" error:&err];
     
     TDEqualObjects(@"[a, b, a, b, a]a/b/a/b/a^", [res description]);
 }
 
 - (void)testABA3 {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"a b a b a b a" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"a b a b a b a" error:&err];
     
     TDEqualObjects(@"[a, b, a, b, a, b, a]a/b/a/b/a/b/a^", [res description]);
 }

@@ -31,7 +31,7 @@
 #import "PGDefinitionPhaseVisitor.h"
 
 @interface PKParser (PGParserFactoryAdditionsFriend)
-- (id)parseWithTokenizer:(PKTokenizer *)t assembler:(id)a error:(NSError **)outError;
+- (id)parseWithTokenizer:(PKTokenizer *)t error:(NSError **)outError;
 @end
 
 @interface PGParserFactory ()
@@ -104,7 +104,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.grammarParser = [[[PEGKitParser alloc] init] autorelease];
+        self.grammarParser = [[[PEGKitParser alloc] initWithAssembler:self] autorelease];
         
         self.equals     = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"=" doubleValue:0.0];
         self.curly      = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"{" doubleValue:0.0];
@@ -177,7 +177,7 @@
     PKTokenizer *t = [self tokenizerForParsingGrammar];
     t.string = g;
 
-    [grammarParser parseWithTokenizer:t assembler:self error:outError];
+    [grammarParser parseWithTokenizer:t error:outError];
 //    grammarParser.parser.tokenizer = t;
 //    [grammarParser.parser parse:g error:outError];
         

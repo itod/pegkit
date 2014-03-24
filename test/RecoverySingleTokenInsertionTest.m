@@ -21,7 +21,7 @@
 @implementation RecoverySingleTokenInsertionTest
 
 - (void)setUp {
-    self.parser = [[[ElementAssignParser alloc] init] autorelease];
+    self.parser = [[[ElementAssignParser alloc] initWithAssembler:self] autorelease];
 }
 
 - (void)tearDown {
@@ -34,7 +34,7 @@
     NSString *input = nil;
     
     input = @"[3];[2];";
-    res = [_parser parseString:input assembler:nil error:&err];
+    res = [_parser parseString:input error:&err];
     TDEqualObjects(@"[[, 3, ;, [, 2, ;][/3/]/;/[/2/]/;^", [res description]);
 }
 
@@ -46,7 +46,7 @@
     _parser.enableAutomaticErrorRecovery = NO;
     
     input = @"[3;";
-    res = [_parser parseString:input assembler:nil error:&err];
+    res = [_parser parseString:input error:&err];
     TDNotNil(err);
     TDNil(res);
 }
@@ -59,7 +59,7 @@
     _parser.enableAutomaticErrorRecovery = YES;
     
     input = @"[3;";
-    res = [_parser parseString:input assembler:nil error:&err];
+    res = [_parser parseString:input error:&err];
     TDEqualObjects(@"[[, 3, ;][/3/;^", [res description]);
 }
 
@@ -71,7 +71,7 @@
     _parser.enableAutomaticErrorRecovery = YES;
     
     input = @"[3[";
-    res = [_parser parseString:input assembler:nil error:&err];
+    res = [_parser parseString:input error:&err];
 //    TDNotNil(err);
 //    TDNil(res);
 

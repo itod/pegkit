@@ -76,10 +76,10 @@
     }
 #endif
 
-    self.parser = [[[GreedyFailureParser alloc] init] autorelease];
-    _parser.enableAutomaticErrorRecovery = YES;
-
     self.mock = [OCMockObject mockForClass:[GreedyFailureParserTest class]];
+
+    self.parser = [[[GreedyFailureParser alloc] initWithAssembler:_mock] autorelease];
+    _parser.enableAutomaticErrorRecovery = YES;
     
     // return YES to -respondsToSelector:
     [[[_mock stub] andReturnValue:OCMOCK_VALUE((BOOL){YES})] respondsToSelector:(SEL)OCMOCK_ANY];
@@ -109,7 +109,7 @@
     }] parser:_parser didFailToMatch:OCMOCK_ANY];
 
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"{'foo':bar}" assembler:_mock error:&err];
+    PKAssembly *res = [_parser parseString:@"{'foo':bar}" error:&err];
     TDEqualObjects(@"[{, 'foo', :, bar, }]{/'foo'/:/bar/}^", [res description]);
     
     VERIFY();
@@ -137,7 +137,7 @@
     }] parser:_parser didFailToMatch:OCMOCK_ANY];
 
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"{'foo':bar" assembler:_mock error:&err];
+    PKAssembly *res = [_parser parseString:@"{'foo':bar" error:&err];
     TDEqualObjects(@"[{, 'foo', :, bar]{/'foo'/:/bar^", [res description]);
     
     VERIFY();
@@ -198,7 +198,7 @@
     }] parser:_parser didFailToMatch:OCMOCK_ANY];
     
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"{'foo':bar" assembler:_mock error:&err];
+    PKAssembly *res = [_parser parseString:@"{'foo':bar" error:&err];
     TDEqualObjects(@"[]{/'foo'/:/bar^", [res description]);
     
     VERIFY();
@@ -270,7 +270,7 @@
     [[_mock expect] parser:_parser didMatchStructs:OCMOCK_ANY];
 
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"{'foo':}" assembler:_mock error:&err];
+    PKAssembly *res = [_parser parseString:@"{'foo':}" error:&err];
     TDEqualObjects(@"[]{/'foo'/:/}^", [res description]);
     
     VERIFY();
@@ -343,7 +343,7 @@
     [[_mock expect] parser:_parser didMatchStructs:OCMOCK_ANY];
     
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"{:bar}" assembler:_mock error:&err];
+    PKAssembly *res = [_parser parseString:@"{:bar}" error:&err];
     TDEqualObjects(@"[]{/:/bar/}^", [res description]);
     
     VERIFY();

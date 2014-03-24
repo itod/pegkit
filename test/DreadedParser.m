@@ -59,8 +59,8 @@
 
 @implementation DreadedParser
 
-- (id)init {
-    self = [super init];
+- (id)initWithAssembler:(id)a {
+    self = [super initWithAssembler:a];
     if (self) {
         self.startRuleName = @"s";
         self.tokenKindTab[@"a"] = @(DREADED_TOKEN_KIND_A);

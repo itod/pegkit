@@ -37,7 +37,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[OptionalParser alloc] init] autorelease];
+    self.parser = [[[OptionalParser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/OptionalParser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -60,21 +60,21 @@
 
 - (void)testFoo {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo bar" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo bar" error:&err];
     
     TDEqualObjects(@"[foo, bar]foo/bar^", [res description]);
 }
 
 - (void)testFoo2 {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo bar bar foo bar" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo bar bar foo bar" error:&err];
     
     TDEqualObjects(@"[foo, bar, bar, foo, bar]foo/bar/bar/foo/bar^", [res description]);
 }
 
 - (void)testFoo3 {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo bar bar foo bar bar foo bar" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo bar bar foo bar bar foo bar" error:&err];
 
     // junk at end
     TDNil(res);
@@ -82,7 +82,7 @@
 
 - (void)testIncompleteSequence {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo bar bar foo" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo bar bar foo" error:&err];
     
     TDNil(res);
     //TDEqualObjects(@"[foo, bar, bar, foo]foo/bar/bar/foo^", [res description]);

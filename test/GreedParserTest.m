@@ -37,7 +37,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[GreedParser alloc] init] autorelease];
+    self.parser = [[[GreedParser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/GreedParser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -60,7 +60,7 @@
 
 - (void)testACACA {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"a C a C a" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"a C a C a" error:&err];
     
     //TDEqualObjects(@"[a, C, a]a/C/a^", [res description]);
     TDNil(res);
@@ -68,7 +68,7 @@
 
 - (void)testACA {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"a C a" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"a C a" error:&err];
     
     
     //TDEqualObjects(@"[a, C, a]a/C/a^", [res description]);
@@ -77,7 +77,7 @@
 
 - (void)testBCBCB {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"b C b C b" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"b C b C b" error:&err];
     
     //TDEqualObjects(@"[b, C, b]b/C/b^", [res description]);
     TDNil(res);
@@ -85,7 +85,7 @@
 
 - (void)testBCB {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"b C b" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"b C b" error:&err];
     
     //TDEqualObjects(@"[b, C, b]b/C/b^", [res description]);
     TDNil(res);

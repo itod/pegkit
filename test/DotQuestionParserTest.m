@@ -37,7 +37,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[DotQuestionParser alloc] init] autorelease];
+    self.parser = [[[DotQuestionParser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/DotQuestionParser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -60,14 +60,14 @@
 
 - (void)testABABA {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"a b a b a" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"a b a b a" error:&err];
     
     TDNil(res);
 }
 
 - (void)testABA {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"a b a" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"a b a" error:&err];
     
     TDEqualObjects(@"[a, b, a]a/b/a^", [res description]);
 }

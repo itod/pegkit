@@ -36,7 +36,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[MethodsParser alloc] init] autorelease];
+    self.parser = [[[MethodsParser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/MethodsParser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -61,7 +61,7 @@
 
 - (void)testAddDecl {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"int add(int a);" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"int add(int a);" error:&err];
     
     //TDEqualObjects(@"[int, add, (, int, a, ), ;]int/add/(/int/a/)/;^", [res description]);
     TDNil(res); // hard coded predicate
@@ -69,14 +69,14 @@
 
 - (void)testAddDef {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"int add(int a) { }" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"int add(int a) { }" error:&err];
     
     TDEqualObjects(@"[int, add, (, int, a, ), {, }]int/add/(/int/a/)/{/}^", [res description]);
 }
 
 - (void)testNoArgDecl {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"int add();" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"int add();" error:&err];
     
     //TDEqualObjects(@"[int, add, (, ), ;]int/add/(/)/;^", [res description]);
     TDNil(res); // hard coded predicate
@@ -84,7 +84,7 @@
 
 - (void)testNoArgDef {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"int add() { }" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"int add() { }" error:&err];
     
     TDEqualObjects(@"[int, add, (, ), {, }]int/add/(/)/{/}^", [res description]);
 }

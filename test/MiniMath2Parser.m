@@ -56,8 +56,8 @@
 
 @implementation MiniMath2Parser
 
-- (id)init {
-    self = [super init];
+- (id)initWithAssembler:(id)a {
+    self = [super initWithAssembler:a];
     if (self) {
         self.startRuleName = @"expr";
         self.tokenKindTab[@"*"] = @(MINIMATH2_TOKEN_KIND_STAR);

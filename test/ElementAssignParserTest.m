@@ -60,7 +60,7 @@
 
 
 //- (void)testFoo {
-//    ElementAssignParser *p = [[[ElementAssignParser alloc] init] autorelease];
+//    ElementAssignParser *p = [[[ElementAssignParser alloc] initWithAssembler:self] autorelease];
 //    p.assembler = self;
 //    
 //    PKAssembly *res = [p parse:@"[1, [2,3],4]" error:nil];
@@ -79,13 +79,13 @@
 
 
 - (void)testAssign {
-    ElementAssignParser *p = [[[ElementAssignParser alloc] init] autorelease];
+    ElementAssignParser *p = [[[ElementAssignParser alloc] initWithAssembler:self] autorelease];
     
-    PKAssembly *res = [p parseString:@"[1]=[2]." assembler:self error:nil];
+    PKAssembly *res = [p parseString:@"[1]=[2]." error:nil];
     
     TDEqualObjects(@"[[, 1, =, [, 2, .][/1/]/=/[/2/]/.^", [res description]);
     
-    res = [p parseString:@"[1];" assembler:self error:nil];
+    res = [p parseString:@"[1];" error:nil];
     
     TDEqualObjects(@"[[, 1, ;][/1/]/;^", [res description]);
 

@@ -52,7 +52,7 @@
     }
 #endif
 
-    self.parser = [[[JSONParser alloc] init] autorelease];
+    self.parser = [[[JSONParser alloc] initWithAssembler:self] autorelease];
 }
 
 - (void)tearDown {
@@ -65,7 +65,7 @@
     NSString *input = nil;
 
     input = @"{'foo':'bar'}";
-    res = [_parser parseString:input assembler:nil error:&err];
+    res = [_parser parseString:input error:&err];
     TDEqualObjects(@"[{, 'foo', :, 'bar', }]{/'foo'/:/'bar'/}^", [res description]);
 }
 
@@ -75,7 +75,7 @@
     NSString *input = nil;
     
     input = @"{'foo':{}}";
-    res = [_parser parseString:input assembler:nil error:&err];
+    res = [_parser parseString:input error:&err];
     TDEqualObjects(@"[{, 'foo', :, {, }, }]{/'foo'/:/{/}/}^", [res description]);
 }
 
@@ -85,7 +85,7 @@
     NSString *input = nil;
     
     input = @"{'foo':{'bar':[]}}";
-    res = [_parser parseString:input assembler:nil error:&err];
+    res = [_parser parseString:input error:&err];
     TDEqualObjects(@"[{, 'foo', :, {, 'bar', :, [, ], }, }]{/'foo'/:/{/'bar'/:/[/]/}/}^", [res description]);
 }
 
@@ -95,7 +95,7 @@
     NSString *input = nil;
     
     input = @"['foo', true, null]";
-    res = [_parser parseString:input assembler:nil error:&err];
+    res = [_parser parseString:input error:&err];
     TDEqualObjects(@"[[, 'foo', ,,  , true, ,,  , null, ]][/'foo'/,/ /true/,/ /null/]^", [res description]);
 }
 
@@ -105,7 +105,7 @@
     NSString *input = nil;
     
     input = @"[[]]";
-    res = [_parser parseString:input assembler:nil error:&err];
+    res = [_parser parseString:input error:&err];
     TDEqualObjects(@"[[, [, ], ]][/[/]/]^", [res description]);
 }
 
@@ -115,7 +115,7 @@
     NSString *input = nil;
     
     input = @"[[[1]]]";
-    res = [_parser parseString:input assembler:nil error:&err];
+    res = [_parser parseString:input error:&err];
     TDEqualObjects(@"[[, [, [, 1, ], ], ]][/[/[/1/]/]/]^", [res description]);
 }
 

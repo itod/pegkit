@@ -59,8 +59,8 @@
 
 @implementation LabelRecursiveParser
 
-- (id)init {
-    self = [super init];
+- (id)initWithAssembler:(id)a {
+    self = [super initWithAssembler:a];
     if (self) {
         self.startRuleName = @"s";
         self.tokenKindTab[@"="] = @(LABELRECURSIVE_TOKEN_KIND_EQUALS);

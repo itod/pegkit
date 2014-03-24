@@ -37,7 +37,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[LabelRecursiveParser alloc] init] autorelease];
+    self.parser = [[[LabelRecursiveParser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/LabelRecursiveParser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -60,7 +60,7 @@
 
 - (void)testAlt1 {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo: bar = 1" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo: bar = 1" error:&err];
     
     TDEqualObjects(nil, res); // TAIL RECURSION NOT SUPPORTED
     
@@ -69,7 +69,7 @@
 
 - (void)testAlt2 {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo: return 1" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo: return 1" error:&err];
     
     TDEqualObjects(@"[foo, :, return, 1]foo/:/return/1^", [res description]);
 }

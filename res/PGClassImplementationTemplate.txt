@@ -59,8 +59,8 @@
 
 @implementation {{className}}
 
-- (id)init {
-    self = [super init];
+- (id)initWithAssembler:(id)a {
+    self = [super initWithAssembler:a];
     if (self) {
         self.startRuleName = @"{{startMethodName}}";
 {%if enableAutomaticErrorRecovery %}        self.enableAutomaticErrorRecovery = YES;

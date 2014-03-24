@@ -37,7 +37,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[AltParser alloc] init] autorelease];
+    self.parser = [[[AltParser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/AltParser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -60,7 +60,7 @@
 
 - (void)testFoo1 {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo bar" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo bar" error:&err];
     
     TDEqualObjects(@"[foo, bar]foo/bar^", [res description]);
 }

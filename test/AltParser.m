@@ -63,8 +63,8 @@
 
 @implementation AltParser
 
-- (id)init {
-    self = [super init];
+- (id)initWithAssembler:(id)a {
+    self = [super initWithAssembler:a];
     if (self) {
         self.startRuleName = @"start";
         self.tokenKindTab[@"foo"] = @(ALT_TOKEN_KIND_FOO);

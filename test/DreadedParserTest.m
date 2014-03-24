@@ -37,7 +37,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[DreadedParser alloc] init] autorelease];
+    self.parser = [[[DreadedParser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/DreadedParser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -60,7 +60,7 @@
 
 - (void)testFoo1 {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"a" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"a" error:&err];
     
     TDEqualObjects(@"[a]a^", [res description]);
 }

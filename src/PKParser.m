@@ -30,7 +30,6 @@
 @end
 
 @interface PKParser ()
-@property (nonatomic, assign) id assembler; // weak ref
 @property (nonatomic, retain) PKRecognitionException *exception;
 @property (nonatomic, retain) NSMutableArray *lookahead;
 @property (nonatomic, retain) NSMutableArray *markers;
@@ -85,7 +84,17 @@
 
 - (id)init {
     self = [super init];
+    NSAssert1(0, @"Use -[%@ initWithDelegate:] instead", NSStringFromClass([self class]));
+    return nil;
+}
+
+
+- (id)initWithAssembler:(id)a {
+    NSParameterAssert(a);
+    
+    self = [super init];
     if (self) {
+        self.assembler = a;
         self.enableActions = YES;
         
         // create a single exception for reuse in control flow
@@ -110,15 +119,15 @@
         self.tokenKindNameTab[TOKEN_KIND_BUILTIN_HASHTAG] = @"Hashtag";
         self.tokenKindNameTab[TOKEN_KIND_BUILTIN_EMPTY] = @"Empty";
         self.tokenKindNameTab[TOKEN_KIND_BUILTIN_ANY] = @"Any";
-}
+    }
     return self;
 }
 
 
 - (void)dealloc {
+    self.assembler = nil;
     self.tokenizer = nil;
     self.assembly = nil;
-    self.assembler = nil;
     self.exception = nil;
     self.lookahead = nil;
     self.markers = nil;
@@ -169,7 +178,7 @@
 }
 
 
-- (id)parseStream:(NSInputStream *)input assembler:(id)a error:(NSError **)outError {
+- (id)parseStream:(NSInputStream *)input error:(NSError **)outError {
     NSParameterAssert(input);
     
     [input scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
@@ -183,7 +192,7 @@
         t = [PKTokenizer tokenizerWithStream:input];
     }
 
-    id result = [self parseWithTokenizer:t assembler:a error:outError];
+    id result = [self parseWithTokenizer:t error:outError];
     
     [input close];
     [input removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
@@ -192,7 +201,7 @@
 }
 
 
-- (id)parseString:(NSString *)input assembler:(id)a error:(NSError **)outError {
+- (id)parseString:(NSString *)input error:(NSError **)outError {
     NSParameterAssert(input);
 
     PKTokenizer *t = _tokenizer;
@@ -203,16 +212,16 @@
         t = [PKTokenizer tokenizerWithString:input];
     }
     
-    id result = [self parseWithTokenizer:t assembler:a error:outError];
+    id result = [self parseWithTokenizer:t error:outError];
     return result;
 }
 
 
-- (id)parseWithTokenizer:(PKTokenizer *)t assembler:(id)a error:(NSError **)outError {
+- (id)parseWithTokenizer:(PKTokenizer *)t error:(NSError **)outError {
     id result = nil;
     
     // setup
-    self.assembler = a;
+    NSAssert(_assembler, @"");
     self.tokenizer = t;
     self.assembly = [PKAssembly assemblyWithTokenizer:_tokenizer];
     
@@ -279,7 +288,6 @@
     @finally {
         //self.tokenizer.delegate = nil;
         //self.tokenizer = nil;
-        self.assembler = nil;
         self.assembly = nil;
         self.lookahead = nil;
         self.markers = nil;

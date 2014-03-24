@@ -37,7 +37,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[SemanticPredicateParser alloc] init] autorelease];
+    self.parser = [[[SemanticPredicateParser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/SemanticPredicateParser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -60,7 +60,7 @@
 
 - (void)testConst {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"const" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"const" error:&err];
     
     //TDEqualObjects(@"[a, C, a]a/C/a^", [res description]);
     TDNil(res);
@@ -68,28 +68,28 @@
 
 - (void)testFoo {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo" error:&err];
     
     TDEqualObjects(@"[foo]foo^", [res description]);
 }
 
 - (void)testFooBar {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo bar" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo bar" error:&err];
     
     TDEqualObjects(@"[foo, bar]foo/bar^", [res description]);
 }
 
 - (void)testFooBarConst {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo bar const" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo bar const" error:&err];
     
     TDNil(res);
 }
 
 - (void)testFooGotoBar {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo goto bar" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo goto bar" error:&err];
     
     TDNil(res);
 }

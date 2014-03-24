@@ -58,8 +58,8 @@
 
 @implementation NegationParser
 
-- (id)init {
-    self = [super init];
+- (id)initWithAssembler:(id)a {
+    self = [super initWithAssembler:a];
     if (self) {
         self.startRuleName = @"s";
         self.tokenKindTab[@"foo"] = @(NEGATION_TOKEN_KIND_FOO);

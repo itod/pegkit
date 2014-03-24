@@ -37,7 +37,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[NegationParser alloc] init] autorelease];
+    self.parser = [[[NegationParser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/NegationParser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -60,21 +60,21 @@
 
 - (void)testBar {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"bar" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"bar" error:&err];
     
     TDEqualObjects(@"[bar]bar^", [res description]);
 }
 
 - (void)testFoo {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo" error:&err];
     
     TDEqualObjects(nil, res);
 }
 
 - (void)testBarFooOpt {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"bar foo?" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"bar foo?" error:&err];
 
     // junk at end
     TDNil(res);
@@ -82,7 +82,7 @@
 
 - (void)testBarFoo {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"bar foo" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"bar foo" error:&err];
     
     // junk at end
     TDNil(res);

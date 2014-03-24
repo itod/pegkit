@@ -36,7 +36,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[LabelEBNFParser alloc] init] autorelease];
+    self.parser = [[[LabelEBNFParser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/LabelEBNFParser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -59,28 +59,28 @@
 
 - (void)testAlt1 {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo: bar = 1" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo: bar = 1" error:&err];
     
     TDEqualObjects(@"[foo, :, bar, =, 1]foo/:/bar/=/1^", [res description]);
 }
 
 - (void)testAlt2 {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo: return 1" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo: return 1" error:&err];
     
     TDEqualObjects(@"[foo, :, return, 1]foo/:/return/1^", [res description]);
 }
 
 - (void)testAlt2Rep {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo: bar: return 1" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo: bar: return 1" error:&err];
     
     TDEqualObjects(@"[foo, :, bar, :, return, 1]foo/:/bar/:/return/1^", [res description]);
 }
 
 - (void)testAlt2RepRep {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"foo: bar: baz: return 1" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"foo: bar: baz: return 1" error:&err];
     
     TDEqualObjects(@"[foo, :, bar, :, baz, :, return, 1]foo/:/bar/:/baz/:/return/1^", [res description]);
 }

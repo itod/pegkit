@@ -41,7 +41,7 @@
     _visitor.enableARC = NO;
     [_root visit:_visitor];
     
-    self.parser = [[[PEGKitParser alloc] init] autorelease];
+    self.parser = [[[PEGKitParser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/ParserGenApp/PEGKitParser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -65,7 +65,7 @@
 
 - (void)testFoo1 {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"start=foo;foo='bar';" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"start=foo;foo='bar';" error:&err];
     
     TDEqualObjects(@"[start, =, foo, foo, =, 'bar']start/=/foo/;/foo/=/'bar'/;^", [res description]);
 }

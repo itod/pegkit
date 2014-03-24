@@ -54,8 +54,8 @@
 
 @implementation JavaScriptWhitespaceParser
 
-- (id)init {
-    self = [super init];
+- (id)initWithAssembler:(id)a {
+    self = [super initWithAssembler:a];
     if (self) {
         self.startRuleName = @"program";
         self.enableAutomaticErrorRecovery = YES;

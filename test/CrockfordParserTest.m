@@ -43,7 +43,7 @@
     
     [_root visit:_visitor];
     
-    self.parser = [[[CrockfordParser alloc] init] autorelease];
+    self.parser = [[[CrockfordParser alloc] initWithAssembler:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/CrockfordParser.h", getenv("PWD")] stringByExpandingTildeInPath];
@@ -74,32 +74,32 @@
     
     NSError *err = nil;
     flag = NO;
-    PKAssembly *res = [_parser parseString:@"var foo = 'bar';" assembler:self error:&err];
+    PKAssembly *res = [_parser parseString:@"var foo = 'bar';" error:&err];
     TDEqualObjects(@"[var, foo, =, 'bar', ;]var/foo/=/'bar'/;^", [res description]);
     TDEquals(YES, flag);
 }
 
 - (void)testDocWriteNewDate {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"document.write(new Date().toUTCString());" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"document.write(new Date().toUTCString());" error:&err];
     TDEqualObjects(@"[document, ., write, (, new, Date, (, ), ., toUTCString, (, ), ), ;]document/./write/(/new/Date/(/)/./toUTCString/(/)/)/;^", [res description]);
 }
 
 - (void)testDocWriteNewDateWithParen {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"document.write((new Date()).toUTCString());" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"document.write((new Date()).toUTCString());" error:&err];
     TDEqualObjects(@"[document, ., write, (, (, new, Date, (, ), ), ., toUTCString, (, ), ), ;]document/./write/(/(/new/Date/(/)/)/./toUTCString/(/)/)/;^", [res description]);
 }
 
 - (void)testDocWriteDate {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"document.write(foo.toUTCString());" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"document.write(foo.toUTCString());" error:&err];
     TDEqualObjects(@"[document, ., write, (, foo, ., toUTCString, (, ), ), ;]document/./write/(/foo/./toUTCString/(/)/)/;^", [res description]);
 }
 
 - (void)testGmailUserscriptShort {
     NSError *err = nil;
-    PKAssembly *res = [_parser parseString:@"window.fluid.dockBadge = ''; setTimeout(updateDockBadge, 1000); setTimeout(updateDockBadge, 3000); setInterval(updateDockBadge, 5000);" assembler:nil error:&err];
+    PKAssembly *res = [_parser parseString:@"window.fluid.dockBadge = ''; setTimeout(updateDockBadge, 1000); setTimeout(updateDockBadge, 3000); setInterval(updateDockBadge, 5000);" error:&err];
     TDEqualObjects(@"[window, ., fluid, ., dockBadge, =, '', ;, setTimeout, (, updateDockBadge, ,, 1000, ), ;, setTimeout, (, updateDockBadge, ,, 3000, ), ;, setInterval, (, updateDockBadge, ,, 5000, ), ;]window/./fluid/./dockBadge/=/''/;/setTimeout/(/updateDockBadge/,/1000/)/;/setTimeout/(/updateDockBadge/,/3000/)/;/setInterval/(/updateDockBadge/,/5000/)/;^", [res description]);
 }
 

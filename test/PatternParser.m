@@ -47,8 +47,8 @@
 
 @implementation PatternParser
 
-- (id)init {
-    self = [super init];
+- (id)initWithAssembler:(id)a {
+    self = [super initWithAssembler:a];
     if (self) {
 
         self.s_memo = [NSMutableDictionary dictionary];

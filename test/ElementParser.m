@@ -63,8 +63,8 @@
 
 @implementation ElementParser
 
-- (id)init {
-    self = [super init];
+- (id)initWithAssembler:(id)a {
+    self = [super initWithAssembler:a];
     if (self) {
         self.startRuleName = @"lists";
         self.tokenKindTab[@"["] = @(ELEMENT_TOKEN_KIND_LBRACKET);
