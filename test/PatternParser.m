@@ -4,7 +4,7 @@
 #define LT(i) [self LT:(i)]
 #define LA(i) [self LA:(i)]
 #define LS(i) [self LS:(i)]
-#define LF(i) [self LF:(i)]
+#define LF(i) [self LD:(i)]
 
 #define POP()       [self.assembly pop]
 #define POP_STR()   [self popString]

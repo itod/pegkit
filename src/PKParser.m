@@ -84,15 +84,12 @@
 @implementation PKParser
 
 - (id)init {
-    self = [super init];
-    NSAssert1(0, @"Use -[%@ initWithDelegate:] instead", NSStringFromClass([self class]));
+    self = [self initWithDelegate:nil];
     return nil;
 }
 
 
 - (id)initWithDelegate:(id)d {
-    NSParameterAssert(d);
-    
     self = [super init];
     if (self) {
         self.delegate = d;
@@ -104,22 +101,22 @@
         self.tokenKindTab = [NSMutableDictionary dictionary];
 
         self.tokenKindNameTab = [NSMutableArray array];
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_INVALID] = @"";
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_NUMBER] = @"Number";
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_QUOTEDSTRING] = @"Quoted String";
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_SYMBOL] = @"Symbol";
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_WORD] = @"Word";
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_LOWERCASEWORD] = @"Lowercase Word";
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_UPPERCASEWORD] = @"Uppercase Word";
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_WHITESPACE] = @"Whitespace";
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_COMMENT] = @"Comment";
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_DELIMITEDSTRING] = @"Delimited String";
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_URL] = @"URL";
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_EMAIL] = @"Email";
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_TWITTER] = @"Twitter";
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_HASHTAG] = @"Hashtag";
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_EMPTY] = @"Empty";
-        self.tokenKindNameTab[TOKEN_KIND_BUILTIN_ANY] = @"Any";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_INVALID] = @"";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_NUMBER] = @"Number";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_QUOTEDSTRING] = @"Quoted String";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_SYMBOL] = @"Symbol";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_WORD] = @"Word";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_LOWERCASEWORD] = @"Lowercase Word";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_UPPERCASEWORD] = @"Uppercase Word";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_WHITESPACE] = @"Whitespace";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_COMMENT] = @"Comment";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_DELIMITEDSTRING] = @"Delimited String";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_URL] = @"URL";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_EMAIL] = @"Email";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_TWITTER] = @"Twitter";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_HASHTAG] = @"Hashtag";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_EMPTY] = @"Empty";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_ANY] = @"Any";
     }
     return self;
 }
@@ -222,7 +219,6 @@
     id result = nil;
     
     // setup
-    NSAssert(_delegate, @"");
     self.tokenizer = t;
     self.assembly = [PKAssembly assemblyWithTokenizer:_tokenizer];
     
@@ -287,8 +283,6 @@
         }
     }
     @finally {
-        //self.tokenizer.delegate = nil;
-        //self.tokenizer = nil;
         self.assembly = nil;
         self.lookahead = nil;
         self.markers = nil;
@@ -406,7 +400,7 @@
 }
 
 
-- (double)LF:(NSInteger)i {
+- (double)LD:(NSInteger)i {
     return [LT(i) doubleValue];
 }
 
@@ -645,7 +639,7 @@
 }
 
 
-- (void)tryAndRecover:(NSInteger)tokenKind block:(PKSResyncBlock)block completion:(PKSResyncBlock)completion {
+- (void)tryAndRecover:(NSInteger)tokenKind block:(PKSRecoverBlock)block completion:(PKSRecoverBlock)completion {
     NSParameterAssert(block);
     NSParameterAssert(completion);
     

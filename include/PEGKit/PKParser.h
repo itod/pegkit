@@ -16,7 +16,7 @@
 typedef id   (^PKSActionBlock)   (void);
 typedef void (^PKSSpeculateBlock)(void);
 typedef BOOL (^PKSPredicateBlock)(void);
-typedef void (^PKSResyncBlock)   (void);
+typedef void (^PKSRecoverBlock)   (void);
 
 enum {
     TOKEN_KIND_BUILTIN_EOF = -1,
@@ -40,7 +40,7 @@ enum {
 
 @interface PKParser : NSObject <PKTokenizerDelegate>
 
-- (id)initWithDelegate:(id)d;
+- (id)initWithDelegate:(id)d; // designated initializer
 
 - (id)parseString:(NSString *)input error:(NSError **)outErr;
 - (id)parseStream:(NSInputStream *)input error:(NSError **)outErr;
@@ -49,7 +49,7 @@ enum {
 @property (nonatomic, retain) PKTokenizer *tokenizer;
 @property (nonatomic, retain) PKAssembly *assembly;
 
-@property (nonatomic, assign) BOOL silentlyConsumesWhitespace;
+@property (nonatomic, assign) BOOL silentlyConsumesWhitespace; // default NO
 @property (nonatomic, assign) BOOL enableActions; // default YES
 @property (nonatomic, assign) BOOL enableAutomaticErrorRecovery; // default NO
 @end
@@ -59,7 +59,7 @@ enum {
 // lookahead
 - (PKToken *)LT:(NSInteger)i;
 - (NSInteger)LA:(NSInteger)i;
-- (double)LF:(NSInteger)i;
+- (double)LD:(NSInteger)i;
 - (NSString *)LS:(NSInteger)i;
 
 // parsing control flow
@@ -99,6 +99,6 @@ enum {
 - (void)parseRule:(SEL)ruleSelector withMemo:(NSMutableDictionary *)memoization;
 
 // error recovery
-- (void)tryAndRecover:(NSInteger)tokenKind block:(PKSResyncBlock)block completion:(PKSResyncBlock)completion;
+- (void)tryAndRecover:(NSInteger)tokenKind block:(PKSRecoverBlock)block completion:(PKSRecoverBlock)completion;
 
 @end
