@@ -99,7 +99,7 @@
 
 - (id)init {
     self = [self initWithDelegate:nil];
-    return nil;
+    return self;
 }
 
 
