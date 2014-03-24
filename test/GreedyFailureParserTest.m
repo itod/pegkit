@@ -78,7 +78,7 @@
 
     self.mock = [OCMockObject mockForClass:[GreedyFailureParserTest class]];
 
-    self.parser = [[[GreedyFailureParser alloc] initWithAssembler:_mock] autorelease];
+    self.parser = [[[GreedyFailureParser alloc] initWithDelegate:_mock] autorelease];
     _parser.enableAutomaticErrorRecovery = YES;
     
     // return YES to -respondsToSelector:

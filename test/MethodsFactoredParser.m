@@ -61,8 +61,8 @@
 
 @implementation MethodsFactoredParser
 
-- (id)initWithAssembler:(id)a {
-    self = [super initWithAssembler:a];
+- (id)initWithDelegate:(id)d {
+    self = [super initWithDelegate:d];
     if (self) {
         self.startRuleName = @"start";
         self.tokenKindTab[@"int"] = @(METHODSFACTORED_TOKEN_KIND_INT);

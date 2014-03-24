@@ -72,7 +72,7 @@
     self.tab = [NSMutableDictionary dictionary];
     self.openCurly = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"{" doubleValue:0];
     
-    self.parser = [[[TDNSPredicateParser alloc] initWithAssembler:self] autorelease];
+    self.parser = [[[TDNSPredicateParser alloc] initWithDelegate:self] autorelease];
 }
 
 

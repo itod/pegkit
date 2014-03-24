@@ -55,7 +55,7 @@
 }
 
 - (void)testCorrectExpr {
-    self.parser = [[[JavaScriptParser alloc] initWithAssembler:_mock] autorelease];
+    self.parser = [[[JavaScriptParser alloc] initWithDelegate:_mock] autorelease];
 
     NSError *err = nil;
     PKAssembly *res = nil;
@@ -81,7 +81,7 @@
 }
 
 - (void)testBorkedVarMissingSemi {
-    self.parser = [[[JavaScriptParser alloc] initWithAssembler:_mock] autorelease];
+    self.parser = [[[JavaScriptParser alloc] initWithDelegate:_mock] autorelease];
 
     NSError *err = nil;
     PKAssembly *res = nil;
@@ -115,7 +115,7 @@
 }
 
 - (void)testMissingVarIdentifier {
-    self.parser = [[[JavaScriptParser alloc] initWithAssembler:_mock] autorelease];
+    self.parser = [[[JavaScriptParser alloc] initWithDelegate:_mock] autorelease];
 
     NSError *err = nil;
     PKAssembly *res = nil;
@@ -151,7 +151,7 @@
 }
 
 - (void)testBorkedFunc1 {
-    self.parser = [[[JavaScriptWhitespaceParser alloc] initWithAssembler:_mock] autorelease];
+    self.parser = [[[JavaScriptWhitespaceParser alloc] initWithDelegate:_mock] autorelease];
 
     NSError *err = nil;
     PKAssembly *res = nil;
@@ -184,7 +184,7 @@
 }
 
 - (void)testBorkedFunc2 {
-    self.parser = [[[JavaScriptWhitespaceParser alloc] initWithAssembler:_mock] autorelease];
+    self.parser = [[[JavaScriptWhitespaceParser alloc] initWithDelegate:_mock] autorelease];
 
     NSError *err = nil;
     PKAssembly *res = nil;

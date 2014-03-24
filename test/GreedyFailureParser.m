@@ -56,8 +56,8 @@
 
 @implementation GreedyFailureParser
 
-- (id)initWithAssembler:(id)a {
-    self = [super initWithAssembler:a];
+- (id)initWithDelegate:(id)d {
+    self = [super initWithDelegate:d];
     if (self) {
         self.startRuleName = @"structs";
         self.enableAutomaticErrorRecovery = YES;

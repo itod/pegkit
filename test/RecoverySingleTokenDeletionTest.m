@@ -21,7 +21,7 @@
 @implementation RecoverySingleTokenDeletionTest
 
 - (void)setUp {
-    self.parser = [[[ElementAssignParser alloc] initWithAssembler:self] autorelease];
+    self.parser = [[[ElementAssignParser alloc] initWithDelegate:self] autorelease];
 }
 
 - (void)tearDown {

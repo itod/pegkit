@@ -37,7 +37,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[UnfinishedSeqParser alloc] initWithAssembler:self] autorelease];
+    self.parser = [[[UnfinishedSeqParser alloc] initWithDelegate:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/UnfinishedSeqParser.h", getenv("PWD")] stringByExpandingTildeInPath];

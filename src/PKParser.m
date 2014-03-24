@@ -89,12 +89,12 @@
 }
 
 
-- (id)initWithAssembler:(id)a {
-    NSParameterAssert(a);
+- (id)initWithDelegate:(id)d {
+    NSParameterAssert(d);
     
     self = [super init];
     if (self) {
-        self.assembler = a;
+        self.assembler = d;
         self.enableActions = YES;
         
         // create a single exception for reuse in control flow

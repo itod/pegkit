@@ -52,7 +52,7 @@
     }
 #endif
 
-    self.parser = [[[JSONParser alloc] initWithAssembler:self] autorelease];
+    self.parser = [[[JSONParser alloc] initWithDelegate:self] autorelease];
 }
 
 - (void)tearDown {

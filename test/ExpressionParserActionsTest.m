@@ -36,7 +36,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[ExpressionActionsParser alloc] initWithAssembler:self] autorelease];
+    self.parser = [[[ExpressionActionsParser alloc] initWithDelegate:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/ExpressionActionsParser.h", getenv("PWD")] stringByExpandingTildeInPath];

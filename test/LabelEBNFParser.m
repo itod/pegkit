@@ -59,8 +59,8 @@
 
 @implementation LabelEBNFParser
 
-- (id)initWithAssembler:(id)a {
-    self = [super initWithAssembler:a];
+- (id)initWithDelegate:(id)d {
+    self = [super initWithDelegate:d];
     if (self) {
         self.startRuleName = @"s";
         self.tokenKindTab[@"="] = @(LABELEBNF_TOKEN_KIND_EQUALS);

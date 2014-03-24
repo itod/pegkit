@@ -58,8 +58,8 @@
 
 @implementation DelimitedParser
 
-- (id)initWithAssembler:(id)a {
-    self = [super initWithAssembler:a];
+- (id)initWithDelegate:(id)d {
+    self = [super initWithDelegate:d];
     if (self) {
         self.startRuleName = @"start";
         self.tokenKindTab[@"<,>"] = @(DELIMITED_TOKEN_KIND_S);

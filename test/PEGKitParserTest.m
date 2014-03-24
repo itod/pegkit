@@ -41,7 +41,7 @@
     _visitor.enableARC = NO;
     [_root visit:_visitor];
     
-    self.parser = [[[PEGKitParser alloc] initWithAssembler:self] autorelease];
+    self.parser = [[[PEGKitParser alloc] initWithDelegate:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/ParserGenApp/PEGKitParser.h", getenv("PWD")] stringByExpandingTildeInPath];

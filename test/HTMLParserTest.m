@@ -38,7 +38,7 @@
     _visitor.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorTerminals;
     [_root visit:_visitor];
     
-    self.parser = [[[HTMLParser alloc] initWithAssembler:self] autorelease];
+    self.parser = [[[HTMLParser alloc] initWithDelegate:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/HTMLParser.h", getenv("PWD")] stringByExpandingTildeInPath];

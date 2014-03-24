@@ -43,7 +43,7 @@
     
     [_root visit:_visitor];
     
-    self.parser = [[[JavaScriptParser alloc] initWithAssembler:self] autorelease];
+    self.parser = [[[JavaScriptParser alloc] initWithDelegate:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/JavaScriptParser.h", getenv("PWD")] stringByExpandingTildeInPath];

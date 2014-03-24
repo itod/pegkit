@@ -36,7 +36,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[MiniMathParser alloc] initWithAssembler:self] autorelease];
+    self.parser = [[[MiniMathParser alloc] initWithDelegate:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/MiniMathParser.h", getenv("PWD")] stringByExpandingTildeInPath];

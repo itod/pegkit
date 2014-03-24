@@ -38,7 +38,7 @@
     _visitor.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorTerminals;
     [_root visit:_visitor];
     
-    self.parser = [[[CSSParser alloc] initWithAssembler:self] autorelease];
+    self.parser = [[[CSSParser alloc] initWithDelegate:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/CSSParser.h", getenv("PWD")] stringByExpandingTildeInPath];

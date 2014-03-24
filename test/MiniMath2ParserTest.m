@@ -38,7 +38,7 @@
     _visitor.assemblerSettingBehavior = PGParserFactoryAssemblerSettingBehaviorNone;
     [_root visit:_visitor];
     
-    self.parser = [[[MiniMath2Parser alloc] initWithAssembler:self] autorelease];
+    self.parser = [[[MiniMath2Parser alloc] initWithDelegate:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/MiniMath2Parser.h", getenv("PWD")] stringByExpandingTildeInPath];

@@ -56,8 +56,8 @@
 
 @implementation JSONParser
 
-- (id)initWithAssembler:(id)a {
-    self = [super initWithAssembler:a];
+- (id)initWithDelegate:(id)d {
+    self = [super initWithDelegate:d];
     if (self) {
         self.startRuleName = @"start";
         self.tokenKindTab[@"false"] = @(JSON_TOKEN_KIND_FALSE);

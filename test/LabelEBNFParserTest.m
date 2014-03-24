@@ -36,7 +36,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[LabelEBNFParser alloc] initWithAssembler:self] autorelease];
+    self.parser = [[[LabelEBNFParser alloc] initWithDelegate:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/LabelEBNFParser.h", getenv("PWD")] stringByExpandingTildeInPath];

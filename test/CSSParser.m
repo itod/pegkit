@@ -94,8 +94,8 @@
 
 @implementation CSSParser
 
-- (id)initWithAssembler:(id)a {
-    self = [super initWithAssembler:a];
+- (id)initWithDelegate:(id)d {
+    self = [super initWithDelegate:d];
     if (self) {
         self.startRuleName = @"stylesheet";
         self.tokenKindTab[@","] = @(CSS_TOKEN_KIND_COMMA);

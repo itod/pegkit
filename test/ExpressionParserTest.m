@@ -57,7 +57,7 @@
 
 
 - (void)testFoo {    
-    ExpressionParser *p = [[[ExpressionParser alloc] initWithAssembler:self] autorelease];
+    ExpressionParser *p = [[[ExpressionParser alloc] initWithDelegate:self] autorelease];
     
     PKAssembly *res = [p parseString:@"foo.bar('hello') or bar" error:nil];
     

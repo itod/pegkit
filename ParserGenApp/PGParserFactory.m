@@ -104,7 +104,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.grammarParser = [[[PEGKitParser alloc] initWithAssembler:self] autorelease];
+        self.grammarParser = [[[PEGKitParser alloc] initWithDelegate:self] autorelease];
         
         self.equals     = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"=" doubleValue:0.0];
         self.curly      = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"{" doubleValue:0.0];

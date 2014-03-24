@@ -58,7 +58,7 @@
 
 
 - (void)testFoo {    
-    ElementParser *p = [[[ElementParser alloc] initWithAssembler:self] autorelease];
+    ElementParser *p = [[[ElementParser alloc] initWithDelegate:self] autorelease];
     
     NSError *err = nil;
     PKAssembly *res = [p parseString:@"[1, [2,3],4]" error:&err];

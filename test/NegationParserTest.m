@@ -37,7 +37,7 @@
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     [_root visit:_visitor];
     
-    self.parser = [[[NegationParser alloc] initWithAssembler:self] autorelease];
+    self.parser = [[[NegationParser alloc] initWithDelegate:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/NegationParser.h", getenv("PWD")] stringByExpandingTildeInPath];

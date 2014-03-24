@@ -86,8 +86,8 @@
 
 @implementation ExpressionParser
 
-- (id)initWithAssembler:(id)a {
-    self = [super initWithAssembler:a];
+- (id)initWithDelegate:(id)d {
+    self = [super initWithDelegate:d];
     if (self) {
         self.startRuleName = @"expr";
         self.tokenKindTab[@">="] = @(EXPRESSION_TOKEN_KIND_GE);

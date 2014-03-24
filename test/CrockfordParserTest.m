@@ -43,7 +43,7 @@
     
     [_root visit:_visitor];
     
-    self.parser = [[[CrockfordParser alloc] initWithAssembler:self] autorelease];
+    self.parser = [[[CrockfordParser alloc] initWithDelegate:self] autorelease];
 
 #if TD_EMIT
     path = [[NSString stringWithFormat:@"%s/test/CrockfordParser.h", getenv("PWD")] stringByExpandingTildeInPath];
