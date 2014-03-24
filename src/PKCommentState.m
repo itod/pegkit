@@ -82,31 +82,31 @@
 
 - (void)addSingleLineStartMarker:(NSString *)start {
     NSParameterAssert([start length]);
-    [rootNode add:start];
-    [singleLineState addStartMarker:start];
+    [_rootNode add:start];
+    [_singleLineState addStartMarker:start];
 }
 
 
 - (void)removeSingleLineStartMarker:(NSString *)start {
     NSParameterAssert([start length]);
-    [rootNode remove:start];
-    [singleLineState removeStartMarker:start];
+    [_rootNode remove:start];
+    [_singleLineState removeStartMarker:start];
 }
 
 
 - (void)addMultiLineStartMarker:(NSString *)start endMarker:(NSString *)end {
     NSParameterAssert([start length]);
     NSParameterAssert([end length]);
-    [rootNode add:start];
-    [rootNode add:end];
-    [multiLineState addStartMarker:start endMarker:end];
+    [_rootNode add:start];
+    [_rootNode add:end];
+    [_multiLineState addStartMarker:start endMarker:end];
 }
 
 
 - (void)removeMultiLineStartMarker:(NSString *)start {
     NSParameterAssert([start length]);
-    [rootNode remove:start];
-    [multiLineState removeStartMarker:start];
+    [_rootNode remove:start];
+    [_multiLineState removeStartMarker:start];
 }
 
 
@@ -116,19 +116,19 @@
 
     [self resetWithReader:r];
 
-    NSString *symbol = [rootNode nextSymbol:r startingWith:cin];
+    NSString *symbol = [_rootNode nextSymbol:r startingWith:cin];
     PKToken *tok = nil;
     
     while ([symbol length]) {
-        if ([multiLineState.startMarkers containsObject:symbol]) {
-            multiLineState.currentStartMarker = symbol;
-            tok = [multiLineState nextTokenFromReader:r startingWith:cin tokenizer:t];
+        if ([_multiLineState.startMarkers containsObject:symbol]) {
+            _multiLineState.currentStartMarker = symbol;
+            tok = [_multiLineState nextTokenFromReader:r startingWith:cin tokenizer:t];
             if (tok.isComment) {
                 tok.offset = self.offset;
             }
-        } else if ([singleLineState.startMarkers containsObject:symbol]) {
-            singleLineState.currentStartMarker = symbol;
-            tok = [singleLineState nextTokenFromReader:r startingWith:cin tokenizer:t];
+        } else if ([_singleLineState.startMarkers containsObject:symbol]) {
+            _singleLineState.currentStartMarker = symbol;
+            tok = [_singleLineState nextTokenFromReader:r startingWith:cin tokenizer:t];
             if (tok.isComment) {
                 tok.offset = self.offset;
             }
@@ -149,9 +149,4 @@
     return [[self nextTokenizerStateFor:cin tokenizer:t] nextTokenFromReader:r startingWith:cin tokenizer:t];
 }
 
-@synthesize rootNode;
-@synthesize singleLineState;
-@synthesize multiLineState;
-@synthesize reportsCommentTokens;
-@synthesize balancesEOFTerminatedComments;
 @end
