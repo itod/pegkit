@@ -35,7 +35,7 @@
 //    
 //    input = @"[3];";
 //    res = [_parser parseString:input error:&err];
-//    TDEqualObjects(@"[[, 3, ;][/3/]/;^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[[, 3, ;][/3/]/;^"), [res description]);
 //}
 //
 //- (void)testMissingElement {
@@ -47,7 +47,7 @@
 //    
 //    input = @"[];";
 //    res = [_parser parseString:input error:&err];
-//    TDEqualObjects(@"[[, ;][/]/;^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[[, ;][/]/;^"), [res description]);
 //}
 //
 //- (void)testMissingRbracketInAssign {
@@ -61,7 +61,7 @@
 //    
 //    input = @"[=[2].";
 //    res = [_parser parseString:input error:&err];
-//    TDEqualObjects(@"[[, =, [, 2, .][/=/[/2/]/.^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[[, =, [, 2, .][/=/[/2/]/.^"), [res description]);
 //}
 //
 //- (void)testMissingLbracketInAssign {
@@ -73,7 +73,7 @@
 //    
 //    input = @"1]=[2].";
 //    res = [_parser parseString:input error:&err];
-//    TDEqualObjects(@"[1, ], =, [, 2, .]1/]/=/[/2/]/.^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[1, ], =, [, 2, .]1/]/=/[/2/]/.^"), [res description]);
 //}
 //
 //- (void)testJunkBeforeSemi {
@@ -85,7 +85,7 @@
 //    
 //    input = @"[1]foobar baz bat ;";
 //    res = [_parser parseString:input error:&err];
-//    TDEqualObjects(@"[[, 1, foobar, baz, bat, ;][/1/]/foobar/baz/bat/;^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[[, 1, foobar, baz, bat, ;][/1/]/foobar/baz/bat/;^"), [res description]);
 //}
 //
 //- (void)testJunkBeforeSemi2 {
@@ -97,7 +97,7 @@
 //    
 //    input = @"[1]foobar baz ;[2];";
 //    res = [_parser parseString:input error:&err];
-//    TDEqualObjects(@"[[, 1, foobar, baz, ;, [, 2, ;][/1/]/foobar/baz/;/[/2/]/;^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[[, 1, foobar, baz, ;, [, 2, ;][/1/]/foobar/baz/;/[/2/]/;^"), [res description]);
 //}
 
 
@@ -114,23 +114,23 @@
     
     input = @"[1];[2";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[[, 1, ;, flag, [, 2][/1/]/;/[/2^", [res description]);
+    TDEqualObjects(TDAssembly(@"[[, 1, ;, flag, [, 2][/1/]/;/[/2^"), [res description]);
     
 //    input = @"[1];[2;[3];";
 //    res = [_parser parseString:input error:&err];
-//    TDEqualObjects(@"[[, 1, ;, flag, [, 2, ;, flag, [, 3, ;, flag][/1/]/;/[/2/;/[/3/]/;^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[[, 1, ;, flag, [, 2, ;, flag, [, 3, ;, flag][/1/]/;/[/2/;/[/3/]/;^"), [res description]);
 //    
 //    input = @"[1];[2,;[3];";
 //    res = [_parser parseString:input error:&err];
-//    TDEqualObjects(@"[[, 1, ;, flag, [, 2, ,, ;, flag, [, 3, ;, flag][/1/]/;/[/2/,/;/[/3/]/;^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[[, 1, ;, flag, [, 2, ,, ;, flag, [, 3, ;, flag][/1/]/;/[/2/,/;/[/3/]/;^"), [res description]);
 //    
 //    input = @"[1];[;[3];";
 //    res = [_parser parseString:input error:&err];
-//    TDEqualObjects(@"[[, 1, ;, flag, [, ;, flag, [, 3, ;, flag][/1/]/;/[/;/[/3/]/;^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[[, 1, ;, flag, [, ;, flag, [, 3, ;, flag][/1/]/;/[/;/[/3/]/;^"), [res description]);
 //    
 //    input = @"[1];;[3];";
 //    res = [_parser parseString:input error:&err];
-//    TDEqualObjects(@"[[, 1, ;, flag, ;, flag, [, 3, ;, flag][/1/]/;/;/[/3/]/;^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[[, 1, ;, flag, ;, flag, [, 3, ;, flag][/1/]/;/;/[/3/]/;^"), [res description]);
 }
 
 @end

@@ -35,7 +35,7 @@
     
     input = @"[3];[2];";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[[, 3, ;, [, 2, ;][/3/]/;/[/2/]/;^", [res description]);
+    TDEqualObjects(TDAssembly(@"[[, 3, ;, [, 2, ;][/3/]/;/[/2/]/;^"), [res description]);
 }
 
 - (void)testExtraBracket {
@@ -60,7 +60,7 @@
     
     input = @"[3]];";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[[, 3, ], ;][/3/]/]/;^", [res description]);
+    TDEqualObjects(TDAssembly(@"[[, 3, ], ;][/3/]/]/;^"), [res description]);
 }
 
 @end

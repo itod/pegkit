@@ -63,7 +63,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"1+2" error:&err];
     
-    TDEqualObjects(@"[1, 2]1/+/2^", [res description]);
+    TDEqualObjects(TDAssembly(@"[1, 2]1/+/2^"), [res description]);
 }
 
 - (void)testMultDisableActions {
@@ -72,7 +72,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"3*4" error:&err];
     
-    TDEqualObjects(@"[3, 4]3/*/4^", [res description]);
+    TDEqualObjects(TDAssembly(@"[3, 4]3/*/4^"), [res description]);
 }
 
 - (void)testAddMultDisableActions {
@@ -81,7 +81,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"1+2*3+4" error:&err];
     
-    TDEqualObjects(@"[1, 2, 3, 4]1/+/2/*/3/+/4^", [res description]);
+    TDEqualObjects(TDAssembly(@"[1, 2, 3, 4]1/+/2/*/3/+/4^"), [res description]);
 }
 
 - (void)testAddMultPowDisableActions {
@@ -90,7 +90,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"1+2*3^5+4" error:&err];
     
-    TDEqualObjects(@"[1, 2, 3, 5, 4]1/+/2/*/3/^/5/+/4^", [res description]);
+    TDEqualObjects(TDAssembly(@"[1, 2, 3, 5, 4]1/+/2/*/3/^/5/+/4^"), [res description]);
 }
 
 - (void)testAddEnableActions {
@@ -99,7 +99,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"1+2" error:&err];
     
-    TDEqualObjects(@"[3]1/+/2^", [res description]);
+    TDEqualObjects(TDAssembly(@"[3]1/+/2^"), [res description]);
 }
 
 - (void)testMultEnableActions {
@@ -108,7 +108,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"3*4" error:&err];
     
-    TDEqualObjects(@"[12]3/*/4^", [res description]);
+    TDEqualObjects(TDAssembly(@"[12]3/*/4^"), [res description]);
 }
 
 - (void)testAddMultEnableActions {
@@ -117,7 +117,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"1+2*3+4" error:&err];
     
-    TDEqualObjects(@"[11]1/+/2/*/3/+/4^", [res description]);
+    TDEqualObjects(TDAssembly(@"[11]1/+/2/*/3/+/4^"), [res description]);
 }
 
 - (void)testPowEnableActions {
@@ -126,7 +126,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"3^3" error:&err];
     
-    TDEqualObjects(@"[27]3/^/3^", [res description]);
+    TDEqualObjects(TDAssembly(@"[27]3/^/3^"), [res description]);
 }
 
 - (void)testAddMultPowEnableActions {
@@ -135,7 +135,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"1+2*3^5+4" error:&err];
     
-    TDEqualObjects(@"[491]1/+/2/*/3/^/5/+/4^", [res description]);
+    TDEqualObjects(TDAssembly(@"[491]1/+/2/*/3/^/5/+/4^"), [res description]);
 }
 
 @end

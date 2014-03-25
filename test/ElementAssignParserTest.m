@@ -64,15 +64,15 @@
 //    
 //    PKAssembly *res = [p parse:@"[1, [2,3],4]" error:nil];
 //    
-//    TDEqualObjects(@"[[, 1, [, 2, 3, 4][/1/,/[/2/,/3/]/,/4/]^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[[, 1, [, 2, 3, 4][/1/,/[/2/,/3/]/,/4/]^"), [res description]);
 //}
 
 
 - (void)parser:(PKParser *)p didMatchList:(PKAssembly *)a {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, a);
     
-    TDTrue([[a description] isEqualToString:@"[[, 1][/1/]^"] ||
-           [[a description] isEqualToString:@"[[, 1, =, [, 2][/1/]/=/[/2/]^"]);
+    TDTrue([[a description] isEqualToString:TDAssembly(@"[[, 1][/1/]^")] ||
+           [[a description] isEqualToString:TDAssembly(@"[[, 1, =, [, 2][/1/]/=/[/2/]^")]);
 }
 
 
@@ -82,11 +82,11 @@
     
     PKAssembly *res = [p parseString:@"[1]=[2]." error:nil];
     
-    TDEqualObjects(@"[[, 1, =, [, 2, .][/1/]/=/[/2/]/.^", [res description]);
+    TDEqualObjects(TDAssembly(@"[[, 1, =, [, 2, .][/1/]/=/[/2/]/.^"), [res description]);
     
     res = [p parseString:@"[1];" error:nil];
     
-    TDEqualObjects(@"[[, 1, ;][/1/]/;^", [res description]);
+    TDEqualObjects(TDAssembly(@"[[, 1, ;][/1/]/;^"), [res description]);
 
 }
 

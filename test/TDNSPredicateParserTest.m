@@ -84,10 +84,10 @@
 - (void)testNegatedPredicate {
     NSError *err = nil;
     _res = [_parser parseString:@"NOT 0 < 2" error:&err];
-    TDEqualObjects(@"[0]NOT/0/</2^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[0]NOT/0/</2^"), [_res description]);
     
     _res = [_parser parseString:@"! 0 < 2" error:&err];
-    TDEqualObjects(@"[0]!/0/</2^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[0]!/0/</2^"), [_res description]);
 }
 
 
@@ -98,137 +98,137 @@
 //    [_tab setObject:[NSNumber numberWithBool:NO] forKey:@"baz"];
 //    
 //    _res = [_parser parseString:@"foo" error:&err];
-//    TDEqualObjects(@"[1]foo^", [_res description]);
+//    TDEqualObjects(TDAssembly(@"[1]foo^"), [_res description]);
 //    
 //    t.string = @"bar";
 //    a = [PKAssembly assemblyWithTokenizer:t];
 //    res = [[eval.parser parserNamed:@"keyPath"] completeMatchFor:a];
-//    TDEqualObjects(@"[0]bar^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[0]bar^"), [res description]);
 //    
 //    t.string = @"baz";
 //    a = [PKAssembly assemblyWithTokenizer:t];
 //    res = [[eval.parser parserNamed:@"keyPath"] completeMatchFor:a];
-//    TDEqualObjects(@"[0]baz^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[0]baz^"), [res description]);
 //    
 //    t.string = @"foo.bar";
 //    a = [PKAssembly assemblyWithTokenizer:t];
 //    res = [[eval.parser parserNamed:@"keyPath"] completeMatchFor:a];
-//    TDEqualObjects(@"[0]foo.bar^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[0]foo.bar^"), [res description]);
 //}
 
 
 - (void)testStringTest {
     NSError *err = nil;
     _res = [_parser parseString:@"'foo' BEGINSWITH 'f'" error:&err];
-    TDEqualObjects(@"[1]'foo'/BEGINSWITH/'f'^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[1]'foo'/BEGINSWITH/'f'^"), [_res description]);
     
     _res = [_parser parseString:@"'foo' BEGINSWITH 'o'" error:&err];
-    TDEqualObjects(@"[0]'foo'/BEGINSWITH/'o'^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[0]'foo'/BEGINSWITH/'o'^"), [_res description]);
     
     _res = [_parser parseString:@"'foo' ENDSWITH 'f'" error:&err];
-    TDEqualObjects(@"[0]'foo'/ENDSWITH/'f'^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[0]'foo'/ENDSWITH/'f'^"), [_res description]);
     
     _res = [_parser parseString:@"'foo' ENDSWITH 'o'" error:&err];
-    TDEqualObjects(@"[1]'foo'/ENDSWITH/'o'^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[1]'foo'/ENDSWITH/'o'^"), [_res description]);
     
     _res = [_parser parseString:@"'foo' CONTAINS 'fo'" error:&err];
-    TDEqualObjects(@"[1]'foo'/CONTAINS/'fo'^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[1]'foo'/CONTAINS/'fo'^"), [_res description]);
     
     _res = [_parser parseString:@"'foo' CONTAINS '-'" error:&err];
-    TDEqualObjects(@"[0]'foo'/CONTAINS/'-'^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[0]'foo'/CONTAINS/'-'^"), [_res description]);
 }
 
 
 - (void)testComparison {
     NSError *err = nil;
     _res = [_parser parseString:@"1 < 2" error:&err];
-    TDEqualObjects(@"[1]1/</2^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[1]1/</2^"), [_res description]);
     
     _res = [_parser parseString:@"1 > 2" error:&err];
-    TDEqualObjects(@"[0]1/>/2^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[0]1/>/2^"), [_res description]);
     
     _res = [_parser parseString:@"1 != 2" error:&err];
-    TDEqualObjects(@"[1]1/!=/2^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[1]1/!=/2^"), [_res description]);
     
     _res = [_parser parseString:@"1 == 2" error:&err];
-    TDEqualObjects(@"[0]1/==/2^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[0]1/==/2^"), [_res description]);
     
     _res = [_parser parseString:@"1 = 2" error:&err];
-    TDEqualObjects(@"[0]1/=/2^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[0]1/=/2^"), [_res description]);
 }
 
 
 - (void)testTruePredicate {
     NSError *err = nil;
     _res = [_parser parseString:@"TRUEPREDICATE" error:&err];
-    TDEqualObjects(@"[1]TRUEPREDICATE^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[1]TRUEPREDICATE^"), [_res description]);
 }
 
 
 - (void)testFalsePredicate {
     NSError *err = nil;
     _res = [_parser parseString:@"FALSEPREDICATE" error:&err];
-    TDEqualObjects(@"[0]FALSEPREDICATE^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[0]FALSEPREDICATE^"), [_res description]);
 }
 
 
 - (void)testCollectionTest {
     NSError *err = nil;
     _res = [_parser parseString:@"1 IN {1}" error:&err];
-    TDEqualObjects(@"[1]1/IN/{/1/}^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[1]1/IN/{/1/}^"), [_res description]);
 }
 
 
 - (void)testCollectionLtComparison {
     NSError *err = nil;
     _res = [_parser parseString:@"ANY {3} < 4" error:&err];
-    TDEqualObjects(@"[1]ANY/{/3/}/</4^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[1]ANY/{/3/}/</4^"), [_res description]);
     
     _res = [_parser parseString:@"SOME {3} < 4" error:&err];
-    TDEqualObjects(@"[1]SOME/{/3/}/</4^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[1]SOME/{/3/}/</4^"), [_res description]);
     
     _res = [_parser parseString:@"NONE {3} < 4" error:&err];
-    TDEqualObjects(@"[0]NONE/{/3/}/</4^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[0]NONE/{/3/}/</4^"), [_res description]);
     
     _res = [_parser parseString:@"ALL {3} < 4" error:&err];
-    TDEqualObjects(@"[1]ALL/{/3/}/</4^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[1]ALL/{/3/}/</4^"), [_res description]);
 }
 
 
 - (void)testCollectionGtComparison {
     NSError *err = nil;
     _res = [_parser parseString:@"ANY {3} > 4" error:&err];
-    TDEqualObjects(@"[0]ANY/{/3/}/>/4^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[0]ANY/{/3/}/>/4^"), [_res description]);
     
     _res = [_parser parseString:@"SOME {3} > 4" error:&err];
-    TDEqualObjects(@"[0]SOME/{/3/}/>/4^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[0]SOME/{/3/}/>/4^"), [_res description]);
     
     _res = [_parser parseString:@"NONE {3} > 4" error:&err];
-    TDEqualObjects(@"[1]NONE/{/3/}/>/4^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[1]NONE/{/3/}/>/4^"), [_res description]);
     
     _res = [_parser parseString:@"ALL {3} > 4" error:&err];
-    TDEqualObjects(@"[0]ALL/{/3/}/>/4^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[0]ALL/{/3/}/>/4^"), [_res description]);
 }
 
 
 - (void)testOr {
     NSError *err = nil;
     _res = [_parser parseString:@"TRUEPREDICATE OR FALSEPREDICATE" error:&err];
-    TDEqualObjects(@"[1]TRUEPREDICATE/OR/FALSEPREDICATE^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[1]TRUEPREDICATE/OR/FALSEPREDICATE^"), [_res description]);
 }
 
 
 - (void)testAnd {
     NSError *err = nil;
     _res = [_parser parseString:@"TRUEPREDICATE AND FALSEPREDICATE" error:&err];
-    TDEqualObjects(@"[0]TRUEPREDICATE/AND/FALSEPREDICATE^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[0]TRUEPREDICATE/AND/FALSEPREDICATE^"), [_res description]);
 }
 
 
 - (void)testCompoundExpr {
     NSError *err = nil;
     _res = [_parser parseString:@"(TRUEPREDICATE)" error:&err];
-    TDEqualObjects(@"[1](/TRUEPREDICATE/)^", [_res description]);
+    TDEqualObjects(TDAssembly(@"[1](/TRUEPREDICATE/)^"), [_res description]);
 }    
 
 

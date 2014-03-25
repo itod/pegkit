@@ -64,7 +64,7 @@
     PKAssembly *res = [p parseString:@"[1, [2,3],4]" error:&err];
     if (err) NSLog(@"%@", [err localizedDescription]);
     
-    TDEqualObjects(@"[[, 1, [, 2, 3, 4][/1/,/[/2/,/3/]/,/4/]^", [res description]);
+    TDEqualObjects(TDAssembly(@"[[, 1, [, 2, 3, 4][/1/,/[/2/,/3/]/,/4/]^"), [res description]);
 }
 
 

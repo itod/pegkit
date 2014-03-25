@@ -35,7 +35,7 @@
     
     input = @"[3];[2];";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[[, 3, ;, [, 2, ;][/3/]/;/[/2/]/;^", [res description]);
+    TDEqualObjects(TDAssembly(@"[[, 3, ;, [, 2, ;][/3/]/;/[/2/]/;^"), [res description]);
 }
 
 - (void)testMissingBracket {
@@ -60,7 +60,7 @@
     
     input = @"[3;";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[[, 3, ;][/3/;^", [res description]);
+    TDEqualObjects(TDAssembly(@"[[, 3, ;][/3/;^"), [res description]);
 }
 
 - (void)testMissingBracketWithRecovery2 {
@@ -76,7 +76,7 @@
 //    TDNil(res);
 
     // this one works but not because of single token insertion. it works because of resyncSet
-    TDEqualObjects(@"[[, 3, [][/3/[^", [res description]);
+    TDEqualObjects(TDAssembly(@"[[, 3, [][/3/[^"), [res description]);
 }
 
 @end

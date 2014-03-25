@@ -63,7 +63,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"int add(int a);" error:&err];
     
-    //TDEqualObjects(@"[int, add, (, int, a, ), ;]int/add/(/int/a/)/;^", [res description]);
+    //TDEqualObjects(TDAssembly(@"[int, add, (, int, a, ), ;]int/add/(/int/a/)/;^"), [res description]);
     TDNil(res); // hard coded predicate
 }
 
@@ -71,14 +71,14 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"int add(int a) { }" error:&err];
     
-    TDEqualObjects(@"[int, add, (, int, a, ), {, }]int/add/(/int/a/)/{/}^", [res description]);
+    TDEqualObjects(TDAssembly(@"[int, add, (, int, a, ), {, }]int/add/(/int/a/)/{/}^"), [res description]);
 }
 
 - (void)testNoArgDecl {
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"int add();" error:&err];
     
-    //TDEqualObjects(@"[int, add, (, ), ;]int/add/(/)/;^", [res description]);
+    //TDEqualObjects(TDAssembly(@"[int, add, (, ), ;]int/add/(/)/;^"), [res description]);
     TDNil(res); // hard coded predicate
 }
 
@@ -86,7 +86,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"int add() { }" error:&err];
     
-    TDEqualObjects(@"[int, add, (, ), {, }]int/add/(/)/{/}^", [res description]);
+    TDEqualObjects(TDAssembly(@"[int, add, (, ), {, }]int/add/(/)/{/}^"), [res description]);
 }
 
 @end

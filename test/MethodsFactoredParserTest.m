@@ -63,7 +63,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"int add(int a);" error:&err];
     
-    TDEqualObjects(@"[int, add, (, int, a, ), ;]int/add/(/int/a/)/;^", [res description]);
+    TDEqualObjects(TDAssembly(@"[int, add, (, int, a, ), ;]int/add/(/int/a/)/;^"), [res description]);
 }
 
 
@@ -71,7 +71,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"int add(int a) { }" error:&err];
     
-    TDEqualObjects(@"[int, add, (, int, a, ), {, }]int/add/(/int/a/)/{/}^", [res description]);
+    TDEqualObjects(TDAssembly(@"[int, add, (, int, a, ), {, }]int/add/(/int/a/)/{/}^"), [res description]);
 }
 
 @end

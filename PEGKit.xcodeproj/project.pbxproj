@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D0466A918E1D9770022A1BC /* OCMock.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D37214CA18DF3B0100525058 /* OCMock.framework */; };
+		D306298218E1ED5D00EF745E /* TDTestScaffold.m in Sources */ = {isa = PBXBuildFile; fileRef = D306298118E1ED5D00EF745E /* TDTestScaffold.m */; };
 		D3083AB61705F05C00DA6F95 /* elementsAssign.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3083AB51705F05C00DA6F95 /* elementsAssign.grammar */; };
 		D3083AB91705F09B00DA6F95 /* ElementAssignParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3083AB81705F09B00DA6F95 /* ElementAssignParserTest.m */; };
 		D3083ABC1705F16000DA6F95 /* ElementAssignParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3083ABB1705F16000DA6F95 /* ElementAssignParser.m */; };
@@ -438,6 +439,7 @@
 		D3022713170208C800594F16 /* NSDictionary_DeepMutableCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDictionary_DeepMutableCopy.h; path = lib/MGTemplateEngine/NSDictionary_DeepMutableCopy.h; sourceTree = "<group>"; };
 		D3022714170208C800594F16 /* NSDictionary_DeepMutableCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDictionary_DeepMutableCopy.m; path = lib/MGTemplateEngine/NSDictionary_DeepMutableCopy.m; sourceTree = "<group>"; };
 		D302272A17020F9400594F16 /* PGClassImplementationTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGClassImplementationTemplate.txt; path = res/PGClassImplementationTemplate.txt; sourceTree = "<group>"; };
+		D306298118E1ED5D00EF745E /* TDTestScaffold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTestScaffold.m; path = test/TDTestScaffold.m; sourceTree = "<group>"; };
 		D3083AB51705F05C00DA6F95 /* elementsAssign.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = elementsAssign.grammar; path = res/elementsAssign.grammar; sourceTree = "<group>"; };
 		D3083AB81705F09B00DA6F95 /* ElementAssignParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementAssignParserTest.m; path = test/ElementAssignParserTest.m; sourceTree = "<group>"; };
 		D3083ABA1705F16000DA6F95 /* ElementAssignParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementAssignParser.h; path = test/ElementAssignParser.h; sourceTree = "<group>"; };
@@ -1317,6 +1319,7 @@
 			isa = PBXGroup;
 			children = (
 				D37214D318DFB4F800525058 /* TDTestScaffold.h */,
+				D306298118E1ED5D00EF745E /* TDTestScaffold.m */,
 				D3022704170208BB00594F16 /* MGTemplateEngine */,
 				D3B22A571703D03F00446945 /* PGTemplates */,
 				D3B22A591703D08B00446945 /* Tests */,
@@ -1850,6 +1853,7 @@
 				D36E68B9172074EF007B4353 /* CSSParserTest.m in Sources */,
 				D376F6CF18D0B3990064C888 /* PGDelimitedNode.m in Sources */,
 				D36E68BC17207542007B4353 /* CSSParser.m in Sources */,
+				D306298218E1ED5D00EF745E /* TDTestScaffold.m in Sources */,
 				D36E68BF1720C840007B4353 /* HTMLParserTest.m in Sources */,
 				D36E68C21720C84F007B4353 /* HTMLParser.m in Sources */,
 				D376F6D918D0B3990064C888 /* PGReferenceNode.m in Sources */,

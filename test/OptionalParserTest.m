@@ -62,14 +62,14 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"foo bar" error:&err];
     
-    TDEqualObjects(@"[foo, bar]foo/bar^", [res description]);
+    TDEqualObjects(TDAssembly(@"[foo, bar]foo/bar^"), [res description]);
 }
 
 - (void)testFoo2 {
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"foo bar bar foo bar" error:&err];
     
-    TDEqualObjects(@"[foo, bar, bar, foo, bar]foo/bar/bar/foo/bar^", [res description]);
+    TDEqualObjects(TDAssembly(@"[foo, bar, bar, foo, bar]foo/bar/bar/foo/bar^"), [res description]);
 }
 
 - (void)testFoo3 {
@@ -85,7 +85,7 @@
     PKAssembly *res = [_parser parseString:@"foo bar bar foo" error:&err];
     
     TDNil(res);
-    //TDEqualObjects(@"[foo, bar, bar, foo]foo/bar/bar/foo^", [res description]);
+    //TDEqualObjects(TDAssembly(@"[foo, bar, bar, foo]foo/bar/bar/foo^"), [res description]);
 }
 
 @end

@@ -64,14 +64,14 @@
     
     TDEqualObjects(nil, res); // TAIL RECURSION NOT SUPPORTED
     
-    //TDEqualObjects(@"[foo, :, bar, =, 1]foo/:/bar/=/1^", [res description]);
+    //TDEqualObjects(TDAssembly(@"[foo, :, bar, =, 1]foo/:/bar/=/1^"), [res description]);
 }
 
 - (void)testAlt2 {
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"foo: return 1" error:&err];
     
-    TDEqualObjects(@"[foo, :, return, 1]foo/:/return/1^", [res description]);
+    TDEqualObjects(TDAssembly(@"[foo, :, return, 1]foo/:/return/1^"), [res description]);
 }
 
 @end

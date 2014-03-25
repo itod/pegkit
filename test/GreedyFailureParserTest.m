@@ -110,7 +110,7 @@
 
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"{'foo':bar}" error:&err];
-    TDEqualObjects(@"[{, 'foo', :, bar, }]{/'foo'/:/bar/}^", [res description]);
+    TDEqualObjects(TDAssembly(@"[{, 'foo', :, bar, }]{/'foo'/:/bar/}^"), [res description]);
     
     VERIFY();
 }
@@ -132,13 +132,13 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[{, 'foo', :, bar]{/'foo'/:/bar^", [a description]);
+        TDEqualObjects(TDAssembly(@"[{, 'foo', :, bar]{/'foo'/:/bar^"), [a description]);
         
     }] parser:_parser didFailToMatch:OCMOCK_ANY];
 
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"{'foo':bar" error:&err];
-    TDEqualObjects(@"[{, 'foo', :, bar]{/'foo'/:/bar^", [res description]);
+    TDEqualObjects(TDAssembly(@"[{, 'foo', :, bar]{/'foo'/:/bar^"), [res description]);
     
     VERIFY();
 }
@@ -150,7 +150,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[{]{^", [a description]);
+        TDEqualObjects(TDAssembly(@"[{]{^"), [a description]);
         [a pop]; // pop {
         
     }] parser:_parser didMatchLcurly:OCMOCK_ANY];
@@ -161,7 +161,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"['foo']{/'foo'^", [a description]);
+        TDEqualObjects(TDAssembly(@"['foo']{/'foo'^"), [a description]);
         [a pop]; // pop 'foo'
         
     }] parser:_parser didMatchName:OCMOCK_ANY];
@@ -171,7 +171,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[:]{/'foo'/:^", [a description]);
+        TDEqualObjects(TDAssembly(@"[:]{/'foo'/:^"), [a description]);
         [a pop]; // pop :
         
     }] parser:_parser didMatchColon:OCMOCK_ANY];
@@ -181,7 +181,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[bar]{/'foo'/:/bar^", [a description]);
+        TDEqualObjects(TDAssembly(@"[bar]{/'foo'/:/bar^"), [a description]);
         [a pop]; // pop bar
         
     }] parser:_parser didMatchValue:OCMOCK_ANY];
@@ -193,13 +193,13 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[]{/'foo'/:/bar^", [a description]);
+        TDEqualObjects(TDAssembly(@"[]{/'foo'/:/bar^"), [a description]);
         
     }] parser:_parser didFailToMatch:OCMOCK_ANY];
     
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"{'foo':bar" error:&err];
-    TDEqualObjects(@"[]{/'foo'/:/bar^", [res description]);
+    TDEqualObjects(TDAssembly(@"[]{/'foo'/:/bar^"), [res description]);
     
     VERIFY();
 }
@@ -211,7 +211,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[{]{^", [a description]);
+        TDEqualObjects(TDAssembly(@"[{]{^"), [a description]);
         [a pop]; // pop {
         
     }] parser:_parser didMatchLcurly:OCMOCK_ANY];
@@ -222,7 +222,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"['foo']{/'foo'^", [a description]);
+        TDEqualObjects(TDAssembly(@"['foo']{/'foo'^"), [a description]);
         [a pop]; // pop 'foo'
         
     }] parser:_parser didMatchName:OCMOCK_ANY];
@@ -232,7 +232,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[:]{/'foo'/:^", [a description]);
+        TDEqualObjects(TDAssembly(@"[:]{/'foo'/:^"), [a description]);
         [a pop]; // pop :
         
     }] parser:_parser didMatchColon:OCMOCK_ANY];
@@ -242,7 +242,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[]{/'foo'/:^", [a description]);
+        TDEqualObjects(TDAssembly(@"[]{/'foo'/:^"), [a description]);
         
     }] parser:_parser didFailToMatch:OCMOCK_ANY];
 
@@ -253,7 +253,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[}]{/'foo'/:/}^", [a description]);
+        TDEqualObjects(TDAssembly(@"[}]{/'foo'/:/}^"), [a description]);
         [a pop]; // pop }
         
     }] parser:_parser didMatchRcurly:OCMOCK_ANY];
@@ -263,7 +263,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[]{/'foo'/:/}^", [a description]);
+        TDEqualObjects(TDAssembly(@"[]{/'foo'/:/}^"), [a description]);
         
     }] parser:_parser didMatchStructure:OCMOCK_ANY];
     
@@ -271,7 +271,7 @@
 
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"{'foo':}" error:&err];
-    TDEqualObjects(@"[]{/'foo'/:/}^", [res description]);
+    TDEqualObjects(TDAssembly(@"[]{/'foo'/:/}^"), [res description]);
     
     VERIFY();
 }
@@ -284,7 +284,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[{]{^", [a description]);
+        TDEqualObjects(TDAssembly(@"[{]{^"), [a description]);
         [a pop]; // pop {
         
     }] parser:_parser didMatchLcurly:OCMOCK_ANY];
@@ -295,7 +295,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[]{^", [a description]);
+        TDEqualObjects(TDAssembly(@"[]{^"), [a description]);
         
     }] parser:_parser didFailToMatch:OCMOCK_ANY];
 
@@ -306,7 +306,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[:]{/:^", [a description]);
+        TDEqualObjects(TDAssembly(@"[:]{/:^"), [a description]);
         [a pop]; // pop :
         
     }] parser:_parser didMatchColon:OCMOCK_ANY];
@@ -316,7 +316,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[bar]{/:/bar^", [a description]);
+        TDEqualObjects(TDAssembly(@"[bar]{/:/bar^"), [a description]);
         [a pop]; // pop bar
         
     }] parser:_parser didMatchValue:OCMOCK_ANY];
@@ -326,7 +326,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[}]{/:/bar/}^", [a description]);
+        TDEqualObjects(TDAssembly(@"[}]{/:/bar/}^"), [a description]);
         [a pop]; // pop }
         
     }] parser:_parser didMatchRcurly:OCMOCK_ANY];
@@ -336,7 +336,7 @@
         [invoc getArgument:&a atIndex:3];
         //NSLog(@"%@", a);
         
-        TDEqualObjects(@"[]{/:/bar/}^", [a description]);
+        TDEqualObjects(TDAssembly(@"[]{/:/bar/}^"), [a description]);
         
     }] parser:_parser didMatchStructure:OCMOCK_ANY];
     
@@ -344,7 +344,7 @@
     
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"{:bar}" error:&err];
-    TDEqualObjects(@"[]{/:/bar/}^", [res description]);
+    TDEqualObjects(TDAssembly(@"[]{/:/bar/}^"), [res description]);
     
     VERIFY();
 }

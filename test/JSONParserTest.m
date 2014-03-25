@@ -66,7 +66,7 @@
 
     input = @"{'foo':'bar'}";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[{, 'foo', :, 'bar', }]{/'foo'/:/'bar'/}^", [res description]);
+    TDEqualObjects(TDAssembly(@"[{, 'foo', :, 'bar', }]{/'foo'/:/'bar'/}^"), [res description]);
 }
 
 - (void)testDict1 {
@@ -76,7 +76,7 @@
     
     input = @"{'foo':{}}";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[{, 'foo', :, {, }, }]{/'foo'/:/{/}/}^", [res description]);
+    TDEqualObjects(TDAssembly(@"[{, 'foo', :, {, }, }]{/'foo'/:/{/}/}^"), [res description]);
 }
 
 - (void)testDict2 {
@@ -86,7 +86,7 @@
     
     input = @"{'foo':{'bar':[]}}";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[{, 'foo', :, {, 'bar', :, [, ], }, }]{/'foo'/:/{/'bar'/:/[/]/}/}^", [res description]);
+    TDEqualObjects(TDAssembly(@"[{, 'foo', :, {, 'bar', :, [, ], }, }]{/'foo'/:/{/'bar'/:/[/]/}/}^"), [res description]);
 }
 
 - (void)testArray {
@@ -96,7 +96,7 @@
     
     input = @"['foo', true, null]";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[[, 'foo', ,,  , true, ,,  , null, ]][/'foo'/,/ /true/,/ /null/]^", [res description]);
+    TDEqualObjects(TDAssembly(@"[[, 'foo', ,,  , true, ,,  , null, ]][/'foo'/,/ /true/,/ /null/]^"), [res description]);
 }
 
 - (void)testArray1 {
@@ -106,7 +106,7 @@
     
     input = @"[[]]";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[[, [, ], ]][/[/]/]^", [res description]);
+    TDEqualObjects(TDAssembly(@"[[, [, ], ]][/[/]/]^"), [res description]);
 }
 
 - (void)testArray2 {
@@ -116,7 +116,7 @@
     
     input = @"[[[1]]]";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[[, [, [, 1, ], ], ]][/[/[/1/]/]/]^", [res description]);
+    TDEqualObjects(TDAssembly(@"[[, [, [, 1, ], ], ]][/[/[/1/]/]/]^"), [res description]);
 }
 
 @end

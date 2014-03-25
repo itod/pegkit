@@ -62,7 +62,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"a C a C a" error:&err];
     
-    //TDEqualObjects(@"[a, C, a]a/C/a^", [res description]);
+    //TDEqualObjects(TDAssembly(@"[a, C, a]a/C/a^"), [res description]);
     TDNil(res);
 }
 
@@ -71,7 +71,7 @@
     PKAssembly *res = [_parser parseString:@"a C a" error:&err];
     
     
-    //TDEqualObjects(@"[a, C, a]a/C/a^", [res description]);
+    //TDEqualObjects(TDAssembly(@"[a, C, a]a/C/a^"), [res description]);
     TDNil(res);
 }
 
@@ -79,7 +79,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"b C b C b" error:&err];
     
-    //TDEqualObjects(@"[b, C, b]b/C/b^", [res description]);
+    //TDEqualObjects(TDAssembly(@"[b, C, b]b/C/b^"), [res description]);
     TDNil(res);
 }
 
@@ -87,7 +87,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"b C b" error:&err];
     
-    //TDEqualObjects(@"[b, C, b]b/C/b^", [res description]);
+    //TDEqualObjects(TDAssembly(@"[b, C, b]b/C/b^"), [res description]);
     TDNil(res);
 }
 

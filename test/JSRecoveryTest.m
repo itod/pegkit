@@ -75,7 +75,7 @@
     
     input = @"var foo;";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[var, foo, ;]var/foo/;^", [res description]);
+    TDEqualObjects(TDAssembly(@"[var, foo, ;]var/foo/;^"), [res description]);
     
     VERIFY();
 }
@@ -93,7 +93,7 @@
         //NSLog(@"%@", a);
         
         TDNotNil(a);
-        TDEqualObjects(@"[var, foo]var/foo^", [a description]);
+        TDEqualObjects(TDAssembly(@"[var, foo]var/foo^"), [a description]);
         
         [a pop]; // var
         [a pop]; // foo
@@ -104,12 +104,12 @@
           [invoc getArgument:&a atIndex:3];
           
           TDNotNil(a);
-          TDEqualObjects(@"[]var/foo^", [a description]);
+          TDEqualObjects(TDAssembly(@"[]var/foo^"), [a description]);
     }] parser:_parser didMatchProgram:OCMOCK_ANY];
         
     input = @"var foo";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[]var/foo^", [res description]);
+    TDEqualObjects(TDAssembly(@"[]var/foo^"), [res description]);
     
     VERIFY();
 }
@@ -127,7 +127,7 @@
         //NSLog(@"%@", a);
         
         TDNotNil(a);
-        TDEqualObjects(@"[1, -]1/-^", [a description]);
+        TDEqualObjects(TDAssembly(@"[1, -]1/-^"), [a description]);
         
         [a pop]; // `-`
         [a pop]; // 1
@@ -145,7 +145,7 @@
     
     input = @"1-;;";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[;, ;]1/-/;/;^", [res description]);
+    TDEqualObjects(TDAssembly(@"[;, ;]1/-/;/;^"), [res description]);
     
     VERIFY();
 }
@@ -163,7 +163,7 @@
         //NSLog(@"%@", a);
         
         TDNotNil(a);
-        TDEqualObjects(@"[function,  , foo, (, ), {, v]function/ /foo/(/)/{/v^", [a description]);
+        TDEqualObjects(TDAssembly(@"[function,  , foo, (, ), {, v]function/ /foo/(/)/{/v^"), [a description]);
         
         [a pop]; // `v`
     }] parser:_parser didFailToMatch:OCMOCK_ANY];
@@ -178,7 +178,7 @@
     
     input = @"function foo(){v}";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[function,  , foo, (, ), {, }]function/ /foo/(/)/{/v/}^", [res description]);
+    TDEqualObjects(TDAssembly(@"[function,  , foo, (, ), {, }]function/ /foo/(/)/{/v/}^"), [res description]);
     
     VERIFY();
 }
@@ -196,7 +196,7 @@
         //NSLog(@"%@", a);
         
         TDNotNil(a);
-        TDEqualObjects(@"[function,  , foo, (, ), {, \n\t , v, \n]function/ /foo/(/)/{/\n\t /v/\n^", [a description]);
+        TDEqualObjects(TDAssembly(@"[function,  , foo, (, ), {, \n\t , v, \n]function/ /foo/(/)/{/\n\t /v/\n^"), [a description]);
         
         [a pop]; // trailing whitespace
         [a pop]; // `v`
@@ -213,7 +213,7 @@
     
     input = @"function foo(){\n\t v\n}";
     res = [_parser parseString:input error:&err];
-    TDEqualObjects(@"[function,  , foo, (, ), {, }]function/ /foo/(/)/{/\n\t /v/\n/}^", [res description]);
+    TDEqualObjects(TDAssembly(@"[function,  , foo, (, ), {, }]function/ /foo/(/)/{/\n\t /v/\n/}^"), [res description]);
     
     VERIFY();
 }

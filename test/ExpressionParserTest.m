@@ -61,7 +61,7 @@
     
     PKAssembly *res = [p parseString:@"foo.bar('hello') or bar" error:nil];
     
-    TDEqualObjects(@"[foo, ., bar, (, 'hello', or, bar]foo/./bar/(/'hello'/)/or/bar^", [res description]);
+    TDEqualObjects(TDAssembly(@"[foo, ., bar, (, 'hello', or, bar]foo/./bar/(/'hello'/)/or/bar^"), [res description]);
 }
 
 

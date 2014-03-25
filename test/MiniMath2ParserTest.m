@@ -65,7 +65,7 @@
 //    NSError *err = nil;
 //    PKAssembly *res = [_parser parseString:@"1+2" error:&err];
 //    
-//    TDEqualObjects(@"[1, 2]1/+/2^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[1, 2]1/+/2^"), [res description]);
 //}
 //
 //- (void)testMultDisableActions {
@@ -74,7 +74,7 @@
 //    NSError *err = nil;
 //    PKAssembly *res = [_parser parseString:@"3*4" error:&err];
 //    
-//    TDEqualObjects(@"[3, 4]3/*/4^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[3, 4]3/*/4^"), [res description]);
 //}
 //
 //- (void)testAddMultDisableActions {
@@ -83,7 +83,7 @@
 //    NSError *err = nil;
 //    PKAssembly *res = [_parser parseString:@"1+2*3+4" error:&err];
 //    
-//    TDEqualObjects(@"[1, 2, 3, 4]1/+/2/*/3/+/4^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[1, 2, 3, 4]1/+/2/*/3/+/4^"), [res description]);
 //}
 
 - (void)testOpen2Plus2Close {
@@ -92,7 +92,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"(2+2)" error:&err];
     
-    TDEqualObjects(@"[4](/2/+/2/)^", [res description]);
+    TDEqualObjects(TDAssembly(@"[4](/2/+/2/)^"), [res description]);
 }
 
 //- (void)testOpen2Plus2CloseTimes3 {
@@ -101,7 +101,7 @@
 //    NSError *err = nil;
 //    PKAssembly *res = [_parser parseString:@"(2+2)*3" error:&err];
 //    
-//    TDEqualObjects(@"[2, 2, 3]2/+/2/*/3^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[2, 2, 3]2/+/2/*/3^"), [res description]);
 //}
 //
 //- (void)testAddEnableActions {
@@ -110,7 +110,7 @@
 //    NSError *err = nil;
 //    PKAssembly *res = [_parser parseString:@"1+2" error:&err];
 //    
-//    TDEqualObjects(@"[3]1/+/2^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[3]1/+/2^"), [res description]);
 //}
 //
 //- (void)testMultEnableActions {
@@ -119,7 +119,7 @@
 //    NSError *err = nil;
 //    PKAssembly *res = [_parser parseString:@"3*4" error:&err];
 //    
-//    TDEqualObjects(@"[12]3/*/4^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[12]3/*/4^"), [res description]);
 //}
 //
 //- (void)testAddMultEnableActions {
@@ -128,7 +128,7 @@
 //    NSError *err = nil;
 //    PKAssembly *res = [_parser parseString:@"1+2*3+4" error:&err];
 //    
-//    TDEqualObjects(@"[11]1/+/2/*/3/+/4^", [res description]);
+//    TDEqualObjects(TDAssembly(@"[11]1/+/2/*/3/+/4^"), [res description]);
 //}
 
 @end

@@ -62,7 +62,7 @@
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:@"bar" error:&err];
     
-    TDEqualObjects(@"[bar]bar^", [res description]);
+    TDEqualObjects(TDAssembly(@"[bar]bar^"), [res description]);
 }
 
 - (void)testFoo {
