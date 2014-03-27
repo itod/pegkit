@@ -127,7 +127,7 @@
 
 - (void)databaseName_ {
     
-    [self matchWord:NO]; 
+    [self matchQuotedString:NO]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchDatabaseName:)];
 }
