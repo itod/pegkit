@@ -94,13 +94,13 @@
     [self match:CREATETABLESTMT_TOKEN_KIND_TABLE discard:YES]; 
     [self existsOpt_]; 
     [self databaseName_]; 
-    [self match:CREATETABLESTMT_TOKEN_KIND_SEMI_COLON discard:NO]; 
+    [self match:CREATETABLESTMT_TOKEN_KIND_SEMI_COLON discard:YES]; 
     [self execute:(id)^{
     
 	NSString *dbName = POP();
-	BOOL ifExists = POP_BOOL();
+	BOOL ifNotExists = POP_BOOL();
 	BOOL isTemp = POP_BOOL();
-	NSLog(@"%@, %d, %d", dbName, ifExists, isTemp);
+	NSLog(@"create table: %@, %d, %d", dbName, ifNotExists, isTemp);
 	// go to town
 	// myCreateTable(dbName, ifExists, isTemp);
 
@@ -114,9 +114,11 @@
     [self matchQuotedString:NO]; 
     [self execute:(id)^{
     
+	// pop the string value of the `PKToken` on the top of the stack
 	NSString *dbName = POP_STR();
 	// trim quotes
 	dbName = [dbName substringWithRange:NSMakeRange(1, [dbName length]-2)];
+	// leave it on the stack for later
 	PUSH(dbName);
 
     }];
@@ -126,10 +128,22 @@
 
 - (void)tempOpt_ {
     
-    if ([self predicts:CREATETABLESTMT_TOKEN_KIND_TEMP, 0]) {
-        [self match:CREATETABLESTMT_TOKEN_KIND_TEMP discard:YES]; 
-    } else if ([self predicts:CREATETABLESTMT_TOKEN_KIND_TEMPORARY, 0]) {
-        [self match:CREATETABLESTMT_TOKEN_KIND_TEMPORARY discard:YES]; 
+    if ([self predicts:CREATETABLESTMT_TOKEN_KIND_TEMP, CREATETABLESTMT_TOKEN_KIND_TEMPORARY, 0]) {
+        if ([self predicts:CREATETABLESTMT_TOKEN_KIND_TEMP, 0]) {
+            [self match:CREATETABLESTMT_TOKEN_KIND_TEMP discard:YES]; 
+        } else if ([self predicts:CREATETABLESTMT_TOKEN_KIND_TEMPORARY, 0]) {
+            [self match:CREATETABLESTMT_TOKEN_KIND_TEMPORARY discard:YES]; 
+        } else {
+            [self raise:@"No viable alternative found in rule 'tempOpt'."];
+        }
+        [self execute:(id)^{
+         PUSH(@YES); 
+        }];
+    } else { 
+        [self matchEmpty:NO]; 
+        [self execute:(id)^{
+         PUSH(@NO); 
+        }];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchTempOpt:)];
@@ -143,6 +157,11 @@
         [self match:CREATETABLESTMT_TOKEN_KIND_EXISTS discard:YES]; 
         [self execute:(id)^{
          PUSH(@YES); 
+        }];
+    } else { 
+        [self matchEmpty:NO]; 
+        [self execute:(id)^{
+         PUSH(@NO); 
         }];
     }
 

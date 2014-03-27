@@ -711,10 +711,16 @@
     // recurse
     NSUInteger idx = 0;
     for (PGBaseNode *child in node.children) {
+        BOOL isEmpty = NO;
+        
         if ([self isEmptyNode:child]) {
+            isEmpty = YES;
             node.hasEmptyAlternative = YES;
-            ++idx;
-            continue;
+            
+            if (!child.actionNode) {
+                ++idx;
+                continue;
+            }
         }
         
         id vars = [NSMutableDictionary dictionary];
@@ -725,8 +731,13 @@
         vars[DEPTH] = @(_depth);
         vars[NEEDS_BACKTRACK] = @(_needsBacktracking);
 
+        NSString *templateName = nil;
+        if (isEmpty) {
+            templateName = @"PGPredictElseEmptyTemplate";
+        } else {
+            templateName = [result length] ? @"PGPredictElseIfTemplate" : @"PGPredictIfTemplate";
+        }
         // process template. cannot test `idx` here to determine `if` vs `else` due to possible Empty child borking `idx`
-        NSString *templateName = [result length] ? @"PGPredictElseIfTemplate" : @"PGPredictIfTemplate";
         NSString *output = [_engine processTemplate:[self templateStringNamed:templateName] withVariables:vars];
         [result appendString:output];
         
@@ -844,6 +855,9 @@
         elseStr = [_engine processTemplate:[self templateStringNamed:@"PGPredictElseTemplate"] withVariables:vars];
     }
     [childStr appendString:elseStr];
+
+    // action
+    [childStr appendString:[self actionStringFrom:node.actionNode]];
 
     // push
     [self push:childStr];

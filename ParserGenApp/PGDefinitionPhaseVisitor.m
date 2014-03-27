@@ -278,7 +278,7 @@
     
     do {
         PGBaseNode *lhs = node.children[0];
-        simplify = PGNodeTypeAlternation == lhs.type;
+        simplify = PGNodeTypeAlternation == lhs.type && !lhs.actionNode;
         
         // nested Alts should always be on the lhs. never on rhs.
         NSAssert(PGNodeTypeAlternation != [(PGBaseNode *)node.children[1] type], @"");

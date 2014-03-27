@@ -89,13 +89,69 @@
 }
 
 
-- (void)testCompleteStruct {
+- (void)testNoTempNoIfExists {
     NSString *s = @"CREATE TABLE 'foo';";
     
     NSError *err = nil;
-    [_parser parseString:s error:&err];
+    PKAssembly *res = [_parser parseString:s error:&err];
     TDNil(err);
     
+    TDEqualObjects(TDAssembly(@"[]CREATE/TABLE/'foo'/;^"), [res description]);
+}
+
+
+- (void)testNoTemp {
+    NSString *s = @"CREATE TABLE IF NOT EXISTS 'foo';";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[]CREATE/TABLE/IF/NOT/EXISTS/'foo'/;^"), [res description]);
+}
+
+
+- (void)testTemp {
+    NSString *s = @"CREATE TEMP TABLE IF NOT EXISTS 'foo';";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[]CREATE/TEMP/TABLE/IF/NOT/EXISTS/'foo'/;^"), [res description]);
+}
+
+
+- (void)testTempNoIfExists {
+    NSString *s = @"CREATE TEMP TABLE 'foo';";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[]CREATE/TEMP/TABLE/'foo'/;^"), [res description]);
+}
+
+
+- (void)testTemporary {
+    NSString *s = @"CREATE TEMPORARY TABLE IF NOT EXISTS 'foo';";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[]CREATE/TEMPORARY/TABLE/IF/NOT/EXISTS/'foo'/;^"), [res description]);
+}
+
+
+- (void)testTemporaryNoIfExists {
+    NSString *s = @"CREATE TEMPORARY TABLE 'foo';";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[]CREATE/TEMPORARY/TABLE/'foo'/;^"), [res description]);
 }
 
 

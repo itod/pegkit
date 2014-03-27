@@ -1,17 +1,20 @@
-createTableStmt = 'CREATE'! tempOpt 'TABLE'! existsOpt databaseName ';'
+createTableStmt = 'CREATE'! tempOpt 'TABLE'! existsOpt databaseName ';'!
 {
 	NSString *dbName = POP();
-	BOOL ifExists = POP_BOOL();
+	BOOL ifNotExists = POP_BOOL();
 	BOOL isTemp = POP_BOOL();
-	NSLog(@"%@, %d, %d", dbName, ifExists, isTemp);
+	NSLog(@"create table: %@, %d, %d", dbName, ifNotExists, isTemp);
 	// go to town
 	// myCreateTable(dbName, ifExists, isTemp);
 };
+
 databaseName = QuotedString
 {
+	// pop the string value of the `PKToken` on the top of the stack
 	NSString *dbName = POP_STR();
 	// trim quotes
 	dbName = [dbName substringWithRange:NSMakeRange(1, [dbName length]-2)];
+	// leave it on the stack for later
 	PUSH(dbName);
 };
 
