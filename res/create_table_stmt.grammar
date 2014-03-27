@@ -1,9 +1,9 @@
 createTableStmt = 'CREATE'! tempOpt 'TABLE'! existsOpt databaseName ';'!
 {
-	NSString *dbName = POP();
-	BOOL ifNotExists = POP_BOOL();
-	BOOL isTemp = POP_BOOL();
-	NSLog(@"create table: %@, %d, %d", dbName, ifNotExists, isTemp);
+	// NSString *dbName = POP();
+	// BOOL ifNotExists = POP_BOOL();
+	// BOOL isTemp = POP_BOOL();
+	// NSLog(@"create table: %@, %d, %d", dbName, ifNotExists, isTemp);
 	// go to town
 	// myCreateTable(dbName, ifNotExists, isTemp);
 };

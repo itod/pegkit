@@ -1,0 +1,44 @@
+qualifiedTableName = name indexOpt
+{
+    // now stack contains 3 `NSString`s. 
+    // ["mydb", "mytable", "foo"]
+    // NSString *indexName = POP();
+    // NSString *tableName = POP();
+    // NSString *dbName = POP();
+    // do stuff here
+};
+
+databaseName = Word;
+tableName = Word;
+indexName = QuotedString;
+
+name = (databaseName '.'!)? tableName 
+{
+    // now stack contains 2 `PKToken`s of type Word
+    // [<Word «mydb»>, <Word «mytable»>]
+	// pop their string values
+    NSString *tableName = POP_STR();
+    NSString *dbName = POP_STR();
+    PUSH(dbName);
+    PUSH(tableName);
+};
+
+indexOpt
+    = index
+    | Empty { PUSH(@""); }
+    ;
+      
+index
+    = ('INDEXED'! 'BY'! indexName)
+    { 
+        // now top of stack will be a Quoted String `PKToken`
+        // […, <Quoted String «"foo"»>]
+		// pop its string value
+        NSString *indexName = POP_STR();
+        // trim quotes
+        indexName = [indexName substringWithRange:NSMakeRange(1, [indexName length]-2)];
+        // leave it on the stack for later
+        PUSH(indexName);
+    }
+    | ('NOT'! 'INDEXED'!) { PUSH(@""); }
+    ;

@@ -97,12 +97,12 @@
     [self match:CREATETABLESTMT_TOKEN_KIND_SEMI_COLON discard:YES]; 
     [self execute:(id)^{
     
-	NSString *dbName = POP();
-	BOOL ifNotExists = POP_BOOL();
-	BOOL isTemp = POP_BOOL();
-	NSLog(@"create table: %@, %d, %d", dbName, ifNotExists, isTemp);
+	// NSString *dbName = POP();
+	// BOOL ifNotExists = POP_BOOL();
+	// BOOL isTemp = POP_BOOL();
+	// NSLog(@"create table: %@, %d, %d", dbName, ifNotExists, isTemp);
 	// go to town
-	// myCreateTable(dbName, ifExists, isTemp);
+	// myCreateTable(dbName, ifNotExists, isTemp);
 
     }];
 

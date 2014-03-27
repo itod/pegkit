@@ -75,13 +75,7 @@
     }
 #endif
 
-    self.mock = [OCMockObject mockForClass:[CreateTableStmtParserTest class]];
-
     self.parser = [[[CreateTableStmtParser alloc] initWithDelegate:_mock] autorelease];
-    _parser.enableAutomaticErrorRecovery = YES;
-    
-    // return YES to -respondsToSelector:
-    [[[_mock stub] andReturnValue:OCMOCK_VALUE((BOOL){YES})] respondsToSelector:(SEL)OCMOCK_ANY];
 }
 
 - (void)tearDown {
@@ -96,7 +90,7 @@
     PKAssembly *res = [_parser parseString:s error:&err];
     TDNil(err);
     
-    TDEqualObjects(TDAssembly(@"[]CREATE/TABLE/'foo'/;^"), [res description]);
+    TDEqualObjects(TDAssembly(@"[0, 0, foo]CREATE/TABLE/'foo'/;^"), [res description]);
 }
 
 
@@ -107,7 +101,7 @@
     PKAssembly *res = [_parser parseString:s error:&err];
     TDNil(err);
     
-    TDEqualObjects(TDAssembly(@"[]CREATE/TABLE/IF/NOT/EXISTS/'foo'/;^"), [res description]);
+    TDEqualObjects(TDAssembly(@"[0, 1, foo]CREATE/TABLE/IF/NOT/EXISTS/'foo'/;^"), [res description]);
 }
 
 
@@ -118,7 +112,7 @@
     PKAssembly *res = [_parser parseString:s error:&err];
     TDNil(err);
     
-    TDEqualObjects(TDAssembly(@"[]CREATE/TEMP/TABLE/IF/NOT/EXISTS/'foo'/;^"), [res description]);
+    TDEqualObjects(TDAssembly(@"[1, 1, foo]CREATE/TEMP/TABLE/IF/NOT/EXISTS/'foo'/;^"), [res description]);
 }
 
 
@@ -129,7 +123,7 @@
     PKAssembly *res = [_parser parseString:s error:&err];
     TDNil(err);
     
-    TDEqualObjects(TDAssembly(@"[]CREATE/TEMP/TABLE/'foo'/;^"), [res description]);
+    TDEqualObjects(TDAssembly(@"[1, 0, foo]CREATE/TEMP/TABLE/'foo'/;^"), [res description]);
 }
 
 
@@ -140,7 +134,7 @@
     PKAssembly *res = [_parser parseString:s error:&err];
     TDNil(err);
     
-    TDEqualObjects(TDAssembly(@"[]CREATE/TEMPORARY/TABLE/IF/NOT/EXISTS/'foo'/;^"), [res description]);
+    TDEqualObjects(TDAssembly(@"[1, 1, foo]CREATE/TEMPORARY/TABLE/IF/NOT/EXISTS/'foo'/;^"), [res description]);
 }
 
 
@@ -151,7 +145,7 @@
     PKAssembly *res = [_parser parseString:s error:&err];
     TDNil(err);
     
-    TDEqualObjects(TDAssembly(@"[]CREATE/TEMPORARY/TABLE/'foo'/;^"), [res description]);
+    TDEqualObjects(TDAssembly(@"[1, 0, foo]CREATE/TEMPORARY/TABLE/'foo'/;^"), [res description]);
 }
 
 @end
