@@ -1,4 +1,27 @@
-createTableStmt = 'CREATE'! tempOpt 'TABLE'! existsOpt databaseName ';';
-tempOpt = ('TEMP' | 'TEMPORARY')?;
-existsOpt = ('IF' 'NOT' 'EXISTS')?;
-databaseName = QuotedString;
+createTableStmt = 'CREATE'! tempOpt 'TABLE'! existsOpt databaseName ';'
+{
+	NSString *dbName = POP();
+	BOOL ifExists = POP_BOOL();
+	BOOL isTemp = POP_BOOL();
+	NSLog(@"%@, %d, %d", dbName, ifExists, isTemp);
+	// go to town
+	// myCreateTable(dbName, ifExists, isTemp);
+};
+databaseName = QuotedString
+{
+	NSString *dbName = POP_STR();
+	// trim quotes
+	dbName = [dbName substringWithRange:NSMakeRange(1, [dbName length]-2)];
+	PUSH(dbName);
+};
+
+tempOpt 
+	= ('TEMP'! | 'TEMPORARY'!) { PUSH(@YES); }
+	| Empty { PUSH(@NO); }
+	;
+
+existsOpt 
+	= ('IF'! 'NOT'! 'EXISTS'!) { PUSH(@YES); }
+	| Empty { PUSH(@NO); }
+	;
+

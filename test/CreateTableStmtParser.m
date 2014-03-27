@@ -95,20 +95,41 @@
     [self existsOpt_]; 
     [self databaseName_]; 
     [self match:CREATETABLESTMT_TOKEN_KIND_SEMI_COLON discard:NO]; 
+    [self execute:(id)^{
+    
+	NSString *dbName = POP();
+	BOOL ifExists = POP_BOOL();
+	BOOL isTemp = POP_BOOL();
+	NSLog(@"%@, %d, %d", dbName, ifExists, isTemp);
+	// go to town
+	// myCreateTable(dbName, ifExists, isTemp);
+
+    }];
 
     [self fireDelegateSelector:@selector(parser:didMatchCreateTableStmt:)];
 }
 
+- (void)databaseName_ {
+    
+    [self matchQuotedString:NO]; 
+    [self execute:(id)^{
+    
+	NSString *dbName = POP_STR();
+	// trim quotes
+	dbName = [dbName substringWithRange:NSMakeRange(1, [dbName length]-2)];
+	PUSH(dbName);
+
+    }];
+
+    [self fireDelegateSelector:@selector(parser:didMatchDatabaseName:)];
+}
+
 - (void)tempOpt_ {
     
-    if ([self predicts:CREATETABLESTMT_TOKEN_KIND_TEMP, CREATETABLESTMT_TOKEN_KIND_TEMPORARY, 0]) {
-        if ([self predicts:CREATETABLESTMT_TOKEN_KIND_TEMP, 0]) {
-            [self match:CREATETABLESTMT_TOKEN_KIND_TEMP discard:NO]; 
-        } else if ([self predicts:CREATETABLESTMT_TOKEN_KIND_TEMPORARY, 0]) {
-            [self match:CREATETABLESTMT_TOKEN_KIND_TEMPORARY discard:NO]; 
-        } else {
-            [self raise:@"No viable alternative found in rule 'tempOpt'."];
-        }
+    if ([self predicts:CREATETABLESTMT_TOKEN_KIND_TEMP, 0]) {
+        [self match:CREATETABLESTMT_TOKEN_KIND_TEMP discard:YES]; 
+    } else if ([self predicts:CREATETABLESTMT_TOKEN_KIND_TEMPORARY, 0]) {
+        [self match:CREATETABLESTMT_TOKEN_KIND_TEMPORARY discard:YES]; 
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchTempOpt:)];
@@ -116,20 +137,16 @@
 
 - (void)existsOpt_ {
     
-    if ([self speculate:^{ [self match:CREATETABLESTMT_TOKEN_KIND_IF discard:NO]; [self match:CREATETABLESTMT_TOKEN_KIND_NOT_UPPER discard:NO]; [self match:CREATETABLESTMT_TOKEN_KIND_EXISTS discard:NO]; }]) {
-        [self match:CREATETABLESTMT_TOKEN_KIND_IF discard:NO]; 
-        [self match:CREATETABLESTMT_TOKEN_KIND_NOT_UPPER discard:NO]; 
-        [self match:CREATETABLESTMT_TOKEN_KIND_EXISTS discard:NO]; 
+    if ([self predicts:CREATETABLESTMT_TOKEN_KIND_IF, 0]) {
+        [self match:CREATETABLESTMT_TOKEN_KIND_IF discard:YES]; 
+        [self match:CREATETABLESTMT_TOKEN_KIND_NOT_UPPER discard:YES]; 
+        [self match:CREATETABLESTMT_TOKEN_KIND_EXISTS discard:YES]; 
+        [self execute:(id)^{
+         PUSH(@YES); 
+        }];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchExistsOpt:)];
-}
-
-- (void)databaseName_ {
-    
-    [self matchQuotedString:NO]; 
-
-    [self fireDelegateSelector:@selector(parser:didMatchDatabaseName:)];
 }
 
 @end
