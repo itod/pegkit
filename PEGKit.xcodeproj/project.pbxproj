@@ -123,6 +123,9 @@
 		D317C1B418D206730036BE75 /* minimath2.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D317C1B318D206730036BE75 /* minimath2.grammar */; };
 		D317C1B818D206890036BE75 /* MiniMath2ParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D317C1B718D206890036BE75 /* MiniMath2ParserTest.m */; };
 		D317C1BB18D207870036BE75 /* MiniMath2Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = D317C1BA18D207870036BE75 /* MiniMath2Parser.m */; };
+		D31BBCB018E472300003FFA3 /* CreateTableStmtParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCAF18E4722F0003FFA3 /* CreateTableStmtParserTest.m */; };
+		D31BBCB318E4725F0003FFA3 /* CreateTableStmtParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCB218E4725F0003FFA3 /* CreateTableStmtParser.m */; };
+		D31BBCB518E472850003FFA3 /* create_table_stmt.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D31BBCB418E472850003FFA3 /* create_table_stmt.grammar */; };
 		D31C40A51779634700A1B8B7 /* JavaScriptWhitespaceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C40A41779634700A1B8B7 /* JavaScriptWhitespaceParser.m */; };
 		D3344F4917405B4B00598362 /* JSRecoveryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3344F4817405B4B00598362 /* JSRecoveryTest.m */; };
 		D337F07E15D5AE7B00C83AED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D337F07C15D5AE7B00C83AED /* InfoPlist.strings */; };
@@ -487,6 +490,10 @@
 		D317C1B918D207870036BE75 /* MiniMath2Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniMath2Parser.h; path = test/MiniMath2Parser.h; sourceTree = "<group>"; };
 		D317C1BA18D207870036BE75 /* MiniMath2Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniMath2Parser.m; path = test/MiniMath2Parser.m; sourceTree = "<group>"; };
 		D31A15250F6DE449002AFDF1 /* javascript.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = javascript.grammar; path = res/javascript.grammar; sourceTree = "<group>"; };
+		D31BBCAF18E4722F0003FFA3 /* CreateTableStmtParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTableStmtParserTest.m; path = test/CreateTableStmtParserTest.m; sourceTree = "<group>"; };
+		D31BBCB118E4725F0003FFA3 /* CreateTableStmtParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTableStmtParser.h; path = test/CreateTableStmtParser.h; sourceTree = "<group>"; };
+		D31BBCB218E4725F0003FFA3 /* CreateTableStmtParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTableStmtParser.m; path = test/CreateTableStmtParser.m; sourceTree = "<group>"; };
+		D31BBCB418E472850003FFA3 /* create_table_stmt.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = create_table_stmt.grammar; path = res/create_table_stmt.grammar; sourceTree = "<group>"; };
 		D31C40A41779634700A1B8B7 /* JavaScriptWhitespaceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaScriptWhitespaceParser.m; path = test/JavaScriptWhitespaceParser.m; sourceTree = "<group>"; };
 		D3344F4817405B4B00598362 /* JSRecoveryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSRecoveryTest.m; path = test/JSRecoveryTest.m; sourceTree = "<group>"; };
 		D33724D816FA62D400D30459 /* PKDelimitDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKDelimitDescriptor.h; path = src/PKDelimitDescriptor.h; sourceTree = SOURCE_ROOT; };
@@ -1170,6 +1177,8 @@
 		D3B22A581703D07000446945 /* Language Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				D31BBCB118E4725F0003FFA3 /* CreateTableStmtParser.h */,
+				D31BBCB218E4725F0003FFA3 /* CreateTableStmtParser.m */,
 				D3B5EA7F1747515D00733A26 /* GreedyFailureNestedParser.h */,
 				D3B5EA801747515D00733A26 /* GreedyFailureNestedParser.m */,
 				D3B5EA7517470F4F00733A26 /* GreedyFailureParser.h */,
@@ -1239,6 +1248,7 @@
 		D3B22A591703D08B00446945 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D31BBCAF18E4722F0003FFA3 /* CreateTableStmtParserTest.m */,
 				D3B5EA831747518600733A26 /* GreedyFailureNestedParserTest.m */,
 				D3B5EA7B17470F5600733A26 /* GreedyFailureParserTest.m */,
 				D34F53A617430232008700F3 /* CrockfordParserTest.m */,
@@ -1281,6 +1291,7 @@
 		D3B22A5A1703D09C00446945 /* Grammars */ = {
 			isa = PBXGroup;
 			children = (
+				D31BBCB418E472850003FFA3 /* create_table_stmt.grammar */,
 				D3B5EA85174751BD00733A26 /* greedy_failure_nested.grammar */,
 				D3B5EA7D1747101700733A26 /* greedy_failure.grammar */,
 				D34F53AD174302A4008700F3 /* crockford.grammar */,
@@ -1615,6 +1626,7 @@
 				D338307F171CA3BA00CCE513 /* PGSemanticPredicateTestAndThrowExprTemplate.txt in Resources */,
 				D3383080171CA3BA00CCE513 /* PGSemanticPredicateTestAndThrowStatTemplate.txt in Resources */,
 				D3383081171CA3BA00CCE513 /* PGPredictIfTemplate.txt in Resources */,
+				D31BBCB518E472850003FFA3 /* create_table_stmt.grammar in Resources */,
 				D3383082171CA3BA00CCE513 /* PGSpeculateIfTemplate.txt in Resources */,
 				D3383083171CA3BA00CCE513 /* PGPredictElseIfTemplate.txt in Resources */,
 				D3383084171CA3BA00CCE513 /* PGSpeculateElseIfTemplate.txt in Resources */,
@@ -1792,6 +1804,7 @@
 				D3B63A3417079F5200BA9DBF /* ExpressionParserActionsTest.m in Sources */,
 				D3B63A3917079FE100BA9DBF /* ExpressionActionsParser.m in Sources */,
 				D376F6C118D0B3990064C888 /* PGActionNode.m in Sources */,
+				D31BBCB018E472300003FFA3 /* CreateTableStmtParserTest.m in Sources */,
 				D3B63A42170910D100BA9DBF /* MethodsParserTest.m in Sources */,
 				D376F6F318D0B5190064C888 /* PGTokenKindDescriptor.m in Sources */,
 				D3B63A451709111A00BA9DBF /* MethodsParser.m in Sources */,
@@ -1846,6 +1859,7 @@
 				D376F6F118D0B5190064C888 /* PGParserGenVisitor.m in Sources */,
 				D33830C3171CA55300CCE513 /* NSDictionary_DeepMutableCopy.m in Sources */,
 				D33830CB171DBEB100CCE513 /* NamedActionParser.m in Sources */,
+				D31BBCB318E4725F0003FFA3 /* CreateTableStmtParser.m in Sources */,
 				D33830CE171DBEE200CCE513 /* NamedActionParserTest.m in Sources */,
 				D36E68B3171F378B007B4353 /* JavaScriptParserTest.m in Sources */,
 				D36E68B6171F37D7007B4353 /* JavaScriptParser.m in Sources */,

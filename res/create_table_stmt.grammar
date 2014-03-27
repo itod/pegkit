@@ -1,0 +1,4 @@
+createTableStmt = 'CREATE'! tempOpt 'TABLE'! existsOpt databaseName ';';
+tempOpt = ('TEMP' | 'TEMPORARY')?;
+existsOpt = ('IF' 'NOT' 'EXISTS')?;
+databaseName = Word;
