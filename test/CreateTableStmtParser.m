@@ -139,7 +139,7 @@
         [self execute:(id)^{
          PUSH(@YES); 
         }];
-    } else { 
+    } else {
         [self matchEmpty:NO]; 
         [self execute:(id)^{
          PUSH(@NO); 
@@ -158,7 +158,7 @@
         [self execute:(id)^{
          PUSH(@YES); 
         }];
-    } else { 
+    } else {
         [self matchEmpty:NO]; 
         [self execute:(id)^{
          PUSH(@NO); 

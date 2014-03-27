@@ -144,7 +144,7 @@
     
     if ([self predicts:TABLEINDEX_TOKEN_KIND_INDEXED, TABLEINDEX_TOKEN_KIND_NOT_UPPER, 0]) {
         [self index_]; 
-    } else { 
+    } else {
         [self matchEmpty:NO]; 
         [self execute:(id)^{
          PUSH(@""); 

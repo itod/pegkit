@@ -130,6 +130,7 @@
 		D31BBCBB18E4AACB0003FFA3 /* table_index.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D31BBCBA18E4AACB0003FFA3 /* table_index.grammar */; };
 		D31BBCBD18E4AAE20003FFA3 /* TableIndexParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCBC18E4AAE20003FFA3 /* TableIndexParserTest.m */; };
 		D31BBCC018E4AAFC0003FFA3 /* TableIndexParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCBF18E4AAFC0003FFA3 /* TableIndexParser.m */; };
+		D31BBCC118E4B4430003FFA3 /* PGPredictElseEmptyTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D31BBCB618E482C60003FFA3 /* PGPredictElseEmptyTemplate.txt */; };
 		D31C40A51779634700A1B8B7 /* JavaScriptWhitespaceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C40A41779634700A1B8B7 /* JavaScriptWhitespaceParser.m */; };
 		D3344F4917405B4B00598362 /* JSRecoveryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3344F4817405B4B00598362 /* JSRecoveryTest.m */; };
 		D337F07E15D5AE7B00C83AED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D337F07C15D5AE7B00C83AED /* InfoPlist.strings */; };
@@ -1564,6 +1565,7 @@
 				D338309B171CA3BB00CCE513 /* PGSemanticPredicateTestStatTemplate.txt in Resources */,
 				D338309C171CA3BB00CCE513 /* PGSemanticPredicateTestAndThrowExprTemplate.txt in Resources */,
 				D338309D171CA3BB00CCE513 /* PGSemanticPredicateTestAndThrowStatTemplate.txt in Resources */,
+				D31BBCC118E4B4430003FFA3 /* PGPredictElseEmptyTemplate.txt in Resources */,
 				D338309E171CA3BB00CCE513 /* PGPredictIfTemplate.txt in Resources */,
 				D338309F171CA3BB00CCE513 /* PGSpeculateIfTemplate.txt in Resources */,
 				D33830A0171CA3BB00CCE513 /* PGPredictElseIfTemplate.txt in Resources */,
