@@ -126,11 +126,11 @@
 		D31BBCB018E472300003FFA3 /* CreateTableStmtParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCAF18E4722F0003FFA3 /* CreateTableStmtParserTest.m */; };
 		D31BBCB318E4725F0003FFA3 /* CreateTableStmtParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCB218E4725F0003FFA3 /* CreateTableStmtParser.m */; };
 		D31BBCB518E472850003FFA3 /* create_table_stmt.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D31BBCB418E472850003FFA3 /* create_table_stmt.grammar */; };
-		D31BBCB718E482C60003FFA3 /* PGPredictElseEmptyTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D31BBCB618E482C60003FFA3 /* PGPredictElseEmptyTemplate.txt */; };
+		D31BBCB718E482C60003FFA3 /* PGElseEmptyTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D31BBCB618E482C60003FFA3 /* PGElseEmptyTemplate.txt */; };
 		D31BBCBB18E4AACB0003FFA3 /* table_index.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D31BBCBA18E4AACB0003FFA3 /* table_index.grammar */; };
 		D31BBCBD18E4AAE20003FFA3 /* TableIndexParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCBC18E4AAE20003FFA3 /* TableIndexParserTest.m */; };
 		D31BBCC018E4AAFC0003FFA3 /* TableIndexParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCBF18E4AAFC0003FFA3 /* TableIndexParser.m */; };
-		D31BBCC118E4B4430003FFA3 /* PGPredictElseEmptyTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D31BBCB618E482C60003FFA3 /* PGPredictElseEmptyTemplate.txt */; };
+		D31BBCC118E4B4430003FFA3 /* PGElseEmptyTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D31BBCB618E482C60003FFA3 /* PGElseEmptyTemplate.txt */; };
 		D31BBCED18E4F1EF0003FFA3 /* TDReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCD318E4F1EF0003FFA3 /* TDReaderTest.m */; };
 		D31BBCF018E4F1EF0003FFA3 /* TDTokenizerBlocksTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCD918E4F1EF0003FFA3 /* TDTokenizerBlocksTest.m */; };
 		D31BBCF118E4F1EF0003FFA3 /* TDTokenizerStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCDB18E4F1EF0003FFA3 /* TDTokenizerStateTest.m */; };
@@ -518,7 +518,7 @@
 		D31BBCB118E4725F0003FFA3 /* CreateTableStmtParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTableStmtParser.h; path = test/CreateTableStmtParser.h; sourceTree = "<group>"; };
 		D31BBCB218E4725F0003FFA3 /* CreateTableStmtParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTableStmtParser.m; path = test/CreateTableStmtParser.m; sourceTree = "<group>"; };
 		D31BBCB418E472850003FFA3 /* create_table_stmt.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = create_table_stmt.grammar; path = res/create_table_stmt.grammar; sourceTree = "<group>"; };
-		D31BBCB618E482C60003FFA3 /* PGPredictElseEmptyTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGPredictElseEmptyTemplate.txt; path = res/PGPredictElseEmptyTemplate.txt; sourceTree = "<group>"; };
+		D31BBCB618E482C60003FFA3 /* PGElseEmptyTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGElseEmptyTemplate.txt; path = res/PGElseEmptyTemplate.txt; sourceTree = "<group>"; };
 		D31BBCBA18E4AACB0003FFA3 /* table_index.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = table_index.grammar; path = res/table_index.grammar; sourceTree = "<group>"; };
 		D31BBCBC18E4AAE20003FFA3 /* TableIndexParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableIndexParserTest.m; path = test/TableIndexParserTest.m; sourceTree = "<group>"; };
 		D31BBCBE18E4AAFC0003FFA3 /* TableIndexParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableIndexParser.h; path = test/TableIndexParser.h; sourceTree = "<group>"; };
@@ -1289,7 +1289,7 @@
 				D3B22A3D17026FBE00446945 /* PGPredictElseIfTemplate.txt */,
 				D3B63A251706509800BA9DBF /* PGSpeculateElseIfTemplate.txt */,
 				D3B22A3E17026FBE00446945 /* PGPredictElseTemplate.txt */,
-				D31BBCB618E482C60003FFA3 /* PGPredictElseEmptyTemplate.txt */,
+				D31BBCB618E482C60003FFA3 /* PGElseEmptyTemplate.txt */,
 				D3B63A4E170918E700BA9DBF /* PGPredictEndIfTemplate.txt */,
 				D3B22A431702993B00446945 /* PGOptionalSpeculateTemplate.txt */,
 				D3B63A76170A460800BA9DBF /* PGOptionalPredictTemplate.txt */,
@@ -1650,7 +1650,7 @@
 				D338309B171CA3BB00CCE513 /* PGSemanticPredicateTestStatTemplate.txt in Resources */,
 				D338309C171CA3BB00CCE513 /* PGSemanticPredicateTestAndThrowExprTemplate.txt in Resources */,
 				D338309D171CA3BB00CCE513 /* PGSemanticPredicateTestAndThrowStatTemplate.txt in Resources */,
-				D31BBCC118E4B4430003FFA3 /* PGPredictElseEmptyTemplate.txt in Resources */,
+				D31BBCC118E4B4430003FFA3 /* PGElseEmptyTemplate.txt in Resources */,
 				D338309E171CA3BB00CCE513 /* PGPredictIfTemplate.txt in Resources */,
 				D338309F171CA3BB00CCE513 /* PGSpeculateIfTemplate.txt in Resources */,
 				D33830A0171CA3BB00CCE513 /* PGPredictElseIfTemplate.txt in Resources */,
@@ -1684,7 +1684,7 @@
 			files = (
 				D37D8E361571A5A200CDB822 /* css.grammar in Resources */,
 				D37D8E391571A5A200CDB822 /* html.grammar in Resources */,
-				D31BBCB718E482C60003FFA3 /* PGPredictElseEmptyTemplate.txt in Resources */,
+				D31BBCB718E482C60003FFA3 /* PGElseEmptyTemplate.txt in Resources */,
 				D37D8E3D1571A5A200CDB822 /* json_with_comments.grammar in Resources */,
 				D37D8E451571A5A200CDB822 /* javascript.grammar in Resources */,
 				D337F07E15D5AE7B00C83AED /* InfoPlist.strings in Resources */,

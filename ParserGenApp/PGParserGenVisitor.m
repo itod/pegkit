@@ -733,7 +733,7 @@
 
         NSString *templateName = nil;
         if (isEmpty) {
-            templateName = @"PGPredictElseEmptyTemplate";
+            templateName = @"PGElseEmptyTemplate";
         } else {
             // cannot test `idx` here to determine `if` vs `else` due to possible Empty child borking `idx`
             templateName = [result length] ? @"PGPredictElseIfTemplate" : @"PGPredictIfTemplate";
@@ -797,7 +797,7 @@
         
         NSString *templateName = nil;
         if (isEmpty) {
-            templateName = @"PGPredictElseEmptyTemplate";
+            templateName = @"PGElseEmptyTemplate";
         } else {
             // cannot test `idx` here to determine `if` vs `else` due to possible Empty child borking `idx`
             templateName = [result length] ? @"PGSpeculateElseIfTemplate" : @"PGSpeculateIfTemplate";
