@@ -131,6 +131,23 @@
 		D31BBCBD18E4AAE20003FFA3 /* TableIndexParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCBC18E4AAE20003FFA3 /* TableIndexParserTest.m */; };
 		D31BBCC018E4AAFC0003FFA3 /* TableIndexParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCBF18E4AAFC0003FFA3 /* TableIndexParser.m */; };
 		D31BBCC118E4B4430003FFA3 /* PGPredictElseEmptyTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D31BBCB618E482C60003FFA3 /* PGPredictElseEmptyTemplate.txt */; };
+		D31BBCC418E4E7B50003FFA3 /* CreateTableParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCC318E4E7B50003FFA3 /* CreateTableParser.m */; };
+		D31BBCED18E4F1EF0003FFA3 /* TDReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCD318E4F1EF0003FFA3 /* TDReaderTest.m */; };
+		D31BBCF018E4F1EF0003FFA3 /* TDTokenizerBlocksTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCD918E4F1EF0003FFA3 /* TDTokenizerBlocksTest.m */; };
+		D31BBCF118E4F1EF0003FFA3 /* TDTokenizerStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCDB18E4F1EF0003FFA3 /* TDTokenizerStateTest.m */; };
+		D31BBCF218E4F1EF0003FFA3 /* TDTokenizerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCDD18E4F1EF0003FFA3 /* TDTokenizerTest.m */; };
+		D31BBCFD18E4F4FE0003FFA3 /* TDCommentStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCC918E4F1EF0003FFA3 /* TDCommentStateTest.m */; };
+		D31BBCFE18E4F4FE0003FFA3 /* TDDelimitStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCCB18E4F1EF0003FFA3 /* TDDelimitStateTest.m */; };
+		D31BBCFF18E4F4FE0003FFA3 /* testSlashSlashEscapeBackslashFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = D31BBCFB18E4F3240003FFA3 /* testSlashSlashEscapeBackslashFile.txt */; };
+		D31BBD0018E4F4FE0003FFA3 /* TDEmailStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCCD18E4F1EF0003FFA3 /* TDEmailStateTest.m */; };
+		D31BBD0118E4F4FE0003FFA3 /* TDNumberStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCCF18E4F1EF0003FFA3 /* TDNumberStateTest.m */; };
+		D31BBD0218E4F5140003FFA3 /* TDQuoteStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCD118E4F1EF0003FFA3 /* TDQuoteStateTest.m */; };
+		D31BBD0318E4F5140003FFA3 /* TDScientificNumberStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCD518E4F1EF0003FFA3 /* TDScientificNumberStateTest.m */; };
+		D31BBD0418E4F5140003FFA3 /* TDSymbolStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCD718E4F1EF0003FFA3 /* TDSymbolStateTest.m */; };
+		D31BBD0518E4F5140003FFA3 /* TDTwitterStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE118E4F1EF0003FFA3 /* TDTwitterStateTest.m */; };
+		D31BBD0618E4F52D0003FFA3 /* TDWhitespaceStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE518E4F1EF0003FFA3 /* TDWhitespaceStateTest.m */; };
+		D31BBD0718E4F53F0003FFA3 /* TDWordStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE718E4F1EF0003FFA3 /* TDWordStateTest.m */; };
+		D31BBD0818E4F5570003FFA3 /* TDURLStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE318E4F1EF0003FFA3 /* TDURLStateTest.m */; };
 		D31C40A51779634700A1B8B7 /* JavaScriptWhitespaceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C40A41779634700A1B8B7 /* JavaScriptWhitespaceParser.m */; };
 		D3344F4917405B4B00598362 /* JSRecoveryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3344F4817405B4B00598362 /* JSRecoveryTest.m */; };
 		D337F07E15D5AE7B00C83AED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D337F07C15D5AE7B00C83AED /* InfoPlist.strings */; };
@@ -504,6 +521,24 @@
 		D31BBCBC18E4AAE20003FFA3 /* TableIndexParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableIndexParserTest.m; path = test/TableIndexParserTest.m; sourceTree = "<group>"; };
 		D31BBCBE18E4AAFC0003FFA3 /* TableIndexParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableIndexParser.h; path = test/TableIndexParser.h; sourceTree = "<group>"; };
 		D31BBCBF18E4AAFC0003FFA3 /* TableIndexParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableIndexParser.m; path = test/TableIndexParser.m; sourceTree = "<group>"; };
+		D31BBCC218E4E7B50003FFA3 /* CreateTableParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTableParser.h; path = ../../../Desktop/CreateTableParser.h; sourceTree = "<group>"; };
+		D31BBCC318E4E7B50003FFA3 /* CreateTableParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTableParser.m; path = ../../../Desktop/CreateTableParser.m; sourceTree = "<group>"; };
+		D31BBCC918E4F1EF0003FFA3 /* TDCommentStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDCommentStateTest.m; path = test/TDCommentStateTest.m; sourceTree = "<group>"; };
+		D31BBCCB18E4F1EF0003FFA3 /* TDDelimitStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDDelimitStateTest.m; path = test/TDDelimitStateTest.m; sourceTree = "<group>"; };
+		D31BBCCD18E4F1EF0003FFA3 /* TDEmailStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDEmailStateTest.m; path = test/TDEmailStateTest.m; sourceTree = "<group>"; };
+		D31BBCCF18E4F1EF0003FFA3 /* TDNumberStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDNumberStateTest.m; path = test/TDNumberStateTest.m; sourceTree = "<group>"; };
+		D31BBCD118E4F1EF0003FFA3 /* TDQuoteStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDQuoteStateTest.m; path = test/TDQuoteStateTest.m; sourceTree = "<group>"; };
+		D31BBCD318E4F1EF0003FFA3 /* TDReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDReaderTest.m; path = test/TDReaderTest.m; sourceTree = "<group>"; };
+		D31BBCD518E4F1EF0003FFA3 /* TDScientificNumberStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDScientificNumberStateTest.m; path = test/TDScientificNumberStateTest.m; sourceTree = "<group>"; };
+		D31BBCD718E4F1EF0003FFA3 /* TDSymbolStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDSymbolStateTest.m; path = test/TDSymbolStateTest.m; sourceTree = "<group>"; };
+		D31BBCD918E4F1EF0003FFA3 /* TDTokenizerBlocksTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTokenizerBlocksTest.m; path = test/TDTokenizerBlocksTest.m; sourceTree = "<group>"; };
+		D31BBCDB18E4F1EF0003FFA3 /* TDTokenizerStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTokenizerStateTest.m; path = test/TDTokenizerStateTest.m; sourceTree = "<group>"; };
+		D31BBCDD18E4F1EF0003FFA3 /* TDTokenizerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTokenizerTest.m; path = test/TDTokenizerTest.m; sourceTree = "<group>"; };
+		D31BBCE118E4F1EF0003FFA3 /* TDTwitterStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTwitterStateTest.m; path = test/TDTwitterStateTest.m; sourceTree = "<group>"; };
+		D31BBCE318E4F1EF0003FFA3 /* TDURLStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDURLStateTest.m; path = test/TDURLStateTest.m; sourceTree = "<group>"; };
+		D31BBCE518E4F1EF0003FFA3 /* TDWhitespaceStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDWhitespaceStateTest.m; path = test/TDWhitespaceStateTest.m; sourceTree = "<group>"; };
+		D31BBCE718E4F1EF0003FFA3 /* TDWordStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDWordStateTest.m; path = test/TDWordStateTest.m; sourceTree = "<group>"; };
+		D31BBCFB18E4F3240003FFA3 /* testSlashSlashEscapeBackslashFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testSlashSlashEscapeBackslashFile.txt; path = res/testSlashSlashEscapeBackslashFile.txt; sourceTree = "<group>"; };
 		D31C40A41779634700A1B8B7 /* JavaScriptWhitespaceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaScriptWhitespaceParser.m; path = test/JavaScriptWhitespaceParser.m; sourceTree = "<group>"; };
 		D3344F4817405B4B00598362 /* JSRecoveryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSRecoveryTest.m; path = test/JSRecoveryTest.m; sourceTree = "<group>"; };
 		D33724D816FA62D400D30459 /* PKDelimitDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKDelimitDescriptor.h; path = src/PKDelimitDescriptor.h; sourceTree = SOURCE_ROOT; };
@@ -888,6 +923,7 @@
 				D30227241702090400594F16 /*  Categories */,
 			);
 			name = MGTemplateEngine;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		D3022721170208ED00594F16 /* Markers */ = {
@@ -931,6 +967,81 @@
 				D3022714170208C800594F16 /* NSDictionary_DeepMutableCopy.m */,
 			);
 			name = " Categories";
+			sourceTree = "<group>";
+		};
+		D31BBCC618E4F1A50003FFA3 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D31BBCBC18E4AAE20003FFA3 /* TableIndexParserTest.m */,
+				D31BBCAF18E4722F0003FFA3 /* CreateTableStmtParserTest.m */,
+				D3B5EA831747518600733A26 /* GreedyFailureNestedParserTest.m */,
+				D3B5EA7B17470F5600733A26 /* GreedyFailureParserTest.m */,
+				D34F53A617430232008700F3 /* CrockfordParserTest.m */,
+				D3344F4817405B4B00598362 /* JSRecoveryTest.m */,
+				D30DA1921726028500A1A3EC /* RecoveryResyncSetTest.m */,
+				D30DA18C1725BB5700A1A3EC /* RecoverySingleTokenInsertionTest.m */,
+				D30DA1891725B6A800A1A3EC /* RecoverySingleTokenDeletionTest.m */,
+				D30DA1791724ADE700A1A3EC /* JSONParserTest.m */,
+				D36E68BE1720C83C007B4353 /* HTMLParserTest.m */,
+				D36E68B8172074EF007B4353 /* CSSParserTest.m */,
+				D36E68B2171F378B007B4353 /* JavaScriptParserTest.m */,
+				D33830CD171DBEE200CCE513 /* NamedActionParserTest.m */,
+				D38BC8B5171600A900BF530D /* SemanticPredicateParserTest.m */,
+				D38BC8A51714A78800BF530D /* UnfinishedSeqParserTest.m */,
+				D38BC892171494CE00BF530D /* GreedParserTest.m */,
+				D30B8F64170D0EAF001796F4 /* PatternParserTest.m */,
+				D38BC8A81714AF1B00BF530D /* DotQuestionParserTest.m */,
+				D30B8F58170CFFFD001796F4 /* DelimitedParserTest.m */,
+				D30B8F52170CFF2A001796F4 /* PEGKitParserTest.m */,
+				D30B8F3F170CA59A001796F4 /* DreadedParserTest.m */,
+				D3B63A81170A671C00BA9DBF /* AltParserTest.m */,
+				D3B63A7E170A560500BA9DBF /* MultipleParserTest.m */,
+				D3B63A6F170A3F7700BA9DBF /* OptionalParserTest.m */,
+				D30B8F49170CFAAD001796F4 /* NegationParserTest.m */,
+				D3B63A5D170A04C700BA9DBF /* LabelRecursiveParserTest.m */,
+				D3B63A60170A050700BA9DBF /* LabelEBNFParserTest.m */,
+				D3B63A571709F89F00BA9DBF /* MiniMathParserTest.m */,
+				D317C1B718D206890036BE75 /* MiniMath2ParserTest.m */,
+				D3B63A4C1709155D00BA9DBF /* MethodsFactoredParserTest.m */,
+				D3B63A41170910D100BA9DBF /* MethodsParserTest.m */,
+				D3B22A5C1703DA8000446945 /* ElementParserTest.m */,
+				D3083AB81705F09B00DA6F95 /* ElementAssignParserTest.m */,
+				D3B22A611703DE2000446945 /* ExpressionParserTest.m */,
+				D3B63A3317079F5100BA9DBF /* ExpressionParserActionsTest.m */,
+				D3B63A89170A6B5800BA9DBF /* TDNSPredicateParserTest.m */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		D31BBCC718E4F1E00003FFA3 /* Tokenizer Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D31BBCD318E4F1EF0003FFA3 /* TDReaderTest.m */,
+				D31BBCDD18E4F1EF0003FFA3 /* TDTokenizerTest.m */,
+				D31BBCDB18E4F1EF0003FFA3 /* TDTokenizerStateTest.m */,
+				D31BBCD918E4F1EF0003FFA3 /* TDTokenizerBlocksTest.m */,
+				D31BBCF818E4F2290003FFA3 /* Tokenizer State Tests */,
+			);
+			name = "Tokenizer Tests";
+			sourceTree = "<group>";
+		};
+		D31BBCF818E4F2290003FFA3 /* Tokenizer State Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D31BBCC918E4F1EF0003FFA3 /* TDCommentStateTest.m */,
+				D31BBCCB18E4F1EF0003FFA3 /* TDDelimitStateTest.m */,
+				D31BBCFB18E4F3240003FFA3 /* testSlashSlashEscapeBackslashFile.txt */,
+				D31BBCCD18E4F1EF0003FFA3 /* TDEmailStateTest.m */,
+				D31BBCCF18E4F1EF0003FFA3 /* TDNumberStateTest.m */,
+				D31BBCD118E4F1EF0003FFA3 /* TDQuoteStateTest.m */,
+				D31BBCD518E4F1EF0003FFA3 /* TDScientificNumberStateTest.m */,
+				D31BBCD718E4F1EF0003FFA3 /* TDSymbolStateTest.m */,
+				D31BBCE118E4F1EF0003FFA3 /* TDTwitterStateTest.m */,
+				D31BBCE318E4F1EF0003FFA3 /* TDURLStateTest.m */,
+				D31BBCE518E4F1EF0003FFA3 /* TDWhitespaceStateTest.m */,
+				D31BBCE718E4F1EF0003FFA3 /* TDWordStateTest.m */,
+			);
+			name = "Tokenizer State Tests";
 			sourceTree = "<group>";
 		};
 		D324B77D16F8C892005FE823 /* ast */ = {
@@ -995,6 +1106,8 @@
 				D3383043171C923700CCE513 /* PGDocument.h */,
 				D3383044171C923700CCE513 /* PGDocument.m */,
 				D3383046171C923700CCE513 /* PGDocument.xib */,
+				D3B22A571703D03F00446945 /* PGTemplates */,
+				D3022704170208BB00594F16 /* MGTemplateEngine */,
 				D3A1492A16F8C79600770DEE /* visitor */,
 				D325FFBC161E4E3200D4EBCC /* ast */,
 				D34BAC0F0FF87ED200D7773A /* factory */,
@@ -1183,11 +1296,14 @@
 				D30B8F4D170CFBCC001796F4 /* PGNegationPredictTemplate.txt */,
 			);
 			name = PGTemplates;
+			path = ..;
 			sourceTree = "<group>";
 		};
-		D3B22A581703D07000446945 /* Language Parsers */ = {
+		D3B22A581703D07000446945 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				D31BBCC218E4E7B50003FFA3 /* CreateTableParser.h */,
+				D31BBCC318E4E7B50003FFA3 /* CreateTableParser.m */,
 				D31BBCBE18E4AAFC0003FFA3 /* TableIndexParser.h */,
 				D31BBCBF18E4AAFC0003FFA3 /* TableIndexParser.m */,
 				D31BBCB118E4725F0003FFA3 /* CreateTableStmtParser.h */,
@@ -1255,51 +1371,17 @@
 				D3B63A8B170A6BB100BA9DBF /* TDNSPredicateParser.h */,
 				D3B63A8C170A6BB600BA9DBF /* TDNSPredicateParser.m */,
 			);
-			name = "Language Parsers";
+			name = Parsers;
 			sourceTree = "<group>";
 		};
-		D3B22A591703D08B00446945 /* Tests */ = {
+		D3B22A591703D08B00446945 /* Language Parser Tests */ = {
 			isa = PBXGroup;
 			children = (
-				D31BBCBC18E4AAE20003FFA3 /* TableIndexParserTest.m */,
-				D31BBCAF18E4722F0003FFA3 /* CreateTableStmtParserTest.m */,
-				D3B5EA831747518600733A26 /* GreedyFailureNestedParserTest.m */,
-				D3B5EA7B17470F5600733A26 /* GreedyFailureParserTest.m */,
-				D34F53A617430232008700F3 /* CrockfordParserTest.m */,
-				D3344F4817405B4B00598362 /* JSRecoveryTest.m */,
-				D30DA1921726028500A1A3EC /* RecoveryResyncSetTest.m */,
-				D30DA18C1725BB5700A1A3EC /* RecoverySingleTokenInsertionTest.m */,
-				D30DA1891725B6A800A1A3EC /* RecoverySingleTokenDeletionTest.m */,
-				D30DA1791724ADE700A1A3EC /* JSONParserTest.m */,
-				D36E68BE1720C83C007B4353 /* HTMLParserTest.m */,
-				D36E68B8172074EF007B4353 /* CSSParserTest.m */,
-				D36E68B2171F378B007B4353 /* JavaScriptParserTest.m */,
-				D33830CD171DBEE200CCE513 /* NamedActionParserTest.m */,
-				D38BC8B5171600A900BF530D /* SemanticPredicateParserTest.m */,
-				D38BC8A51714A78800BF530D /* UnfinishedSeqParserTest.m */,
-				D38BC892171494CE00BF530D /* GreedParserTest.m */,
-				D30B8F64170D0EAF001796F4 /* PatternParserTest.m */,
-				D38BC8A81714AF1B00BF530D /* DotQuestionParserTest.m */,
-				D30B8F58170CFFFD001796F4 /* DelimitedParserTest.m */,
-				D30B8F52170CFF2A001796F4 /* PEGKitParserTest.m */,
-				D30B8F3F170CA59A001796F4 /* DreadedParserTest.m */,
-				D3B63A81170A671C00BA9DBF /* AltParserTest.m */,
-				D3B63A7E170A560500BA9DBF /* MultipleParserTest.m */,
-				D3B63A6F170A3F7700BA9DBF /* OptionalParserTest.m */,
-				D30B8F49170CFAAD001796F4 /* NegationParserTest.m */,
-				D3B63A5D170A04C700BA9DBF /* LabelRecursiveParserTest.m */,
-				D3B63A60170A050700BA9DBF /* LabelEBNFParserTest.m */,
-				D3B63A571709F89F00BA9DBF /* MiniMathParserTest.m */,
-				D317C1B718D206890036BE75 /* MiniMath2ParserTest.m */,
-				D3B63A4C1709155D00BA9DBF /* MethodsFactoredParserTest.m */,
-				D3B63A41170910D100BA9DBF /* MethodsParserTest.m */,
-				D3B22A5C1703DA8000446945 /* ElementParserTest.m */,
-				D3083AB81705F09B00DA6F95 /* ElementAssignParserTest.m */,
-				D3B22A611703DE2000446945 /* ExpressionParserTest.m */,
-				D3B63A3317079F5100BA9DBF /* ExpressionParserActionsTest.m */,
-				D3B63A89170A6B5800BA9DBF /* TDNSPredicateParserTest.m */,
+				D3B22A5A1703D09C00446945 /* Grammars */,
+				D31BBCC618E4F1A50003FFA3 /* Tests */,
+				D3B22A581703D07000446945 /* Parsers */,
 			);
-			name = Tests;
+			name = "Language Parser Tests";
 			sourceTree = "<group>";
 		};
 		D3B22A5A1703D09C00446945 /* Grammars */ = {
@@ -1346,11 +1428,8 @@
 			children = (
 				D37214D318DFB4F800525058 /* TDTestScaffold.h */,
 				D306298118E1ED5D00EF745E /* TDTestScaffold.m */,
-				D3022704170208BB00594F16 /* MGTemplateEngine */,
-				D3B22A571703D03F00446945 /* PGTemplates */,
-				D3B22A591703D08B00446945 /* Tests */,
-				D3B22A5A1703D09C00446945 /* Grammars */,
-				D3B22A581703D07000446945 /* Language Parsers */,
+				D31BBCC718E4F1E00003FFA3 /* Tokenizer Tests */,
+				D3B22A591703D08B00446945 /* Language Parser Tests */,
 				D37D8DD11571A4F700CDB822 /* Supporting Files */,
 			);
 			name = "PEGKit Tests";
@@ -1639,6 +1718,7 @@
 				D338307A171CA3BA00CCE513 /* PGMatchDelimitedStringTemplate.txt in Resources */,
 				D338307B171CA3BA00CCE513 /* PGPatternPrefixTemplate.txt in Resources */,
 				D338307C171CA3BA00CCE513 /* PGMatchPatternTemplate.txt in Resources */,
+				D31BBCFF18E4F4FE0003FFA3 /* testSlashSlashEscapeBackslashFile.txt in Resources */,
 				D338307D171CA3BA00CCE513 /* PGSemanticPredicateTestExprTemplate.txt in Resources */,
 				D338307E171CA3BA00CCE513 /* PGSemanticPredicateTestStatTemplate.txt in Resources */,
 				D338307F171CA3BA00CCE513 /* PGSemanticPredicateTestAndThrowExprTemplate.txt in Resources */,
@@ -1812,12 +1892,16 @@
 			files = (
 				D376F6DE18D0B5020064C888 /* PGParserFactory.m in Sources */,
 				D3B22A521702B04300446945 /* ElementParser.m in Sources */,
+				D31BBD0318E4F5140003FFA3 /* TDScientificNumberStateTest.m in Sources */,
 				D376F6D318D0B3990064C888 /* PGMultipleNode.m in Sources */,
+				D31BBCF018E4F1EF0003FFA3 /* TDTokenizerBlocksTest.m in Sources */,
 				D3B22A561703D03900446945 /* ExpressionParser.m in Sources */,
 				D3B22A5D1703DA8000446945 /* ElementParserTest.m in Sources */,
+				D31BBCF118E4F1EF0003FFA3 /* TDTokenizerStateTest.m in Sources */,
 				D376F6C518D0B3990064C888 /* PGBaseNode.m in Sources */,
 				D3B22A621703DE2000446945 /* ExpressionParserTest.m in Sources */,
 				D3083AB91705F09B00DA6F95 /* ElementAssignParserTest.m in Sources */,
+				D31BBD0118E4F4FE0003FFA3 /* TDNumberStateTest.m in Sources */,
 				D3083ABC1705F16000DA6F95 /* ElementAssignParser.m in Sources */,
 				D3B63A3417079F5200BA9DBF /* ExpressionParserActionsTest.m in Sources */,
 				D3B63A3917079FE100BA9DBF /* ExpressionActionsParser.m in Sources */,
@@ -1827,6 +1911,7 @@
 				D3B63A42170910D100BA9DBF /* MethodsParserTest.m in Sources */,
 				D376F6F318D0B5190064C888 /* PGTokenKindDescriptor.m in Sources */,
 				D3B63A451709111A00BA9DBF /* MethodsParser.m in Sources */,
+				D31BBD0518E4F5140003FFA3 /* TDTwitterStateTest.m in Sources */,
 				D3B63A4A1709155900BA9DBF /* MethodsFactoredParser.m in Sources */,
 				D3B63A4D1709155D00BA9DBF /* MethodsFactoredParserTest.m in Sources */,
 				D3B63A581709F8A000BA9DBF /* MiniMathParserTest.m in Sources */,
@@ -1835,14 +1920,18 @@
 				D3B63A61170A050800BA9DBF /* LabelEBNFParserTest.m in Sources */,
 				D3B63A68170A064300BA9DBF /* LabelRecursiveParser.m in Sources */,
 				D376F6CB18D0B3990064C888 /* PGConstantNode.m in Sources */,
+				D31BBD0218E4F5140003FFA3 /* TDQuoteStateTest.m in Sources */,
 				D3B63A6B170A065700BA9DBF /* LabelEBNFParser.m in Sources */,
 				D3B63A70170A3F7900BA9DBF /* OptionalParserTest.m in Sources */,
 				D376F6E218D0B5090064C888 /* PEGKitParser.m in Sources */,
+				D31BBD0418E4F5140003FFA3 /* TDSymbolStateTest.m in Sources */,
 				D3B63A75170A3FF000BA9DBF /* OptionalParser.m in Sources */,
 				D3B63A7C170A55DE00BA9DBF /* MultipleParser.m in Sources */,
 				D376F6C918D0B3990064C888 /* PGCompositeNode.m in Sources */,
 				D3B63A7F170A560900BA9DBF /* MultipleParserTest.m in Sources */,
 				D3B63A82170A671F00BA9DBF /* AltParserTest.m in Sources */,
+				D31BBD0618E4F52D0003FFA3 /* TDWhitespaceStateTest.m in Sources */,
+				D31BBCFD18E4F4FE0003FFA3 /* TDCommentStateTest.m in Sources */,
 				D3B63A87170A676A00BA9DBF /* AltParser.m in Sources */,
 				D3B63A8A170A6B5C00BA9DBF /* TDNSPredicateParserTest.m in Sources */,
 				D376F6CD18D0B3990064C888 /* PGDefinitionNode.m in Sources */,
@@ -1866,6 +1955,7 @@
 				D317C1B818D206890036BE75 /* MiniMath2ParserTest.m in Sources */,
 				D38BC8B11716006D00BF530D /* SemanticPredicateParser.m in Sources */,
 				D38BC8B6171600A900BF530D /* SemanticPredicateParserTest.m in Sources */,
+				D31BBD0818E4F5570003FFA3 /* TDURLStateTest.m in Sources */,
 				D31BBCC018E4AAFC0003FFA3 /* TableIndexParser.m in Sources */,
 				D376F6EF18D0B5190064C888 /* PGDefinitionPhaseVisitor.m in Sources */,
 				D376F6D518D0B3990064C888 /* PGOptionalNode.m in Sources */,
@@ -1881,16 +1971,20 @@
 				D33830CB171DBEB100CCE513 /* NamedActionParser.m in Sources */,
 				D31BBCB318E4725F0003FFA3 /* CreateTableStmtParser.m in Sources */,
 				D33830CE171DBEE200CCE513 /* NamedActionParserTest.m in Sources */,
+				D31BBD0718E4F53F0003FFA3 /* TDWordStateTest.m in Sources */,
 				D36E68B3171F378B007B4353 /* JavaScriptParserTest.m in Sources */,
 				D36E68B6171F37D7007B4353 /* JavaScriptParser.m in Sources */,
+				D31BBCC418E4E7B50003FFA3 /* CreateTableParser.m in Sources */,
 				D376F6C718D0B3990064C888 /* PGCollectionNode.m in Sources */,
 				D36E68B9172074EF007B4353 /* CSSParserTest.m in Sources */,
 				D376F6CF18D0B3990064C888 /* PGDelimitedNode.m in Sources */,
+				D31BBD0018E4F4FE0003FFA3 /* TDEmailStateTest.m in Sources */,
 				D36E68BC17207542007B4353 /* CSSParser.m in Sources */,
 				D306298218E1ED5D00EF745E /* TDTestScaffold.m in Sources */,
 				D36E68BF1720C840007B4353 /* HTMLParserTest.m in Sources */,
 				D36E68C21720C84F007B4353 /* HTMLParser.m in Sources */,
 				D376F6D918D0B3990064C888 /* PGReferenceNode.m in Sources */,
+				D31BBCF218E4F1EF0003FFA3 /* TDTokenizerTest.m in Sources */,
 				D30DA1771724AD0100A1A3EC /* JSONParser.m in Sources */,
 				D30DA17A1724ADE700A1A3EC /* JSONParserTest.m in Sources */,
 				D30DA18A1725B6A800A1A3EC /* RecoverySingleTokenDeletionTest.m in Sources */,
@@ -1898,12 +1992,14 @@
 				D376F6DB18D0B3990064C888 /* PGRootNode.m in Sources */,
 				D376F6D718D0B3990064C888 /* PGPatternNode.m in Sources */,
 				D30DA1931726028500A1A3EC /* RecoveryResyncSetTest.m in Sources */,
+				D31BBCFE18E4F4FE0003FFA3 /* TDDelimitStateTest.m in Sources */,
 				D3344F4917405B4B00598362 /* JSRecoveryTest.m in Sources */,
 				D34F53A717430232008700F3 /* CrockfordParserTest.m in Sources */,
 				D34F53AC17430249008700F3 /* CrockfordParser.m in Sources */,
 				D3B5EA7717470F4F00733A26 /* GreedyFailureParser.m in Sources */,
 				D3B5EA7C17470F5600733A26 /* GreedyFailureParserTest.m in Sources */,
 				D376F6C318D0B3990064C888 /* PGAlternationNode.m in Sources */,
+				D31BBCED18E4F1EF0003FFA3 /* TDReaderTest.m in Sources */,
 				D3B5EA811747515D00733A26 /* GreedyFailureNestedParser.m in Sources */,
 				D3B5EA841747518600733A26 /* GreedyFailureNestedParserTest.m in Sources */,
 				D31C40A51779634700A1B8B7 /* JavaScriptWhitespaceParser.m in Sources */,
