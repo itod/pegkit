@@ -364,6 +364,8 @@
 		D3D48D8218E5B484001B54E9 /* TableIndexSpecParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D48D8118E5B484001B54E9 /* TableIndexSpecParserTest.m */; };
 		D3D48D8518E5B500001B54E9 /* TableIndexSpecParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D48D8418E5B500001B54E9 /* TableIndexSpecParser.m */; };
 		D3D48D8718E5BCFC001B54E9 /* curly_action.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3D48D8618E5BCFC001B54E9 /* curly_action.grammar */; };
+		D3D48D8A18E5BFD3001B54E9 /* CurlyActionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D48D8918E5BFD3001B54E9 /* CurlyActionParser.m */; };
+		D3D48D8C18E5BFFF001B54E9 /* CurlyActionParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D48D8B18E5BFFF001B54E9 /* CurlyActionParserTest.m */; };
 		D3E9B2CD1891714100AC0974 /* PKAST.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DAC2173C645C00A5E050 /* PKAST.m */; };
 		D3E9B2CE1891714400AC0974 /* PKAST.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A1492816F8C6BD00770DEE /* PKAST.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3F8A40E175817DF00056188 /* NSArray+PEGKitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D34BAFD30FF9E95500D7773A /* NSArray+PEGKitAdditions.h */; };
@@ -788,6 +790,9 @@
 		D3D48D8318E5B500001B54E9 /* TableIndexSpecParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableIndexSpecParser.h; path = test/TableIndexSpecParser.h; sourceTree = "<group>"; };
 		D3D48D8418E5B500001B54E9 /* TableIndexSpecParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableIndexSpecParser.m; path = test/TableIndexSpecParser.m; sourceTree = "<group>"; };
 		D3D48D8618E5BCFC001B54E9 /* curly_action.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = curly_action.grammar; path = res/curly_action.grammar; sourceTree = "<group>"; };
+		D3D48D8818E5BFD3001B54E9 /* CurlyActionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurlyActionParser.h; path = test/CurlyActionParser.h; sourceTree = "<group>"; };
+		D3D48D8918E5BFD3001B54E9 /* CurlyActionParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurlyActionParser.m; path = test/CurlyActionParser.m; sourceTree = "<group>"; };
+		D3D48D8B18E5BFFF001B54E9 /* CurlyActionParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurlyActionParserTest.m; path = test/CurlyActionParserTest.m; sourceTree = "<group>"; };
 		D3F0E2470FFE8EB900C9DF74 /* PKQuoteState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKQuoteState.h; path = include/PEGKit/PKQuoteState.h; sourceTree = SOURCE_ROOT; };
 		D3F8A48D175817DF00056188 /* PEGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PEGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F8A4921758187300056188 /* PEGKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PEGKit-Info.plist"; path = "res/PEGKit-Info.plist"; sourceTree = "<group>"; };
@@ -978,6 +983,7 @@
 		D31BBCC618E4F1A50003FFA3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D3D48D8B18E5BFFF001B54E9 /* CurlyActionParserTest.m */,
 				D31BBCBC18E4AAE20003FFA3 /* TableIndexParserTest.m */,
 				D3D48D8118E5B484001B54E9 /* TableIndexSpecParserTest.m */,
 				D31BBCAF18E4722F0003FFA3 /* CreateTableStmtParserTest.m */,
@@ -1309,6 +1315,8 @@
 		D3B22A581703D07000446945 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				D3D48D8818E5BFD3001B54E9 /* CurlyActionParser.h */,
+				D3D48D8918E5BFD3001B54E9 /* CurlyActionParser.m */,
 				D31BBCBE18E4AAFC0003FFA3 /* TableIndexParser.h */,
 				D31BBCBF18E4AAFC0003FFA3 /* TableIndexParser.m */,
 				D3D48D8318E5B500001B54E9 /* TableIndexSpecParser.h */,
@@ -1954,6 +1962,7 @@
 				D30B8F4A170CFAAD001796F4 /* NegationParserTest.m in Sources */,
 				D30B8F53170CFF2B001796F4 /* PEGKitParserTest.m in Sources */,
 				D30B8F59170CFFFE001796F4 /* DelimitedParserTest.m in Sources */,
+				D3D48D8C18E5BFFF001B54E9 /* CurlyActionParserTest.m in Sources */,
 				D30B8F5E170D001E001796F4 /* DelimitedParser.m in Sources */,
 				D30B8F65170D0EB0001796F4 /* PatternParserTest.m in Sources */,
 				D30B8F6A170D0EEB001796F4 /* PatternParser.m in Sources */,
@@ -1997,6 +2006,7 @@
 				D376F6D918D0B3990064C888 /* PGReferenceNode.m in Sources */,
 				D31BBCF218E4F1EF0003FFA3 /* TDTokenizerTest.m in Sources */,
 				D30DA1771724AD0100A1A3EC /* JSONParser.m in Sources */,
+				D3D48D8A18E5BFD3001B54E9 /* CurlyActionParser.m in Sources */,
 				D30DA17A1724ADE700A1A3EC /* JSONParserTest.m in Sources */,
 				D30DA18A1725B6A800A1A3EC /* RecoverySingleTokenDeletionTest.m in Sources */,
 				D30DA18D1725BB5700A1A3EC /* RecoverySingleTokenInsertionTest.m in Sources */,

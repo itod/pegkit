@@ -1,4 +1,5 @@
-start = Word+ {
+start = Word+
+{
     while (!EMPTY()) {
         id word = POP_STR();
         LOG(word);
