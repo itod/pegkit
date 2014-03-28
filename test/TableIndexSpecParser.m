@@ -152,21 +152,7 @@
 
 - (void)indexOpt_ {
     
-    if ([self predicts:TABLEINDEXSPEC_TOKEN_KIND_INDEXED, TABLEINDEXSPEC_TOKEN_KIND_NOT_UPPER, 0]) {
-        [self index_]; 
-    } else {
-        [self matchEmpty:NO]; 
-        [self execute:(id)^{
-         PUSH(@""); 
-        }];
-    }
-
-    [self fireDelegateSelector:@selector(parser:didMatchIndexOpt:)];
-}
-
-- (void)index_ {
-    
-    if ([self predicts:TABLEINDEXSPEC_TOKEN_KIND_INDEXED, 0]) {
+    if ([self speculate:^{ [self match:TABLEINDEXSPEC_TOKEN_KIND_INDEXED discard:YES]; [self match:TABLEINDEXSPEC_TOKEN_KIND_BY discard:YES]; [self indexName_]; }]) {
         [self match:TABLEINDEXSPEC_TOKEN_KIND_INDEXED discard:YES]; 
         [self match:TABLEINDEXSPEC_TOKEN_KIND_BY discard:YES]; 
         [self indexName_]; 
@@ -177,17 +163,15 @@
         PUSH(indexName);
     
         }];
-    } else if ([self predicts:TABLEINDEXSPEC_TOKEN_KIND_NOT_UPPER, 0]) {
-        [self match:TABLEINDEXSPEC_TOKEN_KIND_NOT_UPPER discard:YES]; 
+    } else if ([self speculate:^{ [self match:TABLEINDEXSPEC_TOKEN_KIND_INDEXED discard:YES]; [self match:TABLEINDEXSPEC_TOKEN_KIND_NOT_UPPER discard:YES]; }]) {
         [self match:TABLEINDEXSPEC_TOKEN_KIND_INDEXED discard:YES]; 
+        [self match:TABLEINDEXSPEC_TOKEN_KIND_NOT_UPPER discard:YES]; 
         [self execute:(id)^{
          PUSH(@""); 
         }];
-    } else {
-        [self raise:@"No viable alternative found in rule 'index'."];
     }
 
-    [self fireDelegateSelector:@selector(parser:didMatchIndex:)];
+    [self fireDelegateSelector:@selector(parser:didMatchIndexOpt:)];
 }
 
 @end

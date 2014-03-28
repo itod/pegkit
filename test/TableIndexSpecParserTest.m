@@ -84,4 +84,28 @@
     TDEqualObjects(TDAssembly(@"[mydb, mytable, foo]mydb/./mytable/INDEXED/BY/'foo'^"), [res description]);
 }
 
+
+- (void)testDbTableIndexNot {
+    NSString *s = @"mydb.mytable INDEXED NOT";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+
+    // note empty str on top of stack
+    TDEqualObjects(TDAssembly(@"[mydb, mytable, ]mydb/./mytable/INDEXED/NOT^"), [res description]);
+}
+
+
+- (void)testDbTableEmptyIndex {
+    NSString *s = @"mydb.mytable";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    // note empty str on top of stack
+    TDEqualObjects(TDAssembly(@"[mydb, mytable, ]mydb/./mytable^"), [res description]);
+}
+
 @end

@@ -10,8 +10,7 @@ databaseName = Word;
 tableName = Word;
 indexName = QuotedString;
 
-name 
-    = prefixOpt tableName
+name = prefixOpt tableName
 {
     NSString *tableName = POP_STR();
     NSString *dbName = POP_STR();
@@ -25,16 +24,12 @@ prefixOpt
     ;
 
 indexOpt
-    = index
-    | Empty { PUSH(@""); }
-    ;
-      
-index
     = ('INDEXED'! 'BY'! indexName)
     { 
         NSString *indexName = POP_STR();
         indexName = [indexName substringWithRange:NSMakeRange(1, [indexName length]-2)];
         PUSH(indexName);
     }
-    | ('NOT'! 'INDEXED'!) { PUSH(@""); }
+    | ('INDEXED'! 'NOT'! ) { PUSH(@""); } // intentionally backwards here. forcing sepculate
+    | Empty { PUSH(@""); }
     ;
