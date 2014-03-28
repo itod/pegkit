@@ -1,0 +1,13 @@
+#import <PEGKit/PKParser.h>
+
+enum {
+    TABLEINDEXSPEC_TOKEN_KIND_BY = 14,
+    TABLEINDEXSPEC_TOKEN_KIND_INDEXED,
+    TABLEINDEXSPEC_TOKEN_KIND_NOT_UPPER,
+    TABLEINDEXSPEC_TOKEN_KIND_DOT,
+};
+
+@interface TableIndexSpecParser : PKParser
+
+@end
+

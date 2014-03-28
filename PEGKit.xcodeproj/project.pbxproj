@@ -131,7 +131,6 @@
 		D31BBCBD18E4AAE20003FFA3 /* TableIndexParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCBC18E4AAE20003FFA3 /* TableIndexParserTest.m */; };
 		D31BBCC018E4AAFC0003FFA3 /* TableIndexParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCBF18E4AAFC0003FFA3 /* TableIndexParser.m */; };
 		D31BBCC118E4B4430003FFA3 /* PGPredictElseEmptyTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D31BBCB618E482C60003FFA3 /* PGPredictElseEmptyTemplate.txt */; };
-		D31BBCC418E4E7B50003FFA3 /* CreateTableParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCC318E4E7B50003FFA3 /* CreateTableParser.m */; };
 		D31BBCED18E4F1EF0003FFA3 /* TDReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCD318E4F1EF0003FFA3 /* TDReaderTest.m */; };
 		D31BBCF018E4F1EF0003FFA3 /* TDTokenizerBlocksTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCD918E4F1EF0003FFA3 /* TDTokenizerBlocksTest.m */; };
 		D31BBCF118E4F1EF0003FFA3 /* TDTokenizerStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCDB18E4F1EF0003FFA3 /* TDTokenizerStateTest.m */; };
@@ -361,6 +360,9 @@
 		D3CC548D18CF9282006715D6 /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
 		D3CC54FB18CF9934006715D6 /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
 		D3CC54FC18CF993B006715D6 /* PEGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
+		D3D48D8018E5B3C5001B54E9 /* table_index_spec.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3D48D7F18E5B3C5001B54E9 /* table_index_spec.grammar */; };
+		D3D48D8218E5B484001B54E9 /* TableIndexSpecParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D48D8118E5B484001B54E9 /* TableIndexSpecParserTest.m */; };
+		D3D48D8518E5B500001B54E9 /* TableIndexSpecParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D48D8418E5B500001B54E9 /* TableIndexSpecParser.m */; };
 		D3E9B2CD1891714100AC0974 /* PKAST.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DAC2173C645C00A5E050 /* PKAST.m */; };
 		D3E9B2CE1891714400AC0974 /* PKAST.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A1492816F8C6BD00770DEE /* PKAST.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3F8A40E175817DF00056188 /* NSArray+PEGKitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D34BAFD30FF9E95500D7773A /* NSArray+PEGKitAdditions.h */; };
@@ -521,8 +523,6 @@
 		D31BBCBC18E4AAE20003FFA3 /* TableIndexParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableIndexParserTest.m; path = test/TableIndexParserTest.m; sourceTree = "<group>"; };
 		D31BBCBE18E4AAFC0003FFA3 /* TableIndexParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableIndexParser.h; path = test/TableIndexParser.h; sourceTree = "<group>"; };
 		D31BBCBF18E4AAFC0003FFA3 /* TableIndexParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableIndexParser.m; path = test/TableIndexParser.m; sourceTree = "<group>"; };
-		D31BBCC218E4E7B50003FFA3 /* CreateTableParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTableParser.h; path = ../../../Desktop/CreateTableParser.h; sourceTree = "<group>"; };
-		D31BBCC318E4E7B50003FFA3 /* CreateTableParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTableParser.m; path = ../../../Desktop/CreateTableParser.m; sourceTree = "<group>"; };
 		D31BBCC918E4F1EF0003FFA3 /* TDCommentStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDCommentStateTest.m; path = test/TDCommentStateTest.m; sourceTree = "<group>"; };
 		D31BBCCB18E4F1EF0003FFA3 /* TDDelimitStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDDelimitStateTest.m; path = test/TDDelimitStateTest.m; sourceTree = "<group>"; };
 		D31BBCCD18E4F1EF0003FFA3 /* TDEmailStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDEmailStateTest.m; path = test/TDEmailStateTest.m; sourceTree = "<group>"; };
@@ -782,6 +782,10 @@
 		D3C221E10FFE8C4E004514FE /* PKCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKCommentState.h; path = include/PEGKit/PKCommentState.h; sourceTree = SOURCE_ROOT; };
 		D3C221E40FFE8C56004514FE /* PKSingleLineCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSingleLineCommentState.h; path = include/PEGKit/PKSingleLineCommentState.h; sourceTree = SOURCE_ROOT; };
 		D3C221E70FFE8C60004514FE /* PKMultiLineCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKMultiLineCommentState.h; path = include/PEGKit/PKMultiLineCommentState.h; sourceTree = SOURCE_ROOT; };
+		D3D48D7F18E5B3C5001B54E9 /* table_index_spec.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = table_index_spec.grammar; path = res/table_index_spec.grammar; sourceTree = "<group>"; };
+		D3D48D8118E5B484001B54E9 /* TableIndexSpecParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableIndexSpecParserTest.m; path = test/TableIndexSpecParserTest.m; sourceTree = "<group>"; };
+		D3D48D8318E5B500001B54E9 /* TableIndexSpecParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableIndexSpecParser.h; path = test/TableIndexSpecParser.h; sourceTree = "<group>"; };
+		D3D48D8418E5B500001B54E9 /* TableIndexSpecParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableIndexSpecParser.m; path = test/TableIndexSpecParser.m; sourceTree = "<group>"; };
 		D3F0E2470FFE8EB900C9DF74 /* PKQuoteState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKQuoteState.h; path = include/PEGKit/PKQuoteState.h; sourceTree = SOURCE_ROOT; };
 		D3F8A48D175817DF00056188 /* PEGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PEGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F8A4921758187300056188 /* PEGKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PEGKit-Info.plist"; path = "res/PEGKit-Info.plist"; sourceTree = "<group>"; };
@@ -973,6 +977,7 @@
 			isa = PBXGroup;
 			children = (
 				D31BBCBC18E4AAE20003FFA3 /* TableIndexParserTest.m */,
+				D3D48D8118E5B484001B54E9 /* TableIndexSpecParserTest.m */,
 				D31BBCAF18E4722F0003FFA3 /* CreateTableStmtParserTest.m */,
 				D3B5EA831747518600733A26 /* GreedyFailureNestedParserTest.m */,
 				D3B5EA7B17470F5600733A26 /* GreedyFailureParserTest.m */,
@@ -1302,10 +1307,10 @@
 		D3B22A581703D07000446945 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
-				D31BBCC218E4E7B50003FFA3 /* CreateTableParser.h */,
-				D31BBCC318E4E7B50003FFA3 /* CreateTableParser.m */,
 				D31BBCBE18E4AAFC0003FFA3 /* TableIndexParser.h */,
 				D31BBCBF18E4AAFC0003FFA3 /* TableIndexParser.m */,
+				D3D48D8318E5B500001B54E9 /* TableIndexSpecParser.h */,
+				D3D48D8418E5B500001B54E9 /* TableIndexSpecParser.m */,
 				D31BBCB118E4725F0003FFA3 /* CreateTableStmtParser.h */,
 				D31BBCB218E4725F0003FFA3 /* CreateTableStmtParser.m */,
 				D3B5EA7F1747515D00733A26 /* GreedyFailureNestedParser.h */,
@@ -1388,6 +1393,7 @@
 			isa = PBXGroup;
 			children = (
 				D31BBCBA18E4AACB0003FFA3 /* table_index.grammar */,
+				D3D48D7F18E5B3C5001B54E9 /* table_index_spec.grammar */,
 				D31BBCB418E472850003FFA3 /* create_table_stmt.grammar */,
 				D3B5EA85174751BD00733A26 /* greedy_failure_nested.grammar */,
 				D3B5EA7D1747101700733A26 /* greedy_failure.grammar */,
@@ -1717,6 +1723,7 @@
 				D3383079171CA3BA00CCE513 /* PGMatchCallTemplate.txt in Resources */,
 				D338307A171CA3BA00CCE513 /* PGMatchDelimitedStringTemplate.txt in Resources */,
 				D338307B171CA3BA00CCE513 /* PGPatternPrefixTemplate.txt in Resources */,
+				D3D48D8018E5B3C5001B54E9 /* table_index_spec.grammar in Resources */,
 				D338307C171CA3BA00CCE513 /* PGMatchPatternTemplate.txt in Resources */,
 				D31BBCFF18E4F4FE0003FFA3 /* testSlashSlashEscapeBackslashFile.txt in Resources */,
 				D338307D171CA3BA00CCE513 /* PGSemanticPredicateTestExprTemplate.txt in Resources */,
@@ -1938,6 +1945,7 @@
 				D3B63A8D170A6BBC00BA9DBF /* TDNSPredicateParser.m in Sources */,
 				D30B8F3D170CA594001796F4 /* DreadedParser.m in Sources */,
 				D30B8F40170CA59A001796F4 /* DreadedParserTest.m in Sources */,
+				D3D48D8218E5B484001B54E9 /* TableIndexSpecParserTest.m in Sources */,
 				D30B8F45170CFA8C001796F4 /* NegationParser.m in Sources */,
 				D30B8F4A170CFAAD001796F4 /* NegationParserTest.m in Sources */,
 				D30B8F53170CFF2B001796F4 /* PEGKitParserTest.m in Sources */,
@@ -1974,7 +1982,6 @@
 				D31BBD0718E4F53F0003FFA3 /* TDWordStateTest.m in Sources */,
 				D36E68B3171F378B007B4353 /* JavaScriptParserTest.m in Sources */,
 				D36E68B6171F37D7007B4353 /* JavaScriptParser.m in Sources */,
-				D31BBCC418E4E7B50003FFA3 /* CreateTableParser.m in Sources */,
 				D376F6C718D0B3990064C888 /* PGCollectionNode.m in Sources */,
 				D36E68B9172074EF007B4353 /* CSSParserTest.m in Sources */,
 				D376F6CF18D0B3990064C888 /* PGDelimitedNode.m in Sources */,
@@ -1998,6 +2005,7 @@
 				D34F53AC17430249008700F3 /* CrockfordParser.m in Sources */,
 				D3B5EA7717470F4F00733A26 /* GreedyFailureParser.m in Sources */,
 				D3B5EA7C17470F5600733A26 /* GreedyFailureParserTest.m in Sources */,
+				D3D48D8518E5B500001B54E9 /* TableIndexSpecParser.m in Sources */,
 				D376F6C318D0B3990064C888 /* PGAlternationNode.m in Sources */,
 				D31BBCED18E4F1EF0003FFA3 /* TDReaderTest.m in Sources */,
 				D3B5EA811747515D00733A26 /* GreedyFailureNestedParser.m in Sources */,

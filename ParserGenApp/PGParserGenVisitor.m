@@ -735,9 +735,10 @@
         if (isEmpty) {
             templateName = @"PGPredictElseEmptyTemplate";
         } else {
+            // cannot test `idx` here to determine `if` vs `else` due to possible Empty child borking `idx`
             templateName = [result length] ? @"PGPredictElseIfTemplate" : @"PGPredictIfTemplate";
         }
-        // process template. cannot test `idx` here to determine `if` vs `else` due to possible Empty child borking `idx`
+        // process template.
         NSString *output = [_engine processTemplate:[self templateStringNamed:templateName] withVariables:vars];
         [result appendString:output];
         

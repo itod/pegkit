@@ -1,0 +1,40 @@
+qualifiedTableName = name indexOpt
+{
+    // NSString *indexName = POP();
+    // NSString *tableName = POP();
+    // NSString *dbName = POP();
+    // do stuff here
+};
+
+databaseName = Word;
+tableName = Word;
+indexName = QuotedString;
+
+name 
+    = prefixOpt tableName
+{
+    NSString *tableName = POP_STR();
+    NSString *dbName = POP_STR();
+    PUSH(dbName);
+    PUSH(tableName);
+};
+
+prefixOpt
+    = databaseName '.'! { PUSH(POP_STR()); }
+    | Empty { PUSH(@""); }
+    ;
+
+indexOpt
+    = index
+    | Empty { PUSH(@""); }
+    ;
+      
+index
+    = ('INDEXED'! 'BY'! indexName)
+    { 
+        NSString *indexName = POP_STR();
+        indexName = [indexName substringWithRange:NSMakeRange(1, [indexName length]-2)];
+        PUSH(indexName);
+    }
+    | ('NOT'! 'INDEXED'!) { PUSH(@""); }
+    ;
