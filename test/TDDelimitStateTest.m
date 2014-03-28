@@ -219,7 +219,7 @@
     tok = [t nextToken];
     
     TDTrue(tok.isDelimitedString);
-    TDEqualObjects(@"/foo\\/bar/", tok.stringValue);
+    TDEqualObjects(@"/foo/bar/", tok.stringValue);
     TDEquals((double)0.0, tok.doubleValue);
     
     tok = [t nextToken];
@@ -244,7 +244,7 @@
     tok = [t nextToken];
     
     TDTrue(tok.isDelimitedString);
-    TDEqualObjects(@"/foo\\/bar/", tok.stringValue);
+    TDEqualObjects(@"/foo/bar/", tok.stringValue);
     TDEquals((double)0.0, tok.doubleValue);
     
     tok = [t nextToken];
@@ -264,7 +264,7 @@
     tok = [t nextToken];
     
     TDTrue(tok.isDelimitedString);
-    TDEqualObjects(@"/foo\\\\/", tok.stringValue);
+    TDEqualObjects(@"/foo\\/", tok.stringValue);
     TDEquals((double)0.0, tok.doubleValue);
     
     tok = [t nextToken];
@@ -296,7 +296,7 @@
     tok = [t nextToken];
     
     TDTrue(tok.isDelimitedString);
-    TDEqualObjects(@"/foo\\\\/", tok.stringValue);
+    TDEqualObjects(@"/foo\\/", tok.stringValue);
     TDEquals((double)0.0, tok.doubleValue);
     
     tok = [t nextToken];

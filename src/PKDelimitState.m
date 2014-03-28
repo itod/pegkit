@@ -175,7 +175,7 @@
 
         for (NSUInteger j = 0; j < count; ++j) {
             if ('\\' == c) {
-                [self append:c]; // append escape backslash
+                //[self append:c]; // drop escape backslash
                 c = [r read];
                 if (PKEOF == c) {
                     break;

@@ -171,7 +171,8 @@
 
 - (PKToken *)nextToken {
     NSAssert(_reader, @"");
-    PKUniChar c = [_reader read]; //NSLog(@"`%C`", (unichar)c);
+    PKUniChar c = [_reader read]; //NSLog(@"%@", [[[NSString alloc] initWithBytes:&c length:1 encoding:4] autorelease]);
+
     PKToken *result = nil;
     
     if (PKEOF == c) {

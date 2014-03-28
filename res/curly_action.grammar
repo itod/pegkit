@@ -1,7 +1,8 @@
 start = Word+
 {
+    id word = nil;
     while (!EMPTY()) {
-        id word = POP_STR();
-        LOG(word);
-    }
+        word = POP_STR();
+    \}
+    PUSH(word);
 };
