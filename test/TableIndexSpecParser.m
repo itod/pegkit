@@ -169,6 +169,11 @@
         [self execute:(id)^{
          PUSH(@""); 
         }];
+    } else {
+        [self matchEmpty:NO]; 
+        [self execute:(id)^{
+         PUSH(@""); 
+        }];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchIndexOpt:)];
