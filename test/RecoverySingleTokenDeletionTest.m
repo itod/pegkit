@@ -1,10 +1,3 @@
-//
-//  RecoverySingleTokenInsertionTest.m
-//
-//  Created by Todd Ditchendorf on 3/27/13.
-//
-//
-
 #import "TDTestScaffold.h"
 #import "PGParserFactory.h"
 #import "PGParserGenVisitor.h"
