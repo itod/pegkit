@@ -75,11 +75,15 @@
 // convenience
 - (BOOL)popBool;
 - (NSInteger)popInteger;
+- (NSUInteger)popUnsignedInteger;
+- (float)popFloat;
 - (double)popDouble;
 - (PKToken *)popToken;
 - (NSString *)popString;
 - (void)pushBool:(BOOL)yn;
 - (void)pushInteger:(NSInteger)i;
+- (void)pushUnsignedInteger:(NSUInteger)u;
+- (void)pushFloat:(float)d;
 - (void)pushDouble:(double)d;
 
 // backtracking
@@ -748,6 +752,22 @@
 }
 
 
+- (NSUInteger)popUnsignedInteger {
+    id obj = [self.assembly pop];
+    return [obj unsignedIntegerValue];
+}
+
+
+- (float)popFloat {
+    id obj = [self.assembly pop];
+    if ([obj respondsToSelector:@selector(floatValue)]) {
+        return [obj floatValue];
+    } else {
+        return [(PKToken *)obj doubleValue];
+    }
+}
+
+
 - (double)popDouble {
     id obj = [self.assembly pop];
     if ([obj respondsToSelector:@selector(doubleValue)]) {
@@ -781,12 +801,22 @@
 
 
 - (void)pushInteger:(NSInteger)i {
-    [self.assembly push:@(i)];
+    [self.assembly push:[NSNumber numberWithInteger:i]];
+}
+
+
+- (void)pushUnsignedInteger:(NSUInteger)u {
+    [self.assembly push:[NSNumber numberWithUnsignedInteger:u]];
+}
+
+
+- (void)pushFloat:(float)f {
+    [self.assembly push:[NSNumber numberWithFloat:f]];
 }
 
 
 - (void)pushDouble:(double)d {
-    [self.assembly push:@(d)];
+    [self.assembly push:[NSNumber numberWithDouble:d]];
 }
 
 

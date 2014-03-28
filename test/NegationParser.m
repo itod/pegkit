@@ -11,11 +11,15 @@
 #define POP_TOK()    [self popToken]
 #define POP_BOOL()   [self popBool]
 #define POP_INT()    [self popInteger]
+#define POP_UINT()   [self popUnsignedInteger]
+#define POP_FLOAT()  [self popFloat]
 #define POP_DOUBLE() [self popDouble]
 
 #define PUSH(obj)      [self.assembly push:(id)(obj)]
 #define PUSH_BOOL(yn)  [self pushBool:(BOOL)(yn)]
 #define PUSH_INT(i)    [self pushInteger:(NSInteger)(i)]
+#define PUSH_UINT(u)   [self pushUnsignedInteger:(NSUInteger)(u)]
+#define PUSH_FLOAT(f)  [self pushFloat:(float)(f)]
 #define PUSH_DOUBLE(d) [self pushDouble:(double)(d)]
 
 #define EQ(a, b) [(a) isEqual:(b)]
@@ -26,6 +30,7 @@
 #define MATCHES_IGNORE_CASE(pattern, str)   ([[NSRegularExpression regularExpressionWithPattern:(pattern) options:NSRegularExpressionCaseInsensitive error:nil] numberOfMatchesInString:(str) options:0 range:NSMakeRange(0, [(str) length])] > 0)
 
 #define ABOVE(fence) [self.assembly objectsAbove:(fence)]
+#define EMPTY() [self.assembly isStackEmpty]
 
 #define LOG(obj) do { NSLog(@"%@", (obj)); } while (0);
 #define PRINT(str) do { printf("%s\n", (str)); } while (0);

@@ -363,6 +363,7 @@
 		D3D48D8018E5B3C5001B54E9 /* table_index_spec.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3D48D7F18E5B3C5001B54E9 /* table_index_spec.grammar */; };
 		D3D48D8218E5B484001B54E9 /* TableIndexSpecParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D48D8118E5B484001B54E9 /* TableIndexSpecParserTest.m */; };
 		D3D48D8518E5B500001B54E9 /* TableIndexSpecParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D48D8418E5B500001B54E9 /* TableIndexSpecParser.m */; };
+		D3D48D8718E5BCFC001B54E9 /* curly_action.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3D48D8618E5BCFC001B54E9 /* curly_action.grammar */; };
 		D3E9B2CD1891714100AC0974 /* PKAST.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DAC2173C645C00A5E050 /* PKAST.m */; };
 		D3E9B2CE1891714400AC0974 /* PKAST.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A1492816F8C6BD00770DEE /* PKAST.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3F8A40E175817DF00056188 /* NSArray+PEGKitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D34BAFD30FF9E95500D7773A /* NSArray+PEGKitAdditions.h */; };
@@ -786,6 +787,7 @@
 		D3D48D8118E5B484001B54E9 /* TableIndexSpecParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableIndexSpecParserTest.m; path = test/TableIndexSpecParserTest.m; sourceTree = "<group>"; };
 		D3D48D8318E5B500001B54E9 /* TableIndexSpecParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableIndexSpecParser.h; path = test/TableIndexSpecParser.h; sourceTree = "<group>"; };
 		D3D48D8418E5B500001B54E9 /* TableIndexSpecParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableIndexSpecParser.m; path = test/TableIndexSpecParser.m; sourceTree = "<group>"; };
+		D3D48D8618E5BCFC001B54E9 /* curly_action.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = curly_action.grammar; path = res/curly_action.grammar; sourceTree = "<group>"; };
 		D3F0E2470FFE8EB900C9DF74 /* PKQuoteState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKQuoteState.h; path = include/PEGKit/PKQuoteState.h; sourceTree = SOURCE_ROOT; };
 		D3F8A48D175817DF00056188 /* PEGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PEGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F8A4921758187300056188 /* PEGKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PEGKit-Info.plist"; path = "res/PEGKit-Info.plist"; sourceTree = "<group>"; };
@@ -1392,6 +1394,7 @@
 		D3B22A5A1703D09C00446945 /* Grammars */ = {
 			isa = PBXGroup;
 			children = (
+				D3D48D8618E5BCFC001B54E9 /* curly_action.grammar */,
 				D31BBCBA18E4AACB0003FFA3 /* table_index.grammar */,
 				D3D48D7F18E5B3C5001B54E9 /* table_index_spec.grammar */,
 				D31BBCB418E472850003FFA3 /* create_table_stmt.grammar */,
@@ -1719,6 +1722,7 @@
 				D3383076171CA3BA00CCE513 /* PGMethodMemoizationTemplate.txt in Resources */,
 				D3383077171CA3BA00CCE513 /* PGMethodCallTemplate.txt in Resources */,
 				D3383078171CA3BA00CCE513 /* PGMethodSpeculateTemplate.txt in Resources */,
+				D3D48D8718E5BCFC001B54E9 /* curly_action.grammar in Resources */,
 				D3B5C84218D0049C00CCE33A /* example.html in Resources */,
 				D3383079171CA3BA00CCE513 /* PGMatchCallTemplate.txt in Resources */,
 				D338307A171CA3BA00CCE513 /* PGMatchDelimitedStringTemplate.txt in Resources */,
