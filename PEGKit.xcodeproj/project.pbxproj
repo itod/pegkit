@@ -147,7 +147,7 @@
 		D31BBD0518E4F5140003FFA3 /* TDTwitterStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE118E4F1EF0003FFA3 /* TDTwitterStateTest.m */; };
 		D31BBD0618E4F52D0003FFA3 /* TDWhitespaceStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE518E4F1EF0003FFA3 /* TDWhitespaceStateTest.m */; };
 		D31BBD0718E4F53F0003FFA3 /* TDWordStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE718E4F1EF0003FFA3 /* TDWordStateTest.m */; };
-		D31BBD0818E4F5570003FFA3 /* TDURLStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE318E4F1EF0003FFA3 /* TDURLStateTest.m */; };
+		D31BBD0918E4F5900003FFA3 /* TDURLStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE318E4F1EF0003FFA3 /* TDURLStateTest.m */; };
 		D31C40A51779634700A1B8B7 /* JavaScriptWhitespaceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C40A41779634700A1B8B7 /* JavaScriptWhitespaceParser.m */; };
 		D3344F4917405B4B00598362 /* JSRecoveryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3344F4817405B4B00598362 /* JSRecoveryTest.m */; };
 		D337F07E15D5AE7B00C83AED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D337F07C15D5AE7B00C83AED /* InfoPlist.strings */; };
@@ -1955,7 +1955,7 @@
 				D317C1B818D206890036BE75 /* MiniMath2ParserTest.m in Sources */,
 				D38BC8B11716006D00BF530D /* SemanticPredicateParser.m in Sources */,
 				D38BC8B6171600A900BF530D /* SemanticPredicateParserTest.m in Sources */,
-				D31BBD0818E4F5570003FFA3 /* TDURLStateTest.m in Sources */,
+				D31BBD0918E4F5900003FFA3 /* TDURLStateTest.m in Sources */,
 				D31BBCC018E4AAFC0003FFA3 /* TableIndexParser.m in Sources */,
 				D376F6EF18D0B5190064C888 /* PGDefinitionPhaseVisitor.m in Sources */,
 				D376F6D518D0B3990064C888 /* PGOptionalNode.m in Sources */,
