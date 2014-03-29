@@ -57,17 +57,19 @@
 @end
 
 @interface MultipleParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *s_memo;
 @property (nonatomic, retain) NSMutableDictionary *ab_memo;
 @property (nonatomic, retain) NSMutableDictionary *a_memo;
 @property (nonatomic, retain) NSMutableDictionary *b_memo;
 @end
 
-@implementation MultipleParser
+@implementation MultipleParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"s";
         self.tokenKindTab[@"a"] = @(MULTIPLE_TOKEN_KIND_A);
         self.tokenKindTab[@"b"] = @(MULTIPLE_TOKEN_KIND_B);
@@ -84,6 +86,7 @@
 }
 
 - (void)dealloc {
+    
     self.s_memo = nil;
     self.ab_memo = nil;
     self.a_memo = nil;

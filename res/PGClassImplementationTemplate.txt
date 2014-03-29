@@ -1,6 +1,6 @@
 #import "{{className}}.h"
 #import <PEGKit/PEGKit.h>
-
+{{headAction}}
 #define LT(i) [self LT:(i)]
 #define LA(i) [self LA:(i)]
 #define LS(i) [self LS:(i)]
@@ -59,14 +59,16 @@
 {%/if%}@end
 
 @interface {{className}} ()
+{{extensionAction}}
 {%if enableMemoization %}{%for methodName in ruleMethodNames %}@property (nonatomic, retain) NSMutableDictionary *{{methodName}}_memo;
 {%/for%}{%/if%}@end
 
-@implementation {{className}}
+@implementation {{className}} { {{ivarsAction}}}
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        {{initAction}}
         self.startRuleName = @"{{startMethodName}}";
 {%if enableAutomaticErrorRecovery %}        self.enableAutomaticErrorRecovery = YES;
 
@@ -78,10 +80,11 @@
 {%/for%}{%/if%}    }
     return self;
 }
-{%if manualMemory && enableMemoization %}
+{%if manualMemory %}
 - (void)dealloc {
-{%for methodName in ruleMethodNames %}    self.{{methodName}}_memo = nil;
-{%/for%}
+    {{deallocAction}}
+{%if enableMemoization %}{%for methodName in ruleMethodNames %}    self.{{methodName}}_memo = nil;
+{%/for%}{%/if%}
     [super dealloc];
 }
 {%/if%}{%if enableMemoization %}

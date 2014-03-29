@@ -57,17 +57,19 @@
 @end
 
 @interface MiniMathParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *expr_memo;
 @property (nonatomic, retain) NSMutableDictionary *mult_memo;
 @property (nonatomic, retain) NSMutableDictionary *pow_memo;
 @property (nonatomic, retain) NSMutableDictionary *atom_memo;
 @end
 
-@implementation MiniMathParser
+@implementation MiniMathParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"expr";
         self.tokenKindTab[@"+"] = @(MINIMATH_TOKEN_KIND_PLUS);
         self.tokenKindTab[@"*"] = @(MINIMATH_TOKEN_KIND_STAR);
@@ -86,6 +88,7 @@
 }
 
 - (void)dealloc {
+    
     self.expr_memo = nil;
     self.mult_memo = nil;
     self.pow_memo = nil;

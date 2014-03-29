@@ -57,16 +57,18 @@
 @end
 
 @interface GreedParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *start_memo;
 @property (nonatomic, retain) NSMutableDictionary *a_memo;
 @property (nonatomic, retain) NSMutableDictionary *b_memo;
 @end
 
-@implementation GreedParser
+@implementation GreedParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"start";
         self.tokenKindTab[@"a"] = @(GREED_TOKEN_KIND_A);
         self.tokenKindTab[@"b"] = @(GREED_TOKEN_KIND_B);
@@ -82,6 +84,7 @@
 }
 
 - (void)dealloc {
+    
     self.start_memo = nil;
     self.a_memo = nil;
     self.b_memo = nil;

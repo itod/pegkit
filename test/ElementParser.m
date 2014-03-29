@@ -57,6 +57,7 @@
 @end
 
 @interface ElementParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *lists_memo;
 @property (nonatomic, retain) NSMutableDictionary *list_memo;
 @property (nonatomic, retain) NSMutableDictionary *elements_memo;
@@ -66,11 +67,12 @@
 @property (nonatomic, retain) NSMutableDictionary *comma_memo;
 @end
 
-@implementation ElementParser
+@implementation ElementParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"lists";
         self.tokenKindTab[@"["] = @(ELEMENT_TOKEN_KIND_LBRACKET);
         self.tokenKindTab[@"]"] = @(ELEMENT_TOKEN_KIND_RBRACKET);
@@ -92,6 +94,7 @@
 }
 
 - (void)dealloc {
+    
     self.lists_memo = nil;
     self.list_memo = nil;
     self.elements_memo = nil;

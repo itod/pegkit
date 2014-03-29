@@ -57,13 +57,15 @@
 @end
 
 @interface JavaScriptParser ()
+
 @end
 
-@implementation JavaScriptParser
+@implementation JavaScriptParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"program";
         self.enableAutomaticErrorRecovery = YES;
 
@@ -209,6 +211,12 @@
 
     }
     return self;
+}
+
+- (void)dealloc {
+    
+
+    [super dealloc];
 }
 
 - (void)start {

@@ -57,6 +57,7 @@
 @end
 
 @interface ExpressionParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *expr_memo;
 @property (nonatomic, retain) NSMutableDictionary *orExpr_memo;
 @property (nonatomic, retain) NSMutableDictionary *orTerm_memo;
@@ -89,11 +90,12 @@
 @property (nonatomic, retain) NSMutableDictionary *and_memo;
 @end
 
-@implementation ExpressionParser
+@implementation ExpressionParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"expr";
         self.tokenKindTab[@">="] = @(EXPRESSION_TOKEN_KIND_GE);
         self.tokenKindTab[@","] = @(EXPRESSION_TOKEN_KIND_COMMA);
@@ -160,6 +162,7 @@
 }
 
 - (void)dealloc {
+    
     self.expr_memo = nil;
     self.orExpr_memo = nil;
     self.orTerm_memo = nil;

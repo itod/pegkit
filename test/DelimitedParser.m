@@ -57,15 +57,17 @@
 @end
 
 @interface DelimitedParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *start_memo;
 @property (nonatomic, retain) NSMutableDictionary *s_memo;
 @end
 
-@implementation DelimitedParser
+@implementation DelimitedParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"start";
         self.tokenKindTab[@"<,>"] = @(DELIMITED_TOKEN_KIND_S);
 
@@ -78,6 +80,7 @@
 }
 
 - (void)dealloc {
+    
     self.start_memo = nil;
     self.s_memo = nil;
 

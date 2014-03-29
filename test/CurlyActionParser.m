@@ -57,18 +57,26 @@
 @end
 
 @interface CurlyActionParser ()
+
 @end
 
-@implementation CurlyActionParser
+@implementation CurlyActionParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"start";
 
 
     }
     return self;
+}
+
+- (void)dealloc {
+    
+
+    [super dealloc];
 }
 
 - (void)start {

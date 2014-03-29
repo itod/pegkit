@@ -57,6 +57,7 @@
 @end
 
 @interface CSSParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *stylesheet_memo;
 @property (nonatomic, retain) NSMutableDictionary *ruleset_memo;
 @property (nonatomic, retain) NSMutableDictionary *selectors_memo;
@@ -97,11 +98,12 @@
 @property (nonatomic, retain) NSMutableDictionary *num_memo;
 @end
 
-@implementation CSSParser
+@implementation CSSParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"stylesheet";
         self.tokenKindTab[@","] = @(CSS_TOKEN_KIND_COMMA);
         self.tokenKindTab[@":"] = @(CSS_TOKEN_KIND_COLON);
@@ -188,6 +190,7 @@
 }
 
 - (void)dealloc {
+    
     self.stylesheet_memo = nil;
     self.ruleset_memo = nil;
     self.selectors_memo = nil;

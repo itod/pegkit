@@ -57,6 +57,7 @@
 @end
 
 @interface AltParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *start_memo;
 @property (nonatomic, retain) NSMutableDictionary *s_memo;
 @property (nonatomic, retain) NSMutableDictionary *a_memo;
@@ -66,11 +67,12 @@
 @property (nonatomic, retain) NSMutableDictionary *baz_memo;
 @end
 
-@implementation AltParser
+@implementation AltParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"start";
         self.tokenKindTab[@"foo"] = @(ALT_TOKEN_KIND_FOO);
         self.tokenKindTab[@"bar"] = @(ALT_TOKEN_KIND_BAR);
@@ -92,6 +94,7 @@
 }
 
 - (void)dealloc {
+    
     self.start_memo = nil;
     self.s_memo = nil;
     self.a_memo = nil;

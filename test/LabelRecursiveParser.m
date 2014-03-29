@@ -57,16 +57,18 @@
 @end
 
 @interface LabelRecursiveParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *s_memo;
 @property (nonatomic, retain) NSMutableDictionary *label_memo;
 @property (nonatomic, retain) NSMutableDictionary *expr_memo;
 @end
 
-@implementation LabelRecursiveParser
+@implementation LabelRecursiveParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"s";
         self.tokenKindTab[@"="] = @(LABELRECURSIVE_TOKEN_KIND_EQUALS);
         self.tokenKindTab[@"return"] = @(LABELRECURSIVE_TOKEN_KIND_RETURN);
@@ -84,6 +86,7 @@
 }
 
 - (void)dealloc {
+    
     self.s_memo = nil;
     self.label_memo = nil;
     self.expr_memo = nil;

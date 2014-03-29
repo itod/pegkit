@@ -1,5 +1,7 @@
 #import "GrammarActionsParser.h"
 #import <PEGKit/PEGKit.h>
+    
+#define HEAD 1
 
 #define LT(i) [self LT:(i)]
 #define LA(i) [self LA:(i)]
@@ -57,18 +59,34 @@
 @end
 
 @interface GrammarActionsParser ()
+    
+@property (nonatomic, retain) NSString *foo;
+
 @end
 
-@implementation GrammarActionsParser
+@implementation GrammarActionsParser {     
+    BOOL _bar;
+}
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+            
+    self.foo = @"hello world";
+
         self.startRuleName = @"start";
 
 
     }
     return self;
+}
+
+- (void)dealloc {
+        
+    self.foo = nil;
+
+
+    [super dealloc];
 }
 
 - (void)start {

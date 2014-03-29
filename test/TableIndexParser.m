@@ -57,13 +57,15 @@
 @end
 
 @interface TableIndexParser ()
+
 @end
 
-@implementation TableIndexParser
+@implementation TableIndexParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"qualifiedTableName";
         self.tokenKindTab[@"BY"] = @(TABLEINDEX_TOKEN_KIND_BY);
         self.tokenKindTab[@"INDEXED"] = @(TABLEINDEX_TOKEN_KIND_INDEXED);
@@ -77,6 +79,12 @@
 
     }
     return self;
+}
+
+- (void)dealloc {
+    
+
+    [super dealloc];
 }
 
 - (void)start {

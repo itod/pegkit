@@ -1,8 +1,8 @@
 @head {
-    #define HEAD 1
+#define HEAD 1
 }
 @extension {
-    @property (nonatomic, retain) NSString *foo;
+@property (nonatomic, retain) NSString *foo;
 }
 @ivars {
     BOOL _bar;

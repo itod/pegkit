@@ -57,6 +57,7 @@
 @end
 
 @interface TDNSPredicateParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *start_memo;
 @property (nonatomic, retain) NSMutableDictionary *expr_memo;
 @property (nonatomic, retain) NSMutableDictionary *orOrTerm_memo;
@@ -119,11 +120,12 @@
 @property (nonatomic, retain) NSMutableDictionary *none_memo;
 @end
 
-@implementation TDNSPredicateParser
+@implementation TDNSPredicateParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"start";
         self.tokenKindTab[@"ALL"] = @(TDNSPREDICATE_TOKEN_KIND_ALL);
         self.tokenKindTab[@"FALSEPREDICATE"] = @(TDNSPREDICATE_TOKEN_KIND_FALSEPREDICATE);
@@ -264,6 +266,7 @@
 }
 
 - (void)dealloc {
+    
     self.start_memo = nil;
     self.expr_memo = nil;
     self.orOrTerm_memo = nil;

@@ -57,17 +57,19 @@
 @end
 
 @interface OptionalParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *s_memo;
 @property (nonatomic, retain) NSMutableDictionary *expr_memo;
 @property (nonatomic, retain) NSMutableDictionary *foo_memo;
 @property (nonatomic, retain) NSMutableDictionary *bar_memo;
 @end
 
-@implementation OptionalParser
+@implementation OptionalParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"s";
         self.tokenKindTab[@"foo"] = @(OPTIONAL_TOKEN_KIND_FOO);
         self.tokenKindTab[@"bar"] = @(OPTIONAL_TOKEN_KIND_BAR);
@@ -84,6 +86,7 @@
 }
 
 - (void)dealloc {
+    
     self.s_memo = nil;
     self.expr_memo = nil;
     self.foo_memo = nil;

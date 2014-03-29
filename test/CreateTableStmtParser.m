@@ -57,13 +57,15 @@
 @end
 
 @interface CreateTableStmtParser ()
+
 @end
 
-@implementation CreateTableStmtParser
+@implementation CreateTableStmtParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"createTableStmt";
         self.tokenKindTab[@"NOT"] = @(CREATETABLESTMT_TOKEN_KIND_NOT_UPPER);
         self.tokenKindTab[@"CREATE"] = @(CREATETABLESTMT_TOKEN_KIND_CREATE);
@@ -85,6 +87,12 @@
 
     }
     return self;
+}
+
+- (void)dealloc {
+    
+
+    [super dealloc];
 }
 
 - (void)start {

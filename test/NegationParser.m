@@ -57,15 +57,17 @@
 @end
 
 @interface NegationParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *s_memo;
 @property (nonatomic, retain) NSMutableDictionary *foo_memo;
 @end
 
-@implementation NegationParser
+@implementation NegationParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"s";
         self.tokenKindTab[@"foo"] = @(NEGATION_TOKEN_KIND_FOO);
 
@@ -78,6 +80,7 @@
 }
 
 - (void)dealloc {
+    
     self.s_memo = nil;
     self.foo_memo = nil;
 

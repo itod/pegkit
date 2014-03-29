@@ -57,6 +57,7 @@
 @end
 
 @interface ExpressionActionsParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *expr_memo;
 @property (nonatomic, retain) NSMutableDictionary *orExpr_memo;
 @property (nonatomic, retain) NSMutableDictionary *orTerm_memo;
@@ -76,11 +77,12 @@
 @property (nonatomic, retain) NSMutableDictionary *bool_memo;
 @end
 
-@implementation ExpressionActionsParser
+@implementation ExpressionActionsParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"expr";
         self.tokenKindTab[@"no"] = @(EXPRESSIONACTIONS_TOKEN_KIND_NO);
         self.tokenKindTab[@"NO"] = @(EXPRESSIONACTIONS_TOKEN_KIND_NO_UPPER);
@@ -138,6 +140,7 @@
 }
 
 - (void)dealloc {
+    
     self.expr_memo = nil;
     self.orExpr_memo = nil;
     self.orTerm_memo = nil;

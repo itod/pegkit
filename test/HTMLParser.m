@@ -57,6 +57,7 @@
 @end
 
 @interface HTMLParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *start_memo;
 @property (nonatomic, retain) NSMutableDictionary *anything_memo;
 @property (nonatomic, retain) NSMutableDictionary *scriptElement_memo;
@@ -87,11 +88,12 @@
 @property (nonatomic, retain) NSMutableDictionary *comment_memo;
 @end
 
-@implementation HTMLParser
+@implementation HTMLParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"start";
         self.tokenKindTab[@"script"] = @(HTML_TOKEN_KIND_SCRIPTTAGNAME);
         self.tokenKindTab[@"style"] = @(HTML_TOKEN_KIND_STYLETAGNAME);
@@ -144,6 +146,7 @@
 }
 
 - (void)dealloc {
+    
     self.start_memo = nil;
     self.anything_memo = nil;
     self.scriptElement_memo = nil;

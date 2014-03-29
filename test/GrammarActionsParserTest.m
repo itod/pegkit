@@ -80,7 +80,7 @@
     PKAssembly *res = [_parser parseString:s error:&err];
     TDNil(err);
     
-    TDEqualObjects(TDAssembly(@"[foo]foo/bar/baz^"), [res description]);
+    TDEqualObjects(TDAssembly(@"[foo, bar, baz]foo/bar/baz^"), [res description]);
 }
 
 @end

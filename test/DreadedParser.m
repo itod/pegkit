@@ -57,16 +57,18 @@
 @end
 
 @interface DreadedParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *s_memo;
 @property (nonatomic, retain) NSMutableDictionary *a_memo;
 @property (nonatomic, retain) NSMutableDictionary *b_memo;
 @end
 
-@implementation DreadedParser
+@implementation DreadedParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"s";
         self.tokenKindTab[@"a"] = @(DREADED_TOKEN_KIND_A);
         self.tokenKindTab[@"b"] = @(DREADED_TOKEN_KIND_B);
@@ -82,6 +84,7 @@
 }
 
 - (void)dealloc {
+    
     self.s_memo = nil;
     self.a_memo = nil;
     self.b_memo = nil;

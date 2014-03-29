@@ -57,13 +57,15 @@
 @end
 
 @interface MiniMath2Parser ()
+
 @end
 
-@implementation MiniMath2Parser
+@implementation MiniMath2Parser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"expr";
         self.tokenKindTab[@"*"] = @(MINIMATH2_TOKEN_KIND_STAR);
         self.tokenKindTab[@"("] = @(MINIMATH2_TOKEN_KIND_OPEN_PAREN);
@@ -77,6 +79,12 @@
 
     }
     return self;
+}
+
+- (void)dealloc {
+    
+
+    [super dealloc];
 }
 
 - (void)start {

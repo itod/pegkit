@@ -38,6 +38,11 @@
 #define ENABLE_MEMOIZATION @"enableMemoization"
 #define ENABLE_ERROR_RECOVERY @"enableAutomaticErrorRecovery"
 #define PARSE_TREE @"parseTree"
+#define HEAD_ACTION @"headAction"
+#define EXT_ACTION @"extensionAction"
+#define IVARS_ACTION @"ivarsAction"
+#define INIT_ACTION @"initAction"
+#define DEALLOC_ACTION @"deallocAction"
 #define START_METHOD_NAME @"startMethodName"
 #define START_METHOD_BODY @"startMethodBody"
 #define METHODS @"methods"
@@ -289,7 +294,7 @@
         NSString *recoverStr = [_engine processTemplate:[self templateStringNamed:@"PGTryAndRecoverEOFTemplate"] withVariables:recoverVars];
         [startMethodBodyStr setString:recoverStr];
     }
-
+    
     // merge
     vars[START_METHOD_NAME] = _startMethodName;
     vars[START_METHOD_BODY] = startMethodBodyStr;
@@ -298,6 +303,12 @@
     vars[ENABLE_MEMOIZATION] = @(self.enableMemoization);
     vars[ENABLE_ERROR_RECOVERY] = @(self.enableAutomaticErrorRecovery);
     vars[PARSE_TREE] = @((_delegatePreMatchCallbacksOn == PGParserFactoryDelegateCallbacksOnSyntax || _delegatePostMatchCallbacksOn == PGParserFactoryDelegateCallbacksOnSyntax));
+
+    vars[HEAD_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"head"]];
+    vars[EXT_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"extension"]];
+    vars[IVARS_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"ivars"]];
+    vars[INIT_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"init"]];
+    vars[DEALLOC_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"dealloc"]];
     
     NSString *implTemplate = [self templateStringNamed:@"PGClassImplementationTemplate"];
     self.implementationOutputString = [_engine processTemplate:implTemplate withVariables:vars];
@@ -307,12 +318,22 @@
 }
 
 
+- (NSString *)grammarActionStringFrom:(PGActionNode *)actNode {
+    if (!actNode) return @"";
+    
+    id vars = @{ACTION_BODY: actNode.source, DEPTH: @(_depth)};
+    NSString *result = [_engine processTemplate:[self templateStringNamed:@"PGGrammarActionTemplate"] withVariables:vars];
+    
+    return result;
+}
+
+
 - (NSString *)actionStringFrom:(PGActionNode *)actNode {
     if (!actNode || self.isSpeculating) return @"";
     
     id vars = @{ACTION_BODY: actNode.source, DEPTH: @(_depth)};
     NSString *result = [_engine processTemplate:[self templateStringNamed:@"PGActionTemplate"] withVariables:vars];
-
+    
     return result;
 }
 

@@ -57,15 +57,17 @@
 @end
 
 @interface DotQuestionParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *start_memo;
 @property (nonatomic, retain) NSMutableDictionary *a_memo;
 @end
 
-@implementation DotQuestionParser
+@implementation DotQuestionParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"start";
         self.tokenKindTab[@"a"] = @(DOTQUESTION_TOKEN_KIND_A);
 
@@ -78,6 +80,7 @@
 }
 
 - (void)dealloc {
+    
     self.start_memo = nil;
     self.a_memo = nil;
 

@@ -57,13 +57,15 @@
 @end
 
 @interface GreedyFailureParser ()
+
 @end
 
-@implementation GreedyFailureParser
+@implementation GreedyFailureParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"structs";
         self.enableAutomaticErrorRecovery = YES;
 
@@ -77,6 +79,12 @@
 
     }
     return self;
+}
+
+- (void)dealloc {
+    
+
+    [super dealloc];
 }
 
 - (void)start {

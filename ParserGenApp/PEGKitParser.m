@@ -57,13 +57,15 @@
 @end
 
 @interface PEGKitParser ()
+
 @end
 
-@implementation PEGKitParser
+@implementation PEGKitParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"start";
         self.tokenKindTab[@"Symbol"] = @(PEGKIT_TOKEN_KIND_SYMBOL_TITLE);
         self.tokenKindTab[@"head"] = @(PEGKIT_TOKEN_KIND_HEADKEY);
@@ -157,6 +159,12 @@
 
     }
     return self;
+}
+
+- (void)dealloc {
+    
+
+    [super dealloc];
 }
 
 - (void)start {

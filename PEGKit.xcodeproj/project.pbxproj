@@ -306,6 +306,8 @@
 		D3A29E1918E70E6800DC591E /* grammar_actions.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3A29E1818E70E6800DC591E /* grammar_actions.grammar */; };
 		D3A29E1C18E70F0E00DC591E /* GrammarActionsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A29E1B18E70F0E00DC591E /* GrammarActionsParser.m */; };
 		D3A29E1E18E70F1C00DC591E /* GrammarActionsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A29E1D18E70F1C00DC591E /* GrammarActionsParserTest.m */; };
+		D3A29E2018E714EB00DC591E /* PGGrammarActionTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3A29E1F18E714EB00DC591E /* PGGrammarActionTemplate.txt */; };
+		D3A29E2118E714EB00DC591E /* PGGrammarActionTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3A29E1F18E714EB00DC591E /* PGGrammarActionTemplate.txt */; };
 		D3B22A3A17025EA300446945 /* elements.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3B22A3917025EA300446945 /* elements.grammar */; };
 		D3B22A521702B04300446945 /* ElementParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B22A4F1702AFB500446945 /* ElementParser.m */; };
 		D3B22A561703D03900446945 /* ExpressionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B22A551703D03800446945 /* ExpressionParser.m */; };
@@ -694,6 +696,7 @@
 		D3A29E1A18E70F0E00DC591E /* GrammarActionsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrammarActionsParser.h; path = test/GrammarActionsParser.h; sourceTree = "<group>"; };
 		D3A29E1B18E70F0E00DC591E /* GrammarActionsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrammarActionsParser.m; path = test/GrammarActionsParser.m; sourceTree = "<group>"; };
 		D3A29E1D18E70F1C00DC591E /* GrammarActionsParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrammarActionsParserTest.m; path = test/GrammarActionsParserTest.m; sourceTree = "<group>"; };
+		D3A29E1F18E714EB00DC591E /* PGGrammarActionTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGGrammarActionTemplate.txt; path = res/PGGrammarActionTemplate.txt; sourceTree = "<group>"; };
 		D3B22A3517023F1200446945 /* PGMethodTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGMethodTemplate.txt; path = res/PGMethodTemplate.txt; sourceTree = "<group>"; };
 		D3B22A37170241F500446945 /* PGMethodCallTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGMethodCallTemplate.txt; path = res/PGMethodCallTemplate.txt; sourceTree = "<group>"; };
 		D3B22A3917025EA300446945 /* elements.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = elements.grammar; path = res/elements.grammar; sourceTree = "<group>"; };
@@ -1277,6 +1280,7 @@
 			children = (
 				D3B22A5E1703DB9700446945 /* PGClassInterfaceTemplate.txt */,
 				D302272A17020F9400594F16 /* PGClassImplementationTemplate.txt */,
+				D3A29E1F18E714EB00DC591E /* PGGrammarActionTemplate.txt */,
 				D3B63A3017075C3000BA9DBF /* PGActionTemplate.txt */,
 				D3B22A3517023F1200446945 /* PGMethodTemplate.txt */,
 				D38BC88E1710AF6D00BF530D /* PGMethodMemoizationTemplate.txt */,
@@ -1671,6 +1675,7 @@
 				D338309A171CA3BB00CCE513 /* PGSemanticPredicateTestExprTemplate.txt in Resources */,
 				D338309B171CA3BB00CCE513 /* PGSemanticPredicateTestStatTemplate.txt in Resources */,
 				D338309C171CA3BB00CCE513 /* PGSemanticPredicateTestAndThrowExprTemplate.txt in Resources */,
+				D3A29E2118E714EB00DC591E /* PGGrammarActionTemplate.txt in Resources */,
 				D338309D171CA3BB00CCE513 /* PGSemanticPredicateTestAndThrowStatTemplate.txt in Resources */,
 				D31BBCC118E4B4430003FFA3 /* PGElseEmptyTemplate.txt in Resources */,
 				D338309E171CA3BB00CCE513 /* PGPredictIfTemplate.txt in Resources */,
@@ -1737,6 +1742,7 @@
 				D3383072171CA3BA00CCE513 /* PGClassInterfaceTemplate.txt in Resources */,
 				D3383073171CA3BA00CCE513 /* PGClassImplementationTemplate.txt in Resources */,
 				D3383074171CA3BA00CCE513 /* PGActionTemplate.txt in Resources */,
+				D3A29E2018E714EB00DC591E /* PGGrammarActionTemplate.txt in Resources */,
 				D3383075171CA3BA00CCE513 /* PGMethodTemplate.txt in Resources */,
 				D3383076171CA3BA00CCE513 /* PGMethodMemoizationTemplate.txt in Resources */,
 				D3383077171CA3BA00CCE513 /* PGMethodCallTemplate.txt in Resources */,

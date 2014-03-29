@@ -57,6 +57,7 @@
 @end
 
 @interface MethodsParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *start_memo;
 @property (nonatomic, retain) NSMutableDictionary *method_memo;
 @property (nonatomic, retain) NSMutableDictionary *type_memo;
@@ -64,11 +65,12 @@
 @property (nonatomic, retain) NSMutableDictionary *arg_memo;
 @end
 
-@implementation MethodsParser
+@implementation MethodsParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"start";
         self.tokenKindTab[@"int"] = @(METHODS_TOKEN_KIND_INT);
         self.tokenKindTab[@"}"] = @(METHODS_TOKEN_KIND_CLOSE_CURLY);
@@ -98,6 +100,7 @@
 }
 
 - (void)dealloc {
+    
     self.start_memo = nil;
     self.method_memo = nil;
     self.type_memo = nil;

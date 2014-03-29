@@ -57,13 +57,15 @@
 @end
 
 @interface ElementAssignParser ()
+
 @end
 
-@implementation ElementAssignParser
+@implementation ElementAssignParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"start";
         self.enableAutomaticErrorRecovery = YES;
 
@@ -83,6 +85,12 @@
 
     }
     return self;
+}
+
+- (void)dealloc {
+    
+
+    [super dealloc];
 }
 
 - (void)start {

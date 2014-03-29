@@ -57,13 +57,15 @@
 @end
 
 @interface JSONParser ()
+
 @end
 
-@implementation JSONParser
+@implementation JSONParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"start";
         self.tokenKindTab[@"false"] = @(JSON_TOKEN_KIND_FALSE);
         self.tokenKindTab[@"}"] = @(JSON_TOKEN_KIND_CLOSECURLY);
@@ -87,6 +89,12 @@
 
     }
     return self;
+}
+
+- (void)dealloc {
+    
+
+    [super dealloc];
 }
 
 - (void)start {

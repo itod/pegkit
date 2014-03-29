@@ -57,15 +57,17 @@
 @end
 
 @interface SemanticPredicateParser ()
+
 @property (nonatomic, retain) NSMutableDictionary *start_memo;
 @property (nonatomic, retain) NSMutableDictionary *nonReserved_memo;
 @end
 
-@implementation SemanticPredicateParser
+@implementation SemanticPredicateParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
+        
         self.startRuleName = @"start";
 
 
@@ -76,6 +78,7 @@
 }
 
 - (void)dealloc {
+    
     self.start_memo = nil;
     self.nonReserved_memo = nil;
 
