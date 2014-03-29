@@ -51,6 +51,7 @@
 - (double)popDouble;
 - (PKToken *)popToken;
 - (NSString *)popString;
+- (NSString *)popQuotedString;
 
 - (void)pushBool:(BOOL)yn;
 - (void)pushInteger:(NSInteger)i;
