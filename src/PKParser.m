@@ -59,7 +59,7 @@
 @property (nonatomic, retain) NSString *blockStartMarker;
 @property (nonatomic, retain) NSString *blockEndMarker;
 @property (nonatomic, retain) NSString *braces;
-@property (nonatomic, retain) NSArray *tokenSource;
+@property (nonatomic, retain) NSMutableArray *tokenSource;
 @property (nonatomic, assign) NSUInteger tokenSourceIndex;
 
 - (NSInteger)tokenKindForString:(NSString *)str;
@@ -237,7 +237,8 @@
 
 - (id)parseTokens:(NSArray *)input error:(NSError **)outError {
     
-    self.tokenSource = input;
+    self.tokenSource = [[input mutableCopy] autorelease];
+    [_tokenSource addObject:[PKToken EOFToken]];
     self.tokenSourceIndex = 0;
     
     id result = [self parse:outError];
