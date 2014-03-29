@@ -303,6 +303,9 @@
 		D38BC8B11716006D00BF530D /* SemanticPredicateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D38BC8B01716006C00BF530D /* SemanticPredicateParser.m */; };
 		D38BC8B31716008E00BF530D /* semantic_predicate.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D38BC8B21716008D00BF530D /* semantic_predicate.grammar */; };
 		D38BC8B6171600A900BF530D /* SemanticPredicateParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D38BC8B5171600A900BF530D /* SemanticPredicateParserTest.m */; };
+		D3A29E1918E70E6800DC591E /* grammar_actions.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3A29E1818E70E6800DC591E /* grammar_actions.grammar */; };
+		D3A29E1C18E70F0E00DC591E /* GrammarActionsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A29E1B18E70F0E00DC591E /* GrammarActionsParser.m */; };
+		D3A29E1E18E70F1C00DC591E /* GrammarActionsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A29E1D18E70F1C00DC591E /* GrammarActionsParserTest.m */; };
 		D3B22A3A17025EA300446945 /* elements.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3B22A3917025EA300446945 /* elements.grammar */; };
 		D3B22A521702B04300446945 /* ElementParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B22A4F1702AFB500446945 /* ElementParser.m */; };
 		D3B22A561703D03900446945 /* ExpressionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B22A551703D03800446945 /* ExpressionParser.m */; };
@@ -687,6 +690,10 @@
 		D38BC8B21716008D00BF530D /* semantic_predicate.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = semantic_predicate.grammar; path = res/semantic_predicate.grammar; sourceTree = "<group>"; };
 		D38BC8B5171600A900BF530D /* SemanticPredicateParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticPredicateParserTest.m; path = test/SemanticPredicateParserTest.m; sourceTree = "<group>"; };
 		D3A1492816F8C6BD00770DEE /* PKAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKAST.h; path = include/PEGKit/PKAST.h; sourceTree = SOURCE_ROOT; };
+		D3A29E1818E70E6800DC591E /* grammar_actions.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = grammar_actions.grammar; path = res/grammar_actions.grammar; sourceTree = "<group>"; };
+		D3A29E1A18E70F0E00DC591E /* GrammarActionsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrammarActionsParser.h; path = test/GrammarActionsParser.h; sourceTree = "<group>"; };
+		D3A29E1B18E70F0E00DC591E /* GrammarActionsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrammarActionsParser.m; path = test/GrammarActionsParser.m; sourceTree = "<group>"; };
+		D3A29E1D18E70F1C00DC591E /* GrammarActionsParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrammarActionsParserTest.m; path = test/GrammarActionsParserTest.m; sourceTree = "<group>"; };
 		D3B22A3517023F1200446945 /* PGMethodTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGMethodTemplate.txt; path = res/PGMethodTemplate.txt; sourceTree = "<group>"; };
 		D3B22A37170241F500446945 /* PGMethodCallTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGMethodCallTemplate.txt; path = res/PGMethodCallTemplate.txt; sourceTree = "<group>"; };
 		D3B22A3917025EA300446945 /* elements.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = elements.grammar; path = res/elements.grammar; sourceTree = "<group>"; };
@@ -983,6 +990,7 @@
 		D31BBCC618E4F1A50003FFA3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D3A29E1D18E70F1C00DC591E /* GrammarActionsParserTest.m */,
 				D3D48D8B18E5BFFF001B54E9 /* CurlyActionParserTest.m */,
 				D31BBCBC18E4AAE20003FFA3 /* TableIndexParserTest.m */,
 				D3D48D8118E5B484001B54E9 /* TableIndexSpecParserTest.m */,
@@ -1315,6 +1323,8 @@
 		D3B22A581703D07000446945 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				D3A29E1A18E70F0E00DC591E /* GrammarActionsParser.h */,
+				D3A29E1B18E70F0E00DC591E /* GrammarActionsParser.m */,
 				D3D48D8818E5BFD3001B54E9 /* CurlyActionParser.h */,
 				D3D48D8918E5BFD3001B54E9 /* CurlyActionParser.m */,
 				D31BBCBE18E4AAFC0003FFA3 /* TableIndexParser.h */,
@@ -1402,6 +1412,7 @@
 		D3B22A5A1703D09C00446945 /* Grammars */ = {
 			isa = PBXGroup;
 			children = (
+				D3A29E1818E70E6800DC591E /* grammar_actions.grammar */,
 				D3D48D8618E5BCFC001B54E9 /* curly_action.grammar */,
 				D31BBCBA18E4AACB0003FFA3 /* table_index.grammar */,
 				D3D48D7F18E5B3C5001B54E9 /* table_index_spec.grammar */,
@@ -1745,6 +1756,7 @@
 				D3383081171CA3BA00CCE513 /* PGPredictIfTemplate.txt in Resources */,
 				D31BBCB518E472850003FFA3 /* create_table_stmt.grammar in Resources */,
 				D3383082171CA3BA00CCE513 /* PGSpeculateIfTemplate.txt in Resources */,
+				D3A29E1918E70E6800DC591E /* grammar_actions.grammar in Resources */,
 				D3383083171CA3BA00CCE513 /* PGPredictElseIfTemplate.txt in Resources */,
 				D3383084171CA3BA00CCE513 /* PGSpeculateElseIfTemplate.txt in Resources */,
 				D3383085171CA3BA00CCE513 /* PGPredictElseTemplate.txt in Resources */,
@@ -1921,6 +1933,7 @@
 				D3B22A621703DE2000446945 /* ExpressionParserTest.m in Sources */,
 				D3083AB91705F09B00DA6F95 /* ElementAssignParserTest.m in Sources */,
 				D31BBD0118E4F4FE0003FFA3 /* TDNumberStateTest.m in Sources */,
+				D3A29E1C18E70F0E00DC591E /* GrammarActionsParser.m in Sources */,
 				D3083ABC1705F16000DA6F95 /* ElementAssignParser.m in Sources */,
 				D3B63A3417079F5200BA9DBF /* ExpressionParserActionsTest.m in Sources */,
 				D3B63A3917079FE100BA9DBF /* ExpressionActionsParser.m in Sources */,
@@ -1981,6 +1994,7 @@
 				D376F6EF18D0B5190064C888 /* PGDefinitionPhaseVisitor.m in Sources */,
 				D376F6D518D0B3990064C888 /* PGOptionalNode.m in Sources */,
 				D33830BA171CA50F00CCE513 /* RegexKitLite.m in Sources */,
+				D3A29E1E18E70F1C00DC591E /* GrammarActionsParserTest.m in Sources */,
 				D33830BE171CA55300CCE513 /* MGTemplateEngine.m in Sources */,
 				D376F6D118D0B3990064C888 /* PGLiteralNode.m in Sources */,
 				D33830BF171CA55300CCE513 /* MGTemplateStandardMarkers.m in Sources */,

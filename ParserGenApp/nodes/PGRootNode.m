@@ -24,10 +24,20 @@
 
 @implementation PGRootNode
 
+- (id)initWithToken:(PKToken *)tok {
+    self = [super initWithToken:tok];
+    if (self) {
+        self.grammarActions = [NSMutableDictionary dictionary];
+    }
+    return self;
+}
+
+
 - (void)dealloc {
     self.grammarName = nil;
     self.startMethodName = nil;
     self.tokenKinds = nil;
+    self.grammarActions = nil;
     [super dealloc];
 }
 

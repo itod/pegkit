@@ -238,24 +238,20 @@
 }
 
 
-- (void)parser:(PKParser *)p didMatchGrammarAction:(PKAssembly *)a {
-    //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
-//    NSArray *argToks = [[a objectsAbove:equals] reversedArray];
-//    [a pop]; // discard '='
+//- (void)parser:(PKParser *)p didMatchGrammarAction:(PKAssembly *)a {
+//    NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
 //    
-//    PKToken *nameTok = [a pop];
-//    NSAssert(nameTok, @"");
-//    NSAssert([nameTok isKindOfClass:[PKToken class]], @"");
-//    NSAssert(nameTok.isWord, @"");
+//    PGActionNode *actNode = [a pop];
+//    NSAssert([actNode isKindOfClass:[PGActionNode class]], @"");
 //    
-//    NSString *prodName = [NSString stringWithFormat:@"@%@", nameTok.stringValue];
-//    NSMutableArray *allToks = directiveTab[prodName];
-//    if (!allToks) {
-//        allToks = [NSMutableArray arrayWithCapacity:[argToks count]];
-//    }
-//    [allToks addObjectsFromArray:argToks];
-//    directiveTab[prodName] = allToks;
-}
+//    PKToken *tok = [a pop];
+//    NSAssert(tok, @"");
+//    NSAssert([tok isKindOfClass:[PKToken class]], @"");
+//    NSAssert(tok.isWord, @"");
+//
+//    //NSString *actionName = tok.stringValue;
+//    
+//}
 
 
 - (void)parser:(PKParser *)p didMatchVarProduction:(PKAssembly *)a {
@@ -542,10 +538,11 @@
         // before codeBlock. obj is 'before' or 'after'. discard.
         PKToken *tok = (PKToken *)obj;
         key = tok.stringValue;
-        NSAssert([key isEqual:@"before"] || [key isEqual:@"after"], @"");
         ownerNode = [a pop];
-
-        [a push:ownerNode];
+        
+        if (ownerNode) {
+            [a push:ownerNode];
+        }
     }
     
     NSUInteger len = [sourceTok.stringValue length];
@@ -560,7 +557,14 @@
     
     PGActionNode *actNode = [PGActionNode nodeWithToken:curly];
     actNode.source = source;
-    [ownerNode setValue:actNode forKey:key];
+    
+    if (ownerNode) {
+        [ownerNode setValue:actNode forKey:key];
+    } else {
+        NSAssert(rootNode.grammarActions, @"");
+        NSAssert([key length], @"");
+        rootNode.grammarActions[key] = actNode;
+    }
 }
 
 

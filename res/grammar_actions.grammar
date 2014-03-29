@@ -1,0 +1,17 @@
+@head {
+    #define HEAD 1
+}
+@extension {
+    @property (nonatomic, retain) NSString *foo;
+}
+@ivars {
+    BOOL _bar;
+}
+@init {
+    self.foo = @"hello world";
+}
+@dealloc {
+    self.foo = nil;
+}
+
+start = Word+;

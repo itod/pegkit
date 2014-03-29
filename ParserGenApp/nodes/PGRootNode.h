@@ -27,4 +27,5 @@
 @property (nonatomic, retain) NSString *grammarName;
 @property (nonatomic, retain) NSString *startMethodName;
 @property (nonatomic, retain) NSMutableArray *tokenKinds;
+@property (nonatomic, retain) NSMutableDictionary *grammarActions;
 @end
