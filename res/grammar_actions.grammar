@@ -1,5 +1,8 @@
-@head {
-#define HEAD 1
+@h {
+#define MY_H 1
+}
+@m {
+#define MY_M 1
 }
 @extension {
 @property (nonatomic, retain) NSString *foo;
@@ -20,6 +23,7 @@ start
     NSAssert([self.foo isEqualToString:@"hello world"], @"");
     NSAssert([_foo isEqualToString:@"hello world"], @"");
     NSAssert(_bar, @"");
-    NSAssert(HEAD, @"");
+    NSAssert(MY_H, @"");
+    NSAssert(MY_M, @"");
 }
     = Word+;

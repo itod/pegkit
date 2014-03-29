@@ -38,7 +38,8 @@
 #define ENABLE_MEMOIZATION @"enableMemoization"
 #define ENABLE_ERROR_RECOVERY @"enableAutomaticErrorRecovery"
 #define PARSE_TREE @"parseTree"
-#define HEAD_ACTION @"headAction"
+#define H_ACTION @"hAction"
+#define M_ACTION @"mAction"
 #define EXT_ACTION @"extensionAction"
 #define IVARS_ACTION @"ivarsAction"
 #define INIT_ACTION @"initAction"
@@ -263,6 +264,7 @@
         className = [NSString stringWithFormat:@"%@Parser", className];
     }
     vars[CLASS_NAME] = className;
+    vars[H_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"h"]];
 
     // do interface (header)
     NSString *intTemplate = [self templateStringNamed:@"PGClassInterfaceTemplate"];
@@ -304,7 +306,7 @@
     vars[ENABLE_ERROR_RECOVERY] = @(self.enableAutomaticErrorRecovery);
     vars[PARSE_TREE] = @((_delegatePreMatchCallbacksOn == PGParserFactoryDelegateCallbacksOnSyntax || _delegatePostMatchCallbacksOn == PGParserFactoryDelegateCallbacksOnSyntax));
 
-    vars[HEAD_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"head"]];
+    vars[M_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"m"]];
     vars[EXT_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"extension"]];
     vars[IVARS_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"ivars"]];
     vars[INIT_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"init"]];

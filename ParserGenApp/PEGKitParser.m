@@ -6,14 +6,15 @@
 #define LS(i) [self LS:(i)]
 #define LF(i) [self LD:(i)]
 
-#define POP()        [self.assembly pop]
-#define POP_STR()    [self popString]
-#define POP_TOK()    [self popToken]
-#define POP_BOOL()   [self popBool]
-#define POP_INT()    [self popInteger]
-#define POP_UINT()   [self popUnsignedInteger]
-#define POP_FLOAT()  [self popFloat]
-#define POP_DOUBLE() [self popDouble]
+#define POP()            [self.assembly pop]
+#define POP_STR()        [self popString]
+#define POP_QUOTED_STR() [self popQuotedString]
+#define POP_TOK()        [self popToken]
+#define POP_BOOL()       [self popBool]
+#define POP_INT()        [self popInteger]
+#define POP_UINT()       [self popUnsignedInteger]
+#define POP_FLOAT()      [self popFloat]
+#define POP_DOUBLE()     [self popDouble]
 
 #define PUSH(obj)      [self.assembly push:(id)(obj)]
 #define PUSH_BOOL(yn)  [self pushBool:(BOOL)(yn)]
@@ -68,7 +69,6 @@
         
         self.startRuleName = @"start";
         self.tokenKindTab[@"Symbol"] = @(PEGKIT_TOKEN_KIND_SYMBOL_TITLE);
-        self.tokenKindTab[@"head"] = @(PEGKIT_TOKEN_KIND_HEADKEY);
         self.tokenKindTab[@"{,}?"] = @(PEGKIT_TOKEN_KIND_SEMANTICPREDICATE);
         self.tokenKindTab[@"|"] = @(PEGKIT_TOKEN_KIND_PIPE);
         self.tokenKindTab[@"after"] = @(PEGKIT_TOKEN_KIND_AFTERKEY);
@@ -79,6 +79,7 @@
         self.tokenKindTab[@"!"] = @(PEGKIT_TOKEN_KIND_DISCARD);
         self.tokenKindTab[@"init"] = @(PEGKIT_TOKEN_KIND_INITKEY);
         self.tokenKindTab[@"Number"] = @(PEGKIT_TOKEN_KIND_NUMBER_TITLE);
+        self.tokenKindTab[@"h"] = @(PEGKIT_TOKEN_KIND_HKEY);
         self.tokenKindTab[@"Any"] = @(PEGKIT_TOKEN_KIND_ANY_TITLE);
         self.tokenKindTab[@";"] = @(PEGKIT_TOKEN_KIND_SEMI_COLON);
         self.tokenKindTab[@"S"] = @(PEGKIT_TOKEN_KIND_S_TITLE);
@@ -86,6 +87,7 @@
         self.tokenKindTab[@"="] = @(PEGKIT_TOKEN_KIND_EQUALS);
         self.tokenKindTab[@"&"] = @(PEGKIT_TOKEN_KIND_AMPERSAND);
         self.tokenKindTab[@"/,/"] = @(PEGKIT_TOKEN_KIND_PATTERNNOOPTS);
+        self.tokenKindTab[@"m"] = @(PEGKIT_TOKEN_KIND_MKEY);
         self.tokenKindTab[@"?"] = @(PEGKIT_TOKEN_KIND_PHRASEQUESTION);
         self.tokenKindTab[@"QuotedString"] = @(PEGKIT_TOKEN_KIND_QUOTEDSTRING_TITLE);
         self.tokenKindTab[@"("] = @(PEGKIT_TOKEN_KIND_OPEN_PAREN);
@@ -113,7 +115,6 @@
         self.tokenKindTab[@"%{"] = @(PEGKIT_TOKEN_KIND_DELIMOPEN);
 
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_SYMBOL_TITLE] = @"Symbol";
-        self.tokenKindNameTab[PEGKIT_TOKEN_KIND_HEADKEY] = @"head";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_SEMANTICPREDICATE] = @"{,}?";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_PIPE] = @"|";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_AFTERKEY] = @"after";
@@ -124,6 +125,7 @@
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_DISCARD] = @"!";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_INITKEY] = @"init";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_NUMBER_TITLE] = @"Number";
+        self.tokenKindNameTab[PEGKIT_TOKEN_KIND_HKEY] = @"h";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_ANY_TITLE] = @"Any";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_SEMI_COLON] = @";";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_S_TITLE] = @"S";
@@ -131,6 +133,7 @@
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_EQUALS] = @"=";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_AMPERSAND] = @"&";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_PATTERNNOOPTS] = @"/,/";
+        self.tokenKindNameTab[PEGKIT_TOKEN_KIND_MKEY] = @"m";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_PHRASEQUESTION] = @"?";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_QUOTEDSTRING_TITLE] = @"QuotedString";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_OPEN_PAREN] = @"(";
@@ -187,8 +190,10 @@
 - (void)grammarAction_ {
     
     [self match:PEGKIT_TOKEN_KIND_AT discard:YES]; 
-    if ([self predicts:PEGKIT_TOKEN_KIND_HEADKEY, 0]) {
-        [self headKey_]; 
+    if ([self predicts:PEGKIT_TOKEN_KIND_HKEY, 0]) {
+        [self hKey_]; 
+    } else if ([self predicts:PEGKIT_TOKEN_KIND_MKEY, 0]) {
+        [self mKey_]; 
     } else if ([self predicts:PEGKIT_TOKEN_KIND_EXTENSIONKEY, 0]) {
         [self extensionKey_]; 
     } else if ([self predicts:PEGKIT_TOKEN_KIND_IVARSKEY, 0]) {
@@ -205,11 +210,18 @@
     [self fireDelegateSelector:@selector(parser:didMatchGrammarAction:)];
 }
 
-- (void)headKey_ {
+- (void)hKey_ {
     
-    [self match:PEGKIT_TOKEN_KIND_HEADKEY discard:NO]; 
+    [self match:PEGKIT_TOKEN_KIND_HKEY discard:NO]; 
 
-    [self fireDelegateSelector:@selector(parser:didMatchHeadKey:)];
+    [self fireDelegateSelector:@selector(parser:didMatchHKey:)];
+}
+
+- (void)mKey_ {
+    
+    [self match:PEGKIT_TOKEN_KIND_MKEY discard:NO]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchMKey:)];
 }
 
 - (void)extensionKey_ {

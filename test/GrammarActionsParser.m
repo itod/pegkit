@@ -1,21 +1,22 @@
 #import "GrammarActionsParser.h"
 #import <PEGKit/PEGKit.h>
     
-#define HEAD 1
+#define MY_M 1
 
 #define LT(i) [self LT:(i)]
 #define LA(i) [self LA:(i)]
 #define LS(i) [self LS:(i)]
 #define LF(i) [self LD:(i)]
 
-#define POP()        [self.assembly pop]
-#define POP_STR()    [self popString]
-#define POP_TOK()    [self popToken]
-#define POP_BOOL()   [self popBool]
-#define POP_INT()    [self popInteger]
-#define POP_UINT()   [self popUnsignedInteger]
-#define POP_FLOAT()  [self popFloat]
-#define POP_DOUBLE() [self popDouble]
+#define POP()            [self.assembly pop]
+#define POP_STR()        [self popString]
+#define POP_QUOTED_STR() [self popQuotedString]
+#define POP_TOK()        [self popToken]
+#define POP_BOOL()       [self popBool]
+#define POP_INT()        [self popInteger]
+#define POP_UINT()       [self popUnsignedInteger]
+#define POP_FLOAT()      [self popFloat]
+#define POP_DOUBLE()     [self popDouble]
 
 #define PUSH(obj)      [self.assembly push:(id)(obj)]
 #define PUSH_BOOL(yn)  [self pushBool:(BOOL)(yn)]
@@ -102,7 +103,8 @@
     NSAssert([self.foo isEqualToString:@"hello world"], @"");
     NSAssert([_foo isEqualToString:@"hello world"], @"");
     NSAssert(_bar, @"");
-    NSAssert(HEAD, @"");
+    NSAssert(MY_H, @"");
+    NSAssert(MY_M, @"");
 
     }];
     do {

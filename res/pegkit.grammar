@@ -1,7 +1,9 @@
 start                = grammarAction* rule+;
-grammarAction	     = '@'! (headKey | extensionKey | ivarsKey | initKey | deallocKey) action;
+grammarAction	     = '@'! (hKey
+| mKey | extensionKey | ivarsKey | initKey | deallocKey) action;
 
-headKey			 	 = 'head';
+hKey			 	 = 'h';
+mKey			 	 = 'm';
 extensionKey		 = 'extension';
 ivarsKey			 = 'ivars';
 initKey				 = 'init';
