@@ -53,8 +53,7 @@
 
 - (PKTokenizer *)tokenizerForParsingGrammar;
 
-- (void)parser:(PKParser *)p didMatchTokenizerDirective:(PKAssembly *)a;
-- (void)parser:(PKParser *)p didMatchDecl:(PKAssembly *)a;
+- (void)parser:(PKParser *)p didMatchRule:(PKAssembly *)a;
 - (void)parser:(PKParser *)p didMatchCallback:(PKAssembly *)a;
 - (void)parser:(PKParser *)p didMatchSubSeqExpr:(PKAssembly *)a;
 - (void)parser:(PKParser *)p didMatchSubTrackExpr:(PKAssembly *)a;
@@ -239,23 +238,23 @@
 }
 
 
-- (void)parser:(PKParser *)p didMatchTokenizerDirective:(PKAssembly *)a {
+- (void)parser:(PKParser *)p didMatchGrammarAction:(PKAssembly *)a {
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
-    NSArray *argToks = [[a objectsAbove:equals] reversedArray];
-    [a pop]; // discard '='
-    
-    PKToken *nameTok = [a pop];
-    NSAssert(nameTok, @"");
-    NSAssert([nameTok isKindOfClass:[PKToken class]], @"");
-    NSAssert(nameTok.isWord, @"");
-    
-    NSString *prodName = [NSString stringWithFormat:@"@%@", nameTok.stringValue];
-    NSMutableArray *allToks = directiveTab[prodName];
-    if (!allToks) {
-        allToks = [NSMutableArray arrayWithCapacity:[argToks count]];
-    }
-    [allToks addObjectsFromArray:argToks];
-    directiveTab[prodName] = allToks;
+//    NSArray *argToks = [[a objectsAbove:equals] reversedArray];
+//    [a pop]; // discard '='
+//    
+//    PKToken *nameTok = [a pop];
+//    NSAssert(nameTok, @"");
+//    NSAssert([nameTok isKindOfClass:[PKToken class]], @"");
+//    NSAssert(nameTok.isWord, @"");
+//    
+//    NSString *prodName = [NSString stringWithFormat:@"@%@", nameTok.stringValue];
+//    NSMutableArray *allToks = directiveTab[prodName];
+//    if (!allToks) {
+//        allToks = [NSMutableArray arrayWithCapacity:[argToks count]];
+//    }
+//    [allToks addObjectsFromArray:argToks];
+//    directiveTab[prodName] = allToks;
 }
 
 
@@ -275,7 +274,7 @@
 }
 
 
-- (void)parser:(PKParser *)p didMatchDecl:(PKAssembly *)a {
+- (void)parser:(PKParser *)p didMatchRule:(PKAssembly *)a {
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
     NSArray *nodes = [a objectsAbove:equals];
     NSAssert([nodes count], @"");

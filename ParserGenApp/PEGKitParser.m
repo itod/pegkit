@@ -66,6 +66,7 @@
     if (self) {
         self.startRuleName = @"start";
         self.tokenKindTab[@"Symbol"] = @(PEGKIT_TOKEN_KIND_SYMBOL_TITLE);
+        self.tokenKindTab[@"head"] = @(PEGKIT_TOKEN_KIND_HEADKEY);
         self.tokenKindTab[@"{,}?"] = @(PEGKIT_TOKEN_KIND_SEMANTICPREDICATE);
         self.tokenKindTab[@"|"] = @(PEGKIT_TOKEN_KIND_PIPE);
         self.tokenKindTab[@"after"] = @(PEGKIT_TOKEN_KIND_AFTERKEY);
@@ -74,6 +75,7 @@
         self.tokenKindTab[@"Email"] = @(PEGKIT_TOKEN_KIND_EMAIL_TITLE);
         self.tokenKindTab[@"Comment"] = @(PEGKIT_TOKEN_KIND_COMMENT_TITLE);
         self.tokenKindTab[@"!"] = @(PEGKIT_TOKEN_KIND_DISCARD);
+        self.tokenKindTab[@"init"] = @(PEGKIT_TOKEN_KIND_INITKEY);
         self.tokenKindTab[@"Number"] = @(PEGKIT_TOKEN_KIND_NUMBER_TITLE);
         self.tokenKindTab[@"Any"] = @(PEGKIT_TOKEN_KIND_ANY_TITLE);
         self.tokenKindTab[@";"] = @(PEGKIT_TOKEN_KIND_SEMI_COLON);
@@ -89,23 +91,27 @@
         self.tokenKindTab[@"/,/i"] = @(PEGKIT_TOKEN_KIND_PATTERNIGNORECASE);
         self.tokenKindTab[@"before"] = @(PEGKIT_TOKEN_KIND_BEFOREKEY);
         self.tokenKindTab[@"EOF"] = @(PEGKIT_TOKEN_KIND_EOF_TITLE);
-        self.tokenKindTab[@"URL"] = @(PEGKIT_TOKEN_KIND_URL_TITLE);
         self.tokenKindTab[@")"] = @(PEGKIT_TOKEN_KIND_CLOSE_PAREN);
         self.tokenKindTab[@"*"] = @(PEGKIT_TOKEN_KIND_PHRASESTAR);
+        self.tokenKindTab[@"URL"] = @(PEGKIT_TOKEN_KIND_URL_TITLE);
         self.tokenKindTab[@"Empty"] = @(PEGKIT_TOKEN_KIND_EMPTY_TITLE);
         self.tokenKindTab[@"+"] = @(PEGKIT_TOKEN_KIND_PHRASEPLUS);
         self.tokenKindTab[@"Letter"] = @(PEGKIT_TOKEN_KIND_LETTER_TITLE);
         self.tokenKindTab[@"["] = @(PEGKIT_TOKEN_KIND_OPEN_BRACKET);
         self.tokenKindTab[@","] = @(PEGKIT_TOKEN_KIND_COMMA);
-        self.tokenKindTab[@"SpecificChar"] = @(PEGKIT_TOKEN_KIND_SPECIFICCHAR_TITLE);
+        self.tokenKindTab[@"dealloc"] = @(PEGKIT_TOKEN_KIND_DEALLOCKEY);
         self.tokenKindTab[@"-"] = @(PEGKIT_TOKEN_KIND_MINUS);
         self.tokenKindTab[@"Word"] = @(PEGKIT_TOKEN_KIND_WORD_TITLE);
         self.tokenKindTab[@"]"] = @(PEGKIT_TOKEN_KIND_CLOSE_BRACKET);
         self.tokenKindTab[@"Char"] = @(PEGKIT_TOKEN_KIND_CHAR_TITLE);
+        self.tokenKindTab[@"SpecificChar"] = @(PEGKIT_TOKEN_KIND_SPECIFICCHAR_TITLE);
+        self.tokenKindTab[@"extension"] = @(PEGKIT_TOKEN_KIND_EXTENSIONKEY);
         self.tokenKindTab[@"Digit"] = @(PEGKIT_TOKEN_KIND_DIGIT_TITLE);
+        self.tokenKindTab[@"ivars"] = @(PEGKIT_TOKEN_KIND_IVARSKEY);
         self.tokenKindTab[@"%{"] = @(PEGKIT_TOKEN_KIND_DELIMOPEN);
 
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_SYMBOL_TITLE] = @"Symbol";
+        self.tokenKindNameTab[PEGKIT_TOKEN_KIND_HEADKEY] = @"head";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_SEMANTICPREDICATE] = @"{,}?";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_PIPE] = @"|";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_AFTERKEY] = @"after";
@@ -114,6 +120,7 @@
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_EMAIL_TITLE] = @"Email";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_COMMENT_TITLE] = @"Comment";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_DISCARD] = @"!";
+        self.tokenKindNameTab[PEGKIT_TOKEN_KIND_INITKEY] = @"init";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_NUMBER_TITLE] = @"Number";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_ANY_TITLE] = @"Any";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_SEMI_COLON] = @";";
@@ -129,20 +136,23 @@
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_PATTERNIGNORECASE] = @"/,/i";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_BEFOREKEY] = @"before";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_EOF_TITLE] = @"EOF";
-        self.tokenKindNameTab[PEGKIT_TOKEN_KIND_URL_TITLE] = @"URL";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_CLOSE_PAREN] = @")";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_PHRASESTAR] = @"*";
+        self.tokenKindNameTab[PEGKIT_TOKEN_KIND_URL_TITLE] = @"URL";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_EMPTY_TITLE] = @"Empty";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_PHRASEPLUS] = @"+";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_LETTER_TITLE] = @"Letter";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_OPEN_BRACKET] = @"[";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_COMMA] = @",";
-        self.tokenKindNameTab[PEGKIT_TOKEN_KIND_SPECIFICCHAR_TITLE] = @"SpecificChar";
+        self.tokenKindNameTab[PEGKIT_TOKEN_KIND_DEALLOCKEY] = @"dealloc";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_MINUS] = @"-";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_WORD_TITLE] = @"Word";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_CLOSE_BRACKET] = @"]";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_CHAR_TITLE] = @"Char";
+        self.tokenKindNameTab[PEGKIT_TOKEN_KIND_SPECIFICCHAR_TITLE] = @"SpecificChar";
+        self.tokenKindNameTab[PEGKIT_TOKEN_KIND_EXTENSIONKEY] = @"extension";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_DIGIT_TITLE] = @"Digit";
+        self.tokenKindNameTab[PEGKIT_TOKEN_KIND_IVARSKEY] = @"ivars";
         self.tokenKindNameTab[PEGKIT_TOKEN_KIND_DELIMOPEN] = @"%{";
 
     }
@@ -156,21 +166,87 @@
 
 - (void)start_ {
     
+    while ([self speculate:^{ [self grammarAction_]; }]) {
+        [self grammarAction_]; 
+    }
     do {
-        [self statement_]; 
-    } while ([self speculate:^{ [self statement_]; }]);
+        [self rule_]; 
+    } while ([self speculate:^{ [self rule_]; }]);
 
     [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
 
-- (void)statement_ {
+- (void)grammarAction_ {
     
-    [self decl_]; 
+    [self match:PEGKIT_TOKEN_KIND_AT discard:YES]; 
+    if ([self predicts:PEGKIT_TOKEN_KIND_HEADKEY, 0]) {
+        [self headKey_]; 
+    } else if ([self predicts:PEGKIT_TOKEN_KIND_EXTENSIONKEY, 0]) {
+        [self extensionKey_]; 
+    } else if ([self predicts:PEGKIT_TOKEN_KIND_IVARSKEY, 0]) {
+        [self ivarsKey_]; 
+    } else if ([self predicts:PEGKIT_TOKEN_KIND_INITKEY, 0]) {
+        [self initKey_]; 
+    } else if ([self predicts:PEGKIT_TOKEN_KIND_DEALLOCKEY, 0]) {
+        [self deallocKey_]; 
+    } else {
+        [self raise:@"No viable alternative found in rule 'grammarAction'."];
+    }
+    [self action_]; 
 
-    [self fireDelegateSelector:@selector(parser:didMatchStatement:)];
+    [self fireDelegateSelector:@selector(parser:didMatchGrammarAction:)];
 }
 
-- (void)decl_ {
+- (void)headKey_ {
+    
+    [self match:PEGKIT_TOKEN_KIND_HEADKEY discard:NO]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchHeadKey:)];
+}
+
+- (void)extensionKey_ {
+    
+    [self match:PEGKIT_TOKEN_KIND_EXTENSIONKEY discard:NO]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchExtensionKey:)];
+}
+
+- (void)ivarsKey_ {
+    
+    [self match:PEGKIT_TOKEN_KIND_IVARSKEY discard:NO]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchIvarsKey:)];
+}
+
+- (void)initKey_ {
+    
+    [self match:PEGKIT_TOKEN_KIND_INITKEY discard:NO]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchInitKey:)];
+}
+
+- (void)deallocKey_ {
+    
+    [self match:PEGKIT_TOKEN_KIND_DEALLOCKEY discard:NO]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchDeallocKey:)];
+}
+
+- (void)beforeKey_ {
+    
+    [self match:PEGKIT_TOKEN_KIND_BEFOREKEY discard:NO]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchBeforeKey:)];
+}
+
+- (void)afterKey_ {
+    
+    [self match:PEGKIT_TOKEN_KIND_AFTERKEY discard:NO]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchAfterKey:)];
+}
+
+- (void)rule_ {
     
     [self production_]; 
     while ([self speculate:^{ [self namedAction_]; }]) {
@@ -183,7 +259,7 @@
     [self expr_]; 
     [self match:PEGKIT_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
-    [self fireDelegateSelector:@selector(parser:didMatchDecl:)];
+    [self fireDelegateSelector:@selector(parser:didMatchRule:)];
 }
 
 - (void)production_ {
@@ -206,20 +282,6 @@
     [self action_]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchNamedAction:)];
-}
-
-- (void)beforeKey_ {
-    
-    [self match:PEGKIT_TOKEN_KIND_BEFOREKEY discard:NO]; 
-
-    [self fireDelegateSelector:@selector(parser:didMatchBeforeKey:)];
-}
-
-- (void)afterKey_ {
-    
-    [self match:PEGKIT_TOKEN_KIND_AFTERKEY discard:NO]; 
-
-    [self fireDelegateSelector:@selector(parser:didMatchAfterKey:)];
 }
 
 - (void)varProduction_ {

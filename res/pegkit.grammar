@@ -1,10 +1,17 @@
-start                = statement+;
-statement            = decl;
-decl                 = production namedAction* '=' action? expr ';'!;
-production           = varProduction;
-namedAction		     = '@'! (beforeKey | afterKey) action;
+start                = grammarAction* rule+;
+grammarAction	     = '@'! (headKey | extensionKey | ivarsKey | initKey | deallocKey) action;
+
+headKey			 	 = 'head';
+extensionKey		 = 'extension';
+ivarsKey			 = 'ivars';
+initKey				 = 'init';
+deallocKey			 = 'dealloc';
 beforeKey    		 = 'before';
 afterKey    		 = 'after';
+
+rule                 = production namedAction* '=' action? expr ';'!;
+production           = varProduction;
+namedAction		     = '@'! (beforeKey | afterKey) action;
 varProduction        = Word;
 expr                 = term orTerm*;
 term                 = semanticPredicate? factor nextFactor*;
