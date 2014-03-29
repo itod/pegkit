@@ -58,6 +58,7 @@ enum {
 
 - (id)parseString:(NSString *)input error:(NSError **)outErr;
 - (id)parseStream:(NSInputStream *)input error:(NSError **)outErr;
+- (id)parseTokens:(NSArray *)input error:(NSError **)outErr;
 
 @property (nonatomic, assign, readonly) id delegate; // weak ref
 @property (nonatomic, retain) PKTokenizer *tokenizer;

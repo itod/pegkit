@@ -32,34 +32,9 @@
 */
 @interface PKAssembly : NSObject
 
-/*!
-    @brief      Convenience factory method for initializing an autoreleased assembly with the tokenizer <tt>t</tt> and its string
-    @param      t tokenizer whose string will be worked on
-    @result     an initialized autoreleased assembly
-*/
-+ (PKAssembly *)assemblyWithTokenizer:(PKTokenizer *)t;
++ (instancetype)assembly;
 
-/*!
-    @brief      Convenience factory method for initializing an autoreleased assembly.
-    @param      s string to be worked on
-    @result     an initialized autoreleased assembly
-*/
-+ (PKAssembly *)assemblyWithString:(NSString *)s;
-
-/*!
-    @brief      Initializes an assembly with the tokenizer <tt>t</tt> and its string
-    @param      t tokenizer whose string will be worked on
-    @result     an initialized assembly
-*/
-- (id)initWithTokenzier:(PKTokenizer *)t;
-
-/*!
-    @brief      Designated Initializer. Initializes an assembly with a given string.
-    @details    Designated Initializer.
-    @param      s string to be worked on
-    @result     an initialized assembly
-*/
-- (id)initWithString:(NSString *)s;
+- (instancetype)init;
 
 /*!
     @brief      Removes the object at the top of this assembly's stack and returns it.

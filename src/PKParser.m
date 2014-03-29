@@ -59,6 +59,8 @@
 @property (nonatomic, retain) NSString *blockStartMarker;
 @property (nonatomic, retain) NSString *blockEndMarker;
 @property (nonatomic, retain) NSString *braces;
+@property (nonatomic, retain) NSArray *tokenSource;
+@property (nonatomic, assign) NSUInteger tokenSourceIndex;
 
 - (NSInteger)tokenKindForString:(NSString *)str;
 - (NSString *)stringForTokenKind:(NSInteger)tokenKind;
@@ -233,20 +235,37 @@
 }
 
 
+- (id)parseTokens:(NSArray *)input error:(NSError **)outError {
+    
+    self.tokenSource = input;
+    self.tokenSourceIndex = 0;
+    
+    id result = [self parse:outError];
+    return result;
+}
+
+
 - (id)parseWithTokenizer:(PKTokenizer *)t error:(NSError **)outError {
-    id result = nil;
     
-    // setup
+    // setup tokenizer
     self.tokenizer = t;
-    self.assembly = [PKAssembly assemblyWithTokenizer:_tokenizer];
-    
     self.tokenizer.delegate = self;
     
+    id result = [self parse:outError];
+    return result;
+}
+
+
+- (id)parse:(NSError **)outError {
+    id result = nil;
+
+    self.assembly = [PKAssembly assembly];
+
     if (_silentlyConsumesWhitespace) {
         _tokenizer.whitespaceState.reportsWhitespaceTokens = YES;
         _assembly.preservesWhitespaceTokens = YES;
     }
-    
+
     // setup speculation
     self.p = 0;
     self.lookahead = [NSMutableArray array];
@@ -463,9 +482,25 @@
 }
 
 
+- (PKToken *)nextToken {
+    PKToken *tok = nil;
+    
+    if (_tokenizer) {
+        tok = [_tokenizer nextToken];
+    } else {
+        NSAssert(_tokenSource, @"");
+        tok = [_tokenSource objectAtIndex:_tokenSourceIndex];
+        ++self.tokenSourceIndex;
+    }
+    
+    NSAssert(tok, @"");
+    return tok;
+}
+
+
 - (void)fill:(NSInteger)n {
     for (NSInteger i = 0; i <= n; ++i) { // <= ?? fetches an extra lookahead tok
-        PKToken *tok = [_tokenizer nextToken];
+        PKToken *tok = [self nextToken];
 
         // set token kind
         if (TOKEN_KIND_BUILTIN_INVALID == tok.tokenKind) {

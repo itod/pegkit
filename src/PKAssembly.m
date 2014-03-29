@@ -33,47 +33,25 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
 
 @property (nonatomic, readwrite, retain) NSMutableArray *stack;
 @property (nonatomic, assign) NSUInteger index;
-@property (nonatomic, retain) NSString *string;
 @property (nonatomic, retain) NSString *defaultDelimiter;
 @property (nonatomic, retain) NSString *defaultCursor;
 @property (nonatomic, readonly) NSUInteger objectsConsumed;
 
 - (void)consume:(PKToken *)tok;
-@property (nonatomic, retain) PKTokenizer *tokenizer;
 @property (nonatomic, retain) NSMutableArray *tokens;
 @end
 
 @implementation PKAssembly
 
-+ (PKAssembly *)assemblyWithString:(NSString *)s {
-    return [[[self alloc] initWithString:s] autorelease];
-}
-
-
-+ (PKAssembly *)assemblyWithTokenizer:(PKTokenizer *)t {
-    return [[[self alloc] initWithTokenzier:t] autorelease];
++ (PKAssembly *)assembly {
+    return [[[self alloc] init] autorelease];
 }
 
 
 - (id)init {
-    return [self initWithString:nil];
-}
-
-
-- (id)initWithString:(NSString *)s {
     self = [super init];
     if (self) {
         self.stack = [NSMutableArray array];
-        self.string = s;
-    }
-    return self;
-}
-
-
-- (id)initWithTokenzier:(PKTokenizer *)t {
-    self = [self initWithString:nil];
-    if (self) {
-        self.tokenizer = t;
 #if defined(NDEBUG)
         self.gathersConsumedTokens = NO;
         self.defaultCursor = @"";
@@ -87,11 +65,9 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
 
 - (void)dealloc {
     self.stack = nil;
-    self.string = nil;
     self.target = nil;
     self.defaultDelimiter = nil;
     self.defaultCursor = nil;
-    self.tokenizer = nil;
     self.tokens = nil;
     [super dealloc];
 }
