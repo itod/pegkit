@@ -104,7 +104,7 @@
 
 - (void)start_ {
     
-    [self execute:(id)^{
+    [self execute:^{
     
 	PKTokenizer *t = self.tokenizer;
 	

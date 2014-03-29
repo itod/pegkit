@@ -117,11 +117,11 @@
 
 - (void)__a {
     
-    [self execute:(id)^{
+    [self execute:^{
     PUSH(@"foo");
     }];
     [self match:NAMEDACTION_TOKEN_KIND_A discard:NO]; 
-    [self execute:(id)^{
+    [self execute:^{
     PUSH(@"bar");
     }];
 

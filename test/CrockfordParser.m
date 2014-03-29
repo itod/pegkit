@@ -188,7 +188,7 @@
 
 - (void)program_ {
     
-    [self execute:(id)^{
+    [self execute:^{
     
         PKTokenizer *t = self.tokenizer;
         

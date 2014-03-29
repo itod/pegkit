@@ -96,7 +96,7 @@
     
     [self name_]; 
     [self indexOpt_]; 
-    [self execute:(id)^{
+    [self execute:^{
     
     // now stack contains 3 `NSString`s. 
     // ["mydb", "mytable", "foo"]
@@ -138,7 +138,7 @@
         [self match:TABLEINDEX_TOKEN_KIND_DOT discard:YES]; 
     }
     [self tableName_]; 
-    [self execute:(id)^{
+    [self execute:^{
     
     // now stack contains 2 `PKToken`s of type Word
     // [<Word «mydb»>, <Word «mytable»>]
@@ -159,7 +159,7 @@
         [self index_]; 
     } else {
         [self matchEmpty:NO]; 
-        [self execute:(id)^{
+        [self execute:^{
          PUSH(@""); 
         }];
     }
@@ -173,7 +173,7 @@
         [self match:TABLEINDEX_TOKEN_KIND_INDEXED discard:YES]; 
         [self match:TABLEINDEX_TOKEN_KIND_BY discard:YES]; 
         [self indexName_]; 
-        [self execute:(id)^{
+        [self execute:^{
          
         // now top of stack will be a Quoted String `PKToken`
         // […, <Quoted String «"foo"»>]
@@ -188,7 +188,7 @@
     } else if ([self predicts:TABLEINDEX_TOKEN_KIND_NOT_UPPER, 0]) {
         [self match:TABLEINDEX_TOKEN_KIND_NOT_UPPER discard:YES]; 
         [self match:TABLEINDEX_TOKEN_KIND_INDEXED discard:YES]; 
-        [self execute:(id)^{
+        [self execute:^{
          PUSH(@""); 
         }];
     } else {

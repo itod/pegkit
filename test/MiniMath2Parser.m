@@ -104,7 +104,7 @@
     while ([self speculate:^{ [self match:MINIMATH2_TOKEN_KIND_PLUS discard:YES]; [self multExpr_]; }]) {
         [self match:MINIMATH2_TOKEN_KIND_PLUS discard:YES]; 
         [self multExpr_]; 
-        [self execute:(id)^{
+        [self execute:^{
         
     PUSH_DOUBLE(POP_DOUBLE() + POP_DOUBLE());
 
@@ -119,7 +119,7 @@
     while ([self speculate:^{ [self match:MINIMATH2_TOKEN_KIND_STAR discard:YES]; [self primary_]; }]) {
         [self match:MINIMATH2_TOKEN_KIND_STAR discard:YES]; 
         [self primary_]; 
-        [self execute:(id)^{
+        [self execute:^{
          
     PUSH_DOUBLE(POP_DOUBLE() * POP_DOUBLE());
 
@@ -145,7 +145,7 @@
 - (void)atom_ {
     
     [self matchNumber:NO]; 
-    [self execute:(id)^{
+    [self execute:^{
      
     PUSH_DOUBLE(POP_DOUBLE()); 
 

@@ -97,7 +97,7 @@
 
 - (void)start_ {
     
-    [self execute:(id)^{
+    [self execute:^{
     
     NSAssert([self.foo isEqualToString:@"hello world"], @"");
     NSAssert([_foo isEqualToString:@"hello world"], @"");

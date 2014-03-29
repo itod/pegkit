@@ -401,7 +401,7 @@
 
 - (void)__start {
     
-    [self execute:(id)^{
+    [self execute:^{
     
 	PKTokenizer *t = self.tokenizer;
 	[t setTokenizerState:t.wordState from:'#' to:'#'];

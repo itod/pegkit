@@ -27,7 +27,7 @@
 @class PKToken;
 @class PKAssembly;
 
-typedef id   (^PKSActionBlock)   (void);
+typedef void (^PKSActionBlock)   (void);
 typedef void (^PKSSpeculateBlock)(void);
 typedef BOOL (^PKSPredicateBlock)(void);
 typedef void (^PKSRecoverBlock)   (void);
@@ -105,7 +105,7 @@ enum {
 - (void)testAndThrow:(PKSPredicateBlock)block;
 
 // actions
-- (id)execute:(PKSActionBlock)block;
+- (void)execute:(PKSActionBlock)block;
 
 // delegate callbacks
 - (void)fireDelegateSelector:(SEL)sel;

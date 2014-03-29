@@ -281,7 +281,7 @@
 
 - (void)__stylesheet {
     
-    [self execute:(id)^{
+    [self execute:^{
     
     PKTokenizer *t = self.tokenizer;
 

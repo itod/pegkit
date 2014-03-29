@@ -115,7 +115,7 @@
     while ([self speculate:^{ [self match:MINIMATH_TOKEN_KIND_PLUS discard:YES]; [self mult_]; }]) {
         [self match:MINIMATH_TOKEN_KIND_PLUS discard:YES]; 
         [self mult_]; 
-        [self execute:(id)^{
+        [self execute:^{
          PUSH_DOUBLE(POP_DOUBLE()+POP_DOUBLE()); 
         }];
     }
@@ -133,7 +133,7 @@
     while ([self speculate:^{ [self match:MINIMATH_TOKEN_KIND_STAR discard:YES]; [self pow_]; }]) {
         [self match:MINIMATH_TOKEN_KIND_STAR discard:YES]; 
         [self pow_]; 
-        [self execute:(id)^{
+        [self execute:^{
          PUSH_DOUBLE(POP_DOUBLE()*POP_DOUBLE()); 
         }];
     }
@@ -151,7 +151,7 @@
     if ([self speculate:^{ [self match:MINIMATH_TOKEN_KIND_CARET discard:YES]; [self pow_]; }]) {
         [self match:MINIMATH_TOKEN_KIND_CARET discard:YES]; 
         [self pow_]; 
-        [self execute:(id)^{
+        [self execute:^{
          
 		double exp = POP_DOUBLE();
 		double base = POP_DOUBLE();
@@ -173,7 +173,7 @@
 - (void)__atom {
     
     [self matchNumber:NO]; 
-    [self execute:(id)^{
+    [self execute:^{
     PUSH_DOUBLE(POP_DOUBLE());
     }];
 

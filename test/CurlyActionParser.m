@@ -89,7 +89,7 @@
     do {
         [self matchWord:NO]; 
     } while ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]);
-    [self execute:(id)^{
+    [self execute:^{
     
     id word = nil;
     while (!EMPTY()) {

@@ -683,13 +683,11 @@
 }
 
 
-- (id)execute:(PKSActionBlock)block {
+- (void)execute:(PKSActionBlock)block {
     NSParameterAssert(block);
-    if (self.isSpeculating || !_enableActions) return nil;
+    if (self.isSpeculating || !_enableActions) return;
 
-    id result = nil;
-    if (block) result = block();
-    return result;
+    if (block) block();
 }
 
 

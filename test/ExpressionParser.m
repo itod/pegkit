@@ -237,7 +237,7 @@
 
 - (void)__expr {
     
-    [self execute:(id)^{
+    [self execute:^{
     
     PKTokenizer *t = self.tokenizer;
     [t.symbolState add:@"!="];

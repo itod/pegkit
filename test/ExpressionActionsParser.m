@@ -189,7 +189,7 @@
 
 - (void)__expr {
     
-    [self execute:(id)^{
+    [self execute:^{
     
     PKTokenizer *t = self.tokenizer;
     [t.symbolState add:@"!="];
@@ -224,7 +224,7 @@
     
     [self match:EXPRESSIONACTIONS_TOKEN_KIND_OR discard:YES]; 
     [self andExpr_]; 
-    [self execute:(id)^{
+    [self execute:^{
     
 	BOOL rhs = POP_BOOL();
 	BOOL lhs = POP_BOOL();
@@ -257,7 +257,7 @@
     
     [self match:EXPRESSIONACTIONS_TOKEN_KIND_AND discard:YES]; 
     [self relExpr_]; 
-    [self execute:(id)^{
+    [self execute:^{
     
 	BOOL rhs = POP_BOOL();
 	BOOL lhs = POP_BOOL();
@@ -315,7 +315,7 @@
     
     [self relOp_]; 
     [self callExpr_]; 
-    [self execute:(id)^{
+    [self execute:^{
     
 	NSInteger rhs = POP_INT();
 	NSString  *op = POP_STR();
@@ -448,17 +448,17 @@
     if ([self predicts:EXPRESSIONACTIONS_TOKEN_KIND_NO, EXPRESSIONACTIONS_TOKEN_KIND_NO_UPPER, EXPRESSIONACTIONS_TOKEN_KIND_YES, EXPRESSIONACTIONS_TOKEN_KIND_YES_UPPER, 0]) {
         [self testAndThrow:(id)^{ return LA(1) != EXPRESSIONACTIONS_TOKEN_KIND_YES_UPPER; }]; 
         [self bool_]; 
-        [self execute:(id)^{
+        [self execute:^{
          PUSH_BOOL(EQ_IGNORE_CASE(POP_STR(), @"yes")); 
         }];
     } else if ([self predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
         [self matchNumber:NO]; 
-        [self execute:(id)^{
+        [self execute:^{
          PUSH_DOUBLE(POP_DOUBLE()); 
         }];
     } else if ([self predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
         [self matchQuotedString:NO]; 
-        [self execute:(id)^{
+        [self execute:^{
          PUSH(POP_STR()); 
         }];
     } else {

@@ -96,7 +96,7 @@
     
     [self name_]; 
     [self indexOpt_]; 
-    [self execute:(id)^{
+    [self execute:^{
     
     // NSString *indexName = POP();
     // NSString *tableName = POP();
@@ -133,7 +133,7 @@
     
     [self prefixOpt_]; 
     [self tableName_]; 
-    [self execute:(id)^{
+    [self execute:^{
     
     NSString *tableName = POP_STR();
     NSString *dbName = POP_STR();
@@ -150,12 +150,12 @@
     if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
         [self databaseName_]; 
         [self match:TABLEINDEXSPEC_TOKEN_KIND_DOT discard:YES]; 
-        [self execute:(id)^{
+        [self execute:^{
          PUSH(POP_STR()); 
         }];
     } else {
         [self matchEmpty:NO]; 
-        [self execute:(id)^{
+        [self execute:^{
          PUSH(@""); 
         }];
     }
@@ -169,7 +169,7 @@
         [self match:TABLEINDEXSPEC_TOKEN_KIND_INDEXED discard:YES]; 
         [self match:TABLEINDEXSPEC_TOKEN_KIND_BY discard:YES]; 
         [self indexName_]; 
-        [self execute:(id)^{
+        [self execute:^{
          
         NSString *indexName = POP_STR();
         indexName = [indexName substringWithRange:NSMakeRange(1, [indexName length]-2)];
@@ -179,12 +179,12 @@
     } else if ([self speculate:^{ [self match:TABLEINDEXSPEC_TOKEN_KIND_INDEXED discard:YES]; [self match:TABLEINDEXSPEC_TOKEN_KIND_NOT_UPPER discard:YES]; }]) {
         [self match:TABLEINDEXSPEC_TOKEN_KIND_INDEXED discard:YES]; 
         [self match:TABLEINDEXSPEC_TOKEN_KIND_NOT_UPPER discard:YES]; 
-        [self execute:(id)^{
+        [self execute:^{
          PUSH(@""); 
         }];
     } else {
         [self matchEmpty:NO]; 
-        [self execute:(id)^{
+        [self execute:^{
          PUSH(@""); 
         }];
     }

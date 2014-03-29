@@ -108,7 +108,7 @@
     [self existsOpt_]; 
     [self databaseName_]; 
     [self match:CREATETABLESTMT_TOKEN_KIND_SEMI_COLON discard:YES]; 
-    [self execute:(id)^{
+    [self execute:^{
     
 	// NSString *dbName = POP();
 	// BOOL ifNotExists = POP_BOOL();
@@ -125,7 +125,7 @@
 - (void)databaseName_ {
     
     [self matchQuotedString:NO]; 
-    [self execute:(id)^{
+    [self execute:^{
     
 	// pop the string value of the `PKToken` on the top of the stack
 	NSString *dbName = POP_STR();
@@ -149,12 +149,12 @@
         } else {
             [self raise:@"No viable alternative found in rule 'tempOpt'."];
         }
-        [self execute:(id)^{
+        [self execute:^{
          PUSH(@YES); 
         }];
     } else {
         [self matchEmpty:NO]; 
-        [self execute:(id)^{
+        [self execute:^{
          PUSH(@NO); 
         }];
     }
@@ -168,12 +168,12 @@
         [self match:CREATETABLESTMT_TOKEN_KIND_IF discard:YES]; 
         [self match:CREATETABLESTMT_TOKEN_KIND_NOT_UPPER discard:YES]; 
         [self match:CREATETABLESTMT_TOKEN_KIND_EXISTS discard:YES]; 
-        [self execute:(id)^{
+        [self execute:^{
          PUSH(@YES); 
         }];
     } else {
         [self matchEmpty:NO]; 
-        [self execute:(id)^{
+        [self execute:^{
          PUSH(@NO); 
         }];
     }
