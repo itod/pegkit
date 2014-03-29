@@ -62,6 +62,7 @@
 @property (nonatomic, retain) NSString *braces;
 @property (nonatomic, retain) NSMutableArray *tokenSource;
 @property (nonatomic, assign) NSUInteger tokenSourceIndex;
+@property (nonatomic, assign) NSUInteger tokenSourceCount;
 
 - (NSInteger)tokenKindForString:(NSString *)str;
 - (NSString *)stringForTokenKind:(NSInteger)tokenKind;
@@ -239,8 +240,8 @@
 - (id)parseTokens:(NSArray *)input error:(NSError **)outError {
     
     self.tokenSource = [[input mutableCopy] autorelease];
-    [_tokenSource addObject:[PKToken EOFToken]];
     self.tokenSourceIndex = 0;
+    self.tokenSourceCount = [_tokenSource count];
     
     id result = [self parse:outError];
     return result;
@@ -487,12 +488,17 @@
 - (PKToken *)nextToken {
     PKToken *tok = nil;
     
-    if (_tokenizer) {
-        tok = [_tokenizer nextToken];
-    } else {
+    if (_tokenSource) {
         NSAssert(_tokenSource, @"");
-        tok = [_tokenSource objectAtIndex:_tokenSourceIndex];
-        ++self.tokenSourceIndex;
+        if (_tokenSourceIndex < _tokenSourceCount) {
+            tok = [_tokenSource objectAtIndex:_tokenSourceIndex];
+            ++self.tokenSourceIndex;
+        } else {
+            tok = [PKToken EOFToken];
+        }
+    } else {
+        NSAssert(_tokenizer, @"");
+        tok = [_tokenizer nextToken];
     }
     
     NSAssert(tok, @"");
