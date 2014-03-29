@@ -94,6 +94,7 @@
 {%/for%}}
 {%/if%}
 - (void)start {
+{{startAction}}
 {{startMethodBody}}}
 {{methods}}
 @end

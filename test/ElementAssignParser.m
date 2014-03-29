@@ -95,6 +95,7 @@
 }
 
 - (void)start {
+
     [self tryAndRecover:TOKEN_KIND_BUILTIN_EOF block:^{
         [self start_]; 
         [self matchEOF:YES]; 

@@ -179,6 +179,7 @@
 }
 
 - (void)start {
+
         [self tryAndRecover:TOKEN_KIND_BUILTIN_EOF block:^{
             [self program_]; 
             [self matchEOF:YES]; 

@@ -97,6 +97,7 @@
 }
 
 - (void)start {
+
     [self createTableStmt_]; 
     [self matchEOF:YES]; 
 }

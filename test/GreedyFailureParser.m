@@ -89,6 +89,7 @@
 }
 
 - (void)start {
+
     [self tryAndRecover:TOKEN_KIND_BUILTIN_EOF block:^{
         [self structs_]; 
         [self matchEOF:YES]; 

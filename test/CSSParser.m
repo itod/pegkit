@@ -276,6 +276,7 @@
 }
 
 - (void)start {
+
     [self stylesheet_]; 
     [self matchEOF:YES]; 
 }

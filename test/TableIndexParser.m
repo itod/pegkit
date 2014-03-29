@@ -89,6 +89,7 @@
 }
 
 - (void)start {
+
     [self qualifiedTableName_]; 
     [self matchEOF:YES]; 
 }

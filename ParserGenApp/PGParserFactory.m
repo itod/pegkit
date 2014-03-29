@@ -238,22 +238,6 @@
 }
 
 
-//- (void)parser:(PKParser *)p didMatchGrammarAction:(PKAssembly *)a {
-//    NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
-//    
-//    PGActionNode *actNode = [a pop];
-//    NSAssert([actNode isKindOfClass:[PGActionNode class]], @"");
-//    
-//    PKToken *tok = [a pop];
-//    NSAssert(tok, @"");
-//    NSAssert([tok isKindOfClass:[PKToken class]], @"");
-//    NSAssert(tok.isWord, @"");
-//
-//    //NSString *actionName = tok.stringValue;
-//    
-//}
-
-
 - (void)parser:(PKParser *)p didMatchVarProduction:(PKAssembly *)a {
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
 
