@@ -9,9 +9,17 @@
 }
 @init {
     self.foo = @"hello world";
+    _bar = YES;
 }
 @dealloc {
     self.foo = nil;
 }
 
-start = Word+;
+start
+@before {
+    NSAssert([self.foo isEqualToString:@"hello world"], @"");
+    NSAssert([_foo isEqualToString:@"hello world"], @"");
+    NSAssert(_bar, @"");
+    NSAssert(HEAD, @"");
+}
+    = Word+;

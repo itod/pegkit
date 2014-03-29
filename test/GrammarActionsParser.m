@@ -73,6 +73,7 @@
     if (self) {
             
     self.foo = @"hello world";
+    _bar = YES;
 
         self.startRuleName = @"start";
 
@@ -96,6 +97,14 @@
 
 - (void)start_ {
     
+    [self execute:(id)^{
+    
+    NSAssert([self.foo isEqualToString:@"hello world"], @"");
+    NSAssert([_foo isEqualToString:@"hello world"], @"");
+    NSAssert(_bar, @"");
+    NSAssert(HEAD, @"");
+
+    }];
     do {
         [self matchWord:NO]; 
     } while ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]);
