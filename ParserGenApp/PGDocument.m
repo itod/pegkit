@@ -87,6 +87,7 @@
     [super windowControllerDidLoadNib:wc];
     
     [_textView setFont:[NSFont fontWithName:@"Monaco" size:12.0]];
+    [self focusTextView];
 }
 
 
@@ -281,6 +282,13 @@ done:
     }
     
     self.busy = NO;
+    [self focusTextView];
+}
+
+
+- (void)focusTextView {
+    NSWindow *win = [[[self windowControllers] lastObject] window];
+    [win makeFirstResponder:_textView];
 }
 
 
