@@ -1,5 +1,5 @@
 start                = grammarAction* rule+;
-grammarAction	     = '@'! (hKey | mKey | extensionKey | ivarsKey | initKey | deallocKey) action;
+grammarAction	     = '@'! (hKey | mKey | extensionKey | ivarsKey | initKey | deallocKey | beforeKey | afterKey) action;
 
 hKey			 	 = 'h';
 mKey			 	 = 'm';

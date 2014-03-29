@@ -92,6 +92,7 @@
 
     [self qualifiedTableName_]; 
     [self matchEOF:YES]; 
+
 }
 
 - (void)qualifiedTableName_ {

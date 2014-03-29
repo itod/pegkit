@@ -174,6 +174,7 @@
 
     [self start_]; 
     [self matchEOF:YES]; 
+
 }
 
 - (void)start_ {
@@ -203,6 +204,10 @@
         [self initKey_]; 
     } else if ([self predicts:PEGKIT_TOKEN_KIND_DEALLOCKEY, 0]) {
         [self deallocKey_]; 
+    } else if ([self predicts:PEGKIT_TOKEN_KIND_BEFOREKEY, 0]) {
+        [self beforeKey_]; 
+    } else if ([self predicts:PEGKIT_TOKEN_KIND_AFTERKEY, 0]) {
+        [self afterKey_]; 
     } else {
         [self raise:@"No viable alternative found in rule 'grammarAction'."];
     }

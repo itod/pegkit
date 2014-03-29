@@ -44,7 +44,8 @@
 #define IVARS_ACTION @"ivarsAction"
 #define INIT_ACTION @"initAction"
 #define DEALLOC_ACTION @"deallocAction"
-#define START_ACTION @"startAction"
+#define BEFORE_ACTION @"beforeAction"
+#define AFTER_ACTION @"afterAction"
 #define START_METHOD_NAME @"startMethodName"
 #define START_METHOD_BODY @"startMethodBody"
 #define METHODS @"methods"
@@ -312,7 +313,8 @@
     vars[IVARS_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"ivars"]];
     vars[INIT_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"init"]];
     vars[DEALLOC_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"dealloc"]];
-    vars[START_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"start"]];
+    vars[BEFORE_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"before"]];
+    vars[AFTER_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"after"]];
     
     NSString *implTemplate = [self templateStringNamed:@"PGClassImplementationTemplate"];
     self.implementationOutputString = [_engine processTemplate:implTemplate withVariables:vars];

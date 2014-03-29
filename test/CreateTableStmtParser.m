@@ -100,6 +100,7 @@
 
     [self createTableStmt_]; 
     [self matchEOF:YES]; 
+
 }
 
 - (void)createTableStmt_ {
