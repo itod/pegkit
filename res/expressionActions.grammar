@@ -1,6 +1,11 @@
-@symbols = '!=' '<=' '>=';
- 
-expr = orExpr;
+expr
+@before {
+    PKTokenizer *t = self.tokenizer;
+    [t.symbolState add:@"!="];
+    [t.symbolState add:@"<="];
+    [t.symbolState add:@">="];
+}
+    = orExpr;
  
 orExpr = andExpr orTerm*;
 orTerm = 'or'! andExpr {

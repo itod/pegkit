@@ -5,11 +5,6 @@ See: http://developer.apple.com/documentation/Cocoa/Conceptual/Predicates/Articl
 
 */
 
-@wordState = '#';
-@wordChars = '.' '[' ']';
-
-@symbols = '==' '>=' '=>' '<=' '=<' '!=' '<>' '&&' '||';
-
 start
 @before {
 	PKTokenizer *t = self.tokenizer;

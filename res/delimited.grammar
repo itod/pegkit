@@ -1,7 +1,3 @@
-@delimitedString = '<' '>' nil;
-@delimitState = '<';
-
-
 start 
 @before {
     PKTokenizer *t = self.tokenizer;

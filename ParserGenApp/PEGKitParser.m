@@ -165,34 +165,9 @@
 
 - (void)statement_ {
     
-    if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self decl_]; 
-    } else if ([self predicts:PEGKIT_TOKEN_KIND_AT, 0]) {
-        [self tokenizerDirective_]; 
-    } else {
-        [self raise:@"No viable alternative found in rule 'statement'."];
-    }
+    [self decl_]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchStatement:)];
-}
-
-- (void)tokenizerDirective_ {
-    
-    [self match:PEGKIT_TOKEN_KIND_AT discard:YES]; 
-    [self matchWord:NO]; 
-    [self match:PEGKIT_TOKEN_KIND_EQUALS discard:NO]; 
-    do {
-        if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
-            [self matchWord:NO]; 
-        } else if ([self predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
-            [self matchQuotedString:NO]; 
-        } else {
-            [self raise:@"No viable alternative found in rule 'tokenizerDirective'."];
-        }
-    } while ([self predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]);
-    [self match:PEGKIT_TOKEN_KIND_SEMI_COLON discard:YES]; 
-
-    [self fireDelegateSelector:@selector(parser:didMatchTokenizerDirective:)];
 }
 
 - (void)decl_ {

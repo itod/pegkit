@@ -3,9 +3,6 @@
     
 */
 
-@singleLineComments = '#';
-@multiLineComments = '/*' '*/';
-
 start
 @before {
 	PKTokenizer *t = self.tokenizer;

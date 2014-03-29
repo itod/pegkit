@@ -186,6 +186,14 @@
 
 - (void)__expr {
     
+    [self execute:(id)^{
+    
+    PKTokenizer *t = self.tokenizer;
+    [t.symbolState add:@"!="];
+    [t.symbolState add:@"<="];
+    [t.symbolState add:@">="];
+
+    }];
     [self orExpr_]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchExpr:)];

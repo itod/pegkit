@@ -6,11 +6,6 @@
     
 */
 
-@symbols = '//';
-@singleLineComments = '//';
-@multiLineComments = '/*' '*/';
-@wordState = '-' '@';
-
 stylesheet                  
 @before {
     PKTokenizer *t = self.tokenizer;
