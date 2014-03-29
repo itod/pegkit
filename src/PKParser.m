@@ -27,6 +27,7 @@
 #import <PEGKit/PKAssembly.h>
 #import <PEGKit/PKRecognitionException.h>
 #import "NSArray+PEGKitAdditions.h"
+#import "NSString+PEGKitAdditions.h"
 
 #define FAILED -1
 #define NUM_DISPLAY_OBJS 6
@@ -826,6 +827,12 @@
     } else {
         return [obj description];
     }
+}
+
+
+- (NSString *)popQuotedString {
+    NSString *str = [self popString];
+    return [str stringByTrimmingQuotes];
 }
 
 
