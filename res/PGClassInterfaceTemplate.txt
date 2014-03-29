@@ -5,6 +5,6 @@
 {%/for%}{%if tokenKinds.@count %}};
 {%/if%}
 @interface {{className}} : PKParser
-
+{{interfaceAction}}
 @end
 

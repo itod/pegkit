@@ -1,6 +1,9 @@
 @h {
 #define MY_H 1
 }
+@interface {
+- (NSString *)bar;
+}
 @m {
 #define MY_M 1
 }
@@ -17,12 +20,18 @@
 @dealloc {
     self.foo = nil;
 }
+@implementation {
+- (NSString *)bar {
+    return @"bar";
+\}
+}
 @before {
     NSAssert([self.foo isEqualToString:@"hello world"], @"");
     NSAssert([_foo isEqualToString:@"hello world"], @"");
     NSAssert(_bar, @"");
     NSAssert(MY_H, @"");
     NSAssert(MY_M, @"");
+    NSAssert([[self bar] isEqualToString:@"bar"], @"");
     self.foo = @"goodbye cruel world";
 }
 @after {
@@ -31,6 +40,7 @@
     NSAssert(_bar, @"");
     NSAssert(MY_H, @"");
     NSAssert(MY_M, @"");
+    NSAssert([[self bar] isEqualToString:@"bar"], @"");
 }
 
 start = Word+;

@@ -1,10 +1,12 @@
 start                = grammarAction* rule+;
-grammarAction	     = '@'! (hKey | mKey | extensionKey | ivarsKey | initKey | deallocKey | beforeKey | afterKey) action;
+grammarAction	     = '@'! (hKey | interfaceKey | mKey | extensionKey | ivarsKey  | implementationKey | initKey | deallocKey | beforeKey | afterKey) action;
 
 hKey			 	 = 'h';
+interfaceKey         = 'interface';
 mKey			 	 = 'm';
 extensionKey		 = 'extension';
 ivarsKey			 = 'ivars';
+implementationKey	 = 'implementation';
 initKey				 = 'init';
 deallocKey			 = 'dealloc';
 beforeKey    		 = 'before';

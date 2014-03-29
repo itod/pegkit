@@ -68,6 +68,10 @@
 @implementation GrammarActionsParser {     
     BOOL _bar;
 }
+    
+- (NSString *)bar {
+    return @"bar";
+}
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
@@ -99,6 +103,7 @@
     NSAssert(_bar, @"");
     NSAssert(MY_H, @"");
     NSAssert(MY_M, @"");
+    NSAssert([[self bar] isEqualToString:@"bar"], @"");
     self.foo = @"goodbye cruel world";
 
     }];
@@ -113,6 +118,7 @@
     NSAssert(_bar, @"");
     NSAssert(MY_H, @"");
     NSAssert(MY_M, @"");
+    NSAssert([[self bar] isEqualToString:@"bar"], @"");
 
     }];
 }

@@ -39,9 +39,11 @@
 #define ENABLE_ERROR_RECOVERY @"enableAutomaticErrorRecovery"
 #define PARSE_TREE @"parseTree"
 #define H_ACTION @"hAction"
+#define IFACE_ACTION @"interfaceAction"
 #define M_ACTION @"mAction"
 #define EXT_ACTION @"extensionAction"
 #define IVARS_ACTION @"ivarsAction"
+#define IMPL_ACTION @"implementationAction"
 #define INIT_ACTION @"initAction"
 #define DEALLOC_ACTION @"deallocAction"
 #define BEFORE_ACTION @"beforeAction"
@@ -267,6 +269,7 @@
     }
     vars[CLASS_NAME] = className;
     vars[H_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"h"]];
+    vars[IFACE_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"interface"]];
 
     // do interface (header)
     NSString *intTemplate = [self templateStringNamed:@"PGClassInterfaceTemplate"];
@@ -311,6 +314,7 @@
     vars[M_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"m"]];
     vars[EXT_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"extension"]];
     vars[IVARS_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"ivars"]];
+    vars[IMPL_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"implementation"]];
     vars[INIT_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"init"]];
     vars[DEALLOC_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"dealloc"]];
     vars[BEFORE_ACTION] = [self actionStringFrom:node.grammarActions[@"before"]];

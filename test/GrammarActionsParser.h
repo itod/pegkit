@@ -6,5 +6,7 @@
 
 @interface GrammarActionsParser : PKParser
 
+- (NSString *)bar;
+
 @end
 
