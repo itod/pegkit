@@ -313,8 +313,8 @@
     vars[IVARS_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"ivars"]];
     vars[INIT_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"init"]];
     vars[DEALLOC_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"dealloc"]];
-    vars[BEFORE_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"before"]];
-    vars[AFTER_ACTION] = [self grammarActionStringFrom:node.grammarActions[@"after"]];
+    vars[BEFORE_ACTION] = [self actionStringFrom:node.grammarActions[@"before"]];
+    vars[AFTER_ACTION] = [self actionStringFrom:node.grammarActions[@"after"]];
     
     NSString *implTemplate = [self templateStringNamed:@"PGClassImplementationTemplate"];
     self.implementationOutputString = [_engine processTemplate:implTemplate withVariables:vars];

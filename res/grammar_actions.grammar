@@ -17,13 +17,20 @@
 @dealloc {
     self.foo = nil;
 }
-
-start
 @before {
     NSAssert([self.foo isEqualToString:@"hello world"], @"");
     NSAssert([_foo isEqualToString:@"hello world"], @"");
     NSAssert(_bar, @"");
     NSAssert(MY_H, @"");
     NSAssert(MY_M, @"");
+    self.foo = @"goodbye cruel world";
 }
-    = Word+;
+@after {
+    NSAssert([self.foo isEqualToString:@"goodbye cruel world"], @"");
+    NSAssert([_foo isEqualToString:@"goodbye cruel world"], @"");
+    NSAssert(_bar, @"");
+    NSAssert(MY_H, @"");
+    NSAssert(MY_M, @"");
+}
+
+start = Word+;

@@ -92,14 +92,6 @@
 }
 
 - (void)start {
-
-    [self start_]; 
-    [self matchEOF:YES]; 
-
-}
-
-- (void)start_ {
-    
     [self execute:^{
     
     NSAssert([self.foo isEqualToString:@"hello world"], @"");
@@ -107,8 +99,26 @@
     NSAssert(_bar, @"");
     NSAssert(MY_H, @"");
     NSAssert(MY_M, @"");
+    self.foo = @"goodbye cruel world";
 
     }];
+
+    [self start_]; 
+    [self matchEOF:YES]; 
+
+    [self execute:^{
+    
+    NSAssert([self.foo isEqualToString:@"goodbye cruel world"], @"");
+    NSAssert([_foo isEqualToString:@"goodbye cruel world"], @"");
+    NSAssert(_bar, @"");
+    NSAssert(MY_H, @"");
+    NSAssert(MY_M, @"");
+
+    }];
+}
+
+- (void)start_ {
+    
     do {
         [self matchWord:NO]; 
     } while ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]);
