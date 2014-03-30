@@ -478,6 +478,13 @@
     }
     
     NSAssert(tok, @"");
+
+    // set token kind
+    if (TOKEN_KIND_BUILTIN_INVALID == tok.tokenKind) {
+        tok.tokenKind = [self tokenKindForToken:tok];
+    }
+    
+    //NSLog(@"-nextToken: %@", [tok debugDescription]);
     return tok;
 }
 
@@ -485,15 +492,6 @@
 - (void)fill:(NSInteger)n {
     for (NSInteger i = 0; i <= n; ++i) { // <= ?? fetches an extra lookahead tok
         PKToken *tok = [self nextToken];
-
-        // set token kind
-        if (TOKEN_KIND_BUILTIN_INVALID == tok.tokenKind) {
-            tok.tokenKind = [self tokenKindForToken:tok];
-        }
-        
-        NSAssert(tok, @"");
-        //NSLog(@"-nextToken: %@", [tok debugDescription]);
-
         [_lookahead addObject:tok];
     }
 }
