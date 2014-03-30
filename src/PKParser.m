@@ -101,13 +101,11 @@
         self.tokenKindTab = [NSMutableDictionary dictionary];
 
         self.tokenKindNameTab = [NSMutableArray array];
-        _tokenKindNameTab[TOKEN_KIND_BUILTIN_INVALID] = @"";
+        _tokenKindNameTab[TOKEN_KIND_BUILTIN_INVALID] = @"Invalid";
         _tokenKindNameTab[TOKEN_KIND_BUILTIN_NUMBER] = @"Number";
         _tokenKindNameTab[TOKEN_KIND_BUILTIN_QUOTEDSTRING] = @"Quoted String";
         _tokenKindNameTab[TOKEN_KIND_BUILTIN_SYMBOL] = @"Symbol";
         _tokenKindNameTab[TOKEN_KIND_BUILTIN_WORD] = @"Word";
-        _tokenKindNameTab[TOKEN_KIND_BUILTIN_LOWERCASEWORD] = @"Lowercase Word";
-        _tokenKindNameTab[TOKEN_KIND_BUILTIN_UPPERCASEWORD] = @"Uppercase Word";
         _tokenKindNameTab[TOKEN_KIND_BUILTIN_WHITESPACE] = @"Whitespace";
         _tokenKindNameTab[TOKEN_KIND_BUILTIN_COMMENT] = @"Comment";
         _tokenKindNameTab[TOKEN_KIND_BUILTIN_DELIMITEDSTRING] = @"Delimited String";
@@ -587,7 +585,7 @@
 
     if (_enableAutomaticErrorRecovery) {
         for (;;) {
-            //NSLog(@"\n\nLT 1: '%@'\n%@\nla: %@\nresyncSet: %@", LT(1), self.assembly, _lookahead, _resyncSet);
+            //NSLog(@"\n\nLT 1: '%@'\n%@\nla: %@\nresyncSet: %@", LT(1), _assembly, _lookahead, _resyncSet);
             
             PKToken *lt = LT(1);
             
@@ -760,25 +758,25 @@
 
 
 - (BOOL)popBool {
-    id obj = [self.assembly pop];
+    id obj = [_assembly pop];
     return [obj boolValue];
 }
 
 
 - (NSInteger)popInteger {
-    id obj = [self.assembly pop];
+    id obj = [_assembly pop];
     return [obj integerValue];
 }
 
 
 - (NSUInteger)popUnsignedInteger {
-    id obj = [self.assembly pop];
+    id obj = [_assembly pop];
     return [obj unsignedIntegerValue];
 }
 
 
 - (float)popFloat {
-    id obj = [self.assembly pop];
+    id obj = [_assembly pop];
     if ([obj respondsToSelector:@selector(floatValue)]) {
         return [obj floatValue];
     } else {
@@ -788,7 +786,7 @@
 
 
 - (double)popDouble {
-    id obj = [self.assembly pop];
+    id obj = [_assembly pop];
     if ([obj respondsToSelector:@selector(doubleValue)]) {
         return [obj doubleValue];
     } else {
@@ -798,14 +796,14 @@
 
 
 - (PKToken *)popToken {
-    PKToken *tok = [self.assembly pop];
+    PKToken *tok = [_assembly pop];
     NSAssert([tok isKindOfClass:[PKToken class]], @"");
     return tok;
 }
 
 
 - (NSString *)popString {
-    id obj = [self.assembly pop];
+    id obj = [_assembly pop];
     if ([obj respondsToSelector:@selector(stringValue)]) {
         return [obj stringValue];
     } else {
@@ -821,33 +819,33 @@
 
 
 - (void)pushBool:(BOOL)yn {
-    [self.assembly push:(id)(yn ? kCFBooleanTrue : kCFBooleanFalse)];
+    [_assembly push:(id)(yn ? kCFBooleanTrue : kCFBooleanFalse)];
 }
 
 
 - (void)pushInteger:(NSInteger)i {
-    [self.assembly push:[NSNumber numberWithInteger:i]];
+    [_assembly push:[NSNumber numberWithInteger:i]];
 }
 
 
 - (void)pushUnsignedInteger:(NSUInteger)u {
-    [self.assembly push:[NSNumber numberWithUnsignedInteger:u]];
+    [_assembly push:[NSNumber numberWithUnsignedInteger:u]];
 }
 
 
 - (void)pushFloat:(float)f {
-    [self.assembly push:[NSNumber numberWithFloat:f]];
+    [_assembly push:[NSNumber numberWithFloat:f]];
 }
 
 
 - (void)pushDouble:(double)d {
-    [self.assembly push:[NSNumber numberWithDouble:d]];
+    [_assembly push:[NSNumber numberWithDouble:d]];
 }
 
 
 - (void)pushAll:(NSArray *)a {
     for (id obj in a) {
-        [self.assembly push:obj];
+        [_assembly push:obj];
     }
 }
 
