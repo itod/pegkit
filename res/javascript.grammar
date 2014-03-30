@@ -1,15 +1,17 @@
-// Program:
-//           empty
-//           Element Program
+@interface {
+@property (nonatomic, assign) BOOL preserveWhitespace;
+}
 
-program
+@implementation {
+- (void)setPreserveWhitespace:(BOOL)yn {
+    _preserveWhitespace = yn;
+    self.silentlyConsumesWhitespace = YES;
+    self.tokenizer.whitespaceState.reportsWhitespaceTokens = YES;
+    self.assembly.preservesWhitespaceTokens = YES;
+\}
+}
 @before {
         PKTokenizer *t = self.tokenizer;
-        
-        // whitespace
-    //    self.silentlyConsumesWhitespace = YES;
-    //    t.whitespaceState.reportsWhitespaceTokens = YES;
-    //    self.assembly.preservesWhitespaceTokens = YES;
 
         [t.symbolState add:@"||"];
         [t.symbolState add:@"&&"];
@@ -42,7 +44,12 @@ program
         [t.commentState addSingleLineStartMarker:@"//"];
         [t.commentState addMultiLineStartMarker:@"/*" endMarker:@"*/"];
 }
-                    = element+;
+
+
+// Program:
+//           empty
+//           Element Program
+program             = element+;
 
 if                  = 'if';
 else                = 'else';

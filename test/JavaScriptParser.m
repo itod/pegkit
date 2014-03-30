@@ -7,6 +7,13 @@
 @end
 
 @implementation JavaScriptParser { }
+    
+- (void)setPreserveWhitespace:(BOOL)yn {
+    _preserveWhitespace = yn;
+    self.silentlyConsumesWhitespace = YES;
+    self.tokenizer.whitespaceState.reportsWhitespaceTokens = YES;
+    self.assembly.preservesWhitespaceTokens = YES;
+}
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
@@ -166,26 +173,9 @@
 }
 
 - (void)start {
-
-    [self tryAndRecover:TOKEN_KIND_BUILTIN_EOF block:^{
-        [self program_]; 
-        [self matchEOF:YES]; 
-    } completion:^{
-        [self matchEOF:YES];
-    }];
-
-}
-
-- (void)program_ {
-    
     [self execute:^{
     
         PKTokenizer *t = self.tokenizer;
-        
-        // whitespace
-    //    self.silentlyConsumesWhitespace = YES;
-    //    t.whitespaceState.reportsWhitespaceTokens = YES;
-    //    self.assembly.preservesWhitespaceTokens = YES;
 
         [t.symbolState add:@"||"];
         [t.symbolState add:@"&&"];
@@ -219,6 +209,18 @@
         [t.commentState addMultiLineStartMarker:@"/*" endMarker:@"*/"];
 
     }];
+
+    [self tryAndRecover:TOKEN_KIND_BUILTIN_EOF block:^{
+        [self program_]; 
+        [self matchEOF:YES]; 
+    } completion:^{
+        [self matchEOF:YES];
+    }];
+
+}
+
+- (void)program_ {
+    
     do {
         [self element_]; 
     } while ([self speculate:^{ [self element_]; }]);

@@ -74,5 +74,7 @@ enum {
 
 @interface JavaScriptParser : PKParser
 
+@property (nonatomic, assign) BOOL preserveWhitespace;
+
 @end
 
