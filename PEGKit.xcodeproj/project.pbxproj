@@ -302,7 +302,6 @@
 		D38BC8B11716006D00BF530D /* SemanticPredicateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D38BC8B01716006C00BF530D /* SemanticPredicateParser.m */; };
 		D38BC8B31716008E00BF530D /* semantic_predicate.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D38BC8B21716008D00BF530D /* semantic_predicate.grammar */; };
 		D38BC8B6171600A900BF530D /* SemanticPredicateParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D38BC8B5171600A900BF530D /* SemanticPredicateParserTest.m */; };
-		D398E2E018E85E59004B883C /* JavaScriptWhitespaceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D398E2DF18E85E59004B883C /* JavaScriptWhitespaceParser.m */; };
 		D3A29E1918E70E6800DC591E /* grammar_actions.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3A29E1818E70E6800DC591E /* grammar_actions.grammar */; };
 		D3A29E1C18E70F0E00DC591E /* GrammarActionsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A29E1B18E70F0E00DC591E /* GrammarActionsParser.m */; };
 		D3A29E1E18E70F1C00DC591E /* GrammarActionsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A29E1D18E70F1C00DC591E /* GrammarActionsParserTest.m */; };
@@ -690,8 +689,6 @@
 		D38BC8B01716006C00BF530D /* SemanticPredicateParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticPredicateParser.m; path = test/SemanticPredicateParser.m; sourceTree = "<group>"; };
 		D38BC8B21716008D00BF530D /* semantic_predicate.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = semantic_predicate.grammar; path = res/semantic_predicate.grammar; sourceTree = "<group>"; };
 		D38BC8B5171600A900BF530D /* SemanticPredicateParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticPredicateParserTest.m; path = test/SemanticPredicateParserTest.m; sourceTree = "<group>"; };
-		D398E2DE18E85E59004B883C /* JavaScriptWhitespaceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaScriptWhitespaceParser.h; path = test/JavaScriptWhitespaceParser.h; sourceTree = "<group>"; };
-		D398E2DF18E85E59004B883C /* JavaScriptWhitespaceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaScriptWhitespaceParser.m; path = test/JavaScriptWhitespaceParser.m; sourceTree = "<group>"; };
 		D3A1492816F8C6BD00770DEE /* PKAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKAST.h; path = include/PEGKit/PKAST.h; sourceTree = SOURCE_ROOT; };
 		D3A29E1818E70E6800DC591E /* grammar_actions.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = grammar_actions.grammar; path = res/grammar_actions.grammar; sourceTree = "<group>"; };
 		D3A29E1A18E70F0E00DC591E /* GrammarActionsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrammarActionsParser.h; path = test/GrammarActionsParser.h; sourceTree = "<group>"; };
@@ -1354,8 +1351,6 @@
 				D36E68BB17207542007B4353 /* CSSParser.m */,
 				D36E68B4171F37D7007B4353 /* JavaScriptParser.h */,
 				D36E68B5171F37D7007B4353 /* JavaScriptParser.m */,
-				D398E2DE18E85E59004B883C /* JavaScriptWhitespaceParser.h */,
-				D398E2DF18E85E59004B883C /* JavaScriptWhitespaceParser.m */,
 				D33830C9171DBEB100CCE513 /* NamedActionParser.h */,
 				D33830CA171DBEB100CCE513 /* NamedActionParser.m */,
 				D38BC8AF1716006B00BF530D /* SemanticPredicateParser.h */,
@@ -2042,7 +2037,6 @@
 				D34F53A717430232008700F3 /* CrockfordParserTest.m in Sources */,
 				D34F53AC17430249008700F3 /* CrockfordParser.m in Sources */,
 				D3B5EA7717470F4F00733A26 /* GreedyFailureParser.m in Sources */,
-				D398E2E018E85E59004B883C /* JavaScriptWhitespaceParser.m in Sources */,
 				D3B5EA7C17470F5600733A26 /* GreedyFailureParserTest.m in Sources */,
 				D3D48D8518E5B500001B54E9 /* TableIndexSpecParser.m in Sources */,
 				D376F6C318D0B3990064C888 /* PGAlternationNode.m in Sources */,

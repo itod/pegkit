@@ -2,10 +2,9 @@
 #import "PGParserGenVisitor.h"
 #import "PGRootNode.h"
 #import "JavaScriptParser.h"
-#import "JavaScriptWhitespaceParser.h"
 
 @interface JSRecoveryTest : XCTestCase
-@property (nonatomic, retain) PKParser *parser;
+@property (nonatomic, retain) JavaScriptParser *parser;
 @property (nonatomic, retain) id mock;
 @end
 
@@ -144,7 +143,8 @@
 }
 
 - (void)testBorkedFunc1 {
-    self.parser = [[[JavaScriptWhitespaceParser alloc] initWithDelegate:_mock] autorelease];
+    self.parser = [[[JavaScriptParser alloc] initWithDelegate:_mock] autorelease];
+    _parser.preserveWhitespace = YES;
 
     NSError *err = nil;
     PKAssembly *res = nil;
@@ -177,7 +177,8 @@
 }
 
 - (void)testBorkedFunc2 {
-    self.parser = [[[JavaScriptWhitespaceParser alloc] initWithDelegate:_mock] autorelease];
+    self.parser = [[[JavaScriptParser alloc] initWithDelegate:_mock] autorelease];
+    _parser.preserveWhitespace = YES;
 
     NSError *err = nil;
     PKAssembly *res = nil;
