@@ -845,6 +845,13 @@
 }
 
 
+- (void)pushAll:(NSArray *)a {
+    for (id obj in a) {
+        [self.assembly push:obj];
+    }
+}
+
+
 - (NSArray *)reversedArray:(NSArray *)inArray {
     return [inArray reversedMutableArray];
 }
