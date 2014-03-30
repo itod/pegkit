@@ -259,13 +259,23 @@
     NSString *path = [[NSString stringWithFormat:@"%@/%@.h", destPath, className] stringByExpandingTildeInPath];
     err = nil;
     if (![_visitor.interfaceOutputString writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&err]) {
-        NSLog(@"%@", err);
+        NSMutableString *str = [NSMutableString stringWithString:[err localizedFailureReason]];
+        [str appendFormat:@"\n\n%@", [path stringByDeletingLastPathComponent]];
+        id dict = [NSMutableDictionary dictionaryWithDictionary:[err userInfo]];
+        dict[NSLocalizedFailureReasonErrorKey] = str;
+        self.error = [NSError errorWithDomain:[err domain] code:[err code] userInfo:dict];
+        goto done;
     }
     
     path = [[NSString stringWithFormat:@"%@/%@.m", destPath, className] stringByExpandingTildeInPath];
     err = nil;
     if (![_visitor.implementationOutputString writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&err]) {
-        NSLog(@"%@", err);
+        NSMutableString *str = [NSMutableString stringWithString:[err localizedFailureReason]];
+        [str appendFormat:@"\n\n%@", [path stringByDeletingLastPathComponent]];
+        id dict = [NSMutableDictionary dictionaryWithDictionary:[err userInfo]];
+        dict[NSLocalizedFailureReasonErrorKey] = str;
+        self.error = [NSError errorWithDomain:[err domain] code:[err code] userInfo:dict];
+        goto done;
     }
     
 done:
