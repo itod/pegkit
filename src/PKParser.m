@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 #import <PEGKit/PKParser.h>
+#import <PEGKit/PKParser+Subclass.h>
 #import <PEGKit/PKToken.h>
 #import <PEGKit/PKTokenizer.h>
 #import <PEGKit/PKWhitespaceState.h>
@@ -51,15 +52,7 @@
 @property (nonatomic, retain) NSMutableArray *markers;
 @property (nonatomic, assign) NSInteger p;
 @property (nonatomic, assign, readonly) BOOL isSpeculating;
-@property (nonatomic, retain) NSMutableDictionary *tokenKindTab;
-@property (nonatomic, retain) NSMutableArray *tokenKindNameTab;
 @property (nonatomic, retain) NSCountedSet *resyncSet;
-@property (nonatomic, retain) NSString *startRuleName;
-@property (nonatomic, retain) NSString *statementTerminator;
-@property (nonatomic, retain) NSString *singleLineCommentMarker;
-@property (nonatomic, retain) NSString *blockStartMarker;
-@property (nonatomic, retain) NSString *blockEndMarker;
-@property (nonatomic, retain) NSString *braces;
 @property (nonatomic, retain) NSMutableArray *tokenSource;
 @property (nonatomic, assign) NSUInteger tokenSourceIndex;
 @property (nonatomic, assign) NSUInteger tokenSourceCount;
@@ -67,7 +60,6 @@
 - (NSInteger)tokenKindForString:(NSString *)str;
 - (NSString *)stringForTokenKind:(NSInteger)tokenKind;
 - (BOOL)lookahead:(NSInteger)x predicts:(NSInteger)tokenKind;
-- (void)fireSyntaxSelector:(SEL)sel withRuleName:(NSString *)ruleName;
 
 - (void)discard;
 
@@ -75,20 +67,6 @@
 - (void)pushFollow:(NSInteger)tokenKind;
 - (void)popFollow:(NSInteger)tokenKind;
 - (BOOL)resync;
-
-// convenience
-- (BOOL)popBool;
-- (NSInteger)popInteger;
-- (NSUInteger)popUnsignedInteger;
-- (float)popFloat;
-- (double)popDouble;
-- (PKToken *)popToken;
-- (NSString *)popString;
-- (void)pushBool:(BOOL)yn;
-- (void)pushInteger:(NSInteger)i;
-- (void)pushUnsignedInteger:(NSUInteger)u;
-- (void)pushFloat:(float)d;
-- (void)pushDouble:(double)d;
 
 // backtracking
 - (NSInteger)mark;
@@ -864,6 +842,11 @@
 
 - (void)pushDouble:(double)d {
     [self.assembly push:[NSNumber numberWithDouble:d]];
+}
+
+
+- (NSArray *)reversedArray:(NSArray *)inArray {
+    return [inArray reversedMutableArray];
 }
 
 

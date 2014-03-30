@@ -308,6 +308,7 @@
 		D3A29E1E18E70F1C00DC591E /* GrammarActionsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A29E1D18E70F1C00DC591E /* GrammarActionsParserTest.m */; };
 		D3A29E2018E714EB00DC591E /* PGGrammarActionTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3A29E1F18E714EB00DC591E /* PGGrammarActionTemplate.txt */; };
 		D3A29E2118E714EB00DC591E /* PGGrammarActionTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3A29E1F18E714EB00DC591E /* PGGrammarActionTemplate.txt */; };
+		D3A29E4118E8516F00DC591E /* PKParser+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A29E4018E8516F00DC591E /* PKParser+Subclass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3B22A3A17025EA300446945 /* elements.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3B22A3917025EA300446945 /* elements.grammar */; };
 		D3B22A521702B04300446945 /* ElementParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B22A4F1702AFB500446945 /* ElementParser.m */; };
 		D3B22A561703D03900446945 /* ExpressionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B22A551703D03800446945 /* ExpressionParser.m */; };
@@ -697,6 +698,7 @@
 		D3A29E1B18E70F0E00DC591E /* GrammarActionsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrammarActionsParser.m; path = test/GrammarActionsParser.m; sourceTree = "<group>"; };
 		D3A29E1D18E70F1C00DC591E /* GrammarActionsParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrammarActionsParserTest.m; path = test/GrammarActionsParserTest.m; sourceTree = "<group>"; };
 		D3A29E1F18E714EB00DC591E /* PGGrammarActionTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGGrammarActionTemplate.txt; path = res/PGGrammarActionTemplate.txt; sourceTree = "<group>"; };
+		D3A29E4018E8516F00DC591E /* PKParser+Subclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PKParser+Subclass.h"; path = "include/PEGKit/PKParser+Subclass.h"; sourceTree = "<group>"; };
 		D3B22A3517023F1200446945 /* PGMethodTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGMethodTemplate.txt; path = res/PGMethodTemplate.txt; sourceTree = "<group>"; };
 		D3B22A37170241F500446945 /* PGMethodCallTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGMethodCallTemplate.txt; path = res/PGMethodCallTemplate.txt; sourceTree = "<group>"; };
 		D3B22A3917025EA300446945 /* elements.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = elements.grammar; path = res/elements.grammar; sourceTree = "<group>"; };
@@ -907,6 +909,7 @@
 				D3F8A4A017581A3C00056188 /* PEGKit.h */,
 				D3C221910FFE8B8C004514FE /* PKTypes.h */,
 				D3382F98171C80E100CCE513 /* PKParser.h */,
+				D3A29E4018E8516F00DC591E /* PKParser+Subclass.h */,
 				D3382F9A171C80EB00CCE513 /* PKParser.m */,
 				D3C221990FFE8B9D004514FE /* PKAssembly.h */,
 				D34BADA00FF9C9B000D7773A /* PKAssembly.m */,
@@ -1506,6 +1509,7 @@
 				D3E9B2CE1891714400AC0974 /* PKAST.h in Headers */,
 				D317C0E318D1F4050036BE75 /* PKSingleLineCommentState.h in Headers */,
 				D317C0E018D1F4050036BE75 /* PKWhitespaceState.h in Headers */,
+				D3A29E4118E8516F00DC591E /* PKParser+Subclass.h in Headers */,
 				D317C0E418D1F4050036BE75 /* PKMultiLineCommentState.h in Headers */,
 				D317C0E718D1F4050036BE75 /* PKTwitterState.h in Headers */,
 				D317C0DF18D1F4050036BE75 /* PKWordState.h in Headers */,

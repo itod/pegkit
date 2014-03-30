@@ -23,6 +23,8 @@
 #define PUSH_FLOAT(f)  [self pushFloat:(float)(f)]
 #define PUSH_DOUBLE(d) [self pushDouble:(double)(d)]
 
+#define REV(a) [self reversedArray:a]
+
 #define EQ(a, b) [(a) isEqual:(b)]
 #define NE(a, b) (![(a) isEqual:(b)])
 #define EQ_IGNORE_CASE(a, b) (NSOrderedSame == [(a) compare:(b)])
@@ -35,27 +37,6 @@
 
 #define LOG(obj) do { NSLog(@"%@", (obj)); } while (0);
 #define PRINT(str) do { printf("%s\n", (str)); } while (0);
-
-@interface PKParser ()
-@property (nonatomic, retain) NSMutableDictionary *tokenKindTab;
-@property (nonatomic, retain) NSMutableArray *tokenKindNameTab;
-@property (nonatomic, retain) NSString *startRuleName;
-@property (nonatomic, retain) NSString *statementTerminator;
-@property (nonatomic, retain) NSString *singleLineCommentMarker;
-@property (nonatomic, retain) NSString *blockStartMarker;
-@property (nonatomic, retain) NSString *blockEndMarker;
-@property (nonatomic, retain) NSString *braces;
-
-- (BOOL)popBool;
-- (NSInteger)popInteger;
-- (double)popDouble;
-- (PKToken *)popToken;
-- (NSString *)popString;
-
-- (void)pushBool:(BOOL)yn;
-- (void)pushInteger:(NSInteger)i;
-- (void)pushDouble:(double)d;
-@end
 
 @interface CrockfordParser ()
 
@@ -71,7 +52,7 @@
         self.enableAutomaticErrorRecovery = YES;
 
         self.tokenKindTab[@"{"] = @(CROCKFORD_TOKEN_KIND_OPEN_CURLY);
-        self.tokenKindTab[@">="] = @(CROCKFORD_TOKEN_KIND_GE);
+        self.tokenKindTab[@">="] = @(CROCKFORD_TOKEN_KIND_GE_SYM);
         self.tokenKindTab[@"&&"] = @(CROCKFORD_TOKEN_KIND_DOUBLE_AMPERSAND);
         self.tokenKindTab[@"for"] = @(CROCKFORD_TOKEN_KIND_FOR);
         self.tokenKindTab[@"break"] = @(CROCKFORD_TOKEN_KIND_BREAK);
@@ -88,14 +69,14 @@
         self.tokenKindTab[@"catch"] = @(CROCKFORD_TOKEN_KIND_CATCH);
         self.tokenKindTab[@";"] = @(CROCKFORD_TOKEN_KIND_SEMI_COLON);
         self.tokenKindTab[@"do"] = @(CROCKFORD_TOKEN_KIND_DO);
-        self.tokenKindTab[@"!=="] = @(CROCKFORD_TOKEN_KIND_DOUBLE_NE);
-        self.tokenKindTab[@"<"] = @(CROCKFORD_TOKEN_KIND_LT);
+        self.tokenKindTab[@"!=="] = @(CROCKFORD_TOKEN_KIND_DOUBLE_NOT_EQUAL);
+        self.tokenKindTab[@"<"] = @(CROCKFORD_TOKEN_KIND_LT_SYM);
         self.tokenKindTab[@"-="] = @(CROCKFORD_TOKEN_KIND_MINUS_EQUALS);
         self.tokenKindTab[@"%"] = @(CROCKFORD_TOKEN_KIND_PERCENT);
         self.tokenKindTab[@"="] = @(CROCKFORD_TOKEN_KIND_EQUALS);
         self.tokenKindTab[@"throw"] = @(CROCKFORD_TOKEN_KIND_THROW);
         self.tokenKindTab[@"try"] = @(CROCKFORD_TOKEN_KIND_TRY);
-        self.tokenKindTab[@">"] = @(CROCKFORD_TOKEN_KIND_GT);
+        self.tokenKindTab[@">"] = @(CROCKFORD_TOKEN_KIND_GT_SYM);
         self.tokenKindTab[@"/,/"] = @(CROCKFORD_TOKEN_KIND_REGEXBODY);
         self.tokenKindTab[@"typeof"] = @(CROCKFORD_TOKEN_KIND_TYPEOF);
         self.tokenKindTab[@"("] = @(CROCKFORD_TOKEN_KIND_OPEN_PAREN);
@@ -117,10 +98,10 @@
         self.tokenKindTab[@"default"] = @(CROCKFORD_TOKEN_KIND_DEFAULT);
         self.tokenKindTab[@"/"] = @(CROCKFORD_TOKEN_KIND_FORWARD_SLASH);
         self.tokenKindTab[@"case"] = @(CROCKFORD_TOKEN_KIND_CASE);
-        self.tokenKindTab[@"<="] = @(CROCKFORD_TOKEN_KIND_LE);
+        self.tokenKindTab[@"<="] = @(CROCKFORD_TOKEN_KIND_LE_SYM);
 
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_OPEN_CURLY] = @"{";
-        self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_GE] = @">=";
+        self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_GE_SYM] = @">=";
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_DOUBLE_AMPERSAND] = @"&&";
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_FOR] = @"for";
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_BREAK] = @"break";
@@ -137,14 +118,14 @@
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_CATCH] = @"catch";
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_SEMI_COLON] = @";";
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_DO] = @"do";
-        self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_DOUBLE_NE] = @"!==";
-        self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_LT] = @"<";
+        self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_DOUBLE_NOT_EQUAL] = @"!==";
+        self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_LT_SYM] = @"<";
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_MINUS_EQUALS] = @"-=";
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_PERCENT] = @"%";
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_EQUALS] = @"=";
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_THROW] = @"throw";
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_TRY] = @"try";
-        self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_GT] = @">";
+        self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_GT_SYM] = @">";
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_REGEXBODY] = @"/,/";
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_TYPEOF] = @"typeof";
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_OPEN_PAREN] = @"(";
@@ -166,7 +147,7 @@
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_DEFAULT] = @"default";
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_FORWARD_SLASH] = @"/";
         self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_CASE] = @"case";
-        self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_LE] = @"<=";
+        self.tokenKindNameTab[CROCKFORD_TOKEN_KIND_LE_SYM] = @"<=";
 
     }
     return self;
@@ -575,18 +556,18 @@
         [self match:CROCKFORD_TOKEN_KIND_PLUS discard:NO]; 
     } else if ([self predicts:CROCKFORD_TOKEN_KIND_MINUS, 0]) {
         [self match:CROCKFORD_TOKEN_KIND_MINUS discard:NO]; 
-    } else if ([self predicts:CROCKFORD_TOKEN_KIND_GE, 0]) {
-        [self match:CROCKFORD_TOKEN_KIND_GE discard:NO]; 
-    } else if ([self predicts:CROCKFORD_TOKEN_KIND_LE, 0]) {
-        [self match:CROCKFORD_TOKEN_KIND_LE discard:NO]; 
-    } else if ([self predicts:CROCKFORD_TOKEN_KIND_GT, 0]) {
-        [self match:CROCKFORD_TOKEN_KIND_GT discard:NO]; 
-    } else if ([self predicts:CROCKFORD_TOKEN_KIND_LT, 0]) {
-        [self match:CROCKFORD_TOKEN_KIND_LT discard:NO]; 
+    } else if ([self predicts:CROCKFORD_TOKEN_KIND_GE_SYM, 0]) {
+        [self match:CROCKFORD_TOKEN_KIND_GE_SYM discard:NO]; 
+    } else if ([self predicts:CROCKFORD_TOKEN_KIND_LE_SYM, 0]) {
+        [self match:CROCKFORD_TOKEN_KIND_LE_SYM discard:NO]; 
+    } else if ([self predicts:CROCKFORD_TOKEN_KIND_GT_SYM, 0]) {
+        [self match:CROCKFORD_TOKEN_KIND_GT_SYM discard:NO]; 
+    } else if ([self predicts:CROCKFORD_TOKEN_KIND_LT_SYM, 0]) {
+        [self match:CROCKFORD_TOKEN_KIND_LT_SYM discard:NO]; 
     } else if ([self predicts:CROCKFORD_TOKEN_KIND_TRIPLE_EQUALS, 0]) {
         [self match:CROCKFORD_TOKEN_KIND_TRIPLE_EQUALS discard:NO]; 
-    } else if ([self predicts:CROCKFORD_TOKEN_KIND_DOUBLE_NE, 0]) {
-        [self match:CROCKFORD_TOKEN_KIND_DOUBLE_NE discard:NO]; 
+    } else if ([self predicts:CROCKFORD_TOKEN_KIND_DOUBLE_NOT_EQUAL, 0]) {
+        [self match:CROCKFORD_TOKEN_KIND_DOUBLE_NOT_EQUAL discard:NO]; 
     } else if ([self predicts:CROCKFORD_TOKEN_KIND_DOUBLE_PIPE, 0]) {
         [self match:CROCKFORD_TOKEN_KIND_DOUBLE_PIPE discard:NO]; 
     } else if ([self predicts:CROCKFORD_TOKEN_KIND_DOUBLE_AMPERSAND, 0]) {

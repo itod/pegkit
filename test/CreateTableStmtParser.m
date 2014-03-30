@@ -23,6 +23,8 @@
 #define PUSH_FLOAT(f)  [self pushFloat:(float)(f)]
 #define PUSH_DOUBLE(d) [self pushDouble:(double)(d)]
 
+#define REV(a) [self reversedArray:a]
+
 #define EQ(a, b) [(a) isEqual:(b)]
 #define NE(a, b) (![(a) isEqual:(b)])
 #define EQ_IGNORE_CASE(a, b) (NSOrderedSame == [(a) compare:(b)])
@@ -35,27 +37,6 @@
 
 #define LOG(obj) do { NSLog(@"%@", (obj)); } while (0);
 #define PRINT(str) do { printf("%s\n", (str)); } while (0);
-
-@interface PKParser ()
-@property (nonatomic, retain) NSMutableDictionary *tokenKindTab;
-@property (nonatomic, retain) NSMutableArray *tokenKindNameTab;
-@property (nonatomic, retain) NSString *startRuleName;
-@property (nonatomic, retain) NSString *statementTerminator;
-@property (nonatomic, retain) NSString *singleLineCommentMarker;
-@property (nonatomic, retain) NSString *blockStartMarker;
-@property (nonatomic, retain) NSString *blockEndMarker;
-@property (nonatomic, retain) NSString *braces;
-
-- (BOOL)popBool;
-- (NSInteger)popInteger;
-- (double)popDouble;
-- (PKToken *)popToken;
-- (NSString *)popString;
-
-- (void)pushBool:(BOOL)yn;
-- (void)pushInteger:(NSInteger)i;
-- (void)pushDouble:(double)d;
-@end
 
 @interface CreateTableStmtParser ()
 

@@ -23,6 +23,8 @@
 #define PUSH_FLOAT(f)  [self pushFloat:(float)(f)]
 #define PUSH_DOUBLE(d) [self pushDouble:(double)(d)]
 
+#define REV(a) [self reversedArray:a]
+
 #define EQ(a, b) [(a) isEqual:(b)]
 #define NE(a, b) (![(a) isEqual:(b)])
 #define EQ_IGNORE_CASE(a, b) (NSOrderedSame == [(a) compare:(b)])
@@ -35,27 +37,6 @@
 
 #define LOG(obj) do { NSLog(@"%@", (obj)); } while (0);
 #define PRINT(str) do { printf("%s\n", (str)); } while (0);
-
-@interface PKParser ()
-@property (nonatomic, retain) NSMutableDictionary *tokenKindTab;
-@property (nonatomic, retain) NSMutableArray *tokenKindNameTab;
-@property (nonatomic, retain) NSString *startRuleName;
-@property (nonatomic, retain) NSString *statementTerminator;
-@property (nonatomic, retain) NSString *singleLineCommentMarker;
-@property (nonatomic, retain) NSString *blockStartMarker;
-@property (nonatomic, retain) NSString *blockEndMarker;
-@property (nonatomic, retain) NSString *braces;
-
-- (BOOL)popBool;
-- (NSInteger)popInteger;
-- (double)popDouble;
-- (PKToken *)popToken;
-- (NSString *)popString;
-
-- (void)pushBool:(BOOL)yn;
-- (void)pushInteger:(NSInteger)i;
-- (void)pushDouble:(double)d;
-@end
 
 @interface TDNSPredicateParser ()
 
@@ -133,13 +114,13 @@
         self.tokenKindTab[@"NOT"] = @(TDNSPREDICATE_TOKEN_KIND_NOT_UPPER);
         self.tokenKindTab[@"{"] = @(TDNSPREDICATE_TOKEN_KIND_OPEN_CURLY);
         self.tokenKindTab[@"=>"] = @(TDNSPREDICATE_TOKEN_KIND_HASH_ROCKET);
-        self.tokenKindTab[@">="] = @(TDNSPREDICATE_TOKEN_KIND_GE);
+        self.tokenKindTab[@">="] = @(TDNSPREDICATE_TOKEN_KIND_GE_SYM);
         self.tokenKindTab[@"&&"] = @(TDNSPREDICATE_TOKEN_KIND_DOUBLE_AMPERSAND);
         self.tokenKindTab[@"TRUEPREDICATE"] = @(TDNSPREDICATE_TOKEN_KIND_TRUEPREDICATE);
         self.tokenKindTab[@"AND"] = @(TDNSPREDICATE_TOKEN_KIND_AND_UPPER);
         self.tokenKindTab[@"}"] = @(TDNSPREDICATE_TOKEN_KIND_CLOSE_CURLY);
         self.tokenKindTab[@"true"] = @(TDNSPREDICATE_TOKEN_KIND_TRUE);
-        self.tokenKindTab[@"!="] = @(TDNSPREDICATE_TOKEN_KIND_NE);
+        self.tokenKindTab[@"!="] = @(TDNSPREDICATE_TOKEN_KIND_NOT_EQUAL);
         self.tokenKindTab[@"OR"] = @(TDNSPREDICATE_TOKEN_KIND_OR_UPPER);
         self.tokenKindTab[@"!"] = @(TDNSPREDICATE_TOKEN_KIND_BANG);
         self.tokenKindTab[@"SOME"] = @(TDNSPREDICATE_TOKEN_KIND_SOME);
@@ -158,10 +139,10 @@
         self.tokenKindTab[@"ANY"] = @(TDNSPREDICATE_TOKEN_KIND_ANY);
         self.tokenKindTab[@"ENDSWITH"] = @(TDNSPREDICATE_TOKEN_KIND_ENDSWITH);
         self.tokenKindTab[@"false"] = @(TDNSPREDICATE_TOKEN_KIND_FALSE);
-        self.tokenKindTab[@"<="] = @(TDNSPREDICATE_TOKEN_KIND_LE);
+        self.tokenKindTab[@"<="] = @(TDNSPREDICATE_TOKEN_KIND_LE_SYM);
         self.tokenKindTab[@"BETWEEN"] = @(TDNSPREDICATE_TOKEN_KIND_BETWEEN);
-        self.tokenKindTab[@"=<"] = @(TDNSPREDICATE_TOKEN_KIND_EL);
-        self.tokenKindTab[@"<>"] = @(TDNSPREDICATE_TOKEN_KIND_NOT_EQUAL);
+        self.tokenKindTab[@"=<"] = @(TDNSPREDICATE_TOKEN_KIND_EL_SYM);
+        self.tokenKindTab[@"<>"] = @(TDNSPREDICATE_TOKEN_KIND_NOT_EQUALS);
         self.tokenKindTab[@"NONE"] = @(TDNSPREDICATE_TOKEN_KIND_NONE);
         self.tokenKindTab[@"=="] = @(TDNSPREDICATE_TOKEN_KIND_DOUBLE_EQUALS);
 
@@ -170,13 +151,13 @@
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_NOT_UPPER] = @"NOT";
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_OPEN_CURLY] = @"{";
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_HASH_ROCKET] = @"=>";
-        self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_GE] = @">=";
+        self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_GE_SYM] = @">=";
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_DOUBLE_AMPERSAND] = @"&&";
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_TRUEPREDICATE] = @"TRUEPREDICATE";
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_AND_UPPER] = @"AND";
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_CLOSE_CURLY] = @"}";
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_TRUE] = @"true";
-        self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_NE] = @"!=";
+        self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_NOT_EQUAL] = @"!=";
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_OR_UPPER] = @"OR";
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_BANG] = @"!";
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_SOME] = @"SOME";
@@ -195,10 +176,10 @@
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_ANY] = @"ANY";
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_ENDSWITH] = @"ENDSWITH";
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_FALSE] = @"false";
-        self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_LE] = @"<=";
+        self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_LE_SYM] = @"<=";
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_BETWEEN] = @"BETWEEN";
-        self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_EL] = @"=<";
-        self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_NOT_EQUAL] = @"<>";
+        self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_EL_SYM] = @"=<";
+        self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_NOT_EQUALS] = @"<>";
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_NONE] = @"NONE";
         self.tokenKindNameTab[TDNSPREDICATE_TOKEN_KIND_DOUBLE_EQUALS] = @"==";
 
@@ -768,11 +749,11 @@
         [self gt_]; 
     } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_LT, 0]) {
         [self lt_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_GE, TDNSPREDICATE_TOKEN_KIND_HASH_ROCKET, 0]) {
+    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_GE_SYM, TDNSPREDICATE_TOKEN_KIND_HASH_ROCKET, 0]) {
         [self gtEq_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_EL, TDNSPREDICATE_TOKEN_KIND_LE, 0]) {
+    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_EL_SYM, TDNSPREDICATE_TOKEN_KIND_LE_SYM, 0]) {
         [self ltEq_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_NE, TDNSPREDICATE_TOKEN_KIND_NOT_EQUAL, 0]) {
+    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_NOT_EQUAL, TDNSPREDICATE_TOKEN_KIND_NOT_EQUALS, 0]) {
         [self notEq_]; 
     } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_BETWEEN, 0]) {
         [self between_]; 
@@ -828,8 +809,8 @@
 
 - (void)__gtEq {
     
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_GE, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_GE discard:NO]; 
+    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_GE_SYM, 0]) {
+        [self match:TDNSPREDICATE_TOKEN_KIND_GE_SYM discard:NO]; 
     } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_HASH_ROCKET, 0]) {
         [self match:TDNSPREDICATE_TOKEN_KIND_HASH_ROCKET discard:NO]; 
     } else {
@@ -845,10 +826,10 @@
 
 - (void)__ltEq {
     
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_LE, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_LE discard:NO]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_EL, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_EL discard:NO]; 
+    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_LE_SYM, 0]) {
+        [self match:TDNSPREDICATE_TOKEN_KIND_LE_SYM discard:NO]; 
+    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_EL_SYM, 0]) {
+        [self match:TDNSPREDICATE_TOKEN_KIND_EL_SYM discard:NO]; 
     } else {
         [self raise:@"No viable alternative found in rule 'ltEq'."];
     }
@@ -862,10 +843,10 @@
 
 - (void)__notEq {
     
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_NE, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_NE discard:NO]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_NOT_EQUAL, 0]) {
+    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_NOT_EQUAL, 0]) {
         [self match:TDNSPREDICATE_TOKEN_KIND_NOT_EQUAL discard:NO]; 
+    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_NOT_EQUALS, 0]) {
+        [self match:TDNSPREDICATE_TOKEN_KIND_NOT_EQUALS discard:NO]; 
     } else {
         [self raise:@"No viable alternative found in rule 'notEq'."];
     }

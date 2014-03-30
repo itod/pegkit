@@ -22,15 +22,13 @@
 
 #import <Foundation/Foundation.h>
 #import <PEGKit/PKTokenizer.h>
-#import <PEGKit/PKTokenizer.h>
 
-@class PKToken;
 @class PKAssembly;
 
 typedef void (^PKSActionBlock)   (void);
 typedef void (^PKSSpeculateBlock)(void);
 typedef BOOL (^PKSPredicateBlock)(void);
-typedef void (^PKSRecoverBlock)   (void);
+typedef void (^PKSRecoverBlock)  (void);
 
 enum {
     TOKEN_KIND_BUILTIN_EOF = -1,
@@ -67,53 +65,4 @@ enum {
 @property (nonatomic, assign) BOOL silentlyConsumesWhitespace; // default NO
 @property (nonatomic, assign) BOOL enableActions; // default YES
 @property (nonatomic, assign) BOOL enableAutomaticErrorRecovery; // default NO
-@end
-
-@interface PKParser (Subclass)
-
-// lookahead
-- (PKToken *)LT:(NSInteger)i;
-- (NSInteger)LA:(NSInteger)i;
-- (double)LD:(NSInteger)i;
-- (NSString *)LS:(NSInteger)i;
-
-// parsing control flow
-- (void)consume:(PKToken *)tok;
-- (BOOL)predicts:(NSInteger)tokenKind, ...;
-- (BOOL)speculate:(PKSSpeculateBlock)block;
-- (void)match:(NSInteger)tokenKind discard:(BOOL)discard;
-
-// error reporting
-- (void)raise:(NSString *)msg;
-
-// builtin token types
-- (void)matchEOF:(BOOL)discard;
-- (void)matchAny:(BOOL)discard;
-- (void)matchEmpty:(BOOL)discard;
-- (void)matchWord:(BOOL)discard;
-- (void)matchNumber:(BOOL)discard;
-- (void)matchSymbol:(BOOL)discard;
-- (void)matchComment:(BOOL)discard;
-- (void)matchWhitespace:(BOOL)discard;
-- (void)matchQuotedString:(BOOL)discard;
-- (void)matchDelimitedString:(BOOL)discard;
-- (void)matchURL:(BOOL)discard;
-- (void)matchEmail:(BOOL)discard;
-
-// semantic predicates
-- (BOOL)test:(PKSPredicateBlock)block;
-- (void)testAndThrow:(PKSPredicateBlock)block;
-
-// actions
-- (void)execute:(PKSActionBlock)block;
-
-// delegate callbacks
-- (void)fireDelegateSelector:(SEL)sel;
-
-// memoization
-- (void)parseRule:(SEL)ruleSelector withMemo:(NSMutableDictionary *)memoization;
-
-// error recovery
-- (void)tryAndRecover:(NSInteger)tokenKind block:(PKSRecoverBlock)block completion:(PKSRecoverBlock)completion;
-
 @end

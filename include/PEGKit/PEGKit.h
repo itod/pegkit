@@ -51,6 +51,7 @@
 
 // parsing
 #import <PEGKit/PKParser.h>
+#import <PEGKit/PKParser+Subclass.h>
 #import <PEGKit/PKAssembly.h>
 #import <PEGKit/PKRecognitionException.h>
 

@@ -30,25 +30,6 @@
 #define LOG(obj) do { NSLog(@"%@", (obj)); } while (0);
 #define PRINT(str) do { printf("%s\n", (str)); } while (0);
 
-@interface PKParser ()
-@property (nonatomic, retain) NSMutableDictionary *tokenKindTab;
-@property (nonatomic, retain) NSMutableArray *tokenKindNameTab;
-@property (nonatomic, retain) NSString *startRuleName;
-@property (nonatomic, retain) NSString *statementTerminator;
-@property (nonatomic, retain) NSString *singleLineCommentMarker;
-@property (nonatomic, retain) NSString *blockStartMarker;
-
-- (BOOL)popBool;
-- (NSInteger)popInteger;
-- (double)popDouble;
-- (PKToken *)popToken;
-- (NSString *)popString;
-
-- (void)pushBool:(BOOL)yn;
-- (void)pushInteger:(NSInteger)i;
-- (void)pushDouble:(double)d;
-@end
-
 @interface JavaScriptWhitespaceParser ()
 @end
 
