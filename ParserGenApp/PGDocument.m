@@ -229,7 +229,9 @@
         goto done;
     }
     
+    NSAssert([_root.startMethodName length], @"");
     NSString *className = self.parserName;
+    NSAssert([className length], @"");
     if (![className hasSuffix:@"Parser"]) {
         className = [NSString stringWithFormat:@"%@Parser", className];
     }
