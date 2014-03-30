@@ -461,6 +461,14 @@
 }
 
 
+- (void)fill:(NSInteger)n {
+    for (NSInteger i = 0; i <= n; ++i) { // <= ?? fetches an extra lookahead tok
+        PKToken *tok = [self nextToken];
+        [_lookahead addObject:tok];
+    }
+}
+
+
 - (PKToken *)nextToken {
     PKToken *tok = nil;
     
@@ -486,14 +494,6 @@
     
     //NSLog(@"-nextToken: %@", [tok debugDescription]);
     return tok;
-}
-
-
-- (void)fill:(NSInteger)n {
-    for (NSInteger i = 0; i <= n; ++i) { // <= ?? fetches an extra lookahead tok
-        PKToken *tok = [self nextToken];
-        [_lookahead addObject:tok];
-    }
 }
 
 
