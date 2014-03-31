@@ -66,14 +66,14 @@ Example 1:
 Example 2:
 
 	// matches or expressions like `foo or bar` or `foo || bar || baz`
-	or     =  'or'! | '||'!;
 	orExpr = item (or item {
 		id rhs = POP();
 		id lhs = POP();
 		MyOrNode *orNode = [MyOrNode nodeWithChildren:lhs, rhs];
 	    PUSH(orNode);
 	})*;
-	item = Word;
+	or    =  'or'! | '||'!;
+	item  = Word;
 
 
 ###Rule Actions
