@@ -41,7 +41,7 @@ Example:
 
 Actions are small pieces of Objective-C source code embedded directly in a PEGKit grammar rule. Actions are enclosed in curly braces and placed after any rule reference.
 
-In any action, there is a `self.assembly` object available (of type `PKAssembly`) which serves as a **stack** (via the PUSH() and POP() convenience macros). The assembly's stack contains the most recently parsed tokens (instances of `PKToken`), and also serves as a place to store your work as you compute the result.
+In any action, there is a `self.assembly` object available (of type `PKAssembly`) which serves as a **stack** (via the `PUSH()` and `POP()` convenience macros). The assembly's stack contains the most recently parsed tokens (instances of `PKToken`), and also serves as a place to store your work as you compute the result.
 
 Actions are executed immediately after their preceeding rule reference matches. So tokens which have recently been matched are available at the top of the assembly's stack.
 
