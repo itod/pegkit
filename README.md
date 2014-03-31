@@ -77,8 +77,8 @@ Example 2:
 
 
 ###Rule Actions
-* **`@before`** - setup code goes here. executed before parsing this rule begins.
-* **`@after`** - tear down code goes here. executed after parsing this rule ends.
+* **`@before`** - setup code goes here. executed before parsing of this rule begins.
+* **`@after`** - tear down code goes here. executed after parsing of this rule ends.
 
 Rule actions are placed inside a rule -- after the rule name, but before the `=` sign.
 
