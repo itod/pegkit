@@ -85,15 +85,19 @@ Rule actions are placed inside a rule -- after the rule name, but before the `=`
 Example:
 
 	// matches things like `-1` or `---1` or `--------1`
+	
+	@extension { // this is a "Grammar Action". See below.
+		@property (nonatomic) BOOL negative;
+	}
+	
 	unaryExpr 
 	@before { _negative = NO; }
-	@after  { _negative = NO; }
-		= ('-'! { _negative = !_negative; })+ primary
-	{
+	@after  {
 		double d = POP_DOUBLE();
 		d = (_negative) ? -d : d;
 		PUSH_DOUBLE(d);
-	};
+	}
+		= ('-'! { _negative = !_negative; })+ primary;
 
 ###Grammar Actions
 PEGKit has a feature inspired by ANTLR called **"Grammar Actions"**. Grammar Actions are a way to do exactly what you are looking for: inserting arbitrary code in various places in your Parser's .h and .m files. They must be placed at the top of your grammar before any rules are listed.
