@@ -97,7 +97,8 @@ Example:
 		d = (_negative) ? -d : d;
 		PUSH_DOUBLE(d);
 	}
-		= ('-'! { _negative = !_negative; })+ primary;
+		= ('-'! { _negative = !_negative; })+ num;
+	num = Number;
 
 ###Grammar Actions
 PEGKit has a feature inspired by ANTLR called **"Grammar Actions"**. Grammar Actions are a way to do exactly what you are looking for: inserting arbitrary code in various places in your Parser's .h and .m files. They must be placed at the top of your grammar before any rules are listed.
