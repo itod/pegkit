@@ -302,6 +302,9 @@
 		D38BC8B11716006D00BF530D /* SemanticPredicateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D38BC8B01716006C00BF530D /* SemanticPredicateParser.m */; };
 		D38BC8B31716008E00BF530D /* semantic_predicate.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D38BC8B21716008D00BF530D /* semantic_predicate.grammar */; };
 		D38BC8B6171600A900BF530D /* SemanticPredicateParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D38BC8B5171600A900BF530D /* SemanticPredicateParserTest.m */; };
+		D398E30118EB6770004B883C /* quote_symbol.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D398E30018EB6770004B883C /* quote_symbol.grammar */; };
+		D398E30318EB67F6004B883C /* QuoteSymbolParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D398E30218EB67F6004B883C /* QuoteSymbolParserTest.m */; };
+		D398E30618EB684D004B883C /* QuoteSymbolParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D398E30518EB684D004B883C /* QuoteSymbolParser.m */; };
 		D3A29E1918E70E6800DC591E /* grammar_actions.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3A29E1818E70E6800DC591E /* grammar_actions.grammar */; };
 		D3A29E1C18E70F0E00DC591E /* GrammarActionsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A29E1B18E70F0E00DC591E /* GrammarActionsParser.m */; };
 		D3A29E1E18E70F1C00DC591E /* GrammarActionsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A29E1D18E70F1C00DC591E /* GrammarActionsParserTest.m */; };
@@ -689,6 +692,10 @@
 		D38BC8B01716006C00BF530D /* SemanticPredicateParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticPredicateParser.m; path = test/SemanticPredicateParser.m; sourceTree = "<group>"; };
 		D38BC8B21716008D00BF530D /* semantic_predicate.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = semantic_predicate.grammar; path = res/semantic_predicate.grammar; sourceTree = "<group>"; };
 		D38BC8B5171600A900BF530D /* SemanticPredicateParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticPredicateParserTest.m; path = test/SemanticPredicateParserTest.m; sourceTree = "<group>"; };
+		D398E30018EB6770004B883C /* quote_symbol.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = quote_symbol.grammar; path = res/quote_symbol.grammar; sourceTree = "<group>"; };
+		D398E30218EB67F6004B883C /* QuoteSymbolParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuoteSymbolParserTest.m; path = test/QuoteSymbolParserTest.m; sourceTree = "<group>"; };
+		D398E30418EB684D004B883C /* QuoteSymbolParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuoteSymbolParser.h; path = test/QuoteSymbolParser.h; sourceTree = "<group>"; };
+		D398E30518EB684D004B883C /* QuoteSymbolParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuoteSymbolParser.m; path = test/QuoteSymbolParser.m; sourceTree = "<group>"; };
 		D3A1492816F8C6BD00770DEE /* PKAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKAST.h; path = include/PEGKit/PKAST.h; sourceTree = SOURCE_ROOT; };
 		D3A29E1818E70E6800DC591E /* grammar_actions.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = grammar_actions.grammar; path = res/grammar_actions.grammar; sourceTree = "<group>"; };
 		D3A29E1A18E70F0E00DC591E /* GrammarActionsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrammarActionsParser.h; path = test/GrammarActionsParser.h; sourceTree = "<group>"; };
@@ -993,6 +1000,7 @@
 		D31BBCC618E4F1A50003FFA3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D398E30218EB67F6004B883C /* QuoteSymbolParserTest.m */,
 				D3A29E1D18E70F1C00DC591E /* GrammarActionsParserTest.m */,
 				D3D48D8B18E5BFFF001B54E9 /* CurlyActionParserTest.m */,
 				D31BBCBC18E4AAE20003FFA3 /* TableIndexParserTest.m */,
@@ -1327,6 +1335,8 @@
 		D3B22A581703D07000446945 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				D398E30418EB684D004B883C /* QuoteSymbolParser.h */,
+				D398E30518EB684D004B883C /* QuoteSymbolParser.m */,
 				D3A29E1A18E70F0E00DC591E /* GrammarActionsParser.h */,
 				D3A29E1B18E70F0E00DC591E /* GrammarActionsParser.m */,
 				D3D48D8818E5BFD3001B54E9 /* CurlyActionParser.h */,
@@ -1414,6 +1424,7 @@
 		D3B22A5A1703D09C00446945 /* Grammars */ = {
 			isa = PBXGroup;
 			children = (
+				D398E30018EB6770004B883C /* quote_symbol.grammar */,
 				D3A29E1818E70E6800DC591E /* grammar_actions.grammar */,
 				D3D48D8618E5BCFC001B54E9 /* curly_action.grammar */,
 				D31BBCBA18E4AACB0003FFA3 /* table_index.grammar */,
@@ -1771,6 +1782,7 @@
 				D3383089171CA3BA00CCE513 /* PGMultipleSpeculateTemplate.txt in Resources */,
 				D338308A171CA3BA00CCE513 /* PGMultiplePredictTemplate.txt in Resources */,
 				D338308B171CA3BA00CCE513 /* PGRepetitionSpeculateTemplate.txt in Resources */,
+				D398E30118EB6770004B883C /* quote_symbol.grammar in Resources */,
 				D338308C171CA3BA00CCE513 /* PGRepetitionPredictTemplate.txt in Resources */,
 				D338308D171CA3BA00CCE513 /* PGNegationSpeculateTemplate.txt in Resources */,
 				D338308E171CA3BA00CCE513 /* PGNegationPredictTemplate.txt in Resources */,
@@ -1941,6 +1953,7 @@
 				D3A29E1C18E70F0E00DC591E /* GrammarActionsParser.m in Sources */,
 				D3083ABC1705F16000DA6F95 /* ElementAssignParser.m in Sources */,
 				D3B63A3417079F5200BA9DBF /* ExpressionParserActionsTest.m in Sources */,
+				D398E30618EB684D004B883C /* QuoteSymbolParser.m in Sources */,
 				D3B63A3917079FE100BA9DBF /* ExpressionActionsParser.m in Sources */,
 				D31BBCBD18E4AAE20003FFA3 /* TableIndexParserTest.m in Sources */,
 				D376F6C118D0B3990064C888 /* PGActionNode.m in Sources */,
@@ -1991,6 +2004,7 @@
 				D38BC8A91714AF1B00BF530D /* DotQuestionParserTest.m in Sources */,
 				D317C1BB18D207870036BE75 /* MiniMath2Parser.m in Sources */,
 				D38BC8AE1714AF5900BF530D /* DotQuestionParser.m in Sources */,
+				D398E30318EB67F6004B883C /* QuoteSymbolParserTest.m in Sources */,
 				D317C1B818D206890036BE75 /* MiniMath2ParserTest.m in Sources */,
 				D38BC8B11716006D00BF530D /* SemanticPredicateParser.m in Sources */,
 				D38BC8B6171600A900BF530D /* SemanticPredicateParserTest.m in Sources */,
