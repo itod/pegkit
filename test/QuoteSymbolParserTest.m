@@ -60,7 +60,7 @@
     self.factory = nil;
 }
 
-- (void)testFooBarBaz {
+- (void)testSingleSpaceSingleSpaceSingle {
     NSString *s = @"' ' '";
     
     NSError *err = nil;
@@ -68,6 +68,36 @@
     TDNil(err);
     
     TDEqualObjects(TDAssembly(@"[', ', ']'/'/'^"), [res description]);
+}
+
+- (void)testSingleSingleSingle {
+    NSString *s = @"'''";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[', ', ']'/'/'^"), [res description]);
+}
+
+- (void)testDoubleDoubleDouble {
+    NSString *s = @"\"\"\"";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[\", \", \"]\"/\"/\"^"), [res description]);
+}
+
+- (void)testDoubleSpaceDoubleSpaceDouble {
+    NSString *s = @"\" \" \"";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[\", \", \"]\"/\"/\"^"), [res description]);
 }
 
 @end
