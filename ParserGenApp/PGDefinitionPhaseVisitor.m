@@ -42,11 +42,13 @@
     // not sure if we want this
     if (!defName) {
         NSArray *comps = [strVal componentsSeparatedByCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]];
-        defName = [comps componentsJoinedByString:@"_"];
-        if ([defName length]) {
-            _defaultDefNameTab[strVal] = strVal;
-        } else {
-            defName = nil;
+        if ([[comps lastObject] length]) {
+            defName = [comps componentsJoinedByString:@"_"];
+            if ([defName length]) {
+                _defaultDefNameTab[strVal] = strVal;
+            } else {
+                defName = nil;
+            }
         }
     }
     // end

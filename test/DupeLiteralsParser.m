@@ -15,13 +15,15 @@
         self.startRuleName = @"start";
         self.tokenKindTab[@"none"] = @(DUPELITERALS_DUPELITERALS_DUPELITERALS_TOKEN_KIND_NONE);
         self.tokenKindTab[@"none"] = @(DUPELITERALS_DUPELITERALS_DUPELITERALS_TOKEN_KIND_NONE);
-        self.tokenKindTab[@"?("] = @(DUPELITERALS_TOKEN_KIND_WEIRD);
+        self.tokenKindTab[@"?("] = @(DUPELITERALS_TOKEN_KIND_1);
         self.tokenKindTab[@"none"] = @(DUPELITERALS_DUPELITERALS_DUPELITERALS_TOKEN_KIND_NONE);
+        self.tokenKindTab[@"):"] = @(DUPELITERALS_TOKEN_KIND_2);
 
         self.tokenKindNameTab[DUPELITERALS_DUPELITERALS_DUPELITERALS_TOKEN_KIND_NONE] = @"none";
         self.tokenKindNameTab[DUPELITERALS_DUPELITERALS_DUPELITERALS_TOKEN_KIND_NONE] = @"none";
-        self.tokenKindNameTab[DUPELITERALS_TOKEN_KIND_WEIRD] = @"?(";
+        self.tokenKindNameTab[DUPELITERALS_TOKEN_KIND_1] = @"?(";
         self.tokenKindNameTab[DUPELITERALS_DUPELITERALS_DUPELITERALS_TOKEN_KIND_NONE] = @"none";
+        self.tokenKindNameTab[DUPELITERALS_TOKEN_KIND_2] = @"):";
 
     }
     return self;
@@ -51,12 +53,12 @@
     do {
         if ([self predicts:DUPELITERALS_DUPELITERALS_DUPELITERALS_TOKEN_KIND_NONE, 0]) {
             [self none_]; 
-        } else if ([self predicts:DUPELITERALS_TOKEN_KIND_WEIRD, 0]) {
+        } else if ([self predicts:DUPELITERALS_TOKEN_KIND_1, DUPELITERALS_TOKEN_KIND_2, 0]) {
             [self weird_]; 
         } else {
             [self raise:@"No viable alternative found in rule 'start'."];
         }
-    } while ([self predicts:DUPELITERALS_DUPELITERALS_DUPELITERALS_TOKEN_KIND_NONE, DUPELITERALS_TOKEN_KIND_WEIRD, 0]);
+    } while ([self predicts:DUPELITERALS_DUPELITERALS_DUPELITERALS_TOKEN_KIND_NONE, DUPELITERALS_TOKEN_KIND_1, DUPELITERALS_TOKEN_KIND_2, 0]);
 
     [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
@@ -78,7 +80,13 @@
 
 - (void)weird_ {
     
-    [self match:DUPELITERALS_TOKEN_KIND_WEIRD discard:NO]; 
+    if ([self predicts:DUPELITERALS_TOKEN_KIND_1, 0]) {
+        [self match:DUPELITERALS_TOKEN_KIND_1 discard:NO]; 
+    } else if ([self predicts:DUPELITERALS_TOKEN_KIND_2, 0]) {
+        [self match:DUPELITERALS_TOKEN_KIND_2 discard:NO]; 
+    } else {
+        [self raise:@"No viable alternative found in rule 'weird'."];
+    }
 
     [self fireDelegateSelector:@selector(parser:didMatchWeird:)];
 }

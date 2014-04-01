@@ -5,4 +5,4 @@
 
 start = (none | weird)+;
 none = 'none' | 'NONE' | 'None';
-weird = '?(';
+weird = '?(' | '):';
