@@ -305,6 +305,9 @@
 		D398E30118EB6770004B883C /* quote_symbol.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D398E30018EB6770004B883C /* quote_symbol.grammar */; };
 		D398E30318EB67F6004B883C /* QuoteSymbolParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D398E30218EB67F6004B883C /* QuoteSymbolParserTest.m */; };
 		D398E30618EB684D004B883C /* QuoteSymbolParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D398E30518EB684D004B883C /* QuoteSymbolParser.m */; };
+		D398E30818EB6FF5004B883C /* dupe_literals.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D398E30718EB6FF5004B883C /* dupe_literals.grammar */; };
+		D398E30A18EB7007004B883C /* DupeLiteralsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D398E30918EB7007004B883C /* DupeLiteralsParserTest.m */; };
+		D398E30D18EB7039004B883C /* DupeLiteralsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D398E30C18EB7039004B883C /* DupeLiteralsParser.m */; };
 		D3A29E1918E70E6800DC591E /* grammar_actions.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3A29E1818E70E6800DC591E /* grammar_actions.grammar */; };
 		D3A29E1C18E70F0E00DC591E /* GrammarActionsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A29E1B18E70F0E00DC591E /* GrammarActionsParser.m */; };
 		D3A29E1E18E70F1C00DC591E /* GrammarActionsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A29E1D18E70F1C00DC591E /* GrammarActionsParserTest.m */; };
@@ -696,6 +699,10 @@
 		D398E30218EB67F6004B883C /* QuoteSymbolParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuoteSymbolParserTest.m; path = test/QuoteSymbolParserTest.m; sourceTree = "<group>"; };
 		D398E30418EB684D004B883C /* QuoteSymbolParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuoteSymbolParser.h; path = test/QuoteSymbolParser.h; sourceTree = "<group>"; };
 		D398E30518EB684D004B883C /* QuoteSymbolParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuoteSymbolParser.m; path = test/QuoteSymbolParser.m; sourceTree = "<group>"; };
+		D398E30718EB6FF5004B883C /* dupe_literals.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dupe_literals.grammar; path = res/dupe_literals.grammar; sourceTree = "<group>"; };
+		D398E30918EB7007004B883C /* DupeLiteralsParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DupeLiteralsParserTest.m; path = test/DupeLiteralsParserTest.m; sourceTree = "<group>"; };
+		D398E30B18EB7039004B883C /* DupeLiteralsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DupeLiteralsParser.h; path = test/DupeLiteralsParser.h; sourceTree = "<group>"; };
+		D398E30C18EB7039004B883C /* DupeLiteralsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DupeLiteralsParser.m; path = test/DupeLiteralsParser.m; sourceTree = "<group>"; };
 		D3A1492816F8C6BD00770DEE /* PKAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKAST.h; path = include/PEGKit/PKAST.h; sourceTree = SOURCE_ROOT; };
 		D3A29E1818E70E6800DC591E /* grammar_actions.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = grammar_actions.grammar; path = res/grammar_actions.grammar; sourceTree = "<group>"; };
 		D3A29E1A18E70F0E00DC591E /* GrammarActionsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrammarActionsParser.h; path = test/GrammarActionsParser.h; sourceTree = "<group>"; };
@@ -1000,6 +1007,7 @@
 		D31BBCC618E4F1A50003FFA3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D398E30918EB7007004B883C /* DupeLiteralsParserTest.m */,
 				D398E30218EB67F6004B883C /* QuoteSymbolParserTest.m */,
 				D3A29E1D18E70F1C00DC591E /* GrammarActionsParserTest.m */,
 				D3D48D8B18E5BFFF001B54E9 /* CurlyActionParserTest.m */,
@@ -1335,6 +1343,8 @@
 		D3B22A581703D07000446945 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				D398E30B18EB7039004B883C /* DupeLiteralsParser.h */,
+				D398E30C18EB7039004B883C /* DupeLiteralsParser.m */,
 				D398E30418EB684D004B883C /* QuoteSymbolParser.h */,
 				D398E30518EB684D004B883C /* QuoteSymbolParser.m */,
 				D3A29E1A18E70F0E00DC591E /* GrammarActionsParser.h */,
@@ -1424,6 +1434,7 @@
 		D3B22A5A1703D09C00446945 /* Grammars */ = {
 			isa = PBXGroup;
 			children = (
+				D398E30718EB6FF5004B883C /* dupe_literals.grammar */,
 				D398E30018EB6770004B883C /* quote_symbol.grammar */,
 				D3A29E1818E70E6800DC591E /* grammar_actions.grammar */,
 				D3D48D8618E5BCFC001B54E9 /* curly_action.grammar */,
@@ -1728,6 +1739,7 @@
 				D3B986AE1700D3A9000CBCAE /* expression.grammar in Resources */,
 				D3B22A3A17025EA300446945 /* elements.grammar in Resources */,
 				D317C1B418D206730036BE75 /* minimath2.grammar in Resources */,
+				D398E30818EB6FF5004B883C /* dupe_literals.grammar in Resources */,
 				D3083AB61705F05C00DA6F95 /* elementsAssign.grammar in Resources */,
 				D3B63A3617079F7A00BA9DBF /* expressionActions.grammar in Resources */,
 				D3B63A3F170910AA00BA9DBF /* methods.grammar in Resources */,
@@ -1995,6 +2007,7 @@
 				D30B8F59170CFFFE001796F4 /* DelimitedParserTest.m in Sources */,
 				D3D48D8C18E5BFFF001B54E9 /* CurlyActionParserTest.m in Sources */,
 				D30B8F5E170D001E001796F4 /* DelimitedParser.m in Sources */,
+				D398E30A18EB7007004B883C /* DupeLiteralsParserTest.m in Sources */,
 				D30B8F65170D0EB0001796F4 /* PatternParserTest.m in Sources */,
 				D30B8F6A170D0EEB001796F4 /* PatternParser.m in Sources */,
 				D38BC893171494CE00BF530D /* GreedParserTest.m in Sources */,
@@ -2021,6 +2034,7 @@
 				D33830C1171CA55300CCE513 /* ICUTemplateMatcher.m in Sources */,
 				D33830C2171CA55300CCE513 /* NSArray_DeepMutableCopy.m in Sources */,
 				D376F6F118D0B5190064C888 /* PGParserGenVisitor.m in Sources */,
+				D398E30D18EB7039004B883C /* DupeLiteralsParser.m in Sources */,
 				D33830C3171CA55300CCE513 /* NSDictionary_DeepMutableCopy.m in Sources */,
 				D33830CB171DBEB100CCE513 /* NamedActionParser.m in Sources */,
 				D31BBCB318E4725F0003FFA3 /* CreateTableStmtParser.m in Sources */,

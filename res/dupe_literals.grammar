@@ -1,0 +1,8 @@
+@before {
+    PKTokenizer *t = self.tokenizer;
+	[t.symbolState add:@"?("];
+}
+
+start = (none | weird)+;
+none = 'none' | 'NONE' | 'None';
+weird = '?(';
