@@ -5,6 +5,7 @@
 }
 
 start = sym+;
-sym = single | double;
+sym = single | double | back;
 single = "'";
 double = '"';
+back = '\\';

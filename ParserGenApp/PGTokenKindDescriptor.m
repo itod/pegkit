@@ -48,9 +48,6 @@ static PGTokenKindDescriptor *sEOFDesc = nil;
     if (!desc) {
         desc = [[[PGTokenKindDescriptor alloc] init] autorelease];
         
-        // escape back slases
-        s = [s stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"];
-
         // escape double quotes
         s = [s stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
         

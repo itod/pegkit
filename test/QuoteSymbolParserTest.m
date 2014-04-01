@@ -100,4 +100,24 @@
     TDEqualObjects(TDAssembly(@"[\", \", \"]\"/\"/\"^"), [res description]);
 }
 
+- (void)testBackBackBack {
+    NSString *s = @"\\\\\\";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[\\, \\, \\]\\/\\/\\^"), [res description]);
+}
+
+- (void)testBackSpaceBackSpaceBack {
+    NSString *s = @"\\ \\ \\";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[\\, \\, \\]\\/\\/\\^"), [res description]);
+}
+
 @end
