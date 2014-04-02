@@ -23,6 +23,9 @@
 #import <Foundation/Foundation.h>
 #import <PEGKit/PKTokenizer.h>
 
+extern NSString * const PEGKitErrorDomain;
+extern NSInteger PEGKitRecognitionErrorCode;
+
 @class PKAssembly;
 
 typedef void (^PKSActionBlock)   (void);

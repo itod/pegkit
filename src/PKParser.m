@@ -36,6 +36,9 @@
 #define LT(i) [self LT:(i)]
 #define LA(i) [self LA:(i)]
 
+NSString * const PEGKitErrorDomain = @"PEGKitErrorDomain";
+NSInteger PEGKitRecognitionErrorCode = 1;
+
 @interface NSObject ()
 - (void)parser:(PKParser *)p didFailToMatch:(PKAssembly *)a;
 @end
@@ -277,7 +280,7 @@
 
     }
     @catch (PKRecognitionException *rex) {
-        NSString *domain = @"PKParseException";
+        NSString *domain = PEGKitErrorDomain;
         NSString *reason = [rex currentReason];
         NSLog(@"%@", reason);
 
@@ -315,8 +318,10 @@
     // get reason
     if ([reason length]) [userInfo setObject:reason forKey:NSLocalizedFailureReasonErrorKey];
     
+    [userInfo setObject:NSLocalizedString(@"A parsing recognition exception occured.", @"") forKey:NSLocalizedDescriptionKey];
+    
     // convert to NSError
-    NSError *err = [NSError errorWithDomain:domain code:47 userInfo:[[userInfo copy] autorelease]];
+    NSError *err = [NSError errorWithDomain:PEGKitErrorDomain code:PEGKitRecognitionErrorCode userInfo:[[userInfo copy] autorelease]];
     return err;
 }
 
