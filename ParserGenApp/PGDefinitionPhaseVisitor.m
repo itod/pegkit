@@ -39,7 +39,7 @@
 
 - (NSString *)defaultDefNameForStringValue:(NSString *)strVal {
     NSString *defName = _defaultDefNameTab[strVal];
-    // not sure if we want this
+
     if (!defName) {
         NSArray *comps = [strVal componentsSeparatedByCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]];
         if ([[comps lastObject] length]) {
@@ -51,7 +51,7 @@
             }
         }
     }
-    // end
+
     if (!defName) {
         defName = [@(_fallbackDefNameCounter++) stringValue];
         _defaultDefNameTab[strVal] = defName;

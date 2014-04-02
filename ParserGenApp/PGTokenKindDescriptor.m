@@ -44,6 +44,20 @@ static PGTokenKindDescriptor *sEOFDesc = nil;
     NSParameterAssert(name);
     
     PGTokenKindDescriptor *desc = sCache[name];
+
+    // This handles cases where the grammar has two literal tokens
+    // which differ only in capitalization like `Function` and `function`.
+    // This will ensure a unique token kind enum name for both.
+    if (desc && ![desc.stringValue isEqualToString:s]) {
+        NSString *uniqueName = name;
+        NSUInteger i = 0;
+        while (desc) {
+            ++i;
+            uniqueName = [NSString stringWithFormat:@"%@_%lu", name, i];
+            desc = sCache[uniqueName];
+        }
+        name = uniqueName;
+    }
     
     if (!desc) {
         desc = [[[PGTokenKindDescriptor alloc] init] autorelease];
