@@ -421,7 +421,11 @@
     NSAssert(tok.isWord, @"");
     
     NSAssert([tok.stringValue length], @"");
-    NSAssert(islower([tok.stringValue characterAtIndex:0]), @"");
+    BOOL isLower = islower([tok.stringValue characterAtIndex:0]);
+    if (!isLower) {
+        [NSException raise:@"" format:@"Unknown builtin rule '%@' on line %lu", tok.stringValue, tok.lineNumber];
+    }
+    NSAssert(isLower, @"");
 
     PGReferenceNode *node = [PGReferenceNode nodeWithToken:tok];
     [a push:node];
