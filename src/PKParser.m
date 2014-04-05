@@ -302,6 +302,10 @@ NSInteger PEGKitRecognitionErrorCode = 1;
         }
     }
     @finally {
+        self.tokenSource = nil;
+        self.tokenSourceIndex = 0;
+        self.tokenSourceCount = 0;
+        self.tokenizer.string = nil;
         self.assembly = nil;
         self.lookahead = nil;
         self.markers = nil;
