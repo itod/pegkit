@@ -31,10 +31,6 @@
 #import "NSString+PEGKitAdditions.h"
 
 #define FAILED -1
-#define NUM_DISPLAY_OBJS 6
-
-#define LT(i) [self LT:(i)]
-#define LA(i) [self LA:(i)]
 
 NSString * const PEGKitErrorDomain = @"PEGKitErrorDomain";
 NSInteger PEGKitRecognitionErrorCode = 1;
