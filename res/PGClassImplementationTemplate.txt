@@ -32,7 +32,7 @@
     [super dealloc];
 }
 {%/if%}{%if enableMemoization %}
-- (void)_clearMemo {
+- (void)clearMemo {
 {%for methodName in ruleMethodNames %}    [_{{methodName}}_memo removeAllObjects];
 {%/for%}}
 {%/if%}

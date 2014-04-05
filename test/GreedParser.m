@@ -38,7 +38,7 @@
     [super dealloc];
 }
 
-- (void)_clearMemo {
+- (void)clearMemo {
     [_start_memo removeAllObjects];
     [_a_memo removeAllObjects];
     [_b_memo removeAllObjects];

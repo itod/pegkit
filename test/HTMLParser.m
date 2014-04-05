@@ -125,7 +125,7 @@
     [super dealloc];
 }
 
-- (void)_clearMemo {
+- (void)clearMemo {
     [_start_memo removeAllObjects];
     [_anything_memo removeAllObjects];
     [_scriptElement_memo removeAllObjects];

@@ -179,7 +179,7 @@
     [super dealloc];
 }
 
-- (void)_clearMemo {
+- (void)clearMemo {
     [_stylesheet_memo removeAllObjects];
     [_ruleset_memo removeAllObjects];
     [_selectors_memo removeAllObjects];
