@@ -34,6 +34,7 @@
 #define MANUAL_MEMORY @"manualMemory"
 #define TOKEN_KINDS_START_INDEX @"startIndex"
 #define TOKEN_KINDS @"tokenKinds"
+#define HAS_TOKEN_KINDS @"hasTokenKinds"
 #define RULE_METHOD_NAMES @"ruleMethodNames"
 #define ENABLE_MEMOIZATION @"enableMemoization"
 #define ENABLE_ERROR_RECOVERY @"enableAutomaticErrorRecovery"
@@ -263,6 +264,7 @@
     vars[MANUAL_MEMORY] = @(!_enableARC);
     vars[TOKEN_KINDS_START_INDEX] = @(TOKEN_KIND_BUILTIN_ANY + 1);
     vars[TOKEN_KINDS] = node.tokenKinds;
+    vars[HAS_TOKEN_KINDS] = @([node.tokenKinds count]);
     NSString *className = node.grammarName;
     if (![className hasSuffix:@"Parser"]) {
         className = [NSString stringWithFormat:@"%@Parser", className];
