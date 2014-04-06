@@ -94,8 +94,10 @@
     NSString *tableName = POP_STR();
     NSString *dbName = POP_STR();
     PUSH(dbName);
-    PUSH(tableNam
-    
+    PUSH(tableName);
+
+    }];
+
     [self fireDelegateSelector:@selector(parser:didMatchName:)];
 }
 
@@ -129,7 +131,7 @@
         indexName = [indexName substringWithRange:NSMakeRange(1, [indexName length]-2)];
         // leave it on the stack for later
         PUSH(indexName);
-
+    
         }];
     } else if ([self predicts:TABLEINDEX_TOKEN_KIND_NOT_UPPER, 0]) {
         [self match:TABLEINDEX_TOKEN_KIND_NOT_UPPER discard:YES]; 
@@ -139,6 +141,9 @@
         }];
     } else {
         [self raise:@"No viable alternative found in rule 'index'."];
-  
-    [self fireDelegateSelector:@selector(parser:didMatchInde
+    }
+
+    [self fireDelegateSelector:@selector(parser:didMatchIndex:)];
+}
+
 @end
