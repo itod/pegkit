@@ -1,2 +1,2 @@
-    [self fireDelegateSelector:@selector(parser:willMatch{{methodName | capitalized}}:)];
+    [self fireDelegateSelector:@selector(parser:willMatch{{methodName | capitalize}}:)];
 

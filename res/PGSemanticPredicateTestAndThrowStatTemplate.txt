@@ -1,1 +1,1 @@
-{%for 1 to depth %}    {%/for%}[self testAndThrow:(id)^{ {{predicateBody}} }]; 
+{%for i in 1 to depth %}    {%/for%}[self testAndThrow:(id)^{ {{predicateBody}} }]; 
