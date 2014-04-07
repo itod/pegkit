@@ -91,13 +91,13 @@ static PKTokenEOF *EOFToken = nil;
 }
 
 
-+ (PKToken *)tokenWithTokenType:(PKTokenType)t stringValue:(NSString *)s doubleValue:(double)n {
++ (instancetype)tokenWithTokenType:(PKTokenType)t stringValue:(NSString *)s doubleValue:(double)n {
     return [[[self alloc] initWithTokenType:t stringValue:s doubleValue:n] autorelease];
 }
 
 
 // designated initializer
-- (id)initWithTokenType:(PKTokenType)t stringValue:(NSString *)s doubleValue:(double)n {
+- (instancetype)initWithTokenType:(PKTokenType)t stringValue:(NSString *)s doubleValue:(double)n {
     //NSParameterAssert(s);
     self = [super init];
     if (self) {
