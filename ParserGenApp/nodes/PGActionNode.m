@@ -24,6 +24,12 @@
 
 @implementation PGActionNode
 
+- (void)dealloc {
+    self.source = nil;
+    [super dealloc];
+}
+
+
 - (id)copyWithZone:(NSZone *)zone {
     PGActionNode *that = (PGActionNode *)[super copyWithZone:zone];
     that->_source = [_source retain];
