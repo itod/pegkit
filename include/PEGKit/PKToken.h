@@ -75,7 +75,7 @@ typedef enum {
     @param      n the number falue of this token.
     @result     an autoreleased initialized token.
 */
-+ (PKToken *)tokenWithTokenType:(PKTokenType)t stringValue:(NSString *)s doubleValue:(double)n;
++ (instancetype)tokenWithTokenType:(PKTokenType)t stringValue:(NSString *)s doubleValue:(double)n;
 
 /*!
     @brief      Designated initializer. Constructs a token of the indicated type and associated string or numeric values.
@@ -84,7 +84,7 @@ typedef enum {
     @param      n the number falue of this token.
     @result     an autoreleased initialized token.
 */
-- (id)initWithTokenType:(PKTokenType)t stringValue:(NSString *)s doubleValue:(double)n;
+- (instancetype)initWithTokenType:(PKTokenType)t stringValue:(NSString *)s doubleValue:(double)n;
 
 /*!
     @brief      Returns true if the supplied object is an equivalent <tt>PKToken</tt>, ignoring differences in case.
