@@ -16,10 +16,12 @@
         self.tokenKindTab[@"NONE"] = @(DUPELITERALS_TOKEN_KIND_NONE_1);
         self.tokenKindTab[@"None"] = @(DUPELITERALS_TOKEN_KIND_NONE_2);
         self.tokenKindTab[@"none"] = @(DUPELITERALS_TOKEN_KIND_NONE);
+        self.tokenKindTab[@"\""] = @(DUPELITERALS_TOKEN_KIND_QUOTE);
 
         self.tokenKindNameTab[DUPELITERALS_TOKEN_KIND_NONE_1] = @"NONE";
         self.tokenKindNameTab[DUPELITERALS_TOKEN_KIND_NONE_2] = @"None";
         self.tokenKindNameTab[DUPELITERALS_TOKEN_KIND_NONE] = @"none";
+        self.tokenKindNameTab[DUPELITERALS_TOKEN_KIND_QUOTE] = @"\"";
 
     }
     return self;
@@ -67,6 +69,15 @@
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchNone:)];
+}
+
+- (void)quote_ {
+    
+    [self match:DUPELITERALS_TOKEN_KIND_QUOTE discard:YES]; 
+    [self matchWord:NO]; 
+    [self match:DUPELITERALS_TOKEN_KIND_QUOTE discard:YES]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchQuote:)];
 }
 
 @end

@@ -6,4 +6,4 @@
 
 start = none+;
 none = 'none' | 'NONE' | 'None';
-//quote = '"' Word '"';
+quote = '"'! Word '"'!;

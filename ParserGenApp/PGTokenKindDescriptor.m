@@ -42,7 +42,10 @@ static PGTokenKindDescriptor *sEOFDesc = nil;
 + (PGTokenKindDescriptor *)descriptorWithStringValue:(NSString *)s name:(NSString *)name {
     NSParameterAssert(s);
     NSParameterAssert(name);
-    
+
+    // escape double quotes
+    s = [s stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+
     PGTokenKindDescriptor *desc = sCache[name];
 
     // This handles cases where the grammar has two literal tokens
@@ -61,9 +64,6 @@ static PGTokenKindDescriptor *sEOFDesc = nil;
     
     if (!desc) {
         desc = [[[PGTokenKindDescriptor alloc] init] autorelease];
-        
-        // escape double quotes
-        s = [s stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
         
         desc.stringValue = s;
         desc.name = name;
