@@ -3,6 +3,8 @@ PEGKit
 
 PEGKit is a '[Parsing Expression Grammar](http://bford.info/packrat/)' toolkit for iOS and OS X written by [Todd Ditchendorf](http://celestialteapot.com) in Objective-C and released under the [MIT Open Source License](https://tldrlegal.com/license/mit-license).
 
+**Always use the Xcode Workspace `PEGKit.xcworkspace`, *NOT* the Xcode Project.**
+
 This project includes [TDTemplateEngine](https://github.com/itod/tdtemplateengine) as a Git Submodule. So proper cloning of this project requires the `--recursive` argument:
 
     git clone --recursive git@github.com:itod/pegkit.git
