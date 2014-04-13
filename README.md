@@ -3,7 +3,11 @@ PEGKit
 
 PEGKit is a '[Parsing Expression Grammar](http://bford.info/packrat/)' toolkit for iOS and OS X written by [Todd Ditchendorf](http://celestialteapot.com) in Objective-C and released under the [MIT Open Source License](https://tldrlegal.com/license/mit-license).
 
-PEGKit is heavily influced by [ANTLR](http://www.antlr.org/) by Terence Parr and ["Building Parsers with Java"](http://www.amazon.com/Building-Parsers-Java-Steven-Metsker/dp/0201719622) by Steven John Metsker. Also, PEGKit depends on [MGTemplateEngine](http://mattgemmell.com/2008/05/20/mgtemplateengine-templates-with-cocoa) by Matt Gemmell for its templating features.
+This project includes [TDTemplateEngine](git@github.com:itod/tdtemplateeingine.git) as a Git Submodule. So proper cloning of this project requires the `--recursive` argument:
+
+    git clone -b tdtemplate --recursive git@github.com:itod/pegkit.git
+
+PEGKit is heavily influced by [ANTLR](http://www.antlr.org/) by Terence Parr and ["Building Parsers with Java"](http://www.amazon.com/Building-Parsers-Java-Steven-Metsker/dp/0201719622) by Steven John Metsker.
 
 The PEGKit Framework offers 2 basic services of general interest to Cocoa developers:
 
@@ -47,33 +51,33 @@ Actions are executed immediately after their preceeding rule reference matches. 
 
 Example 1:
 
-	// matches addition expressions like `1 + 3 + 4`
-	addExpr  = atom plusAtom*;
-	
-	plusAtom = '+'! atom
-	{
-	    PUSH_DOUBLE(POP_DOUBLE() + POP_DOUBLE());
-	};
-	
+    // matches addition expressions like `1 + 3 + 4`
+    addExpr  = atom plusAtom*;
+    
+    plusAtom = '+'! atom
+    {
+        PUSH_DOUBLE(POP_DOUBLE() + POP_DOUBLE());
+    };
+    
     atom     = Number
-	{
-		// pop the double value of token on the top of the stack
-		// and push it back as a double value 
+    {
+        // pop the double value of token on the top of the stack
+        // and push it back as a double value 
         PUSH_DOUBLE(POP_DOUBLE()); 
-	};
+    };
 
 
 Example 2:
 
-	// matches or expressions like `foo or bar` or `foo || bar || baz`
-	orExpr = item (or item {
-		id rhs = POP();
-		id lhs = POP();
-		MyOrNode *orNode = [MyOrNode nodeWithChildren:lhs, rhs];
-	    PUSH(orNode);
-	})*;
-	or    =  'or'! | '||'!;
-	item  = Word;
+    // matches or expressions like `foo or bar` or `foo || bar || baz`
+    orExpr = item (or item {
+        id rhs = POP();
+        id lhs = POP();
+        MyOrNode *orNode = [MyOrNode nodeWithChildren:lhs, rhs];
+        PUSH(orNode);
+    })*;
+    or    =  'or'! | '||'!;
+    item  = Word;
 
 
 ###Rule Actions
@@ -84,21 +88,21 @@ Rule actions are placed inside a rule -- after the rule name, but before the `=`
 
 Example:
 
-	// matches things like `-1` or `---1` or `--------1`
-	
-	@extension { // this is a "Grammar Action". See below.
-		@property (nonatomic) BOOL negative;
-	}
-	
-	unaryExpr 
-	@before { _negative = NO; }
-	@after  {
-		double d = POP_DOUBLE();
-		d = (_negative) ? -d : d;
-		PUSH_DOUBLE(d);
-	}
-		= ('-'! { _negative = !_negative; })+ num;
-	num = Number;
+    // matches things like `-1` or `---1` or `--------1`
+    
+    @extension { // this is a "Grammar Action". See below.
+        @property (nonatomic) BOOL negative;
+    }
+    
+    unaryExpr 
+    @before { _negative = NO; }
+    @after  {
+        double d = POP_DOUBLE();
+        d = (_negative) ? -d : d;
+        PUSH_DOUBLE(d);
+    }
+        = ('-'! { _negative = !_negative; })+ num;
+    num = Number;
 
 ###Grammar Actions
 PEGKit has a feature inspired by ANTLR called **"Grammar Actions"**. Grammar Actions are a way to do exactly what you are looking for: inserting arbitrary code in various places in your Parser's .h and .m files. They must be placed at the top of your grammar before any rules are listed.
