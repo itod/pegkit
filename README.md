@@ -5,7 +5,7 @@ PEGKit is a '[Parsing Expression Grammar](http://bford.info/packrat/)' toolkit f
 
 This project includes [TDTemplateEngine](https://github.com/itod/tdtemplateengine) as a Git Submodule. So proper cloning of this project requires the `--recursive` argument:
 
-    git clone -b tdtemplate --recursive git@github.com:itod/pegkit.git
+    git clone --recursive git@github.com:itod/pegkit.git
 
 PEGKit is heavily influced by [ANTLR](http://www.antlr.org/) by Terence Parr and ["Building Parsers with Java"](http://www.amazon.com/Building-Parsers-Java-Steven-Metsker/dp/0201719622) by Steven John Metsker.
 
