@@ -123,6 +123,8 @@
 		D317C1B418D206730036BE75 /* minimath2.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D317C1B318D206730036BE75 /* minimath2.grammar */; };
 		D317C1B818D206890036BE75 /* MiniMath2ParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D317C1B718D206890036BE75 /* MiniMath2ParserTest.m */; };
 		D317C1BB18D207870036BE75 /* MiniMath2Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = D317C1BA18D207870036BE75 /* MiniMath2Parser.m */; };
+		D319137418F19D7900430BAD /* TDTemplateEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D319137318F19D7900430BAD /* TDTemplateEngine.framework */; };
+		D319137718F19FA900430BAD /* TDTemplateEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D319137318F19D7900430BAD /* TDTemplateEngine.framework */; };
 		D31BBCB018E472300003FFA3 /* CreateTableStmtParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCAF18E4722F0003FFA3 /* CreateTableStmtParserTest.m */; };
 		D31BBCB318E4725F0003FFA3 /* CreateTableStmtParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCB218E4725F0003FFA3 /* CreateTableStmtParser.m */; };
 		D31BBCB518E472850003FFA3 /* create_table_stmt.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D31BBCB418E472850003FFA3 /* create_table_stmt.grammar */; };
@@ -214,20 +216,6 @@
 		D33830A9171CA3BB00CCE513 /* PGRepetitionPredictTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3B63A6C170A1F6C00BA9DBF /* PGRepetitionPredictTemplate.txt */; };
 		D33830AA171CA3BB00CCE513 /* PGNegationSpeculateTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D30B8F4B170CFB93001796F4 /* PGNegationSpeculateTemplate.txt */; };
 		D33830AB171CA3BB00CCE513 /* PGNegationPredictTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D30B8F4D170CFBCC001796F4 /* PGNegationPredictTemplate.txt */; };
-		D33830B2171CA46200CCE513 /* MGTemplateEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = D302270A170208C800594F16 /* MGTemplateEngine.m */; };
-		D33830B3171CA46200CCE513 /* MGTemplateStandardMarkers.m in Sources */ = {isa = PBXBuildFile; fileRef = D3022710170208C800594F16 /* MGTemplateStandardMarkers.m */; };
-		D33830B4171CA46200CCE513 /* MGTemplateStandardFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = D302270E170208C800594F16 /* MGTemplateStandardFilters.m */; };
-		D33830B5171CA46200CCE513 /* ICUTemplateMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D3022707170208C800594F16 /* ICUTemplateMatcher.m */; };
-		D33830B6171CA46200CCE513 /* NSArray_DeepMutableCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = D3022712170208C800594F16 /* NSArray_DeepMutableCopy.m */; };
-		D33830B7171CA46200CCE513 /* NSDictionary_DeepMutableCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = D3022714170208C800594F16 /* NSDictionary_DeepMutableCopy.m */; };
-		D33830BA171CA50F00CCE513 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = D33830B9171CA50F00CCE513 /* RegexKitLite.m */; };
-		D33830BB171CA50F00CCE513 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = D33830B9171CA50F00CCE513 /* RegexKitLite.m */; };
-		D33830BE171CA55300CCE513 /* MGTemplateEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = D302270A170208C800594F16 /* MGTemplateEngine.m */; };
-		D33830BF171CA55300CCE513 /* MGTemplateStandardMarkers.m in Sources */ = {isa = PBXBuildFile; fileRef = D3022710170208C800594F16 /* MGTemplateStandardMarkers.m */; };
-		D33830C0171CA55300CCE513 /* MGTemplateStandardFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = D302270E170208C800594F16 /* MGTemplateStandardFilters.m */; };
-		D33830C1171CA55300CCE513 /* ICUTemplateMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D3022707170208C800594F16 /* ICUTemplateMatcher.m */; };
-		D33830C2171CA55300CCE513 /* NSArray_DeepMutableCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = D3022712170208C800594F16 /* NSArray_DeepMutableCopy.m */; };
-		D33830C3171CA55300CCE513 /* NSDictionary_DeepMutableCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = D3022714170208C800594F16 /* NSDictionary_DeepMutableCopy.m */; };
 		D33830C8171DBE8A00CCE513 /* named_action.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D33830C7171DBE8A00CCE513 /* named_action.grammar */; };
 		D33830CB171DBEB100CCE513 /* NamedActionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D33830CA171DBEB100CCE513 /* NamedActionParser.m */; };
 		D33830CE171DBEE200CCE513 /* NamedActionParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D33830CD171DBEE200CCE513 /* NamedActionParserTest.m */; };
@@ -464,21 +452,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D3022705170208C800594F16 /* DeepMutableCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeepMutableCopy.h; path = lib/MGTemplateEngine/DeepMutableCopy.h; sourceTree = "<group>"; };
-		D3022706170208C800594F16 /* ICUTemplateMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICUTemplateMatcher.h; path = lib/MGTemplateEngine/ICUTemplateMatcher.h; sourceTree = "<group>"; };
-		D3022707170208C800594F16 /* ICUTemplateMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICUTemplateMatcher.m; path = lib/MGTemplateEngine/ICUTemplateMatcher.m; sourceTree = "<group>"; };
-		D3022709170208C800594F16 /* MGTemplateEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGTemplateEngine.h; path = lib/MGTemplateEngine/MGTemplateEngine.h; sourceTree = "<group>"; };
-		D302270A170208C800594F16 /* MGTemplateEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGTemplateEngine.m; path = lib/MGTemplateEngine/MGTemplateEngine.m; sourceTree = "<group>"; };
-		D302270B170208C800594F16 /* MGTemplateFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGTemplateFilter.h; path = lib/MGTemplateEngine/MGTemplateFilter.h; sourceTree = "<group>"; };
-		D302270C170208C800594F16 /* MGTemplateMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGTemplateMarker.h; path = lib/MGTemplateEngine/MGTemplateMarker.h; sourceTree = "<group>"; };
-		D302270D170208C800594F16 /* MGTemplateStandardFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGTemplateStandardFilters.h; path = lib/MGTemplateEngine/MGTemplateStandardFilters.h; sourceTree = "<group>"; };
-		D302270E170208C800594F16 /* MGTemplateStandardFilters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGTemplateStandardFilters.m; path = lib/MGTemplateEngine/MGTemplateStandardFilters.m; sourceTree = "<group>"; };
-		D302270F170208C800594F16 /* MGTemplateStandardMarkers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGTemplateStandardMarkers.h; path = lib/MGTemplateEngine/MGTemplateStandardMarkers.h; sourceTree = "<group>"; };
-		D3022710170208C800594F16 /* MGTemplateStandardMarkers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGTemplateStandardMarkers.m; path = lib/MGTemplateEngine/MGTemplateStandardMarkers.m; sourceTree = "<group>"; };
-		D3022711170208C800594F16 /* NSArray_DeepMutableCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSArray_DeepMutableCopy.h; path = lib/MGTemplateEngine/NSArray_DeepMutableCopy.h; sourceTree = "<group>"; };
-		D3022712170208C800594F16 /* NSArray_DeepMutableCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSArray_DeepMutableCopy.m; path = lib/MGTemplateEngine/NSArray_DeepMutableCopy.m; sourceTree = "<group>"; };
-		D3022713170208C800594F16 /* NSDictionary_DeepMutableCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDictionary_DeepMutableCopy.h; path = lib/MGTemplateEngine/NSDictionary_DeepMutableCopy.h; sourceTree = "<group>"; };
-		D3022714170208C800594F16 /* NSDictionary_DeepMutableCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDictionary_DeepMutableCopy.m; path = lib/MGTemplateEngine/NSDictionary_DeepMutableCopy.m; sourceTree = "<group>"; };
 		D302272A17020F9400594F16 /* PGClassImplementationTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGClassImplementationTemplate.txt; path = res/PGClassImplementationTemplate.txt; sourceTree = "<group>"; };
 		D306298118E1ED5D00EF745E /* TDTestScaffold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTestScaffold.m; path = test/TDTestScaffold.m; sourceTree = "<group>"; };
 		D3083AB51705F05C00DA6F95 /* elementsAssign.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = elementsAssign.grammar; path = res/elementsAssign.grammar; sourceTree = "<group>"; };
@@ -527,6 +500,7 @@
 		D317C1B718D206890036BE75 /* MiniMath2ParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniMath2ParserTest.m; path = test/MiniMath2ParserTest.m; sourceTree = "<group>"; };
 		D317C1B918D207870036BE75 /* MiniMath2Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniMath2Parser.h; path = test/MiniMath2Parser.h; sourceTree = "<group>"; };
 		D317C1BA18D207870036BE75 /* MiniMath2Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniMath2Parser.m; path = test/MiniMath2Parser.m; sourceTree = "<group>"; };
+		D319137318F19D7900430BAD /* TDTemplateEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TDTemplateEngine.framework; path = lib/TDTemplateEngine/build/Debug/TDTemplateEngine.framework; sourceTree = "<group>"; };
 		D31A15250F6DE449002AFDF1 /* javascript.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = javascript.grammar; path = res/javascript.grammar; sourceTree = "<group>"; };
 		D31BBCAF18E4722F0003FFA3 /* CreateTableStmtParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTableStmtParserTest.m; path = test/CreateTableStmtParserTest.m; sourceTree = "<group>"; };
 		D31BBCB118E4725F0003FFA3 /* CreateTableStmtParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTableStmtParser.h; path = test/CreateTableStmtParser.h; sourceTree = "<group>"; };
@@ -575,8 +549,6 @@
 		D3383044171C923700CCE513 /* PGDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGDocument.m; sourceTree = "<group>"; };
 		D3383047171C923700CCE513 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PGDocument.xib; sourceTree = "<group>"; };
 		D338304A171C923700CCE513 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PGMainMenu.xib; sourceTree = "<group>"; };
-		D33830B8171CA50F00CCE513 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegexKitLite.h; path = lib/MGTemplateEngine/RegexKitLite.h; sourceTree = "<group>"; };
-		D33830B9171CA50F00CCE513 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegexKitLite.m; path = lib/MGTemplateEngine/RegexKitLite.m; sourceTree = "<group>"; };
 		D33830C7171DBE8A00CCE513 /* named_action.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = named_action.grammar; path = res/named_action.grammar; sourceTree = "<group>"; };
 		D33830C9171DBEB100CCE513 /* NamedActionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NamedActionParser.h; path = test/NamedActionParser.h; sourceTree = "<group>"; };
 		D33830CA171DBEB100CCE513 /* NamedActionParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NamedActionParser.m; path = test/NamedActionParser.m; sourceTree = "<group>"; };
@@ -836,6 +808,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D30DA1AF1728515E00A1A3EC /* libicucore.dylib in Frameworks */,
+				D319137718F19FA900430BAD /* TDTemplateEngine.framework in Frameworks */,
 				D3CC54FB18CF9934006715D6 /* PEGKit.framework in Frameworks */,
 				D37214D018DF3BDC00525058 /* Cocoa.framework in Frameworks */,
 			);
@@ -854,6 +827,7 @@
 			files = (
 				D381AADC15D5953A004F690C /* libxml2.dylib in Frameworks */,
 				D30DA1A417284F9900A1A3EC /* libicucore.dylib in Frameworks */,
+				D319137418F19D7900430BAD /* TDTemplateEngine.framework in Frameworks */,
 				D37214CB18DF3B0100525058 /* OCMock.framework in Frameworks */,
 				D3CC548D18CF9282006715D6 /* PEGKit.framework in Frameworks */,
 				D37214C718DF391500525058 /* XCTest.framework in Frameworks */,
@@ -939,69 +913,13 @@
 			children = (
 				D36E9F860E5A795400496BD3 /* libxml2.dylib */,
 				D36C560B0FD363D500141CB7 /* libicucore.dylib */,
+				D319137318F19D7900430BAD /* TDTemplateEngine.framework */,
 				D37214CA18DF3B0100525058 /* OCMock.framework */,
 				D366C56718D1F29D00AF3EFB /* XCTest.framework */,
 				D30DA19E17284EC100A1A3EC /* Foundation.framework */,
 				D37214CF18DF3BDC00525058 /* Cocoa.framework */,
 			);
 			name = Desktop;
-			sourceTree = "<group>";
-		};
-		D3022704170208BB00594F16 /* MGTemplateEngine */ = {
-			isa = PBXGroup;
-			children = (
-				D3022709170208C800594F16 /* MGTemplateEngine.h */,
-				D302270A170208C800594F16 /* MGTemplateEngine.m */,
-				D3022721170208ED00594F16 /* Markers */,
-				D3022722170208F400594F16 /* Filters */,
-				D3022723170208FD00594F16 /* Matchers */,
-				D30227241702090400594F16 /*  Categories */,
-			);
-			name = MGTemplateEngine;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		D3022721170208ED00594F16 /* Markers */ = {
-			isa = PBXGroup;
-			children = (
-				D302270C170208C800594F16 /* MGTemplateMarker.h */,
-				D302270F170208C800594F16 /* MGTemplateStandardMarkers.h */,
-				D3022710170208C800594F16 /* MGTemplateStandardMarkers.m */,
-			);
-			name = Markers;
-			sourceTree = "<group>";
-		};
-		D3022722170208F400594F16 /* Filters */ = {
-			isa = PBXGroup;
-			children = (
-				D302270B170208C800594F16 /* MGTemplateFilter.h */,
-				D302270D170208C800594F16 /* MGTemplateStandardFilters.h */,
-				D302270E170208C800594F16 /* MGTemplateStandardFilters.m */,
-			);
-			name = Filters;
-			sourceTree = "<group>";
-		};
-		D3022723170208FD00594F16 /* Matchers */ = {
-			isa = PBXGroup;
-			children = (
-				D3022706170208C800594F16 /* ICUTemplateMatcher.h */,
-				D3022707170208C800594F16 /* ICUTemplateMatcher.m */,
-				D33830B8171CA50F00CCE513 /* RegexKitLite.h */,
-				D33830B9171CA50F00CCE513 /* RegexKitLite.m */,
-			);
-			name = Matchers;
-			sourceTree = "<group>";
-		};
-		D30227241702090400594F16 /*  Categories */ = {
-			isa = PBXGroup;
-			children = (
-				D3022705170208C800594F16 /* DeepMutableCopy.h */,
-				D3022711170208C800594F16 /* NSArray_DeepMutableCopy.h */,
-				D3022712170208C800594F16 /* NSArray_DeepMutableCopy.m */,
-				D3022713170208C800594F16 /* NSDictionary_DeepMutableCopy.h */,
-				D3022714170208C800594F16 /* NSDictionary_DeepMutableCopy.m */,
-			);
-			name = " Categories";
 			sourceTree = "<group>";
 		};
 		D31BBCC618E4F1A50003FFA3 /* Tests */ = {
@@ -1147,7 +1065,6 @@
 				D3383044171C923700CCE513 /* PGDocument.m */,
 				D3383046171C923700CCE513 /* PGDocument.xib */,
 				D3B22A571703D03F00446945 /* PGTemplates */,
-				D3022704170208BB00594F16 /* MGTemplateEngine */,
 				D3A1492A16F8C79600770DEE /* visitor */,
 				D325FFBC161E4E3200D4EBCC /* ast */,
 				D34BAC0F0FF87ED200D7773A /* factory */,
@@ -1886,20 +1803,14 @@
 				D376F6D418D0B3990064C888 /* PGMultipleNode.m in Sources */,
 				D376F6CC18D0B3990064C888 /* PGConstantNode.m in Sources */,
 				D3383045171C923700CCE513 /* PGDocument.m in Sources */,
-				D33830B2171CA46200CCE513 /* MGTemplateEngine.m in Sources */,
 				D376F6CA18D0B3990064C888 /* PGCompositeNode.m in Sources */,
 				D376F6F418D0B5190064C888 /* PGTokenKindDescriptor.m in Sources */,
 				D376F6C218D0B3990064C888 /* PGActionNode.m in Sources */,
-				D33830B3171CA46200CCE513 /* MGTemplateStandardMarkers.m in Sources */,
 				D376F6F018D0B5190064C888 /* PGDefinitionPhaseVisitor.m in Sources */,
 				D376F6CE18D0B3990064C888 /* PGDefinitionNode.m in Sources */,
 				D376F6DF18D0B5020064C888 /* PGParserFactory.m in Sources */,
 				D376F6DA18D0B3990064C888 /* PGReferenceNode.m in Sources */,
-				D33830B4171CA46200CCE513 /* MGTemplateStandardFilters.m in Sources */,
-				D33830B5171CA46200CCE513 /* ICUTemplateMatcher.m in Sources */,
-				D33830B6171CA46200CCE513 /* NSArray_DeepMutableCopy.m in Sources */,
 				D376F6EE18D0B5190064C888 /* PGBaseVisitor.m in Sources */,
-				D33830B7171CA46200CCE513 /* NSDictionary_DeepMutableCopy.m in Sources */,
 				D376F6DC18D0B3990064C888 /* PGRootNode.m in Sources */,
 				D376F6C818D0B3990064C888 /* PGCollectionNode.m in Sources */,
 				D376F6C418D0B3990064C888 /* PGAlternationNode.m in Sources */,
@@ -1908,7 +1819,6 @@
 				D376F6C618D0B3990064C888 /* PGBaseNode.m in Sources */,
 				D376F6F218D0B5190064C888 /* PGParserGenVisitor.m in Sources */,
 				D376F6D818D0B3990064C888 /* PGPatternNode.m in Sources */,
-				D33830BB171CA50F00CCE513 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2025,17 +1935,10 @@
 				D31BBCC018E4AAFC0003FFA3 /* TableIndexParser.m in Sources */,
 				D376F6EF18D0B5190064C888 /* PGDefinitionPhaseVisitor.m in Sources */,
 				D376F6D518D0B3990064C888 /* PGOptionalNode.m in Sources */,
-				D33830BA171CA50F00CCE513 /* RegexKitLite.m in Sources */,
 				D3A29E1E18E70F1C00DC591E /* GrammarActionsParserTest.m in Sources */,
-				D33830BE171CA55300CCE513 /* MGTemplateEngine.m in Sources */,
 				D376F6D118D0B3990064C888 /* PGLiteralNode.m in Sources */,
-				D33830BF171CA55300CCE513 /* MGTemplateStandardMarkers.m in Sources */,
-				D33830C0171CA55300CCE513 /* MGTemplateStandardFilters.m in Sources */,
-				D33830C1171CA55300CCE513 /* ICUTemplateMatcher.m in Sources */,
-				D33830C2171CA55300CCE513 /* NSArray_DeepMutableCopy.m in Sources */,
 				D376F6F118D0B5190064C888 /* PGParserGenVisitor.m in Sources */,
 				D398E30D18EB7039004B883C /* DupeLiteralsParser.m in Sources */,
-				D33830C3171CA55300CCE513 /* NSDictionary_DeepMutableCopy.m in Sources */,
 				D33830CB171DBEB100CCE513 /* NamedActionParser.m in Sources */,
 				D31BBCB318E4725F0003FFA3 /* CreateTableStmtParser.m in Sources */,
 				D33830CE171DBEE200CCE513 /* NamedActionParserTest.m in Sources */,
@@ -2286,6 +2189,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -2299,6 +2203,11 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(PROJECT_DIR)/TDTemplateEngine/include\"",
+				);
 				INFOPLIST_FILE = "ParserGenApp/ParserGenApp-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -2319,12 +2228,18 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParserGenApp/ParserGenApp-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(PROJECT_DIR)/TDTemplateEngine/include\"",
+				);
 				INFOPLIST_FILE = "ParserGenApp/ParserGenApp-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -2417,6 +2332,11 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(PROJECT_DIR)/TDTemplateEngine/include\"",
+				);
 				INFOPLIST_FILE = "test/Tests-Info.plist";
 				LIBXML_PATH = "\"/usr/include/libxml2/\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
@@ -2443,6 +2363,11 @@
 				GCC_PREFIX_HEADER = "test/Tests-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(PROJECT_DIR)/TDTemplateEngine/include\"",
+				);
 				INFOPLIST_FILE = "test/Tests-Info.plist";
 				LIBXML_PATH = "\"/usr/include/libxml2/\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;

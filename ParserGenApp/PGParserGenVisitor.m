@@ -27,8 +27,7 @@
 #import "PGTokenKindDescriptor.h"
 #import "NSString+PEGKitAdditions.h"
 
-#import "MGTemplateEngine.h"
-#import "ICUTemplateMatcher.h"
+#import <TDTemplateEngine/TDTemplateEngine.h>
 
 #define CLASS_NAME @"className"
 #define MANUAL_MEMORY @"manualMemory"
@@ -81,6 +80,7 @@
 - (NSArray *)sortedArrayFromLookaheadSet:(NSSet *)set;
 - (NSSet *)lookaheadSetForNode:(PGBaseNode *)node;
 
+@property (nonatomic, retain) NSOutputStream *outputStream;
 @property (nonatomic, retain) NSMutableArray *outputStringStack;
 @property (nonatomic, retain) NSString *currentDefName;
 @end
@@ -107,6 +107,7 @@
     self.implementationOutputString = nil;
     self.ruleMethodNames = nil;
     self.startMethodName = nil;
+    self.outputStream = nil;
     self.outputStringStack = nil;
     self.currentDefName = nil;
     [super dealloc];
@@ -126,9 +127,20 @@
 
 
 - (void)setUpTemplateEngine {
-    self.engine = [MGTemplateEngine templateEngine];
-    _engine.delegate = self;
-    _engine.matcher = [ICUTemplateMatcher matcherWithTemplateEngine:_engine];
+    self.engine = [TDTemplateEngine templateEngine];
+}
+
+
+- (NSString *)processTemplate:(NSString *)tempStr withVariables:(NSDictionary *)vars {
+    NSOutputStream *output = [NSOutputStream outputStreamToMemory];
+
+    NSError *err = nil;
+    [_engine processTemplateString:tempStr withVariables:vars toStream:output error:&err];
+    
+    NSString *result = [[[NSString alloc] initWithData:[output propertyForKey:NSStreamDataWrittenToMemoryStreamKey] encoding:NSUTF8StringEncoding] autorelease];
+    
+    NSAssert([result length], @"");
+    return result;
 }
 
 
@@ -275,7 +287,7 @@
 
     // do interface (header)
     NSString *intTemplate = [self templateStringNamed:@"PGClassInterfaceTemplate"];
-    self.interfaceOutputString = [_engine processTemplate:intTemplate withVariables:vars];
+    self.interfaceOutputString = [self processTemplate:intTemplate withVariables:vars];
     
     // do impl (.m)
     // setup child str buffer
@@ -292,15 +304,15 @@
     // start method
     NSString *startTemplate = [self templateStringNamed:@"PGMethodCallTemplate"];
     NSInteger depth = _depth + (_enableAutomaticErrorRecovery ? 1 : 0);
-    NSMutableString *startMethodBodyStr = [NSMutableString stringWithString:[_engine processTemplate:startTemplate withVariables:@{DEPTH: @(depth), METHOD_NAME: _startMethodName}]];
+    NSMutableString *startMethodBodyStr = [NSMutableString stringWithString:[self processTemplate:startTemplate withVariables:@{DEPTH: @(depth), METHOD_NAME: _startMethodName}]];
 
     id eofVars = @{DEPTH: @(depth)};
-    NSString *eofCallStr = [_engine processTemplate:[self templateStringNamed:@"PGEOFCallTemplate"] withVariables:eofVars];
+    NSString *eofCallStr = [self processTemplate:[self templateStringNamed:@"PGEOFCallTemplate"] withVariables:eofVars];
     [startMethodBodyStr appendString:eofCallStr];
     
     if (_enableAutomaticErrorRecovery) {
         id recoverVars = @{DEPTH: @(_depth), CHILD_STRING: startMethodBodyStr};
-        NSString *recoverStr = [_engine processTemplate:[self templateStringNamed:@"PGTryAndRecoverEOFTemplate"] withVariables:recoverVars];
+        NSString *recoverStr = [self processTemplate:[self templateStringNamed:@"PGTryAndRecoverEOFTemplate"] withVariables:recoverVars];
         [startMethodBodyStr setString:recoverStr];
     }
     
@@ -323,7 +335,7 @@
     vars[AFTER_ACTION] = [self actionStringFrom:node.grammarActions[@"after"]];
     
     NSString *implTemplate = [self templateStringNamed:@"PGClassImplementationTemplate"];
-    self.implementationOutputString = [_engine processTemplate:implTemplate withVariables:vars];
+    self.implementationOutputString = [self processTemplate:implTemplate withVariables:vars];
 
     //NSLog(@"%@", _interfaceOutputString);
     //NSLog(@"%@", _implementationOutputString);
@@ -334,7 +346,7 @@
     if (!actNode) return @"";
     
     id vars = @{ACTION_BODY: actNode.source, DEPTH: @(_depth)};
-    NSString *result = [_engine processTemplate:[self templateStringNamed:@"PGGrammarActionTemplate"] withVariables:vars];
+    NSString *result = [self processTemplate:[self templateStringNamed:@"PGGrammarActionTemplate"] withVariables:vars];
     
     return result;
 }
@@ -344,7 +356,7 @@
     if (!actNode || self.isSpeculating) return @"";
     
     id vars = @{ACTION_BODY: actNode.source, DEPTH: @(_depth)};
-    NSString *result = [_engine processTemplate:[self templateStringNamed:@"PGActionTemplate"] withVariables:vars];
+    NSString *result = [self processTemplate:[self templateStringNamed:@"PGActionTemplate"] withVariables:vars];
     
     return result;
 }
@@ -385,7 +397,7 @@
     
     if (fireCallback) {
         id vars = @{METHOD_NAME: methodName};
-        result = [_engine processTemplate:[self templateStringNamed:templateName] withVariables:vars];
+        result = [self processTemplate:[self templateStringNamed:templateName] withVariables:vars];
     }
 
     return result;
@@ -446,7 +458,7 @@
     }
 
     NSString *template = [self templateStringNamed:templateName];
-    NSMutableString *output = [NSMutableString stringWithString:[_engine processTemplate:template withVariables:vars]];
+    NSMutableString *output = [NSMutableString stringWithString:[self processTemplate:template withVariables:vars]];
     
     // push
     [self push:output];
@@ -468,7 +480,7 @@
     [output appendString:[self semanticPredicateForNode:node throws:YES]];
     
     NSString *template = [self templateStringNamed:@"PGMethodCallTemplate"];
-    [output appendString:[_engine processTemplate:template withVariables:vars]];
+    [output appendString:[self processTemplate:template withVariables:vars]];
     
     [output appendString:[self actionStringFrom:node.actionNode]];
 
@@ -531,7 +543,7 @@
         templateName = @"PGNegationSpeculateTemplate";
     }
     
-    [output appendString:[_engine processTemplate:[self templateStringNamed:templateName] withVariables:vars]];
+    [output appendString:[self processTemplate:[self templateStringNamed:templateName] withVariables:vars]];
     
     // action
     [output appendString:[self actionStringFrom:node.actionNode]];
@@ -596,7 +608,7 @@
     NSMutableString *output = [NSMutableString string];
     [output appendString:[self semanticPredicateForNode:node throws:YES]];
     
-    [output appendString:[_engine processTemplate:[self templateStringNamed:templateName] withVariables:vars]];
+    [output appendString:[self processTemplate:[self templateStringNamed:templateName] withVariables:vars]];
 
     // action
     [output appendString:[self actionStringFrom:node.actionNode]];
@@ -678,7 +690,7 @@
             
             PGTokenKindDescriptor *desc = [(PGConstantNode *)concreteNode tokenKind];
             id resyncVars = @{TOKEN_KIND: desc, DEPTH: @(_depth - 1), CHILD_STRING: partialChildStr, TERMINAL_CALL_STRING: terminalCallStr};
-            NSString *tryAndResyncStr = [_engine processTemplate:[self templateStringNamed:@"PGTryAndRecoverTemplate"] withVariables:resyncVars];
+            NSString *tryAndResyncStr = [self processTemplate:[self templateStringNamed:@"PGTryAndRecoverTemplate"] withVariables:resyncVars];
             
             [childStr appendString:tryAndResyncStr];
             
@@ -724,7 +736,7 @@
             templateName = isStat ? @"PGSemanticPredicateTestStatTemplate" : @"PGSemanticPredicateTestExprTemplate";
         }
         
-        result = [_engine processTemplate:[self templateStringNamed:templateName] withVariables:@{PREDICATE_BODY: predBody, DEPTH: @(self.depth)}];
+        result = [self processTemplate:[self templateStringNamed:templateName] withVariables:@{PREDICATE_BODY: predBody, DEPTH: @(self.depth)}];
         NSAssert(result, @"");
     }
 
@@ -772,7 +784,7 @@
             templateName = [result length] ? @"PGPredictElseIfTemplate" : @"PGPredictIfTemplate";
         }
         // process template.
-        NSString *output = [_engine processTemplate:[self templateStringNamed:templateName] withVariables:vars];
+        NSString *output = [self processTemplate:[self templateStringNamed:templateName] withVariables:vars];
         [result appendString:output];
         
         self.depth++;
@@ -837,7 +849,7 @@
         }
 
         // process template.
-        NSString *output = [_engine processTemplate:[self templateStringNamed:templateName] withVariables:vars];
+        NSString *output = [self processTemplate:[self templateStringNamed:templateName] withVariables:vars];
 
         [result appendString:output];
         [result appendString:childBody];
@@ -897,9 +909,9 @@
     
     NSString *elseStr = nil;
     if (node.hasEmptyAlternative) {
-        elseStr = [_engine processTemplate:[self templateStringNamed:@"PGPredictEndIfTemplate"] withVariables:vars];
+        elseStr = [self processTemplate:[self templateStringNamed:@"PGPredictEndIfTemplate"] withVariables:vars];
     } else {
-        elseStr = [_engine processTemplate:[self templateStringNamed:@"PGPredictElseTemplate"] withVariables:vars];
+        elseStr = [self processTemplate:[self templateStringNamed:@"PGPredictElseTemplate"] withVariables:vars];
     }
     [childStr appendString:elseStr];
 
@@ -955,7 +967,7 @@
         templateName = @"PGOptionalSpeculateTemplate";
     }
     
-    [output appendString:[_engine processTemplate:[self templateStringNamed:templateName] withVariables:vars]];
+    [output appendString:[self processTemplate:[self templateStringNamed:templateName] withVariables:vars]];
     
     // action
     [output appendString:[self actionStringFrom:node.actionNode]];
@@ -1046,7 +1058,7 @@
         templateName = @"PGMultipleSpeculateTemplate";
     }
     
-    [output appendString:[_engine processTemplate:[self templateStringNamed:templateName] withVariables:vars]];
+    [output appendString:[self processTemplate:[self templateStringNamed:templateName] withVariables:vars]];
 
     // action
     [output appendString:[self actionStringFrom:node.actionNode]];
@@ -1071,7 +1083,7 @@
     [output appendString:[self semanticPredicateForNode:node throws:YES]];
     
     NSString *template = [self templateStringNamed:@"PGConstantMethodCallTemplate"];
-    [output appendString:[_engine processTemplate:template withVariables:vars]];
+    [output appendString:[self processTemplate:template withVariables:vars]];
     
     [output appendString:[self actionStringFrom:node.actionNode]];
 
@@ -1094,7 +1106,7 @@
     [output appendString:[self semanticPredicateForNode:node throws:YES]];
     
     NSString *template = [self templateStringNamed:@"PGMatchCallTemplate"];
-    [output appendString:[_engine processTemplate:template withVariables:vars]];
+    [output appendString:[self processTemplate:template withVariables:vars]];
     
     [output appendString:[self actionStringFrom:node.actionNode]];
 
@@ -1120,7 +1132,7 @@
     [output appendString:[self semanticPredicateForNode:node throws:YES]];
     
     NSString *template = [self templateStringNamed:@"PGMatchDelimitedStringTemplate"];
-    [output appendString:[_engine processTemplate:template withVariables:vars]];
+    [output appendString:[self processTemplate:template withVariables:vars]];
     
     [output appendString:[self actionStringFrom:node.actionNode]];
     
@@ -1145,7 +1157,7 @@
     [output appendString:[self semanticPredicateForNode:node throws:YES]];
     
     NSString *template = [self templateStringNamed:@"PGMatchPatternTemplate"];
-    [output appendString:[_engine processTemplate:template withVariables:vars]];
+    [output appendString:[self processTemplate:template withVariables:vars]];
     
     [output appendString:[self actionStringFrom:node.actionNode]];
     
@@ -1158,29 +1170,6 @@
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     NSAssert2(0, @"%s must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
-}
-
-
-#pragma mark -
-#pragma mark MGTemplateEngineDelegate
-
-- (void)templateEngine:(MGTemplateEngine *)engine blockStarted:(NSDictionary *)blockInfo {
-    
-}
-
-
-- (void)templateEngine:(MGTemplateEngine *)engine blockEnded:(NSDictionary *)blockInfo {
-    
-}
-
-
-- (void)templateEngineFinishedProcessingTemplate:(MGTemplateEngine *)engine {
-    
-}
-
-
-- (void)templateEngine:(MGTemplateEngine *)engine encounteredError:(NSError *)error isContinuing:(BOOL)continuing {
-    NSLog(@"%@", error);
 }
 
 @end

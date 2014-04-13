@@ -22,11 +22,12 @@
 
 #import "PGBaseVisitor.h"
 #import "PGParserFactory.h"
-#import "MGTemplateEngine.h"
 
-@interface PGParserGenVisitor : PGBaseVisitor <MGTemplateEngineDelegate>
+@class TDTemplateEngine;
 
-@property (nonatomic, retain) MGTemplateEngine *engine;
+@interface PGParserGenVisitor : PGBaseVisitor
+
+@property (nonatomic, retain) TDTemplateEngine *engine;
 @property (nonatomic, retain) NSString *interfaceOutputString;
 @property (nonatomic, retain) NSString *implementationOutputString;
 @property (nonatomic, retain) NSString *startMethodName;

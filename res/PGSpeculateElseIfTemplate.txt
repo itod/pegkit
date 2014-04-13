@@ -1,1 +1,1 @@
-{%for 1 to depth %}    {%/for%}} else if ([self speculate:^{ {%if predicate %}{{predicate}}; {%/if%}{{childString}}}]) {
+{%for i in 1 to depth %}    {%/for%}} else if ([self speculate:^{ {%if predicate %}{{predicate}}; {%/if%}{{childString}}}]) {

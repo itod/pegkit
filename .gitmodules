@@ -1,0 +1,4 @@
+[submodule "lib/TDTemplateEngine"]
+	path = lib/TDTemplateEngine
+	url = git@github.com:itod/tdtemplateengine.git
+	branch = master
