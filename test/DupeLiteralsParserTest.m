@@ -70,4 +70,24 @@
     TDEqualObjects(TDAssembly(@"[none]none^"), [res description]);
 }
 
+- (void)testNone {
+    NSString *s = @"None";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[None]None^"), [res description]);
+}
+
+- (void)testNONE {
+    NSString *s = @"NONE";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[NONE]NONE^"), [res description]);
+}
+
 @end
