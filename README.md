@@ -9,7 +9,7 @@ This project includes [TDTemplateEngine](https://github.com/itod/tdtemplateengin
 
     git clone --recursive git@github.com:itod/pegkit.git
 
-PEGKit is heavily influced by [ANTLR](http://www.antlr.org/) by Terence Parr and ["Building Parsers with Java"](http://www.amazon.com/Building-Parsers-Java-Steven-Metsker/dp/0201719622) by Steven John Metsker.
+PEGKit is heavily influenced by [ANTLR](http://www.antlr.org/) by Terence Parr and ["Building Parsers with Java"](http://www.amazon.com/Building-Parsers-Java-Steven-Metsker/dp/0201719622) by Steven John Metsker.
 
 The PEGKit Framework offers 2 basic services of general interest to Cocoa developers:
 
