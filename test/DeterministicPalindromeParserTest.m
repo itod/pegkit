@@ -60,34 +60,54 @@
     self.factory = nil;
 }
 
-- (void)testnone {
-    NSString *s = @"none";
+- (void)test2 {
+    NSString *s = @"2";
     
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:s error:&err];
     TDNil(err);
     
-    TDEqualObjects(TDAssembly(@"[none]none^"), [res description]);
+    TDEqualObjects(TDAssembly(@"[2]2^"), [res description]);
 }
 
-- (void)testNone {
-    NSString *s = @"None";
+- (void)test020 {
+    NSString *s = @"0 2 0";
     
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:s error:&err];
     TDNil(err);
     
-    TDEqualObjects(TDAssembly(@"[None]None^"), [res description]);
+    TDEqualObjects(TDAssembly(@"[0, 2, 0]0/2/0^"), [res description]);
 }
 
-- (void)testNONE {
-    NSString *s = @"NONE";
+- (void)test121 {
+    NSString *s = @"1 2 1";
     
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:s error:&err];
     TDNil(err);
     
-    TDEqualObjects(TDAssembly(@"[NONE]NONE^"), [res description]);
+    TDEqualObjects(TDAssembly(@"[1, 2, 1]1/2/1^"), [res description]);
+}
+
+- (void)test10201 {
+    NSString *s = @"1 0 2 0 1";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[1, 0, 2, 0, 1]1/0/2/0/1^"), [res description]);
+}
+
+- (void)test01210 {
+    NSString *s = @"0 1 2 1 0";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[0, 1, 2, 1, 0]0/1/2/1/0^"), [res description]);
 }
 
 @end
