@@ -53,7 +53,5 @@
 */
 - (NSString *)nextSymbol:(PKReader *)r startingWith:(PKUniChar)cin;
 
-- (void)addStrict:(NSString *)s;
-- (void)removeStrict:(NSString *)s;
 - (NSString *)nextStrictSymbol:(PKReader *)r startingWith:(PKUniChar)cin;
 @end

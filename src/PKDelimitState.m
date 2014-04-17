@@ -117,9 +117,9 @@
     PKSymbolRootNode *currRootNode = [[[PKSymbolRootNode alloc] init] autorelease];
     
     for (PKDelimitDescriptor *desc in matchingDescs) {
-        [currRootNode addStrict:desc.startMarker];
+        [currRootNode add:desc.startMarker];
         if (desc.endMarker) {
-            [currRootNode addStrict:desc.endMarker];
+            [currRootNode add:desc.endMarker];
         }
     }
 
