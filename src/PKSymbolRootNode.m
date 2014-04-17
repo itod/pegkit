@@ -45,13 +45,29 @@
 
 - (void)add:(NSString *)s {
     NSParameterAssert(s);
-    //if ([s length] < 2) return;
+    if ([s length] < 2) return;
     
     [self addWithFirst:[s characterAtIndex:0] rest:[s substringFromIndex:1] parent:self];
 }
 
 
 - (void)remove:(NSString *)s {
+    NSParameterAssert(s);
+    if ([s length] < 2) return;
+    
+    [self removeWithFirst:[s characterAtIndex:0] rest:[s substringFromIndex:1] parent:self];
+}
+
+
+- (void)addStrict:(NSString *)s {
+    NSParameterAssert(s);
+    //if ([s length] < 2) return;
+    
+    [self addWithFirst:[s characterAtIndex:0] rest:[s substringFromIndex:1] parent:self];
+}
+
+
+- (void)removeStrict:(NSString *)s {
     NSParameterAssert(s);
     //if ([s length] < 2) return;
     

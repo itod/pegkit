@@ -1,11 +1,6 @@
 #import <PEGKit/PKParser.h>
 
-enum {
-    MINIMATH2_TOKEN_KIND_STAR = 14,
-    MINIMATH2_TOKEN_KIND_OPEN_PAREN,
-    MINIMATH2_TOKEN_KIND_PLUS,
-    MINIMATH2_TOKEN_KIND_CLOSE_PAREN,
-};
+
 
 @interface MiniMath2Parser : PKParser
 

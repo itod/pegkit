@@ -117,10 +117,10 @@
     PKSymbolRootNode *currRootNode = [[[PKSymbolRootNode alloc] init] autorelease];
     
     for (PKDelimitDescriptor *desc in matchingDescs) {
-        [currRootNode add:desc.startMarker];
+        [currRootNode addStrict:desc.startMarker];
         NSString *endMarker = desc.endMarker;
         if (endMarker) {
-            [currRootNode add:endMarker];
+            [currRootNode addStrict:endMarker];
         }
     }
 
@@ -130,6 +130,11 @@
     
     for (;;) {
         c = [r read];
+        if ('\\' == c) {
+            c = [r read];
+            [self append:c];
+            continue;
+        }
         
         if (PKEOF == c || [nlset characterIsMember:c]) {
             for (PKDelimitDescriptor *desc in [[matchingDescs copy] autorelease]) {
