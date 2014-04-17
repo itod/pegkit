@@ -65,7 +65,6 @@
         self.rootNode = [[[PKSymbolRootNode alloc] init] autorelease];
         _rootNode.reportsAddedSymbolsOnly = YES;
         self.collection = [[[PKDelimitDescriptorCollection alloc] init] autorelease];
-        self.allowsNestedMarkers = YES;
     }
     return self;
 }

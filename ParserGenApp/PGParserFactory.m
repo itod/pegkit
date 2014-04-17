@@ -208,8 +208,6 @@
     PKTokenizer *t = [PKTokenizer tokenizer];
     
     [t.symbolState add:@"%{"];
-    [t.symbolState add:@"/i"];
-    [t.symbolState add:@"}?"];
 
     // add support for tokenizer directives like @commentState.fallbackState
     [t.wordState setWordChars:YES from:'.' to:'.'];
@@ -220,15 +218,16 @@
     [t.commentState addSingleLineStartMarker:@"//"];
     [t.commentState addMultiLineStartMarker:@"/*" endMarker:@"*/"];
     
-    // comment state should fallback to delimit state to match regex delimited strings
-    t.commentState.fallbackState = t.delimitState;
-    
-    // regex delimited strings
-    NSCharacterSet *cs = [[NSCharacterSet newlineCharacterSet] invertedSet];
-    [t.delimitState addStartMarker:@"/" endMarker:@"/" allowedCharacterSet:cs];
-    [t.delimitState addStartMarker:@"/" endMarker:@"/i" allowedCharacterSet:cs];
+//    // comment state should fallback to delimit state to match regex delimited strings
+//    t.commentState.fallbackState = t.delimitState;
+//    
+//    // regex delimited strings
+//    NSCharacterSet *cs = [[NSCharacterSet newlineCharacterSet] invertedSet];
+//    [t.delimitState addStartMarker:@"/" endMarker:@"/" allowedCharacterSet:cs];
+//    [t.delimitState addStartMarker:@"/" endMarker:@"/i" allowedCharacterSet:cs];
 
     // action and predicate delimited strings
+    t.delimitState.allowsNestedMarkers = YES;
     [t setTokenizerState:t.delimitState from:'{' to:'{'];
     [t.delimitState addStartMarker:@"{" endMarker:@"}" allowedCharacterSet:nil];
     [t.delimitState addStartMarker:@"{" endMarker:@"}?" allowedCharacterSet:nil];
