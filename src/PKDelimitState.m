@@ -134,11 +134,11 @@
     
     for (;;) {
         c = [r read];
-//        if ('\\' == c) {
-//            c = [r read];
-//            [self append:c];
-//            continue;
-//        }
+        if ('\\' == c) {
+            c = [r read];
+            [self append:c];
+            continue;
+        }
         
         if (PKEOF == c) {
             if (!_balancesEOFTerminatedStrings) {
@@ -154,11 +154,11 @@
         NSString *marker = [currRootNode nextSymbol:r startingWith:c];
         if ([marker length]) {
             for (PKDelimitDescriptor *desc in matchingDescs) {
-                if (_allowsNestedMarkers && [marker isEqualToString:desc.startMarker]) {
+                if (_allowsNestedMarkers && [marker isEqualToString:desc.startMarker] && ![desc.startMarker isEqualToString:desc.endMarker]) {
                     ++stackCount;
                     break;
                 } else if ([marker isEqualToString:desc.endMarker]) {
-                    if (_allowsNestedMarkers && stackCount > 0) {
+                    if (_allowsNestedMarkers && stackCount > 0 && ![desc.startMarker isEqualToString:desc.endMarker]) {
                         --stackCount;
                         break;
                     } else {
@@ -215,7 +215,6 @@
         tok = [[self nextTokenizerStateFor:cin tokenizer:t] nextTokenFromReader:r startingWith:cin tokenizer:t];
     }
 
-    NSAssert(0 == stackCount, @"");
     return tok;
 }
 
