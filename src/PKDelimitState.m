@@ -52,12 +52,9 @@
 @interface PKDelimitState ()
 @property (nonatomic, retain) PKSymbolRootNode *rootNode;
 @property (nonatomic, retain) PKDelimitDescriptorCollection *collection;
-
 @end
 
-@implementation PKDelimitState {
-    NSInteger _nestedCount;
-}
+@implementation PKDelimitState
 
 - (id)init {
     self = [super init];
