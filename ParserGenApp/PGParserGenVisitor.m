@@ -254,6 +254,7 @@
 - (void)visitRoot:(PGRootNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     NSParameterAssert(node);
+    NSAssert(node.startMethodName, @"");
     //NSAssert(_enableHybridDFA ,@"");
     
     // setup symbol table

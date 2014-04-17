@@ -195,6 +195,7 @@
     [rootNode visit:defv];
 
     rootNode.startMethodName = symTab[@"$$"];
+    NSAssert(rootNode.startMethodName, @"");
     
     return rootNode;
 }
