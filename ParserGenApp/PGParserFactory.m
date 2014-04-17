@@ -179,25 +179,25 @@
 
 - (PKAST *)ASTFromGrammar:(NSString *)g symbolTable:(NSMutableDictionary *)symTab error:(NSError **)outError {
     self.directiveTab = [NSMutableDictionary dictionary];
-    self.rootNode = [PGRootNode nodeWithToken:rootToken];
+    self.rootNode = [PGRootNode nodeWithToken:_rootToken];
     
     PKTokenizer *t = [self tokenizerForParsingGrammar];
     t.string = g;
 
-    [grammarParser parseWithTokenizer:t error:outError];
-//    grammarParser.parser.tokenizer = t;
-//    [grammarParser.parser parse:g error:outError];
+    [_grammarParser parseWithTokenizer:t error:outError];
+//    _grammarParser.parser.tokenizer = t;
+//    [_grammarParser.parser parse:g error:outError];
         
     PGDefinitionPhaseVisitor *defv = [[[PGDefinitionPhaseVisitor alloc] init] autorelease];
     defv.symbolTable = symTab;
     defv.delegatePostMatchCallbacksOn = self.delegatePostMatchCallbacksOn;
     defv.collectTokenKinds = self.collectTokenKinds;
-    [rootNode visit:defv];
+    [_rootNode visit:defv];
 
-    rootNode.startMethodName = symTab[@"$$"];
-    NSAssert(rootNode.startMethodName, @"");
+    _rootNode.startMethodName = symTab[@"$$"];
+    NSAssert(_rootNode.startMethodName, @"");
     
-    return rootNode;
+    return _rootNode;
 }
 
 
@@ -255,7 +255,7 @@
 
 - (void)parser:(PKParser *)p didMatchRule:(PKAssembly *)a {
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
-    NSArray *nodes = [a objectsAbove:equals];
+    NSArray *nodes = [a objectsAbove:_equals];
     NSAssert([nodes count], @"");
 
     [a pop]; // '='
@@ -278,14 +278,14 @@
     
     [defNode addChild:node];
 
-    [self.rootNode addChild:defNode];
+    [_rootNode addChild:defNode];
 }
 
 
 - (void)parser:(PKParser *)p didMatchSubTrackExpr:(PKAssembly *)a {
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
     
-    NSArray *nodes = [a objectsAbove:square];
+    NSArray *nodes = [a objectsAbove:_square];
     NSAssert([nodes count], @"");
     [a pop]; // pop '['
     
@@ -317,7 +317,7 @@
 - (void)parser:(PKParser *)p didMatchSubSeqExpr:(PKAssembly *)a {
     //NSLog(@"%@ %@", NSStringFromSelector(_cmd), a);
     
-    NSArray *nodes = [a objectsAbove:paren];
+    NSArray *nodes = [a objectsAbove:_paren];
     NSAssert([nodes count], @"");
     [a pop]; // pop '('
     
@@ -405,7 +405,7 @@
     NSAssert(tok.isQuotedString, @"");
     NSAssert([tok.stringValue length], @"");
     litNode = [PGLiteralNode nodeWithToken:tok];
-    litNode.wantsCharacters = self.wantsCharacters;
+    litNode.wantsCharacters = _wantsCharacters;
 
     [a push:litNode];
 }
@@ -503,7 +503,7 @@
     NSString *key = nil;
     
     // find owner node (different for pre and post actions)
-    if ([obj isEqual:equals]) {
+    if ([obj isEqual:_equals]) {
         // pre action
         key = @"actionNode";
         
@@ -542,15 +542,15 @@
         source = [sourceTok.stringValue substringWithRange:NSMakeRange(1, len - 2)];
     }
     
-    PGActionNode *actNode = [PGActionNode nodeWithToken:curly];
+    PGActionNode *actNode = [PGActionNode nodeWithToken:_curly];
     actNode.source = source;
     
     if (ownerNode) {
         [ownerNode setValue:actNode forKey:key];
     } else {
-        NSAssert(rootNode.grammarActions, @"");
+        NSAssert(_rootNode.grammarActions, @"");
         NSAssert([key length], @"");
-        rootNode.grammarActions[key] = actNode;
+        _rootNode.grammarActions[key] = actNode;
     }
 }
 
@@ -695,7 +695,7 @@
     
     PGBaseNode *left = nil;
 
-    NSMutableArray *lhsNodes = [self objectsAbove:paren or:equals in:a];
+    NSMutableArray *lhsNodes = [self objectsAbove:_paren or:_equals in:a];
     if (1 == [lhsNodes count]) {
         left = [lhsNodes lastObject];
     } else {
@@ -725,17 +725,6 @@
     [a push:orNode];
 }
 
-@synthesize grammarParser;
-
-@synthesize directiveTab;
-@synthesize rootNode;
-@synthesize wantsCharacters;
-@synthesize equals;
-@synthesize curly;
-@synthesize paren;
-@synthesize square;
-
-@synthesize rootToken;
 @synthesize defToken;
 @synthesize refToken;
 @synthesize seqToken;
