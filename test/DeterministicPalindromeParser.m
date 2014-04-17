@@ -1,12 +1,12 @@
-#import "DupeLiteralsParser.h"
+#import "DeterministicPalindromeParser.h"
 #import <PEGKit/PEGKit.h>
 
 
-@interface DupeLiteralsParser ()
+@interface DeterministicPalindromeParser ()
 
 @end
 
-@implementation DupeLiteralsParser { }
+@implementation DeterministicPalindromeParser { }
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];

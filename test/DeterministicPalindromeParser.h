@@ -8,7 +8,7 @@ enum {
     DUPELITERALS_TOKEN_KIND_QUOTE,
 };
 
-@interface DupeLiteralsParser : PKParser
+@interface DeterministicPalindromeParser : PKParser
 
 @end
 
