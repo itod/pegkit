@@ -65,6 +65,7 @@
         self.rootNode = [[[PKSymbolRootNode alloc] init] autorelease];
         _rootNode.reportsAddedSymbolsOnly = YES;
         self.collection = [[[PKDelimitDescriptorCollection alloc] init] autorelease];
+        self.allowsNestedMarkers = YES;
     }
     return self;
 }
@@ -133,11 +134,11 @@
     
     for (;;) {
         c = [r read];
-        if ('\\' == c) {
-            c = [r read];
-            [self append:c];
-            continue;
-        }
+//        if ('\\' == c) {
+//            c = [r read];
+//            [self append:c];
+//            continue;
+//        }
         
         if (PKEOF == c) {
             if (!_balancesEOFTerminatedStrings) {
@@ -155,9 +156,11 @@
             for (PKDelimitDescriptor *desc in matchingDescs) {
                 if (_allowsNestedMarkers && [marker isEqualToString:desc.startMarker]) {
                     ++stackCount;
+                    break;
                 } else if ([marker isEqualToString:desc.endMarker]) {
                     if (_allowsNestedMarkers && stackCount > 0) {
                         --stackCount;
+                        break;
                     } else {
                         matchedDesc = desc;
                         [self appendString:desc.endMarker];

@@ -3,6 +3,6 @@ start = Word+
     id word = nil;
     while (!EMPTY()) {
         word = POP_STR();
-    \}
+    }
     PUSH(word);
 };

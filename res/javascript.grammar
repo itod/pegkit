@@ -8,7 +8,7 @@
     self.silentlyConsumesWhitespace = YES;
     self.tokenizer.whitespaceState.reportsWhitespaceTokens = YES;
     self.assembly.preservesWhitespaceTokens = YES;
-\}
+}
 }
 @before {
         PKTokenizer *t = self.tokenizer;

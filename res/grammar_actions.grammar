@@ -23,7 +23,7 @@
 @implementation {
 - (NSString *)bar {
     return @"bar";
-\}
+}
 }
 @before {
     NSAssert([self.foo isEqualToString:@"hello world"], @"");

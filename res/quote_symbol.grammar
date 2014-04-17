@@ -1,7 +1,7 @@
 @before {
     PKTokenizer *t = self.tokenizer;
 	[t setTokenizerState:t.symbolState from:'"' to:'"'];
-	[t setTokenizerState:t.symbolState from:'\\'' to:'\\''];
+	[t setTokenizerState:t.symbolState from:'\'' to:'\''];
 }
 
 start = sym+;
