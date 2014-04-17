@@ -13,13 +13,11 @@
     if (self) {
         
         self.startRuleName = @"s";
-        self.tokenKindTab[@"0"] = @(DETERMINISTICPALINDROME_TOKEN_KIND_0);
-        self.tokenKindTab[@"1"] = @(DETERMINISTICPALINDROME_TOKEN_KIND_1);
-        self.tokenKindTab[@"2"] = @(DETERMINISTICPALINDROME_TOKEN_KIND_2);
+        self.tokenKindTab[@"0"] = @(NONDETERMINISTICPALINDROME_TOKEN_KIND_0);
+        self.tokenKindTab[@"1"] = @(NONDETERMINISTICPALINDROME_TOKEN_KIND_1);
 
-        self.tokenKindNameTab[DETERMINISTICPALINDROME_TOKEN_KIND_0] = @"0";
-        self.tokenKindNameTab[DETERMINISTICPALINDROME_TOKEN_KIND_1] = @"1";
-        self.tokenKindNameTab[DETERMINISTICPALINDROME_TOKEN_KIND_2] = @"2";
+        self.tokenKindNameTab[NONDETERMINISTICPALINDROME_TOKEN_KIND_0] = @"0";
+        self.tokenKindNameTab[NONDETERMINISTICPALINDROME_TOKEN_KIND_1] = @"1";
 
     }
     return self;
@@ -40,16 +38,18 @@
 
 - (void)s_ {
     
-    if ([self predicts:DETERMINISTICPALINDROME_TOKEN_KIND_0, 0]) {
-        [self match:DETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO]; 
+    if ([self speculate:^{ [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO]; [self s_]; [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO]; }]) {
+        [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO]; 
         [self s_]; 
-        [self match:DETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO]; 
-    } else if ([self predicts:DETERMINISTICPALINDROME_TOKEN_KIND_1, 0]) {
-        [self match:DETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO]; 
+        [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO]; 
+    } else if ([self speculate:^{ [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO]; [self s_]; [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO]; }]) {
+        [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO]; 
         [self s_]; 
-        [self match:DETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO]; 
-    } else if ([self predicts:DETERMINISTICPALINDROME_TOKEN_KIND_2, 0]) {
-        [self match:DETERMINISTICPALINDROME_TOKEN_KIND_2 discard:NO]; 
+        [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO]; 
+    } else if ([self speculate:^{ [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO]; }]) {
+        [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO]; 
+    } else if ([self speculate:^{ [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO]; }]) {
+        [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO]; 
     } else {
         [self raise:@"No viable alternative found in rule 's'."];
     }

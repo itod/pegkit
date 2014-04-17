@@ -60,74 +60,34 @@
     self.factory = nil;
 }
 
-- (void)test2 {
-    NSString *s = @"2";
+- (void)test0 {
+    NSString *s = @"0";
     
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:s error:&err];
     TDNil(err);
     
-    TDEqualObjects(TDAssembly(@"[2]2^"), [res description]);
+    TDEqualObjects(TDAssembly(@"[0]0^"), [res description]);
 }
 
-- (void)test020 {
-    NSString *s = @"0 2 0";
+- (void)test1 {
+    NSString *s = @"1";
     
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:s error:&err];
     TDNil(err);
     
-    TDEqualObjects(TDAssembly(@"[0, 2, 0]0/2/0^"), [res description]);
+    TDEqualObjects(TDAssembly(@"[1]1^"), [res description]);
 }
 
-- (void)test121 {
-    NSString *s = @"1 2 1";
+- (void)test000 {
+    NSString *s = @"0 0 0";
     
     NSError *err = nil;
     PKAssembly *res = [_parser parseString:s error:&err];
     TDNil(err);
     
-    TDEqualObjects(TDAssembly(@"[1, 2, 1]1/2/1^"), [res description]);
-}
-
-- (void)test10201 {
-    NSString *s = @"1 0 2 0 1";
-    
-    NSError *err = nil;
-    PKAssembly *res = [_parser parseString:s error:&err];
-    TDNil(err);
-    
-    TDEqualObjects(TDAssembly(@"[1, 0, 2, 0, 1]1/0/2/0/1^"), [res description]);
-}
-
-- (void)test01210 {
-    NSString *s = @"0 1 2 1 0";
-    
-    NSError *err = nil;
-    PKAssembly *res = [_parser parseString:s error:&err];
-    TDNil(err);
-    
-    TDEqualObjects(TDAssembly(@"[0, 1, 2, 1, 0]0/1/2/1/0^"), [res description]);
-}
-
-- (void)test00200 {
-    NSString *s = @"0 0 2 0 0";
-    
-    NSError *err = nil;
-    PKAssembly *res = [_parser parseString:s error:&err];
-    TDNil(err);
-    
-    TDEqualObjects(TDAssembly(@"[0, 0, 2, 0, 0]0/0/2/0/0^"), [res description]);
-}
-
-- (void)test11211 {
-    NSString *s = @"1 1 2 1 1";
-    
-    NSError *err = nil;
-    PKAssembly *res = [_parser parseString:s error:&err];
-    TDNil(err);
-    
-    TDEqualObjects(TDAssembly(@"[1, 1, 2, 1, 1]1/1/2/1/1^"), [res description]);
+    TDEqualObjects(TDAssembly(@"[0, 0, 0]0/0/0^"), [res description]);
 }
 
 @end
