@@ -124,4 +124,13 @@ static NondeterministicPalindromeParser *parser;
     TDEqualObjects(TDAssembly(@"[0, 1, 0]0/1/0^"), [res description]);
 }
 
+- (void)test011010110 {
+    NSString *s = @"0 1 1 0 1 0 1 1 0";
+    
+    NSError *err = nil;
+    PKAssembly *res = [parser parseString:s error:&err];
+    TDNotNil(err);
+    TDNil(res);
+}
+
 @end
