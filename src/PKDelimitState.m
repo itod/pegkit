@@ -136,7 +136,18 @@
             continue;
         }
         
-        if (PKEOF == c || [nlset characterIsMember:c]) {
+        if (PKEOF == c) {
+            if (!_balancesEOFTerminatedStrings) {
+                for (PKDelimitDescriptor *desc in [[matchingDescs copy] autorelease]) {
+                    if (desc.endMarker) {
+                        [matchingDescs removeObject:desc];
+                    }
+                }
+            }
+            break;
+        }
+        
+        if ([nlset characterIsMember:c]) {
             for (PKDelimitDescriptor *desc in [[matchingDescs copy] autorelease]) {
                 if (desc.endMarker) {
                     [matchingDescs removeObject:desc];
@@ -179,6 +190,10 @@
     
     if (!matchedDesc && [matchingDescs count]) {
         matchedDesc = matchingDescs[0];
+
+        if (PKEOF == c && _balancesEOFTerminatedStrings) {
+            [self appendString:matchedDesc.endMarker];
+        }
     }
     
     PKToken *tok = nil;
