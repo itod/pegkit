@@ -101,7 +101,7 @@
     NSMutableArray *matchingDescs = nil;
     
     // check for false match
-    if (startMarker) {
+    if ([startMarker length]) {
         matchingDescs = [[[_collection descriptorsForStartMarker:startMarker] mutableCopy] autorelease];
         
         if (![matchingDescs count]) {
@@ -151,7 +151,7 @@
         }
 
         NSString *marker = [currRootNode nextSymbol:r startingWith:c];
-        if (marker) {
+        if ([marker length]) {
             for (PKDelimitDescriptor *desc in matchingDescs) {
                 if (_allowsNestedMarkers && [marker isEqualToString:desc.startMarker]) {
                     ++stackCount;
