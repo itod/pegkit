@@ -356,6 +356,9 @@
 		D3BD39791729F1DE00FC6549 /* PGPreCallbackSyntaxLeafTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3BD39761729F1DD00FC6549 /* PGPreCallbackSyntaxLeafTemplate.txt */; };
 		D3BD397B1729F2ED00FC6549 /* PGPreCallbackSyntaxLeafTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3BD39761729F1DD00FC6549 /* PGPreCallbackSyntaxLeafTemplate.txt */; };
 		D3BD397C1729F2F100FC6549 /* PGPostCallbackSyntaxLeafTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3BD39751729F1DD00FC6549 /* PGPostCallbackSyntaxLeafTemplate.txt */; };
+		D3C7982619005C2B00EC8CB2 /* deterministic_palindromes.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3C7982519005C2B00EC8CB2 /* deterministic_palindromes.grammar */; };
+		D3C7982819005C8A00EC8CB2 /* DeterministicPalindromeParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C7982719005C8A00EC8CB2 /* DeterministicPalindromeParserTest.m */; };
+		D3C7982B19005CBC00EC8CB2 /* DeterministicPalindromeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C7982A19005CBC00EC8CB2 /* DeterministicPalindromeParser.m */; };
 		D3CC548D18CF9282006715D6 /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
 		D3CC54FB18CF9934006715D6 /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
 		D3CC54FC18CF993B006715D6 /* PEGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
@@ -780,6 +783,10 @@
 		D3C221E10FFE8C4E004514FE /* PKCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKCommentState.h; path = include/PEGKit/PKCommentState.h; sourceTree = SOURCE_ROOT; };
 		D3C221E40FFE8C56004514FE /* PKSingleLineCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKSingleLineCommentState.h; path = include/PEGKit/PKSingleLineCommentState.h; sourceTree = SOURCE_ROOT; };
 		D3C221E70FFE8C60004514FE /* PKMultiLineCommentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKMultiLineCommentState.h; path = include/PEGKit/PKMultiLineCommentState.h; sourceTree = SOURCE_ROOT; };
+		D3C7982519005C2B00EC8CB2 /* deterministic_palindromes.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = deterministic_palindromes.grammar; path = res/deterministic_palindromes.grammar; sourceTree = "<group>"; };
+		D3C7982719005C8A00EC8CB2 /* DeterministicPalindromeParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeterministicPalindromeParserTest.m; path = test/DeterministicPalindromeParserTest.m; sourceTree = "<group>"; };
+		D3C7982919005CBC00EC8CB2 /* DeterministicPalindromeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeterministicPalindromeParser.h; path = test/DeterministicPalindromeParser.h; sourceTree = "<group>"; };
+		D3C7982A19005CBC00EC8CB2 /* DeterministicPalindromeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeterministicPalindromeParser.m; path = test/DeterministicPalindromeParser.m; sourceTree = "<group>"; };
 		D3D48D7F18E5B3C5001B54E9 /* table_index_spec.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = table_index_spec.grammar; path = res/table_index_spec.grammar; sourceTree = "<group>"; };
 		D3D48D8118E5B484001B54E9 /* TableIndexSpecParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableIndexSpecParserTest.m; path = test/TableIndexSpecParserTest.m; sourceTree = "<group>"; };
 		D3D48D8318E5B500001B54E9 /* TableIndexSpecParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableIndexSpecParser.h; path = test/TableIndexSpecParser.h; sourceTree = "<group>"; };
@@ -925,6 +932,7 @@
 		D31BBCC618E4F1A50003FFA3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D3C7982719005C8A00EC8CB2 /* DeterministicPalindromeParserTest.m */,
 				D398E30918EB7007004B883C /* DupeLiteralsParserTest.m */,
 				D398E30218EB67F6004B883C /* QuoteSymbolParserTest.m */,
 				D3A29E1D18E70F1C00DC591E /* GrammarActionsParserTest.m */,
@@ -1260,6 +1268,8 @@
 		D3B22A581703D07000446945 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				D3C7982919005CBC00EC8CB2 /* DeterministicPalindromeParser.h */,
+				D3C7982A19005CBC00EC8CB2 /* DeterministicPalindromeParser.m */,
 				D398E30B18EB7039004B883C /* DupeLiteralsParser.h */,
 				D398E30C18EB7039004B883C /* DupeLiteralsParser.m */,
 				D398E30418EB684D004B883C /* QuoteSymbolParser.h */,
@@ -1351,6 +1361,7 @@
 		D3B22A5A1703D09C00446945 /* Grammars */ = {
 			isa = PBXGroup;
 			children = (
+				D3C7982519005C2B00EC8CB2 /* deterministic_palindromes.grammar */,
 				D398E30718EB6FF5004B883C /* dupe_literals.grammar */,
 				D398E30018EB6770004B883C /* quote_symbol.grammar */,
 				D3A29E1818E70E6800DC591E /* grammar_actions.grammar */,
@@ -1661,6 +1672,7 @@
 				D3B63A3617079F7A00BA9DBF /* expressionActions.grammar in Resources */,
 				D3B63A3F170910AA00BA9DBF /* methods.grammar in Resources */,
 				D3B63A471709152F00BA9DBF /* methods_factored.grammar in Resources */,
+				D3C7982619005C2B00EC8CB2 /* deterministic_palindromes.grammar in Resources */,
 				D31BBCBB18E4AACB0003FFA3 /* table_index.grammar in Resources */,
 				D3B63A551709F88500BA9DBF /* minimath.grammar in Resources */,
 				D3B63A64170A062100BA9DBF /* label_ebnf.grammar in Resources */,
@@ -1956,6 +1968,7 @@
 				D376F6D918D0B3990064C888 /* PGReferenceNode.m in Sources */,
 				D31BBCF218E4F1EF0003FFA3 /* TDTokenizerTest.m in Sources */,
 				D30DA1771724AD0100A1A3EC /* JSONParser.m in Sources */,
+				D3C7982B19005CBC00EC8CB2 /* DeterministicPalindromeParser.m in Sources */,
 				D3D48D8A18E5BFD3001B54E9 /* CurlyActionParser.m in Sources */,
 				D30DA17A1724ADE700A1A3EC /* JSONParserTest.m in Sources */,
 				D30DA18A1725B6A800A1A3EC /* RecoverySingleTokenDeletionTest.m in Sources */,
@@ -1974,6 +1987,7 @@
 				D31BBCED18E4F1EF0003FFA3 /* TDReaderTest.m in Sources */,
 				D3B5EA811747515D00733A26 /* GreedyFailureNestedParser.m in Sources */,
 				D3B5EA841747518600733A26 /* GreedyFailureNestedParserTest.m in Sources */,
+				D3C7982819005C8A00EC8CB2 /* DeterministicPalindromeParserTest.m in Sources */,
 				D376F6ED18D0B5190064C888 /* PGBaseVisitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
