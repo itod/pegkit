@@ -146,6 +146,10 @@
     PKSymbolNode *child = [p.children objectForKey:result];
     
     if (!child) {
+        if (p == self) {
+        } else {
+            [r unread];
+        }
         return @"";
     }
     
@@ -154,7 +158,7 @@
         return result;
     }
     
-    return [result stringByAppendingString:[self nextWithFirst:c rest:r parent:child]];
+    return [result stringByAppendingString:[self nextStrictWithFirst:c rest:r parent:child]];
 }
 
 @end
