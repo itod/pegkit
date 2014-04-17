@@ -32,7 +32,7 @@
     
     err = nil;
     self.root = (id)[_factory ASTFromGrammar:g error:&err];
-    _root.grammarName = @"DupeLiterals";
+    _root.grammarName = @"DeterministicPalindrome";
     
     self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
     _visitor.enableMemoization = NO;
