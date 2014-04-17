@@ -122,15 +122,11 @@
     PKSymbolNode *child = [p.children objectForKey:result];
     
     if (!child) {
-        if (self.reportsAddedSymbolsOnly) {
-            return @"";
+        if (p == self) {
+            return result;
         } else {
-            if (p == self) {
-                return result;
-            } else {
-                [r unread];
-                return @"";
-            }
+            [r unread];
+            return @"";
         }
     }
     
