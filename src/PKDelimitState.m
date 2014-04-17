@@ -161,7 +161,7 @@
 //            }
 //        }
         
-        NSString *marker = [currRootNode nextStrictSymbol:r startingWith:c];
+        NSString *marker = [currRootNode nextSymbol:r startingWith:c];
         if (marker) {
             for (PKDelimitDescriptor *desc in matchingDescs) {
                 if ([marker isEqualToString:desc.endMarker]) {

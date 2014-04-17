@@ -53,5 +53,4 @@
 */
 - (NSString *)nextSymbol:(PKReader *)r startingWith:(PKUniChar)cin;
 
-- (NSString *)nextStrictSymbol:(PKReader *)r startingWith:(PKUniChar)cin;
 @end

@@ -109,12 +109,6 @@
 }
 
 
-- (NSString *)nextStrictSymbol:(PKReader *)r startingWith:(PKUniChar)cin {
-    NSParameterAssert(r);
-    return [self nextStrictWithFirst:cin rest:r parent:self];
-}
-
-
 - (NSString *)nextWithFirst:(PKUniChar)c rest:(PKReader *)r parent:(PKSymbolNode *)p {
     NSParameterAssert(p);
     NSString *result = [[[NSString alloc] initWithCharacters:(const unichar *)&c length:1] autorelease];
@@ -123,11 +117,12 @@
     
     if (!child) {
         if (p == self) {
-            return result;
+            result = self.reportsAddedSymbolsOnly ? @"" : result;
         } else {
             [r unread];
-            return @"";
+            result = @"";
         }
+        return result;
     }
     
     c = [r read];
@@ -136,29 +131,6 @@
     }
     
     return [result stringByAppendingString:[self nextWithFirst:c rest:r parent:child]];
-}
-
-
-- (NSString *)nextStrictWithFirst:(PKUniChar)c rest:(PKReader *)r parent:(PKSymbolNode *)p {
-    NSParameterAssert(p);
-    NSString *result = [[[NSString alloc] initWithCharacters:(const unichar *)&c length:1] autorelease];
-    
-    PKSymbolNode *child = [p.children objectForKey:result];
-    
-    if (!child) {
-        if (p == self) {
-        } else {
-            [r unread];
-        }
-        return @"";
-    }
-    
-    c = [r read];
-    if (PKEOF == c) {
-        return result;
-    }
-    
-    return [result stringByAppendingString:[self nextStrictWithFirst:c rest:r parent:child]];
 }
 
 @end
