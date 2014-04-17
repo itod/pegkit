@@ -45,7 +45,7 @@
 
 - (void)add:(NSString *)s {
     NSParameterAssert(s);
-    if ([s length] < 2) return;
+    //if ([s length] < 2) return;
     
     [self addWithFirst:[s characterAtIndex:0] rest:[s substringFromIndex:1] parent:self];
 }
@@ -53,7 +53,7 @@
 
 - (void)remove:(NSString *)s {
     NSParameterAssert(s);
-    if ([s length] < 2) return;
+    //if ([s length] < 2) return;
     
     [self removeWithFirst:[s characterAtIndex:0] rest:[s substringFromIndex:1] parent:self];
 }
@@ -108,6 +108,12 @@
 }
 
 
+- (NSString *)nextStrictSymbol:(PKReader *)r startingWith:(PKUniChar)cin {
+    NSParameterAssert(r);
+    return [self nextStrictWithFirst:cin rest:r parent:self];
+}
+
+
 - (NSString *)nextWithFirst:(PKUniChar)c rest:(PKReader *)r parent:(PKSymbolNode *)p {
     NSParameterAssert(p);
     NSString *result = [NSString stringWithFormat:@"%C", (unichar)c];
@@ -126,6 +132,29 @@
             return @"";
         }
     } 
+    
+    c = [r read];
+    if (PKEOF == c) {
+        return result;
+    }
+    
+    return [result stringByAppendingString:[self nextWithFirst:c rest:r parent:child]];
+}
+
+
+- (NSString *)nextStrictWithFirst:(PKUniChar)c rest:(PKReader *)r parent:(PKSymbolNode *)p {
+    NSParameterAssert(p);
+    NSString *result = [NSString stringWithFormat:@"%C", (unichar)c];
+    
+    // this also works.
+    //    NSString *result = [[[NSString alloc] initWithCharacters:(const unichar *)&c length:1] autorelease];
+    
+    NSNumber *key = [NSNumber numberWithInteger:c];
+    PKSymbolNode *child = [p.children objectForKey:key];
+    
+    if (!child) {
+        return nil;
+    }
     
     c = [r read];
     if (PKEOF == c) {
