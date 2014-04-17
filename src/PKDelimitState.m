@@ -188,10 +188,6 @@
         [self append:c];
     }
     
-//    if (PKEOF != c) {
-//        [r unread];
-//    }
-    
     if (!matchedDesc && [matchingDescs count]) {
         matchedDesc = matchingDescs[0];
 
@@ -210,12 +206,12 @@
         NSInteger tokenKind = [t tokenKindForStringValue:tokenKindKey];
         tok.tokenKind = tokenKind; //selectedDesc.tokenKind;
     } else {
-        NSUInteger buffLen = [[self bufferedString] length];
-        if (EOF == c) {
-            [r unread:buffLen -1];
-        } else {
-            [r unread:buffLen];
+        if (PKEOF != c) {
+            [r unread];
         }
+        
+        NSUInteger buffLen = [[self bufferedString] length];
+        [r unread:buffLen - 1];
         
         tok = [[self nextTokenizerStateFor:cin tokenizer:t] nextTokenFromReader:r startingWith:cin tokenizer:t];
     }
