@@ -27,7 +27,7 @@
 + (PKDelimitDescriptor *)descriptorWithStartMarker:(NSString *)start endMarker:(NSString *)end characterSet:(NSCharacterSet *)cs {
     PKDelimitDescriptor *desc = [[[[self class] alloc] init] autorelease];
     desc.startMarker = start;
-    desc.endMarker = end ? end : @"";
+    desc.endMarker = end;
     desc.characterSet = cs;
     return desc;
 }

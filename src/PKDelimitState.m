@@ -118,9 +118,8 @@
     
     for (PKDelimitDescriptor *desc in matchingDescs) {
         [currRootNode addStrict:desc.startMarker];
-        NSString *endMarker = desc.endMarker;
-        if ([endMarker length]) {
-            [currRootNode addStrict:endMarker];
+        if (desc.endMarker) {
+            [currRootNode addStrict:desc.endMarker];
         }
     }
 
@@ -139,7 +138,7 @@
         if (PKEOF == c) {
             if (!_balancesEOFTerminatedStrings) {
                 for (PKDelimitDescriptor *desc in [[matchingDescs copy] autorelease]) {
-                    if ([desc.endMarker length]) {
+                    if (desc.endMarker) {
                         [matchingDescs removeObject:desc];
                     }
                 }
@@ -196,7 +195,7 @@
     if (!matchedDesc && [matchingDescs count]) {
         matchedDesc = matchingDescs[0];
 
-        if (PKEOF == c && _balancesEOFTerminatedStrings) {
+        if (PKEOF == c && _balancesEOFTerminatedStrings && matchedDesc.endMarker) {
             [self appendString:matchedDesc.endMarker];
         }
     }
