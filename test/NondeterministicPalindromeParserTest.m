@@ -90,4 +90,14 @@
     TDEqualObjects(TDAssembly(@"[0, 0, 0]0/0/0^"), [res description]);
 }
 
+- (void)test111 {
+    NSString *s = @"1 1 1";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[1, 1, 1]1/1/1^"), [res description]);
+}
+
 @end
