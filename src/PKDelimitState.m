@@ -53,7 +53,6 @@
 @property (nonatomic, retain) PKSymbolRootNode *rootNode;
 @property (nonatomic, retain) PKDelimitDescriptorCollection *collection;
 
-@property (nonatomic, retain) NSMutableArray *startDelimStack;
 @end
 
 @implementation PKDelimitState {
@@ -74,7 +73,6 @@
 - (void)dealloc {
     self.rootNode = nil;
     self.collection = nil;
-    self.startDelimStack = nil;
     [super dealloc];
 }
 
@@ -117,9 +115,7 @@
     self.offset = r.offset - [startMarker length];
     [self appendString:startMarker];
     
-    if (_allowsNestedMarkers) {
-        self.startDelimStack = [NSMutableArray array];
-    }
+    NSUInteger stackCount = 0;
     
     // setup a temp root node with current start and end markers
     PKSymbolRootNode *currRootNode = [[[PKSymbolRootNode alloc] init] autorelease];
@@ -158,10 +154,10 @@
         if (marker) {
             for (PKDelimitDescriptor *desc in matchingDescs) {
                 if (_allowsNestedMarkers && [marker isEqualToString:desc.startMarker]) {
-                    [_startDelimStack addObject:marker];
+                    ++stackCount;
                 } else if ([marker isEqualToString:desc.endMarker]) {
-                    if (_allowsNestedMarkers && [[_startDelimStack lastObject] isEqualToString:desc.startMarker]) {
-                        [_startDelimStack removeLastObject];
+                    if (_allowsNestedMarkers && stackCount > 0) {
+                        --stackCount;
                     } else {
                         matchedDesc = desc;
                         [self appendString:desc.endMarker];
@@ -216,10 +212,7 @@
         tok = [[self nextTokenizerStateFor:cin tokenizer:t] nextTokenFromReader:r startingWith:cin tokenizer:t];
     }
 
-    if (_allowsNestedMarkers) {
-        self.startDelimStack = nil;
-    }
-
+    NSAssert(0 == stackCount, @"");
     return tok;
 }
 
