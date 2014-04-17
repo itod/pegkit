@@ -115,6 +115,7 @@
     
     // setup a temp root node with current start and end markers
     PKSymbolRootNode *currRootNode = [[[PKSymbolRootNode alloc] init] autorelease];
+    //currRootNode.reportsAddedSymbolsOnly = YES;
     
     for (PKDelimitDescriptor *desc in matchingDescs) {
         [currRootNode add:desc.startMarker];

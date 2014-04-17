@@ -43,4 +43,11 @@
     @brief      The string of the mulit-character symbol this node represents.
 */
 @property (nonatomic, readonly, retain) NSString *ancestry;
+
+/*!
+    @brief      If YES, -nextSymbol:startingWith: returns only explicitly-added symbols.
+                If NO, any symbol is returned.
+                Default is NO.
+*/
+@property (nonatomic, assign) BOOL reportsAddedSymbolsOnly;
 @end
