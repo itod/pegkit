@@ -52,6 +52,8 @@
 @interface PKDelimitState ()
 @property (nonatomic, retain) PKSymbolRootNode *rootNode;
 @property (nonatomic, retain) PKDelimitDescriptorCollection *collection;
+
+@property (nonatomic, retain) NSMutableArray *startDelimStack;
 @end
 
 @implementation PKDelimitState {
@@ -62,6 +64,7 @@
     self = [super init];
     if (self) {
         self.rootNode = [[[PKSymbolRootNode alloc] init] autorelease];
+        _rootNode.reportsAddedSymbolsOnly = YES;
         self.collection = [[[PKDelimitDescriptorCollection alloc] init] autorelease];
     }
     return self;
@@ -71,6 +74,7 @@
 - (void)dealloc {
     self.rootNode = nil;
     self.collection = nil;
+    self.startDelimStack = nil;
     [super dealloc];
 }
 
@@ -99,7 +103,7 @@
     NSMutableArray *matchingDescs = nil;
     
     // check for false match
-    if ([startMarker length]) {
+    if (startMarker) {
         matchingDescs = [[[_collection descriptorsForStartMarker:startMarker] mutableCopy] autorelease];
         
         if (![matchingDescs count]) {
@@ -113,6 +117,10 @@
     self.offset = r.offset - [startMarker length];
     [self appendString:startMarker];
     
+    if (_allowsNestedMarkers) {
+        self.startDelimStack = [NSMutableArray array];
+    }
+    
     // setup a temp root node with current start and end markers
     PKSymbolRootNode *currRootNode = [[[PKSymbolRootNode alloc] init] autorelease];
     currRootNode.reportsAddedSymbolsOnly = YES;
@@ -125,7 +133,6 @@
     }
 
     PKUniChar c;
-//    NSCharacterSet *nlset = [NSCharacterSet newlineCharacterSet];
     PKDelimitDescriptor *matchedDesc = nil;
     
     for (;;) {
@@ -146,28 +153,20 @@
             }
             break;
         }
-        
-//        if ([nlset characterIsMember:c]) {
-//            for (PKDelimitDescriptor *desc in [[matchingDescs copy] autorelease]) {
-//                if ([desc.characterSet characterIsMember:c]) {
-//                    continue;
-//                }
-//                if (desc.endMarker) {
-//                    [matchingDescs removeObject:desc];
-//                }
-//            }
-//            if (![matchingDescs count]) {
-//                break;
-//            }
-//        }
-        
+
         NSString *marker = [currRootNode nextSymbol:r startingWith:c];
         if (marker) {
             for (PKDelimitDescriptor *desc in matchingDescs) {
-                if ([marker isEqualToString:desc.endMarker]) {
-                    matchedDesc = desc;
-                    [self appendString:desc.endMarker];
-                    break;
+                if (_allowsNestedMarkers && [marker isEqualToString:desc.startMarker]) {
+                    [_startDelimStack addObject:marker];
+                } else if ([marker isEqualToString:desc.endMarker]) {
+                    if (_allowsNestedMarkers && [[_startDelimStack lastObject] isEqualToString:desc.startMarker]) {
+                        [_startDelimStack removeLastObject];
+                    } else {
+                        matchedDesc = desc;
+                        [self appendString:desc.endMarker];
+                        break;
+                    }
                 }
             }
             if (matchedDesc) {
@@ -215,6 +214,10 @@
         [r unread:buffLen - 1];
         
         tok = [[self nextTokenizerStateFor:cin tokenizer:t] nextTokenFromReader:r startingWith:cin tokenizer:t];
+    }
+
+    if (_allowsNestedMarkers) {
+        self.startDelimStack = nil;
     }
 
     return tok;
