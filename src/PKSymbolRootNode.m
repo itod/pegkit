@@ -61,7 +61,7 @@
 
 - (void)addStrict:(NSString *)s {
     NSParameterAssert(s);
-    //if ([s length] < 2) return;
+    if (![s length]) return;
     
     [self addWithFirst:[s characterAtIndex:0] rest:[s substringFromIndex:1] parent:self];
 }
@@ -69,7 +69,7 @@
 
 - (void)removeStrict:(NSString *)s {
     NSParameterAssert(s);
-    //if ([s length] < 2) return;
+    if (![s length]) return;
     
     [self removeWithFirst:[s characterAtIndex:0] rest:[s substringFromIndex:1] parent:self];
 }
