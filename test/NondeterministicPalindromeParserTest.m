@@ -100,4 +100,33 @@
     TDEqualObjects(TDAssembly(@"[1, 1, 1]1/1/1^"), [res description]);
 }
 
+- (void)test110 {
+    NSString *s = @"1 1 0";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNotNil(err);
+    TDNil(res);
+}
+
+- (void)test101 {
+    NSString *s = @"1 0 1";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[1, 0, 1]1/0/1^"), [res description]);
+}
+
+- (void)test010 {
+    NSString *s = @"0 1 0";
+    
+    NSError *err = nil;
+    PKAssembly *res = [_parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[0, 1, 0]0/1/0^"), [res description]);
+}
+
 @end
