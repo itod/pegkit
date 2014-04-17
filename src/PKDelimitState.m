@@ -125,7 +125,7 @@
     }
 
     PKUniChar c;
-    NSCharacterSet *nlset = [NSCharacterSet newlineCharacterSet];
+//    NSCharacterSet *nlset = [NSCharacterSet newlineCharacterSet];
     PKDelimitDescriptor *matchedDesc = nil;
     
     for (;;) {
@@ -147,14 +147,19 @@
             break;
         }
         
-        if ([nlset characterIsMember:c]) {
-            for (PKDelimitDescriptor *desc in [[matchingDescs copy] autorelease]) {
-                if (desc.endMarker) {
-                    [matchingDescs removeObject:desc];
-                }
-            }
-            break;
-        }
+//        if ([nlset characterIsMember:c]) {
+//            for (PKDelimitDescriptor *desc in [[matchingDescs copy] autorelease]) {
+//                if ([desc.characterSet characterIsMember:c]) {
+//                    continue;
+//                }
+//                if (desc.endMarker) {
+//                    [matchingDescs removeObject:desc];
+//                }
+//            }
+//            if (![matchingDescs count]) {
+//                break;
+//            }
+//        }
         
         NSString *marker = [currRootNode nextStrictSymbol:r startingWith:c];
         if (marker) {
