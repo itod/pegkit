@@ -184,7 +184,9 @@
     switch (node.type) {
         case PGNodeTypeConstant: {
             PGConstantNode *constNode = (PGConstantNode *)node;
-            [set addObject:constNode.tokenKind];
+            if (constNode.token.tokenKind != TOKEN_KIND_BUILTIN_EMPTY) {
+                [set addObject:constNode.tokenKind];
+            }
         } break;
         case PGNodeTypeLiteral: {
             PGLiteralNode *litNode = (PGLiteralNode *)node;
