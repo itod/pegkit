@@ -16,12 +16,12 @@
         self.tokenKindTab[@"]"] = @(INI_TOKEN_KIND_CLOSE_BRACKET);
         self.tokenKindTab[@"["] = @(INI_TOKEN_KIND_OPEN_BRACKET);
         self.tokenKindTab[@"="] = @(INI_TOKEN_KIND_EQUALS);
-        self.tokenKindTab[@";"] = @(INI_TOKEN_KIND_SEMI_COLON);
+        self.tokenKindTab[@"\n"] = @(INI_TOKEN_KIND__N);
 
         self.tokenKindNameTab[INI_TOKEN_KIND_CLOSE_BRACKET] = @"]";
         self.tokenKindNameTab[INI_TOKEN_KIND_OPEN_BRACKET] = @"[";
         self.tokenKindNameTab[INI_TOKEN_KIND_EQUALS] = @"=";
-        self.tokenKindNameTab[INI_TOKEN_KIND_SEMI_COLON] = @";";
+        self.tokenKindNameTab[INI_TOKEN_KIND__N] = @"\n";
 
     }
     return self;
@@ -37,7 +37,7 @@
     [self execute:^{
     
     PKTokenizer *t = self.tokenizer;
-    [t setTokenizerState:t.symbolState from:';' to:';'];
+    [t setTokenizerState:t.symbolState from:'\n' to:'\n'];
 
     }];
 
@@ -74,26 +74,28 @@
         [self matchWord:NO]; 
     } while ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]);
     [self match:INI_TOKEN_KIND_CLOSE_BRACKET discard:YES]; 
-    [self match:INI_TOKEN_KIND_SEMI_COLON discard:YES]; 
+    [self match:INI_TOKEN_KIND__N discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchHeader:)];
 }
 
 - (void)keyVal_ {
     
-    [self key_]; 
+    do {
+        [self key_]; 
+    } while ([self speculate:^{ [self key_]; }]);
     [self match:INI_TOKEN_KIND_EQUALS discard:YES]; 
     do {
         [self val_]; 
     } while ([self speculate:^{ [self val_]; }]);
-    [self match:INI_TOKEN_KIND_SEMI_COLON discard:YES]; 
+    [self match:INI_TOKEN_KIND__N discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchKeyVal:)];
 }
 
 - (void)key_ {
     
-    [self testAndThrow:(id)^{ return NE(LS(1), @";"); }]; 
+    [self testAndThrow:(id)^{ return NE(LS(1), @"="); }]; 
     [self matchAny:NO]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchKey:)];
@@ -101,7 +103,7 @@
 
 - (void)val_ {
     
-    [self testAndThrow:(id)^{ return NE(LS(1), @";"); }]; 
+    [self testAndThrow:(id)^{ return NE(LS(1), @"\n"); }]; 
     [self matchAny:NO]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchVal:)];

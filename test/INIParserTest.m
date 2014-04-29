@@ -56,13 +56,13 @@ static INIParser *parser;
 }
 
 - (void)test0 {
-    NSString *s = @"foo=bar;";
+    NSString *s = @"foo=bar\n";
     
     NSError *err = nil;
     PKAssembly *res = [parser parseString:s error:&err];
     TDNil(err);
     
-    TDEqualObjects(TDAssembly(@"[foo, bar]foo/=/bar/;^"), [res description]);
+    TDEqualObjects(TDAssembly(@"[foo, bar]foo/=/bar/\n^"), [res description]);
 }
 
 @end
