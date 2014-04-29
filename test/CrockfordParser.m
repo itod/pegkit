@@ -697,7 +697,7 @@
 - (void)regexLiteral_ {
     
     [self regexBody_]; 
-    if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
+    if ([self speculate:^{ [self regexMods_]; }]) {
         [self regexMods_]; 
     }
 

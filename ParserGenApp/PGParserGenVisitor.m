@@ -1002,7 +1002,9 @@
     
     PGBaseNode *node = [self concreteNodeForNode:inNode];
     
-    if ([node isKindOfClass:[PGAlternationNode class]]) {
+    if (node.semanticPredicateNode) {
+        result = NO;
+    } else if ([node isKindOfClass:[PGAlternationNode class]]) {
         for (PGBaseNode *child in node.children) {
             if (![self isLL1:child]) {
                 result = NO;
@@ -1018,7 +1020,7 @@
 
 
 - (void)visitMultiple:(PGMultipleNode *)node {
-    //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     // recurse
     NSAssert(1 == [node.children count], @"");

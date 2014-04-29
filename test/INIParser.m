@@ -83,7 +83,9 @@
     
     [self key_]; 
     [self match:INI_TOKEN_KIND_EQUALS discard:YES]; 
-    [self val_]; 
+    do {
+        [self val_]; 
+    } while ([self speculate:^{ [self val_]; }]);
     [self match:INI_TOKEN_KIND_SEMI_COLON discard:YES]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchKeyVal:)];
@@ -91,21 +93,15 @@
 
 - (void)key_ {
     
-    if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self matchWord:NO]; 
-    } else if ([self predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
-        [self matchQuotedString:NO]; 
-    } else if ([self predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
-        [self matchNumber:NO]; 
-    } else {
-        [self raise:@"No viable alternative found in rule 'key'."];
-    }
+    [self testAndThrow:(id)^{ return NE(LS(1), @";"); }]; 
+    [self matchAny:NO]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchKey:)];
 }
 
 - (void)val_ {
     
+    [self testAndThrow:(id)^{ return NE(LS(1), @";"); }]; 
     [self matchAny:NO]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchVal:)];

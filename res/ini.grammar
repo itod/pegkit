@@ -6,6 +6,6 @@
 sections = section+;
 section = header? keyVal+;
 header = '[' Word+ ']'! ';'!;
-keyVal = key '='! val ';'!;
-key = Word | QuotedString | Number;
-val = Any;
+keyVal = key '='! val+ ';'!;
+key = { return NE(LS(1), @";"); }? Any;
+val = { return NE(LS(1), @";"); }? Any;

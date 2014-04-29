@@ -47,7 +47,7 @@
     
     do {
         [self nonReserved_]; 
-    } while ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]);
+    } while ([self speculate:^{ [self nonReserved_]; }]);
 
     [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
