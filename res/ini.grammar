@@ -8,4 +8,4 @@ section = header? keyVal+;
 header = '[' Word+ ']'! ';'!;
 keyVal = key '='! val ';'!;
 key = Word | QuotedString | Number;
-val = Word;
+val = Any;

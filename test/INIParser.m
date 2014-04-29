@@ -106,7 +106,7 @@
 
 - (void)val_ {
     
-    [self matchWord:NO]; 
+    [self matchAny:NO]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchVal:)];
 }
