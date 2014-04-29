@@ -1,0 +1,11 @@
+@before {
+    PKTokenizer *t = self.tokenizer;
+    [t setTokenizerState:t.symbolState from:';' to:';'];
+}
+
+sections = section+;
+section = header? keyVal+;
+header = '[' Word+ ']'! ';'!;
+keyVal = key '='! val ';'!;
+key = Word | QuotedString | Number;
+val = Word;

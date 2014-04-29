@@ -149,6 +149,9 @@
 		D31BBD0618E4F52D0003FFA3 /* TDWhitespaceStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE518E4F1EF0003FFA3 /* TDWhitespaceStateTest.m */; };
 		D31BBD0718E4F53F0003FFA3 /* TDWordStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE718E4F1EF0003FFA3 /* TDWordStateTest.m */; };
 		D31BBD0918E4F5900003FFA3 /* TDURLStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE318E4F1EF0003FFA3 /* TDURLStateTest.m */; };
+		D31FE9C9191016EC0039886B /* INIParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FE9C8191016EC0039886B /* INIParserTest.m */; };
+		D31FE9CC191017580039886B /* INIParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FE9CB191017580039886B /* INIParser.m */; };
+		D31FE9CE191017DE0039886B /* ini.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D31FE9CD191017DE0039886B /* ini.grammar */; };
 		D3344F4917405B4B00598362 /* JSRecoveryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3344F4817405B4B00598362 /* JSRecoveryTest.m */; };
 		D337F07E15D5AE7B00C83AED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D337F07C15D5AE7B00C83AED /* InfoPlist.strings */; };
 		D338303C171C923700CCE513 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D338303A171C923700CCE513 /* InfoPlist.strings */; };
@@ -533,6 +536,10 @@
 		D31BBCE518E4F1EF0003FFA3 /* TDWhitespaceStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDWhitespaceStateTest.m; path = test/TDWhitespaceStateTest.m; sourceTree = "<group>"; };
 		D31BBCE718E4F1EF0003FFA3 /* TDWordStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDWordStateTest.m; path = test/TDWordStateTest.m; sourceTree = "<group>"; };
 		D31BBCFB18E4F3240003FFA3 /* testSlashSlashEscapeBackslashFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testSlashSlashEscapeBackslashFile.txt; path = res/testSlashSlashEscapeBackslashFile.txt; sourceTree = "<group>"; };
+		D31FE9C8191016EC0039886B /* INIParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = INIParserTest.m; path = test/INIParserTest.m; sourceTree = "<group>"; };
+		D31FE9CA191017580039886B /* INIParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = INIParser.h; path = test/INIParser.h; sourceTree = "<group>"; };
+		D31FE9CB191017580039886B /* INIParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = INIParser.m; path = test/INIParser.m; sourceTree = "<group>"; };
+		D31FE9CD191017DE0039886B /* ini.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ini.grammar; path = res/ini.grammar; sourceTree = "<group>"; };
 		D3344F4817405B4B00598362 /* JSRecoveryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSRecoveryTest.m; path = test/JSRecoveryTest.m; sourceTree = "<group>"; };
 		D33724D816FA62D400D30459 /* PKDelimitDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKDelimitDescriptor.h; path = src/PKDelimitDescriptor.h; sourceTree = SOURCE_ROOT; };
 		D33724D916FA62D400D30459 /* PKDelimitDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKDelimitDescriptor.m; path = src/PKDelimitDescriptor.m; sourceTree = "<group>"; };
@@ -939,6 +946,7 @@
 		D31BBCC618E4F1A50003FFA3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D31FE9C8191016EC0039886B /* INIParserTest.m */,
 				D3C7982C19005EE900EC8CB2 /* NondeterministicPalindromeParserTest.m */,
 				D3C7982719005C8A00EC8CB2 /* DeterministicPalindromeParserTest.m */,
 				D398E30918EB7007004B883C /* DupeLiteralsParserTest.m */,
@@ -1276,6 +1284,8 @@
 		D3B22A581703D07000446945 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				D31FE9CA191017580039886B /* INIParser.h */,
+				D31FE9CB191017580039886B /* INIParser.m */,
 				D3C7983019005F3300EC8CB2 /* NondeterministicPalindromeParser.h */,
 				D3C7983119005F3300EC8CB2 /* NondeterministicPalindromeParser.m */,
 				D3C7982919005CBC00EC8CB2 /* DeterministicPalindromeParser.h */,
@@ -1371,6 +1381,7 @@
 		D3B22A5A1703D09C00446945 /* Grammars */ = {
 			isa = PBXGroup;
 			children = (
+				D31FE9CD191017DE0039886B /* ini.grammar */,
 				D3C7982E19005EFB00EC8CB2 /* nondeterministic_palindromes.grammar */,
 				D3C7982519005C2B00EC8CB2 /* deterministic_palindromes.grammar */,
 				D398E30718EB6FF5004B883C /* dupe_literals.grammar */,
@@ -1687,6 +1698,7 @@
 				D31BBCBB18E4AACB0003FFA3 /* table_index.grammar in Resources */,
 				D3B63A551709F88500BA9DBF /* minimath.grammar in Resources */,
 				D3B63A64170A062100BA9DBF /* label_ebnf.grammar in Resources */,
+				D31FE9CE191017DE0039886B /* ini.grammar in Resources */,
 				D3B63A65170A062100BA9DBF /* label_recursive.grammar in Resources */,
 				D3B63A72170A3FCF00BA9DBF /* optional.grammar in Resources */,
 				D3B63A79170A55C300BA9DBF /* multiple.grammar in Resources */,
@@ -1954,6 +1966,7 @@
 				D38BC8AE1714AF5900BF530D /* DotQuestionParser.m in Sources */,
 				D398E30318EB67F6004B883C /* QuoteSymbolParserTest.m in Sources */,
 				D317C1B818D206890036BE75 /* MiniMath2ParserTest.m in Sources */,
+				D31FE9CC191017580039886B /* INIParser.m in Sources */,
 				D38BC8B11716006D00BF530D /* SemanticPredicateParser.m in Sources */,
 				D38BC8B6171600A900BF530D /* SemanticPredicateParserTest.m in Sources */,
 				D31BBD0918E4F5900003FFA3 /* TDURLStateTest.m in Sources */,
@@ -1987,6 +2000,7 @@
 				D30DA18A1725B6A800A1A3EC /* RecoverySingleTokenDeletionTest.m in Sources */,
 				D30DA18D1725BB5700A1A3EC /* RecoverySingleTokenInsertionTest.m in Sources */,
 				D376F6DB18D0B3990064C888 /* PGRootNode.m in Sources */,
+				D31FE9C9191016EC0039886B /* INIParserTest.m in Sources */,
 				D3C7982D19005EE900EC8CB2 /* NondeterministicPalindromeParserTest.m in Sources */,
 				D376F6D718D0B3990064C888 /* PGPatternNode.m in Sources */,
 				D30DA1931726028500A1A3EC /* RecoveryResyncSetTest.m in Sources */,
