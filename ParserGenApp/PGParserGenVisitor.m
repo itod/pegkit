@@ -493,7 +493,7 @@
 
 
 - (void)visitComposite:(PGCompositeNode *)node {
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
+    //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     NSAssert(1 == [node.token.stringValue length], @"");
     PKUniChar c = [node.token.stringValue characterAtIndex:0];
@@ -1020,7 +1020,7 @@
 
 
 - (void)visitMultiple:(PGMultipleNode *)node {
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
+    //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     
     // recurse
     NSAssert(1 == [node.children count], @"");
