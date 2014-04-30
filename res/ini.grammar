@@ -28,13 +28,15 @@
     PKTokenizer *t = self.tokenizer;
     
     [t setTokenizerState:t.symbolState from:'\\n' to:'\\n'];
+    [t setTokenizerState:t.symbolState from:'\\r' to:'\\r'];
 
     [t.commentState addSingleLineStartMarker:@";"];
 }
 
 sections = section+;
 section = header? keyVal+;
-header = '[' Word+ ']'! '\n'!;
-keyVal = key+ '='! val+ '\n'!;
+header = '[' ~']'+ ']'! nl;
+keyVal = key+ '='! val+ nl;
 key = ~'=';
-val = ~'\n';
+val = ~nl;
+nl = ('\n'! | '\r'!)+;

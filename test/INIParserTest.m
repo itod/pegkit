@@ -56,13 +56,23 @@ static INIParser *parser;
 }
 
 - (void)test0 {
-    NSString *s = @"foo=bar\n";
+    NSString *s = @"foo=bar\n\nbaz=bat\n";
     
     NSError *err = nil;
     PKAssembly *res = [parser parseString:s error:&err];
     TDNil(err);
     
-    TDEqualObjects(TDAssembly(@"[foo, bar]foo/=/bar/\n^"), [res description]);
+    TDEqualObjects(TDAssembly(@"[foo, bar, baz, bat]foo/=/bar/\n/\n/baz/=/bat/\n^"), [res description]);
+}
+
+- (void)testSectionHeader {
+    NSString *s = @"[header here]\rfoo=bar\n\nbaz=bat\n";
+    
+    NSError *err = nil;
+    PKAssembly *res = [parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[[, header, here, foo, bar, baz, bat][/header/here/]/\r/foo/=/bar/\n/\n/baz/=/bat/\n^"), [res description]);
 }
 
 @end

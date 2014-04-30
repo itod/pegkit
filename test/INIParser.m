@@ -29,11 +29,13 @@
         self.tokenKindTab[@"]"] = @(INI_TOKEN_KIND_CLOSE_BRACKET);
         self.tokenKindTab[@"["] = @(INI_TOKEN_KIND_OPEN_BRACKET);
         self.tokenKindTab[@"="] = @(INI_TOKEN_KIND_EQUALS);
+        self.tokenKindTab[@"\r"] = @(INI_TOKEN_KIND__R);
         self.tokenKindTab[@"\n"] = @(INI_TOKEN_KIND__N);
 
         self.tokenKindNameTab[INI_TOKEN_KIND_CLOSE_BRACKET] = @"]";
         self.tokenKindNameTab[INI_TOKEN_KIND_OPEN_BRACKET] = @"[";
         self.tokenKindNameTab[INI_TOKEN_KIND_EQUALS] = @"=";
+        self.tokenKindNameTab[INI_TOKEN_KIND__R] = @"\r";
         self.tokenKindNameTab[INI_TOKEN_KIND__N] = @"\n";
 
     }
@@ -59,6 +61,7 @@
     PKTokenizer *t = self.tokenizer;
     
     [t setTokenizerState:t.symbolState from:'\n' to:'\n'];
+    [t setTokenizerState:t.symbolState from:'\r' to:'\r'];
 
     [t.commentState addSingleLineStartMarker:@";"];
 
@@ -94,10 +97,14 @@
     
     [self match:INI_TOKEN_KIND_OPEN_BRACKET discard:NO]; 
     do {
-        [self matchWord:NO]; 
-    } while ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]);
+        if (![self predicts:INI_TOKEN_KIND_CLOSE_BRACKET, 0]) {
+            [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
+        } else {
+            [self raise:@"negation test failed in header"];
+        }
+    } while ([self speculate:^{ if (![self predicts:INI_TOKEN_KIND_CLOSE_BRACKET, 0]) {[self match:TOKEN_KIND_BUILTIN_ANY discard:NO];} else {[self raise:@"negation test failed in header"];}}]);
     [self match:INI_TOKEN_KIND_CLOSE_BRACKET discard:YES]; 
-    [self match:INI_TOKEN_KIND__N discard:YES]; 
+    [self nl_]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchHeader:)];
 }
@@ -111,7 +118,7 @@
     do {
         [self val_]; 
     } while ([self speculate:^{ [self val_]; }]);
-    [self match:INI_TOKEN_KIND__N discard:YES]; 
+    [self nl_]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchKeyVal:)];
 }
@@ -129,13 +136,28 @@
 
 - (void)val_ {
     
-    if (![self predicts:INI_TOKEN_KIND__N, 0]) {
+    if (![self speculate:^{ [self nl_]; }]) {
         [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
     } else {
         [self raise:@"negation test failed in val"];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchVal:)];
+}
+
+- (void)nl_ {
+    
+    do {
+        if ([self predicts:INI_TOKEN_KIND__N, 0]) {
+            [self match:INI_TOKEN_KIND__N discard:YES]; 
+        } else if ([self predicts:INI_TOKEN_KIND__R, 0]) {
+            [self match:INI_TOKEN_KIND__R discard:YES]; 
+        } else {
+            [self raise:@"No viable alternative found in rule 'nl'."];
+        }
+    } while ([self predicts:INI_TOKEN_KIND__N, INI_TOKEN_KIND__R, 0]);
+
+    [self fireDelegateSelector:@selector(parser:didMatchNl:)];
 }
 
 @end
