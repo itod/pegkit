@@ -35,13 +35,6 @@
 sections = section+;
 section = header? keyVal+;
 header = '[' Word+ ']'! '\n'!;
-keyVal 
-    = key+ '=' val+ '\n'!
-    {   
-        id vals = 
-        NSString *key 
-        [self tabForSection:_currentSectionName] = 
-    }
-    ;
-key = { return NE(LS(1), @"="); }? Any;
-val = { return NE(LS(1), @"\\n"); }? Any;
+keyVal = key+ '='! val+ '\n'!;
+key = ~'=';
+val = ~'\n';

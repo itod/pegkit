@@ -3,10 +3,23 @@
 
 
 @interface INIParser ()
+    
+@property (nonatomic, retain) NSString *currentSectionName;
+@property (nonatomic, retain) NSMutableDictionary *sections;
 
 @end
 
 @implementation INIParser { }
+    
+- (NSMutableDictionary *)tabForSection:(NSString *)sectionName {
+    ASSERT(_sections);
+    NSMutableDictionary *tab = _sections[sectionName];
+    if (!tab) {
+        tab = [NSMutableDictionary dictionary];
+        _sections[sectionName] = tab;
+    }
+    return tab;
+}
 
 - (id)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
@@ -28,7 +41,10 @@
 }
 
 - (void)dealloc {
-    
+        
+    self.currentSectionName = nil;
+    self.sections = nil;
+
 
     [super dealloc];
 }
@@ -36,8 +52,15 @@
 - (void)start {
     [self execute:^{
     
+    self.sections = [NSMutableDictionary dictionary];
+    self.currentSectionName = @"[[Default]]";
+    _sections[_currentSectionName] = [NSMutableDictionary dictionary];
+    
     PKTokenizer *t = self.tokenizer;
+    
     [t setTokenizerState:t.symbolState from:'\n' to:'\n'];
+
+    [t.commentState addSingleLineStartMarker:@";"];
 
     }];
 
@@ -95,16 +118,22 @@
 
 - (void)key_ {
     
-    [self testAndThrow:(id)^{ return NE(LS(1), @"="); }]; 
-    [self matchAny:NO]; 
+    if (![self predicts:INI_TOKEN_KIND_EQUALS, 0]) {
+        [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
+    } else {
+        [self raise:@"negation test failed in key"];
+    }
 
     [self fireDelegateSelector:@selector(parser:didMatchKey:)];
 }
 
 - (void)val_ {
     
-    [self testAndThrow:(id)^{ return NE(LS(1), @"\n"); }]; 
-    [self matchAny:NO]; 
+    if (![self predicts:INI_TOKEN_KIND__N, 0]) {
+        [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
+    } else {
+        [self raise:@"negation test failed in val"];
+    }
 
     [self fireDelegateSelector:@selector(parser:didMatchVal:)];
 }
