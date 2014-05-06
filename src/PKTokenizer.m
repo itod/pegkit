@@ -207,26 +207,25 @@
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id *)stackbuf count:(NSUInteger)len {
     NSUInteger count = 0;
 
+    PKToken *tok = nil;
+    PKToken *eof = [PKToken EOFToken];
+    
     if (0 == state->state) {
-        state->mutationsPtr = &state->extra[0];
+        tok = [self nextToken];
+    } else {
+        tok = (PKToken *)state->state;
     }
     
-    PKToken *eof = [PKToken EOFToken];
-    PKToken *tok = [self nextToken];
-
-    if (eof != tok) {
-        state->itemsPtr = stackbuf;
-
-        do  {
-            stackbuf[count] = tok;
-            state->state++;
-            count++;
-        } while (eof != (tok = [self nextToken]) && (count < len));
-
-    } else {
-        count = 0;
+    while (tok != eof && count < len) {
+        stackbuf[count] = tok;
+        tok = [self nextToken];
+        count++;
     }
-
+    
+    state->state = (unsigned long)tok;
+    state->itemsPtr = stackbuf;
+    state->mutationsPtr = (unsigned long *)self;
+    
     return count;
 }
 
