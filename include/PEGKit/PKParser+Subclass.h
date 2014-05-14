@@ -94,6 +94,8 @@
 @property (nonatomic, retain) NSString *startRuleName;
 @property (nonatomic, retain) NSString *statementTerminator;
 @property (nonatomic, retain) NSString *singleLineCommentMarker;
+@property (nonatomic, retain) NSString *multiLineCommentStartMarker;
+@property (nonatomic, retain) NSString *multiLineCommentEndMarker;
 @property (nonatomic, retain) NSString *blockStartMarker;
 @property (nonatomic, retain) NSString *blockEndMarker;
 @property (nonatomic, retain) NSString *braces;
