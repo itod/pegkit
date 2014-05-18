@@ -166,6 +166,8 @@
             }
             if (matchedDesc) {
                 break;
+            } else {
+                [r unread:[marker length] - 1];
             }
         }
         
