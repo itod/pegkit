@@ -24,6 +24,8 @@
 #import <PEGKit/PKTokenizer.h>
 
 extern NSString * const PEGKitErrorDomain;
+extern NSString * const PEGKitErrorRangeKey;
+extern NSString * const PEGKitErrorLineNumberKey;
 extern NSInteger PEGKitRecognitionErrorCode;
 
 @class PKAssembly;
