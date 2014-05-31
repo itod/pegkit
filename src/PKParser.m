@@ -541,13 +541,14 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
     
     va_end(vargs);
     
-    PKToken *lt = LT(1);
-    NSUInteger lineNum = lt.lineNumber;
-    NSRange r = NSMakeRange(lt.offset, [lt.stringValue length]);
+    //PKToken *lt = LT(1);
+    //NSUInteger lineNum = lt.lineNumber;
+    //NSRange r = NSMakeRange(lt.offset, [lt.stringValue length]);
 
-    _exception.range = r;
-    _exception.lineNumber = lineNum;
+    //_exception.currentName = PEGKitRecognitionSpeculationFailed;
     _exception.currentReason = str;
+    //_exception.lineNumber = lineNum;
+    //_exception.range = r;
     
     //NSLog(@"%@", str);
     
@@ -565,9 +566,9 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
     va_end(vargs);
 
     _exception.currentName = name;
-    _exception.range = r;
-    _exception.lineNumber = lineNum;
     _exception.currentReason = str;
+    _exception.lineNumber = lineNum;
+    _exception.range = r;
     
     //NSLog(@"%@", str);
 
