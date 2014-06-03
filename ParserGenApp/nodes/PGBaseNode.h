@@ -41,7 +41,8 @@ typedef enum NSUInteger {
 } PGNodeType;
 
 @interface PGBaseNode : PKAST
-+ (id)nodeWithToken:(PKToken *)tok;
+
++ (instancetype)nodeWithToken:(PKToken *)tok;
 
 - (void)visit:(id <PGNodeVisitor>)v;
 

@@ -24,7 +24,7 @@
 
 @implementation PGBaseNode
 
-+ (id)nodeWithToken:(PKToken *)tok {
++ (instancetype)nodeWithToken:(PKToken *)tok {
     return [[[self alloc] initWithToken:tok] autorelease];
 }
 
