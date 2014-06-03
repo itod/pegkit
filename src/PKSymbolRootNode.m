@@ -35,7 +35,7 @@
 
 @implementation PKSymbolRootNode
 
-- (id)init {
+- (instancetype)init {
     if (self = [super initWithParent:nil character:PKEOF]) {
         
     }

@@ -641,7 +641,7 @@
 
 
 - (void)testInitSig {
-    s = @"- (id)init {";
+    s = @"- (instancetype)init {";
     t.string = s;
     r.string = s;
     PKToken *tok = [numberState nextTokenFromReader:r startingWith:[r read] tokenizer:t];

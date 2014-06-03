@@ -10,7 +10,7 @@
 
 @implementation DelimitedParser { }
 
-- (id)initWithDelegate:(id)d {
+- (instancetype)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
         

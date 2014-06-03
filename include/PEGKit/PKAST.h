@@ -28,7 +28,7 @@
 
 + (PKAST *)ASTWithToken:(PKToken *)tok;
 
-- (id)initWithToken:(PKToken *)tok;
+- (instancetype)initWithToken:(PKToken *)tok;
 
 - (void)addChild:(PKAST *)a;
 - (BOOL)isNil;

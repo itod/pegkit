@@ -32,12 +32,12 @@
 }
 
 
-- (id)init {
+- (instancetype)init {
     return [self initWithToken:nil];
 }
 
 
-- (id)initWithToken:(PKToken *)tok {
+- (instancetype)initWithToken:(PKToken *)tok {
     self = [super init];
     if (self) {
         self.token = tok;

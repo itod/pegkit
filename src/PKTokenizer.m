@@ -33,7 +33,7 @@
 @end
 
 @interface PKTokenizer ()
-- (id)initWithString:(NSString *)str stream:(NSInputStream *)stm;
+- (instancetype)initWithString:(NSString *)str stream:(NSInputStream *)stm;
 - (PKTokenizerState *)tokenizerStateFor:(PKUniChar)c;
 - (PKTokenizerState *)defaultTokenizerStateFor:(PKUniChar)c;
 - (NSInteger)tokenKindForStringValue:(NSString *)str;
@@ -59,24 +59,24 @@
 }
 
 
-- (id)init {
+- (instancetype)init {
     return [self initWithString:nil stream:nil];
 }
 
 
-- (id)initWithString:(NSString *)s {
+- (instancetype)initWithString:(NSString *)s {
     self = [self initWithString:s stream:nil];
     return self;
 }
 
 
-- (id)initWithStream:(NSInputStream *)s {
+- (instancetype)initWithStream:(NSInputStream *)s {
     self = [self initWithString:nil stream:s];
     return self;
 }
 
 
-- (id)initWithString:(NSString *)str stream:(NSInputStream *)stm {
+- (instancetype)initWithString:(NSString *)str stream:(NSInputStream *)stm {
     self = [super init];
     if (self) {
         self.string = str;

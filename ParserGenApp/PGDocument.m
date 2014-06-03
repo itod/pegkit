@@ -32,7 +32,7 @@
 
 @implementation PGDocument
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.factory = [PGParserFactory factory];

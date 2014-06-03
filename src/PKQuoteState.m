@@ -39,7 +39,7 @@
 
 @implementation PKQuoteState
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.allowsEOFTerminatedQuotes = YES;

@@ -479,7 +479,7 @@
 
 
 - (void)testInitSig {
-    s = @"- (id)init {";
+    s = @"- (instancetype)init {";
     t = [PKTokenizer tokenizerWithString:s];
     
     PKToken *tok = [t nextToken];

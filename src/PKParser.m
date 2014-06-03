@@ -87,13 +87,13 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
 
 @implementation PKParser
 
-- (id)init {
+- (instancetype)init {
     self = [self initWithDelegate:nil];
     return self;
 }
 
 
-- (id)initWithDelegate:(id)d {
+- (instancetype)initWithDelegate:(id)d {
     self = [super init];
     if (self) {
         self.delegate = d;

@@ -97,7 +97,7 @@
 }
 
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.prefixRootNode = [[[PKSymbolRootNode alloc] init] autorelease];

@@ -35,7 +35,7 @@
 
 @implementation PKSymbolNode
 
-- (id)initWithParent:(PKSymbolNode *)p character:(PKUniChar)c {
+- (instancetype)initWithParent:(PKSymbolNode *)p character:(PKUniChar)c {
     self = [super init];
     if (self) {
         self.parent = p;

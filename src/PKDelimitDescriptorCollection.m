@@ -29,7 +29,7 @@
 
 @implementation PKDelimitDescriptorCollection
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.descTab = [NSMutableDictionary dictionary];

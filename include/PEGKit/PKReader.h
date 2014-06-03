@@ -35,7 +35,7 @@
     @param      s string from which to read
     @result     an initialized reader
 */
-- (id)initWithString:(NSString *)s;
+- (instancetype)initWithString:(NSString *)s;
 
 /*!
     @brief      Initializes a reader with a given input stream.
@@ -43,7 +43,7 @@
     @param      s stream from which to read
     @result     an initialized reader
 */
-- (id)initWithStream:(NSInputStream *)s;
+- (instancetype)initWithStream:(NSInputStream *)s;
 
 /*!
     @brief      Read a single UTF-16 unicode character

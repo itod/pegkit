@@ -50,7 +50,7 @@
 
 @implementation PKWhitespaceState
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         const NSUInteger len = 255;

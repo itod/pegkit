@@ -9,7 +9,7 @@
 
 @implementation {{className}} { {{ivarsAction}}}
 {{implementationAction}}
-- (id)initWithDelegate:(id)d {
+- (instancetype)initWithDelegate:(id)d {
     self = [super initWithDelegate:d];
     if (self) {
         {{initAction}}

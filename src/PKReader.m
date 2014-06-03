@@ -29,12 +29,12 @@
 
 @implementation PKReader
 
-- (id)init {
+- (instancetype)init {
     return [self initWithString:nil];
 }
 
 
-- (id)initWithString:(NSString *)s {
+- (instancetype)initWithString:(NSString *)s {
     self = [super init];
     if (self) {
         self.string = s;
@@ -43,7 +43,7 @@
 }
 
 
-- (id)initWithStream:(NSInputStream *)s {
+- (instancetype)initWithStream:(NSInputStream *)s {
     self = [super init];
     if (self) {
         self.stream = s;

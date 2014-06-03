@@ -48,7 +48,7 @@
 
 @implementation PKWordState
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.wordChars = [NSMutableArray arrayWithCapacity:256];

@@ -48,7 +48,7 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
 }
 
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.stack = [NSMutableArray array];

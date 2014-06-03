@@ -24,7 +24,7 @@
 
 @implementation PKRecognitionException
 
-- (id)init {
+- (instancetype)init {
     self = [super initWithName:NSStringFromClass([self class]) reason:nil userInfo:nil];
     if (self) {
         

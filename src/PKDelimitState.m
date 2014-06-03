@@ -56,7 +56,7 @@
 
 @implementation PKDelimitState
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.rootNode = [[[PKSymbolRootNode alloc] init] autorelease];

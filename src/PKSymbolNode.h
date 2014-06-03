@@ -36,7 +36,7 @@
     @param      c the character for this node
     @result     An initialized <tt>PKSymbolNode</tt>
 */
-- (id)initWithParent:(PKSymbolNode *)p character:(PKUniChar)c;
+- (instancetype)initWithParent:(PKSymbolNode *)p character:(PKUniChar)c;
 
 /*!
     @property   ancestry

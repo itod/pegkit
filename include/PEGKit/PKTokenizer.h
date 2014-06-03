@@ -92,8 +92,8 @@
     @param      s string to read from.
     @result     An initialized tokenizer.
 */
-- (id)initWithString:(NSString *)s;
-- (id)initWithStream:(NSInputStream *)s;
+- (instancetype)initWithString:(NSString *)s;
+- (instancetype)initWithStream:(NSInputStream *)s;
 
 /*!
     @brief      Returns the next token.

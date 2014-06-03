@@ -111,7 +111,7 @@
 }
 
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.grammarParser = [[[PEGKitParser alloc] initWithDelegate:self] autorelease];

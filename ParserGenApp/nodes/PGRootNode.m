@@ -24,7 +24,7 @@
 
 @implementation PGRootNode
 
-- (id)initWithToken:(PKToken *)tok {
+- (instancetype)initWithToken:(PKToken *)tok {
     self = [super initWithToken:tok];
     if (self) {
         self.grammarActions = [NSMutableDictionary dictionary];

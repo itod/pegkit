@@ -58,7 +58,7 @@ enum {
 
 @interface PKParser : NSObject <PKTokenizerDelegate>
 
-- (id)initWithDelegate:(id)d; // designated initializer
+- (instancetype)initWithDelegate:(id)d; // designated initializer
 
 - (id)parseString:(NSString *)input error:(NSError **)outErr;
 - (id)parseStream:(NSInputStream *)input error:(NSError **)outErr;

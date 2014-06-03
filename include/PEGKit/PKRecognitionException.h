@@ -24,7 +24,7 @@
 
 @interface PKRecognitionException : NSException
 
-- (id)init; // use me
+- (instancetype)init; // use me
 
 @property (nonatomic, retain) NSString *currentName;
 @property (nonatomic, retain) NSString *currentReason;
