@@ -367,7 +367,7 @@
 		D3C7983219005F3300EC8CB2 /* NondeterministicPalindromeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C7983119005F3300EC8CB2 /* NondeterministicPalindromeParser.m */; };
 		D3CC548D18CF9282006715D6 /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
 		D3CC54FB18CF9934006715D6 /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
-		D3CC54FC18CF993B006715D6 /* PEGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
+		D3CC54FC18CF993B006715D6 /* PEGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D3D48D8018E5B3C5001B54E9 /* table_index_spec.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3D48D7F18E5B3C5001B54E9 /* table_index_spec.grammar */; };
 		D3D48D8218E5B484001B54E9 /* TableIndexSpecParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D48D8118E5B484001B54E9 /* TableIndexSpecParserTest.m */; };
 		D3D48D8518E5B500001B54E9 /* TableIndexSpecParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D48D8418E5B500001B54E9 /* TableIndexSpecParser.m */; };
@@ -1595,7 +1595,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 			};
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "PEGKit" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2130,7 +2130,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -2142,7 +2142,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};
@@ -2303,6 +2303,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2337,6 +2338,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
