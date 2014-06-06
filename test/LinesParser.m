@@ -33,6 +33,10 @@
     // whitespace
     self.silentlyConsumesWhitespace = NO;
     t.whitespaceState.reportsWhitespaceTokens = YES;
+    
+    // NOTE: mated `S` (i.e. whitespace) tokens will never be preserved by this parser's assembly, unless you turn on the `preservesWhitespaceTokens` below
+    // So by default, it is as if all `S` references were actually defined as `S!`. Not sure I still like this default, but that's how it is for now.
+    //self.assembly.preservesWhitespaceTokens = YES;
 
     }];
 
