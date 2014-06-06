@@ -1079,6 +1079,9 @@
     // stup vars
     id vars = [NSMutableDictionary dictionary];
     NSString *methodName = node.token.stringValue;
+    if ([@"S" isEqualToString:methodName]) {
+        methodName = @"Whitespace";
+    }
     vars[METHOD_NAME] = methodName;
     vars[DEPTH] = @(_depth);
     vars[DISCARD] = @(node.discard);
