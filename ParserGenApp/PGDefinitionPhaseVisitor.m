@@ -315,6 +315,9 @@
         NSAssert(_tokenKinds, @"");
         
         NSString *name = node.token.stringValue;
+        if ([@"S" isEqualToString:name]) {
+            name = @"WHITESPACE";
+        }
         name = [NSString stringWithFormat:@"TOKEN_KIND_BUILTIN_%@", [name uppercaseString]];
         NSAssert([name length], @"");
 
