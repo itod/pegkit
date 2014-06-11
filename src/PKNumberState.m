@@ -77,7 +77,6 @@
 @implementation PKNumberState {
     BOOL _allowsTrailingDecimalSeparator;
     BOOL _allowsScientificNotation;
-    BOOL _allowsOctalNotation;
     BOOL _allowsFloatingPoint;
     
     PKUniChar _positivePrefix;
