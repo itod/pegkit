@@ -261,7 +261,13 @@
     if (PKEOF != cin) {
         self.prefix = [_prefixRootNode nextSymbol:r startingWith:cin];
         NSUInteger radix = [self radixForPrefix:_prefix];
-        if (radix > 1 && NSNotFound != radix) {
+        
+        PKUniChar peek = [r read];
+        if (PKEOF != peek) {
+            [r unread];
+        }
+
+        if (peek != _decimalSeparator && radix > 1 && NSNotFound != radix) {
             [self appendString:_prefix];
             _base = radix;
         } else {
