@@ -24,6 +24,32 @@
 }
 
 
+- (void)testOctPrefix0 {
+    [t.numberState addPrefix:@"0" forRadix:8];
+    
+    s = @"0";
+    t.string = s;
+    
+    PKToken *tok = [t nextToken];
+    TDEquals(0.0, tok.doubleValue);
+    TDTrue(tok.isNumber);
+    TDEqualObjects(@"0", tok.stringValue);
+}
+
+
+- (void)testOctPrefixNeg0 {
+    [t.numberState addPrefix:@"0" forRadix:8];
+    
+    s = @"-0";
+    t.string = s;
+    
+    PKToken *tok = [t nextToken];
+    TDEquals(-0.0, tok.doubleValue);
+    TDTrue(tok.isNumber);
+    TDEqualObjects(@"-0", tok.stringValue);
+}
+
+
 - (void)testOctPrefix01 {
     [t.numberState addPrefix:@"0" forRadix:8];
     

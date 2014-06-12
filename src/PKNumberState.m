@@ -61,7 +61,7 @@
 
 - (NSUInteger)radixForPrefix:(NSString *)s;
 - (NSUInteger)radixForSuffix:(NSString *)s;
-- (BOOL)isValidSeparator:(PKUniChar)sepChar;
+- (BOOL)isValidSeparator:(PKUniChar)sepChar forRadix:(NSUInteger)radix;
 
 @property (nonatomic, retain) PKSymbolRootNode *prefixRootNode;
 @property (nonatomic, retain) PKSymbolRootNode *suffixRootNode;
@@ -230,12 +230,12 @@
 }
 
 
-- (BOOL)isValidSeparator:(PKUniChar)sepChar {
+- (BOOL)isValidSeparator:(PKUniChar)sepChar forRadix:(NSUInteger)radix {
     NSAssert(_base > 1, @"");
     //NSAssert(PKEOF != sepChar, @"");
     if (PKEOF == sepChar) return NO;
     
-    NSNumber *radixKey = [NSNumber numberWithUnsignedInteger:_base];
+    NSNumber *radixKey = [NSNumber numberWithUnsignedInteger:radix];
     NSMutableSet *vals = [_separatorsForRadix objectForKey:radixKey];
 
     NSNumber *sepVal = [NSNumber numberWithInteger:sepChar];
@@ -262,15 +262,26 @@
         self.prefix = [_prefixRootNode nextSymbol:r startingWith:cin];
         NSUInteger radix = [self radixForPrefix:_prefix];
         
-        PKUniChar peek = [r read];
-        if (PKEOF != peek) {
-            [r unread];
-        }
+        BOOL foundPrefix = NO;
+        
+        if (radix > 1 && NSNotFound != radix) {
+            PKUniChar peek = [r read];
+            if (PKEOF != peek) {
+                [r unread];
+            }
 
-        if (peek != _decimalSeparator && radix > 1 && NSNotFound != radix) {
-            [self appendString:_prefix];
-            _base = radix;
-        } else {
+            if ([self isDigit:peek forRadix:radix]) {
+                NSAssert(PKEOF != peek, @"");
+                NSAssert(peek != _decimalSeparator, @"");
+                NSAssert(![self isValidSeparator:peek forRadix:radix], @"");
+                
+                foundPrefix = YES;
+                [self appendString:_prefix];
+                _base = radix;
+            }
+        }
+        
+        if (!foundPrefix) {
             _base = 10;
             [r unread:[_prefix length]];
             self.prefix = nil;
@@ -410,6 +421,13 @@
 }
 
 
+- (BOOL)isDigit:(PKUniChar)c forRadix:(NSUInteger)radix {
+    BOOL isDigit = isdigit(c);
+    BOOL isHexAlpha = (16 == radix && !isDigit && ishexnumber(c));
+    return isDigit || isHexAlpha;
+}
+
+
 - (double)absorbDigitsFromReader:(PKReader *)r {
     double divideBy = 1.0;
     double v = 0.0;
@@ -433,7 +451,7 @@
             if (_isFraction) {
                 divideBy *= _base;
             }
-        } else if (_gotADigit && [self isValidSeparator:_c]) {
+        } else if (_gotADigit && [self isValidSeparator:_c forRadix:_base]) {
             [self append:_c];
             _c = [r read];
         } else {
