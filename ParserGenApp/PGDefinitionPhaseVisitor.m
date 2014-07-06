@@ -123,6 +123,8 @@
             @"=>": @"HASH_ROCKET",
             @"->": @"RIGHT_ARROW",
             @"<-": @"LEFT_ARROW",
+            @">>": @"SHIFT_RIGHT",
+            @"<<": @"SHIFT_LEFT",
             @",": @"COMMA",
             @".": @"DOT",
             @"..": @"DOT_DOT",
