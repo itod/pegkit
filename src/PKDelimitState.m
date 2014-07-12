@@ -173,7 +173,12 @@
         
         for (PKDelimitDescriptor *desc in [[matchingDescs copy] autorelease]) {
             if (desc.characterSet && ![desc.characterSet characterIsMember:c]) {
-                [matchingDescs removeObject:desc];
+                if ([desc.endMarker length]) {
+                    [matchingDescs removeObject:desc];
+                } else {
+                    if (PKEOF != c) [r unread];
+                    goto done;
+                }
             }
         }
         
@@ -185,6 +190,7 @@
         [self append:c];
     }
     
+done:
     if (!matchedDesc && [matchingDescs count]) {
         matchedDesc = matchingDescs[0];
 
