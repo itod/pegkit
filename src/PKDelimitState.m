@@ -194,7 +194,7 @@ done:
     if (!matchedDesc && [matchingDescs count]) {
         matchedDesc = matchingDescs[0];
 
-        if (PKEOF == c && _balancesEOFTerminatedStrings && [matchedDesc.endMarker length]) {
+        if (PKEOF == c && _balancesEOFTerminatedStrings && matchedDesc.endMarker) {
             [self appendString:matchedDesc.endMarker];
         }
     }
