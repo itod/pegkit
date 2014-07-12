@@ -74,7 +74,7 @@
 
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"<%@ %p %@ %@ %@>", [self class], self, _startMarker, _endMarker, _characterSet];
+    return [NSString stringWithFormat:@"<%@ %p %%{'%@', %@, '%@'}>", [self class], self, _startMarker, _characterSet, _endMarker];
 }
 
 @end

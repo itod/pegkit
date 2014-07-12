@@ -139,7 +139,7 @@
         if (PKEOF == c) {
             if (!_balancesEOFTerminatedStrings) {
                 for (PKDelimitDescriptor *desc in [[matchingDescs copy] autorelease]) {
-                    if (desc.endMarker) {
+                    if ([desc.endMarker length]) {
                         [matchingDescs removeObject:desc];
                     }
                 }
@@ -194,7 +194,7 @@ done:
     if (!matchedDesc && [matchingDescs count]) {
         matchedDesc = matchingDescs[0];
 
-        if (PKEOF == c && _balancesEOFTerminatedStrings && matchedDesc.endMarker) {
+        if (PKEOF == c && _balancesEOFTerminatedStrings && [matchedDesc.endMarker length]) {
             [self appendString:matchedDesc.endMarker];
         }
     }
