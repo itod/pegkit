@@ -586,9 +586,9 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
     NSString *fmt = nil;
     
 #if defined(__LP64__)
-    fmt = @"Line : %lu\nNear : %@\n%@Found : %@";
+    fmt = @"Line : %lu\nNear : %@\n%@\nFound : %@";
 #else
-    fmt = @"Line : %u\nNear : %@\n%@Found : %@";
+    fmt = @"Line : %u\nNear : %@\n%@\nFound : %@";
 #endif
     
     PKToken *lt = LT(1);
