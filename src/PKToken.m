@@ -225,7 +225,7 @@ static PKTokenEOF *EOFToken = nil;
         typeString = @"Hashtag";
 #endif
     }
-    return [NSString stringWithFormat:@"<%@ %C%@%C>", typeString, (unichar)0x00AB, self.value, (unichar)0x00BB];
+    return [NSString stringWithFormat:@"%@ %C%@%C", typeString, (unichar)0x00AB, self.value, (unichar)0x00BB];
 }
 
 
