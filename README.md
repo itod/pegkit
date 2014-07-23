@@ -126,3 +126,16 @@ Here are all of the Grammar Actions currently available, along with a descriptio
 * **`@after`** - tear down code goes here. executed after parsing ends.
 
 (notice that the `@before` and `@after` Grammar Actions listed here are distinct from the `@before` and `@after` which may also be placed in each individual rule.)
+
+###Semantic Predicates
+Semantic Predicates are another feature lifted directly from ANTLR. Consider:
+
+    lowercaseWord = { islower([LS(1) characterAtIndex:0]) }? Word;
+
+The Semantic Predicate part is the `{ ... }?`. These can be placed anywhere in your grammar rules. They should contain either a single expression or a series of statements ending in a `return` statement which evaluates to a boolean value. This one contains a single expression. If the expression evaluates to **false**, matching of the current rule (`lowercaseWord` in this case) will **fail**. A **true** value will allow matching to proceed.
+
+There are also a number of convenience macros defined for your use in Predicates and Actions.
+
+* `LS(num)` will fetch a **Lookahead String** and the argument specifies how far to lookahead. So `LS(1)` means lookahead by `1`. In other words, "fetch the string value of the first upcoming token the parser is about to try to match".
+
+* `MATCHES_IGNORE_CASE(str, regexPattern)` is a convenience macro to do regex matches. It has a case-sensitive friend: `MATCHES(str, regexPattern)`. The second argument is an `NSString*` regex pattern. Meaning should be obvious.
