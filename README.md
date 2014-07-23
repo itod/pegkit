@@ -132,7 +132,7 @@ Semantic Predicates are another feature lifted directly from ANTLR. Consider:
 
     lowercaseWord = { islower([LS(1) characterAtIndex:0]) }? Word;
 
-The Semantic Predicate part is the `{ ... }?`. These can be placed anywhere in your grammar rules. They should contain either a single expression or a series of statements ending in a `return` statement which evaluates to a boolean value. This one contains a single expression. If the expression evaluates to **false**, matching of the current rule (`lowercaseWord` in this case) will **fail**. A **true** value will allow matching to proceed.
+The Semantic Predicate part is the `{ ... }?`. Like Grammar Actions, Semantic Predicates are small snippets of Objective-C code embedded directly in your grammar. These can be placed anywhere in your grammar rules. They should contain either a single expression or a series of statements ending in a `return` statement which evaluates to a boolean value. This one contains a single expression. If the expression evaluates to **false**, matching of the current rule (`lowercaseWord` in this case) will **fail**. A **true** value will allow matching to proceed.
 
 There are also a number of convenience macros defined for your use in Predicates and Actions.
 
