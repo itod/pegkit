@@ -22,6 +22,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "PGCLI.h"
+
 int main(int argc, char *argv[]) {
+    @autoreleasepool {
+        PGCLI * cli = [[PGCLI alloc] init];
+        if (cli.willHandleCommandLine) {
+            return [cli handleCommandLine];
+        }
+    }
+
     return NSApplicationMain(argc, (const char **)argv);
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3D0466A918E1D9770022A1BC /* OCMock.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D37214CA18DF3B0100525058 /* OCMock.framework */; };
+		40CA4045198C3E8B0094DF1F /* PGCLI.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CA4044198C3E8B0094DF1F /* PGCLI.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		40CA4048198C54AB0094DF1F /* PGGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CA4047198C54AB0094DF1F /* PGGenerator.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D306298218E1ED5D00EF745E /* TDTestScaffold.m in Sources */ = {isa = PBXBuildFile; fileRef = D306298118E1ED5D00EF745E /* TDTestScaffold.m */; };
 		D3083AB61705F05C00DA6F95 /* elementsAssign.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3083AB51705F05C00DA6F95 /* elementsAssign.grammar */; };
 		D3083AB91705F09B00DA6F95 /* ElementAssignParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3083AB81705F09B00DA6F95 /* ElementAssignParserTest.m */; };
@@ -478,6 +480,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		40CA4044198C3E8B0094DF1F /* PGCLI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCLI.m; sourceTree = "<group>"; };
+		40CA4046198C3F4C0094DF1F /* PGCLI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGCLI.h; sourceTree = "<group>"; };
+		40CA4047198C54AB0094DF1F /* PGGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGGenerator.m; sourceTree = "<group>"; };
+		40CA4049198C55100094DF1F /* PGGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGGenerator.h; sourceTree = "<group>"; };
 		D302272A17020F9400594F16 /* PGClassImplementationTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGClassImplementationTemplate.txt; path = res/PGClassImplementationTemplate.txt; sourceTree = "<group>"; };
 		D306298118E1ED5D00EF745E /* TDTestScaffold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTestScaffold.m; path = test/TDTestScaffold.m; sourceTree = "<group>"; };
 		D3083AB51705F05C00DA6F95 /* elementsAssign.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = elementsAssign.grammar; path = res/elementsAssign.grammar; sourceTree = "<group>"; };
@@ -1132,9 +1138,13 @@
 			isa = PBXGroup;
 			children = (
 				D3383049171C923700CCE513 /* PGMainMenu.xib */,
+				40CA4046198C3F4C0094DF1F /* PGCLI.h */,
+				40CA4044198C3E8B0094DF1F /* PGCLI.m */,
 				D3383043171C923700CCE513 /* PGDocument.h */,
 				D3383044171C923700CCE513 /* PGDocument.m */,
 				D3383046171C923700CCE513 /* PGDocument.xib */,
+				40CA4049198C55100094DF1F /* PGGenerator.h */,
+				40CA4047198C54AB0094DF1F /* PGGenerator.m */,
 				D3B22A571703D03F00446945 /* PGTemplates */,
 				D3A1492A16F8C79600770DEE /* visitor */,
 				D325FFBC161E4E3200D4EBCC /* ast */,
@@ -1899,6 +1909,7 @@
 			files = (
 				D376F6E318D0B5090064C888 /* PEGKitParser.m in Sources */,
 				D376F6D018D0B3990064C888 /* PGDelimitedNode.m in Sources */,
+				40CA4045198C3E8B0094DF1F /* PGCLI.m in Sources */,
 				D338303E171C923700CCE513 /* main.m in Sources */,
 				D376F6D418D0B3990064C888 /* PGMultipleNode.m in Sources */,
 				D376F6CC18D0B3990064C888 /* PGConstantNode.m in Sources */,
@@ -1912,6 +1923,7 @@
 				D376F6DF18D0B5020064C888 /* PGParserFactory.m in Sources */,
 				D376F6DA18D0B3990064C888 /* PGReferenceNode.m in Sources */,
 				D366C1AD1A5310F200D69669 /* PGNegationNode.m in Sources */,
+				40CA4048198C54AB0094DF1F /* PGGenerator.m in Sources */,
 				D376F6EE18D0B5190064C888 /* PGBaseVisitor.m in Sources */,
 				D376F6DC18D0B3990064C888 /* PGRootNode.m in Sources */,
 				D376F6C818D0B3990064C888 /* PGCollectionNode.m in Sources */,
