@@ -1,0 +1,11 @@
+@before {
+    PKTokenizer *t = self.tokenizer;
+
+    [t setTokenizerState:t.symbolState from:'\n' to:'\n'];
+    [t setTokenizerState:t.symbolState from:'\r' to:'\r'];
+}
+
+lines = line+;
+line  = ~eol* eol; // note the `~` Not unary operator. this means "zero or more NON eol tokens, followed by a single eol token"
+eol   = '\n' | '\r';;
+

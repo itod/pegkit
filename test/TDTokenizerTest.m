@@ -79,59 +79,59 @@
     PKToken *tok = nil;
     
     tok = [t nextToken];
-    TDEqualObjects(@"<Word «from»>", [tok debugDescription]);
+    TDEqualObjects(@"Word «from»", [tok debugDescription]);
     tok = [t nextToken];
-    TDEqualObjects(@"<Whitespace « »>", [tok debugDescription]);
+    TDEqualObjects(@"Whitespace « »", [tok debugDescription]);
     tok = [t nextToken];
-    TDEqualObjects(@"<Word «Quartz»>", [tok debugDescription]);
+    TDEqualObjects(@"Word «Quartz»", [tok debugDescription]);
     tok = [t nextToken];
-    TDEqualObjects(@"<Symbol «.»>", [tok debugDescription]);
+    TDEqualObjects(@"Symbol «.»", [tok debugDescription]);
     tok = [t nextToken];
-    TDEqualObjects(@"<Word «CoreGraphics»>", [tok debugDescription]);
+    TDEqualObjects(@"Word «CoreGraphics»", [tok debugDescription]);
     tok = [t nextToken];
-    TDEqualObjects(@"<Whitespace « »>", [tok debugDescription]);
+    TDEqualObjects(@"Whitespace « »", [tok debugDescription]);
     tok = [t nextToken];
-    TDEqualObjects(@"<Word «import»>", [tok debugDescription]);
+    TDEqualObjects(@"Word «import»", [tok debugDescription]);
     tok = [t nextToken];
-    TDEqualObjects(@"<Whitespace « »>", [tok debugDescription]);
+    TDEqualObjects(@"Whitespace « »", [tok debugDescription]);
     tok = [t nextToken];
-    TDEqualObjects(@"<Symbol «*»>", [tok debugDescription]);
-    tok = [t nextToken];
-    TDTrue(tok.isWhitespace);
-    tok = [t nextToken];
-    TDEqualObjects(@"<Word «from»>", [tok debugDescription]);
-    tok = [t nextToken];
-    TDEqualObjects(@"<Whitespace « »>", [tok debugDescription]);
-    tok = [t nextToken];
-    TDEqualObjects(@"<Word «Quartz»>", [tok debugDescription]);
-    tok = [t nextToken];
-    TDEqualObjects(@"<Symbol «.»>", [tok debugDescription]);
-    tok = [t nextToken];
-    TDEqualObjects(@"<Word «ImageIO»>", [tok debugDescription]);
-    tok = [t nextToken];
-    TDEqualObjects(@"<Whitespace « »>", [tok debugDescription]);
-    tok = [t nextToken];
-    TDEqualObjects(@"<Word «import»>", [tok debugDescription]);
-    tok = [t nextToken];
-    TDEqualObjects(@"<Whitespace « »>", [tok debugDescription]);
-    tok = [t nextToken];
-    TDEqualObjects(@"<Symbol «*»>", [tok debugDescription]);
+    TDEqualObjects(@"Symbol «*»", [tok debugDescription]);
     tok = [t nextToken];
     TDTrue(tok.isWhitespace);
     tok = [t nextToken];
-    TDEqualObjects(@"<Word «from»>", [tok debugDescription]);
+    TDEqualObjects(@"Word «from»", [tok debugDescription]);
     tok = [t nextToken];
-    TDEqualObjects(@"<Whitespace « »>", [tok debugDescription]);
+    TDEqualObjects(@"Whitespace « »", [tok debugDescription]);
     tok = [t nextToken];
-    TDEqualObjects(@"<Word «Foundation»>", [tok debugDescription]);
+    TDEqualObjects(@"Word «Quartz»", [tok debugDescription]);
     tok = [t nextToken];
-    TDEqualObjects(@"<Whitespace « »>", [tok debugDescription]);
+    TDEqualObjects(@"Symbol «.»", [tok debugDescription]);
     tok = [t nextToken];
-    TDEqualObjects(@"<Word «import»>", [tok debugDescription]);
+    TDEqualObjects(@"Word «ImageIO»", [tok debugDescription]);
     tok = [t nextToken];
-    TDEqualObjects(@"<Whitespace « »>", [tok debugDescription]);
+    TDEqualObjects(@"Whitespace « »", [tok debugDescription]);
     tok = [t nextToken];
-    TDEqualObjects(@"<Symbol «*»>", [tok debugDescription]);
+    TDEqualObjects(@"Word «import»", [tok debugDescription]);
+    tok = [t nextToken];
+    TDEqualObjects(@"Whitespace « »", [tok debugDescription]);
+    tok = [t nextToken];
+    TDEqualObjects(@"Symbol «*»", [tok debugDescription]);
+    tok = [t nextToken];
+    TDTrue(tok.isWhitespace);
+    tok = [t nextToken];
+    TDEqualObjects(@"Word «from»", [tok debugDescription]);
+    tok = [t nextToken];
+    TDEqualObjects(@"Whitespace « »", [tok debugDescription]);
+    tok = [t nextToken];
+    TDEqualObjects(@"Word «Foundation»", [tok debugDescription]);
+    tok = [t nextToken];
+    TDEqualObjects(@"Whitespace « »", [tok debugDescription]);
+    tok = [t nextToken];
+    TDEqualObjects(@"Word «import»", [tok debugDescription]);
+    tok = [t nextToken];
+    TDEqualObjects(@"Whitespace « »", [tok debugDescription]);
+    tok = [t nextToken];
+    TDEqualObjects(@"Symbol «*»", [tok debugDescription]);
     tok = [t nextToken];
     TDTrue(tok.isWhitespace);
     tok = [t nextToken];
@@ -258,14 +258,14 @@
     
     NSUInteger idx = 0;
     NSArray *results = @[
-    @"(2) (2.0) : <Number «2»>",
-    @"(!=) (0.0) : <Symbol «!=»>",
-    @"(47) (47.0) : <Number «47»>",
-    @"(.) (0.0) : <Symbol «.»>",
-    @"(Blast-off) (0.0) : <Word «Blast-off»>",
-    @"(!) (0.0) : <Symbol «!»>",
-    @"(!) (0.0) : <Symbol «!»>",
-    @"('Woo-hoo!') (0.0) : <Quoted String «'Woo-hoo!'»>",
+    @"(2) (2.0) : Number «2»",
+    @"(!=) (0.0) : Symbol «!=»",
+    @"(47) (47.0) : Number «47»",
+    @"(.) (0.0) : Symbol «.»",
+    @"(Blast-off) (0.0) : Word «Blast-off»",
+    @"(!) (0.0) : Symbol «!»",
+    @"(!) (0.0) : Symbol «!»",
+    @"('Woo-hoo!') (0.0) : Quoted String «'Woo-hoo!'»",
     ];
     
     for (PKToken *tok in t) {
@@ -294,8 +294,8 @@
     
     NSUInteger idx = 0;
     NSArray *results = @[
-        @"($00FF_FFFF) (16777215.0) : <Number «16777215»>",
-        @"(%0001_0101) (21.0) : <Number «21»>",
+        @"($00FF_FFFF) (16777215.0) : Number «16777215»",
+        @"(%0001_0101) (21.0) : Number «21»",
     ];
     
     for (PKToken *tok in t) {
