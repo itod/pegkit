@@ -55,34 +55,34 @@ static Lines2Parser *parser;
     [parser release];
 }
 
-//- (void)test0 {
-//    NSString *s = @"foo\nbar\n";
-//    
-//    NSError *err = nil;
-//    PKAssembly *res = [parser parseString:s error:&err];
-//    TDNil(err);
-//    
-//    TDEqualObjects(TDAssembly(@"[foo, bar]foo/bar^"), [res description]);
-//}
-//
-//- (void)test1 {
-//    NSString *s = @"foo=bar\nbaz=bat\n";
-//    
-//    NSError *err = nil;
-//    PKAssembly *res = [parser parseString:s error:&err];
-//    TDNil(err);
-//    
-//    TDEqualObjects(TDAssembly(@"[foo, =, bar, baz, =, bat]foo/=/bar/baz/=/bat^"), [res description]);
-//}
-//
-//- (void)testSectionHeader {
-//    NSString *s = @"[header here]\nfoo=bar\n\nbaz=bat\n";
-//    
-//    NSError *err = nil;
-//    PKAssembly *res = [parser parseString:s error:&err];
-//    TDNil(err);
-//    
-//    TDEqualObjects(TDAssembly(@"[[, header, here, ], foo, =, bar, baz, =, bat][/header/here/]/foo/=/bar/baz/=/bat^"), [res description]);
-//}
+- (void)test0 {
+    NSString *s = @"foo\nbar\n";
+    
+    NSError *err = nil;
+    PKAssembly *res = [parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[foo, bar]foo/\n/bar/\n^"), [res description]);
+}
+
+- (void)test1 {
+    NSString *s = @"foo=bar\nbaz=bat\n";
+    
+    NSError *err = nil;
+    PKAssembly *res = [parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[foo, =, bar, baz, =, bat]foo/=/bar/\n/baz/=/bat/\n^"), [res description]);
+}
+
+- (void)testSectionHeader {
+    NSString *s = @"[header here]\nfoo=bar\n\nbaz=bat\n";
+    
+    NSError *err = nil;
+    PKAssembly *res = [parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[[, header, here, ], foo, =, bar, baz, =, bat][/header/here/]/\n/foo/=/bar/\n/\n/baz/=/bat/\n^"), [res description]);
+}
 
 @end

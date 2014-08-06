@@ -34,8 +34,10 @@
     
     PKTokenizer *t = self.tokenizer;
 
-    [t setTokenizerState:t.symbolState from:'n' to:'n'];
-    [t setTokenizerState:t.symbolState from:'r' to:'r'];
+    [t.whitespaceState setWhitespaceChars:NO from:'\n' to:'\n'];
+    [t.whitespaceState setWhitespaceChars:NO from:'\r' to:'\r'];
+    [t setTokenizerState:t.symbolState from:'\n' to:'\n'];
+    [t setTokenizerState:t.symbolState from:'\r' to:'\r'];
 
     }];
 
@@ -62,7 +64,9 @@
             [self raise:@"negation test failed in line"];
         }
     }
-    [self eol_]; 
+    do {
+        [self eol_]; 
+    } while ([self predicts:LINES2_TOKEN_KIND__N, LINES2_TOKEN_KIND__R, 0]);
 
     [self fireDelegateSelector:@selector(parser:didMatchLine:)];
 }
@@ -70,9 +74,9 @@
 - (void)eol_ {
     
     if ([self predicts:LINES2_TOKEN_KIND__N, 0]) {
-        [self match:LINES2_TOKEN_KIND__N discard:NO]; 
+        [self match:LINES2_TOKEN_KIND__N discard:YES]; 
     } else if ([self predicts:LINES2_TOKEN_KIND__R, 0]) {
-        [self match:LINES2_TOKEN_KIND__R discard:NO]; 
+        [self match:LINES2_TOKEN_KIND__R discard:YES]; 
     } else {
         [self raise:@"No viable alternative found in rule 'eol'."];
     }
