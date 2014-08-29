@@ -269,7 +269,7 @@
     tok = [t nextToken];
     
     TDTrue(tok.isDelimitedString);
-    TDEqualObjects(@"/\\s*\\\\/\\s*/", tok.stringValue);
+    TDEqualObjects(@"/\\s*/\\s*/", tok.stringValue);
     TDEquals((double)0.0, tok.doubleValue);
     
     tok = [t nextToken];
@@ -304,6 +304,7 @@
 
 
 - (void)testSlashSlashEscapeBackslash {
+    //                        /foo\\/bar/
     s = @"/foo\\\\/bar/";
     t.string = s;
     NSCharacterSet *cs = nil;

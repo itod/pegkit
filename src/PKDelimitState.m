@@ -132,8 +132,17 @@
         c = [r read];
         if ('\\' == c) {
             c = [r read];
-            [self append:c];
-            continue;
+            if ('\\' == c) {
+                [self append:c];
+                continue;
+            }
+            NSString *marker = [currRootNode nextSymbol:r startingWith:c];
+            if ([marker length]) {
+                [self append:c];
+                continue;
+            } else {
+                [self append:'\\'];
+            }
         }
         
         if (PKEOF == c) {
