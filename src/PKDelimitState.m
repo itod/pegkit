@@ -134,6 +134,7 @@
             c = [r read];
             if ('\\' == c) {
                 [self append:c];
+                [self append:c];
                 continue;
             }
             NSString *marker = [currRootNode nextSymbol:r startingWith:c];

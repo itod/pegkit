@@ -12,4 +12,4 @@
 
 lines = line+;
 line  = ~eol* eol; // note the `~` Not unary operator. this means "zero or more NON eol tokens, followed by a single eol token"
-eol   = { EQ(@"\\n", LS(1)) }? S;
+eol   = { EQ(@"\n", LS(1)) }? S;

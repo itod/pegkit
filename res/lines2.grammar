@@ -1,10 +1,10 @@
 @before {
     PKTokenizer *t = self.tokenizer;
 
-    [t.whitespaceState setWhitespaceChars:NO from:'\\n' to:'\\n'];
-    [t.whitespaceState setWhitespaceChars:NO from:'\\r' to:'\\r'];
-    [t setTokenizerState:t.symbolState from:'\\n' to:'\\n'];
-    [t setTokenizerState:t.symbolState from:'\\r' to:'\\r'];
+    [t.whitespaceState setWhitespaceChars:NO from:'\n' to:'\n'];
+    [t.whitespaceState setWhitespaceChars:NO from:'\r' to:'\r'];
+    [t setTokenizerState:t.symbolState from:'\n' to:'\n'];
+    [t setTokenizerState:t.symbolState from:'\r' to:'\r'];
 }
 
 lines = line+;

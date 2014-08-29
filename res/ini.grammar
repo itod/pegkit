@@ -27,8 +27,8 @@
     
     PKTokenizer *t = self.tokenizer;
     
-    [t setTokenizerState:t.symbolState from:'\\n' to:'\\n'];
-    [t setTokenizerState:t.symbolState from:'\\r' to:'\\r'];
+    [t setTokenizerState:t.symbolState from:'\n' to:'\n'];
+    [t setTokenizerState:t.symbolState from:'\r' to:'\r'];
 
     [t.commentState addSingleLineStartMarker:@";"];
 }
