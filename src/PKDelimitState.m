@@ -139,6 +139,7 @@
             }
             NSString *marker = [currRootNode nextSymbol:r startingWith:c];
             if ([marker length]) {
+                [self append:'\\'];
                 [self append:c];
                 continue;
             } else {
