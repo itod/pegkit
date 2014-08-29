@@ -233,6 +233,56 @@
 }
 
 
+- (void)testJSRegex {
+    s = @"/\\s*\\((\\d+)\\+?\\)\\s*/;";
+    t.string = s;
+    NSCharacterSet *cs = [[NSCharacterSet newlineCharacterSet] invertedSet];
+    
+    [t setTokenizerState:delimitState from:'/' to:'/'];
+    [delimitState addStartMarker:@"/" endMarker:@"/" allowedCharacterSet:cs];
+    
+    tok = [t nextToken];
+    
+    TDTrue(tok.isDelimitedString);
+    TDEqualObjects(@"/\\s*\\((\\d+)\\+?\\)\\s*/", tok.stringValue);
+    TDEquals((double)0.0, tok.doubleValue);
+    
+    tok = [t nextToken];
+    
+    TDTrue(tok.isSymbol);
+    TDEqualObjects(@";", tok.stringValue);
+    TDEquals((double)0.0, tok.doubleValue);
+    
+    tok = [t nextToken];
+    TDEqualObjects([PKToken EOFToken], tok);
+}
+
+
+- (void)testJSRegex2 {
+    s = @"/\\s*\\/\\s*/;";
+    t.string = s;
+    NSCharacterSet *cs = [[NSCharacterSet newlineCharacterSet] invertedSet];
+    
+    [t setTokenizerState:delimitState from:'/' to:'/'];
+    [delimitState addStartMarker:@"/" endMarker:@"/" allowedCharacterSet:cs];
+    
+    tok = [t nextToken];
+    
+    TDTrue(tok.isDelimitedString);
+    TDEqualObjects(@"/\\s*\\\\/\\s*/", tok.stringValue);
+    TDEquals((double)0.0, tok.doubleValue);
+    
+    tok = [t nextToken];
+    
+    TDTrue(tok.isSymbol);
+    TDEqualObjects(@";", tok.stringValue);
+    TDEquals((double)0.0, tok.doubleValue);
+    
+    tok = [t nextToken];
+    TDEqualObjects([PKToken EOFToken], tok);
+}
+
+
 - (void)testSlashSlashEscape {
     s = @"/foo\\/bar/";
     t.string = s;
@@ -285,7 +335,41 @@
 }
 
 
-- (void)testSlashSlashEscapeBackslashFile {
+- (void)slashFooBackslashSlashBarSlash {
+    //                                       /foo\/bar/
+    s = [self stringInFile:[NSString stringWithFormat:@"%@.txt", NSStringFromSelector(_cmd)]];
+    t.string = s;
+    NSCharacterSet *cs = nil;
+    
+    [t setTokenizerState:delimitState from:'/' to:'/'];
+    [delimitState addStartMarker:@"/" endMarker:@"/" allowedCharacterSet:cs];
+    
+    tok = [t nextToken];
+    
+    TDTrue(tok.isDelimitedString);
+    TDEqualObjects(@"/foo\\/bar/", tok.stringValue);
+    TDEquals((double)0.0, tok.doubleValue);
+    
+    tok = [t nextToken];
+    
+    TDTrue(tok.isWord);
+    TDEqualObjects(@"bar", tok.stringValue);
+    TDEquals((double)0.0, tok.doubleValue);
+    
+    tok = [t nextToken];
+    
+    TDTrue(tok.isSymbol);
+    TDEqualObjects(@"/", tok.stringValue);
+    TDEquals((double)0.0, tok.doubleValue);
+    
+    tok = [t nextToken];
+    
+    TDTrue(tok.isEOF);
+}
+
+
+- (void)slashFooBackslashBackslashSlashBarSlash {
+    //                                      /foo\\/bar/
     s = [self stringInFile:[NSString stringWithFormat:@"%@.txt", NSStringFromSelector(_cmd)]];
     t.string = s;
     NSCharacterSet *cs = nil;

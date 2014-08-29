@@ -139,7 +139,7 @@
 		D31BBCF218E4F1EF0003FFA3 /* TDTokenizerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCDD18E4F1EF0003FFA3 /* TDTokenizerTest.m */; };
 		D31BBCFD18E4F4FE0003FFA3 /* TDCommentStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCC918E4F1EF0003FFA3 /* TDCommentStateTest.m */; };
 		D31BBCFE18E4F4FE0003FFA3 /* TDDelimitStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCCB18E4F1EF0003FFA3 /* TDDelimitStateTest.m */; };
-		D31BBCFF18E4F4FE0003FFA3 /* testSlashSlashEscapeBackslashFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = D31BBCFB18E4F3240003FFA3 /* testSlashSlashEscapeBackslashFile.txt */; };
+		D31BBCFF18E4F4FE0003FFA3 /* slashFooBackslashSlashBarSlash.txt in Resources */ = {isa = PBXBuildFile; fileRef = D31BBCFB18E4F3240003FFA3 /* slashFooBackslashSlashBarSlash.txt */; };
 		D31BBD0018E4F4FE0003FFA3 /* TDEmailStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCCD18E4F1EF0003FFA3 /* TDEmailStateTest.m */; };
 		D31BBD0118E4F4FE0003FFA3 /* TDNumberStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCCF18E4F1EF0003FFA3 /* TDNumberStateTest.m */; };
 		D31BBD0218E4F5140003FFA3 /* TDQuoteStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCD118E4F1EF0003FFA3 /* TDQuoteStateTest.m */; };
@@ -149,7 +149,6 @@
 		D31BBD0618E4F52D0003FFA3 /* TDWhitespaceStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE518E4F1EF0003FFA3 /* TDWhitespaceStateTest.m */; };
 		D31BBD0718E4F53F0003FFA3 /* TDWordStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE718E4F1EF0003FFA3 /* TDWordStateTest.m */; };
 		D31BBD0918E4F5900003FFA3 /* TDURLStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE318E4F1EF0003FFA3 /* TDURLStateTest.m */; };
-		D31FE9C9191016EC0039886B /* INIParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FE9C8191016EC0039886B /* INIParserTest.m */; };
 		D31FE9CC191017580039886B /* INIParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FE9CB191017580039886B /* INIParser.m */; };
 		D31FE9CE191017DE0039886B /* ini.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D31FE9CD191017DE0039886B /* ini.grammar */; };
 		D3344F4917405B4B00598362 /* JSRecoveryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3344F4817405B4B00598362 /* JSRecoveryTest.m */; };
@@ -223,7 +222,6 @@
 		D33830CB171DBEB100CCE513 /* NamedActionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D33830CA171DBEB100CCE513 /* NamedActionParser.m */; };
 		D33830CE171DBEE200CCE513 /* NamedActionParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D33830CD171DBEE200CCE513 /* NamedActionParserTest.m */; };
 		D34795D319423D9F00181E56 /* lines.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D34795D219423D9E00181E56 /* lines.grammar */; };
-		D34795D519423DB000181E56 /* LinesParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D34795D419423DB000181E56 /* LinesParserTest.m */; };
 		D34795D819423DC300181E56 /* LinesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D34795D719423DC300181E56 /* LinesParser.m */; };
 		D34F53A717430232008700F3 /* CrockfordParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D34F53A617430232008700F3 /* CrockfordParserTest.m */; };
 		D34F53AC17430249008700F3 /* CrockfordParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D34F53AB17430249008700F3 /* CrockfordParser.m */; };
@@ -369,11 +367,11 @@
 		D3C7982F19005EFB00EC8CB2 /* nondeterministic_palindromes.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3C7982E19005EFB00EC8CB2 /* nondeterministic_palindromes.grammar */; };
 		D3C7983219005F3300EC8CB2 /* NondeterministicPalindromeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C7983119005F3300EC8CB2 /* NondeterministicPalindromeParser.m */; };
 		D3CC1EE3199284360096B1AF /* lines2.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3CC1EE11992842F0096B1AF /* lines2.grammar */; };
-		D3CC1EE5199284790096B1AF /* Lines2ParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CC1EE4199284790096B1AF /* Lines2ParserTest.m */; };
 		D3CC1EE8199284A80096B1AF /* Lines2Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CC1EE7199284A80096B1AF /* Lines2Parser.m */; };
 		D3CC548D18CF9282006715D6 /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
 		D3CC54FB18CF9934006715D6 /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; };
 		D3CC54FC18CF993B006715D6 /* PEGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8A48D175817DF00056188 /* PEGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D3D1766119B104FD0052F5B8 /* slashFooBackslashBackslashSlashBarSlash.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3D1766019B104FD0052F5B8 /* slashFooBackslashBackslashSlashBarSlash.txt */; };
 		D3D48D8018E5B3C5001B54E9 /* table_index_spec.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3D48D7F18E5B3C5001B54E9 /* table_index_spec.grammar */; };
 		D3D48D8218E5B484001B54E9 /* TableIndexSpecParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D48D8118E5B484001B54E9 /* TableIndexSpecParserTest.m */; };
 		D3D48D8518E5B500001B54E9 /* TableIndexSpecParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D48D8418E5B500001B54E9 /* TableIndexSpecParser.m */; };
@@ -541,7 +539,7 @@
 		D31BBCE318E4F1EF0003FFA3 /* TDURLStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDURLStateTest.m; path = test/TDURLStateTest.m; sourceTree = "<group>"; };
 		D31BBCE518E4F1EF0003FFA3 /* TDWhitespaceStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDWhitespaceStateTest.m; path = test/TDWhitespaceStateTest.m; sourceTree = "<group>"; };
 		D31BBCE718E4F1EF0003FFA3 /* TDWordStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDWordStateTest.m; path = test/TDWordStateTest.m; sourceTree = "<group>"; };
-		D31BBCFB18E4F3240003FFA3 /* testSlashSlashEscapeBackslashFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testSlashSlashEscapeBackslashFile.txt; path = res/testSlashSlashEscapeBackslashFile.txt; sourceTree = "<group>"; };
+		D31BBCFB18E4F3240003FFA3 /* slashFooBackslashSlashBarSlash.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = slashFooBackslashSlashBarSlash.txt; path = res/slashFooBackslashSlashBarSlash.txt; sourceTree = "<group>"; };
 		D31FE9C8191016EC0039886B /* INIParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = INIParserTest.m; path = test/INIParserTest.m; sourceTree = "<group>"; };
 		D31FE9CA191017580039886B /* INIParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = INIParser.h; path = test/INIParser.h; sourceTree = "<group>"; };
 		D31FE9CB191017580039886B /* INIParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = INIParser.m; path = test/INIParser.m; sourceTree = "<group>"; };
@@ -815,6 +813,7 @@
 		D3CC1EE4199284790096B1AF /* Lines2ParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Lines2ParserTest.m; path = test/Lines2ParserTest.m; sourceTree = "<group>"; };
 		D3CC1EE6199284A80096B1AF /* Lines2Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lines2Parser.h; path = test/Lines2Parser.h; sourceTree = "<group>"; };
 		D3CC1EE7199284A80096B1AF /* Lines2Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Lines2Parser.m; path = test/Lines2Parser.m; sourceTree = "<group>"; };
+		D3D1766019B104FD0052F5B8 /* slashFooBackslashBackslashSlashBarSlash.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = slashFooBackslashBackslashSlashBarSlash.txt; path = res/slashFooBackslashBackslashSlashBarSlash.txt; sourceTree = "<group>"; };
 		D3D48D7F18E5B3C5001B54E9 /* table_index_spec.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = table_index_spec.grammar; path = res/table_index_spec.grammar; sourceTree = "<group>"; };
 		D3D48D8118E5B484001B54E9 /* TableIndexSpecParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableIndexSpecParserTest.m; path = test/TableIndexSpecParserTest.m; sourceTree = "<group>"; };
 		D3D48D8318E5B500001B54E9 /* TableIndexSpecParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableIndexSpecParser.h; path = test/TableIndexSpecParser.h; sourceTree = "<group>"; };
@@ -1028,7 +1027,8 @@
 			children = (
 				D31BBCC918E4F1EF0003FFA3 /* TDCommentStateTest.m */,
 				D31BBCCB18E4F1EF0003FFA3 /* TDDelimitStateTest.m */,
-				D31BBCFB18E4F3240003FFA3 /* testSlashSlashEscapeBackslashFile.txt */,
+				D31BBCFB18E4F3240003FFA3 /* slashFooBackslashSlashBarSlash.txt */,
+				D3D1766019B104FD0052F5B8 /* slashFooBackslashBackslashSlashBarSlash.txt */,
 				D31BBCCD18E4F1EF0003FFA3 /* TDEmailStateTest.m */,
 				D31BBCCF18E4F1EF0003FFA3 /* TDNumberStateTest.m */,
 				D31BBCD118E4F1EF0003FFA3 /* TDQuoteStateTest.m */,
@@ -1711,6 +1711,7 @@
 				D3B986AE1700D3A9000CBCAE /* expression.grammar in Resources */,
 				D3B22A3A17025EA300446945 /* elements.grammar in Resources */,
 				D317C1B418D206730036BE75 /* minimath2.grammar in Resources */,
+				D3D1766119B104FD0052F5B8 /* slashFooBackslashBackslashSlashBarSlash.txt in Resources */,
 				D398E30818EB6FF5004B883C /* dupe_literals.grammar in Resources */,
 				D3083AB61705F05C00DA6F95 /* elementsAssign.grammar in Resources */,
 				D3B63A3617079F7A00BA9DBF /* expressionActions.grammar in Resources */,
@@ -1751,7 +1752,7 @@
 				D338307B171CA3BA00CCE513 /* PGPatternPrefixTemplate.txt in Resources */,
 				D3D48D8018E5B3C5001B54E9 /* table_index_spec.grammar in Resources */,
 				D338307C171CA3BA00CCE513 /* PGMatchPatternTemplate.txt in Resources */,
-				D31BBCFF18E4F4FE0003FFA3 /* testSlashSlashEscapeBackslashFile.txt in Resources */,
+				D31BBCFF18E4F4FE0003FFA3 /* slashFooBackslashSlashBarSlash.txt in Resources */,
 				D338307D171CA3BA00CCE513 /* PGSemanticPredicateTestExprTemplate.txt in Resources */,
 				D338307E171CA3BA00CCE513 /* PGSemanticPredicateTestStatTemplate.txt in Resources */,
 				D338307F171CA3BA00CCE513 /* PGSemanticPredicateTestAndThrowExprTemplate.txt in Resources */,
@@ -1934,7 +1935,6 @@
 				D31BBD0118E4F4FE0003FFA3 /* TDNumberStateTest.m in Sources */,
 				D3A29E1C18E70F0E00DC591E /* GrammarActionsParser.m in Sources */,
 				D3083ABC1705F16000DA6F95 /* ElementAssignParser.m in Sources */,
-				D34795D519423DB000181E56 /* LinesParserTest.m in Sources */,
 				D3B63A3417079F5200BA9DBF /* ExpressionParserActionsTest.m in Sources */,
 				D398E30618EB684D004B883C /* QuoteSymbolParser.m in Sources */,
 				D3B63A3917079FE100BA9DBF /* ExpressionActionsParser.m in Sources */,
@@ -2027,12 +2027,10 @@
 				D30DA18A1725B6A800A1A3EC /* RecoverySingleTokenDeletionTest.m in Sources */,
 				D30DA18D1725BB5700A1A3EC /* RecoverySingleTokenInsertionTest.m in Sources */,
 				D376F6DB18D0B3990064C888 /* PGRootNode.m in Sources */,
-				D31FE9C9191016EC0039886B /* INIParserTest.m in Sources */,
 				D3C7982D19005EE900EC8CB2 /* NondeterministicPalindromeParserTest.m in Sources */,
 				D376F6D718D0B3990064C888 /* PGPatternNode.m in Sources */,
 				D30DA1931726028500A1A3EC /* RecoveryResyncSetTest.m in Sources */,
 				D31BBCFE18E4F4FE0003FFA3 /* TDDelimitStateTest.m in Sources */,
-				D3CC1EE5199284790096B1AF /* Lines2ParserTest.m in Sources */,
 				D3344F4917405B4B00598362 /* JSRecoveryTest.m in Sources */,
 				D34F53A717430232008700F3 /* CrockfordParserTest.m in Sources */,
 				D34F53AC17430249008700F3 /* CrockfordParser.m in Sources */,
