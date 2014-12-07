@@ -77,6 +77,8 @@
 - (void)addStartMarker:(NSString *)start endMarker:(NSString *)end allowedCharacterSet:(NSCharacterSet *)set {
     NSParameterAssert([start length]);
 
+    end = nil == end ? @"" : end;
+
     // add markers to root node
     [_rootNode add:start];
     if ([end length]) {
