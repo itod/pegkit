@@ -1,5 +1,6 @@
 #import "{{className}}.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 {{mAction}}
 
 @interface {{className}} ()
@@ -37,6 +38,7 @@
 {%/for%}}
 {%/if%}
 - (void)start {
+    PKParser_weakSelfDecl;
 {{beforeAction}}
 {{startMethodBody}}
 {{afterAction}}}

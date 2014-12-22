@@ -1,5 +1,5 @@
 
 - (void){{methodName}}_ {
-    
+    PKParser_weakSelfDecl;
 {{preCallback}}{{methodBody}}{{postCallback}}
 }
