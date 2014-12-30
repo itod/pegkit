@@ -363,6 +363,9 @@
 		D3C3AD5B1A5307EB00695EB7 /* negation2.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3C3AD5A1A5307EB00695EB7 /* negation2.grammar */; };
 		D3C3AD5D1A5308A400695EB7 /* Negation2ParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C3AD5C1A5308A400695EB7 /* Negation2ParserTest.m */; };
 		D3C3AD601A53091300695EB7 /* Negation2Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C3AD5F1A53091300695EB7 /* Negation2Parser.m */; };
+		D3C3AD621A530AD000695EB7 /* negation3.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3C3AD611A530AD000695EB7 /* negation3.grammar */; };
+		D3C3AD641A530AFC00695EB7 /* Negation3ParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C3AD631A530AFC00695EB7 /* Negation3ParserTest.m */; };
+		D3C3AD671A530BAC00695EB7 /* Negation3Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C3AD661A530BAC00695EB7 /* Negation3Parser.m */; };
 		D3C7982619005C2B00EC8CB2 /* deterministic_palindromes.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3C7982519005C2B00EC8CB2 /* deterministic_palindromes.grammar */; };
 		D3C7982819005C8A00EC8CB2 /* DeterministicPalindromeParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C7982719005C8A00EC8CB2 /* DeterministicPalindromeParserTest.m */; };
 		D3C7982B19005CBC00EC8CB2 /* DeterministicPalindromeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C7982A19005CBC00EC8CB2 /* DeterministicPalindromeParser.m */; };
@@ -811,6 +814,10 @@
 		D3C3AD5C1A5308A400695EB7 /* Negation2ParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Negation2ParserTest.m; path = test/Negation2ParserTest.m; sourceTree = "<group>"; };
 		D3C3AD5E1A53091300695EB7 /* Negation2Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Negation2Parser.h; path = test/Negation2Parser.h; sourceTree = "<group>"; };
 		D3C3AD5F1A53091300695EB7 /* Negation2Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Negation2Parser.m; path = test/Negation2Parser.m; sourceTree = "<group>"; };
+		D3C3AD611A530AD000695EB7 /* negation3.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = negation3.grammar; path = res/negation3.grammar; sourceTree = "<group>"; };
+		D3C3AD631A530AFC00695EB7 /* Negation3ParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Negation3ParserTest.m; path = test/Negation3ParserTest.m; sourceTree = "<group>"; };
+		D3C3AD651A530BAC00695EB7 /* Negation3Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Negation3Parser.h; path = test/Negation3Parser.h; sourceTree = "<group>"; };
+		D3C3AD661A530BAC00695EB7 /* Negation3Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Negation3Parser.m; path = test/Negation3Parser.m; sourceTree = "<group>"; };
 		D3C7982519005C2B00EC8CB2 /* deterministic_palindromes.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = deterministic_palindromes.grammar; path = res/deterministic_palindromes.grammar; sourceTree = "<group>"; };
 		D3C7982719005C8A00EC8CB2 /* DeterministicPalindromeParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeterministicPalindromeParserTest.m; path = test/DeterministicPalindromeParserTest.m; sourceTree = "<group>"; };
 		D3C7982919005CBC00EC8CB2 /* DeterministicPalindromeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeterministicPalindromeParser.h; path = test/DeterministicPalindromeParser.h; sourceTree = "<group>"; };
@@ -969,6 +976,7 @@
 		D31BBCC618E4F1A50003FFA3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D3C3AD631A530AFC00695EB7 /* Negation3ParserTest.m */,
 				D3C3AD5C1A5308A400695EB7 /* Negation2ParserTest.m */,
 				D3CC1EE4199284790096B1AF /* Lines2ParserTest.m */,
 				D34795D419423DB000181E56 /* LinesParserTest.m */,
@@ -1311,6 +1319,8 @@
 		D3B22A581703D07000446945 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				D3C3AD651A530BAC00695EB7 /* Negation3Parser.h */,
+				D3C3AD661A530BAC00695EB7 /* Negation3Parser.m */,
 				D3C3AD5E1A53091300695EB7 /* Negation2Parser.h */,
 				D3C3AD5F1A53091300695EB7 /* Negation2Parser.m */,
 				D3CC1EE6199284A80096B1AF /* Lines2Parser.h */,
@@ -1414,6 +1424,7 @@
 		D3B22A5A1703D09C00446945 /* Grammars */ = {
 			isa = PBXGroup;
 			children = (
+				D3C3AD611A530AD000695EB7 /* negation3.grammar */,
 				D3C3AD5A1A5307EB00695EB7 /* negation2.grammar */,
 				D3CC1EE11992842F0096B1AF /* lines2.grammar */,
 				D34795D219423D9E00181E56 /* lines.grammar */,
@@ -1754,6 +1765,7 @@
 				D38BC8B31716008E00BF530D /* semantic_predicate.grammar in Resources */,
 				D3383072171CA3BA00CCE513 /* PGClassInterfaceTemplate.txt in Resources */,
 				D3383073171CA3BA00CCE513 /* PGClassImplementationTemplate.txt in Resources */,
+				D3C3AD621A530AD000695EB7 /* negation3.grammar in Resources */,
 				D3383074171CA3BA00CCE513 /* PGActionTemplate.txt in Resources */,
 				D3A29E2018E714EB00DC591E /* PGGrammarActionTemplate.txt in Resources */,
 				D3383075171CA3BA00CCE513 /* PGMethodTemplate.txt in Resources */,
@@ -1973,11 +1985,13 @@
 				D376F6CB18D0B3990064C888 /* PGConstantNode.m in Sources */,
 				D31BBD0218E4F5140003FFA3 /* TDQuoteStateTest.m in Sources */,
 				D3B63A6B170A065700BA9DBF /* LabelEBNFParser.m in Sources */,
+				D3C3AD641A530AFC00695EB7 /* Negation3ParserTest.m in Sources */,
 				D3B63A70170A3F7900BA9DBF /* OptionalParserTest.m in Sources */,
 				D376F6E218D0B5090064C888 /* PEGKitParser.m in Sources */,
 				D31BBD0418E4F5140003FFA3 /* TDSymbolStateTest.m in Sources */,
 				D3B63A75170A3FF000BA9DBF /* OptionalParser.m in Sources */,
 				D3B63A7C170A55DE00BA9DBF /* MultipleParser.m in Sources */,
+				D3C3AD671A530BAC00695EB7 /* Negation3Parser.m in Sources */,
 				D376F6C918D0B3990064C888 /* PGCompositeNode.m in Sources */,
 				D3B63A7F170A560900BA9DBF /* MultipleParserTest.m in Sources */,
 				D3B63A82170A671F00BA9DBF /* AltParserTest.m in Sources */,

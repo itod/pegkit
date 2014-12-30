@@ -16,4 +16,5 @@ tag      = tagStart tagContent* tagEnd;
 tagStart    = '{%';
 tagEnd      = '%}';
 
-tagContent  = ~tagEnd;
+tagContent  = in | ~tagEnd;
+in              = 'in';
