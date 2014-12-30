@@ -35,7 +35,7 @@
     @var        PKTokenTypeComment A constant indicating that a token is a comment, like <tt>// this is a hack</tt>.
     @var        PKTokenTypeDelimtedString A constant indicating that a token is a delimitedString, like <tt><#foo></tt>.
 */
-typedef enum {
+typedef NS_ENUM(NSInteger, PKTokenType) {
     PKTokenTypeEOF = -1,
     PKTokenTypeInvalid = 0,
     PKTokenTypeNumber = 1,
@@ -53,7 +53,7 @@ typedef enum {
 #endif
     PKTokenTypeEmpty = 12,
     PKTokenTypeAny = 13,
-} PKTokenType;
+};
 
 /*!
     @class      PKToken

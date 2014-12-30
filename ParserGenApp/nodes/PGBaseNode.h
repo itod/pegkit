@@ -23,7 +23,7 @@
 #import <PEGKit/PKAST.h>
 #import "PGNodeVisitor.h" // convenience
 
-typedef enum NSUInteger {
+typedef NS_ENUM(NSUInteger, PGNodeType) {
     PGNodeTypeRoot = 0,
     PGNodeTypeDefinition,
     PGNodeTypeReference,
@@ -38,7 +38,7 @@ typedef enum NSUInteger {
     PGNodeTypeOptional,
     PGNodeTypeMultiple,
     PGNodeTypeAction,
-} PGNodeType;
+};
 
 @interface PGBaseNode : PKAST
 
