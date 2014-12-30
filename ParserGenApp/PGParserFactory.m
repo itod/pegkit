@@ -619,7 +619,7 @@
     PGBaseNode *subNode = [a pop];
     NSAssert([subNode isKindOfClass:[PGBaseNode class]], @"");
     
-    PGCompositeNode *repNode = [PGCompositeNode nodeWithToken:_repToken];
+    PGCompositeNode *repNode = [PGRepetitionNode nodeWithToken:_repToken];
     [repNode addChild:subNode];
     
     [a push:repNode];
@@ -658,7 +658,7 @@
     PGBaseNode *subNode = [a pop];
     NSAssert([subNode isKindOfClass:[PGBaseNode class]], @"");
     
-    PGCompositeNode *negNode = [PGCompositeNode nodeWithToken:_negToken];
+    PGCompositeNode *negNode = [PGNegationNode nodeWithToken:_negToken];
     [negNode addChild:subNode];
     
     [a push:negNode];

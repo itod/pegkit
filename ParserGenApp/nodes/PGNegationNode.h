@@ -20,30 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "PGNodeVisitor.h"
-
-// convenience
-#import "PGBaseNode.h"
-#import "PGRootNode.h"
-#import "PGDefinitionNode.h"
-#import "PGReferenceNode.h"
-#import "PGConstantNode.h"
-#import "PGDelimitedNode.h"
-#import "PGLiteralNode.h"
-#import "PGPatternNode.h"
 #import "PGCompositeNode.h"
-#import "PGCollectionNode.h"
-#import "PGAlternationNode.h"
-#import "PGOptionalNode.h"
-#import "PGMultipleNode.h"
-#import "PGActionNode.h"
-#import "PGRepetitionNode.h"
-#import "PGNegationNode.h"
 
-@interface PGBaseVisitor : NSObject <PGNodeVisitor>
+@interface PGNegationNode : PGCompositeNode
 
-- (void)recurse:(PGBaseNode *)node;
-
-@property (nonatomic, retain) PGBaseNode *rootNode;
-@property (nonatomic, retain) NSMutableDictionary *symbolTable;
 @end

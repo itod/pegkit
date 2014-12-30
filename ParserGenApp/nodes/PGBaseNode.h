@@ -38,6 +38,8 @@ typedef NS_ENUM(NSUInteger, PGNodeType) {
     PGNodeTypeOptional,
     PGNodeTypeMultiple,
     PGNodeTypeAction,
+    PGNodeTypeRepetition,
+    PGNodeTypeNegation,
 };
 
 @interface PGBaseNode : PKAST

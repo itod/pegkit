@@ -36,6 +36,8 @@
 @class PGOptionalNode;
 @class PGMultipleNode;
 @class PGActionNode;
+@class PGNegationNode;
+@class PGRepetitionNode;
 
 @protocol PGNodeVisitor <NSObject>
 - (void)visitRoot:(PGRootNode *)node;
@@ -51,6 +53,8 @@
 - (void)visitOptional:(PGOptionalNode *)node;
 - (void)visitMultiple:(PGMultipleNode *)node;
 - (void)visitAction:(PGActionNode *)node;
+- (void)visitRepetition:(PGRepetitionNode *)node;
+- (void)visitNegation:(PGNegationNode *)node;
 
 @property (nonatomic, retain) PGBaseNode *rootNode;
 @end

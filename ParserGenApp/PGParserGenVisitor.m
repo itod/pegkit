@@ -210,6 +210,12 @@
                 [set unionSet:[self lookaheadSetForNode:child]];
             }
         } break;
+        case PGNodeTypeNegation: {
+            for (PGBaseNode *child in node.children) {
+                [set unionSet:[self lookaheadSetForNode:child]];
+                break; // single look ahead. to implement full LL(*), this would need to be enhanced here.
+            }
+        } break;
 //        case PGNodeTypeDefinition:
 //        case PGNodeTypeCollection: {
 //            for (PKBaseNode *child in node.children) {
@@ -492,25 +498,6 @@
 }
 
 
-- (void)visitComposite:(PGCompositeNode *)node {
-    //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
-    
-    NSAssert(1 == [node.token.stringValue length], @"");
-    PKUniChar c = [node.token.stringValue characterAtIndex:0];
-    switch (c) {
-        case '*':
-            [self visitRepetition:node];
-            break;
-        case '~':
-            [self visitNegation:node];
-            break;
-        default:
-            NSAssert2(0, @"%s must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
-            break;
-    }
-}
-
-
 - (void)visitNegation:(PGCompositeNode *)node {
     
     // recurse
@@ -564,7 +551,7 @@
 }
 
 
-- (void)visitRepetition:(PGCompositeNode *)node {
+- (void)visitRepetition:(PGRepetitionNode *)node {
     // setup vars
     id vars = [NSMutableDictionary dictionary];
     vars[DEPTH] = @(_depth);

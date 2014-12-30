@@ -266,6 +266,20 @@
 }
 
 
+- (void)visitRepetition:(PGRepetitionNode *)node {
+    //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
+    
+    [self recurse:node];
+}
+
+
+- (void)visitNegation:(PGNegationNode *)node {
+    //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
+    
+    [self recurse:node];
+}
+
+
 - (void)visitCollection:(PGCollectionNode *)node {
     //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
     

@@ -130,4 +130,16 @@
     
 }
 
+
+- (void)visitRepetition:(PGRepetitionNode *)node {
+    //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
+    
+}
+
+
+- (void)visitNegation:(PGNegationNode *)node {
+    //NSLog(@"%s %@", __PRETTY_FUNCTION__, node);
+    
+}
+
 @end
