@@ -75,7 +75,7 @@ static Negation2Parser *parser;
     TDEqualObjects(TDAssembly(@"[{%, foo, bar, %}]{%/foo/bar/%}^"), [res description]);
 }
 
-- (void)testSectionHeader {
+- (void)test2 {
     NSString *s = @"{%foo%} text here {%/foo%}";
     
     NSError *err = nil;
@@ -83,6 +83,16 @@ static Negation2Parser *parser;
     TDNil(err);
     
     TDEqualObjects(TDAssembly(@"[{%, foo, %}, text, here, {%, /, foo, %}]{%/foo/%}/text/here/{%///foo/%}^"), [res description]);
+}
+
+- (void)test3 {
+    NSString *s = @"{%foo%} text {%/foo%} here";
+    
+    NSError *err = nil;
+    PKAssembly *res = [parser parseString:s error:&err];
+    TDNil(err);
+    
+    TDEqualObjects(TDAssembly(@"[{%, foo, %}, text, {%, /, foo, %}, here]{%/foo/%}/text/{%///foo/%}/here^"), [res description]);
 }
 
 @end
