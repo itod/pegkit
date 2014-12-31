@@ -231,6 +231,7 @@
 		D366C1AD1A5310F200D69669 /* PGNegationNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D366C1AB1A5310F200D69669 /* PGNegationNode.m */; };
 		D366C1B01A5311F700D69669 /* PGRepetitionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D366C1AF1A5311F700D69669 /* PGRepetitionNode.m */; };
 		D366C1B11A5311F700D69669 /* PGRepetitionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D366C1AF1A5311F700D69669 /* PGRepetitionNode.m */; };
+		D366C1B21A53408A00D69669 /* Negation3ParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C3AD631A530AFC00695EB7 /* Negation3ParserTest.m */; };
 		D36E68B3171F378B007B4353 /* JavaScriptParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E68B2171F378B007B4353 /* JavaScriptParserTest.m */; };
 		D36E68B6171F37D7007B4353 /* JavaScriptParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E68B5171F37D7007B4353 /* JavaScriptParser.m */; };
 		D36E68B9172074EF007B4353 /* CSSParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E68B8172074EF007B4353 /* CSSParserTest.m */; };
@@ -1974,6 +1975,7 @@
 				D3083AB91705F09B00DA6F95 /* ElementAssignParserTest.m in Sources */,
 				D3C3AD601A53091300695EB7 /* Negation2Parser.m in Sources */,
 				D31BBD0118E4F4FE0003FFA3 /* TDNumberStateTest.m in Sources */,
+				D366C1B21A53408A00D69669 /* Negation3ParserTest.m in Sources */,
 				D3A29E1C18E70F0E00DC591E /* GrammarActionsParser.m in Sources */,
 				D3D1766219B10C6E0052F5B8 /* Lines2ParserTest.m in Sources */,
 				D3083ABC1705F16000DA6F95 /* ElementAssignParser.m in Sources */,

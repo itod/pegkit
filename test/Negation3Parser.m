@@ -109,7 +109,7 @@
     
     if ([self predicts:NEGATION3_TOKEN_KIND_IN, 0]) {
         [self in_]; 
-    } else if ([self predicts:NEGATION3_TOKEN_KIND_TAGEND, 0]) {
+    } else if (![self predicts:NEGATION3_TOKEN_KIND_TAGEND, 0]) {
         if (![self predicts:NEGATION3_TOKEN_KIND_TAGEND, 0]) {
             [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
         } else {
