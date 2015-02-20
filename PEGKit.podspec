@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   
   s.ios.deployment_target = "7.0"
   s.osx.deployment_target = "10.9"
-  s.source       = { :git => "https://github.com/itod/pegkit", :tag => "v0.4.2" }
+  s.source       = { :git => "https://github.com/itod/pegkit.git", :tag => "v0.4.2" }
   s.source_files = "src/**/*.{h,m}", "include/**/*.{h,m}"
   s.prefix_header_file  = "PEGKit_Prefix.pch"
   s.public_header_files = "include/**/*.h"
