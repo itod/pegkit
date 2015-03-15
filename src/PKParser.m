@@ -332,7 +332,14 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
     reason = reason ? reason : @"";
     userInfo[NSLocalizedFailureReasonErrorKey] = reason;
     userInfo[PEGKitErrorRangeKey] = [NSValue valueWithRange:r];
-    userInfo[PEGKitErrorLineNumberKey] = @(lineNum);
+    
+    id lineNumVal = nil;
+    if (NSNotFound == lineNum) {
+        lineNumVal = NSLocalizedString(@"Unknown", @"");
+    } else {
+        lineNumVal = @(lineNum);
+    }
+    userInfo[PEGKitErrorLineNumberKey] = lineNumVal;
     
     // convert to NSError
     NSError *err = [NSError errorWithDomain:PEGKitErrorDomain code:PEGKitRecognitionErrorCode userInfo:[[userInfo copy] autorelease]];
@@ -583,33 +590,34 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
 
     
 - (void)raiseWithName:(NSString *)name message:(NSString *)msg {
-    NSString *fmt = nil;
-    
-#if defined(__LP64__)
-    fmt = @"Line : %lu\nNear : %@\n%@\nFound : %@";
-#else
-    fmt = @"Line : %u\nNear : %@\n%@\nFound : %@";
-#endif
-    
     PKToken *lt = LT(1);
     
     NSUInteger lineNum = lt.lineNumber;
     //NSAssert(NSNotFound != lineNum, @"");
-    
+
     NSRange r = NSMakeRange(lt.offset, [lt.stringValue length]);
-    
-    NSMutableString *after = [NSMutableString string];
-    NSString *delim = _silentlyConsumesWhitespace ? @"" : @" ";
-    
-    for (PKToken *tok in [_lookahead reverseObjectEnumerator]) {
-        if (tok.lineNumber < lineNum - 1) break;
-        if (tok.lineNumber == lineNum) {
-            [after insertString:[NSString stringWithFormat:@"%@%@", tok.stringValue, delim] atIndex:0];
+
+    id after = @"";
+    id found = @"";
+    NSString *fmt = @"%@\nLine : %@\n%@%@";
+
+    if (_enableVerboseErrorReporting) {
+        fmt = @"%@\nLine : %@\nNear : %@\nFound : %@";
+        after = [NSMutableString string];
+        NSString *delim = _silentlyConsumesWhitespace ? @"" : @" ";
+        
+        for (PKToken *tok in [_lookahead reverseObjectEnumerator]) {
+            if (tok.lineNumber < lineNum - 1) break;
+            if (tok.lineNumber == lineNum) {
+                [after insertString:[NSString stringWithFormat:@"%@%@", tok.stringValue, delim] atIndex:0];
+            }
         }
+        
+        found = lt ? lt.stringValue : @"-nothing-";
     }
     
-    NSString *found = lt ? lt.stringValue : @"-nothing-";
-    [self raiseInRange:r lineNumber:lineNum name:PEGKitRecognitionTokenMatchFailed format:fmt, lineNum, after, msg, found];
+    id lineNumVal = NSNotFound == lineNum ? @"Unknown" : @(lineNum);
+    [self raiseInRange:r lineNumber:lineNum name:PEGKitRecognitionTokenMatchFailed format:fmt, msg, lineNumVal, after, found];
 }
 
 

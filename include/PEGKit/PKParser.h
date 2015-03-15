@@ -23,6 +23,8 @@
 #import <Foundation/Foundation.h>
 #import <PEGKit/PKTokenizer.h>
 
+@class PKAssembly;
+
 extern NSString * const PEGKitErrorDomain;
 extern NSString * const PEGKitErrorRangeKey;
 extern NSString * const PEGKitErrorLineNumberKey;
@@ -30,8 +32,6 @@ extern NSString * const PEGKitErrorLineNumberKey;
 extern NSInteger PEGKitRecognitionErrorCode;
 extern NSString * const PEGKitRecognitionTokenMatchFailed;
 extern NSString * const PEGKitRecognitionPredicateFailed;
-
-@class PKAssembly;
 
 typedef void (^PKSActionBlock)   (void);
 typedef void (^PKSSpeculateBlock)(void);
@@ -71,4 +71,5 @@ enum {
 @property (nonatomic, assign) BOOL silentlyConsumesWhitespace; // default NO
 @property (nonatomic, assign) BOOL enableActions; // default YES
 @property (nonatomic, assign) BOOL enableAutomaticErrorRecovery; // default NO
+@property (nonatomic, assign) BOOL enableVerboseErrorReporting; // default NO
 @end
