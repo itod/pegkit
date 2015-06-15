@@ -1,5 +1,6 @@
 #import "MiniMathParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface MiniMathParser ()
@@ -51,19 +52,20 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self expr_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf expr_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__expr {
-    
-    [self mult_]; 
-    while ([self speculate:^{ [self match:MINIMATH_TOKEN_KIND_PLUS discard:YES]; [self mult_]; }]) {
-        [self match:MINIMATH_TOKEN_KIND_PLUS discard:YES]; 
-        [self mult_]; 
-        [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf mult_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf match:MINIMATH_TOKEN_KIND_PLUS discard:YES];[PKParser_weakSelf mult_];}]) {
+        [PKParser_weakSelf match:MINIMATH_TOKEN_KIND_PLUS discard:YES];
+        [PKParser_weakSelf mult_];
+        [PKParser_weakSelf execute:^{
          PUSH_DOUBLE(POP_DOUBLE()+POP_DOUBLE()); 
         }];
     }
@@ -76,12 +78,12 @@
 }
 
 - (void)__mult {
-    
-    [self pow_]; 
-    while ([self speculate:^{ [self match:MINIMATH_TOKEN_KIND_STAR discard:YES]; [self pow_]; }]) {
-        [self match:MINIMATH_TOKEN_KIND_STAR discard:YES]; 
-        [self pow_]; 
-        [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf pow_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf match:MINIMATH_TOKEN_KIND_STAR discard:YES];[PKParser_weakSelf pow_];}]) {
+        [PKParser_weakSelf match:MINIMATH_TOKEN_KIND_STAR discard:YES];
+        [PKParser_weakSelf pow_];
+        [PKParser_weakSelf execute:^{
          PUSH_DOUBLE(POP_DOUBLE()*POP_DOUBLE()); 
         }];
     }
@@ -94,12 +96,12 @@
 }
 
 - (void)__pow {
-    
-    [self atom_]; 
-    if ([self speculate:^{ [self match:MINIMATH_TOKEN_KIND_CARET discard:YES]; [self pow_]; }]) {
-        [self match:MINIMATH_TOKEN_KIND_CARET discard:YES]; 
-        [self pow_]; 
-        [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf atom_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf match:MINIMATH_TOKEN_KIND_CARET discard:YES];[PKParser_weakSelf pow_];}]) {
+        [PKParser_weakSelf match:MINIMATH_TOKEN_KIND_CARET discard:YES];
+        [PKParser_weakSelf pow_];
+        [PKParser_weakSelf execute:^{
          
 		double exp = POP_DOUBLE();
 		double base = POP_DOUBLE();
@@ -119,9 +121,9 @@
 }
 
 - (void)__atom {
-    
-    [self matchNumber:NO]; 
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchNumber:NO];
+    [PKParser_weakSelf execute:^{
     PUSH_DOUBLE(POP_DOUBLE());
     }];
 

@@ -1,5 +1,6 @@
 #import "Lines2Parser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface Lines2Parser ()
@@ -30,7 +31,8 @@
 }
 
 - (void)start {
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf execute:^{
     
     PKTokenizer *t = self.tokenizer;
 
@@ -41,23 +43,23 @@
 
     }];
 
-    [self lines_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf lines_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)lines_ {
-    
+    PKParser_weakSelfDecl;
     do {
-        [self line_]; 
-    } while ([self speculate:^{ [self line_]; }]);
+        [PKParser_weakSelf line_];
+    } while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf line_];}]);
 
     [self fireDelegateSelector:@selector(parser:didMatchLines:)];
 }
 
 - (void)line_ {
-    
-    while ([self speculate:^{ if (![self predicts:LINES2_TOKEN_KIND__N, 0] && ![self predicts:LINES2_TOKEN_KIND__R, 0]) {[self match:TOKEN_KIND_BUILTIN_ANY discard:NO];} else {[self raise:@"negation test failed in line"];}}]) {
+    PKParser_weakSelfDecl;
+    while ([PKParser_weakSelf speculate:^{ if (![self predicts:LINES2_TOKEN_KIND__N, 0] && ![self predicts:LINES2_TOKEN_KIND__R, 0]) {[self match:TOKEN_KIND_BUILTIN_ANY discard:NO];} else {[self raise:@"negation test failed in line"];}}]) {
         if (![self predicts:LINES2_TOKEN_KIND__N, 0] && ![self predicts:LINES2_TOKEN_KIND__R, 0]) {
             [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
         } else {
@@ -65,20 +67,20 @@
         }
     }
     do {
-        [self eol_]; 
+        [PKParser_weakSelf eol_];
     } while ([self predicts:LINES2_TOKEN_KIND__N, LINES2_TOKEN_KIND__R, 0]);
 
     [self fireDelegateSelector:@selector(parser:didMatchLine:)];
 }
 
 - (void)eol_ {
-    
-    if ([self predicts:LINES2_TOKEN_KIND__N, 0]) {
-        [self match:LINES2_TOKEN_KIND__N discard:YES]; 
-    } else if ([self predicts:LINES2_TOKEN_KIND__R, 0]) {
-        [self match:LINES2_TOKEN_KIND__R discard:YES]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:LINES2_TOKEN_KIND__N, 0]) {
+        [PKParser_weakSelf match:LINES2_TOKEN_KIND__N discard:YES];
+    } else if ([PKParser_weakSelf predicts:LINES2_TOKEN_KIND__R, 0]) {
+        [PKParser_weakSelf match:LINES2_TOKEN_KIND__R discard:YES];
     } else {
-        [self raise:@"No viable alternative found in rule 'eol'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'eol'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchEol:)];

@@ -1,5 +1,6 @@
 #import "LabelEBNFParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface LabelEBNFParser ()
@@ -47,25 +48,26 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self s_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf s_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__s {
-    
-    if ([self speculate:^{ [self label_]; [self matchWord:NO]; [self match:LABELEBNF_TOKEN_KIND_EQUALS discard:NO]; [self expr_]; }]) {
-        [self label_]; 
-        [self matchWord:NO]; 
-        [self match:LABELEBNF_TOKEN_KIND_EQUALS discard:NO]; 
-        [self expr_]; 
-    } else if ([self speculate:^{ [self label_]; [self match:LABELEBNF_TOKEN_KIND_RETURN discard:NO]; [self expr_]; }]) {
-        [self label_]; 
-        [self match:LABELEBNF_TOKEN_KIND_RETURN discard:NO]; 
-        [self expr_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf label_];[PKParser_weakSelf matchWord:NO];[PKParser_weakSelf match:LABELEBNF_TOKEN_KIND_EQUALS discard:NO];[PKParser_weakSelf expr_];}]) {
+        [PKParser_weakSelf label_];
+        [PKParser_weakSelf matchWord:NO];
+        [PKParser_weakSelf match:LABELEBNF_TOKEN_KIND_EQUALS discard:NO];
+        [PKParser_weakSelf expr_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf label_];[PKParser_weakSelf match:LABELEBNF_TOKEN_KIND_RETURN discard:NO];[PKParser_weakSelf expr_];}]) {
+        [PKParser_weakSelf label_];
+        [PKParser_weakSelf match:LABELEBNF_TOKEN_KIND_RETURN discard:NO];
+        [PKParser_weakSelf expr_];
     } else {
-        [self raise:@"No viable alternative found in rule 's'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 's'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchS:)];
@@ -76,10 +78,10 @@
 }
 
 - (void)__label {
-    
-    while ([self speculate:^{ [self matchWord:NO]; [self match:LABELEBNF_TOKEN_KIND_COLON discard:NO]; }]) {
-        [self matchWord:NO]; 
-        [self match:LABELEBNF_TOKEN_KIND_COLON discard:NO]; 
+    PKParser_weakSelfDecl;
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf matchWord:NO];[PKParser_weakSelf match:LABELEBNF_TOKEN_KIND_COLON discard:NO];}]) {
+        [PKParser_weakSelf matchWord:NO];
+        [PKParser_weakSelf match:LABELEBNF_TOKEN_KIND_COLON discard:NO];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchLabel:)];
@@ -90,8 +92,8 @@
 }
 
 - (void)__expr {
-    
-    [self matchNumber:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchNumber:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchExpr:)];
 }

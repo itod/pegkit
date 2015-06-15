@@ -1,5 +1,6 @@
 #import "DreadedParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface DreadedParser ()
@@ -45,21 +46,22 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self s_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf s_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__s {
-    
-    if ([self speculate:^{ [self a_]; }]) {
-        [self a_]; 
-    } else if ([self speculate:^{ [self a_]; [self b_]; }]) {
-        [self a_]; 
-        [self b_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf a_];}]) {
+        [PKParser_weakSelf a_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf a_];[PKParser_weakSelf b_];}]) {
+        [PKParser_weakSelf a_];
+        [PKParser_weakSelf b_];
     } else {
-        [self raise:@"No viable alternative found in rule 's'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 's'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchS:)];
@@ -70,8 +72,8 @@
 }
 
 - (void)__a {
-    
-    [self match:DREADED_TOKEN_KIND_A discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:DREADED_TOKEN_KIND_A discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchA:)];
 }
@@ -81,8 +83,8 @@
 }
 
 - (void)__b {
-    
-    [self match:DREADED_TOKEN_KIND_B discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:DREADED_TOKEN_KIND_B discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchB:)];
 }

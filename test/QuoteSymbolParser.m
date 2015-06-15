@@ -1,5 +1,6 @@
 #import "QuoteSymbolParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface QuoteSymbolParser ()
@@ -32,7 +33,8 @@
 }
 
 - (void)start {
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf execute:^{
     
     PKTokenizer *t = self.tokenizer;
 	[t setTokenizerState:t.symbolState from:'"' to:'"'];
@@ -40,52 +42,52 @@
 
     }];
 
-    [self start_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf start_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)start_ {
-    
+    PKParser_weakSelfDecl;
     do {
-        [self sym_]; 
+        [PKParser_weakSelf sym_];
     } while ([self predicts:QUOTESYMBOL_TOKEN_KIND_BACK, QUOTESYMBOL_TOKEN_KIND_DOUBLE, QUOTESYMBOL_TOKEN_KIND_SINGLE, 0]);
 
     [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
 
 - (void)sym_ {
-    
-    if ([self predicts:QUOTESYMBOL_TOKEN_KIND_SINGLE, 0]) {
-        [self single_]; 
-    } else if ([self predicts:QUOTESYMBOL_TOKEN_KIND_DOUBLE, 0]) {
-        [self double_]; 
-    } else if ([self predicts:QUOTESYMBOL_TOKEN_KIND_BACK, 0]) {
-        [self back_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:QUOTESYMBOL_TOKEN_KIND_SINGLE, 0]) {
+        [PKParser_weakSelf single_];
+    } else if ([PKParser_weakSelf predicts:QUOTESYMBOL_TOKEN_KIND_DOUBLE, 0]) {
+        [PKParser_weakSelf double_];
+    } else if ([PKParser_weakSelf predicts:QUOTESYMBOL_TOKEN_KIND_BACK, 0]) {
+        [PKParser_weakSelf back_];
     } else {
-        [self raise:@"No viable alternative found in rule 'sym'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'sym'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchSym:)];
 }
 
 - (void)single_ {
-    
-    [self match:QUOTESYMBOL_TOKEN_KIND_SINGLE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:QUOTESYMBOL_TOKEN_KIND_SINGLE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchSingle:)];
 }
 
 - (void)double_ {
-    
-    [self match:QUOTESYMBOL_TOKEN_KIND_DOUBLE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:QUOTESYMBOL_TOKEN_KIND_DOUBLE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchDouble:)];
 }
 
 - (void)back_ {
-    
-    [self match:QUOTESYMBOL_TOKEN_KIND_BACK discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:QUOTESYMBOL_TOKEN_KIND_BACK discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchBack:)];
 }

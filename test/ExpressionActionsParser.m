@@ -1,5 +1,6 @@
 #import "ExpressionActionsParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface ExpressionActionsParser ()
@@ -129,15 +130,16 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self expr_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf expr_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__expr {
-    
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf execute:^{
     
     PKTokenizer *t = self.tokenizer;
     [t.symbolState add:@"!="];
@@ -145,7 +147,7 @@
     [t.symbolState add:@">="];
 
     }];
-    [self orExpr_]; 
+    [PKParser_weakSelf orExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchExpr:)];
 }
@@ -155,10 +157,10 @@
 }
 
 - (void)__orExpr {
-    
-    [self andExpr_]; 
-    while ([self speculate:^{ [self orTerm_]; }]) {
-        [self orTerm_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf andExpr_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf orTerm_];}]) {
+        [PKParser_weakSelf orTerm_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchOrExpr:)];
@@ -169,10 +171,10 @@
 }
 
 - (void)__orTerm {
-    
-    [self match:EXPRESSIONACTIONS_TOKEN_KIND_OR discard:YES]; 
-    [self andExpr_]; 
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_OR discard:YES];
+    [PKParser_weakSelf andExpr_];
+    [PKParser_weakSelf execute:^{
     
 	BOOL rhs = POP_BOOL();
 	BOOL lhs = POP_BOOL();
@@ -188,10 +190,10 @@
 }
 
 - (void)__andExpr {
-    
-    [self relExpr_]; 
-    while ([self speculate:^{ [self andTerm_]; }]) {
-        [self andTerm_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf relExpr_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf andTerm_];}]) {
+        [PKParser_weakSelf andTerm_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchAndExpr:)];
@@ -202,10 +204,10 @@
 }
 
 - (void)__andTerm {
-    
-    [self match:EXPRESSIONACTIONS_TOKEN_KIND_AND discard:YES]; 
-    [self relExpr_]; 
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_AND discard:YES];
+    [PKParser_weakSelf relExpr_];
+    [PKParser_weakSelf execute:^{
     
 	BOOL rhs = POP_BOOL();
 	BOOL lhs = POP_BOOL();
@@ -221,10 +223,10 @@
 }
 
 - (void)__relExpr {
-    
-    [self callExpr_]; 
-    while ([self speculate:^{ [self relOpTerm_]; }]) {
-        [self relOpTerm_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf callExpr_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf relOpTerm_];}]) {
+        [PKParser_weakSelf relOpTerm_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchRelExpr:)];
@@ -235,21 +237,21 @@
 }
 
 - (void)__relOp {
-    
-    if ([self predicts:EXPRESSIONACTIONS_TOKEN_KIND_LT_SYM, 0]) {
-        [self match:EXPRESSIONACTIONS_TOKEN_KIND_LT_SYM discard:NO]; 
-    } else if ([self predicts:EXPRESSIONACTIONS_TOKEN_KIND_GT_SYM, 0]) {
-        [self match:EXPRESSIONACTIONS_TOKEN_KIND_GT_SYM discard:NO]; 
-    } else if ([self predicts:EXPRESSIONACTIONS_TOKEN_KIND_EQUALS, 0]) {
-        [self match:EXPRESSIONACTIONS_TOKEN_KIND_EQUALS discard:NO]; 
-    } else if ([self predicts:EXPRESSIONACTIONS_TOKEN_KIND_NOT_EQUAL, 0]) {
-        [self match:EXPRESSIONACTIONS_TOKEN_KIND_NOT_EQUAL discard:NO]; 
-    } else if ([self predicts:EXPRESSIONACTIONS_TOKEN_KIND_LE_SYM, 0]) {
-        [self match:EXPRESSIONACTIONS_TOKEN_KIND_LE_SYM discard:NO]; 
-    } else if ([self predicts:EXPRESSIONACTIONS_TOKEN_KIND_GE_SYM, 0]) {
-        [self match:EXPRESSIONACTIONS_TOKEN_KIND_GE_SYM discard:NO]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:EXPRESSIONACTIONS_TOKEN_KIND_LT_SYM, 0]) {
+        [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_LT_SYM discard:NO];
+    } else if ([PKParser_weakSelf predicts:EXPRESSIONACTIONS_TOKEN_KIND_GT_SYM, 0]) {
+        [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_GT_SYM discard:NO];
+    } else if ([PKParser_weakSelf predicts:EXPRESSIONACTIONS_TOKEN_KIND_EQUALS, 0]) {
+        [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_EQUALS discard:NO];
+    } else if ([PKParser_weakSelf predicts:EXPRESSIONACTIONS_TOKEN_KIND_NOT_EQUAL, 0]) {
+        [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_NOT_EQUAL discard:NO];
+    } else if ([PKParser_weakSelf predicts:EXPRESSIONACTIONS_TOKEN_KIND_LE_SYM, 0]) {
+        [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_LE_SYM discard:NO];
+    } else if ([PKParser_weakSelf predicts:EXPRESSIONACTIONS_TOKEN_KIND_GE_SYM, 0]) {
+        [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_GE_SYM discard:NO];
     } else {
-        [self raise:@"No viable alternative found in rule 'relOp'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'relOp'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchRelOp:)];
@@ -260,10 +262,10 @@
 }
 
 - (void)__relOpTerm {
-    
-    [self relOp_]; 
-    [self callExpr_]; 
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf relOp_];
+    [PKParser_weakSelf callExpr_];
+    [PKParser_weakSelf execute:^{
     
 	NSInteger rhs = POP_INT();
 	NSString  *op = POP_STR();
@@ -286,14 +288,14 @@
 }
 
 - (void)__callExpr {
-    
-    [self primary_]; 
-    if ([self speculate:^{ [self match:EXPRESSIONACTIONS_TOKEN_KIND_OPEN_PAREN discard:NO]; if ([self speculate:^{ [self argList_]; }]) {[self argList_]; }[self match:EXPRESSIONACTIONS_TOKEN_KIND_CLOSE_PAREN discard:NO]; }]) {
-        [self match:EXPRESSIONACTIONS_TOKEN_KIND_OPEN_PAREN discard:NO]; 
-        if ([self speculate:^{ [self argList_]; }]) {
-            [self argList_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf primary_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_OPEN_PAREN discard:NO];if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf argList_];}]) {[PKParser_weakSelf argList_];}[PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_CLOSE_PAREN discard:NO];}]) {
+        [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_OPEN_PAREN discard:NO];
+        if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf argList_];}]) {
+            [PKParser_weakSelf argList_];
         }
-        [self match:EXPRESSIONACTIONS_TOKEN_KIND_CLOSE_PAREN discard:NO]; 
+        [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_CLOSE_PAREN discard:NO];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchCallExpr:)];
@@ -304,11 +306,11 @@
 }
 
 - (void)__argList {
-    
-    [self atom_]; 
-    while ([self speculate:^{ [self match:EXPRESSIONACTIONS_TOKEN_KIND_COMMA discard:NO]; [self atom_]; }]) {
-        [self match:EXPRESSIONACTIONS_TOKEN_KIND_COMMA discard:NO]; 
-        [self atom_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf atom_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_COMMA discard:NO];[PKParser_weakSelf atom_];}]) {
+        [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_COMMA discard:NO];
+        [PKParser_weakSelf atom_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchArgList:)];
@@ -319,15 +321,15 @@
 }
 
 - (void)__primary {
-    
-    if ([self predicts:EXPRESSIONACTIONS_TOKEN_KIND_NO, EXPRESSIONACTIONS_TOKEN_KIND_NO_UPPER, EXPRESSIONACTIONS_TOKEN_KIND_YES, EXPRESSIONACTIONS_TOKEN_KIND_YES_UPPER, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self atom_]; 
-    } else if ([self predicts:EXPRESSIONACTIONS_TOKEN_KIND_OPEN_PAREN, 0]) {
-        [self match:EXPRESSIONACTIONS_TOKEN_KIND_OPEN_PAREN discard:NO]; 
-        [self expr_]; 
-        [self match:EXPRESSIONACTIONS_TOKEN_KIND_CLOSE_PAREN discard:NO]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:EXPRESSIONACTIONS_TOKEN_KIND_NO, EXPRESSIONACTIONS_TOKEN_KIND_NO_UPPER, EXPRESSIONACTIONS_TOKEN_KIND_YES, EXPRESSIONACTIONS_TOKEN_KIND_YES_UPPER, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf atom_];
+    } else if ([PKParser_weakSelf predicts:EXPRESSIONACTIONS_TOKEN_KIND_OPEN_PAREN, 0]) {
+        [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_OPEN_PAREN discard:NO];
+        [PKParser_weakSelf expr_];
+        [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_CLOSE_PAREN discard:NO];
     } else {
-        [self raise:@"No viable alternative found in rule 'primary'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'primary'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchPrimary:)];
@@ -338,13 +340,13 @@
 }
 
 - (void)__atom {
-    
-    if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self obj_]; 
-    } else if ([self predicts:EXPRESSIONACTIONS_TOKEN_KIND_NO, EXPRESSIONACTIONS_TOKEN_KIND_NO_UPPER, EXPRESSIONACTIONS_TOKEN_KIND_YES, EXPRESSIONACTIONS_TOKEN_KIND_YES_UPPER, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
-        [self literal_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf obj_];
+    } else if ([PKParser_weakSelf predicts:EXPRESSIONACTIONS_TOKEN_KIND_NO, EXPRESSIONACTIONS_TOKEN_KIND_NO_UPPER, EXPRESSIONACTIONS_TOKEN_KIND_YES, EXPRESSIONACTIONS_TOKEN_KIND_YES_UPPER, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
+        [PKParser_weakSelf literal_];
     } else {
-        [self raise:@"No viable alternative found in rule 'atom'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'atom'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchAtom:)];
@@ -355,10 +357,10 @@
 }
 
 - (void)__obj {
-    
-    [self id_]; 
-    while ([self speculate:^{ [self member_]; }]) {
-        [self member_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf id_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf member_];}]) {
+        [PKParser_weakSelf member_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchObj:)];
@@ -369,8 +371,8 @@
 }
 
 - (void)__id {
-    
-    [self matchWord:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchWord:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchId:)];
 }
@@ -380,9 +382,9 @@
 }
 
 - (void)__member {
-    
-    [self match:EXPRESSIONACTIONS_TOKEN_KIND_DOT discard:NO]; 
-    [self id_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_DOT discard:NO];
+    [PKParser_weakSelf id_];
 
     [self fireDelegateSelector:@selector(parser:didMatchMember:)];
 }
@@ -392,25 +394,25 @@
 }
 
 - (void)__literal {
-    
-    if ([self predicts:EXPRESSIONACTIONS_TOKEN_KIND_NO, EXPRESSIONACTIONS_TOKEN_KIND_NO_UPPER, EXPRESSIONACTIONS_TOKEN_KIND_YES, EXPRESSIONACTIONS_TOKEN_KIND_YES_UPPER, 0]) {
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:EXPRESSIONACTIONS_TOKEN_KIND_NO, EXPRESSIONACTIONS_TOKEN_KIND_NO_UPPER, EXPRESSIONACTIONS_TOKEN_KIND_YES, EXPRESSIONACTIONS_TOKEN_KIND_YES_UPPER, 0]) {
         [self testAndThrow:(id)^{ return LA(1) != EXPRESSIONACTIONS_TOKEN_KIND_YES_UPPER; }]; 
-        [self bool_]; 
-        [self execute:^{
+        [PKParser_weakSelf bool_];
+        [PKParser_weakSelf execute:^{
          PUSH_BOOL(EQ_IGNORE_CASE(POP_STR(), @"yes")); 
         }];
-    } else if ([self predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
-        [self matchNumber:NO]; 
-        [self execute:^{
+    } else if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
+        [PKParser_weakSelf matchNumber:NO];
+        [PKParser_weakSelf execute:^{
          PUSH_DOUBLE(POP_DOUBLE()); 
         }];
-    } else if ([self predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
-        [self matchQuotedString:NO]; 
-        [self execute:^{
+    } else if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
+        [PKParser_weakSelf matchQuotedString:NO];
+        [PKParser_weakSelf execute:^{
          PUSH(POP_STR()); 
         }];
     } else {
-        [self raise:@"No viable alternative found in rule 'literal'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'literal'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchLiteral:)];
@@ -421,18 +423,18 @@
 }
 
 - (void)__bool {
-    
-    if ([self predicts:EXPRESSIONACTIONS_TOKEN_KIND_YES, 0]) {
-        [self match:EXPRESSIONACTIONS_TOKEN_KIND_YES discard:NO]; 
-    } else if ([self predicts:EXPRESSIONACTIONS_TOKEN_KIND_YES_UPPER, 0]) {
-        [self match:EXPRESSIONACTIONS_TOKEN_KIND_YES_UPPER discard:NO]; 
-    } else if ([self predicts:EXPRESSIONACTIONS_TOKEN_KIND_NO, 0]) {
-        [self match:EXPRESSIONACTIONS_TOKEN_KIND_NO discard:NO]; 
-    } else if ([self predicts:EXPRESSIONACTIONS_TOKEN_KIND_NO_UPPER, 0]) {
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:EXPRESSIONACTIONS_TOKEN_KIND_YES, 0]) {
+        [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_YES discard:NO];
+    } else if ([PKParser_weakSelf predicts:EXPRESSIONACTIONS_TOKEN_KIND_YES_UPPER, 0]) {
+        [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_YES_UPPER discard:NO];
+    } else if ([PKParser_weakSelf predicts:EXPRESSIONACTIONS_TOKEN_KIND_NO, 0]) {
+        [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_NO discard:NO];
+    } else if ([PKParser_weakSelf predicts:EXPRESSIONACTIONS_TOKEN_KIND_NO_UPPER, 0]) {
         [self testAndThrow:(id)^{ return NE(LS(1), @"NO"); }]; 
-        [self match:EXPRESSIONACTIONS_TOKEN_KIND_NO_UPPER discard:NO]; 
+        [PKParser_weakSelf match:EXPRESSIONACTIONS_TOKEN_KIND_NO_UPPER discard:NO];
     } else {
-        [self raise:@"No viable alternative found in rule 'bool'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'bool'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchBool:)];

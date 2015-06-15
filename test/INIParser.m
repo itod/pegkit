@@ -1,5 +1,6 @@
 #import "INIParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface INIParser ()
@@ -52,7 +53,8 @@
 }
 
 - (void)start {
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf execute:^{
     
     self.sections = [NSMutableDictionary dictionary];
     self.currentSectionName = @"[[Default]]";
@@ -67,64 +69,64 @@
 
     }];
 
-    [self sections_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf sections_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)sections_ {
-    
+    PKParser_weakSelfDecl;
     do {
-        [self section_]; 
-    } while ([self speculate:^{ [self section_]; }]);
+        [PKParser_weakSelf section_];
+    } while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf section_];}]);
 
     [self fireDelegateSelector:@selector(parser:didMatchSections:)];
 }
 
 - (void)section_ {
-    
-    if ([self speculate:^{ [self header_]; }]) {
-        [self header_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf header_];}]) {
+        [PKParser_weakSelf header_];
     }
     do {
-        [self keyVal_]; 
-    } while ([self speculate:^{ [self keyVal_]; }]);
+        [PKParser_weakSelf keyVal_];
+    } while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf keyVal_];}]);
 
     [self fireDelegateSelector:@selector(parser:didMatchSection:)];
 }
 
 - (void)header_ {
-    
-    [self match:INI_TOKEN_KIND_OPEN_BRACKET discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:INI_TOKEN_KIND_OPEN_BRACKET discard:NO];
     do {
         if (![self predicts:INI_TOKEN_KIND_CLOSE_BRACKET, 0]) {
             [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
         } else {
             [self raise:@"negation test failed in header"];
         }
-    } while ([self speculate:^{ if (![self predicts:INI_TOKEN_KIND_CLOSE_BRACKET, 0]) {[self match:TOKEN_KIND_BUILTIN_ANY discard:NO];} else {[self raise:@"negation test failed in header"];}}]);
-    [self match:INI_TOKEN_KIND_CLOSE_BRACKET discard:YES]; 
-    [self nl_]; 
+    } while ([PKParser_weakSelf speculate:^{ if (![self predicts:INI_TOKEN_KIND_CLOSE_BRACKET, 0]) {[self match:TOKEN_KIND_BUILTIN_ANY discard:NO];} else {[self raise:@"negation test failed in header"];}}]);
+    [PKParser_weakSelf match:INI_TOKEN_KIND_CLOSE_BRACKET discard:YES];
+    [PKParser_weakSelf nl_];
 
     [self fireDelegateSelector:@selector(parser:didMatchHeader:)];
 }
 
 - (void)keyVal_ {
-    
+    PKParser_weakSelfDecl;
     do {
-        [self key_]; 
-    } while ([self speculate:^{ [self key_]; }]);
-    [self match:INI_TOKEN_KIND_EQUALS discard:YES]; 
+        [PKParser_weakSelf key_];
+    } while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf key_];}]);
+    [PKParser_weakSelf match:INI_TOKEN_KIND_EQUALS discard:YES];
     do {
-        [self val_]; 
-    } while ([self speculate:^{ [self val_]; }]);
-    [self nl_]; 
+        [PKParser_weakSelf val_];
+    } while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf val_];}]);
+    [PKParser_weakSelf nl_];
 
     [self fireDelegateSelector:@selector(parser:didMatchKeyVal:)];
 }
 
 - (void)key_ {
-    
+    PKParser_weakSelfDecl;
     if (![self predicts:INI_TOKEN_KIND_EQUALS, 0]) {
         [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
     } else {
@@ -135,25 +137,25 @@
 }
 
 - (void)val_ {
-    
-    if (![self speculate:^{ [self nl_]; }]) {
-        [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
+    PKParser_weakSelfDecl;
+    if (![PKParser_weakSelf speculate:^{ [PKParser_weakSelf nl_];}]) {
+        [PKParser_weakSelf match:TOKEN_KIND_BUILTIN_ANY discard:NO];
     } else {
-        [self raise:@"negation test failed in val"];
+        [PKParser_weakSelf raise:@"negation test failed in val"];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchVal:)];
 }
 
 - (void)nl_ {
-    
+    PKParser_weakSelfDecl;
     do {
-        if ([self predicts:INI_TOKEN_KIND__N, 0]) {
-            [self match:INI_TOKEN_KIND__N discard:YES]; 
-        } else if ([self predicts:INI_TOKEN_KIND__R, 0]) {
-            [self match:INI_TOKEN_KIND__R discard:YES]; 
+        if ([PKParser_weakSelf predicts:INI_TOKEN_KIND__N, 0]) {
+            [PKParser_weakSelf match:INI_TOKEN_KIND__N discard:YES];
+        } else if ([PKParser_weakSelf predicts:INI_TOKEN_KIND__R, 0]) {
+            [PKParser_weakSelf match:INI_TOKEN_KIND__R discard:YES];
         } else {
-            [self raise:@"No viable alternative found in rule 'nl'."];
+            [PKParser_weakSelf raise:@"No viable alternative found in rule 'nl'."];
         }
     } while ([self predicts:INI_TOKEN_KIND__N, INI_TOKEN_KIND__R, 0]);
 

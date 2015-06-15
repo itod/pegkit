@@ -1,5 +1,6 @@
 #import "Negation2Parser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface Negation2Parser ()
@@ -30,7 +31,8 @@
 }
 
 - (void)start {
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf execute:^{
     
         PKTokenizer *t = self.tokenizer;
 
@@ -40,35 +42,35 @@
 
     }];
 
-    [self document_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf document_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)document_ {
-    
+    PKParser_weakSelfDecl;
     do {
-        [self any_]; 
-    } while ([self speculate:^{ [self any_]; }]);
+        [PKParser_weakSelf any_];
+    } while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf any_];}]);
 
     [self fireDelegateSelector:@selector(parser:didMatchDocument:)];
 }
 
 - (void)any_ {
-    
-    if ([self speculate:^{ [self tag_]; }]) {
-        [self tag_]; 
-    } else if ([self speculate:^{ [self text_]; }]) {
-        [self text_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf tag_];}]) {
+        [PKParser_weakSelf tag_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf text_];}]) {
+        [PKParser_weakSelf text_];
     } else {
-        [self raise:@"No viable alternative found in rule 'any'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'any'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchAny:)];
 }
 
 - (void)text_ {
-    
+    PKParser_weakSelfDecl;
     if (![self predicts:NEGATION2_TOKEN_KIND_TAGSTART, 0]) {
         [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
     } else {
@@ -79,32 +81,32 @@
 }
 
 - (void)tag_ {
-    
-    [self tagStart_]; 
-    while ([self speculate:^{ [self tagContent_]; }]) {
-        [self tagContent_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf tagStart_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf tagContent_];}]) {
+        [PKParser_weakSelf tagContent_];
     }
-    [self tagEnd_]; 
+    [PKParser_weakSelf tagEnd_];
 
     [self fireDelegateSelector:@selector(parser:didMatchTag:)];
 }
 
 - (void)tagStart_ {
-    
-    [self match:NEGATION2_TOKEN_KIND_TAGSTART discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:NEGATION2_TOKEN_KIND_TAGSTART discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchTagStart:)];
 }
 
 - (void)tagEnd_ {
-    
-    [self match:NEGATION2_TOKEN_KIND_TAGEND discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:NEGATION2_TOKEN_KIND_TAGEND discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchTagEnd:)];
 }
 
 - (void)tagContent_ {
-    
+    PKParser_weakSelfDecl;
     if (![self predicts:NEGATION2_TOKEN_KIND_TAGEND, 0]) {
         [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
     } else {

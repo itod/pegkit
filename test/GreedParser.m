@@ -1,5 +1,6 @@
 #import "GreedParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface GreedParser ()
@@ -45,28 +46,29 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self start_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf start_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__start {
-    
-    if ([self predicts:GREED_TOKEN_KIND_A, 0]) {
-        [self a_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:GREED_TOKEN_KIND_A, 0]) {
+        [PKParser_weakSelf a_];
         while ([self predicts:TOKEN_KIND_BUILTIN_ANY, 0]) {
-            [self matchAny:NO]; 
+            [PKParser_weakSelf matchAny:NO];
         }
-        [self a_]; 
-    } else if ([self predicts:GREED_TOKEN_KIND_B, 0]) {
-        [self b_]; 
+        [PKParser_weakSelf a_];
+    } else if ([PKParser_weakSelf predicts:GREED_TOKEN_KIND_B, 0]) {
+        [PKParser_weakSelf b_];
         do {
-            [self matchAny:NO]; 
+            [PKParser_weakSelf matchAny:NO];
         } while ([self predicts:TOKEN_KIND_BUILTIN_ANY, 0]);
-        [self b_]; 
+        [PKParser_weakSelf b_];
     } else {
-        [self raise:@"No viable alternative found in rule 'start'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'start'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchStart:)];
@@ -77,8 +79,8 @@
 }
 
 - (void)__a {
-    
-    [self match:GREED_TOKEN_KIND_A discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:GREED_TOKEN_KIND_A discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchA:)];
 }
@@ -88,8 +90,8 @@
 }
 
 - (void)__b {
-    
-    [self match:GREED_TOKEN_KIND_B discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:GREED_TOKEN_KIND_B discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchB:)];
 }

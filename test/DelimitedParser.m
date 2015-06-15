@@ -1,5 +1,6 @@
 #import "DelimitedParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface DelimitedParser ()
@@ -39,15 +40,16 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self start_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf start_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__start {
-    
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf execute:^{
     
     PKTokenizer *t = self.tokenizer;
 
@@ -55,7 +57,7 @@
     [t setTokenizerState:t.delimitState from:'<' to:'<'];
 
     }];
-    [self s_]; 
+    [PKParser_weakSelf s_];
 
     [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
@@ -65,7 +67,7 @@
 }
 
 - (void)__s {
-    
+    PKParser_weakSelfDecl;
     [self match:DELIMITED_TOKEN_KIND_S discard:NO]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchS:)];

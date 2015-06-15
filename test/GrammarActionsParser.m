@@ -1,5 +1,6 @@
 #import "GrammarActionsParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
     
 #define MY_M 1
 
@@ -41,7 +42,8 @@
 }
 
 - (void)start {
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf execute:^{
     
     NSAssert([self.foo isEqualToString:@"hello world"], @"");
     NSAssert([_foo isEqualToString:@"hello world"], @"");
@@ -53,10 +55,10 @@
 
     }];
 
-    [self start_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf start_];
+    [PKParser_weakSelf matchEOF:YES];
 
-    [self execute:^{
+    [PKParser_weakSelf execute:^{
     
     NSAssert([self.foo isEqualToString:@"goodbye cruel world"], @"");
     NSAssert([_foo isEqualToString:@"goodbye cruel world"], @"");
@@ -69,9 +71,9 @@
 }
 
 - (void)start_ {
-    
+    PKParser_weakSelfDecl;
     do {
-        [self matchWord:NO]; 
+        [PKParser_weakSelf matchWord:NO];
     } while ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]);
 
     [self fireDelegateSelector:@selector(parser:didMatchStart:)];

@@ -1,5 +1,6 @@
 #import "HTMLParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface HTMLParser ()
@@ -157,15 +158,16 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self start_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf start_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__start {
-    
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf execute:^{
     
     PKTokenizer *t = self.tokenizer;
 
@@ -195,8 +197,8 @@
     [t.delimitState setFallbackState:t.symbolState from:'<' to:'<'];
 
     }];
-    while ([self speculate:^{ [self anything_]; }]) {
-        [self anything_]; 
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf anything_];}]) {
+        [PKParser_weakSelf anything_];
     }
 
 }
@@ -206,23 +208,23 @@
 }
 
 - (void)__anything {
-    
-    if ([self speculate:^{ [self scriptElement_]; }]) {
-        [self scriptElement_]; 
-    } else if ([self speculate:^{ [self styleElement_]; }]) {
-        [self styleElement_]; 
-    } else if ([self speculate:^{ [self tag_]; }]) {
-        [self tag_]; 
-    } else if ([self speculate:^{ [self procInstr_]; }]) {
-        [self procInstr_]; 
-    } else if ([self speculate:^{ [self comment_]; }]) {
-        [self comment_]; 
-    } else if ([self speculate:^{ [self doctype_]; }]) {
-        [self doctype_]; 
-    } else if ([self speculate:^{ [self text_]; }]) {
-        [self text_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf scriptElement_];}]) {
+        [PKParser_weakSelf scriptElement_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf styleElement_];}]) {
+        [PKParser_weakSelf styleElement_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf tag_];}]) {
+        [PKParser_weakSelf tag_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf procInstr_];}]) {
+        [PKParser_weakSelf procInstr_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf comment_];}]) {
+        [PKParser_weakSelf comment_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf doctype_];}]) {
+        [PKParser_weakSelf doctype_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf text_];}]) {
+        [PKParser_weakSelf text_];
     } else {
-        [self raise:@"No viable alternative found in rule 'anything'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'anything'."];
     }
 
 }
@@ -232,10 +234,10 @@
 }
 
 - (void)__scriptElement {
-    
-    [self scriptStartTag_]; 
-    [self scriptElementContent_]; 
-    [self scriptEndTag_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf scriptStartTag_];
+    [PKParser_weakSelf scriptElementContent_];
+    [PKParser_weakSelf scriptEndTag_];
 
 }
 
@@ -244,13 +246,13 @@
 }
 
 - (void)__scriptStartTag {
-    
-    [self lt_]; 
-    [self scriptTagName_]; 
-    while ([self speculate:^{ [self attr_]; }]) {
-        [self attr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf lt_];
+    [PKParser_weakSelf scriptTagName_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf attr_];}]) {
+        [PKParser_weakSelf attr_];
     }
-    [self gt_]; 
+    [PKParser_weakSelf gt_];
 
 }
 
@@ -259,11 +261,11 @@
 }
 
 - (void)__scriptEndTag {
-    
-    [self lt_]; 
-    [self fwdSlash_]; 
-    [self scriptTagName_]; 
-    [self gt_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf lt_];
+    [PKParser_weakSelf fwdSlash_];
+    [PKParser_weakSelf scriptTagName_];
+    [PKParser_weakSelf gt_];
 
 }
 
@@ -272,8 +274,8 @@
 }
 
 - (void)__scriptTagName {
-    
-    [self match:HTML_TOKEN_KIND_SCRIPTTAGNAME discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:HTML_TOKEN_KIND_SCRIPTTAGNAME discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchScriptTagName:)];
 }
@@ -283,11 +285,11 @@
 }
 
 - (void)__scriptElementContent {
-    
-    if (![self speculate:^{ [self scriptEndTag_]; }]) {
-        [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
+    PKParser_weakSelfDecl;
+    if (![PKParser_weakSelf speculate:^{ [PKParser_weakSelf scriptEndTag_];}]) {
+        [PKParser_weakSelf match:TOKEN_KIND_BUILTIN_ANY discard:NO];
     } else {
-        [self raise:@"negation test failed in scriptElementContent"];
+        [PKParser_weakSelf raise:@"negation test failed in scriptElementContent"];
     }
 
 }
@@ -297,10 +299,10 @@
 }
 
 - (void)__styleElement {
-    
-    [self styleStartTag_]; 
-    [self styleElementContent_]; 
-    [self styleEndTag_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf styleStartTag_];
+    [PKParser_weakSelf styleElementContent_];
+    [PKParser_weakSelf styleEndTag_];
 
 }
 
@@ -309,13 +311,13 @@
 }
 
 - (void)__styleStartTag {
-    
-    [self lt_]; 
-    [self styleTagName_]; 
-    while ([self speculate:^{ [self attr_]; }]) {
-        [self attr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf lt_];
+    [PKParser_weakSelf styleTagName_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf attr_];}]) {
+        [PKParser_weakSelf attr_];
     }
-    [self gt_]; 
+    [PKParser_weakSelf gt_];
 
 }
 
@@ -324,11 +326,11 @@
 }
 
 - (void)__styleEndTag {
-    
-    [self lt_]; 
-    [self fwdSlash_]; 
-    [self styleTagName_]; 
-    [self gt_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf lt_];
+    [PKParser_weakSelf fwdSlash_];
+    [PKParser_weakSelf styleTagName_];
+    [PKParser_weakSelf gt_];
 
 }
 
@@ -337,8 +339,8 @@
 }
 
 - (void)__styleTagName {
-    
-    [self match:HTML_TOKEN_KIND_STYLETAGNAME discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:HTML_TOKEN_KIND_STYLETAGNAME discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchStyleTagName:)];
 }
@@ -348,11 +350,11 @@
 }
 
 - (void)__styleElementContent {
-    
-    if (![self speculate:^{ [self styleEndTag_]; }]) {
-        [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
+    PKParser_weakSelfDecl;
+    if (![PKParser_weakSelf speculate:^{ [PKParser_weakSelf styleEndTag_];}]) {
+        [PKParser_weakSelf match:TOKEN_KIND_BUILTIN_ANY discard:NO];
     } else {
-        [self raise:@"negation test failed in styleElementContent"];
+        [PKParser_weakSelf raise:@"negation test failed in styleElementContent"];
     }
 
 }
@@ -362,7 +364,7 @@
 }
 
 - (void)__procInstr {
-    
+    PKParser_weakSelfDecl;
     [self match:HTML_TOKEN_KIND_PROCINSTR discard:NO]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchProcInstr:)];
@@ -373,7 +375,7 @@
 }
 
 - (void)__doctype {
-    
+    PKParser_weakSelfDecl;
     [self match:HTML_TOKEN_KIND_DOCTYPE discard:NO]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchDoctype:)];
@@ -384,8 +386,8 @@
 }
 
 - (void)__text {
-    
-    [self matchAny:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchAny:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchText:)];
 }
@@ -395,15 +397,15 @@
 }
 
 - (void)__tag {
-    
-    if ([self speculate:^{ [self emptyTag_]; }]) {
-        [self emptyTag_]; 
-    } else if ([self speculate:^{ [self startTag_]; }]) {
-        [self startTag_]; 
-    } else if ([self speculate:^{ [self endTag_]; }]) {
-        [self endTag_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf emptyTag_];}]) {
+        [PKParser_weakSelf emptyTag_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf startTag_];}]) {
+        [PKParser_weakSelf startTag_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf endTag_];}]) {
+        [PKParser_weakSelf endTag_];
     } else {
-        [self raise:@"No viable alternative found in rule 'tag'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'tag'."];
     }
 
 }
@@ -413,14 +415,14 @@
 }
 
 - (void)__emptyTag {
-    
-    [self lt_]; 
-    [self tagName_]; 
-    while ([self speculate:^{ [self attr_]; }]) {
-        [self attr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf lt_];
+    [PKParser_weakSelf tagName_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf attr_];}]) {
+        [PKParser_weakSelf attr_];
     }
-    [self fwdSlash_]; 
-    [self gt_]; 
+    [PKParser_weakSelf fwdSlash_];
+    [PKParser_weakSelf gt_];
 
 }
 
@@ -429,13 +431,13 @@
 }
 
 - (void)__startTag {
-    
-    [self lt_]; 
-    [self tagName_]; 
-    while ([self speculate:^{ [self attr_]; }]) {
-        [self attr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf lt_];
+    [PKParser_weakSelf tagName_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf attr_];}]) {
+        [PKParser_weakSelf attr_];
     }
-    [self gt_]; 
+    [PKParser_weakSelf gt_];
 
 }
 
@@ -444,11 +446,11 @@
 }
 
 - (void)__endTag {
-    
-    [self lt_]; 
-    [self fwdSlash_]; 
-    [self tagName_]; 
-    [self gt_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf lt_];
+    [PKParser_weakSelf fwdSlash_];
+    [PKParser_weakSelf tagName_];
+    [PKParser_weakSelf gt_];
 
 }
 
@@ -457,8 +459,8 @@
 }
 
 - (void)__tagName {
-    
-    [self matchWord:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchWord:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchTagName:)];
 }
@@ -468,12 +470,12 @@
 }
 
 - (void)__attr {
-    
-    [self attrName_]; 
-    if ([self speculate:^{ [self eq_]; if ([self predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {[self attrValue_]; }}]) {
-        [self eq_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf attrName_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf eq_];if ([self predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {[PKParser_weakSelf attrValue_];}}]) {
+        [PKParser_weakSelf eq_];
         if ([self predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {
-            [self attrValue_]; 
+            [PKParser_weakSelf attrValue_];
         }
     }
 
@@ -484,8 +486,8 @@
 }
 
 - (void)__attrName {
-    
-    [self matchWord:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchWord:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchAttrName:)];
 }
@@ -495,13 +497,13 @@
 }
 
 - (void)__attrValue {
-    
-    if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self matchWord:NO]; 
-    } else if ([self predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
-        [self matchQuotedString:NO]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf matchWord:NO];
+    } else if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
+        [PKParser_weakSelf matchQuotedString:NO];
     } else {
-        [self raise:@"No viable alternative found in rule 'attrValue'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'attrValue'."];
     }
 
 }
@@ -511,8 +513,8 @@
 }
 
 - (void)__eq {
-    
-    [self match:HTML_TOKEN_KIND_EQ discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:HTML_TOKEN_KIND_EQ discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchEq:)];
 }
@@ -522,8 +524,8 @@
 }
 
 - (void)__lt {
-    
-    [self match:HTML_TOKEN_KIND_LT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:HTML_TOKEN_KIND_LT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchLt:)];
 }
@@ -533,8 +535,8 @@
 }
 
 - (void)__gt {
-    
-    [self match:HTML_TOKEN_KIND_GT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:HTML_TOKEN_KIND_GT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchGt:)];
 }
@@ -544,8 +546,8 @@
 }
 
 - (void)__fwdSlash {
-    
-    [self match:HTML_TOKEN_KIND_FWDSLASH discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:HTML_TOKEN_KIND_FWDSLASH discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchFwdSlash:)];
 }
@@ -555,8 +557,8 @@
 }
 
 - (void)__comment {
-    
-    [self matchComment:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchComment:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchComment:)];
 }

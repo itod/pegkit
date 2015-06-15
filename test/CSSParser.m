@@ -1,5 +1,6 @@
 #import "CSSParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface CSSParser ()
@@ -221,15 +222,16 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self stylesheet_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf stylesheet_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__stylesheet {
-    
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf execute:^{
     
     PKTokenizer *t = self.tokenizer;
 
@@ -273,8 +275,8 @@
 	[t.delimitState addStartMarker:@"URL(" endMarker:@")" allowedCharacterSet:nil];
 
     }];
-    while ([self speculate:^{ [self ruleset_]; }]) {
-        [self ruleset_]; 
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf ruleset_];}]) {
+        [PKParser_weakSelf ruleset_];
     }
 
 }
@@ -284,11 +286,11 @@
 }
 
 - (void)__ruleset {
-    
-    [self selectors_]; 
-    [self openCurly_]; 
-    [self decls_]; 
-    [self closeCurly_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf selectors_];
+    [PKParser_weakSelf openCurly_];
+    [PKParser_weakSelf decls_];
+    [PKParser_weakSelf closeCurly_];
 
 }
 
@@ -297,10 +299,10 @@
 }
 
 - (void)__selectors {
-    
-    [self selector_]; 
-    while ([self speculate:^{ [self commaSelector_]; }]) {
-        [self commaSelector_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf selector_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf commaSelector_];}]) {
+        [PKParser_weakSelf commaSelector_];
     }
 
 }
@@ -310,32 +312,32 @@
 }
 
 - (void)__selector {
-    
+    PKParser_weakSelfDecl;
     do {
-        if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
-            [self selectorWord_]; 
-        } else if ([self predicts:CSS_TOKEN_KIND_HASH, 0]) {
-            [self hash_]; 
-        } else if ([self predicts:CSS_TOKEN_KIND_DOT, 0]) {
-            [self dot_]; 
-        } else if ([self predicts:CSS_TOKEN_KIND_COLON, 0]) {
-            [self colon_]; 
-        } else if ([self predicts:CSS_TOKEN_KIND_GT, 0]) {
-            [self gt_]; 
-        } else if ([self predicts:CSS_TOKEN_KIND_OPENBRACKET, 0]) {
-            [self openBracket_]; 
-        } else if ([self predicts:CSS_TOKEN_KIND_CLOSEBRACKET, 0]) {
-            [self closeBracket_]; 
-        } else if ([self predicts:CSS_TOKEN_KIND_EQ, 0]) {
-            [self eq_]; 
-        } else if ([self predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
-            [self selectorQuotedString_]; 
-        } else if ([self predicts:CSS_TOKEN_KIND_TILDE, 0]) {
-            [self tilde_]; 
-        } else if ([self predicts:CSS_TOKEN_KIND_PIPE, 0]) {
-            [self pipe_]; 
+        if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
+            [PKParser_weakSelf selectorWord_];
+        } else if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_HASH, 0]) {
+            [PKParser_weakSelf hash_];
+        } else if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_DOT, 0]) {
+            [PKParser_weakSelf dot_];
+        } else if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_COLON, 0]) {
+            [PKParser_weakSelf colon_];
+        } else if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_GT, 0]) {
+            [PKParser_weakSelf gt_];
+        } else if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_OPENBRACKET, 0]) {
+            [PKParser_weakSelf openBracket_];
+        } else if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_CLOSEBRACKET, 0]) {
+            [PKParser_weakSelf closeBracket_];
+        } else if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_EQ, 0]) {
+            [PKParser_weakSelf eq_];
+        } else if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
+            [PKParser_weakSelf selectorQuotedString_];
+        } else if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_TILDE, 0]) {
+            [PKParser_weakSelf tilde_];
+        } else if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_PIPE, 0]) {
+            [PKParser_weakSelf pipe_];
         } else {
-            [self raise:@"No viable alternative found in rule 'selector'."];
+            [PKParser_weakSelf raise:@"No viable alternative found in rule 'selector'."];
         }
     } while ([self predicts:CSS_TOKEN_KIND_CLOSEBRACKET, CSS_TOKEN_KIND_COLON, CSS_TOKEN_KIND_DOT, CSS_TOKEN_KIND_EQ, CSS_TOKEN_KIND_GT, CSS_TOKEN_KIND_HASH, CSS_TOKEN_KIND_OPENBRACKET, CSS_TOKEN_KIND_PIPE, CSS_TOKEN_KIND_TILDE, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]);
 
@@ -346,8 +348,8 @@
 }
 
 - (void)__selectorWord {
-    
-    [self matchWord:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchWord:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchSelectorWord:)];
 }
@@ -357,8 +359,8 @@
 }
 
 - (void)__selectorQuotedString {
-    
-    [self matchQuotedString:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchQuotedString:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchSelectorQuotedString:)];
 }
@@ -368,9 +370,9 @@
 }
 
 - (void)__commaSelector {
-    
-    [self comma_]; 
-    [self selector_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf comma_];
+    [PKParser_weakSelf selector_];
 
 }
 
@@ -379,9 +381,9 @@
 }
 
 - (void)__decls {
-    
-    if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self actualDecls_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf actualDecls_];
     }
 
 }
@@ -391,10 +393,10 @@
 }
 
 - (void)__actualDecls {
-    
-    [self decl_]; 
-    while ([self speculate:^{ [self decl_]; }]) {
-        [self decl_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf decl_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf decl_];}]) {
+        [PKParser_weakSelf decl_];
     }
 
 }
@@ -404,14 +406,14 @@
 }
 
 - (void)__decl {
-    
-    [self property_]; 
-    [self colon_]; 
-    [self expr_]; 
-    if ([self speculate:^{ [self important_]; }]) {
-        [self important_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf property_];
+    [PKParser_weakSelf colon_];
+    [PKParser_weakSelf expr_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf important_];}]) {
+        [PKParser_weakSelf important_];
     }
-    [self semi_]; 
+    [PKParser_weakSelf semi_];
 
 }
 
@@ -420,8 +422,8 @@
 }
 
 - (void)__property {
-    
-    [self matchWord:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchWord:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchProperty:)];
 }
@@ -431,26 +433,26 @@
 }
 
 - (void)__expr {
-    
+    PKParser_weakSelfDecl;
     do {
-        if ([self predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
-            [self string_]; 
-        } else if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
-            [self constant_]; 
-        } else if ([self predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
-            [self num_]; 
-        } else if ([self predicts:CSS_TOKEN_KIND_URLLOWER, CSS_TOKEN_KIND_URLUPPER, 0]) {
-            [self url_]; 
-        } else if ([self predicts:CSS_TOKEN_KIND_OPENPAREN, 0]) {
-            [self openParen_]; 
-        } else if ([self predicts:CSS_TOKEN_KIND_CLOSEPAREN, 0]) {
-            [self closeParen_]; 
-        } else if ([self predicts:CSS_TOKEN_KIND_COMMA, 0]) {
-            [self comma_]; 
-        } else if ([self predicts:CSS_TOKEN_KIND_FWDSLASH, TOKEN_KIND_BUILTIN_SYMBOL, 0]) {
-            [self nonTerminatingSymbol_]; 
+        if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
+            [PKParser_weakSelf string_];
+        } else if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
+            [PKParser_weakSelf constant_];
+        } else if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
+            [PKParser_weakSelf num_];
+        } else if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_URLLOWER, CSS_TOKEN_KIND_URLUPPER, 0]) {
+            [PKParser_weakSelf url_];
+        } else if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_OPENPAREN, 0]) {
+            [PKParser_weakSelf openParen_];
+        } else if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_CLOSEPAREN, 0]) {
+            [PKParser_weakSelf closeParen_];
+        } else if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_COMMA, 0]) {
+            [PKParser_weakSelf comma_];
+        } else if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_FWDSLASH, TOKEN_KIND_BUILTIN_SYMBOL, 0]) {
+            [PKParser_weakSelf nonTerminatingSymbol_];
         } else {
-            [self raise:@"No viable alternative found in rule 'expr'."];
+            [PKParser_weakSelf raise:@"No viable alternative found in rule 'expr'."];
         }
     } while ([self predicts:CSS_TOKEN_KIND_CLOSEPAREN, CSS_TOKEN_KIND_COMMA, CSS_TOKEN_KIND_FWDSLASH, CSS_TOKEN_KIND_OPENPAREN, CSS_TOKEN_KIND_URLLOWER, CSS_TOKEN_KIND_URLUPPER, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_SYMBOL, TOKEN_KIND_BUILTIN_WORD, 0]);
 
@@ -461,13 +463,13 @@
 }
 
 - (void)__url {
-    
-    if ([self predicts:CSS_TOKEN_KIND_URLLOWER, 0]) {
-        [self urlLower_]; 
-    } else if ([self predicts:CSS_TOKEN_KIND_URLUPPER, 0]) {
-        [self urlUpper_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_URLLOWER, 0]) {
+        [PKParser_weakSelf urlLower_];
+    } else if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_URLUPPER, 0]) {
+        [PKParser_weakSelf urlUpper_];
     } else {
-        [self raise:@"No viable alternative found in rule 'url'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'url'."];
     }
 
 }
@@ -477,7 +479,7 @@
 }
 
 - (void)__urlLower {
-    
+    PKParser_weakSelfDecl;
     [self match:CSS_TOKEN_KIND_URLLOWER discard:NO]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchUrlLower:)];
@@ -488,7 +490,7 @@
 }
 
 - (void)__urlUpper {
-    
+    PKParser_weakSelfDecl;
     [self match:CSS_TOKEN_KIND_URLUPPER discard:NO]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchUrlUpper:)];
@@ -499,14 +501,14 @@
 }
 
 - (void)__nonTerminatingSymbol {
-    
-    if ([self predicts:CSS_TOKEN_KIND_FWDSLASH, 0]) {
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:CSS_TOKEN_KIND_FWDSLASH, 0]) {
         [self testAndThrow:(id)^{ return NE(LS(1), @";") && NE(LS(1), @"!"); }]; 
-        [self fwdSlash_]; 
-    } else if ([self predicts:TOKEN_KIND_BUILTIN_SYMBOL, 0]) {
-        [self matchSymbol:NO]; 
+        [PKParser_weakSelf fwdSlash_];
+    } else if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_SYMBOL, 0]) {
+        [PKParser_weakSelf matchSymbol:NO];
     } else {
-        [self raise:@"No viable alternative found in rule 'nonTerminatingSymbol'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'nonTerminatingSymbol'."];
     }
 
 }
@@ -516,9 +518,9 @@
 }
 
 - (void)__important {
-    
-    [self bang_]; 
-    [self matchWord:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf bang_];
+    [PKParser_weakSelf matchWord:NO];
 
 }
 
@@ -527,8 +529,8 @@
 }
 
 - (void)__string {
-    
-    [self matchQuotedString:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchQuotedString:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchString:)];
 }
@@ -538,8 +540,8 @@
 }
 
 - (void)__constant {
-    
-    [self matchWord:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchWord:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchConstant:)];
 }
@@ -549,8 +551,8 @@
 }
 
 - (void)__openCurly {
-    
-    [self match:CSS_TOKEN_KIND_OPENCURLY discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_OPENCURLY discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchOpenCurly:)];
 }
@@ -560,8 +562,8 @@
 }
 
 - (void)__closeCurly {
-    
-    [self match:CSS_TOKEN_KIND_CLOSECURLY discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_CLOSECURLY discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchCloseCurly:)];
 }
@@ -571,8 +573,8 @@
 }
 
 - (void)__openBracket {
-    
-    [self match:CSS_TOKEN_KIND_OPENBRACKET discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_OPENBRACKET discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchOpenBracket:)];
 }
@@ -582,8 +584,8 @@
 }
 
 - (void)__closeBracket {
-    
-    [self match:CSS_TOKEN_KIND_CLOSEBRACKET discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_CLOSEBRACKET discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchCloseBracket:)];
 }
@@ -593,8 +595,8 @@
 }
 
 - (void)__eq {
-    
-    [self match:CSS_TOKEN_KIND_EQ discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_EQ discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchEq:)];
 }
@@ -604,8 +606,8 @@
 }
 
 - (void)__comma {
-    
-    [self match:CSS_TOKEN_KIND_COMMA discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_COMMA discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchComma:)];
 }
@@ -615,8 +617,8 @@
 }
 
 - (void)__colon {
-    
-    [self match:CSS_TOKEN_KIND_COLON discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_COLON discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchColon:)];
 }
@@ -626,8 +628,8 @@
 }
 
 - (void)__semi {
-    
-    [self match:CSS_TOKEN_KIND_SEMI discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_SEMI discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchSemi:)];
 }
@@ -637,8 +639,8 @@
 }
 
 - (void)__openParen {
-    
-    [self match:CSS_TOKEN_KIND_OPENPAREN discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_OPENPAREN discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchOpenParen:)];
 }
@@ -648,8 +650,8 @@
 }
 
 - (void)__closeParen {
-    
-    [self match:CSS_TOKEN_KIND_CLOSEPAREN discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_CLOSEPAREN discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchCloseParen:)];
 }
@@ -659,8 +661,8 @@
 }
 
 - (void)__gt {
-    
-    [self match:CSS_TOKEN_KIND_GT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_GT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchGt:)];
 }
@@ -670,8 +672,8 @@
 }
 
 - (void)__tilde {
-    
-    [self match:CSS_TOKEN_KIND_TILDE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_TILDE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchTilde:)];
 }
@@ -681,8 +683,8 @@
 }
 
 - (void)__pipe {
-    
-    [self match:CSS_TOKEN_KIND_PIPE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_PIPE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchPipe:)];
 }
@@ -692,8 +694,8 @@
 }
 
 - (void)__fwdSlash {
-    
-    [self match:CSS_TOKEN_KIND_FWDSLASH discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_FWDSLASH discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchFwdSlash:)];
 }
@@ -703,8 +705,8 @@
 }
 
 - (void)__hash {
-    
-    [self match:CSS_TOKEN_KIND_HASH discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_HASH discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchHash:)];
 }
@@ -714,8 +716,8 @@
 }
 
 - (void)__dot {
-    
-    [self match:CSS_TOKEN_KIND_DOT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_DOT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchDot:)];
 }
@@ -725,8 +727,8 @@
 }
 
 - (void)__at {
-    
-    [self match:CSS_TOKEN_KIND_AT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_AT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchAt:)];
 }
@@ -736,8 +738,8 @@
 }
 
 - (void)__bang {
-    
-    [self match:CSS_TOKEN_KIND_BANG discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CSS_TOKEN_KIND_BANG discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchBang:)];
 }
@@ -747,8 +749,8 @@
 }
 
 - (void)__num {
-    
-    [self matchNumber:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchNumber:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchNum:)];
 }

@@ -1,5 +1,6 @@
 #import "SemanticPredicateParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface SemanticPredicateParser ()
@@ -37,17 +38,18 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self start_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf start_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__start {
-    
+    PKParser_weakSelfDecl;
     do {
-        [self nonReserved_]; 
-    } while ([self speculate:^{ [self nonReserved_]; }]);
+        [PKParser_weakSelf nonReserved_];
+    } while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf nonReserved_];}]);
 
     [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
@@ -57,9 +59,9 @@
 }
 
 - (void)__nonReserved {
-    
+    PKParser_weakSelfDecl;
     [self testAndThrow:(id)^{ return ![@[@"goto", @"const"] containsObject:LS(1)]; }]; 
-    [self matchWord:NO]; 
+    [PKParser_weakSelf matchWord:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchNonReserved:)];
 }

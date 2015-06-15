@@ -1,5 +1,6 @@
 #import "TableIndexParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface TableIndexParser ()
@@ -34,17 +35,18 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self qualifiedTableName_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf qualifiedTableName_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)qualifiedTableName_ {
-    
-    [self name_]; 
-    [self indexOpt_]; 
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf name_];
+    [PKParser_weakSelf indexOpt_];
+    [PKParser_weakSelf execute:^{
     
     // now stack contains 3 `NSString`s. 
     // ["mydb", "mytable", "foo"]
@@ -59,34 +61,34 @@
 }
 
 - (void)databaseName_ {
-    
-    [self matchWord:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchWord:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchDatabaseName:)];
 }
 
 - (void)tableName_ {
-    
-    [self matchWord:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchWord:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchTableName:)];
 }
 
 - (void)indexName_ {
-    
-    [self matchQuotedString:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchQuotedString:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchIndexName:)];
 }
 
 - (void)name_ {
-    
-    if ([self speculate:^{ [self databaseName_]; [self match:TABLEINDEX_TOKEN_KIND_DOT discard:YES]; }]) {
-        [self databaseName_]; 
-        [self match:TABLEINDEX_TOKEN_KIND_DOT discard:YES]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf databaseName_];[PKParser_weakSelf match:TABLEINDEX_TOKEN_KIND_DOT discard:YES];}]) {
+        [PKParser_weakSelf databaseName_];
+        [PKParser_weakSelf match:TABLEINDEX_TOKEN_KIND_DOT discard:YES];
     }
-    [self tableName_]; 
-    [self execute:^{
+    [PKParser_weakSelf tableName_];
+    [PKParser_weakSelf execute:^{
     
     // now stack contains 2 `PKToken`s of type Word
     // [<Word «mydb»>, <Word «mytable»>]
@@ -102,12 +104,12 @@
 }
 
 - (void)indexOpt_ {
-    
-    if ([self predicts:TABLEINDEX_TOKEN_KIND_INDEXED, TABLEINDEX_TOKEN_KIND_NOT_UPPER, 0]) {
-        [self index_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TABLEINDEX_TOKEN_KIND_INDEXED, TABLEINDEX_TOKEN_KIND_NOT_UPPER, 0]) {
+        [PKParser_weakSelf index_];
     } else {
-        [self matchEmpty:NO]; 
-        [self execute:^{
+        [PKParser_weakSelf matchEmpty:NO];
+        [PKParser_weakSelf execute:^{
          PUSH(@""); 
         }];
     }
@@ -116,12 +118,12 @@
 }
 
 - (void)index_ {
-    
-    if ([self predicts:TABLEINDEX_TOKEN_KIND_INDEXED, 0]) {
-        [self match:TABLEINDEX_TOKEN_KIND_INDEXED discard:YES]; 
-        [self match:TABLEINDEX_TOKEN_KIND_BY discard:YES]; 
-        [self indexName_]; 
-        [self execute:^{
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TABLEINDEX_TOKEN_KIND_INDEXED, 0]) {
+        [PKParser_weakSelf match:TABLEINDEX_TOKEN_KIND_INDEXED discard:YES];
+        [PKParser_weakSelf match:TABLEINDEX_TOKEN_KIND_BY discard:YES];
+        [PKParser_weakSelf indexName_];
+        [PKParser_weakSelf execute:^{
          
         // now top of stack will be a Quoted String `PKToken`
         // […, <Quoted String «"foo"»>]
@@ -133,14 +135,14 @@
         PUSH(indexName);
     
         }];
-    } else if ([self predicts:TABLEINDEX_TOKEN_KIND_NOT_UPPER, 0]) {
-        [self match:TABLEINDEX_TOKEN_KIND_NOT_UPPER discard:YES]; 
-        [self match:TABLEINDEX_TOKEN_KIND_INDEXED discard:YES]; 
-        [self execute:^{
+    } else if ([PKParser_weakSelf predicts:TABLEINDEX_TOKEN_KIND_NOT_UPPER, 0]) {
+        [PKParser_weakSelf match:TABLEINDEX_TOKEN_KIND_NOT_UPPER discard:YES];
+        [PKParser_weakSelf match:TABLEINDEX_TOKEN_KIND_INDEXED discard:YES];
+        [PKParser_weakSelf execute:^{
          PUSH(@""); 
         }];
     } else {
-        [self raise:@"No viable alternative found in rule 'index'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'index'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchIndex:)];
