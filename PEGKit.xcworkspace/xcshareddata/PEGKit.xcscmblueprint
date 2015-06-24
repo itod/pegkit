@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "59BCCFF68011542A051983972F0A0E4EA5C0D708",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "948C6829607794C9C905880E4DE9DD942A04092A" : 0,
+    "59BCCFF68011542A051983972F0A0E4EA5C0D708" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "54CD6689-B08E-44BA-93C6-BCA349D91063",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "948C6829607794C9C905880E4DE9DD942A04092A" : "pegkit\/lib\/TDTemplateEngine\/",
+    "59BCCFF68011542A051983972F0A0E4EA5C0D708" : "pegkit\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PEGKit",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PEGKit.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/itod\/pegkit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "59BCCFF68011542A051983972F0A0E4EA5C0D708"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/itod\/tdtemplateengine.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "948C6829607794C9C905880E4DE9DD942A04092A"
+    }
+  ]
+}
