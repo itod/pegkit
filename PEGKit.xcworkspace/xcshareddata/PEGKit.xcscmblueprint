@@ -4,11 +4,13 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0DD07F137CC8ED7E2DAF2CDB69C18BF167A4DE11" : 0,
     "948C6829607794C9C905880E4DE9DD942A04092A" : 0,
     "59BCCFF68011542A051983972F0A0E4EA5C0D708" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "54CD6689-B08E-44BA-93C6-BCA349D91063",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0DD07F137CC8ED7E2DAF2CDB69C18BF167A4DE11" : "..\/..",
     "948C6829607794C9C905880E4DE9DD942A04092A" : "pegkit\/lib\/TDTemplateEngine\/",
     "59BCCFF68011542A051983972F0A0E4EA5C0D708" : "pegkit\/"
   },
@@ -16,6 +18,11 @@
   "DVTSourceControlWorkspaceBlueprintVersion" : 203,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PEGKit.xcworkspace",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:drekka\/StoryTeller.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0DD07F137CC8ED7E2DAF2CDB69C18BF167A4DE11"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/itod\/pegkit.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
