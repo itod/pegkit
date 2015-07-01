@@ -2418,6 +2418,7 @@
 				GCC_PREFIX_HEADER = PEGKit_Prefix.pch;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "res/PEGKit-Info.plist";
+				INSTALL_PATH = "@rpath";
 				LLVM_LTO = NO;
 				PRODUCT_NAME = PEGKit;
 				SDKROOT = iphoneos;
@@ -2443,6 +2444,7 @@
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "res/PEGKit-Info.plist";
+				INSTALL_PATH = "@rpath";
 				LLVM_LTO = NO;
 				PRODUCT_NAME = PEGKit;
 				SDKROOT = iphoneos;

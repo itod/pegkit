@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6C8AE1501B3A313A00DF2B9F"
-               BuildableName = "PEGKit iOS.framework"
+               BuildableName = "PEGKit.framework"
                BlueprintName = "PEGKit iOS"
                ReferencedContainer = "container:PEGKit.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6C8AE1501B3A313A00DF2B9F"
-            BuildableName = "PEGKit iOS.framework"
+            BuildableName = "PEGKit.framework"
             BlueprintName = "PEGKit iOS"
             ReferencedContainer = "container:PEGKit.xcodeproj">
          </BuildableReference>
@@ -55,7 +55,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6C8AE1501B3A313A00DF2B9F"
-            BuildableName = "PEGKit iOS.framework"
+            BuildableName = "PEGKit.framework"
             BlueprintName = "PEGKit iOS"
             ReferencedContainer = "container:PEGKit.xcodeproj">
          </BuildableReference>
@@ -73,7 +73,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6C8AE1501B3A313A00DF2B9F"
-            BuildableName = "PEGKit iOS.framework"
+            BuildableName = "PEGKit.framework"
             BlueprintName = "PEGKit iOS"
             ReferencedContainer = "container:PEGKit.xcodeproj">
          </BuildableReference>
