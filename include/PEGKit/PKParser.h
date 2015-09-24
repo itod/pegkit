@@ -76,6 +76,11 @@ enum {
  */
 -(void)parser:(PKParser *)parser didMatch:(NSString *)rule;
 
+/**
+ * Called when the parse fails to match anything.
+ */
+-(void)parser:(PKParser *)parser didFailToMatch:(PKAssembly *)assembly;
+
 @end
 
 

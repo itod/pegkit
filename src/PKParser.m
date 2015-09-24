@@ -40,10 +40,6 @@ NSInteger PEGKitRecognitionErrorCode = 1;
 NSString * const PEGKitRecognitionTokenMatchFailed = @"Failed to match next input token";
 NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
 
-@interface NSObject ()
-- (void)parser:(PKParser *)p didFailToMatch:(PKAssembly *)a;
-@end
-
 @interface PKAssembly ()
 - (void)consume:(PKToken *)tok;
 @property (nonatomic, readwrite, retain) NSMutableArray *stack;
