@@ -56,9 +56,42 @@ enum {
     TOKEN_KIND_BUILTIN_ANY = 13,
 };
 
+
+@class PKParser;
+@protocol PKParserDelegate <NSObject>
+
+@optional
+
+/**
+ * Called just before a grammar rule will be matched.
+ *
+ * @param rule The name of the rule that will be matched (in sentence case, to match the willMatchFoo callback).
+ */
+-(void)parser:(PKParser *)parser willMatch:(NSString *)rule;
+
+/**
+ * Called after a grammar rule has been matched.
+ *
+ * @param rule The name of the rule that has been matched (in sentence case, to match the didMatchFoo callback).
+ */
+-(void)parser:(PKParser *)parser didMatch:(NSString *)rule;
+
+@end
+
+
 @interface PKParser : NSObject <PKTokenizerDelegate>
 
-- (instancetype)initWithDelegate:(id)d; // designated initializer
+/**
+ * Designated initializer.
+ *
+ * @param d This will receive calls to -parser:willMatchFoo: and parser:didMatchFoo:
+ * where Foo is the name of the grammar rule that is being matched.  These calls
+ * will receive self and self.assembly as parameters.  This delegate may optionally
+ * also implement PKParserDelegate and receive calls to -parser:willMatch: and
+ * -parser:didMatch:.  All these calls are optional and so the delegate need not
+ * implement all of them.
+ */
+- (instancetype)initWithDelegate:(id)d;
 
 - (id)parseString:(NSString *)input error:(NSError **)outErr;
 - (id)parseStream:(NSInputStream *)input error:(NSError **)outErr;
