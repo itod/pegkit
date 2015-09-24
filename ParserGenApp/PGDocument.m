@@ -214,7 +214,7 @@
     path = [path stringByAppendingPathComponent:filename];
     
     if ([path length]) {
-        [[NSWorkspace sharedWorkspace] selectFile:path inFileViewerRootedAtPath:nil];
+        [[NSWorkspace sharedWorkspace] selectFile:path inFileViewerRootedAtPath:@""];
     }
 }
 
