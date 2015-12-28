@@ -23,16 +23,9 @@
 #import <PEGKit/PKEmailState.h>
 #import <PEGKit/PKReader.h>
 #import <PEGKit/PKTokenizer.h>
+#import <PEGKit/PKTokenizerState+Subclass.h>
 #import <PEGKit/PKToken+Subclass.h>
 #import <PEGKit/PKTypes.h>
-
-@interface PKTokenizerState ()
-- (void)resetWithReader:(PKReader *)r;
-- (void)append:(PKUniChar)c;
-- (NSString *)bufferedString;
-- (PKTokenizerState *)nextTokenizerStateFor:(PKUniChar)c tokenizer:(PKTokenizer *)t;
-@property (nonatomic) NSUInteger offset;
-@end
 
 @interface PKEmailState ()
 - (BOOL)parseNameFromReader:(PKReader *)r;

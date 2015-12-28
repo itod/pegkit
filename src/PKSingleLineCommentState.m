@@ -25,15 +25,8 @@
 #import <PEGKit/PKReader.h>
 #import <PEGKit/PKTokenizer.h>
 #import <PEGKit/PKToken+Subclass.h>
+#import <PEGKit/PKTokenizerState+Subclass.h>
 #import <PEGKit/PKTypes.h>
-
-@interface PKTokenizerState ()
-- (void)resetWithReader:(PKReader *)r;
-- (void)append:(PKUniChar)c;
-- (void)appendString:(NSString *)s;
-- (NSString *)bufferedString;
-@property (nonatomic) NSUInteger offset;
-@end
 
 @interface PKSingleLineCommentState ()
 - (void)addStartMarker:(NSString *)start;

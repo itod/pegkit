@@ -24,26 +24,11 @@
 #import <PEGKit/PKReader.h>
 #import <PEGKit/PKToken+Subclass.h>
 #import <PEGKit/PKTokenizer.h>
+#import <PEGKit/PKTokenizerState+Subclass.h>
 #import <PEGKit/PKSymbolState.h>
 #import <PEGKit/PKWhitespaceState.h>
 #import <PEGKit/PKTypes.h>
 #import "PKSymbolRootNode.h"
-
-@interface PKTokenizerState ()
-- (void)resetWithReader:(PKReader *)r;
-- (PKTokenizerState *)nextTokenizerStateFor:(PKUniChar)c tokenizer:(PKTokenizer *)t;
-
-- (PKUniChar)checkForPositiveNegativeFromReader:(PKReader *)r startingWith:(PKUniChar)cin;
-- (PKUniChar)checkForPrefixFromReader:(PKReader *)r startingWith:(PKUniChar)cin;
-- (PKUniChar)checkForSuffixFromReader:(PKReader *)r startingWith:(PKUniChar)cin tokenizer:(PKTokenizer *)t;
-- (void)parseAllDigitsFromReader:(PKReader *)r startingWith:(PKUniChar)cin;
-- (PKToken *)checkForErroneousMatchFromReader:(PKReader *)r tokenizer:(PKTokenizer *)t;
-- (void)applySuffixFromReader:(PKReader *)r;
-
-- (void)append:(PKUniChar)c;
-- (void)appendString:(NSString *)s;
-- (NSString *)bufferedString;
-@end
 
 @interface PKNumberState ()
 - (double)absorbDigitsFromReader:(PKReader *)r;
@@ -67,7 +52,6 @@
 
 @property (nonatomic, retain) NSString *prefix;
 @property (nonatomic, retain) NSString *suffix;
-@property (nonatomic) NSUInteger offset;
 @end
 
 @implementation PKNumberState {

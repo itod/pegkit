@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 #import <PEGKit/PKTokenizerState.h>
+#import <PEGKit/PKTokenizerState+Subclass.h>
 #import <PEGKit/PKTokenizer.h>
 #import <PEGKit/PKReader.h>
 
@@ -31,14 +32,8 @@
 @end
 
 @interface PKTokenizerState ()
-- (void)resetWithReader:(PKReader *)r;
-- (void)append:(PKUniChar)c;
-- (void)appendString:(NSString *)s;
-- (NSString *)bufferedString;
-- (PKTokenizerState *)nextTokenizerStateFor:(PKUniChar)c tokenizer:(PKTokenizer *)t;
 
 @property (nonatomic, retain) NSMutableString *stringbuf;
-@property (nonatomic) NSUInteger offset;
 @property (nonatomic, retain) NSMutableArray *fallbackStates;
 @end
 

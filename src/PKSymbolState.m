@@ -24,13 +24,8 @@
 #import <PEGKit/PKToken+Subclass.h>
 #import <PEGKit/PKReader.h>
 #import <PEGKit/PKTokenizer.h>
+#import <PEGKit/PKTokenizerState+Subclass.h>
 #import "PKSymbolRootNode.h"
-
-@interface PKTokenizerState ()
-- (void)resetWithReader:(PKReader *)r;
-- (PKTokenizerState *)nextTokenizerStateFor:(PKUniChar)c tokenizer:(PKTokenizer *)t;
-@property (nonatomic) NSUInteger offset;
-@end
 
 @interface PKSymbolState ()
 - (PKToken *)symbolTokenWith:(PKUniChar)cin;
