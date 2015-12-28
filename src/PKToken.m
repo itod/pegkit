@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <PEGKit/PKToken.h>
+#import <PEGKit/PKToken+Subclass.h>
 #import <PEGKit/PKTypes.h>
 #import "NSString+PEGKitAdditions.h"
 
@@ -80,7 +80,6 @@ static PKTokenEOF *EOFToken = nil;
 @property (nonatomic, readwrite) PKTokenType tokenType;
 @property (nonatomic, readwrite, copy) id value;
 
-@property (nonatomic, readwrite) NSUInteger offset;
 @property (nonatomic, readwrite) NSUInteger lineNumber;
 @end
 

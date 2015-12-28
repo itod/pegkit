@@ -24,11 +24,7 @@
 #import <PEGKit/PKHashtagState.h>
 #import <PEGKit/PKReader.h>
 #import <PEGKit/PKTokenizer.h>
-#import <PEGKit/PKToken.h>
-
-@interface PKToken ()
-@property (nonatomic, readwrite) NSUInteger offset;
-@end
+#import <PEGKit/PKToken+Subclass.h>
 
 @interface PKTokenizerState ()
 - (void)resetWithReader:(PKReader *)r;

@@ -23,15 +23,11 @@
 #import <PEGKit/PKURLState.h>
 #import <PEGKit/PKReader.h>
 #import <PEGKit/PKTokenizer.h>
-#import <PEGKit/PKToken.h>
+#import <PEGKit/PKToken+Subclass.h>
 #import <PEGKit/PKTypes.h>
 
 // Gruber original
 //  \b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))
-
-@interface PKToken ()
-@property (nonatomic, readwrite) NSUInteger offset;
-@end
 
 @interface PKTokenizerState ()
 - (void)resetWithReader:(PKReader *)r;

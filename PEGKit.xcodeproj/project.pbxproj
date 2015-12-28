@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D0466A918E1D9770022A1BC /* OCMock.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D37214CA18DF3B0100525058 /* OCMock.framework */; };
+		4032A4C01C3115D0005442DD /* PKToken+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 4032A4BF1C3115D0005442DD /* PKToken+Subclass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D306298218E1ED5D00EF745E /* TDTestScaffold.m in Sources */ = {isa = PBXBuildFile; fileRef = D306298118E1ED5D00EF745E /* TDTestScaffold.m */; };
 		D3083AB61705F05C00DA6F95 /* elementsAssign.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3083AB51705F05C00DA6F95 /* elementsAssign.grammar */; };
 		D3083AB91705F09B00DA6F95 /* ElementAssignParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3083AB81705F09B00DA6F95 /* ElementAssignParserTest.m */; };
@@ -478,6 +479,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4032A4BF1C3115D0005442DD /* PKToken+Subclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PKToken+Subclass.h"; path = "include/PEGKit/PKToken+Subclass.h"; sourceTree = "<group>"; };
 		D302272A17020F9400594F16 /* PGClassImplementationTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGClassImplementationTemplate.txt; path = res/PGClassImplementationTemplate.txt; sourceTree = "<group>"; };
 		D306298118E1ED5D00EF745E /* TDTestScaffold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTestScaffold.m; path = test/TDTestScaffold.m; sourceTree = "<group>"; };
 		D3083AB51705F05C00DA6F95 /* elementsAssign.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = elementsAssign.grammar; path = res/elementsAssign.grammar; sourceTree = "<group>"; };
@@ -1161,6 +1163,7 @@
 			children = (
 				D3C221C30FFE8C07004514FE /* PKToken.h */,
 				D34BAE950FF9D20900D7773A /* PKToken.m */,
+				4032A4BF1C3115D0005442DD /* PKToken+Subclass.h */,
 				D3C221C90FFE8C15004514FE /* PKTokenizer.h */,
 				D34BAE990FF9D20900D7773A /* PKTokenizer.m */,
 				D3C221CC0FFE8C1B004514FE /* PKTokenizerState.h */,
@@ -1539,6 +1542,7 @@
 				D317C0E418D1F4050036BE75 /* PKMultiLineCommentState.h in Headers */,
 				D317C0E718D1F4050036BE75 /* PKTwitterState.h in Headers */,
 				D317C0DF18D1F4050036BE75 /* PKWordState.h in Headers */,
+				4032A4C01C3115D0005442DD /* PKToken+Subclass.h in Headers */,
 				D317C0D618D1F4050036BE75 /* PKAssembly.h in Headers */,
 				D317C0E518D1F4050036BE75 /* PKEmailState.h in Headers */,
 				D317C0E818D1F4050036BE75 /* PKHashtagState.h in Headers */,
