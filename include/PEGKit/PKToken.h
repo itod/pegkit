@@ -217,6 +217,12 @@ typedef NS_ENUM(NSInteger, PKTokenType) {
 @property (nonatomic, readonly) NSUInteger lineNumber;
 
 /*!
+ @property   column
+ @brief      The zero-based position within the line of the start of this token in the original source string.
+ */
+@property (nonatomic, readonly) NSUInteger column;
+
+/*!
     @property   tokenKind
     @brief      The kind of this token.
 */
