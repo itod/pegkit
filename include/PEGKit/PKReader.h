@@ -78,7 +78,7 @@
 
 /*!
     @property   offset
-    @brief      This reader's current offset in string
+    @brief      This reader's current offset in string or the offset from the start of the stream.
 */
 @property (nonatomic, readonly) NSUInteger offset;
 

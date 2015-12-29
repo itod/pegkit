@@ -58,6 +58,7 @@
 
 @interface PKReader ()
 @property (nonatomic) NSUInteger offset;
+@property (nonatomic) NSUInteger bufOffset;
 @property (nonatomic) NSUInteger length;
 
 /*!
@@ -71,6 +72,9 @@
     self.offset wraps at 0 and self.bufsize of course.
 
     This is not used if self.stream is not in use.
+
+    Note that self.offset and self.bufOffset are not the same, because self.offset is defined to be
+    from the start of the stream, but self.bufOffset wraps at the end of the buffer.
  */
 @property (nonatomic) PKUniChar * buffer;
 @property (nonatomic) NSUInteger bufsize;
@@ -144,6 +148,7 @@
     free(self.buffer);
     self.buffer = malloc(sizeof(PKUniChar) * self.bufsize);
     self.offset = 0;
+    self.bufOffset = 0;
     self.length = 0;
 }
 
@@ -153,6 +158,7 @@
         return [self readFromString];
     }
     else {
+        self.offset++;
         if (self.length > 0) {
             return [self popPKUniCharFromBuffer];
         }
@@ -259,10 +265,10 @@
     assert(ch != PKEOF);
     assert(self.length == 0);
 
-    self.buffer[self.offset] = ch;
-    self.offset++;
-    if (self.offset >= self.bufsize) {
-        self.offset = 0;
+    self.buffer[self.bufOffset] = ch;
+    self.bufOffset++;
+    if (self.bufOffset >= self.bufsize) {
+        self.bufOffset = 0;
     }
 }
 
@@ -270,10 +276,10 @@
 -(PKUniChar)popPKUniCharFromBuffer {
     assert(self.length > 0);
 
-    PKUniChar result = self.buffer[self.offset];
-    self.offset++;
-    if (self.offset >= self.bufsize) {
-        self.offset = 0;
+    PKUniChar result = self.buffer[self.bufOffset];
+    self.bufOffset++;
+    if (self.bufOffset >= self.bufsize) {
+        self.bufOffset = 0;
     }
     self.length--;
     return result;
@@ -282,11 +288,14 @@
 
 - (void)unread {
     if (self.stream) {
-        if (self.offset == 0) {
-            self.offset = self.bufsize - 1;
+        assert(self.offset > 0);
+        self.offset--;
+
+        if (self.bufOffset == 0) {
+            self.bufOffset = self.bufsize - 1;
         }
         else {
-            self.offset--;
+            self.bufOffset--;
         }
         self.length++;
     }
