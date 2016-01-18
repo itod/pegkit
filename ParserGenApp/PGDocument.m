@@ -23,21 +23,13 @@
 #import "PGDocument.h"
 //#import <PEGKit/PEGKit.h>
 #import "PGParserGenVisitor.h"
-
-@interface PGDocument ()
-@property (nonatomic, retain) PGParserFactory *factory;
-@property (nonatomic, retain) PGRootNode *root;
-@property (nonatomic, retain) PGParserGenVisitor *visitor;
-@end
+#import "PGGenerator.h"
 
 @implementation PGDocument
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.factory = [PGParserFactory factory];
-        _factory.collectTokenKinds = YES;
-        
         self.enableARC = YES;
         self.enableHybridDFA = YES;
         self.enableMemoization = YES;
@@ -63,9 +55,6 @@
     
     self.textView = nil;
     
-    self.factory = nil;
-    self.root = nil;
-    self.visitor = nil;
     [super dealloc];
 }
 
@@ -154,7 +143,18 @@
     self.error = nil;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self generateWithDestinationPath:destPath parserName:parserName grammar:grammar];
+        PGGenerator * generator = [[PGGenerator alloc] init];
+        generator.destinationPath = destPath;
+        generator.parserName = parserName;
+        generator.grammar = grammar;
+        generator.enableARC = self.enableARC;
+        generator.enableAutomaticErrorRecovery = self.enableAutomaticErrorRecovery;
+        generator.enableHybridDFA = self.enableHybridDFA;
+        generator.enableMemoization = self.enableMemoization;
+        [generator generate];
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            [self done];
+        });
     });
 }
 
@@ -221,70 +221,6 @@
 
 #pragma mark -
 #pragma mark Private
-
-
-- (void)generateWithDestinationPath:(NSString *)destPath parserName:(NSString *)parserName grammar:(NSString *)grammar {
-    NSError *err = nil;
-    self.root = (id)[_factory ASTFromGrammar:_grammar error:&err];
-    if (err) {
-        self.error = err;
-        goto done;
-    }
-    
-    NSAssert([_root.startMethodName length], @"");
-    NSString *className = self.parserName;
-    NSAssert([className length], @"");
-    if (![className hasSuffix:@"Parser"]) {
-        className = [NSString stringWithFormat:@"%@Parser", className];
-    }
-    
-    _root.grammarName = self.parserName;
-    
-    self.visitor = [[[PGParserGenVisitor alloc] init] autorelease];
-    _visitor.enableARC = _enableARC;
-    _visitor.enableHybridDFA = _enableHybridDFA; //NSAssert(_enableHybridDFA, @"");
-    _visitor.enableMemoization = _enableMemoization;
-    _visitor.enableAutomaticErrorRecovery = _enableAutomaticErrorRecovery;
-    _visitor.delegatePreMatchCallbacksOn = _delegatePreMatchCallbacksOn;
-    _visitor.delegatePostMatchCallbacksOn = _delegatePostMatchCallbacksOn;
-    
-    @try {
-        [_root visit:_visitor];
-    }
-    @catch (NSException *ex) {
-        id userInfo = @{NSLocalizedFailureReasonErrorKey: [ex reason]};
-        NSError *err = [NSError errorWithDomain:[ex name] code:0 userInfo:userInfo];
-        self.error = err;
-        goto done;
-    }
-    
-    NSString *path = [[NSString stringWithFormat:@"%@/%@.h", destPath, className] stringByExpandingTildeInPath];
-    err = nil;
-    if (![_visitor.interfaceOutputString writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&err]) {
-        NSMutableString *str = [NSMutableString stringWithString:[err localizedFailureReason]];
-        [str appendFormat:@"\n\n%@", [path stringByDeletingLastPathComponent]];
-        id dict = [NSMutableDictionary dictionaryWithDictionary:[err userInfo]];
-        dict[NSLocalizedFailureReasonErrorKey] = str;
-        self.error = [NSError errorWithDomain:[err domain] code:[err code] userInfo:dict];
-        goto done;
-    }
-    
-    path = [[NSString stringWithFormat:@"%@/%@.m", destPath, className] stringByExpandingTildeInPath];
-    err = nil;
-    if (![_visitor.implementationOutputString writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&err]) {
-        NSMutableString *str = [NSMutableString stringWithString:[err localizedFailureReason]];
-        [str appendFormat:@"\n\n%@", [path stringByDeletingLastPathComponent]];
-        id dict = [NSMutableDictionary dictionaryWithDictionary:[err userInfo]];
-        dict[NSLocalizedFailureReasonErrorKey] = str;
-        self.error = [NSError errorWithDomain:[err domain] code:[err code] userInfo:dict];
-        goto done;
-    }
-    
-done:
-    dispatch_async(dispatch_get_main_queue(), ^(void){
-        [self done];
-    });
-}
 
 
 - (void)done {
