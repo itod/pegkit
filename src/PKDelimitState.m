@@ -23,7 +23,8 @@
 #import <PEGKit/PKDelimitState.h>
 #import <PEGKit/PKReader.h>
 #import <PEGKit/PKTokenizer.h>
-#import <PEGKit/PKToken.h>
+#import <PEGKit/PKTokenizerState+Subclass.h>
+#import <PEGKit/PKToken+Subclass.h>
 #import <PEGKit/PKWhitespaceState.h>
 #import <PEGKit/PKTypes.h>
 #import "PKSymbolRootNode.h"
@@ -31,22 +32,8 @@
 #import "PKDelimitDescriptorCollection.h"
 #import "PKDelimitDescriptor.h"
 
-@interface PKToken ()
-@property (nonatomic, readwrite) NSUInteger offset;
-@end
-
 @interface PKTokenizer ()
 - (NSInteger)tokenKindForStringValue:(NSString *)str;
-@end
-
-@interface PKTokenizerState ()
-- (void)resetWithReader:(PKReader *)r;
-- (void)append:(PKUniChar)c;
-- (void)appendString:(NSString *)s;
-- (NSString *)bufferedString;
-- (PKTokenizerState *)nextTokenizerStateFor:(PKUniChar)c tokenizer:(PKTokenizer *)t;
-- (void)addStartMarker:(NSString *)start endMarker:(NSString *)end allowedCharacterSet:(NSCharacterSet *)set tokenKind:(NSInteger)kind;
-@property (nonatomic) NSUInteger offset;
 @end
 
 @interface PKDelimitState ()

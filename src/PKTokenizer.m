@@ -21,15 +21,12 @@
 // THE SOFTWARE.
 
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKTokenizerState+Subclass.h>
 
 #define STATE_COUNT 256
 
 @interface PKToken ()
 @property (nonatomic, readwrite) NSUInteger lineNumber;
-@end
-
-@interface PKTokenizerState ()
-- (PKTokenizerState *)nextTokenizerStateFor:(PKUniChar)c tokenizer:(PKTokenizer *)t;
 @end
 
 @interface PKTokenizer ()

@@ -21,20 +21,11 @@
 // THE SOFTWARE.
 
 #import <PEGKit/PKSymbolState.h>
-#import <PEGKit/PKToken.h>
+#import <PEGKit/PKToken+Subclass.h>
 #import <PEGKit/PKReader.h>
 #import <PEGKit/PKTokenizer.h>
+#import <PEGKit/PKTokenizerState+Subclass.h>
 #import "PKSymbolRootNode.h"
-
-@interface PKToken ()
-@property (nonatomic, readwrite) NSUInteger offset;
-@end
-
-@interface PKTokenizerState ()
-- (void)resetWithReader:(PKReader *)r;
-- (PKTokenizerState *)nextTokenizerStateFor:(PKUniChar)c tokenizer:(PKTokenizer *)t;
-@property (nonatomic) NSUInteger offset;
-@end
 
 @interface PKSymbolState ()
 - (PKToken *)symbolTokenWith:(PKUniChar)cin;

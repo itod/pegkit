@@ -22,21 +22,12 @@
 
 #import <PEGKit/PKCommentState.h>
 #import <PEGKit/PKTokenizer.h>
-#import <PEGKit/PKToken.h>
+#import <PEGKit/PKTokenizerState+Subclass.h>
+#import <PEGKit/PKToken+Subclass.h>
 #import <PEGKit/PKReader.h>
 #import <PEGKit/PKSingleLineCommentState.h>
 #import <PEGKit/PKMultiLineCommentState.h>
 #import "PKSymbolRootNode.h"
-
-@interface PKToken ()
-@property (nonatomic, readwrite) NSUInteger offset;
-@end
-
-@interface PKTokenizerState ()
-- (void)resetWithReader:(PKReader *)r;
-- (PKTokenizerState *)nextTokenizerStateFor:(PKUniChar)c tokenizer:(PKTokenizer *)t;
-@property (nonatomic) NSUInteger offset;
-@end
 
 @interface PKCommentState ()
 @property (nonatomic, retain) PKSymbolRootNode *rootNode;

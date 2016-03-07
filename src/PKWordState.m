@@ -23,22 +23,12 @@
 #import <PEGKit/PKWordState.h>
 #import <PEGKit/PKReader.h>
 #import <PEGKit/PKTokenizer.h>
-#import <PEGKit/PKToken.h>
+#import <PEGKit/PKTokenizerState+Subclass.h>
+#import <PEGKit/PKToken+Subclass.h>
 #import <PEGKit/PKTypes.h>
 
 #define PKTRUE (id)kCFBooleanTrue
 #define PKFALSE (id)kCFBooleanFalse
-
-@interface PKToken ()
-@property (nonatomic, readwrite) NSUInteger offset;
-@end
-
-@interface PKTokenizerState ()
-- (void)resetWithReader:(PKReader *)r;
-- (void)append:(PKUniChar)c;
-- (NSString *)bufferedString;
-@property (nonatomic) NSUInteger offset;
-@end
 
 @interface PKWordState () 
 - (BOOL)isWordChar:(PKUniChar)c;
