@@ -30,9 +30,10 @@ PEGKit is a re-write of an earlier framework by the same author called [ParseKit
 
 
 ##Documentation
-TODO
 
-###Discard directive
+###Grammars
+
+####Discard directive
 
 The post-fix `!` operator can be used to discard a token which is not needed to compute a result. 
 
@@ -43,7 +44,7 @@ Example:
  
  The `+` token will not be necessary to calculate the result of matched addition expressions, so we can discard it.
  
-###Actions
+####Actions
 
 Actions are small pieces of Objective-C source code embedded directly in a PEGKit grammar rule. Actions are enclosed in curly braces and placed after any rule reference.
 
@@ -82,7 +83,7 @@ Example 2:
     item  = Word;
 
 
-###Rule Actions
+####Rule Actions
 * **`@before`** - setup code goes here. executed before parsing of this rule begins.
 * **`@after`** - tear down code goes here. executed after parsing of this rule ends.
 
@@ -111,11 +112,11 @@ PEGKit has a feature inspired by ANTLR called **"Grammar Actions"**. Grammar Act
 
 Here are all of the Grammar Actions currently available, along with a description of where their bodies are inserted in the source code of your generated parser:
 
-####**In the .h file:**
+#####**In the .h file:**
 * **`@h`** - top of .h file
 * **`@interface`** - inside the `@interface` portion of header
 
-####**In the .m file:**
+#####**In the .m file:**
 * **`@m`** - top of .m file
 * **`@extension`** - inside a private `@interface MyParser ()` class extension in the .m file
 * **`@ivars`** - private ivars inside the `@implementation MyParser {}` in the .m file
@@ -127,7 +128,7 @@ Here are all of the Grammar Actions currently available, along with a descriptio
 
 (notice that the `@before` and `@after` Grammar Actions listed here are distinct from the `@before` and `@after` which may also be placed in each individual rule.)
 
-###Semantic Predicates
+####Semantic Predicates
 Semantic Predicates are another feature lifted directly from ANTLR. Consider:
 
     lowercaseWord = { islower([LS(1) characterAtIndex:0]) }? Word;
