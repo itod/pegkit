@@ -236,7 +236,7 @@ PKTokenizer *t = [PKTokenizer tokenizerWithString:s];
 …
 ```
 
-Now `«===»` strings will be recognized as a single Symbol token with a stringValue of `«===»`. There is a corresponding -[PKSymbolState remove:] method for removing recognition of given multi-char symbols.
+Now `«===»` strings will be recognized as a single Symbol token with a stringValue of `«===»`. There is a corresponding `-[PKSymbolState remove:]` method for removing recognition of given multi-char symbols.
 
 If you don't want to allow digits within Word tokens (digits **are** allowed within Words by default):
 
@@ -246,7 +246,7 @@ If you don't want to allow digits within Word tokens (digits **are** allowed wit
 …
 ```
 
-Say you want to allow floating-point Number tokens to end with a `«.»`, sans trailing `«0»`. In other words, you want `«49.»` to be recognized as a single Number token with a floatValue of `«49.0»` rather than a Number token followed by a Symbol token with a stringValue of `«.»`:
+Say you want to allow floating-point Number tokens to end with a `«.»`, sans trailing `«0»`. In other words, you want `«49.»` to be recognized as a single `Number` token with a `floatValue` of `«49.0»` rather than a Number token followed by a `Symbol` token with a `stringValue` of `«.»`:
 
 ```objc
 …
@@ -254,7 +254,7 @@ t.numberState.allowsTrailingDot = YES;
 …
 ```
 
-Recognition of scientific notation (exponential numbers) can be enabled to recognize numbers like `«10e+100»`, `«6.626068E-34»` and `«6.0221415e23»`. The resulting `PKToken` objects will have floatValues which represent the full value of the exponential number, yet retain the original exponential representation as their stringValues.
+Recognition of scientific notation (exponential numbers) can be enabled to recognize numbers like `«10e+100»`, `«6.626068E-34»` and `«6.0221415e23»`. The resulting `PKToken` objects will have floatValues which represent the full value of the exponential number, yet retain the original exponential representation as their `stringValue`s.
 
 ```objc
 …
@@ -412,7 +412,7 @@ Actions are small pieces of Objective-C source code embedded directly in a PEGKi
 
 In any action, there is a `self.assembly` object available (of type `PKAssembly`) which serves as a **stack** (via the `PUSH()` and `POP()` convenience macros). The assembly's stack contains the most recently parsed tokens (instances of `PKToken`), and also serves as a place to store your work as you compute the result.
 
-Actions are executed immediately after their preceeding rule reference matches. So tokens which have recently been matched are available at the top of the assembly's stack.
+Actions are executed immediately after their preceding rule reference matches. So tokens which have recently been matched are available at the top of the assembly's stack.
 
 Example 1:
 
