@@ -545,7 +545,10 @@ end symbol.
 
    [3]: #custom-behavior
 
+---
+<a name="grammars"></a>
 ###Grammars
+---
 
 ####Discard directive
 
@@ -558,6 +561,7 @@ Example:
  
  The `+` token will not be necessary to calculate the result of matched addition expressions, so we can discard it.
  
+<a name="actions"></a>
 ####Actions
 
 Actions are small pieces of Objective-C source code embedded directly in a PEGKit grammar rule. Actions are enclosed in curly braces and placed after any rule reference.
@@ -596,7 +600,7 @@ Example 2:
     or    =  'or'! | '||'!;
     item  = Word;
 
-
+<a name="rule-actions"></a>
 ####Rule Actions
 * **`@before`** - setup code goes here. executed before parsing of this rule begins.
 * **`@after`** - tear down code goes here. executed after parsing of this rule ends.
@@ -621,6 +625,7 @@ Example:
         = ('-'! { _negative = !_negative; })+ num;
     num = Number;
 
+<a name="grammar-actions"></a>
 ####Grammar Actions
 PEGKit has a feature inspired by ANTLR called **"Grammar Actions"**. Grammar Actions are a way to do exactly what you are looking for: inserting arbitrary code in various places in your Parser's .h and .m files. They must be placed at the top of your grammar before any rules are listed.
 
@@ -642,6 +647,7 @@ Here are all of the Grammar Actions currently available, along with a descriptio
 
 (notice that the `@before` and `@after` Grammar Actions listed here are distinct from the `@before` and `@after` which may also be placed in each individual rule.)
 
+<a name="semantic-predicates"></a>
 ####Semantic Predicates
 Semantic Predicates are another feature lifted directly from ANTLR. Consider:
 
