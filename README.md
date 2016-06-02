@@ -203,7 +203,7 @@ configurable. Let's tackle them, starting with the second question first.
 
 #####Changing which characters are allowed within a token of a particular type
 
-Once `PKTokenizer` has decided which token type to create for a given start character (see below), it temporarily passes control to one of its "state" helper objects to finish consumption of characters for the current token. Therefore, the logic for deciding which characters are allowed within a token of a given type is controlled by the "state" objects which are instances of subclasses of the abstract PKTokenizerState class: `PKWordState`, `PKNumberState`, `PKQuoteState`, `PKSymbolState`, `PKWhitespaceState`, `PKCommentState`, and `PKDelimitState`. The state objects are accessible via properties of the `PKTokenizer` object.
+Once `PKTokenizer` has decided which token type to create for a given start character (see below), it temporarily passes control to one of its "state" helper objects to finish consumption of characters for the current token. Therefore, the logic for deciding which characters are allowed within a token of a given type is controlled by the "state" objects which are instances of subclasses of the abstract `PKTokenizerState` class: `PKWordState`, `PKNumberState`, `PKQuoteState`, `PKSymbolState`, `PKWhitespaceState`, `PKCommentState`, and `PKDelimitState`. The state objects are accessible via properties of the `PKTokenizer` object.
 
 <table border="1" cellpadding="5" cellspacing="0" width="100%">
 	<tr>
@@ -254,7 +254,7 @@ t.numberState.allowsTrailingDot = YES;
 …
 ```
 
-Recognition of scientific notation (exponential numbers) can be enabled to recognize numbers like `«10e+100»`, `«6.626068E-34»` and `«6.0221415e23»`. The resulting PKToken objects will have floatValues which represent the full value of the exponential number, yet retain the original exponential representation as their stringValues.
+Recognition of scientific notation (exponential numbers) can be enabled to recognize numbers like `«10e+100»`, `«6.626068E-34»` and `«6.0221415e23»`. The resulting `PKToken` objects will have floatValues which represent the full value of the exponential number, yet retain the original exponential representation as their stringValues.
 
 ```objc
 …
@@ -271,7 +271,7 @@ t.numberState.allowsHexadecimalNotation = YES;
 …
 ```
 
-The resulting PKToken objects will have a tokenType of PKTokenTypeNumber and a stringValue matching the original source notation (`«020»` or `«0x20»`). Their floatValues will represent the normal decimal value of the number (in this case 16 and 32).
+The resulting `PKToken` objects will have a `tokenType` of `PKTokenTypeNumber` and a `stringValue` matching the original source notation (`«020»` or `«0x20»`). Their `floatValues` will represent the normal decimal value of the number (in this case `16` and `32`).
 
 You can also configure which characters are recognized as whitespace within a whitespace token. To treat digits as whitespace characters within whitespace tokens:
 
@@ -281,7 +281,7 @@ You can also configure which characters are recognized as whitespace within a wh
 …
 ```
 
-By default, whitespace chars are silently consumed by a tokenizer's PKWhitespaceState. To force reporting of PKTokens of type PKTokenTypeWhitespace containing the encountered whitespace chars as their stringValues (e.g. this would be necessary for a typical XML parser in which significant whitespace must be reported):
+By default, whitespace chars are silently consumed by a tokenizer's `PKWhitespaceState`. To force reporting of `PKToken`s of type `PKTokenTypeWhitespace` containing the encountered whitespace chars as their `stringValues` (e.g. this would be necessary for a typical XML parser in which significant whitespace must be reported):
 
 ```objc
 …
@@ -289,7 +289,7 @@ t.whitespaceState.reportsWhitespaceTokens = YES;
 …
 ```
 
-Similarly, comments are also silently consumed by default. To report Comment tokens instead:
+Similarly, comments are also silently consumed by default. To report `Comment` tokens instead:
 
 ```objc
 …
@@ -299,11 +299,11 @@ t.commentState.reportsCommentTokens = YES;
 
 #####Changing which token type is created for a given start character
 
-PKTokenizer controls the logic for deciding which token type should be created
+`PKTokenizer` controls the logic for deciding which token type should be created
 for a given start character before passing the responsibility for completing
 tokens to its "state" helper objects. To change which token type is created
-for a given start character, you must call a method of the PKTokenizer object
-itself: -[PKTokenizer setTokenizerState:from:to:].
+for a given start character, you must call a method of the `PKTokenizer` object
+itself: `-[PKTokenizer setTokenizerState:from:to:]`.
 
 <table border="1" cellpadding="5" cellspacing="0" width="100%">
 	<tr>
