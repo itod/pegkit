@@ -279,6 +279,7 @@ You can also configure which characters are recognized as whitespace within a wh
 …
 [t.whitespaceState setWhitespaceChars:YES from:'0' to:'9'];
 …
+```
 
 By default, whitespace chars are silently consumed by a tokenizer's PKWhitespaceState. To force reporting of PKTokens of type PKTokenTypeWhitespace containing the encountered whitespace chars as their stringValues (e.g. this would be necessary for a typical XML parser in which significant whitespace must be reported):
 
@@ -286,6 +287,7 @@ By default, whitespace chars are silently consumed by a tokenizer's PKWhitespace
 …
 t.whitespaceState.reportsWhitespaceTokens = YES;
 …
+```
 
 Similarly, comments are also silently consumed by default. To report Comment tokens instead:
 
@@ -293,6 +295,7 @@ Similarly, comments are also silently consumed by default. To report Comment tok
 …
 t.commentState.reportsCommentTokens = YES;
 …
+```
 
 #####Changing which token type is created for a given start character
 
