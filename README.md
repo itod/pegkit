@@ -50,7 +50,7 @@ PEGKit is a re-write of an earlier framework by the same author called [ParseKit
 <a name="basic-tokenizer-usage"></a>
 ####Basic Usage of PKTokenizer
 
-**PEGKit** provides general-purpose string tokenization services through the **PKTokenizer** and **PKToken** classes. Cocoa developers will be familiar with the **NSScanner** class provided by the Foundation Framework which provides a similar service. However, the PKTokenizer class is much easier to use for many common tokenization tasks, and offers powerful configuration options if the default tokenization behavior doesn't match your needs.
+**PEGKit** provides general-purpose string tokenization services through the **`PKTokenizer`** and **`PKToken`** classes. Cocoa developers will be familiar with the **`NSScanner`** class provided by the Foundation Framework which provides a similar service. However, the `PKTokenizer` class is much easier to use for many common tokenization tasks, and offers powerful configuration options if the default tokenization behavior doesn't match your needs.
 
 <table border="1" cellpadding="5" cellspacing="0" width="100%">
 	<tr>
@@ -69,54 +69,57 @@ PEGKit is a re-write of an earlier framework by the same author called [ParseKit
 	</tr>
 </table>
 
-To use PKTokenizer, create an instance with an NSString object and retrieve a series of PKToken objects as you repeatedly call the -nextToken method. The EOFToken singleton signals the end.
+To use `PKTokenizer`, provide it with an `NSString` object and retrieve a series of `PKToken` objects as you repeatedly call the `-nextToken` method. The `EOFToken` singleton signals the end.
 
-    NSString *s = @"2 != -47. /* comment */ Blast-off!! 'Woo-hoo!' //comment";
-    
-    PKTokenizer *t = [PKTokenizer tokenizerWithString:s];
-    PKToken *eof = [PKToken EOFToken];
-    PKToken *tok = nil;
-    
-    while (eof != (tok = [t nextToken])) {
-        NSLog(@"(%@) (%.1f) : %@", tok.stringValue, tok.floatValue, [tok debugDescription]);
-    }
+```objc
+NSString *s = @"2 != -47. /* comment */ Blast-off!! 'Woo-hoo!' //comment";
+
+PKTokenizer *t = [PKTokenizer tokenizerWithString:s];
+PKToken *eof = [PKToken EOFToken];
+PKToken *tok = nil;
+
+while (eof != (tok = [t nextToken])) {
+    NSLog(@"(%@) (%.1f) : %@", tok.stringValue, tok.floatValue, [tok debugDescription]);
+}
+```
 
 Outputs:
 
-    (2) (2.0) : <Number «2»>
-    
-    (!=) (0.0) : <Symbol «!=»>
-    
-    (-47) (-47.0) : <Number «-47»>
-    
-    (.) (0.0) : <Symbol «.»>
-    
-    (Blast-off) (0.0) : <Word «Blast-off»>
-    
-    (!) (0.0) : <Symbol «!»>
-    
-    (!) (0.0) : <Symbol «!»>
-    
-    ('Woo-hoo!') (0.0) : <Quoted String «'Woo-hoo!'»>
+```objc
+(2) (2.0) : <Number «2»>
 
+(!=) (0.0) : <Symbol «!=»>
 
-Each PKToken object returned has a stringValue, a floatValue and a tokenType. The tokenType is and enum value type called PKTokenType with possible values of:
+(-47) (-47.0) : <Number «-47»>
 
-  * PKTokenTypeWord
+(.) (0.0) : <Symbol «.»>
 
-  * PKTokenTypeNumber
+(Blast-off) (0.0) : <Word «Blast-off»>
 
-  * PKTokenTypeQuotedString
+(!) (0.0) : <Symbol «!»>
 
-  * PKTokenTypeSymbol
+(!) (0.0) : <Symbol «!»>
 
-  * PKTokenTypeWhitespace
+('Woo-hoo!') (0.0) : <Quoted String «'Woo-hoo!'»>
+```
 
-  * PKTokenTypeComment
+Each `PKToken` object returned has a `stringValue`, a `floatValue` and a `tokenType`. The tokenType is and enum value type called `PKTokenType` with possible values of:
 
-  * PKTokenTypeDelimitedString
+  * `PKTokenTypeWord`
 
-PKTokens also have corresponding BOOL properties for convenience (isWord, isNumber, etc.)
+  * `PKTokenTypeNumber`
+
+  * `PKTokenTypeQuotedString`
+
+  * `PKTokenTypeSymbol`
+
+  * `PKTokenTypeWhitespace`
+
+  * `PKTokenTypeComment`
+
+  * `PKTokenTypeDelimitedString`
+
+`PKToken`s also have corresponding `BOOL` properties for convenience (`isWord`, `isNumber`, etc.)
 
 <table border="1" cellpadding="5" cellspacing="0" width="100%">
 	<tr>
@@ -153,62 +156,54 @@ PKTokens also have corresponding BOOL properties for convenience (isWord, isNumb
 <a name="default-tokenizer-behavior"></a>
 ####Default Behavior of PKTokenizer
 
-The default behavior of PKTokenizer is correct for most common situations and will fit many tokenization needs without additional configuration.
+The default behavior of `PKTokenizer` is correct for most common situations and will fit many tokenization needs without additional configuration.
 
 #####Number
 
-Sequences of digits («2» «42» «1054») are recognized as Number tokens. Floating point numbers containing a dot («3.14») are recognized as single Number tokens as you'd expect (rather than two Number tokens separated by a «.» Symbol token). By default, PKTokenizer will recognize a «-» symbol followed immediately by digits («-47») as a number token with a negative value. However, «+» characters are always seen as the beginning of a Symbol token by default, even when followed immediately by digits, so "explicitly-positive" Number tokens are not recognized by default (this behavior can be configured, see below).
+Sequences of digits (`«2»` `«42»` `«1054»`) are recognized as `Number` tokens. Floating point numbers containing a dot (`«3.14»`) are recognized as single `Number` tokens as you'd expect (rather than two Number tokens separated by a `«.»` `Symbol` token). By default, `PKTokenizer` will recognize a `«-»` symbol followed immediately by digits (`«-47»`) as a number token with a negative value. However, `«+»` characters are always seen as the beginning of a `Symbol` token by default, even when followed immediately by digits, so "explicitly-positive" `Number` tokens are not recognized by default (this behavior can be configured, see below).
 
 #####Symbol
 
-Most symbol characters («.» «!») are recognized as single-character Symbol tokens (even when sequential such as «!»«!»). However, notice that PKTokenizer recognizes common multi-character symbols («!=») as a single Symbol token by default. In fact, PKTokenizer can be configured to recognize any given string as a multi-character symbol. Alternatively, it can be configured to always recognize each symbol character as an individual Symbol token (no multi- character symbols). The default multi-character symbols recognized by PKTokenizer are: «<=», «>=», «!=», «==».
+Most symbol characters (`«.»` `«!»`) are recognized as single-character `Symbol` tokens (even when sequential such as `«!»``«!»`). However, notice that `PKTokenizer` recognizes common multi-character symbols (`«!=»`) as a single `Symbol` token by default. In fact, `PKTokenizer` can be configured to recognize any given string as a multi-character symbol. Alternatively, it can be configured to always recognize each symbol character as an individual `Symbol` token (no multi- character symbols). The default multi-character symbols recognized by `PKTokenizer` are: `«<=»`, `«>=»`, `«!=»`, `«==»`.
 
 #####Word
 
-«Blast-off» is recognized as a single Word token despite containing a symbol character («-») that would normally signal the start of a new Symbol token. By default, PKTokenzier allows Word tokens to **contain** (but **not start with**) several symbol and number characters: «-», «_», «'», «0»-«9». The consequence of this behavior is that PKTokenizer will recognize the following strings as individual Word tokens by default: «it's», «first_name», «sat-yr-9» «Rodham-Clinton». Again, you can configure PKTokenizer to alter this default behavior.
+`«Blast-off»` is recognized as a single `Word` token despite containing a symbol character (`«-»`) that would normally signal the start of a new `Symbol` token. By default, `PKTokenzier` allows `Word` tokens to **contain** (but **not start with**) several symbol and number characters: `«-»`, `«_»`, `«'»`, `«0»`-`«9»`. The consequence of this behavior is that `PKTokenizer` will recognize the following strings as individual Word tokens by default: `«it's»`, `«first_name»`, `«sat-yr-9»` `«Rodham-Clinton»`. Again, you can configure `PKTokenizer` to alter this default behavior.
 
 #####Quoted String
 
-PKTokenizer produces Quoted String tokens for substrings enclosed in quote delimiter characters. The default delimiters are single- or double-quotes («'» or «"»). The quote delimiter characters may be changed (see below), but must be a single character. Note that the stringValue of Quoted String tokens include the quote delimiter characters («'Woo-hoo!'»).
+`PKTokenizer` produces `Quoted String` tokens for substrings enclosed in quote delimiter characters. The default delimiters are single- or double-quotes (`«'»` or `«"»`). The quote delimiter characters may be changed (see below), but must be a single character. Note that the stringValue of `Quoted String` tokens include the quote delimiter characters (`«'Woo-hoo!'»`).
 
 #####Whitespace
 
-By default, whitespace characters are silently consumed by PKTokenizer, and Whitespace tokens are never emitted. However, you can configure which characters are considered Whitespace characters or even ask PKTokenizer to return Whitespace tokens containing the literal whitespace stringValues by setting: t.whitespaceState.reportsWhitespaceTokens = YES.
+By default, whitespace characters are silently consumed by `PKTokenizer`, and `Whitespace` tokens are never emitted. However, you can configure which characters are considered whitespace characters or even ask `PKTokenizer` to return `Whitespace` tokens containing the literal whitespace `stringValue`s by setting: `t.whitespaceState.reportsWhitespaceTokens = YES`.
 
 #####Comment
 
-By default, PKTokenizer recognizes C-style («//») and C++-style («/*» «*/») comments and silently removes the associated comments from the output rather than producing Comment tokens. See below for steps to either change comment delimiting markers, report Comment tokens, or to turn off comments recognition altogether.
+By default, `PKTokenizer` recognizes C-style (`«//»`) and C++-style (`«/*»` `«*/»`) comments and silently removes the associated comments from the output rather than producing `Comment` tokens. See below for steps to either change comment delimiting markers, report `Comment` tokens, or to turn off comments recognition altogether.
 
 #####Delimited String
 
-The Delimited String token type is a powerful feature of PEGKit which can be used much like a regular expression. Use the Delimited String token type to ask PKTokenizer to recognize tokens with arbitrary start and end symbol strings much like a Quoted String but with more power:
+The `Delimited String` token type is a powerful feature of PEGKit which can be used much like a regular expression. Use the `Delimited String` token type to ask `PKTokenizer` to recognize tokens with arbitrary start and end symbol strings much like a Quoted String but with more power:
 
-  * The start and end symbols may be multi-char (e.g. «<#» «#>»)
-  * The start and end symbols need not match (e.g. «&lt;?=» «?>»)
+  * The start and end symbols may be multi-char (e.g. `«<#»` `«#>»`)
+  * The start and end symbols need not match (e.g. `«<?=»` `«?>»`)
   * The characters allowed within the delimited string may be specified using an NSCharacterSet
 
 <a name="custom-tokenizer-behavior"></a>
 ####Customizing PKTokenizer behavior
 
-There are two basic types of decisions PKTokenizer must make when tokenizing strings:
+There are two basic types of decisions `PKTokenizer` must make when tokenizing strings:
 
  1. Which token type should be created for a given start character?
  2. Which characters are allowed within the current token being created?
 
-PKTokenizer's behavior with respect to these two types of decisions is totally
+`PKTokenizer`'s behavior with respect to these two types of decisions is totally
 configurable. Let's tackle them, starting with the second question first.
 
 #####Changing which characters are allowed within a token of a particular type
 
-Once PKTokenizer has decided which token type to create for a given start
-character (see below), it temporarily passes control to one of its "state"
-helper objects to finish consumption of characters for the current token.
-Therefore, the logic for deciding which characters are allowed within a token
-of a given type is controlled by the "state" objects which are instances of
-subclasses of the abstract PKTokenizerState class: PKWordState, PKNumberState,
-PKQuoteState, PKSymbolState, PKWhitespaceState, PKCommentState, and
-PKDelimitState. The state objects are accessible via properties of the
-PKTokenizer object.
+Once `PKTokenizer` has decided which token type to create for a given start character (see below), it temporarily passes control to one of its "state" helper objects to finish consumption of characters for the current token. Therefore, the logic for deciding which characters are allowed within a token of a given type is controlled by the "state" objects which are instances of subclasses of the abstract PKTokenizerState class: `PKWordState`, `PKNumberState`, `PKQuoteState`, `PKSymbolState`, `PKWhitespaceState`, `PKCommentState`, and `PKDelimitState`. The state objects are accessible via properties of the `PKTokenizer` object.
 
 <table border="1" cellpadding="5" cellspacing="0" width="100%">
 	<tr>
@@ -230,61 +225,73 @@ PKTokenizer object.
 	</tr>
 </table>
 
-Some of the PKTokenizerState subclasses have methods that alter which characters are allowed within tokens of their associated token type.
+Some of the `PKTokenizerState` subclasses have methods that alter which characters are allowed within tokens of their associated token type.
 
-For example, if you want to add a new multiple-character symbol like «===»:
+For example, if you want to add a new multiple-character symbol like `«===»`:
 
-    …
-    PKTokenizer *t = [PKTokenizer tokenizerWithString:s];
-    [t.symbolState add:@"==="];
-    …
+```objc
+…
+PKTokenizer *t = [PKTokenizer tokenizerWithString:s];
+[t.symbolState add:@"==="];
+…
+```
 
-Now «===» strings will be recognized as a single Symbol token with a stringValue of «===». There is a corresponding -[PKSymbolState remove:] method for removing recognition of given multi-char symbols.
+Now `«===»` strings will be recognized as a single Symbol token with a stringValue of `«===»`. There is a corresponding -[PKSymbolState remove:] method for removing recognition of given multi-char symbols.
 
 If you don't want to allow digits within Word tokens (digits **are** allowed within Words by default):
 
-    …
-    [t.wordState setWordChars:NO from:'0' to:'9'];
-    …
+```objc
+…
+[t.wordState setWordChars:NO from:'0' to:'9'];
+…
+```
 
-Say you want to allow floating-point Number tokens to end with a «.», sans trailing «0». In other words, you want «49.» to be recognized as a single Number token with a floatValue of «49.0» rather than a Number token followed by a Symbol token with a stringValue of «.»:
+Say you want to allow floating-point Number tokens to end with a `«.»`, sans trailing `«0»`. In other words, you want `«49.»` to be recognized as a single Number token with a floatValue of `«49.0»` rather than a Number token followed by a Symbol token with a stringValue of `«.»`:
 
-    …
-    t.numberState.allowsTrailingDot = YES;
-    …
+```objc
+…
+t.numberState.allowsTrailingDot = YES;
+…
+```
 
-Recognition of scientific notation (exponential numbers) can be enabled to recognize numbers like «10e+100», «6.626068E-34» and «6.0221415e23». The resulting PKToken objects will have floatValues which represent the full value of the exponential number, yet retain the original exponential representation as their stringValues.
+Recognition of scientific notation (exponential numbers) can be enabled to recognize numbers like `«10e+100»`, `«6.626068E-34»` and `«6.0221415e23»`. The resulting PKToken objects will have floatValues which represent the full value of the exponential number, yet retain the original exponential representation as their stringValues.
 
-    …
-    t.numberState.allowsScentificNotation = YES;
-    …
+```objc
+…
+t.numberState.allowsScentificNotation = YES;
+…
+```
 
-Similarly, recognition of common octal and hexadecimal number notation can be enabled to recognize numbers like «020» (octal 16) and «0x20» (hex 32).
+Similarly, recognition of common octal and hexadecimal number notation can be enabled to recognize numbers like `«020»` (octal 16) and `«0x20»` (hex 32).
 
-    …
-    t.numberState.allowsOctalNotation = YES;
-    t.numberState.allowsHexadecimalNotation = YES;
-    …
+```objc
+…
+t.numberState.allowsOctalNotation = YES;
+t.numberState.allowsHexadecimalNotation = YES;
+…
 
-The resulting PKToken objects will have a tokenType of PKTokenTypeNumber and a stringValue matching the original source notation («020» or «0x20»). Their floatValues will represent the normal decimal value of the number (in this case 16 and 32).
+The resulting PKToken objects will have a tokenType of PKTokenTypeNumber and a stringValue matching the original source notation (`«020»` or `«0x20»`). Their floatValues will represent the normal decimal value of the number (in this case 16 and 32).
 
 You can also configure which characters are recognized as whitespace within a whitespace token. To treat digits as whitespace characters within whitespace tokens:
 
-    …
-    [t.whitespaceState setWhitespaceChars:YES from:'0' to:'9'];
-    …
+```objc
+…
+[t.whitespaceState setWhitespaceChars:YES from:'0' to:'9'];
+…
 
 By default, whitespace chars are silently consumed by a tokenizer's PKWhitespaceState. To force reporting of PKTokens of type PKTokenTypeWhitespace containing the encountered whitespace chars as their stringValues (e.g. this would be necessary for a typical XML parser in which significant whitespace must be reported):
 
-    …
-    t.whitespaceState.reportsWhitespaceTokens = YES;
-    …
+```objc
+…
+t.whitespaceState.reportsWhitespaceTokens = YES;
+…
 
 Similarly, comments are also silently consumed by default. To report Comment tokens instead:
 
-    …
-    t.commentState.reportsCommentTokens = YES;
-    …
+```objc
+…
+t.commentState.reportsCommentTokens = YES;
+…
 
 #####Changing which token type is created for a given start character
 
@@ -311,58 +318,72 @@ itself: -[PKTokenizer setTokenizerState:from:to:].
 	</tr>
 </table>
 
-For example, suppose you want to turn off support for Number tokens altogether. To recognize digits as signaling the start of Word tokens:
+For example, suppose you want to turn off support for `Number` tokens altogether. To recognize digits as signaling the start of `Word` tokens:
 
-    …
-    PKTokenizer *t = [PKTokenizerWithString:s];
-    [t setTokenizerState:t.wordState from:'0' to:'9'];
-    …
+```objc
+…
+PKTokenizer *t = [PKTokenizerWithString:s];
+[t setTokenizerState:t.wordState from:'0' to:'9'];
+…
+```
 
-This will cause PKTokenizer to begin creating a Word token (rather than a Number token) whenever a digit («0», «1», «2», «3»,«4», «5», «6», «7», «8», «9», «0» ) is encountered.
+This will cause `PKTokenizer` to begin creating a `Word` token (rather than a `Number` token) whenever a digit (`«0»`, `«1»`, `«2»`, `«3»`,`«4»`, `«5»`, `«6»`, `«7»`, `«8»`, `«9»`, `«0»` ) is encountered.
 
-As another example, say you want to add support for new Quoted String token delimiters, such as «#». This would cause a string like #oh hai# to be recognized as a Quoted String  token rather than a Symbol, two Words, and a Symbol. Here's how:
+As another example, say you want to add support for new `Quoted String` token delimiters, such as `«#»`. This would cause a string like #oh hai# to be recognized as a `Quoted String`  token rather than a `Symbol`, two `Word`s, and a `Symbol`. Here's how:
 
-    …
-    [t setTokenizerState:t.quoteState from:'#' to:'#'];
-    …
+```objc
+…
+[t setTokenizerState:t.quoteState from:'#' to:'#'];
+…
+```
 
 Note that if the from: and to: arguments are the same char, only behavior for that single char is affected.
 
-Alternatively, say you want to recognize «+» characters followed immediately by digits as explicitly positive Number tokens rather than as a Symbol token followed by a Number token:
+Alternatively, say you want to recognize `«+»` characters followed immediately by digits as explicitly positive Number tokens rather than as a Symbol token followed by a `Number` token:
 
-    …
-    [t setTokenizerState:t.numberState from:'+' to:'+'];
-    …
+```objc
+…
+[t setTokenizerState:t.numberState from:'+' to:'+'];
+…
+```
 
-Finally, customization of comments recognition may be necessary. By default, PKTokenizer passes control to its commentState object which silently consumes the comment text found after «//» or between «/*» «*/». This default behavior is achieved with the sequence:
+Finally, customization of comments recognition may be necessary. By default, `PKTokenizer` passes control to its `commentState` object which silently consumes the comment text found after `«//»` or between `«/*»` `«*/»`. This default behavior is achieved with the sequence:
 
-    …
-    [t setTokenizerState:t.commentState from:'/' to:'/'];
-    [t.commentState addSingleLineStartSymbol:@"//"];
-    [t.commentState addMultiLineStartSymbol:@"/*" endSymbol:@"*/"];
-    …
+```objc
+…
+[t setTokenizerState:t.commentState from:'/' to:'/'];
+[t.commentState addSingleLineStartSymbol:@"//"];
+[t.commentState addMultiLineStartSymbol:@"/*" endSymbol:@"*/"];
+…
+```
 
 To recognize single-line comments starting with #:
 
-    …
-    [t setTokenizerState:t.commentState from:'#' to:'#'];
-    [t.commentState addSingleLineStartSymbol:@"#"];
-    …
+```objc
+…
+[t setTokenizerState:t.commentState from:'#' to:'#'];
+[t.commentState addSingleLineStartSymbol:@"#"];
+…
+```
 
 To recognize multi-line "XML"- or "HTML"-style comments:
 
-    …
-    [t setTokenizerState:t.commentState from:'<' to:'<'];
-    [t.commentState addMultiLineStartSymbol:@"<!--" endSymbol:@"-->"];
-    …
+```objc
+…
+[t setTokenizerState:t.commentState from:'<' to:'<'];
+[t.commentState addMultiLineStartSymbol:@"<!--" endSymbol:@"-->"];
+…
+```
 
-To disable comments recognition altogether, tell PKTokenizer to pass control to its symbolState instead of its commentState.
+To disable comments recognition altogether, tell `PKTokenizer` to pass control to its `symbolState` instead of its `commentState`.
 
-    …
-    [t setTokenizerState:t.symbolState from:'/' to:'/'];
-    …
+```objc
+…
+[t setTokenizerState:t.symbolState from:'/' to:'/'];
+…
+```
 
-Now PKTokenizer will return individual Symbol tokens for all «/» and «*» characters, as well as any other characters set as part of a comment start or end symbol.
+Now `PKTokenizer` will return individual Symbol tokens for all `«/»` and `«*»` characters, as well as any other characters set as part of a comment start or end symbol.
 
 ---
 <a name="grammars"></a>
