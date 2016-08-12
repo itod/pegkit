@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6CF938801D5D87BB002CBA5F"
-               BuildableName = "PEGKit.framework"
+               BlueprintIdentifier = "6CA08A231D5DA6DD0061FD2A"
+               BuildableName = "PEGKit tvOS.framework"
                BlueprintName = "PEGKit tvOS"
                ReferencedContainer = "container:PEGKit.xcodeproj">
             </BuildableReference>
@@ -45,8 +45,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6CF938801D5D87BB002CBA5F"
-            BuildableName = "PEGKit.framework"
+            BlueprintIdentifier = "6CA08A231D5DA6DD0061FD2A"
+            BuildableName = "PEGKit tvOS.framework"
             BlueprintName = "PEGKit tvOS"
             ReferencedContainer = "container:PEGKit.xcodeproj">
          </BuildableReference>
@@ -63,8 +63,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6CF938801D5D87BB002CBA5F"
-            BuildableName = "PEGKit.framework"
+            BlueprintIdentifier = "6CA08A231D5DA6DD0061FD2A"
+            BuildableName = "PEGKit tvOS.framework"
             BlueprintName = "PEGKit tvOS"
             ReferencedContainer = "container:PEGKit.xcodeproj">
          </BuildableReference>
