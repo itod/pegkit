@@ -14,39 +14,30 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6C8AE1501B3A313A00DF2B9F"
+               BlueprintIdentifier = "D305025C1CE5560F00AB4B68"
                BuildableName = "PEGKit.framework"
-               BlueprintName = "PEGKit iOS"
+               BlueprintName = "PEGKitiOS"
                ReferencedContainer = "container:PEGKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6C8AE1501B3A313A00DF2B9F"
-            BuildableName = "PEGKit.framework"
-            BlueprintName = "PEGKit iOS"
-            ReferencedContainer = "container:PEGKit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
@@ -54,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6C8AE1501B3A313A00DF2B9F"
+            BlueprintIdentifier = "D305025C1CE5560F00AB4B68"
             BuildableName = "PEGKit.framework"
-            BlueprintName = "PEGKit iOS"
+            BlueprintName = "PEGKitiOS"
             ReferencedContainer = "container:PEGKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,17 +55,17 @@
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6C8AE1501B3A313A00DF2B9F"
+            BlueprintIdentifier = "D305025C1CE5560F00AB4B68"
             BuildableName = "PEGKit.framework"
-            BlueprintName = "PEGKit iOS"
+            BlueprintName = "PEGKitiOS"
             ReferencedContainer = "container:PEGKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
