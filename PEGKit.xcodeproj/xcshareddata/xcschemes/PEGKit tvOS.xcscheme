@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6CA08A231D5DA6DD0061FD2A"
-               BuildableName = "PEGKit tvOS.framework"
+               BuildableName = "PEGKit.framework"
                BlueprintName = "PEGKit tvOS"
                ReferencedContainer = "container:PEGKit.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6CA08A231D5DA6DD0061FD2A"
-            BuildableName = "PEGKit tvOS.framework"
+            BuildableName = "PEGKit.framework"
             BlueprintName = "PEGKit tvOS"
             ReferencedContainer = "container:PEGKit.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6CA08A231D5DA6DD0061FD2A"
-            BuildableName = "PEGKit tvOS.framework"
+            BuildableName = "PEGKit.framework"
             BlueprintName = "PEGKit tvOS"
             ReferencedContainer = "container:PEGKit.xcodeproj">
          </BuildableReference>
