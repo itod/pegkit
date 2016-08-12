@@ -8,6 +8,67 @@
 
 /* Begin PBXBuildFile section */
 		3D0466A918E1D9770022A1BC /* OCMock.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D37214CA18DF3B0100525058 /* OCMock.framework */; };
+<<<<<<< HEAD
+		6C8AE1521B3A313A00DF2B9F /* PKParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D3382F98171C80E100CCE513 /* PKParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1531B3A313A00DF2B9F /* PKSymbolNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D317C18D18D1F9230036BE75 /* PKSymbolNode.h */; };
+		6C8AE1541B3A313A00DF2B9F /* PKSymbolState.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221D50FFE8C35004514FE /* PKSymbolState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1551B3A313A00DF2B9F /* PKSymbolRootNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D317C18E18D1F9230036BE75 /* PKSymbolRootNode.h */; };
+		6C8AE1561B3A313A00DF2B9F /* PKDelimitState.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221DE0FFE8C49004514FE /* PKDelimitState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1571B3A313A00DF2B9F /* PKTokenizerState.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221CC0FFE8C1B004514FE /* PKTokenizerState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1581B3A313A00DF2B9F /* PKRecognitionException.h in Headers */ = {isa = PBXBuildFile; fileRef = D3382FD9171C8CB200CCE513 /* PKRecognitionException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1591B3A313A00DF2B9F /* PKCommentState.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221E10FFE8C4E004514FE /* PKCommentState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE15A1B3A313A00DF2B9F /* PKURLState.h in Headers */ = {isa = PBXBuildFile; fileRef = D35F4A8C11643662003811F3 /* PKURLState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE15B1B3A313A00DF2B9F /* NSArray+PEGKitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D34BAFD30FF9E95500D7773A /* NSArray+PEGKitAdditions.h */; };
+		6C8AE15C1B3A313A00DF2B9F /* NSString+PEGKitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D34BAFD50FF9E95500D7773A /* NSString+PEGKitAdditions.h */; };
+		6C8AE15D1B3A313A00DF2B9F /* PEGKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D3F8A4A017581A3C00056188 /* PEGKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE15E1B3A313A00DF2B9F /* PKTokenizer.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221C90FFE8C15004514FE /* PKTokenizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE15F1B3A313A00DF2B9F /* PKAST.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A1492816F8C6BD00770DEE /* PKAST.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1601B3A313A00DF2B9F /* PKSingleLineCommentState.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221E40FFE8C56004514FE /* PKSingleLineCommentState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1611B3A313A00DF2B9F /* PKWhitespaceState.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221DB0FFE8C43004514FE /* PKWhitespaceState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1621B3A313A00DF2B9F /* PKParser+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A29E4018E8516F00DC591E /* PKParser+Subclass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1631B3A313A00DF2B9F /* PKMultiLineCommentState.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221E70FFE8C60004514FE /* PKMultiLineCommentState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1641B3A313A00DF2B9F /* PKTwitterState.h in Headers */ = {isa = PBXBuildFile; fileRef = D33DC19F11656952004CE58C /* PKTwitterState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1651B3A313A00DF2B9F /* PKWordState.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221D80FFE8C3D004514FE /* PKWordState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1661B3A313A00DF2B9F /* PKAssembly.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221990FFE8B9D004514FE /* PKAssembly.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1671B3A313A00DF2B9F /* PKEmailState.h in Headers */ = {isa = PBXBuildFile; fileRef = D35F4A8B11643662003811F3 /* PKEmailState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1681B3A313A00DF2B9F /* PKHashtagState.h in Headers */ = {isa = PBXBuildFile; fileRef = D37F232A1453842800A98014 /* PKHashtagState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1691B3A313A00DF2B9F /* PKNumberState.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221CF0FFE8C24004514FE /* PKNumberState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE16A1B3A313A00DF2B9F /* PKToken.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221C30FFE8C07004514FE /* PKToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE16B1B3A313A00DF2B9F /* PKDelimitDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = D33724D816FA62D400D30459 /* PKDelimitDescriptor.h */; };
+		6C8AE16C1B3A313A00DF2B9F /* PKTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221910FFE8B8C004514FE /* PKTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE16D1B3A313A00DF2B9F /* PKDelimitDescriptorCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = D33724E816FA635700D30459 /* PKDelimitDescriptorCollection.h */; };
+		6C8AE16E1B3A313A00DF2B9F /* PKQuoteState.h in Headers */ = {isa = PBXBuildFile; fileRef = D3F0E2470FFE8EB900C9DF74 /* PKQuoteState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE16F1B3A313A00DF2B9F /* PKReader.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221960FFE8B95004514FE /* PKReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C8AE1711B3A313A00DF2B9F /* PKReader.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAD9B0FF9C95800D7773A /* PKReader.m */; };
+		6C8AE1721B3A313A00DF2B9F /* PKAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BADA00FF9C9B000D7773A /* PKAssembly.m */; };
+		6C8AE1731B3A313A00DF2B9F /* PKToken.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAE950FF9D20900D7773A /* PKToken.m */; };
+		6C8AE1741B3A313A00DF2B9F /* PKTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAE990FF9D20900D7773A /* PKTokenizer.m */; };
+		6C8AE1751B3A313A00DF2B9F /* PKTokenizerState.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAE9B0FF9D20900D7773A /* PKTokenizerState.m */; };
+		6C8AE1761B3A313A00DF2B9F /* PKHashtagState.m in Sources */ = {isa = PBXBuildFile; fileRef = D37F23201453841100A98014 /* PKHashtagState.m */; };
+		6C8AE1771B3A313A00DF2B9F /* PKCommentState.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAEC40FF9D56400D7773A /* PKCommentState.m */; };
+		6C8AE1781B3A313A00DF2B9F /* PKDelimitState.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAEC60FF9D56400D7773A /* PKDelimitState.m */; };
+		6C8AE1791B3A313A00DF2B9F /* PKMultiLineCommentState.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAEC80FF9D56400D7773A /* PKMultiLineCommentState.m */; };
+		6C8AE17A1B3A313A00DF2B9F /* PKNumberState.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAECA0FF9D56400D7773A /* PKNumberState.m */; };
+		6C8AE17B1B3A313A00DF2B9F /* PKAST.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DAC2173C645C00A5E050 /* PKAST.m */; };
+		6C8AE17C1B3A313A00DF2B9F /* PKQuoteState.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAECC0FF9D56400D7773A /* PKQuoteState.m */; };
+		6C8AE17D1B3A313A00DF2B9F /* PKSingleLineCommentState.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAECE0FF9D56400D7773A /* PKSingleLineCommentState.m */; };
+		6C8AE17E1B3A313A00DF2B9F /* PKSymbolState.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAED00FF9D56400D7773A /* PKSymbolState.m */; };
+		6C8AE17F1B3A313A00DF2B9F /* PKWhitespaceState.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAED20FF9D56400D7773A /* PKWhitespaceState.m */; };
+		6C8AE1801B3A313A00DF2B9F /* PKWordState.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAED60FF9D56400D7773A /* PKWordState.m */; };
+		6C8AE1811B3A313A00DF2B9F /* PKSymbolNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAF240FF9DF9900D7773A /* PKSymbolNode.m */; };
+		6C8AE1821B3A313A00DF2B9F /* PKSymbolRootNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAF260FF9DF9900D7773A /* PKSymbolRootNode.m */; };
+		6C8AE1831B3A313A00DF2B9F /* NSArray+PEGKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAFD40FF9E95500D7773A /* NSArray+PEGKitAdditions.m */; };
+		6C8AE1841B3A313A00DF2B9F /* NSString+PEGKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAFD60FF9E95500D7773A /* NSString+PEGKitAdditions.m */; };
+		6C8AE1851B3A313A00DF2B9F /* PKEmailState.m in Sources */ = {isa = PBXBuildFile; fileRef = D35F4A8511643630003811F3 /* PKEmailState.m */; };
+		6C8AE1861B3A313A00DF2B9F /* PKURLState.m in Sources */ = {isa = PBXBuildFile; fileRef = D35F4A8611643630003811F3 /* PKURLState.m */; };
+		6C8AE1871B3A313A00DF2B9F /* PKTwitterState.m in Sources */ = {isa = PBXBuildFile; fileRef = D33DC1971165634F004CE58C /* PKTwitterState.m */; };
+		6C8AE1881B3A313A00DF2B9F /* PKDelimitDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D33724D916FA62D400D30459 /* PKDelimitDescriptor.m */; };
+		6C8AE1891B3A313A00DF2B9F /* PKDelimitDescriptorCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = D33724E916FA635700D30459 /* PKDelimitDescriptorCollection.m */; };
+		6C8AE18A1B3A313A00DF2B9F /* PKParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3382F9A171C80EB00CCE513 /* PKParser.m */; };
+		6C8AE18B1B3A313A00DF2B9F /* PKRecognitionException.m in Sources */ = {isa = PBXBuildFile; fileRef = D3382FD6171C8C9100CCE513 /* PKRecognitionException.m */; };
+		6C8AE18D1B3A313A00DF2B9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3BD3A74172DC75600FC6549 /* InfoPlist.strings */; };
+		6C8AE18F1B3A313A00DF2B9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30DA19E17284EC100A1A3EC /* Foundation.framework */; };
+=======
 		D30502961CE5571100AB4B68 /* PEGKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D3F8A4A017581A3C00056188 /* PEGKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D30502971CE5571300AB4B68 /* PKTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221910FFE8B8C004514FE /* PKTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D30502981CE5571500AB4B68 /* PKParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D3382F98171C80E100CCE513 /* PKParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -65,6 +126,7 @@
 		D30502CF1CE557D300AB4B68 /* PKAST.m in Sources */ = {isa = PBXBuildFile; fileRef = D375DAC2173C645C00A5E050 /* PKAST.m */; };
 		D30502D01CE557D300AB4B68 /* NSArray+PEGKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAFD40FF9E95500D7773A /* NSArray+PEGKitAdditions.m */; };
 		D30502D11CE557D300AB4B68 /* NSString+PEGKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BAFD60FF9E95500D7773A /* NSString+PEGKitAdditions.m */; };
+>>>>>>> origin-master
 		D306298218E1ED5D00EF745E /* TDTestScaffold.m in Sources */ = {isa = PBXBuildFile; fileRef = D306298118E1ED5D00EF745E /* TDTestScaffold.m */; };
 		D3083AB61705F05C00DA6F95 /* elementsAssign.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D3083AB51705F05C00DA6F95 /* elementsAssign.grammar */; };
 		D3083AB91705F09B00DA6F95 /* ElementAssignParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3083AB81705F09B00DA6F95 /* ElementAssignParserTest.m */; };
@@ -535,6 +597,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6C8AE1941B3A313A00DF2B9F /* PEGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PEGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D302272A17020F9400594F16 /* PGClassImplementationTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGClassImplementationTemplate.txt; path = res/PGClassImplementationTemplate.txt; sourceTree = "<group>"; };
 		D305025D1CE5560F00AB4B68 /* PEGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PEGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30502651CE5567700AB4B68 /* PEGKitiOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PEGKitiOS-Info.plist"; path = "res/PEGKitiOS-Info.plist"; sourceTree = "<group>"; };
@@ -913,10 +976,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+<<<<<<< HEAD
+		6C8AE18E1B3A313A00DF2B9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C8AE18F1B3A313A00DF2B9F /* Foundation.framework in Frameworks */,
+=======
 		D30502591CE5560F00AB4B68 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+>>>>>>> origin-master
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -978,7 +1049,11 @@
 				D3F8A48D175817DF00056188 /* PEGKit.framework */,
 				D366C55418D1F29D00AF3EFB /* libPEGKitOSX.a */,
 				D317C12B18D1F5EB0036BE75 /* libPEGKitIOS.a */,
+<<<<<<< HEAD
+				6C8AE1941B3A313A00DF2B9F /* PEGKit.framework */,
+=======
 				D305025D1CE5560F00AB4B68 /* PEGKit.framework */,
+>>>>>>> origin-master
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1576,6 +1651,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+<<<<<<< HEAD
+		6C8AE1511B3A313A00DF2B9F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C8AE1521B3A313A00DF2B9F /* PKParser.h in Headers */,
+				6C8AE1531B3A313A00DF2B9F /* PKSymbolNode.h in Headers */,
+				6C8AE1541B3A313A00DF2B9F /* PKSymbolState.h in Headers */,
+				6C8AE1551B3A313A00DF2B9F /* PKSymbolRootNode.h in Headers */,
+				6C8AE1561B3A313A00DF2B9F /* PKDelimitState.h in Headers */,
+				6C8AE1571B3A313A00DF2B9F /* PKTokenizerState.h in Headers */,
+				6C8AE1581B3A313A00DF2B9F /* PKRecognitionException.h in Headers */,
+				6C8AE1591B3A313A00DF2B9F /* PKCommentState.h in Headers */,
+				6C8AE15A1B3A313A00DF2B9F /* PKURLState.h in Headers */,
+				6C8AE15B1B3A313A00DF2B9F /* NSArray+PEGKitAdditions.h in Headers */,
+				6C8AE15C1B3A313A00DF2B9F /* NSString+PEGKitAdditions.h in Headers */,
+				6C8AE15D1B3A313A00DF2B9F /* PEGKit.h in Headers */,
+				6C8AE15E1B3A313A00DF2B9F /* PKTokenizer.h in Headers */,
+				6C8AE15F1B3A313A00DF2B9F /* PKAST.h in Headers */,
+				6C8AE1601B3A313A00DF2B9F /* PKSingleLineCommentState.h in Headers */,
+				6C8AE1611B3A313A00DF2B9F /* PKWhitespaceState.h in Headers */,
+				6C8AE1621B3A313A00DF2B9F /* PKParser+Subclass.h in Headers */,
+				6C8AE1631B3A313A00DF2B9F /* PKMultiLineCommentState.h in Headers */,
+				6C8AE1641B3A313A00DF2B9F /* PKTwitterState.h in Headers */,
+				6C8AE1651B3A313A00DF2B9F /* PKWordState.h in Headers */,
+				6C8AE1661B3A313A00DF2B9F /* PKAssembly.h in Headers */,
+				6C8AE1671B3A313A00DF2B9F /* PKEmailState.h in Headers */,
+				6C8AE1681B3A313A00DF2B9F /* PKHashtagState.h in Headers */,
+				6C8AE1691B3A313A00DF2B9F /* PKNumberState.h in Headers */,
+				6C8AE16A1B3A313A00DF2B9F /* PKToken.h in Headers */,
+				6C8AE16B1B3A313A00DF2B9F /* PKDelimitDescriptor.h in Headers */,
+				6C8AE16C1B3A313A00DF2B9F /* PKTypes.h in Headers */,
+				6C8AE16D1B3A313A00DF2B9F /* PKDelimitDescriptorCollection.h in Headers */,
+				6C8AE16E1B3A313A00DF2B9F /* PKQuoteState.h in Headers */,
+				6C8AE16F1B3A313A00DF2B9F /* PKReader.h in Headers */,
+=======
 		D305025A1CE5560F00AB4B68 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1610,6 +1721,7 @@
 				D30502B41CE557A500AB4B68 /* PKSymbolRootNode.h in Headers */,
 				D30502B51CE557A500AB4B68 /* NSArray+PEGKitAdditions.h in Headers */,
 				D30502B61CE557A500AB4B68 /* NSString+PEGKitAdditions.h in Headers */,
+>>>>>>> origin-master
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1660,6 +1772,17 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+<<<<<<< HEAD
+		6C8AE1501B3A313A00DF2B9F /* PEGKit iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C8AE1911B3A313A00DF2B9F /* Build configuration list for PBXNativeTarget "PEGKit iOS" */;
+			buildPhases = (
+				6C8AE1511B3A313A00DF2B9F /* Headers */,
+				6C8AE1701B3A313A00DF2B9F /* Sources */,
+				6C8AE18C1B3A313A00DF2B9F /* Resources */,
+				6C8AE18E1B3A313A00DF2B9F /* Frameworks */,
+				6C8AE1901B3A313A00DF2B9F /* ShellScript */,
+=======
 		D305025C1CE5560F00AB4B68 /* PEGKitiOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D30502641CE5560F00AB4B68 /* Build configuration list for PBXNativeTarget "PEGKitiOS" */;
@@ -1668,14 +1791,22 @@
 				D30502591CE5560F00AB4B68 /* Frameworks */,
 				D305025A1CE5560F00AB4B68 /* Headers */,
 				D305025B1CE5560F00AB4B68 /* Resources */,
+>>>>>>> origin-master
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+<<<<<<< HEAD
+			name = "PEGKit iOS";
+			productInstallPath = "$(HOME)/Library/Frameworks";
+			productName = TODParseKit;
+			productReference = 6C8AE1941B3A313A00DF2B9F /* PEGKit.framework */;
+=======
 			name = PEGKitiOS;
 			productName = PEGKitiOS;
 			productReference = D305025D1CE5560F00AB4B68 /* PEGKit.framework */;
+>>>>>>> origin-master
 			productType = "com.apple.product-type.framework";
 		};
 		D317C12A18D1F5EB0036BE75 /* libPEGKitIOS */ = {
@@ -1806,15 +1937,24 @@
 				D317C12A18D1F5EB0036BE75 /* libPEGKitIOS */,
 				D37D8DC51571A4F700CDB822 /* PEGKitTests */,
 				D338302E171C923700CCE513 /* ParserGenApp */,
+				6C8AE1501B3A313A00DF2B9F /* PEGKit iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+<<<<<<< HEAD
+		6C8AE18C1B3A313A00DF2B9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C8AE18D1B3A313A00DF2B9F /* InfoPlist.strings in Resources */,
+=======
 		D305025B1CE5560F00AB4B68 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+>>>>>>> origin-master
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1979,6 +2119,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6C8AE1901B3A313A00DF2B9F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#cp -R -f \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\" ${HOME}/Library/Frameworks";
+		};
 		D3F8A489175817DF00056188 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1995,6 +2148,39 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+<<<<<<< HEAD
+		6C8AE1701B3A313A00DF2B9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C8AE1711B3A313A00DF2B9F /* PKReader.m in Sources */,
+				6C8AE1721B3A313A00DF2B9F /* PKAssembly.m in Sources */,
+				6C8AE1731B3A313A00DF2B9F /* PKToken.m in Sources */,
+				6C8AE1741B3A313A00DF2B9F /* PKTokenizer.m in Sources */,
+				6C8AE1751B3A313A00DF2B9F /* PKTokenizerState.m in Sources */,
+				6C8AE1761B3A313A00DF2B9F /* PKHashtagState.m in Sources */,
+				6C8AE1771B3A313A00DF2B9F /* PKCommentState.m in Sources */,
+				6C8AE1781B3A313A00DF2B9F /* PKDelimitState.m in Sources */,
+				6C8AE1791B3A313A00DF2B9F /* PKMultiLineCommentState.m in Sources */,
+				6C8AE17A1B3A313A00DF2B9F /* PKNumberState.m in Sources */,
+				6C8AE17B1B3A313A00DF2B9F /* PKAST.m in Sources */,
+				6C8AE17C1B3A313A00DF2B9F /* PKQuoteState.m in Sources */,
+				6C8AE17D1B3A313A00DF2B9F /* PKSingleLineCommentState.m in Sources */,
+				6C8AE17E1B3A313A00DF2B9F /* PKSymbolState.m in Sources */,
+				6C8AE17F1B3A313A00DF2B9F /* PKWhitespaceState.m in Sources */,
+				6C8AE1801B3A313A00DF2B9F /* PKWordState.m in Sources */,
+				6C8AE1811B3A313A00DF2B9F /* PKSymbolNode.m in Sources */,
+				6C8AE1821B3A313A00DF2B9F /* PKSymbolRootNode.m in Sources */,
+				6C8AE1831B3A313A00DF2B9F /* NSArray+PEGKitAdditions.m in Sources */,
+				6C8AE1841B3A313A00DF2B9F /* NSString+PEGKitAdditions.m in Sources */,
+				6C8AE1851B3A313A00DF2B9F /* PKEmailState.m in Sources */,
+				6C8AE1861B3A313A00DF2B9F /* PKURLState.m in Sources */,
+				6C8AE1871B3A313A00DF2B9F /* PKTwitterState.m in Sources */,
+				6C8AE1881B3A313A00DF2B9F /* PKDelimitDescriptor.m in Sources */,
+				6C8AE1891B3A313A00DF2B9F /* PKDelimitDescriptorCollection.m in Sources */,
+				6C8AE18A1B3A313A00DF2B9F /* PKParser.m in Sources */,
+				6C8AE18B1B3A313A00DF2B9F /* PKRecognitionException.m in Sources */,
+=======
 		D30502581CE5560F00AB4B68 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2026,6 +2212,7 @@
 				D30502CF1CE557D300AB4B68 /* PKAST.m in Sources */,
 				D30502D01CE557D300AB4B68 /* NSArray+PEGKitAdditions.m in Sources */,
 				D30502D11CE557D300AB4B68 /* NSString+PEGKitAdditions.m in Sources */,
+>>>>>>> origin-master
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2392,6 +2579,60 @@
 			};
 			name = Release;
 		};
+<<<<<<< HEAD
+		6C8AE1921B3A313A00DF2B9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath/";
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PEGKit_Prefix.pch;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				INFOPLIST_FILE = "res/PEGKit-Info.plist";
+				INSTALL_PATH = "@rpath";
+				LLVM_LTO = NO;
+				PRODUCT_NAME = PEGKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		6C8AE1931B3A313A00DF2B9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath/";
+				FRAMEWORK_VERSION = A;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PEGKit_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					NS_BLOCK_ASSERTIONS,
+					NDEBUG,
+				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				INFOPLIST_FILE = "res/PEGKit-Info.plist";
+				INSTALL_PATH = "@rpath";
+				LLVM_LTO = NO;
+				PRODUCT_NAME = PEGKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		D317C14A18D1F5EB0036BE75 /* Debug */ = {
+=======
 		D30502621CE5560F00AB4B68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2446,6 +2687,7 @@
 			name = Debug;
 		};
 		D30502631CE5560F00AB4B68 /* Release */ = {
+>>>>>>> origin-master
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
@@ -2828,11 +3070,19 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
+<<<<<<< HEAD
+		6C8AE1911B3A313A00DF2B9F /* Build configuration list for PBXNativeTarget "PEGKit iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C8AE1921B3A313A00DF2B9F /* Debug */,
+				6C8AE1931B3A313A00DF2B9F /* Release */,
+=======
 		D30502641CE5560F00AB4B68 /* Build configuration list for PBXNativeTarget "PEGKitiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D30502621CE5560F00AB4B68 /* Debug */,
 				D30502631CE5560F00AB4B68 /* Release */,
+>>>>>>> origin-master
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
