@@ -1,0 +1,3 @@
+explicit module Alchemic.Private {
+    umbrella "PrivateHeaders"
+}

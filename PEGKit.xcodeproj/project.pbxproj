@@ -593,6 +593,8 @@
 
 /* Begin PBXFileReference section */
 		6CB12C401DBD80980061F891 /* PEGKittvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PEGKittvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CB12C421DBD853B0061F891 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		6CB12C431DBD853B0061F891 /* module.private.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.private.modulemap; sourceTree = "<group>"; };
 		D302272A17020F9400594F16 /* PGClassImplementationTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGClassImplementationTemplate.txt; path = res/PGClassImplementationTemplate.txt; sourceTree = "<group>"; };
 		D305025D1CE5560F00AB4B68 /* PEGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PEGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30502651CE5567700AB4B68 /* PEGKitiOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PEGKitiOS-Info.plist"; path = "res/PEGKitiOS-Info.plist"; sourceTree = "<group>"; };
@@ -1073,6 +1075,8 @@
 		089C1665FE841158C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6CB12C421DBD853B0061F891 /* module.modulemap */,
+				6CB12C431DBD853B0061F891 /* module.private.modulemap */,
 				D3503E1C18D0B89C002F3F5B /* PEGKit_Prefix.pch */,
 				D3F8A4921758187300056188 /* PEGKit-Info.plist */,
 				D30502651CE5567700AB4B68 /* PEGKitiOS-Info.plist */,
@@ -1923,11 +1927,11 @@
 			targets = (
 				D3F8A3DA175817DF00056188 /* PEGKit */,
 				D305025C1CE5560F00AB4B68 /* PEGKitiOS */,
+				6CB12BFF1DBD80980061F891 /* PEGKittvOS */,
 				D366C55318D1F29D00AF3EFB /* libPEGKitOSX */,
 				D317C12A18D1F5EB0036BE75 /* libPEGKitIOS */,
 				D37D8DC51571A4F700CDB822 /* PEGKitTests */,
 				D338302E171C923700CCE513 /* ParserGenApp */,
-				6CB12BFF1DBD80980061F891 /* PEGKittvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -2631,11 +2635,12 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = module.modulemap;
+				MODULEMAP_PRIVATE_FILE = module.private.modulemap;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2680,11 +2685,12 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = module.modulemap;
+				MODULEMAP_PRIVATE_FILE = module.private.modulemap;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2734,6 +2740,8 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = module.modulemap;
+				MODULEMAP_PRIVATE_FILE = module.private.modulemap;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = PEGKit;
 				SDKROOT = iphoneos;
@@ -2782,6 +2790,8 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = module.modulemap;
+				MODULEMAP_PRIVATE_FILE = module.private.modulemap;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = PEGKit;
 				SDKROOT = iphoneos;
