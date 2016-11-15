@@ -38,6 +38,8 @@ PEGKit is a re-write of an earlier framework by the same author called [ParseKit
 * [Parsing](#parsing)
 * [Grammars](#garmmars)
     * [Basic Grammar Syntax](#basic-syntax)
+    * [Rules](#rules)
+    * [Grouping](#grouping)
     * [Actions](#actions)
     * [Rule Actions](#rule-actions)
     * [Grammar Actions](#grammar-actions)
@@ -435,6 +437,38 @@ As shown above, the PEGKit grammar syntax consists of individual language produc
     adjective = cold | 'freezing';
     cold = 'cold';
     freezing = 'freezing';
+
+<a name="rules"></a>
+####Rules
+
+Every PEGKit grammar begins with the *highest-level* or *outermost* rule in the language. This rule must be declared first, but it may have any name you like. For *Cold Beer*, the outermost rule is:
+
+    start = sentence+;
+
+Which states that the outermost rule of this language consists of a *sequence* of one or more (`»+«`) instances of the `sentence` rule.
+
+    sentence = adjectives 'beer' '.';
+
+The `sentence` rule states that sentences are a *sequence* of the `adjective` rule followed by the literal strings `beer` and `.`
+
+    adjectives = cold adjective*;
+
+In turn, `adjectives` is a *sequence* of a single instance of the `cold` rule followed by a *repetition* (`»*«` read as 'zero or more') of the `adjective` rule.
+
+    adjective = cold | freezing;
+    cold = 'cold';
+    freezing = 'freezing';
+
+The `adjective` rule is an *alternation* of either an instance of the `cold` or the `freezing` rule. The `cold` rule is the literal string `cold` and `freezing` the literal string `freezing`.
+
+<a name="grouping"></a>
+####Grouping
+
+A language may be expressed in many different, yet equivalent grammars. Rules may be referenced in any order (even before they are defined) and grouped using parentheses (`»(«` and `»)«`).
+
+For example, the *Cold Beer* language could also be represented by the following grammar:
+
+    start = ('cold' ('cold' | 'freezing')* 'beer' '.')+;
 
 ---
 
