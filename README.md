@@ -40,6 +40,7 @@ PEGKit is a re-write of an earlier framework by the same author called [ParseKit
     * [Basic Grammar Syntax](#basic-syntax)
     * [Rules](#rules)
     * [Grouping](#grouping)
+    * [Discarding](#discarding)
     * [Actions](#actions)
     * [Rule Actions](#rule-actions)
     * [Grammar Actions](#grammar-actions)
@@ -470,9 +471,8 @@ For example, the *Cold Beer* language could also be represented by the following
 
     start = ('cold' ('cold' | 'freezing')* 'beer' '.')+;
 
----
-
-####Discard directive
+<a name="discarding"></a>
+####Discarding
 
 The post-fix `!` operator can be used to discard a token which is not needed to compute a result. 
 
