@@ -37,6 +37,7 @@ PEGKit is a re-write of an earlier framework by the same author called [ParseKit
     * [Customizing PKTokenizer behavior](#custom-tokenizer-behavior)
 * [Parsing](#parsing)
 * [Grammars](#garmmars)
+    * [Basic Grammar Syntax](#basic-syntax)
     * [Actions](#actions)
     * [Rule Actions](#rule-actions)
     * [Grammar Actions](#grammar-actions)
@@ -392,6 +393,49 @@ Now `PKTokenizer` will return individual Symbol tokens for all `«/»` and `«*�
 ---
 <a name="grammars"></a>
 ###Grammars
+
+<a name="basic-syntax"></a>
+####Basic Grammar Syntax
+
+PEGKit allows users to build parsers for custom languages from a declarative, BNF-style grammar without writing any code. By inserting your grammar into the **ParserGen.app** application, Objective-C source code is generated which contains a parser for your language – specifically, a subclass of `PKParser`.
+
+The grammar below describes a simple toy language called ***Cold Beer*** and will serve as a quick introduction to the PEGKit grammar syntax. The rules of the *Cold Beer* language are as follows. The language consists of a sequence of one or more sentences beginning with the word `»cold«` followed by a repetition of either `»cold«` or `»freezing«` followed by `»beer«` and terminated by the symbol `».«`.
+
+For example, each of the following lines are valid instances of the *Cold Beer* language (as is the example as a whole):
+
+    cold cold cold freezing cold freezing cold beer.
+    cold cold freezing cold beer.
+    cold freezing beer.
+    cold beer.
+
+The following lines are ***not*** valid *Cold Beer* statements:
+
+    freezing cold beer.
+    cold freezing beer
+    beer.
+
+Here is a complete PEGKit grammar for the *Cold Beer* language.
+
+    start = sentence+;
+    sentence = adjectives 'beer' '.';
+    adjectives = cold adjective*;
+    adjective = cold | freezing;
+    cold = 'cold';
+    freezing = 'freezing';
+
+As shown above, the PEGKit grammar syntax consists of individual language production declarations separated by `»;«`. Whitespace is ignored, so the productions can be formatted liberally with whitespace as the programmer prefers. Comments are also allowed and resemble the comment style of Objective-C. So a commented *Cold Beer* grammar may appear as:
+
+    /*
+        A Grammar for the Cold Beer Language
+        by Todd Ditchendorf
+    */
+    start = sentence+;     // outermost production
+    sentence = adjectives 'beer' '.';
+    adjectives = cold adjective*;
+    adjective = cold | 'freezing';
+    cold = 'cold';
+    freezing = 'freezing';
+
 ---
 
 ####Discard directive
