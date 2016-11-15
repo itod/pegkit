@@ -35,7 +35,6 @@ PEGKit is a re-write of an earlier framework by the same author called [ParseKit
     * [Basic Usage of PKTokenizer](#basic-tokenizer-usage)
     * [Default Behavior of PKTokenizer](#default-tokenizer-behavior)
     * [Customizing PKTokenizer behavior](#custom-tokenizer-behavior)
-* [Parsing](#parsing)
 * [Grammars](#garmmars)
     * [Basic Grammar Syntax](#basic-syntax)
     * [Rules](#rules)
