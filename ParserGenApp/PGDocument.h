@@ -22,6 +22,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class NoodleLineNumberView;
+
 @interface PGDocument : NSDocument
 
 - (IBAction)generate:(id)sender;
@@ -41,5 +43,7 @@
 @property (nonatomic, assign) NSInteger delegatePreMatchCallbacksOn;
 @property (nonatomic, assign) NSInteger delegatePostMatchCallbacksOn;
 
+@property (nonatomic, retain) IBOutlet NSScrollView* scrollView;
+@property (strong) NoodleLineNumberView	*lineNumberView;
 @property (nonatomic, retain) IBOutlet NSTextView *textView;
 @end

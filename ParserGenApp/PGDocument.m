@@ -23,8 +23,11 @@
 #import "PGDocument.h"
 //#import <PEGKit/PEGKit.h>
 #import "PGParserGenVisitor.h"
+#import "NoodleLineNumberView.h"
+#import "MarkerLineNumberView.h"
 
-@interface PGDocument ()
+
+@interface PGDocument () <MarkerLineNumberDelegate>
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
@@ -91,6 +94,15 @@
     [_textView setAutomaticDashSubstitutionEnabled:NO];
     [_textView setAutomaticQuoteSubstitutionEnabled:NO];
     
+    // Setup line numbers for NSTextView
+    self.lineNumberView = [[MarkerLineNumberView alloc] initWithScrollView:self.scrollView];
+    [self.lineNumberView setDelegate:self];
+    [self.scrollView setVerticalRulerView:self.lineNumberView];
+    [self.scrollView setHasHorizontalRuler:NO];
+    [self.scrollView setHasVerticalRuler:YES];
+    [self.scrollView setRulersVisible:YES];
+    
+    
     [_textView setFont:[NSFont fontWithName:@"Monaco" size:12.0]];
     [self focusTextView];
 }
@@ -141,6 +153,12 @@
     return YES;
 }
 
+#pragma mark -
+#pragma mark MarkerLineNumberDelegate
+
+- (void)lineMarkerChanged {
+    NSLog(@"%s", __FUNCTION__);
+}
 
 #pragma mark -
 #pragma mark Actions
