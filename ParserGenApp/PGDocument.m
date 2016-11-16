@@ -37,7 +37,7 @@
     if (self) {
         self.factory = [PGParserFactory factory];
         _factory.collectTokenKinds = YES;
-        
+
         self.enableARC = YES;
         self.enableHybridDFA = YES;
         self.enableMemoization = YES;
@@ -87,6 +87,12 @@
     [super windowControllerDidLoadNib:wc];
     
     [_textView setFont:[NSFont fontWithName:@"Monaco" size:12.0]];
+    
+    // Since maverics the check boxes in interface builder do not work to
+    // turn off smart substitution on dashes and quotes
+    [_textView setAutomaticDashSubstitutionEnabled:NO];
+    [_textView setAutomaticQuoteSubstitutionEnabled:NO];
+    
     [self focusTextView];
 }
 
