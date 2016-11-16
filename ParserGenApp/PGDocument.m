@@ -86,6 +86,11 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *)wc {
     [super windowControllerDidLoadNib:wc];
     
+    // Since maverics the check boxes in interface builder do not work to
+    // turn off smart substitution on dashes and quotes
+    [_textView setAutomaticDashSubstitutionEnabled:NO];
+    [_textView setAutomaticQuoteSubstitutionEnabled:NO];
+    
     [_textView setFont:[NSFont fontWithName:@"Monaco" size:12.0]];
     [self focusTextView];
 }
