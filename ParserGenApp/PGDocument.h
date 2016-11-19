@@ -39,5 +39,10 @@
 @property (nonatomic, assign) NSInteger delegatePreMatchCallbacksOn;
 @property (nonatomic, assign) NSInteger delegatePostMatchCallbacksOn;
 
+// These two are here for backwards compatibiltly with old saved files
+@property (nonatomic, copy) NSString *grammar;
+@property (nonatomic, assign) BOOL busy;
+
+
 @property (nonatomic, retain) IBOutlet NSTextView *textView;
 @end
