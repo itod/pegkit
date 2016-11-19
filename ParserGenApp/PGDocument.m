@@ -159,7 +159,6 @@
         return;
     }
     
-    self.busy = YES;
     self.error = nil;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -304,7 +303,6 @@ done:
         [[NSSound soundNamed:@"Hero"] play];
     }
     
-    self.busy = NO;
     [self focusTextView];
 }
 
