@@ -30,7 +30,7 @@
 
 @property (nonatomic, copy) NSString *destinationPath;
 @property (nonatomic, copy) NSString *parserName;
-@property (nonatomic, copy) NSString *grammar;
+//@property (nonatomic, copy) NSString *grammar;
 @property (nonatomic, assign) BOOL busy;
 @property (nonatomic, retain) NSError *error;
 
