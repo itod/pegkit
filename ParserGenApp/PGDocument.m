@@ -28,6 +28,8 @@
 @property (nonatomic, retain) PGParserFactory *factory;
 @property (nonatomic, retain) PGRootNode *root;
 @property (nonatomic, retain) PGParserGenVisitor *visitor;
+
+@property (nonatomic, retain) NSString* loadGrammar;
 @end
 
 @implementation PGDocument
@@ -96,6 +98,12 @@
     
     [_textView setFont:[NSFont fontWithName:@"Monaco" size:12.0]];
     [self focusTextView];
+    
+    if (self.loadGrammar != nil) {
+        [self.textView setString: self.loadGrammar];
+        self.loadGrammar = nil;
+    }
+    
 }
 
 
@@ -133,7 +141,11 @@
     //NSLog(@"%@", tab);
     
     self.destinationPath = tab[@"destinationPath"];
-    [self.textView setString:tab[@"grammar"]];
+    if (self.textView != nil) {
+        [self.textView setString:tab[@"grammar"]];
+    } else {
+        self.loadGrammar = tab[@"grammar"];
+    }
     self.parserName = tab[@"parserName"];
     self.enableARC = [tab[@"enableARC"] boolValue];
     self.enableHybridDFA = [tab[@"enableHybridDFA"] boolValue];
