@@ -32,8 +32,6 @@
 
 @property (nonatomic, copy) NSString *destinationPath;
 @property (nonatomic, copy) NSString *parserName;
-@property (nonatomic, copy) NSString *grammar;
-@property (nonatomic, assign) BOOL busy;
 @property (nonatomic, retain) NSError *error;
 
 @property (nonatomic, assign) BOOL enableARC;
@@ -46,4 +44,10 @@
 @property (nonatomic, retain) IBOutlet NSScrollView* scrollView;
 @property (strong) NoodleLineNumberView	*lineNumberView;
 @property (nonatomic, retain) IBOutlet NSTextView *textView;
+
+// These two are here for backwards compatibiltly with old saved files
+@property (nonatomic, copy) NSString *grammar;
+@property (nonatomic, assign) BOOL busy;
+
+
 @end

@@ -51,9 +51,6 @@
         
         self.delegatePreMatchCallbacksOn = PGParserFactoryDelegateCallbacksOnNone;
         self.delegatePostMatchCallbacksOn = PGParserFactoryDelegateCallbacksOnAll;
-        
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"expression" ofType:@"grammar"];
-        self.grammar = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     }
     return self;
 }
@@ -62,7 +59,6 @@
 - (void)dealloc {
     self.destinationPath = nil;
     self.parserName = nil;
-    self.grammar = nil;
     
     self.textView = nil;
     
@@ -88,6 +84,13 @@
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)wc {
     [super windowControllerDidLoadNib:wc];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"expression" ofType:@"grammar"];
+    NSString *grammarVal = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    if (grammarVal) {
+        [self.textView setString:grammarVal];
+    }
+
     
     // Since maverics the check boxes in interface builder do not work to
     // turn off smart substitution on dashes and quotes
@@ -118,7 +121,8 @@
     NSMutableDictionary *tab = [NSMutableDictionary dictionaryWithCapacity:9];
     
     if (_destinationPath) tab[@"destinationPath"] = _destinationPath;
-    if (_grammar) tab[@"grammar"] = _grammar;
+    NSString* grammarVal = [self.textView string];
+    if (grammarVal) tab[@"grammar"] = grammarVal;
     if (_parserName) tab[@"parserName"] = _parserName;
     tab[@"enableARC"] = @(_enableARC);
     tab[@"enableHybridDFA"] = @(_enableHybridDFA);
@@ -141,7 +145,7 @@
     //NSLog(@"%@", tab);
     
     self.destinationPath = tab[@"destinationPath"];
-    self.grammar = tab[@"grammar"];
+    [self.textView setString:tab[@"grammar"]];
     self.parserName = tab[@"parserName"];
     self.enableARC = [tab[@"enableARC"] boolValue];
     self.enableHybridDFA = [tab[@"enableHybridDFA"] boolValue];
@@ -166,14 +170,13 @@
 - (IBAction)generate:(id)sender {
     NSString *destPath = [[_destinationPath copy] autorelease];
     NSString *parserName = [[_parserName copy] autorelease];
-    NSString *grammar = [[_grammar copy] autorelease];
+    NSString *grammar = [self.textView string];
     
     if (![destPath length] || ![parserName length] || ![grammar length]) {
         NSBeep();
         return;
     }
     
-    self.busy = YES;
     self.error = nil;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -248,7 +251,7 @@
 
 - (void)generateWithDestinationPath:(NSString *)destPath parserName:(NSString *)parserName grammar:(NSString *)grammar {
     NSError *err = nil;
-    self.root = (id)[_factory ASTFromGrammar:_grammar error:&err];
+    self.root = (id)[_factory ASTFromGrammar:grammar error:&err];
     if (err) {
         self.error = err;
         goto done;
@@ -318,7 +321,6 @@ done:
         [[NSSound soundNamed:@"Hero"] play];
     }
     
-    self.busy = NO;
     [self focusTextView];
 }
 

@@ -70,16 +70,6 @@
                                     <size key="maxSize" width="554" height="10000000"/>
                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
-                                        <binding destination="-2" name="editable" keyPath="busy" id="100072">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="-2" name="value" keyPath="grammar" id="100056">
-                                            <dictionary key="options">
-                                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                            </dictionary>
-                                        </binding>
                                         <outlet property="nextKeyView" destination="100041" id="100060"/>
                                     </connections>
                                 </textView>
