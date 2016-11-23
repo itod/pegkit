@@ -16,15 +16,15 @@ The PEGKit Framework offers 2 basic services of general interest to Cocoa develo
 1. **String Tokenization** via the Objective-C `PKTokenizer` and `PKToken` classes.
 1. **Objective-C parser generation via grammars** - Generate source code for an Objective-C parser class from simple, intuitive, and powerful [BNF](http://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form)-style grammars (similar to yacc or ANTLR). While parsing, the generated parser will provide callbacks to your Objective-C delegate.
 
-The PEGKit source code is available [on Github](http://github.com/itod/parsekit/).
+The PEGKit source code is available [on Github](http://github.com/itod/pegkit/).
 
 A tutorial for [using PEGKit in your iOS applications is available on GitHub](https://github.com/itod/PEGKitMiniMathTutorial).
 
 ##History
 
-PEGKit is a re-write of an earlier framework by the same author called [ParseKit](http://parsekit.com). ParseKit should generally be considered deprecated, and PEGKit should probably be used for all future development.
+PEGKit is a re-write of an earlier framework by the same author called [ParseKit](https://github.com/itod/parsekit). ParseKit should generally be considered deprecated, and PEGKit should probably be used for all future development.
 
-* ***[ParseKit](http://parsekit.com)*** produces **dynamic**, **non-deterministic** parsers **at runtime**. The parsers produced by ParseKit exhibit poor (exponential) performance characteristics -- although they have some interesting properties which are useful in very rare circumstances.
+* ***[ParseKit](https://github.com/itod/parsekit)*** produces **dynamic**, **non-deterministic** parsers **at runtime**. The parsers produced by ParseKit exhibit poor (exponential) performance characteristics -- although they have some interesting properties which are useful in very rare circumstances.
 
 * ***PEGKit*** produces **static** ObjC source code for **deterministic** ([PEG](http://en.wikipedia.org/wiki/Parsing_expression_grammar)) memoizing parsers **at design time** which you can then compile into your project. The parsers produced by PEGKit exhibit good (linear) performance characteristics.
 
