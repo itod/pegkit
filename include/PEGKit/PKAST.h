@@ -26,7 +26,7 @@
 
 @interface PKAST : NSObject <NSCopying>
 
-+ (PKAST *)ASTWithToken:(PKToken *)tok;
++ (instancetype)ASTWithToken:(PKToken *)tok;
 
 - (instancetype)initWithToken:(PKToken *)tok;
 
