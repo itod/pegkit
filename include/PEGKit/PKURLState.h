@@ -26,7 +26,6 @@
 /*!
     @class      PKURLState 
     @brief      A URL state returns a URL from a reader.
-    @details    
 */    
 @interface PKURLState : PKTokenizerState
 

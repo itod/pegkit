@@ -48,7 +48,7 @@
 
 /*!
     @brief      Informs whether the given character is recognized as a word character by this state.
-    @param      cin the character to check
+    @param      c the character to check
     @result     true if the given chracter is recognized as a word character
 */
 - (BOOL)isWordChar:(PKUniChar)c;

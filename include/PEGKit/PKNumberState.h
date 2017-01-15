@@ -29,7 +29,7 @@
     @class      PKNumberState 
     @brief      A number state returns a number from a reader.
     @details    This state's idea of a number allows an optional, initial minus sign, followed by one or more digits. A decimal point and another string of digits may follow these digits.
-                If <tt>allowsScientificNotation</tt> is YES (default is NO) this state allows 'e' or 'E' followed by an (optionally explicityly positive or negative) integer to represent 10 to the indicated power. For example, this state will recognize <tt>1e2</tt> as equaling <tt>100</tt>.</p>
+                If <tt>allowsScientificNotation</tt> is YES (default is NO) this state allows 'e' or 'E' followed by an (optionally explicityly positive or negative) integer to represent 10 to the indicated power. For example, this state will recognize <tt>1e2</tt> as equaling <tt>100</tt>.
 */
 @interface PKNumberState : PKTokenizerState
 
@@ -44,21 +44,21 @@
 
 /*!
     @property   allowsTrailingDecimalSeparator
-    @brief      If YES, numbers are allowed to end with a trialing decimal separator, e.g. <tt>42.<tt>
+    @brief      If YES, numbers are allowed to end with a trialing decimal separator, e.g. <tt>42.</tt>
     @details    default is NO
 */
 @property (nonatomic) BOOL allowsTrailingDecimalSeparator;
 
 /*!
     @property   allowsScientificNotation
-    @brief      If YES, supports exponential numbers like <tt>42.0e2<tt>, <tt>2E+6<tt>, or <tt>5.1e-6<tt>
+    @brief      If YES, supports exponential numbers like <tt>42.0e2</tt>, <tt>2E+6</tt>, or <tt>5.1e-6</tt>
     @details    default is NO
 */
 @property (nonatomic) BOOL allowsScientificNotation;
 
 /*!
     @property   allowsFloatingPoint
-    @brief      If YES, supports floating point numbers like <tt>1.0<tt> or <tt>3.14<tt>. If NO, only whole numbers are allowed.
+    @brief      If YES, supports floating point numbers like <tt>1.0</tt> or <tt>3.14</tt>. If NO, only whole numbers are allowed.
     @details    default is YES
 */
 @property (nonatomic) BOOL allowsFloatingPoint;

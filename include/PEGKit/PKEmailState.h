@@ -26,7 +26,6 @@
 /*!
     @class      PKEmailState 
     @brief      An email state returns an email address from a reader.
-    @details    
 */
 @interface PKEmailState : PKTokenizerState
 
