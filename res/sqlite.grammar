@@ -14,8 +14,8 @@ http://sqlite.org/syntaxdiagrams.html#column-def
     [t.commentState setFallbackState:t.symbolState from:'/' to:'/'];
 }
 
-sqlStmtList = (sqlStmt ';')*;
-sqlStmt = sqlStmtPrefix? sqlStmtBody;
+sqlStmtList         = (sqlStmt ';')*;
+sqlStmt             = sqlStmtPrefix? sqlStmtBody;
 
 star                = '*';
 
@@ -41,8 +41,6 @@ qualifiedTableName  = (databaseName '.')? tableName (('INDEXED' 'BY' indexName) 
 
 tableOrIndexName    = tableName | indexName;
 
-expr                = literalValue; // TODO
-
 literalValue        = signedNumber
                     | stringLiteral
                     | blobLiteral 
@@ -53,11 +51,10 @@ literalValue        = signedNumber
                     
 blobLiteral         = Word; // ??
 stringLiteral       = QuotedString;
-signedNumber        = ('+' | '-')? Number; // TODO
+signedNumber        = unaryOperator? Number; // TODO
 
 sqlStmtPrefix       = 'EXPLAIN' ('QUERY' 'PLAN')?;
-sqlStmtBody         = 
-                      alterTableStmt
+sqlStmtBody         = alterTableStmt
                     | analyzeStmt
                     | attachStmt
                     | beginStmt
@@ -84,6 +81,18 @@ sqlStmtBody         =
                     | updateStmt
                     | updateStmtLimited
                     | vacuumStmt;
+
+bindParameter       = Word; // ??
+unaryOperator       = ('+' | '-'); // ??
+binaryOperator      = ('+' | '-'); // ??
+expr                = binaryExpr | unaryExpr;
+binaryExpr          = unaryExpr binaryOperator unaryExpr;
+unaryExpr           = literalValue
+                    | bindParameter
+                    | ((schemaName '.')? tableName '.')? columnName
+//                    | unaryOperator expr
+//                    |  expr binaryOperator expr
+                    ;
 
 //
 // ALTER TABLE STMT
@@ -198,8 +207,8 @@ resultColumn            = '*'
                           | tableName '.' '*'
                           | expr ('AS'? columnAlias)?;
 
-columnAlias				= Any; // TODO!!!
-tableAlias				= Any; // TODO!!!
+columnAlias             = Word; // ??
+tableAlias              = Word; // ??
 joinSource              = singleSource (joinOp singleSource joinConstraint)*;
 
 singleSource            = (databaseName '.')? tableName ('AS'? tableAlias)? ('INDEXED' 'BY' indexName | 'NOT' 'INDEXED')?
