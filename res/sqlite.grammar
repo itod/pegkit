@@ -75,11 +75,9 @@ sqlStmtBody         =
                     | dropTriggerStmt
                     | dropViewStmt
                     | insertStmt
-/*
                     | pragmaStmt
                     | reindexStmt
                     | releaseStmt
-*/
                     | rollbackStmt
 /*
                     | savepointStmt
@@ -182,10 +180,8 @@ parentheticExprs        = '(' expr (',' expr)* ')';
 parentheticColumnNames  = '(' columnName (',' columnName)* ')';
 pragmaStmt              = 'PRAGMA' (schemaName '.')? pragmaName ('=' pragmaName | '(' pragmaValue ')')?;
 pragmaValue             = signedNumber | name | stringLiteral;
-/*
-reindexStmt             = XXX;
-releaseStmt             = XXX;
-*/
+reindexStmt             = 'REINDEX' (collationName | (schemaName '.')? (tableName | indexName))?;
+releaseStmt             = 'RELEASE' ('SAVEPOINT')? savepointName;
 rollbackStmt            = 'ROLLBACK' 'TRANSACTION'? ('TO' 'SAVEPOINT'? savepointName)?;
 /*
 savepointStmt           = XXX;
