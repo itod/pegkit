@@ -22,6 +22,7 @@ star                = '*';
 name                = Word; // ??
 databaseName        = Word; // ??
 indexName           = Word; // ??
+schemaName          = Word; // ??
 
 tableName           = Word | star; // ??
 newTableName        = tableName; // ??
@@ -124,8 +125,12 @@ analyzeStmt             = 'ANALYZE' (databaseName | tableOrIndexName | databaseN
 attachStmt              = 'ATTACH' 'DATABASE'? expr 'AS' databaseName;
 beginStmt               = 'BEGIN' ('DEFERRED' | 'IMMEDIATE' | 'EXCLUSIVE')? 'TRANSACTION'?;
 commitStmt              = ('COMMIT' | 'END') 'TRANSACTION'?;
+
+createIndexStmt         = 'CREATE' 'UNIQUE'? 'INDEX' ('IF' 'NOT' 'EXISTS')? 
+                          (schemaName '.')? indexName 'ON' tableName '(' indexedColumn (',' indexedColumn)* ')'
+                          ('WHERE' expr)?;
+indexedColumn           = (columnName | expr) ('COLLATE' collationName)? ('ASC' | 'DESC')?;
 /*
-createIndexStmt         = XXX;
 createTableStmt         = XXX;
 createTriggerStmt       = XXX;
 createViewStmt          = XXX;
