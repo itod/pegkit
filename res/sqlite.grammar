@@ -42,6 +42,9 @@ qualifiedTableName  = (databaseName '.')? tableName (('INDEXED' 'BY' indexName) 
 
 tableOrIndexName    = tableName | indexName;
 
+raiseFunction       = Word; // ??
+tableFunction       = Word; // ??
+
 literalValue        = signedNumber
                     | stringLiteral
                     | blobLiteral 
@@ -81,26 +84,49 @@ sqlStmtBody         = alterTableStmt
                     | selectStmt
                     | updateStmt
                     | updateStmtLimited
-                    | vacuumStmt;
+                    | vacuumStmt
+                    ;
 
 bindParameter       = Word; // ??
 unaryOperator       = ('!'); // ??
 binaryOperator      = ('+' | '-'); // ??
 
-expr                = unaryExpr (binaryOperator unaryExpr)*;
+// TODO these should nest?
+expr                = mathExpr
+                    | likeExpr
+                    | isExpr
+                    | rangeExpr
+                    | inExpr
+                    ; 
+                    
+mathExpr            = unaryExpr (binaryOperator unaryExpr)*;
+likeExpr            = unaryExpr 'NOT'? ('LIKE' | 'GLOB' | 'REGEXP' | 'MATCH') unaryExpr ('ESCAPE' unaryExpr)?;
+isExpr              = unaryExpr 'IS' 'NOT'? unaryExpr;
+rangeExpr           = 'NOT'? 'BETWEEN' unaryExpr 'AND' unaryExpr;
+inExpr              = 'NOT'? 'IN'
+                      (
+                          '(' (selectStmt | unaryExpr (',' unaryExpr)*)? ')'
+                          | (schemaName '.')? tableName
+                          | (schemaName '.')? tableFunction '(' (unaryExpr (',' unaryExpr)*)? ')'
+                      );
+
 unaryExpr           = negatedPrimaryExpr | primaryExpr;
 negatedPrimaryExpr  = unaryOperator+ primaryExpr;
 primaryExpr         = atom | subExpr;
 subExpr             = '(' expr (',' expr)* ')'; // repetition? comes from 7th alt in official sqlite `expr` rule
 
-atom                = literalValue
+atom                = atomBody atomTail?;
+atomBody            = literalValue
                     | bindParameter
                     | ((schemaName '.')? tableName '.')? columnName
-//                    | unaryOperator expr
-//                    |  expr binaryOperator expr
                     | functionName '(' ('DISTINCT'? expr (',' expr)* | star)? ')'
-//                    | '(' expr (',' expr)* ')'
                     | 'CAST' '(' expr 'AS' typeName ')'
+                    | ('NOT'? 'EXISTS')? '(' selectStmt ')'
+                    | 'CASE' expr? ('WHEN' expr 'THEN' expr)* ('ELSE' expr)? 'END'
+                    | raiseFunction
+                    ;
+atomTail            = 'COLLATE' collationName
+                    | 'ISNULL' | 'NOTNULL' | 'NOT' 'NULL'
                     ;
 
 //
