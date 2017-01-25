@@ -23,6 +23,8 @@ name                = Word; // ??
 databaseName        = Word; // ??
 indexName           = Word; // ??
 schemaName          = Word; // ??
+moduleName          = Word; // ??
+moduleArgument      = Word; // ??
 
 tableName           = Word | star; // ??
 newTableName        = tableName; // ??
