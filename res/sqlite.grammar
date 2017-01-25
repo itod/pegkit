@@ -40,7 +40,7 @@ tableOrIndexName    = tableName | indexName;
 
 expr                = literalValue; // TODO
 
-signedNumber        = Number; // TODO
+signedNumber        = ('+' | '-')? Number; // TODO
 literalValue        = Number
                     | QuotedString
                     | blobLiteral 
@@ -58,9 +58,9 @@ sqlStmtBody         =
                     | attachStmt
                     | beginStmt
                     | commitStmt
-                    /*                      
                     | createIndexStmt
                     | createTableStmt
+                    /*                      
                     | createTriggerStmt
                     | createViewStmt
                     | createVirtualTableStmt
@@ -99,26 +99,26 @@ columnDef               = columnName typeName? columnConstraint*;
 typeName                = name+ ('(' signedNumber (',' signedNumber)? ')')?;
 
 columnConstraint        = ('CONSTRAINT' name)?
-                            (
-                            'PRIMARY' 'KEY' ('ASC' | 'DESC')? conflictClause 'AUTOINCREMENT'?
-                            | 'NOT' 'NULL' conflictClause
-                            | 'UNIQUE' conflictClause
-                            | 'CHECK' '(' expr ')'
-                            | 'DEFAULT' (signedNumber | literalValue | '(' expr ')')
-                            | 'COLLATE' collationName
-                            | foreignKeyClause
-                            );
+                          (
+                              'PRIMARY' 'KEY' ('ASC' | 'DESC')? conflictClause 'AUTOINCREMENT'?
+                              | 'NOT' 'NULL' conflictClause
+                              | 'UNIQUE' conflictClause
+                              | 'CHECK' '(' expr ')'
+                              | 'DEFAULT' (signedNumber | literalValue | '(' expr ')')
+                              | 'COLLATE' collationName
+                              | foreignKeyClause
+                          );
 
-conflictClause =        Empty | 'ON' 'CONFLICT' ('ROLLBACK' | 'ABORT' | 'FAIL' | 'IGNORE' | 'REPLACE');
+conflictClause          = Empty | 'ON' 'CONFLICT' ('ROLLBACK' | 'ABORT' | 'FAIL' | 'IGNORE' | 'REPLACE');
 
-foreignKeyClause =     'REFERENCES' foreignTable ('(' columnName (',' columnName)* ')')?
-                        (
-                            'ON' ('DELETE' | 'UPDATE') ('SET' 'NULL' | 'SET' 'DEFAULT' | 'CASCADE' | 'RESTRICT' | 'NO' 'ACTION')
-                            | 'MATCH' name
-                        )*
-                        (
-                            'NOT'? 'DEFERRABLE' ('INITIALLY' 'DEFERRED' | 'INITIALLY' 'IMMEDIATE')?
-                        )?;
+foreignKeyClause        = 'REFERENCES' foreignTable ('(' columnName (',' columnName)* ')')?
+                          (
+                              'ON' ('DELETE' | 'UPDATE') ('SET' 'NULL' | 'SET' 'DEFAULT' | 'CASCADE' | 'RESTRICT' | 'NO' 'ACTION')
+                              | 'MATCH' name
+                          )*
+                          (
+                              'NOT'? 'DEFERRABLE' ('INITIALLY' 'DEFERRED' | 'INITIALLY' 'IMMEDIATE')?
+                          )?;
 
 analyzeStmt             = 'ANALYZE' (databaseName | tableOrIndexName | databaseName '.' tableOrIndexName)?;
 
@@ -130,8 +130,19 @@ createIndexStmt         = 'CREATE' 'UNIQUE'? 'INDEX' ('IF' 'NOT' 'EXISTS')?
                           (schemaName '.')? indexName 'ON' tableName '(' indexedColumn (',' indexedColumn)* ')'
                           ('WHERE' expr)?;
 indexedColumn           = (columnName | expr) ('COLLATE' collationName)? ('ASC' | 'DESC')?;
+createTableStmt         = 'CREATE' ('TEMP' | 'TEMPORARY')? 'TABLE' ('IF' 'NOT' 'EXISTS')?
+                          (schemaName '.')? tableName
+                          (
+                              '(' columnDef (',' columnDef)* (',' tableConstraint)* ')' ('WITHOUT' 'ROWID')?
+                              | 'AS' selectStmt
+                          );
+tableConstraint         = ('CONSTRAINT' 'NAME')?
+                          (
+                              (('PRIMARY' 'KEY') | 'UNIQUE') '(' indexedColumn (',' indexedColumn)* ')' conflictClause
+                              | 'CHECK' '(' expr ')'
+                              | 'FOREIGN' 'KEY' '(' columnName (',' columnName)* ')' foreignKeyClause
+                          );
 /*
-createTableStmt         = XXX;
 createTriggerStmt       = XXX;
 createViewStmt          = XXX;
 createVirtualTableStmt  = XXX;
@@ -139,10 +150,11 @@ createVirtualTableStmt  = XXX;
 
 deleteStmt              = 'DELETE' 'FROM' qualifiedTableName ('WHERE' expr)?;
 
-deleteStmtLimited       = deleteStmt (
-                            'ORDER' 'BY' orderingTerm (',' orderingTerm)*
-                            'LIMIT' expr (('OFFSET' | ',') expr)?
-                        )?;
+deleteStmtLimited       = deleteStmt
+                          (
+                              'ORDER' 'BY' orderingTerm (',' orderingTerm)*
+                              'LIMIT' expr (('OFFSET' | ',') expr)?
+                          )?;
 
 
 detachStmt              = 'DETACH' 'DATABASE'? databaseName;
