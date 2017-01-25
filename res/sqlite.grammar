@@ -79,15 +79,12 @@ sqlStmtBody         =
                     | reindexStmt
                     | releaseStmt
                     | rollbackStmt
-/*
                     | savepointStmt
-*/
                     | selectStmt
                     | updateStmt
                     | updateStmtLimited
-/*
-                    | vacuumStmt*/;
-                
+                    | vacuumStmt;
+
 //
 // ALTER TABLE STMT
 //
@@ -183,9 +180,7 @@ pragmaValue             = signedNumber | name | stringLiteral;
 reindexStmt             = 'REINDEX' (collationName | (schemaName '.')? (tableName | indexName))?;
 releaseStmt             = 'RELEASE' ('SAVEPOINT')? savepointName;
 rollbackStmt            = 'ROLLBACK' 'TRANSACTION'? ('TO' 'SAVEPOINT'? savepointName)?;
-/*
-savepointStmt           = XXX;
-*/
+savepointStmt           = 'SAVEPOINT' savepointName;
 
 //
 // SELECT STMT
@@ -232,6 +227,5 @@ columnNameAssignment    = (columnName '=' expr);
 
 updateStmtLimited       = updateStmt ('ORDER' 'BY' orderingTerm (',' orderingTerm)*)?
                           'LIMIT' expr (('OFFSET' | ',') expr)?;
-/*
-vacuumStmt;             = XXX;
-*/
+
+vacuumStmt              = 'VACUUM' schemaName?;
