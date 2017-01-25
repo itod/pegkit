@@ -25,6 +25,7 @@ indexName           = Word; // ??
 schemaName          = Word; // ??
 moduleName          = Word; // ??
 moduleArgument      = Word; // ??
+pragmaName          = Word; // ??
 
 tableName           = Word | star; // ??
 newTableName        = tableName; // ??
@@ -42,9 +43,8 @@ tableOrIndexName    = tableName | indexName;
 
 expr                = literalValue; // TODO
 
-signedNumber        = ('+' | '-')? Number; // TODO
-literalValue        = Number
-                    | QuotedString
+literalValue        = signedNumber
+                    | stringLiteral
                     | blobLiteral 
                     | 'NULL' 
                     | 'CURRENT_TIME' 
@@ -52,6 +52,8 @@ literalValue        = Number
                     | 'CURRENT_TIMESTAMP';
                     
 blobLiteral         = Word; // ??
+stringLiteral       = QuotedString;
+signedNumber        = ('+' | '-')? Number; // TODO
 
 sqlStmtPrefix       = 'EXPLAIN' ('QUERY' 'PLAN')?;
 sqlStmtBody         = 
@@ -161,7 +163,6 @@ deleteStmtLimited       = deleteStmt
                               'LIMIT' expr (('OFFSET' | ',') expr)?
                           )?;
 
-
 detachStmt              = 'DETACH' 'DATABASE'? databaseName;
 
 dropIndexStmt           = 'DROP' 'INDEX'    ('IF' 'EXISTS')? (databaseName '.')? indexName;
@@ -179,8 +180,9 @@ insertStmtSelectStmt    = parentheticColumnNames? selectStmt;
 
 parentheticExprs        = '(' expr (',' expr)* ')';
 parentheticColumnNames  = '(' columnName (',' columnName)* ')';
+pragmaStmt              = 'PRAGMA' (schemaName '.')? pragmaName ('=' pragmaName | '(' pragmaValue ')')?;
+pragmaValue             = signedNumber | name | stringLiteral;
 /*
-pragmaStmt              = XXX;
 reindexStmt             = XXX;
 releaseStmt             = XXX;
 */
