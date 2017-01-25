@@ -4,10 +4,16 @@ http://sqlite.org/syntaxdiagrams.html#column-def
 
 */
 
-@singleLineComments = '//';
-@multiLineComments = '/*' '*/';
+@before {
+    PKTokenizer *t = self.tokenizer;
 
-@start = sqlStmtList;
+    // comments
+    [t setTokenizerState:t.commentState from:'/' to:'/'];
+    [t.commentState addSingleLineStartMarker:@"//"];
+    [t.commentState addMultiLineStartMarker:@"/*" endMarker:@"*/"];
+    [t.commentState setFallbackState:t.symbolState from:'/' to:'/'];
+}
+
 sqlStmtList = (sqlStmt ';')*;
 sqlStmt = sqlStmtPrefix? sqlStmtBody;
 
