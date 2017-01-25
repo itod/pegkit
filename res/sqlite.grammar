@@ -60,9 +60,9 @@ sqlStmtBody         =
                     | commitStmt
                     | createIndexStmt
                     | createTableStmt
-                    /*                      
                     | createTriggerStmt
                     | createViewStmt
+                    /*                      
                     | createVirtualTableStmt
 */
                     | deleteStmt
@@ -142,9 +142,14 @@ tableConstraint         = ('CONSTRAINT' 'NAME')?
                               | 'CHECK' '(' expr ')'
                               | 'FOREIGN' 'KEY' '(' columnName (',' columnName)* ')' foreignKeyClause
                           );
+createTriggerStmt       = 'CREATE' ('TEMP' | 'TEMPORARY')? 'TRIGGER' ('IF' 'NOT' 'EXISTS')?
+                          (schemaName '.')? triggerName ('BEFORE' | 'AFTER' | ('INSTEAD' 'OF'))?
+                          ('DELETE' | 'INSERT' | ('UPDATE' ('OF' columnName (',' columnName)*)?)) 'ON' tableName
+                          ('FOR' 'EACH' 'ROW')? ('WHEN' expr)?
+                          'BEGIN' ((updateStmt | insertStmt | deleteStmt | selectStmt) ';')+ 'END';
+createViewStmt          = 'CREATE' ('TEMP' | 'TEMPORARY')? 'VIEW' ('IF' 'NOT' 'EXISTS')?
+                          (schemaName '.')? viewName ('(' columnName (',' columnName)* ')')? 'AS' selectStmt;
 /*
-createTriggerStmt       = XXX;
-createViewStmt          = XXX;
 createVirtualTableStmt  = XXX;
 */
 
