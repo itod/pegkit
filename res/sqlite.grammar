@@ -51,7 +51,7 @@ literalValue        = signedNumber
                     
 blobLiteral         = Word; // ??
 stringLiteral       = QuotedString;
-signedNumber        = unaryOperator? Number; // TODO
+signedNumber        = binaryOperator? Number; // TODO
 
 sqlStmtPrefix       = 'EXPLAIN' ('QUERY' 'PLAN')?;
 sqlStmtBody         = alterTableStmt
@@ -83,11 +83,16 @@ sqlStmtBody         = alterTableStmt
                     | vacuumStmt;
 
 bindParameter       = Word; // ??
-unaryOperator       = ('+' | '-'); // ??
+unaryOperator       = ('!'); // ??
 binaryOperator      = ('+' | '-'); // ??
-expr                = binaryExpr | unaryExpr;
-binaryExpr          = unaryExpr binaryOperator unaryExpr;
-unaryExpr           = literalValue
+
+expr                = unaryExpr (binaryOperator unaryExpr)*;
+unaryExpr           = negatedPrimaryExpr | primaryExpr;
+negatedPrimaryExpr  = unaryOperator+ primaryExpr;
+primaryExpr         = atom | subExpr;
+subExpr             = '(' expr ')';
+
+atom                = literalValue
                     | bindParameter
                     | ((schemaName '.')? tableName '.')? columnName
 //                    | unaryOperator expr
