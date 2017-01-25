@@ -62,9 +62,7 @@ sqlStmtBody         =
                     | createTableStmt
                     | createTriggerStmt
                     | createViewStmt
-                    /*                      
                     | createVirtualTableStmt
-*/
                     | deleteStmt
                     | deleteStmtLimited
                     | detachStmt
@@ -149,9 +147,9 @@ createTriggerStmt       = 'CREATE' ('TEMP' | 'TEMPORARY')? 'TRIGGER' ('IF' 'NOT'
                           'BEGIN' ((updateStmt | insertStmt | deleteStmt | selectStmt) ';')+ 'END';
 createViewStmt          = 'CREATE' ('TEMP' | 'TEMPORARY')? 'VIEW' ('IF' 'NOT' 'EXISTS')?
                           (schemaName '.')? viewName ('(' columnName (',' columnName)* ')')? 'AS' selectStmt;
-/*
-createVirtualTableStmt  = XXX;
-*/
+createVirtualTableStmt  = 'CREATE' 'VIRTUAL' 'TABLE' ('IF' 'NOT' 'EXISTS')?
+                          (schemaName '.')? tableName
+                          'USING' moduleName ('(' moduleArgument (',' moduleArgument)* ')')?;
 
 deleteStmt              = 'DELETE' 'FROM' qualifiedTableName ('WHERE' expr)?;
 
