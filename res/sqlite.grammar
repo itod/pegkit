@@ -26,6 +26,7 @@ schemaName          = Word; // ??
 moduleName          = Word; // ??
 moduleArgument      = Word; // ??
 pragmaName          = Word; // ??
+functionName        = Word; // ??
 
 tableName           = Word | star; // ??
 newTableName        = tableName; // ??
@@ -90,13 +91,16 @@ expr                = unaryExpr (binaryOperator unaryExpr)*;
 unaryExpr           = negatedPrimaryExpr | primaryExpr;
 negatedPrimaryExpr  = unaryOperator+ primaryExpr;
 primaryExpr         = atom | subExpr;
-subExpr             = '(' expr ')';
+subExpr             = '(' expr (',' expr)* ')'; // repetition? comes from 7th alt in official sqlite `expr` rule
 
 atom                = literalValue
                     | bindParameter
                     | ((schemaName '.')? tableName '.')? columnName
 //                    | unaryOperator expr
 //                    |  expr binaryOperator expr
+                    | functionName '(' ('DISTINCT'? expr (',' expr)* | star)? ')'
+//                    | '(' expr (',' expr)* ')'
+                    | 'CAST' '(' expr 'AS' typeName ')'
                     ;
 
 //
