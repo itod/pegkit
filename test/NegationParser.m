@@ -1,5 +1,6 @@
 #import "NegationParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface NegationParser ()
@@ -39,14 +40,15 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self s_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf s_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__s {
-    
+    PKParser_weakSelfDecl;
     if (![self predicts:NEGATION_TOKEN_KIND_FOO, 0]) {
         [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
     } else {
@@ -61,8 +63,8 @@
 }
 
 - (void)__foo {
-    
-    [self match:NEGATION_TOKEN_KIND_FOO discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:NEGATION_TOKEN_KIND_FOO discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchFoo:)];
 }

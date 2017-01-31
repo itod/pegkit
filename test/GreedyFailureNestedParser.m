@@ -1,5 +1,6 @@
 #import "GreedyFailureNestedParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface GreedyFailureNestedParser ()
@@ -36,10 +37,11 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
     [self tryAndRecover:TOKEN_KIND_BUILTIN_EOF block:^{
-        [self structs_]; 
-        [self matchEOF:YES]; 
+        [PKParser_weakSelf structs_];
+        [PKParser_weakSelf matchEOF:YES];
     } completion:^{
         [self matchEOF:YES];
     }];
@@ -47,82 +49,82 @@
 }
 
 - (void)structs_ {
-    
+    PKParser_weakSelfDecl;
     do {
-        [self structure_]; 
-    } while ([self speculate:^{ [self structure_]; }]);
+        [PKParser_weakSelf structure_];
+    } while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf structure_];}]);
 
     [self fireDelegateSelector:@selector(parser:didMatchStructs:)];
 }
 
 - (void)structure_ {
-    
-    [self lcurly_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf lcurly_];
     [self tryAndRecover:GREEDYFAILURENESTED_TOKEN_KIND_RCURLY block:^{ 
-        [self pair_]; 
-        while ([self speculate:^{ [self comma_]; [self pair_]; }]) {
-            [self comma_]; 
-            [self pair_]; 
+        [PKParser_weakSelf pair_];
+        while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf comma_];[PKParser_weakSelf pair_];}]) {
+            [PKParser_weakSelf comma_];
+            [PKParser_weakSelf pair_];
         }
-        [self rcurly_]; 
+        [PKParser_weakSelf rcurly_];
     } completion:^{ 
-        [self rcurly_]; 
+        [PKParser_weakSelf rcurly_];
     }];
 
     [self fireDelegateSelector:@selector(parser:didMatchStructure:)];
 }
 
 - (void)pair_ {
-    
+    PKParser_weakSelfDecl;
     [self tryAndRecover:GREEDYFAILURENESTED_TOKEN_KIND_COLON block:^{ 
-        [self name_]; 
-        [self colon_]; 
+        [PKParser_weakSelf name_];
+        [PKParser_weakSelf colon_];
     } completion:^{ 
-        [self colon_]; 
+        [PKParser_weakSelf colon_];
     }];
-        [self value_]; 
+        [PKParser_weakSelf value_];
 
     [self fireDelegateSelector:@selector(parser:didMatchPair:)];
 }
 
 - (void)name_ {
-    
-    [self matchQuotedString:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchQuotedString:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchName:)];
 }
 
 - (void)value_ {
-    
-    [self matchWord:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchWord:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchValue:)];
 }
 
 - (void)comma_ {
-    
-    [self match:GREEDYFAILURENESTED_TOKEN_KIND_COMMA discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:GREEDYFAILURENESTED_TOKEN_KIND_COMMA discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchComma:)];
 }
 
 - (void)lcurly_ {
-    
-    [self match:GREEDYFAILURENESTED_TOKEN_KIND_LCURLY discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:GREEDYFAILURENESTED_TOKEN_KIND_LCURLY discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchLcurly:)];
 }
 
 - (void)rcurly_ {
-    
-    [self match:GREEDYFAILURENESTED_TOKEN_KIND_RCURLY discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:GREEDYFAILURENESTED_TOKEN_KIND_RCURLY discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchRcurly:)];
 }
 
 - (void)colon_ {
-    
-    [self match:GREEDYFAILURENESTED_TOKEN_KIND_COLON discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:GREEDYFAILURENESTED_TOKEN_KIND_COLON discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchColon:)];
 }

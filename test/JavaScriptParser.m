@@ -1,5 +1,6 @@
 #import "JavaScriptParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface JavaScriptParser ()
@@ -173,7 +174,8 @@
 }
 
 - (void)start {
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf execute:^{
     
         PKTokenizer *t = self.tokenizer;
 
@@ -211,8 +213,8 @@
     }];
 
     [self tryAndRecover:TOKEN_KIND_BUILTIN_EOF block:^{
-        [self program_]; 
-        [self matchEOF:YES]; 
+        [PKParser_weakSelf program_];
+        [PKParser_weakSelf matchEOF:YES];
     } completion:^{
         [self matchEOF:YES];
     }];
@@ -220,1354 +222,1354 @@
 }
 
 - (void)program_ {
-    
+    PKParser_weakSelfDecl;
     do {
-        [self element_]; 
-    } while ([self speculate:^{ [self element_]; }]);
+        [PKParser_weakSelf element_];
+    } while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf element_];}]);
 
     [self fireDelegateSelector:@selector(parser:didMatchProgram:)];
 }
 
 - (void)if_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_IF discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_IF discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchIf:)];
 }
 
 - (void)else_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_ELSE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_ELSE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchElse:)];
 }
 
 - (void)while_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_WHILE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_WHILE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchWhile:)];
 }
 
 - (void)for_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_FOR discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_FOR discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchFor:)];
 }
 
 - (void)in_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_IN discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_IN discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchIn:)];
 }
 
 - (void)break_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_BREAK discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_BREAK discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchBreak:)];
 }
 
 - (void)continue_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_CONTINUE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_CONTINUE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchContinue:)];
 }
 
 - (void)with_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_WITH discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_WITH discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchWith:)];
 }
 
 - (void)return_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_RETURN discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_RETURN discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchReturn:)];
 }
 
 - (void)var_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_VAR discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_VAR discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchVar:)];
 }
 
 - (void)delete_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_DELETE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_DELETE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchDelete:)];
 }
 
 - (void)keywordNew_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_KEYWORDNEW discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_KEYWORDNEW discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchKeywordNew:)];
 }
 
 - (void)this_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_THIS discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_THIS discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchThis:)];
 }
 
 - (void)false_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_FALSE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_FALSE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchFalse:)];
 }
 
 - (void)true_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_TRUE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_TRUE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchTrue:)];
 }
 
 - (void)null_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_NULL discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_NULL discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchNull:)];
 }
 
 - (void)undefined_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_UNDEFINED discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_UNDEFINED discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchUndefined:)];
 }
 
 - (void)void_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_VOID discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_VOID discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchVoid:)];
 }
 
 - (void)typeof_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_TYPEOF discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_TYPEOF discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchTypeof:)];
 }
 
 - (void)instanceof_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_INSTANCEOF discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_INSTANCEOF discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchInstanceof:)];
 }
 
 - (void)function_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_FUNCTION discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_FUNCTION discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchFunction:)];
 }
 
 - (void)openCurly_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_OPENCURLY discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_OPENCURLY discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchOpenCurly:)];
 }
 
 - (void)closeCurly_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_CLOSECURLY discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_CLOSECURLY discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchCloseCurly:)];
 }
 
 - (void)openParen_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_OPENPAREN discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_OPENPAREN discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchOpenParen:)];
 }
 
 - (void)closeParen_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_CLOSEPAREN discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_CLOSEPAREN discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchCloseParen:)];
 }
 
 - (void)openBracket_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_OPENBRACKET discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_OPENBRACKET discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchOpenBracket:)];
 }
 
 - (void)closeBracket_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_CLOSEBRACKET discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_CLOSEBRACKET discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchCloseBracket:)];
 }
 
 - (void)comma_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_COMMA discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_COMMA discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchComma:)];
 }
 
 - (void)dot_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_DOT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_DOT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchDot:)];
 }
 
 - (void)semi_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_SEMI discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_SEMI discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchSemi:)];
 }
 
 - (void)colon_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_COLON discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_COLON discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchColon:)];
 }
 
 - (void)equals_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_EQUALS discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_EQUALS discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchEquals:)];
 }
 
 - (void)not_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_NOT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_NOT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchNot:)];
 }
 
 - (void)lt_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_LT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_LT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchLt:)];
 }
 
 - (void)gt_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_GT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_GT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchGt:)];
 }
 
 - (void)amp_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_AMP discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_AMP discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchAmp:)];
 }
 
 - (void)pipe_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_PIPE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_PIPE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchPipe:)];
 }
 
 - (void)caret_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_CARET discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_CARET discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchCaret:)];
 }
 
 - (void)tilde_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_TILDE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_TILDE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchTilde:)];
 }
 
 - (void)question_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_QUESTION discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_QUESTION discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchQuestion:)];
 }
 
 - (void)plus_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_PLUS discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_PLUS discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchPlus:)];
 }
 
 - (void)minus_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_MINUS discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_MINUS discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchMinus:)];
 }
 
 - (void)times_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_TIMES discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_TIMES discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchTimes:)];
 }
 
 - (void)div_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_DIV discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_DIV discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchDiv:)];
 }
 
 - (void)mod_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_MOD discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_MOD discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchMod:)];
 }
 
 - (void)or_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_OR discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_OR discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchOr:)];
 }
 
 - (void)and_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_AND discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_AND discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchAnd:)];
 }
 
 - (void)ne_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_NE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_NE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchNe:)];
 }
 
 - (void)isnot_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_ISNOT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_ISNOT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchIsnot:)];
 }
 
 - (void)eq_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_EQ discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_EQ discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchEq:)];
 }
 
 - (void)is_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_IS discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_IS discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchIs:)];
 }
 
 - (void)le_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_LE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_LE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchLe:)];
 }
 
 - (void)ge_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_GE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_GE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchGe:)];
 }
 
 - (void)plusPlus_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_PLUSPLUS discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_PLUSPLUS discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchPlusPlus:)];
 }
 
 - (void)minusMinus_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_MINUSMINUS discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_MINUSMINUS discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchMinusMinus:)];
 }
 
 - (void)plusEq_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_PLUSEQ discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_PLUSEQ discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchPlusEq:)];
 }
 
 - (void)minusEq_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_MINUSEQ discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_MINUSEQ discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchMinusEq:)];
 }
 
 - (void)timesEq_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_TIMESEQ discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_TIMESEQ discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchTimesEq:)];
 }
 
 - (void)divEq_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_DIVEQ discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_DIVEQ discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchDivEq:)];
 }
 
 - (void)modEq_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_MODEQ discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_MODEQ discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchModEq:)];
 }
 
 - (void)shiftLeft_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_SHIFTLEFT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_SHIFTLEFT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchShiftLeft:)];
 }
 
 - (void)shiftRight_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchShiftRight:)];
 }
 
 - (void)shiftRightExt_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHTEXT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHTEXT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchShiftRightExt:)];
 }
 
 - (void)shiftLeftEq_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_SHIFTLEFTEQ discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_SHIFTLEFTEQ discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchShiftLeftEq:)];
 }
 
 - (void)shiftRightEq_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHTEQ discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHTEQ discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchShiftRightEq:)];
 }
 
 - (void)shiftRightExtEq_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHTEXTEQ discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHTEXTEQ discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchShiftRightExtEq:)];
 }
 
 - (void)andEq_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_ANDEQ discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_ANDEQ discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchAndEq:)];
 }
 
 - (void)xorEq_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_XOREQ discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_XOREQ discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchXorEq:)];
 }
 
 - (void)orEq_ {
-    
-    [self match:JAVASCRIPT_TOKEN_KIND_OREQ discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:JAVASCRIPT_TOKEN_KIND_OREQ discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchOrEq:)];
 }
 
 - (void)assignmentOperator_ {
-    
-    if ([self predicts:JAVASCRIPT_TOKEN_KIND_EQUALS, 0]) {
-        [self equals_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_PLUSEQ, 0]) {
-        [self plusEq_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_MINUSEQ, 0]) {
-        [self minusEq_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_TIMESEQ, 0]) {
-        [self timesEq_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_DIVEQ, 0]) {
-        [self divEq_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_MODEQ, 0]) {
-        [self modEq_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_SHIFTLEFTEQ, 0]) {
-        [self shiftLeftEq_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHTEQ, 0]) {
-        [self shiftRightEq_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHTEXTEQ, 0]) {
-        [self shiftRightExtEq_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_ANDEQ, 0]) {
-        [self andEq_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_XOREQ, 0]) {
-        [self xorEq_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_OREQ, 0]) {
-        [self orEq_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_EQUALS, 0]) {
+        [PKParser_weakSelf equals_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_PLUSEQ, 0]) {
+        [PKParser_weakSelf plusEq_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_MINUSEQ, 0]) {
+        [PKParser_weakSelf minusEq_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_TIMESEQ, 0]) {
+        [PKParser_weakSelf timesEq_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_DIVEQ, 0]) {
+        [PKParser_weakSelf divEq_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_MODEQ, 0]) {
+        [PKParser_weakSelf modEq_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_SHIFTLEFTEQ, 0]) {
+        [PKParser_weakSelf shiftLeftEq_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHTEQ, 0]) {
+        [PKParser_weakSelf shiftRightEq_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHTEXTEQ, 0]) {
+        [PKParser_weakSelf shiftRightExtEq_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_ANDEQ, 0]) {
+        [PKParser_weakSelf andEq_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_XOREQ, 0]) {
+        [PKParser_weakSelf xorEq_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_OREQ, 0]) {
+        [PKParser_weakSelf orEq_];
     } else {
-        [self raise:@"No viable alternative found in rule 'assignmentOperator'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'assignmentOperator'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchAssignmentOperator:)];
 }
 
 - (void)relationalOperator_ {
-    
-    if ([self predicts:JAVASCRIPT_TOKEN_KIND_LT, 0]) {
-        [self lt_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_GT, 0]) {
-        [self gt_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_GE, 0]) {
-        [self ge_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_LE, 0]) {
-        [self le_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_INSTANCEOF, 0]) {
-        [self instanceof_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_LT, 0]) {
+        [PKParser_weakSelf lt_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_GT, 0]) {
+        [PKParser_weakSelf gt_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_GE, 0]) {
+        [PKParser_weakSelf ge_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_LE, 0]) {
+        [PKParser_weakSelf le_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_INSTANCEOF, 0]) {
+        [PKParser_weakSelf instanceof_];
     } else {
-        [self raise:@"No viable alternative found in rule 'relationalOperator'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'relationalOperator'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchRelationalOperator:)];
 }
 
 - (void)equalityOperator_ {
-    
-    if ([self predicts:JAVASCRIPT_TOKEN_KIND_EQ, 0]) {
-        [self eq_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_NE, 0]) {
-        [self ne_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_IS, 0]) {
-        [self is_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_ISNOT, 0]) {
-        [self isnot_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_EQ, 0]) {
+        [PKParser_weakSelf eq_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_NE, 0]) {
+        [PKParser_weakSelf ne_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_IS, 0]) {
+        [PKParser_weakSelf is_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_ISNOT, 0]) {
+        [PKParser_weakSelf isnot_];
     } else {
-        [self raise:@"No viable alternative found in rule 'equalityOperator'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'equalityOperator'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchEqualityOperator:)];
 }
 
 - (void)shiftOperator_ {
-    
-    if ([self predicts:JAVASCRIPT_TOKEN_KIND_SHIFTLEFT, 0]) {
-        [self shiftLeft_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHT, 0]) {
-        [self shiftRight_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHTEXT, 0]) {
-        [self shiftRightExt_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_SHIFTLEFT, 0]) {
+        [PKParser_weakSelf shiftLeft_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHT, 0]) {
+        [PKParser_weakSelf shiftRight_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_SHIFTRIGHTEXT, 0]) {
+        [PKParser_weakSelf shiftRightExt_];
     } else {
-        [self raise:@"No viable alternative found in rule 'shiftOperator'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'shiftOperator'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchShiftOperator:)];
 }
 
 - (void)incrementOperator_ {
-    
-    if ([self predicts:JAVASCRIPT_TOKEN_KIND_PLUSPLUS, 0]) {
-        [self plusPlus_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_MINUSMINUS, 0]) {
-        [self minusMinus_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_PLUSPLUS, 0]) {
+        [PKParser_weakSelf plusPlus_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_MINUSMINUS, 0]) {
+        [PKParser_weakSelf minusMinus_];
     } else {
-        [self raise:@"No viable alternative found in rule 'incrementOperator'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'incrementOperator'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchIncrementOperator:)];
 }
 
 - (void)unaryOperator_ {
-    
-    if ([self predicts:JAVASCRIPT_TOKEN_KIND_TILDE, 0]) {
-        [self tilde_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_DELETE, 0]) {
-        [self delete_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_TYPEOF, 0]) {
-        [self typeof_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_VOID, 0]) {
-        [self void_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_TILDE, 0]) {
+        [PKParser_weakSelf tilde_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_DELETE, 0]) {
+        [PKParser_weakSelf delete_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_TYPEOF, 0]) {
+        [PKParser_weakSelf typeof_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_VOID, 0]) {
+        [PKParser_weakSelf void_];
     } else {
-        [self raise:@"No viable alternative found in rule 'unaryOperator'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'unaryOperator'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchUnaryOperator:)];
 }
 
 - (void)multiplicativeOperator_ {
-    
-    if ([self predicts:JAVASCRIPT_TOKEN_KIND_TIMES, 0]) {
-        [self times_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_DIV, 0]) {
-        [self div_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_MOD, 0]) {
-        [self mod_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_TIMES, 0]) {
+        [PKParser_weakSelf times_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_DIV, 0]) {
+        [PKParser_weakSelf div_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_MOD, 0]) {
+        [PKParser_weakSelf mod_];
     } else {
-        [self raise:@"No viable alternative found in rule 'multiplicativeOperator'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'multiplicativeOperator'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchMultiplicativeOperator:)];
 }
 
 - (void)element_ {
-    
-    if ([self predicts:JAVASCRIPT_TOKEN_KIND_FUNCTION, 0]) {
-        [self func_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_BREAK, JAVASCRIPT_TOKEN_KIND_CONTINUE, JAVASCRIPT_TOKEN_KIND_DELETE, JAVASCRIPT_TOKEN_KIND_FALSE, JAVASCRIPT_TOKEN_KIND_FOR, JAVASCRIPT_TOKEN_KIND_IF, JAVASCRIPT_TOKEN_KIND_KEYWORDNEW, JAVASCRIPT_TOKEN_KIND_MINUS, JAVASCRIPT_TOKEN_KIND_MINUSMINUS, JAVASCRIPT_TOKEN_KIND_NULL, JAVASCRIPT_TOKEN_KIND_OPENCURLY, JAVASCRIPT_TOKEN_KIND_OPENPAREN, JAVASCRIPT_TOKEN_KIND_PLUSPLUS, JAVASCRIPT_TOKEN_KIND_RETURN, JAVASCRIPT_TOKEN_KIND_SEMI, JAVASCRIPT_TOKEN_KIND_THIS, JAVASCRIPT_TOKEN_KIND_TILDE, JAVASCRIPT_TOKEN_KIND_TRUE, JAVASCRIPT_TOKEN_KIND_TYPEOF, JAVASCRIPT_TOKEN_KIND_UNDEFINED, JAVASCRIPT_TOKEN_KIND_VAR, JAVASCRIPT_TOKEN_KIND_VOID, JAVASCRIPT_TOKEN_KIND_WHILE, JAVASCRIPT_TOKEN_KIND_WITH, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self stmt_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_FUNCTION, 0]) {
+        [PKParser_weakSelf func_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_BREAK, JAVASCRIPT_TOKEN_KIND_CONTINUE, JAVASCRIPT_TOKEN_KIND_DELETE, JAVASCRIPT_TOKEN_KIND_FALSE, JAVASCRIPT_TOKEN_KIND_FOR, JAVASCRIPT_TOKEN_KIND_IF, JAVASCRIPT_TOKEN_KIND_KEYWORDNEW, JAVASCRIPT_TOKEN_KIND_MINUS, JAVASCRIPT_TOKEN_KIND_MINUSMINUS, JAVASCRIPT_TOKEN_KIND_NULL, JAVASCRIPT_TOKEN_KIND_OPENCURLY, JAVASCRIPT_TOKEN_KIND_OPENPAREN, JAVASCRIPT_TOKEN_KIND_PLUSPLUS, JAVASCRIPT_TOKEN_KIND_RETURN, JAVASCRIPT_TOKEN_KIND_SEMI, JAVASCRIPT_TOKEN_KIND_THIS, JAVASCRIPT_TOKEN_KIND_TILDE, JAVASCRIPT_TOKEN_KIND_TRUE, JAVASCRIPT_TOKEN_KIND_TYPEOF, JAVASCRIPT_TOKEN_KIND_UNDEFINED, JAVASCRIPT_TOKEN_KIND_VAR, JAVASCRIPT_TOKEN_KIND_VOID, JAVASCRIPT_TOKEN_KIND_WHILE, JAVASCRIPT_TOKEN_KIND_WITH, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf stmt_];
     } else {
-        [self raise:@"No viable alternative found in rule 'element'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'element'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchElement:)];
 }
 
 - (void)func_ {
-    
-    [self function_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf function_];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_OPENPAREN block:^{ 
-        [self identifier_]; 
-        [self openParen_]; 
+        [PKParser_weakSelf identifier_];
+        [PKParser_weakSelf openParen_];
     } completion:^{ 
-        [self openParen_]; 
+        [PKParser_weakSelf openParen_];
     }];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_CLOSEPAREN block:^{ 
-        [self paramListOpt_]; 
-        [self closeParen_]; 
+        [PKParser_weakSelf paramListOpt_];
+        [PKParser_weakSelf closeParen_];
     } completion:^{ 
-        [self closeParen_]; 
+        [PKParser_weakSelf closeParen_];
     }];
-        [self compoundStmt_]; 
+        [PKParser_weakSelf compoundStmt_];
 
     [self fireDelegateSelector:@selector(parser:didMatchFunc:)];
 }
 
 - (void)paramListOpt_ {
-    
-    if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self paramList_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf paramList_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchParamListOpt:)];
 }
 
 - (void)paramList_ {
-    
-    [self identifier_]; 
-    while ([self speculate:^{ [self commaIdentifier_]; }]) {
-        [self commaIdentifier_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf identifier_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf commaIdentifier_];}]) {
+        [PKParser_weakSelf commaIdentifier_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchParamList:)];
 }
 
 - (void)commaIdentifier_ {
-    
-    [self comma_]; 
-    [self identifier_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf comma_];
+    [PKParser_weakSelf identifier_];
 
     [self fireDelegateSelector:@selector(parser:didMatchCommaIdentifier:)];
 }
 
 - (void)compoundStmt_ {
-    
-    [self openCurly_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf openCurly_];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_CLOSECURLY block:^{ 
-        [self stmts_]; 
-        [self closeCurly_]; 
+        [PKParser_weakSelf stmts_];
+        [PKParser_weakSelf closeCurly_];
     } completion:^{ 
-        [self closeCurly_]; 
+        [PKParser_weakSelf closeCurly_];
     }];
 
     [self fireDelegateSelector:@selector(parser:didMatchCompoundStmt:)];
 }
 
 - (void)stmts_ {
-    
-    while ([self speculate:^{ [self stmt_]; }]) {
-        [self stmt_]; 
+    PKParser_weakSelfDecl;
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf stmt_];}]) {
+        [PKParser_weakSelf stmt_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchStmts:)];
 }
 
 - (void)stmt_ {
-    
-    if ([self speculate:^{ [self semi_]; }]) {
-        [self semi_]; 
-    } else if ([self speculate:^{ [self ifStmt_]; }]) {
-        [self ifStmt_]; 
-    } else if ([self speculate:^{ [self ifElseStmt_]; }]) {
-        [self ifElseStmt_]; 
-    } else if ([self speculate:^{ [self whileStmt_]; }]) {
-        [self whileStmt_]; 
-    } else if ([self speculate:^{ [self forParenStmt_]; }]) {
-        [self forParenStmt_]; 
-    } else if ([self speculate:^{ [self forBeginStmt_]; }]) {
-        [self forBeginStmt_]; 
-    } else if ([self speculate:^{ [self forInStmt_]; }]) {
-        [self forInStmt_]; 
-    } else if ([self speculate:^{ [self breakStmt_]; }]) {
-        [self breakStmt_]; 
-    } else if ([self speculate:^{ [self continueStmt_]; }]) {
-        [self continueStmt_]; 
-    } else if ([self speculate:^{ [self withStmt_]; }]) {
-        [self withStmt_]; 
-    } else if ([self speculate:^{ [self returnStmt_]; }]) {
-        [self returnStmt_]; 
-    } else if ([self speculate:^{ [self compoundStmt_]; }]) {
-        [self compoundStmt_]; 
-    } else if ([self speculate:^{ [self variablesOrExprStmt_]; }]) {
-        [self variablesOrExprStmt_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf semi_];}]) {
+        [PKParser_weakSelf semi_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf ifStmt_];}]) {
+        [PKParser_weakSelf ifStmt_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf ifElseStmt_];}]) {
+        [PKParser_weakSelf ifElseStmt_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf whileStmt_];}]) {
+        [PKParser_weakSelf whileStmt_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf forParenStmt_];}]) {
+        [PKParser_weakSelf forParenStmt_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf forBeginStmt_];}]) {
+        [PKParser_weakSelf forBeginStmt_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf forInStmt_];}]) {
+        [PKParser_weakSelf forInStmt_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf breakStmt_];}]) {
+        [PKParser_weakSelf breakStmt_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf continueStmt_];}]) {
+        [PKParser_weakSelf continueStmt_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf withStmt_];}]) {
+        [PKParser_weakSelf withStmt_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf returnStmt_];}]) {
+        [PKParser_weakSelf returnStmt_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf compoundStmt_];}]) {
+        [PKParser_weakSelf compoundStmt_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf variablesOrExprStmt_];}]) {
+        [PKParser_weakSelf variablesOrExprStmt_];
     } else {
-        [self raise:@"No viable alternative found in rule 'stmt'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'stmt'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchStmt:)];
 }
 
 - (void)ifStmt_ {
-    
-    [self if_]; 
-    [self condition_]; 
-    [self stmt_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf if_];
+    [PKParser_weakSelf condition_];
+    [PKParser_weakSelf stmt_];
 
     [self fireDelegateSelector:@selector(parser:didMatchIfStmt:)];
 }
 
 - (void)ifElseStmt_ {
-    
-    [self if_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf if_];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_ELSE block:^{ 
-        [self condition_]; 
-        [self stmt_]; 
-        [self else_]; 
+        [PKParser_weakSelf condition_];
+        [PKParser_weakSelf stmt_];
+        [PKParser_weakSelf else_];
     } completion:^{ 
-        [self else_]; 
+        [PKParser_weakSelf else_];
     }];
-        [self stmt_]; 
+        [PKParser_weakSelf stmt_];
 
     [self fireDelegateSelector:@selector(parser:didMatchIfElseStmt:)];
 }
 
 - (void)whileStmt_ {
-    
-    [self while_]; 
-    [self condition_]; 
-    [self stmt_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf while_];
+    [PKParser_weakSelf condition_];
+    [PKParser_weakSelf stmt_];
 
     [self fireDelegateSelector:@selector(parser:didMatchWhileStmt:)];
 }
 
 - (void)forParenStmt_ {
-    
+    PKParser_weakSelfDecl;
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_SEMI block:^{ 
-        [self forParen_]; 
-        [self semi_]; 
+        [PKParser_weakSelf forParen_];
+        [PKParser_weakSelf semi_];
     } completion:^{ 
-        [self semi_]; 
+        [PKParser_weakSelf semi_];
     }];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_SEMI block:^{ 
-        [self exprOpt_]; 
-        [self semi_]; 
+        [PKParser_weakSelf exprOpt_];
+        [PKParser_weakSelf semi_];
     } completion:^{ 
-        [self semi_]; 
+        [PKParser_weakSelf semi_];
     }];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_CLOSEPAREN block:^{ 
-        [self exprOpt_]; 
-        [self closeParen_]; 
+        [PKParser_weakSelf exprOpt_];
+        [PKParser_weakSelf closeParen_];
     } completion:^{ 
-        [self closeParen_]; 
+        [PKParser_weakSelf closeParen_];
     }];
-        [self stmt_]; 
+        [PKParser_weakSelf stmt_];
 
     [self fireDelegateSelector:@selector(parser:didMatchForParenStmt:)];
 }
 
 - (void)forBeginStmt_ {
-    
+    PKParser_weakSelfDecl;
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_SEMI block:^{ 
-        [self forBegin_]; 
-        [self semi_]; 
+        [PKParser_weakSelf forBegin_];
+        [PKParser_weakSelf semi_];
     } completion:^{ 
-        [self semi_]; 
+        [PKParser_weakSelf semi_];
     }];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_SEMI block:^{ 
-        [self exprOpt_]; 
-        [self semi_]; 
+        [PKParser_weakSelf exprOpt_];
+        [PKParser_weakSelf semi_];
     } completion:^{ 
-        [self semi_]; 
+        [PKParser_weakSelf semi_];
     }];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_CLOSEPAREN block:^{ 
-        [self exprOpt_]; 
-        [self closeParen_]; 
+        [PKParser_weakSelf exprOpt_];
+        [PKParser_weakSelf closeParen_];
     } completion:^{ 
-        [self closeParen_]; 
+        [PKParser_weakSelf closeParen_];
     }];
-        [self stmt_]; 
+        [PKParser_weakSelf stmt_];
 
     [self fireDelegateSelector:@selector(parser:didMatchForBeginStmt:)];
 }
 
 - (void)forInStmt_ {
-    
+    PKParser_weakSelfDecl;
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_IN block:^{ 
-        [self forBegin_]; 
-        [self in_]; 
+        [PKParser_weakSelf forBegin_];
+        [PKParser_weakSelf in_];
     } completion:^{ 
-        [self in_]; 
+        [PKParser_weakSelf in_];
     }];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_CLOSEPAREN block:^{ 
-        [self expr_]; 
-        [self closeParen_]; 
+        [PKParser_weakSelf expr_];
+        [PKParser_weakSelf closeParen_];
     } completion:^{ 
-        [self closeParen_]; 
+        [PKParser_weakSelf closeParen_];
     }];
-        [self stmt_]; 
+        [PKParser_weakSelf stmt_];
 
     [self fireDelegateSelector:@selector(parser:didMatchForInStmt:)];
 }
 
 - (void)breakStmt_ {
-    
-    [self break_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf break_];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_SEMI block:^{ 
-        [self semi_]; 
+        [PKParser_weakSelf semi_];
     } completion:^{ 
-        [self semi_]; 
+        [PKParser_weakSelf semi_];
     }];
 
     [self fireDelegateSelector:@selector(parser:didMatchBreakStmt:)];
 }
 
 - (void)continueStmt_ {
-    
-    [self continue_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf continue_];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_SEMI block:^{ 
-        [self semi_]; 
+        [PKParser_weakSelf semi_];
     } completion:^{ 
-        [self semi_]; 
+        [PKParser_weakSelf semi_];
     }];
 
     [self fireDelegateSelector:@selector(parser:didMatchContinueStmt:)];
 }
 
 - (void)withStmt_ {
-    
-    [self with_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf with_];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_OPENPAREN block:^{ 
-        [self openParen_]; 
+        [PKParser_weakSelf openParen_];
     } completion:^{ 
-        [self openParen_]; 
+        [PKParser_weakSelf openParen_];
     }];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_CLOSEPAREN block:^{ 
-        [self expr_]; 
-        [self closeParen_]; 
+        [PKParser_weakSelf expr_];
+        [PKParser_weakSelf closeParen_];
     } completion:^{ 
-        [self closeParen_]; 
+        [PKParser_weakSelf closeParen_];
     }];
-        [self stmt_]; 
+        [PKParser_weakSelf stmt_];
 
     [self fireDelegateSelector:@selector(parser:didMatchWithStmt:)];
 }
 
 - (void)returnStmt_ {
-    
-    [self return_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf return_];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_SEMI block:^{ 
-        [self exprOpt_]; 
-        [self semi_]; 
+        [PKParser_weakSelf exprOpt_];
+        [PKParser_weakSelf semi_];
     } completion:^{ 
-        [self semi_]; 
+        [PKParser_weakSelf semi_];
     }];
 
     [self fireDelegateSelector:@selector(parser:didMatchReturnStmt:)];
 }
 
 - (void)variablesOrExprStmt_ {
-    
+    PKParser_weakSelfDecl;
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_SEMI block:^{ 
-        [self variablesOrExpr_]; 
-        [self semi_]; 
+        [PKParser_weakSelf variablesOrExpr_];
+        [PKParser_weakSelf semi_];
     } completion:^{ 
-        [self semi_]; 
+        [PKParser_weakSelf semi_];
     }];
 
     [self fireDelegateSelector:@selector(parser:didMatchVariablesOrExprStmt:)];
 }
 
 - (void)condition_ {
-    
-    [self openParen_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf openParen_];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_CLOSEPAREN block:^{ 
-        [self expr_]; 
-        [self closeParen_]; 
+        [PKParser_weakSelf expr_];
+        [PKParser_weakSelf closeParen_];
     } completion:^{ 
-        [self closeParen_]; 
+        [PKParser_weakSelf closeParen_];
     }];
 
     [self fireDelegateSelector:@selector(parser:didMatchCondition:)];
 }
 
 - (void)forParen_ {
-    
-    [self for_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf for_];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_OPENPAREN block:^{ 
-        [self openParen_]; 
+        [PKParser_weakSelf openParen_];
     } completion:^{ 
-        [self openParen_]; 
+        [PKParser_weakSelf openParen_];
     }];
 
     [self fireDelegateSelector:@selector(parser:didMatchForParen:)];
 }
 
 - (void)forBegin_ {
-    
-    [self forParen_]; 
-    [self variablesOrExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf forParen_];
+    [PKParser_weakSelf variablesOrExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchForBegin:)];
 }
 
 - (void)variablesOrExpr_ {
-    
-    if ([self predicts:JAVASCRIPT_TOKEN_KIND_VAR, 0]) {
-        [self varVariables_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_DELETE, JAVASCRIPT_TOKEN_KIND_FALSE, JAVASCRIPT_TOKEN_KIND_KEYWORDNEW, JAVASCRIPT_TOKEN_KIND_MINUS, JAVASCRIPT_TOKEN_KIND_MINUSMINUS, JAVASCRIPT_TOKEN_KIND_NULL, JAVASCRIPT_TOKEN_KIND_OPENPAREN, JAVASCRIPT_TOKEN_KIND_PLUSPLUS, JAVASCRIPT_TOKEN_KIND_THIS, JAVASCRIPT_TOKEN_KIND_TILDE, JAVASCRIPT_TOKEN_KIND_TRUE, JAVASCRIPT_TOKEN_KIND_TYPEOF, JAVASCRIPT_TOKEN_KIND_UNDEFINED, JAVASCRIPT_TOKEN_KIND_VOID, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self expr_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_VAR, 0]) {
+        [PKParser_weakSelf varVariables_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_DELETE, JAVASCRIPT_TOKEN_KIND_FALSE, JAVASCRIPT_TOKEN_KIND_KEYWORDNEW, JAVASCRIPT_TOKEN_KIND_MINUS, JAVASCRIPT_TOKEN_KIND_MINUSMINUS, JAVASCRIPT_TOKEN_KIND_NULL, JAVASCRIPT_TOKEN_KIND_OPENPAREN, JAVASCRIPT_TOKEN_KIND_PLUSPLUS, JAVASCRIPT_TOKEN_KIND_THIS, JAVASCRIPT_TOKEN_KIND_TILDE, JAVASCRIPT_TOKEN_KIND_TRUE, JAVASCRIPT_TOKEN_KIND_TYPEOF, JAVASCRIPT_TOKEN_KIND_UNDEFINED, JAVASCRIPT_TOKEN_KIND_VOID, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf expr_];
     } else {
-        [self raise:@"No viable alternative found in rule 'variablesOrExpr'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'variablesOrExpr'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchVariablesOrExpr:)];
 }
 
 - (void)varVariables_ {
-    
-    [self var_]; 
-    [self variables_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf var_];
+    [PKParser_weakSelf variables_];
 
     [self fireDelegateSelector:@selector(parser:didMatchVarVariables:)];
 }
 
 - (void)variables_ {
-    
-    [self variable_]; 
-    while ([self speculate:^{ [self commaVariable_]; }]) {
-        [self commaVariable_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf variable_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf commaVariable_];}]) {
+        [PKParser_weakSelf commaVariable_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchVariables:)];
 }
 
 - (void)commaVariable_ {
-    
-    [self comma_]; 
-    [self variable_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf comma_];
+    [PKParser_weakSelf variable_];
 
     [self fireDelegateSelector:@selector(parser:didMatchCommaVariable:)];
 }
 
 - (void)variable_ {
-    
-    [self identifier_]; 
-    if ([self speculate:^{ [self assignment_]; }]) {
-        [self assignment_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf identifier_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf assignment_];}]) {
+        [PKParser_weakSelf assignment_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchVariable:)];
 }
 
 - (void)assignment_ {
-    
-    [self equals_]; 
-    [self assignmentExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf equals_];
+    [PKParser_weakSelf assignmentExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchAssignment:)];
 }
 
 - (void)exprOpt_ {
-    
-    if ([self predicts:JAVASCRIPT_TOKEN_KIND_DELETE, JAVASCRIPT_TOKEN_KIND_FALSE, JAVASCRIPT_TOKEN_KIND_KEYWORDNEW, JAVASCRIPT_TOKEN_KIND_MINUS, JAVASCRIPT_TOKEN_KIND_MINUSMINUS, JAVASCRIPT_TOKEN_KIND_NULL, JAVASCRIPT_TOKEN_KIND_OPENPAREN, JAVASCRIPT_TOKEN_KIND_PLUSPLUS, JAVASCRIPT_TOKEN_KIND_THIS, JAVASCRIPT_TOKEN_KIND_TILDE, JAVASCRIPT_TOKEN_KIND_TRUE, JAVASCRIPT_TOKEN_KIND_TYPEOF, JAVASCRIPT_TOKEN_KIND_UNDEFINED, JAVASCRIPT_TOKEN_KIND_VOID, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self expr_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_DELETE, JAVASCRIPT_TOKEN_KIND_FALSE, JAVASCRIPT_TOKEN_KIND_KEYWORDNEW, JAVASCRIPT_TOKEN_KIND_MINUS, JAVASCRIPT_TOKEN_KIND_MINUSMINUS, JAVASCRIPT_TOKEN_KIND_NULL, JAVASCRIPT_TOKEN_KIND_OPENPAREN, JAVASCRIPT_TOKEN_KIND_PLUSPLUS, JAVASCRIPT_TOKEN_KIND_THIS, JAVASCRIPT_TOKEN_KIND_TILDE, JAVASCRIPT_TOKEN_KIND_TRUE, JAVASCRIPT_TOKEN_KIND_TYPEOF, JAVASCRIPT_TOKEN_KIND_UNDEFINED, JAVASCRIPT_TOKEN_KIND_VOID, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf expr_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchExprOpt:)];
 }
 
 - (void)expr_ {
-    
-    [self assignmentExpr_]; 
-    if ([self speculate:^{ [self commaExpr_]; }]) {
-        [self commaExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf assignmentExpr_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf commaExpr_];}]) {
+        [PKParser_weakSelf commaExpr_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchExpr:)];
 }
 
 - (void)commaExpr_ {
-    
-    [self comma_]; 
-    [self expr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf comma_];
+    [PKParser_weakSelf expr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchCommaExpr:)];
 }
 
 - (void)assignmentExpr_ {
-    
-    [self conditionalExpr_]; 
-    if ([self speculate:^{ [self extraAssignment_]; }]) {
-        [self extraAssignment_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf conditionalExpr_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf extraAssignment_];}]) {
+        [PKParser_weakSelf extraAssignment_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchAssignmentExpr:)];
 }
 
 - (void)extraAssignment_ {
-    
-    [self assignmentOperator_]; 
-    [self assignmentExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf assignmentOperator_];
+    [PKParser_weakSelf assignmentExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchExtraAssignment:)];
 }
 
 - (void)conditionalExpr_ {
-    
-    [self orExpr_]; 
-    if ([self speculate:^{ [self ternaryExpr_]; }]) {
-        [self ternaryExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf orExpr_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf ternaryExpr_];}]) {
+        [PKParser_weakSelf ternaryExpr_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchConditionalExpr:)];
 }
 
 - (void)ternaryExpr_ {
-    
-    [self question_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf question_];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_COLON block:^{ 
-        [self assignmentExpr_]; 
-        [self colon_]; 
+        [PKParser_weakSelf assignmentExpr_];
+        [PKParser_weakSelf colon_];
     } completion:^{ 
-        [self colon_]; 
+        [PKParser_weakSelf colon_];
     }];
-        [self assignmentExpr_]; 
+        [PKParser_weakSelf assignmentExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchTernaryExpr:)];
 }
 
 - (void)orExpr_ {
-    
-    [self andExpr_]; 
-    while ([self speculate:^{ [self orAndExpr_]; }]) {
-        [self orAndExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf andExpr_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf orAndExpr_];}]) {
+        [PKParser_weakSelf orAndExpr_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchOrExpr:)];
 }
 
 - (void)orAndExpr_ {
-    
-    [self or_]; 
-    [self andExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf or_];
+    [PKParser_weakSelf andExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchOrAndExpr:)];
 }
 
 - (void)andExpr_ {
-    
-    [self bitwiseOrExpr_]; 
-    if ([self speculate:^{ [self andAndExpr_]; }]) {
-        [self andAndExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf bitwiseOrExpr_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf andAndExpr_];}]) {
+        [PKParser_weakSelf andAndExpr_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchAndExpr:)];
 }
 
 - (void)andAndExpr_ {
-    
-    [self and_]; 
-    [self andExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf and_];
+    [PKParser_weakSelf andExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchAndAndExpr:)];
 }
 
 - (void)bitwiseOrExpr_ {
-    
-    [self bitwiseXorExpr_]; 
-    if ([self speculate:^{ [self pipeBitwiseOrExpr_]; }]) {
-        [self pipeBitwiseOrExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf bitwiseXorExpr_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf pipeBitwiseOrExpr_];}]) {
+        [PKParser_weakSelf pipeBitwiseOrExpr_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchBitwiseOrExpr:)];
 }
 
 - (void)pipeBitwiseOrExpr_ {
-    
-    [self pipe_]; 
-    [self bitwiseOrExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf pipe_];
+    [PKParser_weakSelf bitwiseOrExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchPipeBitwiseOrExpr:)];
 }
 
 - (void)bitwiseXorExpr_ {
-    
-    [self bitwiseAndExpr_]; 
-    if ([self speculate:^{ [self caretBitwiseXorExpr_]; }]) {
-        [self caretBitwiseXorExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf bitwiseAndExpr_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf caretBitwiseXorExpr_];}]) {
+        [PKParser_weakSelf caretBitwiseXorExpr_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchBitwiseXorExpr:)];
 }
 
 - (void)caretBitwiseXorExpr_ {
-    
-    [self caret_]; 
-    [self bitwiseXorExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf caret_];
+    [PKParser_weakSelf bitwiseXorExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchCaretBitwiseXorExpr:)];
 }
 
 - (void)bitwiseAndExpr_ {
-    
-    [self equalityExpr_]; 
-    if ([self speculate:^{ [self ampBitwiseAndExpression_]; }]) {
-        [self ampBitwiseAndExpression_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf equalityExpr_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf ampBitwiseAndExpression_];}]) {
+        [PKParser_weakSelf ampBitwiseAndExpression_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchBitwiseAndExpr:)];
 }
 
 - (void)ampBitwiseAndExpression_ {
-    
-    [self amp_]; 
-    [self bitwiseAndExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf amp_];
+    [PKParser_weakSelf bitwiseAndExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchAmpBitwiseAndExpression:)];
 }
 
 - (void)equalityExpr_ {
-    
-    [self relationalExpr_]; 
-    if ([self speculate:^{ [self equalityOpEqualityExpr_]; }]) {
-        [self equalityOpEqualityExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf relationalExpr_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf equalityOpEqualityExpr_];}]) {
+        [PKParser_weakSelf equalityOpEqualityExpr_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchEqualityExpr:)];
 }
 
 - (void)equalityOpEqualityExpr_ {
-    
-    [self equalityOperator_]; 
-    [self equalityExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf equalityOperator_];
+    [PKParser_weakSelf equalityExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchEqualityOpEqualityExpr:)];
 }
 
 - (void)relationalExpr_ {
-    
-    [self shiftExpr_]; 
-    while ([self speculate:^{ [self relationalOperator_]; [self shiftExpr_]; }]) {
-        [self relationalOperator_]; 
-        [self shiftExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf shiftExpr_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf relationalOperator_];[PKParser_weakSelf shiftExpr_];}]) {
+        [PKParser_weakSelf relationalOperator_];
+        [PKParser_weakSelf shiftExpr_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchRelationalExpr:)];
 }
 
 - (void)shiftExpr_ {
-    
-    [self additiveExpr_]; 
-    if ([self speculate:^{ [self shiftOpShiftExpr_]; }]) {
-        [self shiftOpShiftExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf additiveExpr_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf shiftOpShiftExpr_];}]) {
+        [PKParser_weakSelf shiftOpShiftExpr_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchShiftExpr:)];
 }
 
 - (void)shiftOpShiftExpr_ {
-    
-    [self shiftOperator_]; 
-    [self shiftExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf shiftOperator_];
+    [PKParser_weakSelf shiftExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchShiftOpShiftExpr:)];
 }
 
 - (void)additiveExpr_ {
-    
-    [self multiplicativeExpr_]; 
-    if ([self speculate:^{ [self plusOrMinusExpr_]; }]) {
-        [self plusOrMinusExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf multiplicativeExpr_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf plusOrMinusExpr_];}]) {
+        [PKParser_weakSelf plusOrMinusExpr_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchAdditiveExpr:)];
 }
 
 - (void)plusOrMinusExpr_ {
-    
-    if ([self predicts:JAVASCRIPT_TOKEN_KIND_PLUS, 0]) {
-        [self plusExpr_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_MINUS, 0]) {
-        [self minusExpr_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_PLUS, 0]) {
+        [PKParser_weakSelf plusExpr_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_MINUS, 0]) {
+        [PKParser_weakSelf minusExpr_];
     } else {
-        [self raise:@"No viable alternative found in rule 'plusOrMinusExpr'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'plusOrMinusExpr'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchPlusOrMinusExpr:)];
 }
 
 - (void)plusExpr_ {
-    
-    [self plus_]; 
-    [self additiveExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf plus_];
+    [PKParser_weakSelf additiveExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchPlusExpr:)];
 }
 
 - (void)minusExpr_ {
-    
-    [self minus_]; 
-    [self additiveExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf minus_];
+    [PKParser_weakSelf additiveExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchMinusExpr:)];
 }
 
 - (void)multiplicativeExpr_ {
-    
-    [self unaryExpr_]; 
-    if ([self speculate:^{ [self multiplicativeOperator_]; [self multiplicativeExpr_]; }]) {
-        [self multiplicativeOperator_]; 
-        [self multiplicativeExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf unaryExpr_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf multiplicativeOperator_];[PKParser_weakSelf multiplicativeExpr_];}]) {
+        [PKParser_weakSelf multiplicativeOperator_];
+        [PKParser_weakSelf multiplicativeExpr_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchMultiplicativeExpr:)];
 }
 
 - (void)unaryExpr_ {
-    
-    if ([self speculate:^{ [self memberExpr_]; }]) {
-        [self memberExpr_]; 
-    } else if ([self speculate:^{ [self unaryExpr1_]; }]) {
-        [self unaryExpr1_]; 
-    } else if ([self speculate:^{ [self unaryExpr2_]; }]) {
-        [self unaryExpr2_]; 
-    } else if ([self speculate:^{ [self unaryExpr3_]; }]) {
-        [self unaryExpr3_]; 
-    } else if ([self speculate:^{ [self unaryExpr4_]; }]) {
-        [self unaryExpr4_]; 
-    } else if ([self speculate:^{ [self unaryExpr6_]; }]) {
-        [self unaryExpr6_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf memberExpr_];}]) {
+        [PKParser_weakSelf memberExpr_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf unaryExpr1_];}]) {
+        [PKParser_weakSelf unaryExpr1_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf unaryExpr2_];}]) {
+        [PKParser_weakSelf unaryExpr2_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf unaryExpr3_];}]) {
+        [PKParser_weakSelf unaryExpr3_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf unaryExpr4_];}]) {
+        [PKParser_weakSelf unaryExpr4_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf unaryExpr6_];}]) {
+        [PKParser_weakSelf unaryExpr6_];
     } else {
-        [self raise:@"No viable alternative found in rule 'unaryExpr'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'unaryExpr'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchUnaryExpr:)];
 }
 
 - (void)unaryExpr1_ {
-    
-    [self unaryOperator_]; 
-    [self unaryExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf unaryOperator_];
+    [PKParser_weakSelf unaryExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchUnaryExpr1:)];
 }
 
 - (void)unaryExpr2_ {
-    
-    [self minus_]; 
-    [self unaryExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf minus_];
+    [PKParser_weakSelf unaryExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchUnaryExpr2:)];
 }
 
 - (void)unaryExpr3_ {
-    
-    [self incrementOperator_]; 
-    [self memberExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf incrementOperator_];
+    [PKParser_weakSelf memberExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchUnaryExpr3:)];
 }
 
 - (void)unaryExpr4_ {
-    
-    [self memberExpr_]; 
-    [self incrementOperator_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf memberExpr_];
+    [PKParser_weakSelf incrementOperator_];
 
     [self fireDelegateSelector:@selector(parser:didMatchUnaryExpr4:)];
 }
 
 - (void)callNewExpr_ {
-    
-    [self keywordNew_]; 
-    [self constructor_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf keywordNew_];
+    [PKParser_weakSelf constructor_];
 
     [self fireDelegateSelector:@selector(parser:didMatchCallNewExpr:)];
 }
 
 - (void)unaryExpr6_ {
-    
-    [self delete_]; 
-    [self memberExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf delete_];
+    [PKParser_weakSelf memberExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchUnaryExpr6:)];
 }
 
 - (void)constructor_ {
-    
-    if ([self speculate:^{ [self this_]; [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_DOT block:^{ [self dot_]; } completion:^{ [self dot_]; }];}]) {
-        [self this_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf this_];[self tryAndRecover:JAVASCRIPT_TOKEN_KIND_DOT block:^{ [PKParser_weakSelf dot_];} completion:^{ [PKParser_weakSelf dot_];}];}]) {
+        [PKParser_weakSelf this_];
         [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_DOT block:^{ 
-            [self dot_]; 
+            [PKParser_weakSelf dot_];
         } completion:^{ 
-            [self dot_]; 
+            [PKParser_weakSelf dot_];
         }];
     }
-    [self constructorCall_]; 
+    [PKParser_weakSelf constructorCall_];
 
     [self fireDelegateSelector:@selector(parser:didMatchConstructor:)];
 }
 
 - (void)constructorCall_ {
-    
-    [self identifier_]; 
-    if ([self speculate:^{ if ([self predicts:JAVASCRIPT_TOKEN_KIND_OPENPAREN, 0]) {[self parenArgListParen_]; } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_DOT, 0]) {[self dot_]; [self constructorCall_]; } else {[self raise:@"No viable alternative found in rule 'constructorCall'."];}}]) {
-        if ([self predicts:JAVASCRIPT_TOKEN_KIND_OPENPAREN, 0]) {
-            [self parenArgListParen_]; 
-        } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_DOT, 0]) {
-            [self dot_]; 
-            [self constructorCall_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf identifier_];
+    if ([PKParser_weakSelf speculate:^{ if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_OPENPAREN, 0]) {[PKParser_weakSelf parenArgListParen_];} else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_DOT, 0]) {[PKParser_weakSelf dot_];[PKParser_weakSelf constructorCall_];} else {[PKParser_weakSelf raise:@"No viable alternative found in rule 'constructorCall'."];}}]) {
+        if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_OPENPAREN, 0]) {
+            [PKParser_weakSelf parenArgListParen_];
+        } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_DOT, 0]) {
+            [PKParser_weakSelf dot_];
+            [PKParser_weakSelf constructorCall_];
         } else {
-            [self raise:@"No viable alternative found in rule 'constructorCall'."];
+            [PKParser_weakSelf raise:@"No viable alternative found in rule 'constructorCall'."];
         }
     }
 
@@ -1575,163 +1577,163 @@
 }
 
 - (void)parenArgListParen_ {
-    
-    [self openParen_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf openParen_];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_CLOSEPAREN block:^{ 
-        [self argListOpt_]; 
-        [self closeParen_]; 
+        [PKParser_weakSelf argListOpt_];
+        [PKParser_weakSelf closeParen_];
     } completion:^{ 
-        [self closeParen_]; 
+        [PKParser_weakSelf closeParen_];
     }];
 
     [self fireDelegateSelector:@selector(parser:didMatchParenArgListParen:)];
 }
 
 - (void)memberExpr_ {
-    
-    [self primaryExpr_]; 
-    if ([self speculate:^{ [self dotBracketOrParenExpr_]; }]) {
-        [self dotBracketOrParenExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf primaryExpr_];
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf dotBracketOrParenExpr_];}]) {
+        [PKParser_weakSelf dotBracketOrParenExpr_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchMemberExpr:)];
 }
 
 - (void)dotBracketOrParenExpr_ {
-    
-    if ([self predicts:JAVASCRIPT_TOKEN_KIND_DOT, 0]) {
-        [self dotMemberExpr_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_OPENBRACKET, 0]) {
-        [self bracketMemberExpr_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_OPENPAREN, 0]) {
-        [self parenMemberExpr_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_DOT, 0]) {
+        [PKParser_weakSelf dotMemberExpr_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_OPENBRACKET, 0]) {
+        [PKParser_weakSelf bracketMemberExpr_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_OPENPAREN, 0]) {
+        [PKParser_weakSelf parenMemberExpr_];
     } else {
-        [self raise:@"No viable alternative found in rule 'dotBracketOrParenExpr'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'dotBracketOrParenExpr'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchDotBracketOrParenExpr:)];
 }
 
 - (void)dotMemberExpr_ {
-    
-    [self dot_]; 
-    [self memberExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf dot_];
+    [PKParser_weakSelf memberExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchDotMemberExpr:)];
 }
 
 - (void)bracketMemberExpr_ {
-    
-    [self openBracket_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf openBracket_];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_CLOSEBRACKET block:^{ 
-        [self expr_]; 
-        [self closeBracket_]; 
+        [PKParser_weakSelf expr_];
+        [PKParser_weakSelf closeBracket_];
     } completion:^{ 
-        [self closeBracket_]; 
+        [PKParser_weakSelf closeBracket_];
     }];
 
     [self fireDelegateSelector:@selector(parser:didMatchBracketMemberExpr:)];
 }
 
 - (void)parenMemberExpr_ {
-    
-    [self openParen_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf openParen_];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_CLOSEPAREN block:^{ 
-        [self argListOpt_]; 
-        [self closeParen_]; 
+        [PKParser_weakSelf argListOpt_];
+        [PKParser_weakSelf closeParen_];
     } completion:^{ 
-        [self closeParen_]; 
+        [PKParser_weakSelf closeParen_];
     }];
 
     [self fireDelegateSelector:@selector(parser:didMatchParenMemberExpr:)];
 }
 
 - (void)argListOpt_ {
-    
-    if ([self speculate:^{ [self argList_]; }]) {
-        [self argList_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf argList_];}]) {
+        [PKParser_weakSelf argList_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchArgListOpt:)];
 }
 
 - (void)argList_ {
-    
-    [self assignmentExpr_]; 
-    while ([self speculate:^{ [self commaAssignmentExpr_]; }]) {
-        [self commaAssignmentExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf assignmentExpr_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf commaAssignmentExpr_];}]) {
+        [PKParser_weakSelf commaAssignmentExpr_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchArgList:)];
 }
 
 - (void)commaAssignmentExpr_ {
-    
-    [self comma_]; 
-    [self assignmentExpr_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf comma_];
+    [PKParser_weakSelf assignmentExpr_];
 
     [self fireDelegateSelector:@selector(parser:didMatchCommaAssignmentExpr:)];
 }
 
 - (void)primaryExpr_ {
-    
-    if ([self predicts:JAVASCRIPT_TOKEN_KIND_KEYWORDNEW, 0]) {
-        [self callNewExpr_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_OPENPAREN, 0]) {
-        [self parenExprParen_]; 
-    } else if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self identifier_]; 
-    } else if ([self predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
-        [self numLiteral_]; 
-    } else if ([self predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
-        [self stringLiteral_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_FALSE, 0]) {
-        [self false_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_TRUE, 0]) {
-        [self true_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_NULL, 0]) {
-        [self null_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_UNDEFINED, 0]) {
-        [self undefined_]; 
-    } else if ([self predicts:JAVASCRIPT_TOKEN_KIND_THIS, 0]) {
-        [self this_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_KEYWORDNEW, 0]) {
+        [PKParser_weakSelf callNewExpr_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_OPENPAREN, 0]) {
+        [PKParser_weakSelf parenExprParen_];
+    } else if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf identifier_];
+    } else if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
+        [PKParser_weakSelf numLiteral_];
+    } else if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
+        [PKParser_weakSelf stringLiteral_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_FALSE, 0]) {
+        [PKParser_weakSelf false_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_TRUE, 0]) {
+        [PKParser_weakSelf true_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_NULL, 0]) {
+        [PKParser_weakSelf null_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_UNDEFINED, 0]) {
+        [PKParser_weakSelf undefined_];
+    } else if ([PKParser_weakSelf predicts:JAVASCRIPT_TOKEN_KIND_THIS, 0]) {
+        [PKParser_weakSelf this_];
     } else {
-        [self raise:@"No viable alternative found in rule 'primaryExpr'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'primaryExpr'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchPrimaryExpr:)];
 }
 
 - (void)parenExprParen_ {
-    
-    [self openParen_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf openParen_];
     [self tryAndRecover:JAVASCRIPT_TOKEN_KIND_CLOSEPAREN block:^{ 
-        [self expr_]; 
-        [self closeParen_]; 
+        [PKParser_weakSelf expr_];
+        [PKParser_weakSelf closeParen_];
     } completion:^{ 
-        [self closeParen_]; 
+        [PKParser_weakSelf closeParen_];
     }];
 
     [self fireDelegateSelector:@selector(parser:didMatchParenExprParen:)];
 }
 
 - (void)identifier_ {
-    
-    [self matchWord:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchWord:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchIdentifier:)];
 }
 
 - (void)numLiteral_ {
-    
-    [self matchNumber:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchNumber:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchNumLiteral:)];
 }
 
 - (void)stringLiteral_ {
-    
-    [self matchQuotedString:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchQuotedString:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchStringLiteral:)];
 }

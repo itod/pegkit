@@ -1,5 +1,6 @@
 #import "NondeterministicPalindromeParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface NondeterministicPalindromeParser ()
@@ -30,28 +31,29 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self s_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf s_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)s_ {
-    
-    if ([self speculate:^{ [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO]; [self s_]; [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO]; }]) {
-        [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO]; 
-        [self s_]; 
-        [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO]; 
-    } else if ([self speculate:^{ [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO]; [self s_]; [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO]; }]) {
-        [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO]; 
-        [self s_]; 
-        [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO]; 
-    } else if ([self speculate:^{ [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO]; }]) {
-        [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO]; 
-    } else if ([self speculate:^{ [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO]; }]) {
-        [self match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO];[PKParser_weakSelf s_];[PKParser_weakSelf match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO];}]) {
+        [PKParser_weakSelf match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO];
+        [PKParser_weakSelf s_];
+        [PKParser_weakSelf match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO];[PKParser_weakSelf s_];[PKParser_weakSelf match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO];}]) {
+        [PKParser_weakSelf match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO];
+        [PKParser_weakSelf s_];
+        [PKParser_weakSelf match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO];}]) {
+        [PKParser_weakSelf match:NONDETERMINISTICPALINDROME_TOKEN_KIND_0 discard:NO];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO];}]) {
+        [PKParser_weakSelf match:NONDETERMINISTICPALINDROME_TOKEN_KIND_1 discard:NO];
     } else {
-        [self raise:@"No viable alternative found in rule 's'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 's'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchS:)];

@@ -1,5 +1,6 @@
 #import "DotQuestionParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface DotQuestionParser ()
@@ -39,19 +40,20 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self start_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf start_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__start {
-    
-    [self a_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf a_];
     if ([self predicts:TOKEN_KIND_BUILTIN_ANY, 0]) {
-        [self matchAny:NO]; 
+        [PKParser_weakSelf matchAny:NO];
     }
-    [self a_]; 
+    [PKParser_weakSelf a_];
 
     [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
@@ -61,8 +63,8 @@
 }
 
 - (void)__a {
-    
-    [self match:DOTQUESTION_TOKEN_KIND_A discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:DOTQUESTION_TOKEN_KIND_A discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchA:)];
 }

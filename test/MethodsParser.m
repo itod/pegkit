@@ -1,5 +1,6 @@
 #import "MethodsParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface MethodsParser ()
@@ -65,17 +66,18 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self start_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf start_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__start {
-    
+    PKParser_weakSelfDecl;
     do {
-        [self method_]; 
-    } while ([self speculate:^{ [self method_]; }]);
+        [PKParser_weakSelf method_];
+    } while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf method_];}]);
 
     [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
@@ -85,26 +87,26 @@
 }
 
 - (void)__method {
-    
-    if ([self speculate:^{ [self testAndThrow:(id)^{ return NO; }]; [self type_]; [self matchWord:NO]; [self match:METHODS_TOKEN_KIND_OPEN_PAREN discard:NO]; [self args_]; [self match:METHODS_TOKEN_KIND_CLOSE_PAREN discard:NO]; [self match:METHODS_TOKEN_KIND_SEMI_COLON discard:NO]; }]) {
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [self testAndThrow:(id)^{ return NO; }]; [PKParser_weakSelf type_];[PKParser_weakSelf matchWord:NO];[PKParser_weakSelf match:METHODS_TOKEN_KIND_OPEN_PAREN discard:NO];[PKParser_weakSelf args_];[PKParser_weakSelf match:METHODS_TOKEN_KIND_CLOSE_PAREN discard:NO];[PKParser_weakSelf match:METHODS_TOKEN_KIND_SEMI_COLON discard:NO];}]) {
         [self testAndThrow:(id)^{ return NO; }]; 
-        [self type_]; 
-        [self matchWord:NO]; 
-        [self match:METHODS_TOKEN_KIND_OPEN_PAREN discard:NO]; 
-        [self args_]; 
-        [self match:METHODS_TOKEN_KIND_CLOSE_PAREN discard:NO]; 
-        [self match:METHODS_TOKEN_KIND_SEMI_COLON discard:NO]; 
-    } else if ([self speculate:^{ [self testAndThrow:(id)^{ return 1; }]; [self type_]; [self matchWord:NO]; [self match:METHODS_TOKEN_KIND_OPEN_PAREN discard:NO]; [self args_]; [self match:METHODS_TOKEN_KIND_CLOSE_PAREN discard:NO]; [self match:METHODS_TOKEN_KIND_OPEN_CURLY discard:NO]; [self match:METHODS_TOKEN_KIND_CLOSE_CURLY discard:NO]; }]) {
+        [PKParser_weakSelf type_];
+        [PKParser_weakSelf matchWord:NO];
+        [PKParser_weakSelf match:METHODS_TOKEN_KIND_OPEN_PAREN discard:NO];
+        [PKParser_weakSelf args_];
+        [PKParser_weakSelf match:METHODS_TOKEN_KIND_CLOSE_PAREN discard:NO];
+        [PKParser_weakSelf match:METHODS_TOKEN_KIND_SEMI_COLON discard:NO];
+    } else if ([PKParser_weakSelf speculate:^{ [self testAndThrow:(id)^{ return 1; }]; [PKParser_weakSelf type_];[PKParser_weakSelf matchWord:NO];[PKParser_weakSelf match:METHODS_TOKEN_KIND_OPEN_PAREN discard:NO];[PKParser_weakSelf args_];[PKParser_weakSelf match:METHODS_TOKEN_KIND_CLOSE_PAREN discard:NO];[PKParser_weakSelf match:METHODS_TOKEN_KIND_OPEN_CURLY discard:NO];[PKParser_weakSelf match:METHODS_TOKEN_KIND_CLOSE_CURLY discard:NO];}]) {
         [self testAndThrow:(id)^{ return 1; }]; 
-        [self type_]; 
-        [self matchWord:NO]; 
-        [self match:METHODS_TOKEN_KIND_OPEN_PAREN discard:NO]; 
-        [self args_]; 
-        [self match:METHODS_TOKEN_KIND_CLOSE_PAREN discard:NO]; 
-        [self match:METHODS_TOKEN_KIND_OPEN_CURLY discard:NO]; 
-        [self match:METHODS_TOKEN_KIND_CLOSE_CURLY discard:NO]; 
+        [PKParser_weakSelf type_];
+        [PKParser_weakSelf matchWord:NO];
+        [PKParser_weakSelf match:METHODS_TOKEN_KIND_OPEN_PAREN discard:NO];
+        [PKParser_weakSelf args_];
+        [PKParser_weakSelf match:METHODS_TOKEN_KIND_CLOSE_PAREN discard:NO];
+        [PKParser_weakSelf match:METHODS_TOKEN_KIND_OPEN_CURLY discard:NO];
+        [PKParser_weakSelf match:METHODS_TOKEN_KIND_CLOSE_CURLY discard:NO];
     } else {
-        [self raise:@"No viable alternative found in rule 'method'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'method'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchMethod:)];
@@ -115,13 +117,13 @@
 }
 
 - (void)__type {
-    
-    if ([self predicts:METHODS_TOKEN_KIND_VOID, 0]) {
-        [self match:METHODS_TOKEN_KIND_VOID discard:NO]; 
-    } else if ([self predicts:METHODS_TOKEN_KIND_INT, 0]) {
-        [self match:METHODS_TOKEN_KIND_INT discard:NO]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:METHODS_TOKEN_KIND_VOID, 0]) {
+        [PKParser_weakSelf match:METHODS_TOKEN_KIND_VOID discard:NO];
+    } else if ([PKParser_weakSelf predicts:METHODS_TOKEN_KIND_INT, 0]) {
+        [PKParser_weakSelf match:METHODS_TOKEN_KIND_INT discard:NO];
     } else {
-        [self raise:@"No viable alternative found in rule 'type'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'type'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchType:)];
@@ -132,12 +134,12 @@
 }
 
 - (void)__args {
-    
-    if ([self predicts:METHODS_TOKEN_KIND_INT, 0]) {
-        [self arg_]; 
-        while ([self speculate:^{ [self match:METHODS_TOKEN_KIND_COMMA discard:NO]; [self arg_]; }]) {
-            [self match:METHODS_TOKEN_KIND_COMMA discard:NO]; 
-            [self arg_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:METHODS_TOKEN_KIND_INT, 0]) {
+        [PKParser_weakSelf arg_];
+        while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf match:METHODS_TOKEN_KIND_COMMA discard:NO];[PKParser_weakSelf arg_];}]) {
+            [PKParser_weakSelf match:METHODS_TOKEN_KIND_COMMA discard:NO];
+            [PKParser_weakSelf arg_];
         }
     }
 
@@ -149,9 +151,9 @@
 }
 
 - (void)__arg {
-    
-    [self match:METHODS_TOKEN_KIND_INT discard:NO]; 
-    [self matchWord:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:METHODS_TOKEN_KIND_INT discard:NO];
+    [PKParser_weakSelf matchWord:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchArg:)];
 }

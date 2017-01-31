@@ -1,5 +1,6 @@
 #import "ElementAssignParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface ElementAssignParser ()
@@ -40,10 +41,11 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
     [self tryAndRecover:TOKEN_KIND_BUILTIN_EOF block:^{
-        [self start_]; 
-        [self matchEOF:YES]; 
+        [PKParser_weakSelf start_];
+        [PKParser_weakSelf matchEOF:YES];
     } completion:^{
         [self matchEOF:YES];
     }];
@@ -51,125 +53,125 @@
 }
 
 - (void)start_ {
-    
+    PKParser_weakSelfDecl;
     do {
-        [self stat_]; 
-    } while ([self speculate:^{ [self stat_]; }]);
+        [PKParser_weakSelf stat_];
+    } while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf stat_];}]);
 
     [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
 
 - (void)stat_ {
-    
-    if ([self speculate:^{ [self tryAndRecover:ELEMENTASSIGN_TOKEN_KIND_DOT block:^{ [self assign_]; [self dot_]; } completion:^{ [self dot_]; }];}]) {
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [self tryAndRecover:ELEMENTASSIGN_TOKEN_KIND_DOT block:^{ [PKParser_weakSelf assign_];[PKParser_weakSelf dot_];} completion:^{ [PKParser_weakSelf dot_];}];}]) {
         [self tryAndRecover:ELEMENTASSIGN_TOKEN_KIND_DOT block:^{ 
-            [self assign_]; 
-            [self dot_]; 
+            [PKParser_weakSelf assign_];
+            [PKParser_weakSelf dot_];
         } completion:^{ 
-            [self dot_]; 
+            [PKParser_weakSelf dot_];
         }];
-    } else if ([self speculate:^{ [self tryAndRecover:ELEMENTASSIGN_TOKEN_KIND_SEMI block:^{ [self list_]; [self semi_]; } completion:^{ [self semi_]; }];}]) {
+    } else if ([PKParser_weakSelf speculate:^{ [self tryAndRecover:ELEMENTASSIGN_TOKEN_KIND_SEMI block:^{ [PKParser_weakSelf list_];[PKParser_weakSelf semi_];} completion:^{ [PKParser_weakSelf semi_];}];}]) {
         [self tryAndRecover:ELEMENTASSIGN_TOKEN_KIND_SEMI block:^{ 
-            [self list_]; 
-            [self semi_]; 
+            [PKParser_weakSelf list_];
+            [PKParser_weakSelf semi_];
         } completion:^{ 
-            [self semi_]; 
+            [PKParser_weakSelf semi_];
         }];
     } else {
-        [self raise:@"No viable alternative found in rule 'stat'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'stat'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchStat:)];
 }
 
 - (void)assign_ {
-    
+    PKParser_weakSelfDecl;
     [self tryAndRecover:ELEMENTASSIGN_TOKEN_KIND_EQ block:^{ 
-        [self list_]; 
-        [self eq_]; 
+        [PKParser_weakSelf list_];
+        [PKParser_weakSelf eq_];
     } completion:^{ 
-        [self eq_]; 
+        [PKParser_weakSelf eq_];
     }];
-        [self list_]; 
+        [PKParser_weakSelf list_];
 
     [self fireDelegateSelector:@selector(parser:didMatchAssign:)];
 }
 
 - (void)list_ {
-    
-    [self lbracket_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf lbracket_];
     [self tryAndRecover:ELEMENTASSIGN_TOKEN_KIND_RBRACKET block:^{ 
-        [self elements_]; 
-        [self rbracket_]; 
+        [PKParser_weakSelf elements_];
+        [PKParser_weakSelf rbracket_];
     } completion:^{ 
-        [self rbracket_]; 
+        [PKParser_weakSelf rbracket_];
     }];
 
     [self fireDelegateSelector:@selector(parser:didMatchList:)];
 }
 
 - (void)elements_ {
-    
-    [self element_]; 
-    while ([self speculate:^{ [self comma_]; [self element_]; }]) {
-        [self comma_]; 
-        [self element_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf element_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf comma_];[PKParser_weakSelf element_];}]) {
+        [PKParser_weakSelf comma_];
+        [PKParser_weakSelf element_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchElements:)];
 }
 
 - (void)element_ {
-    
-    if ([self predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
-        [self matchNumber:NO]; 
-    } else if ([self predicts:ELEMENTASSIGN_TOKEN_KIND_LBRACKET, 0]) {
-        [self list_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
+        [PKParser_weakSelf matchNumber:NO];
+    } else if ([PKParser_weakSelf predicts:ELEMENTASSIGN_TOKEN_KIND_LBRACKET, 0]) {
+        [PKParser_weakSelf list_];
     } else {
-        [self raise:@"No viable alternative found in rule 'element'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'element'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchElement:)];
 }
 
 - (void)lbracket_ {
-    
-    [self match:ELEMENTASSIGN_TOKEN_KIND_LBRACKET discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:ELEMENTASSIGN_TOKEN_KIND_LBRACKET discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchLbracket:)];
 }
 
 - (void)rbracket_ {
-    
-    [self match:ELEMENTASSIGN_TOKEN_KIND_RBRACKET discard:YES]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:ELEMENTASSIGN_TOKEN_KIND_RBRACKET discard:YES];
 
     [self fireDelegateSelector:@selector(parser:didMatchRbracket:)];
 }
 
 - (void)comma_ {
-    
-    [self match:ELEMENTASSIGN_TOKEN_KIND_COMMA discard:YES]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:ELEMENTASSIGN_TOKEN_KIND_COMMA discard:YES];
 
     [self fireDelegateSelector:@selector(parser:didMatchComma:)];
 }
 
 - (void)eq_ {
-    
-    [self match:ELEMENTASSIGN_TOKEN_KIND_EQ discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:ELEMENTASSIGN_TOKEN_KIND_EQ discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchEq:)];
 }
 
 - (void)dot_ {
-    
-    [self match:ELEMENTASSIGN_TOKEN_KIND_DOT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:ELEMENTASSIGN_TOKEN_KIND_DOT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchDot:)];
 }
 
 - (void)semi_ {
-    
-    [self match:ELEMENTASSIGN_TOKEN_KIND_SEMI discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:ELEMENTASSIGN_TOKEN_KIND_SEMI discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchSemi:)];
 }

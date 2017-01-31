@@ -1,5 +1,6 @@
 #import "DupeLiteralsParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface DupeLiteralsParser ()
@@ -36,7 +37,8 @@
 }
 
 - (void)start {
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf execute:^{
     
     PKTokenizer *t = self.tokenizer;
 
@@ -44,57 +46,57 @@
 
     }];
 
-    [self start_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf start_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)start_ {
-    
+    PKParser_weakSelfDecl;
     do {
-        if ([self predicts:DUPELITERALS_TOKEN_KIND_NONE, DUPELITERALS_TOKEN_KIND_NONE_1, DUPELITERALS_TOKEN_KIND_NONE_2, 0]) {
-            [self none_]; 
-        } else if ([self predicts:DUPELITERALS_TOKEN_KIND_QUOTE, 0]) {
-            [self quote_]; 
-        } else if ([self predicts:DUPELITERALS_TOKEN_KIND_PIPE, 0]) {
-            [self block_]; 
+        if ([PKParser_weakSelf predicts:DUPELITERALS_TOKEN_KIND_NONE, DUPELITERALS_TOKEN_KIND_NONE_1, DUPELITERALS_TOKEN_KIND_NONE_2, 0]) {
+            [PKParser_weakSelf none_];
+        } else if ([PKParser_weakSelf predicts:DUPELITERALS_TOKEN_KIND_QUOTE, 0]) {
+            [PKParser_weakSelf quote_];
+        } else if ([PKParser_weakSelf predicts:DUPELITERALS_TOKEN_KIND_PIPE, 0]) {
+            [PKParser_weakSelf block_];
         } else {
-            [self raise:@"No viable alternative found in rule 'start'."];
+            [PKParser_weakSelf raise:@"No viable alternative found in rule 'start'."];
         }
-    } while ([self speculate:^{ if ([self predicts:DUPELITERALS_TOKEN_KIND_NONE, DUPELITERALS_TOKEN_KIND_NONE_1, DUPELITERALS_TOKEN_KIND_NONE_2, 0]) {[self none_]; } else if ([self predicts:DUPELITERALS_TOKEN_KIND_QUOTE, 0]) {[self quote_]; } else if ([self predicts:DUPELITERALS_TOKEN_KIND_PIPE, 0]) {[self block_]; } else {[self raise:@"No viable alternative found in rule 'start'."];}}]);
+    } while ([PKParser_weakSelf speculate:^{ if ([PKParser_weakSelf predicts:DUPELITERALS_TOKEN_KIND_NONE, DUPELITERALS_TOKEN_KIND_NONE_1, DUPELITERALS_TOKEN_KIND_NONE_2, 0]) {[PKParser_weakSelf none_];} else if ([PKParser_weakSelf predicts:DUPELITERALS_TOKEN_KIND_QUOTE, 0]) {[PKParser_weakSelf quote_];} else if ([PKParser_weakSelf predicts:DUPELITERALS_TOKEN_KIND_PIPE, 0]) {[PKParser_weakSelf block_];} else {[PKParser_weakSelf raise:@"No viable alternative found in rule 'start'."];}}]);
 
     [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
 
 - (void)none_ {
-    
-    if ([self predicts:DUPELITERALS_TOKEN_KIND_NONE, 0]) {
-        [self match:DUPELITERALS_TOKEN_KIND_NONE discard:NO]; 
-    } else if ([self predicts:DUPELITERALS_TOKEN_KIND_NONE_1, 0]) {
-        [self match:DUPELITERALS_TOKEN_KIND_NONE_1 discard:NO]; 
-    } else if ([self predicts:DUPELITERALS_TOKEN_KIND_NONE_2, 0]) {
-        [self match:DUPELITERALS_TOKEN_KIND_NONE_2 discard:NO]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:DUPELITERALS_TOKEN_KIND_NONE, 0]) {
+        [PKParser_weakSelf match:DUPELITERALS_TOKEN_KIND_NONE discard:NO];
+    } else if ([PKParser_weakSelf predicts:DUPELITERALS_TOKEN_KIND_NONE_1, 0]) {
+        [PKParser_weakSelf match:DUPELITERALS_TOKEN_KIND_NONE_1 discard:NO];
+    } else if ([PKParser_weakSelf predicts:DUPELITERALS_TOKEN_KIND_NONE_2, 0]) {
+        [PKParser_weakSelf match:DUPELITERALS_TOKEN_KIND_NONE_2 discard:NO];
     } else {
-        [self raise:@"No viable alternative found in rule 'none'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'none'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchNone:)];
 }
 
 - (void)quote_ {
-    
-    [self match:DUPELITERALS_TOKEN_KIND_QUOTE discard:YES]; 
-    [self matchWord:NO]; 
-    [self match:DUPELITERALS_TOKEN_KIND_QUOTE discard:YES]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:DUPELITERALS_TOKEN_KIND_QUOTE discard:YES];
+    [PKParser_weakSelf matchWord:NO];
+    [PKParser_weakSelf match:DUPELITERALS_TOKEN_KIND_QUOTE discard:YES];
 
     [self fireDelegateSelector:@selector(parser:didMatchQuote:)];
 }
 
 - (void)block_ {
-    
-    [self match:DUPELITERALS_TOKEN_KIND_PIPE discard:NO]; 
-    [self matchWord:NO]; 
-    [self match:DUPELITERALS_TOKEN_KIND_PIPE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:DUPELITERALS_TOKEN_KIND_PIPE discard:NO];
+    [PKParser_weakSelf matchWord:NO];
+    [PKParser_weakSelf match:DUPELITERALS_TOKEN_KIND_PIPE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchBlock:)];
 }

@@ -1,5 +1,6 @@
 #import "OptionalParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface OptionalParser ()
@@ -49,19 +50,20 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self s_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf s_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__s {
-    
-    if ([self speculate:^{ [self expr_]; }]) {
-        [self expr_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf expr_];}]) {
+        [PKParser_weakSelf expr_];
     }
-    [self foo_]; 
-    [self bar_]; 
+    [PKParser_weakSelf foo_];
+    [PKParser_weakSelf bar_];
 
     [self fireDelegateSelector:@selector(parser:didMatchS:)];
 }
@@ -71,10 +73,10 @@
 }
 
 - (void)__expr {
-    
-    [self foo_]; 
-    [self bar_]; 
-    [self bar_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf foo_];
+    [PKParser_weakSelf bar_];
+    [PKParser_weakSelf bar_];
 
     [self fireDelegateSelector:@selector(parser:didMatchExpr:)];
 }
@@ -84,8 +86,8 @@
 }
 
 - (void)__foo {
-    
-    [self match:OPTIONAL_TOKEN_KIND_FOO discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:OPTIONAL_TOKEN_KIND_FOO discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchFoo:)];
 }
@@ -95,8 +97,8 @@
 }
 
 - (void)__bar {
-    
-    [self match:OPTIONAL_TOKEN_KIND_BAR discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:OPTIONAL_TOKEN_KIND_BAR discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchBar:)];
 }

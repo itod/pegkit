@@ -101,30 +101,37 @@
 @property (nonatomic, retain) NSString *braces;
 @end
 
-#define LT(i) [self LT:(i)]
-#define LA(i) [self LA:(i)]
-#define LS(i) [self LS:(i)]
-#define LD(i) [self LD:(i)]
+#if __has_feature(objc_arc)
+#define PKParser_weakSelfDecl __unused typeof (self) __weak PKParser_weakSelf = self
+#else
+#define PKParser_weakSelfDecl
+#define PKParser_weakSelf self
+#endif
 
-#define POP()            [self.assembly pop]
-#define POP_STR()        [self popString]
-#define POP_QUOTED_STR() [self popQuotedString]
-#define POP_TOK()        [self popToken]
-#define POP_BOOL()       [self popBool]
-#define POP_INT()        [self popInteger]
-#define POP_UINT()       [self popUnsignedInteger]
-#define POP_FLOAT()      [self popFloat]
-#define POP_DOUBLE()     [self popDouble]
+#define LT(i) [PKParser_weakSelf LT:(i)]
+#define LA(i) [PKParser_weakSelf LA:(i)]
+#define LS(i) [PKParser_weakSelf LS:(i)]
+#define LD(i) [PKParser_weakSelf LD:(i)]
 
-#define PUSH(obj)      [self.assembly push:(id)(obj)]
-#define PUSH_BOOL(yn)  [self pushBool:(BOOL)(yn)]
-#define PUSH_INT(i)    [self pushInteger:(NSInteger)(i)]
-#define PUSH_UINT(u)   [self pushUnsignedInteger:(NSUInteger)(u)]
-#define PUSH_FLOAT(f)  [self pushFloat:(float)(f)]
-#define PUSH_DOUBLE(d) [self pushDouble:(double)(d)]
-#define PUSH_ALL(a)    [self pushAll:(a)]
+#define POP()            [PKParser_weakSelf.assembly pop]
+#define POP_STR()        [PKParser_weakSelf popString]
+#define POP_QUOTED_STR() [PKParser_weakSelf popQuotedString]
+#define POP_TOK()        [PKParser_weakSelf popToken]
+#define POP_BOOL()       [PKParser_weakSelf popBool]
+#define POP_INT()        [PKParser_weakSelf popInteger]
+#define POP_UINT()       [PKParser_weakSelf popUnsignedInteger]
+#define POP_FLOAT()      [PKParser_weakSelf popFloat]
+#define POP_DOUBLE()     [PKParser_weakSelf popDouble]
 
-#define REV(a) [self reversedArray:a]
+#define PUSH(obj)      [PKParser_weakSelf.assembly push:(id)(obj)]
+#define PUSH_BOOL(yn)  [PKParser_weakSelf pushBool:(BOOL)(yn)]
+#define PUSH_INT(i)    [PKParser_weakSelf pushInteger:(NSInteger)(i)]
+#define PUSH_UINT(u)   [PKParser_weakSelf pushUnsignedInteger:(NSUInteger)(u)]
+#define PUSH_FLOAT(f)  [PKParser_weakSelf pushFloat:(float)(f)]
+#define PUSH_DOUBLE(d) [PKParser_weakSelf pushDouble:(double)(d)]
+#define PUSH_ALL(a)    [PKParser_weakSelf pushAll:(a)]
+
+#define REV(a) [PKParser_weakSelf reversedArray:a]
 
 #define EQ(a, b) [(a) isEqual:(b)]
 #define NE(a, b) (![(a) isEqual:(b)])
@@ -133,8 +140,8 @@
 #define MATCHES(pattern, str)               ([[NSRegularExpression regularExpressionWithPattern:(pattern) options:0                                  error:nil] numberOfMatchesInString:(str) options:0 range:NSMakeRange(0, [(str) length])] > 0)
 #define MATCHES_IGNORE_CASE(pattern, str)   ([[NSRegularExpression regularExpressionWithPattern:(pattern) options:NSRegularExpressionCaseInsensitive error:nil] numberOfMatchesInString:(str) options:0 range:NSMakeRange(0, [(str) length])] > 0)
 
-#define ABOVE(fence) [self.assembly objectsAbove:(fence)]
-#define EMPTY() [self.assembly isStackEmpty]
+#define ABOVE(fence) [PKParser_weakSelf.assembly objectsAbove:(fence)]
+#define EMPTY() [PKParser_weakSelf.assembly isStackEmpty]
 
 #define LOG(obj) do { NSLog(@"%@", (obj)); } while (0);
 #define PRINT(str) do { printf("%s\n", (str)); } while (0);

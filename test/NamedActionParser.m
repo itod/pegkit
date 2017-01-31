@@ -1,5 +1,6 @@
 #import "NamedActionParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface NamedActionParser ()
@@ -45,16 +46,17 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self start_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf start_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__start {
-    
-    [self a_]; 
-    [self b_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf a_];
+    [PKParser_weakSelf b_];
 
     [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
@@ -64,12 +66,12 @@
 }
 
 - (void)__a {
-    
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf execute:^{
     PUSH(@"foo");
     }];
-    [self match:NAMEDACTION_TOKEN_KIND_A discard:NO]; 
-    [self execute:^{
+    [PKParser_weakSelf match:NAMEDACTION_TOKEN_KIND_A discard:NO];
+    [PKParser_weakSelf execute:^{
     PUSH(@"bar");
     }];
 
@@ -81,8 +83,8 @@
 }
 
 - (void)__b {
-    
-    [self match:NAMEDACTION_TOKEN_KIND_B discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:NAMEDACTION_TOKEN_KIND_B discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchB:)];
 }

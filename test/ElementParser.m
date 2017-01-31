@@ -1,5 +1,6 @@
 #import "ElementParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface ElementParser ()
@@ -63,17 +64,18 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self lists_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf lists_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__lists {
-    
+    PKParser_weakSelfDecl;
     do {
-        [self list_]; 
-    } while ([self speculate:^{ [self list_]; }]);
+        [PKParser_weakSelf list_];
+    } while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf list_];}]);
 
     [self fireDelegateSelector:@selector(parser:didMatchLists:)];
 }
@@ -83,10 +85,10 @@
 }
 
 - (void)__list {
-    
-    [self lbracket_]; 
-    [self elements_]; 
-    [self rbracket_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf lbracket_];
+    [PKParser_weakSelf elements_];
+    [PKParser_weakSelf rbracket_];
 
     [self fireDelegateSelector:@selector(parser:didMatchList:)];
 }
@@ -96,11 +98,11 @@
 }
 
 - (void)__elements {
-    
-    [self element_]; 
-    while ([self speculate:^{ [self comma_]; [self element_]; }]) {
-        [self comma_]; 
-        [self element_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf element_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf comma_];[PKParser_weakSelf element_];}]) {
+        [PKParser_weakSelf comma_];
+        [PKParser_weakSelf element_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchElements:)];
@@ -111,13 +113,13 @@
 }
 
 - (void)__element {
-    
-    if ([self predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
-        [self matchNumber:NO]; 
-    } else if ([self predicts:ELEMENT_TOKEN_KIND_LBRACKET, 0]) {
-        [self list_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
+        [PKParser_weakSelf matchNumber:NO];
+    } else if ([PKParser_weakSelf predicts:ELEMENT_TOKEN_KIND_LBRACKET, 0]) {
+        [PKParser_weakSelf list_];
     } else {
-        [self raise:@"No viable alternative found in rule 'element'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'element'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchElement:)];
@@ -128,8 +130,8 @@
 }
 
 - (void)__lbracket {
-    
-    [self match:ELEMENT_TOKEN_KIND_LBRACKET discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:ELEMENT_TOKEN_KIND_LBRACKET discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchLbracket:)];
 }
@@ -139,8 +141,8 @@
 }
 
 - (void)__rbracket {
-    
-    [self match:ELEMENT_TOKEN_KIND_RBRACKET discard:YES]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:ELEMENT_TOKEN_KIND_RBRACKET discard:YES];
 
     [self fireDelegateSelector:@selector(parser:didMatchRbracket:)];
 }
@@ -150,8 +152,8 @@
 }
 
 - (void)__comma {
-    
-    [self match:ELEMENT_TOKEN_KIND_COMMA discard:YES]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:ELEMENT_TOKEN_KIND_COMMA discard:YES];
 
     [self fireDelegateSelector:@selector(parser:didMatchComma:)];
 }

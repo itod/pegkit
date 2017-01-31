@@ -1,5 +1,6 @@
 #import "TableIndexSpecParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface TableIndexSpecParser ()
@@ -34,17 +35,18 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self qualifiedTableName_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf qualifiedTableName_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)qualifiedTableName_ {
-    
-    [self name_]; 
-    [self indexOpt_]; 
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf name_];
+    [PKParser_weakSelf indexOpt_];
+    [PKParser_weakSelf execute:^{
     
     // NSString *indexName = POP();
     // NSString *tableName = POP();
@@ -57,31 +59,31 @@
 }
 
 - (void)databaseName_ {
-    
-    [self matchWord:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchWord:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchDatabaseName:)];
 }
 
 - (void)tableName_ {
-    
-    [self matchWord:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchWord:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchTableName:)];
 }
 
 - (void)indexName_ {
-    
-    [self matchQuotedString:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchQuotedString:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchIndexName:)];
 }
 
 - (void)name_ {
-    
-    [self prefixOpt_]; 
-    [self tableName_]; 
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf prefixOpt_];
+    [PKParser_weakSelf tableName_];
+    [PKParser_weakSelf execute:^{
     
     NSString *tableName = POP_STR();
     NSString *dbName = POP_STR();
@@ -94,16 +96,16 @@
 }
 
 - (void)prefixOpt_ {
-    
-    if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self databaseName_]; 
-        [self match:TABLEINDEXSPEC_TOKEN_KIND_DOT discard:YES]; 
-        [self execute:^{
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf databaseName_];
+        [PKParser_weakSelf match:TABLEINDEXSPEC_TOKEN_KIND_DOT discard:YES];
+        [PKParser_weakSelf execute:^{
          PUSH(POP_STR()); 
         }];
     } else {
-        [self matchEmpty:NO]; 
-        [self execute:^{
+        [PKParser_weakSelf matchEmpty:NO];
+        [PKParser_weakSelf execute:^{
          PUSH(@""); 
         }];
     }
@@ -112,27 +114,27 @@
 }
 
 - (void)indexOpt_ {
-    
-    if ([self speculate:^{ [self match:TABLEINDEXSPEC_TOKEN_KIND_INDEXED discard:YES]; [self match:TABLEINDEXSPEC_TOKEN_KIND_BY discard:YES]; [self indexName_]; }]) {
-        [self match:TABLEINDEXSPEC_TOKEN_KIND_INDEXED discard:YES]; 
-        [self match:TABLEINDEXSPEC_TOKEN_KIND_BY discard:YES]; 
-        [self indexName_]; 
-        [self execute:^{
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf match:TABLEINDEXSPEC_TOKEN_KIND_INDEXED discard:YES];[PKParser_weakSelf match:TABLEINDEXSPEC_TOKEN_KIND_BY discard:YES];[PKParser_weakSelf indexName_];}]) {
+        [PKParser_weakSelf match:TABLEINDEXSPEC_TOKEN_KIND_INDEXED discard:YES];
+        [PKParser_weakSelf match:TABLEINDEXSPEC_TOKEN_KIND_BY discard:YES];
+        [PKParser_weakSelf indexName_];
+        [PKParser_weakSelf execute:^{
          
         NSString *indexName = POP_STR();
         indexName = [indexName substringWithRange:NSMakeRange(1, [indexName length]-2)];
         PUSH(indexName);
     
         }];
-    } else if ([self speculate:^{ [self match:TABLEINDEXSPEC_TOKEN_KIND_INDEXED discard:YES]; [self match:TABLEINDEXSPEC_TOKEN_KIND_NOT_UPPER discard:YES]; }]) {
-        [self match:TABLEINDEXSPEC_TOKEN_KIND_INDEXED discard:YES]; 
-        [self match:TABLEINDEXSPEC_TOKEN_KIND_NOT_UPPER discard:YES]; 
-        [self execute:^{
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf match:TABLEINDEXSPEC_TOKEN_KIND_INDEXED discard:YES];[PKParser_weakSelf match:TABLEINDEXSPEC_TOKEN_KIND_NOT_UPPER discard:YES];}]) {
+        [PKParser_weakSelf match:TABLEINDEXSPEC_TOKEN_KIND_INDEXED discard:YES];
+        [PKParser_weakSelf match:TABLEINDEXSPEC_TOKEN_KIND_NOT_UPPER discard:YES];
+        [PKParser_weakSelf execute:^{
          PUSH(@""); 
         }];
     } else {
-        [self matchEmpty:NO]; 
-        [self execute:^{
+        [PKParser_weakSelf matchEmpty:NO];
+        [PKParser_weakSelf execute:^{
          PUSH(@""); 
         }];
     }

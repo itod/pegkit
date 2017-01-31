@@ -1,5 +1,6 @@
 #import "TDNSPredicateParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface TDNSPredicateParser ()
@@ -341,15 +342,16 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self start_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf start_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__start {
-    
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf execute:^{
     
 	PKTokenizer *t = self.tokenizer;
 	[t setTokenizerState:t.wordState from:'#' to:'#'];
@@ -369,8 +371,8 @@
  
     }];
     do {
-        [self expr_]; 
-    } while ([self speculate:^{ [self expr_]; }]);
+        [PKParser_weakSelf expr_];
+    } while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf expr_];}]);
 
     [self fireDelegateSelector:@selector(parser:didMatchStart:)];
 }
@@ -380,10 +382,10 @@
 }
 
 - (void)__expr {
-    
-    [self orTerm_]; 
-    while ([self speculate:^{ [self orOrTerm_]; }]) {
-        [self orOrTerm_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf orTerm_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf orOrTerm_];}]) {
+        [PKParser_weakSelf orOrTerm_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchExpr:)];
@@ -394,9 +396,9 @@
 }
 
 - (void)__orOrTerm {
-    
-    [self orKeyword_]; 
-    [self orTerm_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf orKeyword_];
+    [PKParser_weakSelf orTerm_];
 
     [self fireDelegateSelector:@selector(parser:didMatchOrOrTerm:)];
 }
@@ -406,10 +408,10 @@
 }
 
 - (void)__orTerm {
-    
-    [self andTerm_]; 
-    while ([self speculate:^{ [self andAndTerm_]; }]) {
-        [self andAndTerm_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf andTerm_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf andAndTerm_];}]) {
+        [PKParser_weakSelf andAndTerm_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchOrTerm:)];
@@ -420,9 +422,9 @@
 }
 
 - (void)__andAndTerm {
-    
-    [self andKeyword_]; 
-    [self andTerm_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf andKeyword_];
+    [PKParser_weakSelf andTerm_];
 
     [self fireDelegateSelector:@selector(parser:didMatchAndAndTerm:)];
 }
@@ -432,13 +434,13 @@
 }
 
 - (void)__andTerm {
-    
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_ALL, TDNSPREDICATE_TOKEN_KIND_ANY, TDNSPREDICATE_TOKEN_KIND_BANG, TDNSPREDICATE_TOKEN_KIND_FALSE, TDNSPREDICATE_TOKEN_KIND_FALSEPREDICATE, TDNSPREDICATE_TOKEN_KIND_NONE, TDNSPREDICATE_TOKEN_KIND_NOT_UPPER, TDNSPREDICATE_TOKEN_KIND_OPEN_CURLY, TDNSPREDICATE_TOKEN_KIND_SOME, TDNSPREDICATE_TOKEN_KIND_TRUE, TDNSPREDICATE_TOKEN_KIND_TRUEPREDICATE, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self primaryExpr_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_OPEN_PAREN, 0]) {
-        [self compoundExpr_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_ALL, TDNSPREDICATE_TOKEN_KIND_ANY, TDNSPREDICATE_TOKEN_KIND_BANG, TDNSPREDICATE_TOKEN_KIND_FALSE, TDNSPREDICATE_TOKEN_KIND_FALSEPREDICATE, TDNSPREDICATE_TOKEN_KIND_NONE, TDNSPREDICATE_TOKEN_KIND_NOT_UPPER, TDNSPREDICATE_TOKEN_KIND_OPEN_CURLY, TDNSPREDICATE_TOKEN_KIND_SOME, TDNSPREDICATE_TOKEN_KIND_TRUE, TDNSPREDICATE_TOKEN_KIND_TRUEPREDICATE, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf primaryExpr_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_OPEN_PAREN, 0]) {
+        [PKParser_weakSelf compoundExpr_];
     } else {
-        [self raise:@"No viable alternative found in rule 'andTerm'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'andTerm'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchAndTerm:)];
@@ -449,10 +451,10 @@
 }
 
 - (void)__compoundExpr {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_OPEN_PAREN discard:YES]; 
-    [self expr_]; 
-    [self match:TDNSPREDICATE_TOKEN_KIND_CLOSE_PAREN discard:YES]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_OPEN_PAREN discard:YES];
+    [PKParser_weakSelf expr_];
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_CLOSE_PAREN discard:YES];
 
     [self fireDelegateSelector:@selector(parser:didMatchCompoundExpr:)];
 }
@@ -462,13 +464,13 @@
 }
 
 - (void)__primaryExpr {
-    
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_ALL, TDNSPREDICATE_TOKEN_KIND_ANY, TDNSPREDICATE_TOKEN_KIND_FALSE, TDNSPREDICATE_TOKEN_KIND_FALSEPREDICATE, TDNSPREDICATE_TOKEN_KIND_NONE, TDNSPREDICATE_TOKEN_KIND_OPEN_CURLY, TDNSPREDICATE_TOKEN_KIND_SOME, TDNSPREDICATE_TOKEN_KIND_TRUE, TDNSPREDICATE_TOKEN_KIND_TRUEPREDICATE, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self predicate_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_BANG, TDNSPREDICATE_TOKEN_KIND_NOT_UPPER, 0]) {
-        [self negatedPredicate_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_ALL, TDNSPREDICATE_TOKEN_KIND_ANY, TDNSPREDICATE_TOKEN_KIND_FALSE, TDNSPREDICATE_TOKEN_KIND_FALSEPREDICATE, TDNSPREDICATE_TOKEN_KIND_NONE, TDNSPREDICATE_TOKEN_KIND_OPEN_CURLY, TDNSPREDICATE_TOKEN_KIND_SOME, TDNSPREDICATE_TOKEN_KIND_TRUE, TDNSPREDICATE_TOKEN_KIND_TRUEPREDICATE, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf predicate_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_BANG, TDNSPREDICATE_TOKEN_KIND_NOT_UPPER, 0]) {
+        [PKParser_weakSelf negatedPredicate_];
     } else {
-        [self raise:@"No viable alternative found in rule 'primaryExpr'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'primaryExpr'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchPrimaryExpr:)];
@@ -479,9 +481,9 @@
 }
 
 - (void)__negatedPredicate {
-    
-    [self notKeyword_]; 
-    [self predicate_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf notKeyword_];
+    [PKParser_weakSelf predicate_];
 
     [self fireDelegateSelector:@selector(parser:didMatchNegatedPredicate:)];
 }
@@ -491,17 +493,17 @@
 }
 
 - (void)__predicate {
-    
-    if ([self speculate:^{ [self collectionTestPredicate_]; }]) {
-        [self collectionTestPredicate_]; 
-    } else if ([self speculate:^{ [self boolPredicate_]; }]) {
-        [self boolPredicate_]; 
-    } else if ([self speculate:^{ [self comparisonPredicate_]; }]) {
-        [self comparisonPredicate_]; 
-    } else if ([self speculate:^{ [self stringTestPredicate_]; }]) {
-        [self stringTestPredicate_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf collectionTestPredicate_];}]) {
+        [PKParser_weakSelf collectionTestPredicate_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf boolPredicate_];}]) {
+        [PKParser_weakSelf boolPredicate_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf comparisonPredicate_];}]) {
+        [PKParser_weakSelf comparisonPredicate_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf stringTestPredicate_];}]) {
+        [PKParser_weakSelf stringTestPredicate_];
     } else {
-        [self raise:@"No viable alternative found in rule 'predicate'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'predicate'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchPredicate:)];
@@ -512,19 +514,19 @@
 }
 
 - (void)__value {
-    
-    if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self keyPath_]; 
-    } else if ([self predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
-        [self string_]; 
-    } else if ([self predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
-        [self num_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_FALSE, TDNSPREDICATE_TOKEN_KIND_TRUE, 0]) {
-        [self bool_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_OPEN_CURLY, 0]) {
-        [self array_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf keyPath_];
+    } else if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_QUOTEDSTRING, 0]) {
+        [PKParser_weakSelf string_];
+    } else if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
+        [PKParser_weakSelf num_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_FALSE, TDNSPREDICATE_TOKEN_KIND_TRUE, 0]) {
+        [PKParser_weakSelf bool_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_OPEN_CURLY, 0]) {
+        [PKParser_weakSelf array_];
     } else {
-        [self raise:@"No viable alternative found in rule 'value'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'value'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchValue:)];
@@ -535,8 +537,8 @@
 }
 
 - (void)__string {
-    
-    [self matchQuotedString:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchQuotedString:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchString:)];
 }
@@ -546,8 +548,8 @@
 }
 
 - (void)__num {
-    
-    [self matchNumber:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchNumber:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchNum:)];
 }
@@ -557,13 +559,13 @@
 }
 
 - (void)__bool {
-    
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_TRUE, 0]) {
-        [self true_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_FALSE, 0]) {
-        [self false_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_TRUE, 0]) {
+        [PKParser_weakSelf true_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_FALSE, 0]) {
+        [PKParser_weakSelf false_];
     } else {
-        [self raise:@"No viable alternative found in rule 'bool'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'bool'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchBool:)];
@@ -574,8 +576,8 @@
 }
 
 - (void)__true {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_TRUE discard:YES]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_TRUE discard:YES];
 
     [self fireDelegateSelector:@selector(parser:didMatchTrue:)];
 }
@@ -585,8 +587,8 @@
 }
 
 - (void)__false {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_FALSE discard:YES]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_FALSE discard:YES];
 
     [self fireDelegateSelector:@selector(parser:didMatchFalse:)];
 }
@@ -596,10 +598,10 @@
 }
 
 - (void)__array {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_OPEN_CURLY discard:NO]; 
-    [self arrayContentsOpt_]; 
-    [self match:TDNSPREDICATE_TOKEN_KIND_CLOSE_CURLY discard:YES]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_OPEN_CURLY discard:NO];
+    [PKParser_weakSelf arrayContentsOpt_];
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_CLOSE_CURLY discard:YES];
 
     [self fireDelegateSelector:@selector(parser:didMatchArray:)];
 }
@@ -609,9 +611,9 @@
 }
 
 - (void)__arrayContentsOpt {
-    
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_FALSE, TDNSPREDICATE_TOKEN_KIND_OPEN_CURLY, TDNSPREDICATE_TOKEN_KIND_TRUE, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self arrayContents_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_FALSE, TDNSPREDICATE_TOKEN_KIND_OPEN_CURLY, TDNSPREDICATE_TOKEN_KIND_TRUE, TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_QUOTEDSTRING, TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf arrayContents_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchArrayContentsOpt:)];
@@ -622,10 +624,10 @@
 }
 
 - (void)__arrayContents {
-    
-    [self value_]; 
-    while ([self speculate:^{ [self commaValue_]; }]) {
-        [self commaValue_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf value_];
+    while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf commaValue_];}]) {
+        [PKParser_weakSelf commaValue_];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchArrayContents:)];
@@ -636,9 +638,9 @@
 }
 
 - (void)__commaValue {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_COMMA discard:YES]; 
-    [self value_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_COMMA discard:YES];
+    [PKParser_weakSelf value_];
 
     [self fireDelegateSelector:@selector(parser:didMatchCommaValue:)];
 }
@@ -648,8 +650,8 @@
 }
 
 - (void)__keyPath {
-    
-    [self matchWord:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchWord:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchKeyPath:)];
 }
@@ -659,13 +661,13 @@
 }
 
 - (void)__comparisonPredicate {
-    
-    if ([self predicts:TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self numComparisonPredicate_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_ALL, TDNSPREDICATE_TOKEN_KIND_ANY, TDNSPREDICATE_TOKEN_KIND_NONE, TDNSPREDICATE_TOKEN_KIND_SOME, 0]) {
-        [self collectionComparisonPredicate_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_NUMBER, TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf numComparisonPredicate_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_ALL, TDNSPREDICATE_TOKEN_KIND_ANY, TDNSPREDICATE_TOKEN_KIND_NONE, TDNSPREDICATE_TOKEN_KIND_SOME, 0]) {
+        [PKParser_weakSelf collectionComparisonPredicate_];
     } else {
-        [self raise:@"No viable alternative found in rule 'comparisonPredicate'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'comparisonPredicate'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchComparisonPredicate:)];
@@ -676,10 +678,10 @@
 }
 
 - (void)__numComparisonPredicate {
-    
-    [self numComparisonValue_]; 
-    [self comparisonOp_]; 
-    [self numComparisonValue_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf numComparisonValue_];
+    [PKParser_weakSelf comparisonOp_];
+    [PKParser_weakSelf numComparisonValue_];
 
     [self fireDelegateSelector:@selector(parser:didMatchNumComparisonPredicate:)];
 }
@@ -689,13 +691,13 @@
 }
 
 - (void)__numComparisonValue {
-    
-    if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self keyPath_]; 
-    } else if ([self predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
-        [self num_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf keyPath_];
+    } else if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_NUMBER, 0]) {
+        [PKParser_weakSelf num_];
     } else {
-        [self raise:@"No viable alternative found in rule 'numComparisonValue'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'numComparisonValue'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchNumComparisonValue:)];
@@ -706,23 +708,23 @@
 }
 
 - (void)__comparisonOp {
-    
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_DOUBLE_EQUALS, TDNSPREDICATE_TOKEN_KIND_EQUALS, 0]) {
-        [self eq_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_GT, 0]) {
-        [self gt_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_LT, 0]) {
-        [self lt_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_GE_SYM, TDNSPREDICATE_TOKEN_KIND_HASH_ROCKET, 0]) {
-        [self gtEq_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_EL_SYM, TDNSPREDICATE_TOKEN_KIND_LE_SYM, 0]) {
-        [self ltEq_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_NOT_EQUAL, TDNSPREDICATE_TOKEN_KIND_NOT_EQUALS, 0]) {
-        [self notEq_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_BETWEEN, 0]) {
-        [self between_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_DOUBLE_EQUALS, TDNSPREDICATE_TOKEN_KIND_EQUALS, 0]) {
+        [PKParser_weakSelf eq_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_GT, 0]) {
+        [PKParser_weakSelf gt_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_LT, 0]) {
+        [PKParser_weakSelf lt_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_GE_SYM, TDNSPREDICATE_TOKEN_KIND_HASH_ROCKET, 0]) {
+        [PKParser_weakSelf gtEq_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_EL_SYM, TDNSPREDICATE_TOKEN_KIND_LE_SYM, 0]) {
+        [PKParser_weakSelf ltEq_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_NOT_EQUAL, TDNSPREDICATE_TOKEN_KIND_NOT_EQUALS, 0]) {
+        [PKParser_weakSelf notEq_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_BETWEEN, 0]) {
+        [PKParser_weakSelf between_];
     } else {
-        [self raise:@"No viable alternative found in rule 'comparisonOp'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'comparisonOp'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchComparisonOp:)];
@@ -733,13 +735,13 @@
 }
 
 - (void)__eq {
-    
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_EQUALS, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_EQUALS discard:NO]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_DOUBLE_EQUALS, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_DOUBLE_EQUALS discard:NO]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_EQUALS, 0]) {
+        [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_EQUALS discard:NO];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_DOUBLE_EQUALS, 0]) {
+        [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_DOUBLE_EQUALS discard:NO];
     } else {
-        [self raise:@"No viable alternative found in rule 'eq'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'eq'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchEq:)];
@@ -750,8 +752,8 @@
 }
 
 - (void)__gt {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_GT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_GT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchGt:)];
 }
@@ -761,8 +763,8 @@
 }
 
 - (void)__lt {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_LT discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_LT discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchLt:)];
 }
@@ -772,13 +774,13 @@
 }
 
 - (void)__gtEq {
-    
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_GE_SYM, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_GE_SYM discard:NO]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_HASH_ROCKET, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_HASH_ROCKET discard:NO]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_GE_SYM, 0]) {
+        [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_GE_SYM discard:NO];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_HASH_ROCKET, 0]) {
+        [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_HASH_ROCKET discard:NO];
     } else {
-        [self raise:@"No viable alternative found in rule 'gtEq'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'gtEq'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchGtEq:)];
@@ -789,13 +791,13 @@
 }
 
 - (void)__ltEq {
-    
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_LE_SYM, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_LE_SYM discard:NO]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_EL_SYM, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_EL_SYM discard:NO]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_LE_SYM, 0]) {
+        [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_LE_SYM discard:NO];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_EL_SYM, 0]) {
+        [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_EL_SYM discard:NO];
     } else {
-        [self raise:@"No viable alternative found in rule 'ltEq'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'ltEq'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchLtEq:)];
@@ -806,13 +808,13 @@
 }
 
 - (void)__notEq {
-    
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_NOT_EQUAL, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_NOT_EQUAL discard:NO]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_NOT_EQUALS, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_NOT_EQUALS discard:NO]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_NOT_EQUAL, 0]) {
+        [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_NOT_EQUAL discard:NO];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_NOT_EQUALS, 0]) {
+        [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_NOT_EQUALS discard:NO];
     } else {
-        [self raise:@"No viable alternative found in rule 'notEq'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'notEq'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchNotEq:)];
@@ -823,8 +825,8 @@
 }
 
 - (void)__between {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_BETWEEN discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_BETWEEN discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchBetween:)];
 }
@@ -834,21 +836,21 @@
 }
 
 - (void)__collectionComparisonPredicate {
-    
-    if ([self speculate:^{ [self collectionLtPredicate_]; }]) {
-        [self collectionLtPredicate_]; 
-    } else if ([self speculate:^{ [self collectionGtPredicate_]; }]) {
-        [self collectionGtPredicate_]; 
-    } else if ([self speculate:^{ [self collectionLtEqPredicate_]; }]) {
-        [self collectionLtEqPredicate_]; 
-    } else if ([self speculate:^{ [self collectionGtEqPredicate_]; }]) {
-        [self collectionGtEqPredicate_]; 
-    } else if ([self speculate:^{ [self collectionEqPredicate_]; }]) {
-        [self collectionEqPredicate_]; 
-    } else if ([self speculate:^{ [self collectionNotEqPredicate_]; }]) {
-        [self collectionNotEqPredicate_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf collectionLtPredicate_];}]) {
+        [PKParser_weakSelf collectionLtPredicate_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf collectionGtPredicate_];}]) {
+        [PKParser_weakSelf collectionGtPredicate_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf collectionLtEqPredicate_];}]) {
+        [PKParser_weakSelf collectionLtEqPredicate_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf collectionGtEqPredicate_];}]) {
+        [PKParser_weakSelf collectionGtEqPredicate_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf collectionEqPredicate_];}]) {
+        [PKParser_weakSelf collectionEqPredicate_];
+    } else if ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf collectionNotEqPredicate_];}]) {
+        [PKParser_weakSelf collectionNotEqPredicate_];
     } else {
-        [self raise:@"No viable alternative found in rule 'collectionComparisonPredicate'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'collectionComparisonPredicate'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchCollectionComparisonPredicate:)];
@@ -859,11 +861,11 @@
 }
 
 - (void)__collectionLtPredicate {
-    
-    [self aggregateOp_]; 
-    [self collection_]; 
-    [self lt_]; 
-    [self value_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf aggregateOp_];
+    [PKParser_weakSelf collection_];
+    [PKParser_weakSelf lt_];
+    [PKParser_weakSelf value_];
 
     [self fireDelegateSelector:@selector(parser:didMatchCollectionLtPredicate:)];
 }
@@ -873,11 +875,11 @@
 }
 
 - (void)__collectionGtPredicate {
-    
-    [self aggregateOp_]; 
-    [self collection_]; 
-    [self gt_]; 
-    [self value_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf aggregateOp_];
+    [PKParser_weakSelf collection_];
+    [PKParser_weakSelf gt_];
+    [PKParser_weakSelf value_];
 
     [self fireDelegateSelector:@selector(parser:didMatchCollectionGtPredicate:)];
 }
@@ -887,11 +889,11 @@
 }
 
 - (void)__collectionLtEqPredicate {
-    
-    [self aggregateOp_]; 
-    [self collection_]; 
-    [self ltEq_]; 
-    [self value_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf aggregateOp_];
+    [PKParser_weakSelf collection_];
+    [PKParser_weakSelf ltEq_];
+    [PKParser_weakSelf value_];
 
     [self fireDelegateSelector:@selector(parser:didMatchCollectionLtEqPredicate:)];
 }
@@ -901,11 +903,11 @@
 }
 
 - (void)__collectionGtEqPredicate {
-    
-    [self aggregateOp_]; 
-    [self collection_]; 
-    [self gtEq_]; 
-    [self value_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf aggregateOp_];
+    [PKParser_weakSelf collection_];
+    [PKParser_weakSelf gtEq_];
+    [PKParser_weakSelf value_];
 
     [self fireDelegateSelector:@selector(parser:didMatchCollectionGtEqPredicate:)];
 }
@@ -915,11 +917,11 @@
 }
 
 - (void)__collectionEqPredicate {
-    
-    [self aggregateOp_]; 
-    [self collection_]; 
-    [self eq_]; 
-    [self value_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf aggregateOp_];
+    [PKParser_weakSelf collection_];
+    [PKParser_weakSelf eq_];
+    [PKParser_weakSelf value_];
 
     [self fireDelegateSelector:@selector(parser:didMatchCollectionEqPredicate:)];
 }
@@ -929,11 +931,11 @@
 }
 
 - (void)__collectionNotEqPredicate {
-    
-    [self aggregateOp_]; 
-    [self collection_]; 
-    [self notEq_]; 
-    [self value_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf aggregateOp_];
+    [PKParser_weakSelf collection_];
+    [PKParser_weakSelf notEq_];
+    [PKParser_weakSelf value_];
 
     [self fireDelegateSelector:@selector(parser:didMatchCollectionNotEqPredicate:)];
 }
@@ -943,13 +945,13 @@
 }
 
 - (void)__boolPredicate {
-    
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_TRUEPREDICATE, 0]) {
-        [self truePredicate_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_FALSEPREDICATE, 0]) {
-        [self falsePredicate_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_TRUEPREDICATE, 0]) {
+        [PKParser_weakSelf truePredicate_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_FALSEPREDICATE, 0]) {
+        [PKParser_weakSelf falsePredicate_];
     } else {
-        [self raise:@"No viable alternative found in rule 'boolPredicate'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'boolPredicate'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchBoolPredicate:)];
@@ -960,8 +962,8 @@
 }
 
 - (void)__truePredicate {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_TRUEPREDICATE discard:YES]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_TRUEPREDICATE discard:YES];
 
     [self fireDelegateSelector:@selector(parser:didMatchTruePredicate:)];
 }
@@ -971,8 +973,8 @@
 }
 
 - (void)__falsePredicate {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_FALSEPREDICATE discard:YES]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_FALSEPREDICATE discard:YES];
 
     [self fireDelegateSelector:@selector(parser:didMatchFalsePredicate:)];
 }
@@ -982,13 +984,13 @@
 }
 
 - (void)__andKeyword {
-    
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_AND_UPPER, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_AND_UPPER discard:YES]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_DOUBLE_AMPERSAND, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_DOUBLE_AMPERSAND discard:YES]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_AND_UPPER, 0]) {
+        [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_AND_UPPER discard:YES];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_DOUBLE_AMPERSAND, 0]) {
+        [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_DOUBLE_AMPERSAND discard:YES];
     } else {
-        [self raise:@"No viable alternative found in rule 'andKeyword'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'andKeyword'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchAndKeyword:)];
@@ -999,13 +1001,13 @@
 }
 
 - (void)__orKeyword {
-    
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_OR_UPPER, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_OR_UPPER discard:YES]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_DOUBLE_PIPE, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_DOUBLE_PIPE discard:YES]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_OR_UPPER, 0]) {
+        [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_OR_UPPER discard:YES];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_DOUBLE_PIPE, 0]) {
+        [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_DOUBLE_PIPE discard:YES];
     } else {
-        [self raise:@"No viable alternative found in rule 'orKeyword'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'orKeyword'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchOrKeyword:)];
@@ -1016,13 +1018,13 @@
 }
 
 - (void)__notKeyword {
-    
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_NOT_UPPER, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_NOT_UPPER discard:YES]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_BANG, 0]) {
-        [self match:TDNSPREDICATE_TOKEN_KIND_BANG discard:YES]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_NOT_UPPER, 0]) {
+        [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_NOT_UPPER discard:YES];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_BANG, 0]) {
+        [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_BANG discard:YES];
     } else {
-        [self raise:@"No viable alternative found in rule 'notKeyword'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'notKeyword'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchNotKeyword:)];
@@ -1033,10 +1035,10 @@
 }
 
 - (void)__stringTestPredicate {
-    
-    [self string_]; 
-    [self stringTestOp_]; 
-    [self value_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf string_];
+    [PKParser_weakSelf stringTestOp_];
+    [PKParser_weakSelf value_];
 
     [self fireDelegateSelector:@selector(parser:didMatchStringTestPredicate:)];
 }
@@ -1046,19 +1048,19 @@
 }
 
 - (void)__stringTestOp {
-    
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_BEGINSWITH, 0]) {
-        [self beginswith_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_CONTAINS, 0]) {
-        [self contains_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_ENDSWITH, 0]) {
-        [self endswith_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_LIKE, 0]) {
-        [self like_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_MATCHES, 0]) {
-        [self matches_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_BEGINSWITH, 0]) {
+        [PKParser_weakSelf beginswith_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_CONTAINS, 0]) {
+        [PKParser_weakSelf contains_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_ENDSWITH, 0]) {
+        [PKParser_weakSelf endswith_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_LIKE, 0]) {
+        [PKParser_weakSelf like_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_MATCHES, 0]) {
+        [PKParser_weakSelf matches_];
     } else {
-        [self raise:@"No viable alternative found in rule 'stringTestOp'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'stringTestOp'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchStringTestOp:)];
@@ -1069,8 +1071,8 @@
 }
 
 - (void)__beginswith {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_BEGINSWITH discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_BEGINSWITH discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchBeginswith:)];
 }
@@ -1080,8 +1082,8 @@
 }
 
 - (void)__contains {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_CONTAINS discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_CONTAINS discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchContains:)];
 }
@@ -1091,8 +1093,8 @@
 }
 
 - (void)__endswith {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_ENDSWITH discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_ENDSWITH discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchEndswith:)];
 }
@@ -1102,8 +1104,8 @@
 }
 
 - (void)__like {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_LIKE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_LIKE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchLike:)];
 }
@@ -1113,8 +1115,8 @@
 }
 
 - (void)__matches {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_MATCHES discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_MATCHES discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchMatches:)];
 }
@@ -1124,10 +1126,10 @@
 }
 
 - (void)__collectionTestPredicate {
-    
-    [self value_]; 
-    [self inKeyword_]; 
-    [self collection_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf value_];
+    [PKParser_weakSelf inKeyword_];
+    [PKParser_weakSelf collection_];
 
     [self fireDelegateSelector:@selector(parser:didMatchCollectionTestPredicate:)];
 }
@@ -1137,13 +1139,13 @@
 }
 
 - (void)__collection {
-    
-    if ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
-        [self keyPath_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_OPEN_CURLY, 0]) {
-        [self array_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TOKEN_KIND_BUILTIN_WORD, 0]) {
+        [PKParser_weakSelf keyPath_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_OPEN_CURLY, 0]) {
+        [PKParser_weakSelf array_];
     } else {
-        [self raise:@"No viable alternative found in rule 'collection'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'collection'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchCollection:)];
@@ -1154,8 +1156,8 @@
 }
 
 - (void)__inKeyword {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_INKEYWORD discard:YES]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_INKEYWORD discard:YES];
 
     [self fireDelegateSelector:@selector(parser:didMatchInKeyword:)];
 }
@@ -1165,17 +1167,17 @@
 }
 
 - (void)__aggregateOp {
-    
-    if ([self predicts:TDNSPREDICATE_TOKEN_KIND_ANY, 0]) {
-        [self any_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_SOME, 0]) {
-        [self some_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_ALL, 0]) {
-        [self all_]; 
-    } else if ([self predicts:TDNSPREDICATE_TOKEN_KIND_NONE, 0]) {
-        [self none_]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_ANY, 0]) {
+        [PKParser_weakSelf any_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_SOME, 0]) {
+        [PKParser_weakSelf some_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_ALL, 0]) {
+        [PKParser_weakSelf all_];
+    } else if ([PKParser_weakSelf predicts:TDNSPREDICATE_TOKEN_KIND_NONE, 0]) {
+        [PKParser_weakSelf none_];
     } else {
-        [self raise:@"No viable alternative found in rule 'aggregateOp'."];
+        [PKParser_weakSelf raise:@"No viable alternative found in rule 'aggregateOp'."];
     }
 
     [self fireDelegateSelector:@selector(parser:didMatchAggregateOp:)];
@@ -1186,8 +1188,8 @@
 }
 
 - (void)__any {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_ANY discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_ANY discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchAny:)];
 }
@@ -1197,8 +1199,8 @@
 }
 
 - (void)__some {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_SOME discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_SOME discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchSome:)];
 }
@@ -1208,8 +1210,8 @@
 }
 
 - (void)__all {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_ALL discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_ALL discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchAll:)];
 }
@@ -1219,8 +1221,8 @@
 }
 
 - (void)__none {
-    
-    [self match:TDNSPREDICATE_TOKEN_KIND_NONE discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:TDNSPREDICATE_TOKEN_KIND_NONE discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchNone:)];
 }

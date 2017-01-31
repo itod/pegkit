@@ -1,5 +1,6 @@
 #import "CurlyActionParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface CurlyActionParser ()
@@ -26,18 +27,19 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self start_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf start_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)start_ {
-    
+    PKParser_weakSelfDecl;
     do {
-        [self matchWord:NO]; 
+        [PKParser_weakSelf matchWord:NO];
     } while ([self predicts:TOKEN_KIND_BUILTIN_WORD, 0]);
-    [self execute:^{
+    [PKParser_weakSelf execute:^{
     
     id word = nil;
     while (!EMPTY()) {

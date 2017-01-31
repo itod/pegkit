@@ -10,7 +10,7 @@
 {%for i in 1 to depth %}    {%/for%}NSString *str = LS(1);
 {%for i in 1 to depth %}    {%/for%}
 {%for i in 1 to depth %}    {%/for%}if ({%if predicate %}{{predicate}} && ({%/if%}[regex numberOfMatchesInString:str options:0 range:NSMakeRange(0, [str length])]{%if predicate %}){%/if%}) {
-{%for i in 1 to depth %}    {%/for%}    [self match:TOKEN_KIND_BUILTIN_ANY discard:{%if discard %}YES{%else%}NO{%/if%}];
+{%for i in 1 to depth %}    {%/for%}    [PKParser_weakSelf match:TOKEN_KIND_BUILTIN_ANY discard:{%if discard %}YES{%else%}NO{%/if%}];
 {%for i in 1 to depth %}    {%/for%}} else {
-{%for i in 1 to depth %}    {%/for%}    [self raise:@"pattern test failed in {{methodName}}"];
+{%for i in 1 to depth %}    {%/for%}    [PKParser_weakSelf raise:@"pattern test failed in {{methodName}}"];
 {%for i in 1 to depth %}    {%/for%}}

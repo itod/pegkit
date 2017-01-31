@@ -1,5 +1,6 @@
 #import "CreateTableStmtParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface CreateTableStmtParser ()
@@ -42,21 +43,22 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self createTableStmt_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf createTableStmt_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)createTableStmt_ {
-    
-    [self match:CREATETABLESTMT_TOKEN_KIND_CREATE discard:YES]; 
-    [self tempOpt_]; 
-    [self match:CREATETABLESTMT_TOKEN_KIND_TABLE discard:YES]; 
-    [self existsOpt_]; 
-    [self databaseName_]; 
-    [self match:CREATETABLESTMT_TOKEN_KIND_SEMI_COLON discard:YES]; 
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:CREATETABLESTMT_TOKEN_KIND_CREATE discard:YES];
+    [PKParser_weakSelf tempOpt_];
+    [PKParser_weakSelf match:CREATETABLESTMT_TOKEN_KIND_TABLE discard:YES];
+    [PKParser_weakSelf existsOpt_];
+    [PKParser_weakSelf databaseName_];
+    [PKParser_weakSelf match:CREATETABLESTMT_TOKEN_KIND_SEMI_COLON discard:YES];
+    [PKParser_weakSelf execute:^{
     
 	// NSString *dbName = POP();
 	// BOOL ifNotExists = POP_BOOL();
@@ -71,9 +73,9 @@
 }
 
 - (void)databaseName_ {
-    
-    [self matchQuotedString:NO]; 
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf matchQuotedString:NO];
+    [PKParser_weakSelf execute:^{
     
 	// pop the string value of the `PKToken` on the top of the stack
 	NSString *dbName = POP_STR();
@@ -88,21 +90,21 @@
 }
 
 - (void)tempOpt_ {
-    
-    if ([self predicts:CREATETABLESTMT_TOKEN_KIND_TEMP, CREATETABLESTMT_TOKEN_KIND_TEMPORARY, 0]) {
-        if ([self predicts:CREATETABLESTMT_TOKEN_KIND_TEMP, 0]) {
-            [self match:CREATETABLESTMT_TOKEN_KIND_TEMP discard:YES]; 
-        } else if ([self predicts:CREATETABLESTMT_TOKEN_KIND_TEMPORARY, 0]) {
-            [self match:CREATETABLESTMT_TOKEN_KIND_TEMPORARY discard:YES]; 
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:CREATETABLESTMT_TOKEN_KIND_TEMP, CREATETABLESTMT_TOKEN_KIND_TEMPORARY, 0]) {
+        if ([PKParser_weakSelf predicts:CREATETABLESTMT_TOKEN_KIND_TEMP, 0]) {
+            [PKParser_weakSelf match:CREATETABLESTMT_TOKEN_KIND_TEMP discard:YES];
+        } else if ([PKParser_weakSelf predicts:CREATETABLESTMT_TOKEN_KIND_TEMPORARY, 0]) {
+            [PKParser_weakSelf match:CREATETABLESTMT_TOKEN_KIND_TEMPORARY discard:YES];
         } else {
-            [self raise:@"No viable alternative found in rule 'tempOpt'."];
+            [PKParser_weakSelf raise:@"No viable alternative found in rule 'tempOpt'."];
         }
-        [self execute:^{
+        [PKParser_weakSelf execute:^{
          PUSH(@YES); 
         }];
     } else {
-        [self matchEmpty:NO]; 
-        [self execute:^{
+        [PKParser_weakSelf matchEmpty:NO];
+        [PKParser_weakSelf execute:^{
          PUSH(@NO); 
         }];
     }
@@ -111,17 +113,17 @@
 }
 
 - (void)existsOpt_ {
-    
-    if ([self predicts:CREATETABLESTMT_TOKEN_KIND_IF, 0]) {
-        [self match:CREATETABLESTMT_TOKEN_KIND_IF discard:YES]; 
-        [self match:CREATETABLESTMT_TOKEN_KIND_NOT_UPPER discard:YES]; 
-        [self match:CREATETABLESTMT_TOKEN_KIND_EXISTS discard:YES]; 
-        [self execute:^{
+    PKParser_weakSelfDecl;
+    if ([PKParser_weakSelf predicts:CREATETABLESTMT_TOKEN_KIND_IF, 0]) {
+        [PKParser_weakSelf match:CREATETABLESTMT_TOKEN_KIND_IF discard:YES];
+        [PKParser_weakSelf match:CREATETABLESTMT_TOKEN_KIND_NOT_UPPER discard:YES];
+        [PKParser_weakSelf match:CREATETABLESTMT_TOKEN_KIND_EXISTS discard:YES];
+        [PKParser_weakSelf execute:^{
          PUSH(@YES); 
         }];
     } else {
-        [self matchEmpty:NO]; 
-        [self execute:^{
+        [PKParser_weakSelf matchEmpty:NO];
+        [PKParser_weakSelf execute:^{
          PUSH(@NO); 
         }];
     }

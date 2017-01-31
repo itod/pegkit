@@ -1,5 +1,6 @@
 #import "MultipleParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface MultipleParser ()
@@ -49,18 +50,19 @@
 }
 
 - (void)start {
+    PKParser_weakSelfDecl;
 
-    [self s_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf s_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)__s {
-    
+    PKParser_weakSelfDecl;
     do {
-        [self ab_]; 
-    } while ([self speculate:^{ [self ab_]; }]);
-    [self a_]; 
+        [PKParser_weakSelf ab_];
+    } while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf ab_];}]);
+    [PKParser_weakSelf a_];
 
     [self fireDelegateSelector:@selector(parser:didMatchS:)];
 }
@@ -70,9 +72,9 @@
 }
 
 - (void)__ab {
-    
-    [self a_]; 
-    [self b_]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf a_];
+    [PKParser_weakSelf b_];
 
     [self fireDelegateSelector:@selector(parser:didMatchAb:)];
 }
@@ -82,8 +84,8 @@
 }
 
 - (void)__a {
-    
-    [self match:MULTIPLE_TOKEN_KIND_A discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:MULTIPLE_TOKEN_KIND_A discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchA:)];
 }
@@ -93,8 +95,8 @@
 }
 
 - (void)__b {
-    
-    [self match:MULTIPLE_TOKEN_KIND_B discard:NO]; 
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf match:MULTIPLE_TOKEN_KIND_B discard:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchB:)];
 }

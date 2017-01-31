@@ -1,2 +1,2 @@
-{%for i in 1 to depth %}    {%/for%}while ([self speculate:^{ {{ifTest}}}]) {
+{%for i in 1 to depth %}    {%/for%}while ([PKParser_weakSelf speculate:^{ {{ifTest}}}]) {
 {{childString}}{%for i in 1 to depth %}    {%/for%}}

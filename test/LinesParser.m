@@ -1,5 +1,6 @@
 #import "LinesParser.h"
 #import <PEGKit/PEGKit.h>
+#import <PEGKit/PKParser+Subclass.h>
 
 
 @interface LinesParser ()
@@ -26,7 +27,8 @@
 }
 
 - (void)start {
-    [self execute:^{
+    PKParser_weakSelfDecl;
+    [PKParser_weakSelf execute:^{
     
     PKTokenizer *t = self.tokenizer;
 
@@ -40,38 +42,38 @@
 
     }];
 
-    [self lines_]; 
-    [self matchEOF:YES]; 
+    [PKParser_weakSelf lines_];
+    [PKParser_weakSelf matchEOF:YES];
 
 }
 
 - (void)lines_ {
-    
+    PKParser_weakSelfDecl;
     do {
-        [self line_]; 
-    } while ([self speculate:^{ [self line_]; }]);
+        [PKParser_weakSelf line_];
+    } while ([PKParser_weakSelf speculate:^{ [PKParser_weakSelf line_];}]);
 
     [self fireDelegateSelector:@selector(parser:didMatchLines:)];
 }
 
 - (void)line_ {
-    
-    while ([self speculate:^{ if (![self speculate:^{ [self eol_]; }]) {[self match:TOKEN_KIND_BUILTIN_ANY discard:NO];} else {[self raise:@"negation test failed in line"];}}]) {
-        if (![self speculate:^{ [self eol_]; }]) {
-            [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
+    PKParser_weakSelfDecl;
+    while ([PKParser_weakSelf speculate:^{ if (![PKParser_weakSelf speculate:^{ [PKParser_weakSelf eol_];}]) {[PKParser_weakSelf match:TOKEN_KIND_BUILTIN_ANY discard:NO];} else {[PKParser_weakSelf raise:@"negation test failed in line"];}}]) {
+        if (![PKParser_weakSelf speculate:^{ [PKParser_weakSelf eol_];}]) {
+            [PKParser_weakSelf match:TOKEN_KIND_BUILTIN_ANY discard:NO];
         } else {
-            [self raise:@"negation test failed in line"];
+            [PKParser_weakSelf raise:@"negation test failed in line"];
         }
     }
-    [self eol_]; 
+    [PKParser_weakSelf eol_];
 
     [self fireDelegateSelector:@selector(parser:didMatchLine:)];
 }
 
 - (void)eol_ {
-    
+    PKParser_weakSelfDecl;
     [self testAndThrow:(id)^{ return EQ(@"\n", LS(1)); }]; 
-    [self matchWhitespace:NO]; 
+    [PKParser_weakSelf matchWhitespace:NO];
 
     [self fireDelegateSelector:@selector(parser:didMatchEol:)];
 }
