@@ -909,7 +909,7 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
 }
 
 
-- (NSArray *)reversedArray:(NSArray *)inArray {
+- (NSMutableArray *)reversedArray:(NSArray *)inArray {
     return [inArray reversedMutableArray];
 }
 

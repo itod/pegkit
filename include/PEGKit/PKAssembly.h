@@ -44,6 +44,13 @@
 - (id)pop;
 
 /*!
+    @brief      The object at the top of this assembly's stack.
+    @details    Note this returns an object from this assembly's stack, not from its stream of elements (tokens or chars depending on the type of concrete <tt>PKAssembly</tt> subclass of this object).
+    @result     the object at the top of this assembly's stack
+*/
+- (id)peek;
+
+/*!
     @brief      Pushes an object onto the top of this assembly's stack.
     @param      object object to push
 */

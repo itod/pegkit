@@ -87,7 +87,7 @@
 - (void)pushDouble:(double)d;
 - (void)pushAll:(NSArray *)a;
 
-- (NSArray *)reversedArray:(NSArray *)a;
+- (NSMutableArray *)reversedArray:(NSArray *)a;
 
 @property (nonatomic, retain) NSMutableDictionary *tokenKindTab;
 @property (nonatomic, retain) NSMutableArray *tokenKindNameTab;
@@ -105,6 +105,8 @@
 #define LA(i) [self LA:(i)]
 #define LS(i) [self LS:(i)]
 #define LD(i) [self LD:(i)]
+
+#define PEEK()           [self.assembly peek]
 
 #define POP()            [self.assembly pop]
 #define POP_STR()        [self popString]
@@ -124,7 +126,7 @@
 #define PUSH_DOUBLE(d) [self pushDouble:(double)(d)]
 #define PUSH_ALL(a)    [self pushAll:(a)]
 
-#define REV(a) [self reversedArray:a]
+#define REV(a) [self reversedArray:(a)]
 
 #define EQ(a, b) [(a) isEqual:(b)]
 #define NE(a, b) (![(a) isEqual:(b)])

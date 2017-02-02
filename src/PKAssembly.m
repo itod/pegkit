@@ -120,6 +120,15 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
 }
 
 
+- (id)peek {
+    id result = nil;
+    if (![self isStackEmpty]) {
+        result = [_stack lastObject];
+    }
+    return result;
+}
+
+
 - (void)push:(id)object {
     if (object) {
         [_stack addObject:object];
