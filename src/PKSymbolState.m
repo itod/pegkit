@@ -26,6 +26,10 @@
 #import <PEGKit/PKTokenizer.h>
 #import "PKSymbolRootNode.h"
 
+@interface PKTokenizer ()
+@property (nonatomic, readwrite) NSUInteger lineNumber;
+@end
+
 @interface PKToken ()
 @property (nonatomic, readwrite) NSUInteger offset;
 @end
@@ -37,7 +41,7 @@
 @end
 
 @interface PKSymbolState ()
-- (PKToken *)symbolTokenWith:(PKUniChar)cin;
+- (PKToken *)symbolTokenWith:(PKUniChar)cin tokenizer:(PKTokenizer *)t;
 - (PKToken *)symbolTokenWithSymbol:(NSString *)s;
 
 @property (nonatomic, retain) PKSymbolRootNode *rootNode;
@@ -78,6 +82,9 @@
 
     while (len > 1) {
         if ([_addedSymbols containsObject:symbol]) {
+            if ('\n' == [symbol characterAtIndex:0]) {
+                t.lineNumber++;
+            }
             return [self symbolTokenWithSymbol:symbol];
         }
 
@@ -97,13 +104,13 @@
         }
         
         if (!isPrevented) {
-            return [self symbolTokenWith:cin];
+            return [self symbolTokenWith:cin tokenizer:t];
         }
     }
 
     PKTokenizerState *state = [self nextTokenizerStateFor:cin tokenizer:t];
     if (!state || state == self) {
-        return [self symbolTokenWith:cin];
+        return [self symbolTokenWith:cin tokenizer:t];
     } else {
         return [state nextTokenFromReader:r startingWith:cin tokenizer:t];
     }
@@ -131,7 +138,10 @@
 }
 
 
-- (PKToken *)symbolTokenWith:(PKUniChar)cin {
+- (PKToken *)symbolTokenWith:(PKUniChar)cin tokenizer:(PKTokenizer *)t {
+    if ('\n' == cin) {
+        t.lineNumber++;
+    }
     return [self symbolTokenWithSymbol:[NSString stringWithFormat:@"%C", (unichar)cin]];
 }
 
