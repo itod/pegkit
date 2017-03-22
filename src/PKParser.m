@@ -134,6 +134,7 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
     self.tokenKindTab = nil;
     self.tokenKindNameTab = nil;
     self.resyncSet = nil;
+    self.tokenSource = nil;
     self.startRuleName = nil;
     self.statementTerminator = nil;
     self.singleLineCommentMarker = nil;
