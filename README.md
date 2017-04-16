@@ -20,7 +20,7 @@ The PEGKit source code is available [on Github](http://github.com/itod/pegkit/).
 
 A tutorial for [using PEGKit in your iOS applications is available on GitHub](https://github.com/itod/PEGKitMiniMathTutorial).
 
-##History
+## History
 
 PEGKit is a re-write of an earlier framework by the same author called [ParseKit](https://github.com/itod/parsekit). ParseKit should generally be considered deprecated, and PEGKit should probably be used for all future development.
 
@@ -29,7 +29,7 @@ PEGKit is a re-write of an earlier framework by the same author called [ParseKit
 * ***PEGKit*** produces **static** ObjC source code for **deterministic** ([PEG](http://en.wikipedia.org/wiki/Parsing_expression_grammar)) memoizing parsers **at design time** which you can then compile into your project. The parsers produced by PEGKit exhibit good (linear) performance characteristics.
 
 ---
-##Documentation
+## Documentation
 
 * [Tokenization](#tokenization)
     * [Basic Usage of PKTokenizer](#basic-tokenizer-usage)
@@ -47,11 +47,11 @@ PEGKit is a re-write of an earlier framework by the same author called [ParseKit
 
 ---
 <a name="tokenization"></a>
-###Tokenization
+### Tokenization
 ---
 
 <a name="basic-tokenizer-usage"></a>
-####Basic Usage of PKTokenizer
+#### Basic Usage of PKTokenizer
 
 **PEGKit** provides general-purpose string tokenization services through the **`PKTokenizer`** and **`PKToken`** classes. Cocoa developers will be familiar with the **`NSScanner`** class provided by the Foundation Framework which provides a similar service. However, the `PKTokenizer` class is much easier to use for many common tokenization tasks, and offers powerful configuration options if the default tokenization behavior doesn't match your needs.
 
@@ -157,35 +157,35 @@ Each `PKToken` object returned has a `stringValue`, a `floatValue` and a `tokenT
 </table>
 
 <a name="default-tokenizer-behavior"></a>
-####Default Behavior of PKTokenizer
+#### Default Behavior of PKTokenizer
 
 The default behavior of `PKTokenizer` is correct for most common situations and will fit many tokenization needs without additional configuration.
 
-#####Number
+##### Number
 
 Sequences of digits (`«2»` `«42»` `«1054»`) are recognized as `Number` tokens. Floating point numbers containing a dot (`«3.14»`) are recognized as single `Number` tokens as you'd expect (rather than two Number tokens separated by a `«.»` `Symbol` token). By default, `PKTokenizer` will recognize a `«-»` symbol followed immediately by digits (`«-47»`) as a number token with a negative value. However, `«+»` characters are always seen as the beginning of a `Symbol` token by default, even when followed immediately by digits, so "explicitly-positive" `Number` tokens are not recognized by default (this behavior can be configured, see below).
 
-#####Symbol
+##### Symbol
 
 Most symbol characters (`«.»` `«!»`) are recognized as single-character `Symbol` tokens (even when sequential such as `«!»``«!»`). However, notice that `PKTokenizer` recognizes common multi-character symbols (`«!=»`) as a single `Symbol` token by default. In fact, `PKTokenizer` can be configured to recognize any given string as a multi-character symbol. Alternatively, it can be configured to always recognize each symbol character as an individual `Symbol` token (no multi- character symbols). The default multi-character symbols recognized by `PKTokenizer` are: `«<=»`, `«>=»`, `«!=»`, `«==»`.
 
-#####Word
+##### Word
 
 `«Blast-off»` is recognized as a single `Word` token despite containing a symbol character (`«-»`) that would normally signal the start of a new `Symbol` token. By default, `PKTokenzier` allows `Word` tokens to **contain** (but **not start with**) several symbol and number characters: `«-»`, `«_»`, `«'»`, `«0»`-`«9»`. The consequence of this behavior is that `PKTokenizer` will recognize the following strings as individual Word tokens by default: `«it's»`, `«first_name»`, `«sat-yr-9»` `«Rodham-Clinton»`. Again, you can configure `PKTokenizer` to alter this default behavior.
 
-#####Quoted String
+##### Quoted String
 
 `PKTokenizer` produces `Quoted String` tokens for substrings enclosed in quote delimiter characters. The default delimiters are single- or double-quotes (`«'»` or `«"»`). The quote delimiter characters may be changed (see below), but must be a single character. Note that the stringValue of `Quoted String` tokens include the quote delimiter characters (`«'Woo-hoo!'»`).
 
-#####Whitespace
+##### Whitespace
 
 By default, whitespace characters are silently consumed by `PKTokenizer`, and `Whitespace` tokens are never emitted. However, you can configure which characters are considered whitespace characters or even ask `PKTokenizer` to return `Whitespace` tokens containing the literal whitespace `stringValue`s by setting: `t.whitespaceState.reportsWhitespaceTokens = YES`.
 
-#####Comment
+##### Comment
 
 By default, `PKTokenizer` recognizes C-style (`«//»`) and C++-style (`«/*»` `«*/»`) comments and silently removes the associated comments from the output rather than producing `Comment` tokens. See below for steps to either change comment delimiting markers, report `Comment` tokens, or to turn off comments recognition altogether.
 
-#####Delimited String
+##### Delimited String
 
 The `Delimited String` token type is a powerful feature of PEGKit which can be used much like a regular expression. Use the `Delimited String` token type to ask `PKTokenizer` to recognize tokens with arbitrary start and end symbol strings much like a Quoted String but with more power:
 
@@ -194,7 +194,7 @@ The `Delimited String` token type is a powerful feature of PEGKit which can be u
   * The characters allowed within the delimited string may be specified using an NSCharacterSet
 
 <a name="custom-tokenizer-behavior"></a>
-####Customizing PKTokenizer behavior
+#### Customizing PKTokenizer behavior
 
 There are two basic types of decisions `PKTokenizer` must make when tokenizing strings:
 
@@ -204,7 +204,7 @@ There are two basic types of decisions `PKTokenizer` must make when tokenizing s
 `PKTokenizer`'s behavior with respect to these two types of decisions is totally
 configurable. Let's tackle them, starting with the second question first.
 
-#####Changing which characters are allowed within a token of a particular type
+##### Changing which characters are allowed within a token of a particular type
 
 Once `PKTokenizer` has decided which token type to create for a given start character (see below), it temporarily passes control to one of its "state" helper objects to finish consumption of characters for the current token. Therefore, the logic for deciding which characters are allowed within a token of a given type is controlled by the "state" objects which are instances of subclasses of the abstract `PKTokenizerState` class: `PKWordState`, `PKNumberState`, `PKQuoteState`, `PKSymbolState`, `PKWhitespaceState`, `PKCommentState`, and `PKDelimitState`. The state objects are accessible via properties of the `PKTokenizer` object.
 
@@ -300,7 +300,7 @@ t.commentState.reportsCommentTokens = YES;
 …
 ```
 
-#####Changing which token type is created for a given start character
+##### Changing which token type is created for a given start character
 
 `PKTokenizer` controls the logic for deciding which token type should be created
 for a given start character before passing the responsibility for completing
@@ -394,10 +394,10 @@ Now `PKTokenizer` will return individual Symbol tokens for all `«/»` and `«*�
 
 ---
 <a name="grammars"></a>
-###Grammars
+### Grammars
 
 <a name="basic-syntax"></a>
-####Basic Grammar Syntax
+#### Basic Grammar Syntax
 
 PEGKit allows users to build parsers for custom languages from a declarative, BNF-style grammar without writing any code. By inserting your grammar into the **ParserGen.app** application, Objective-C source code is generated which contains a parser for your language – specifically, a subclass of `PKParser`.
 
@@ -439,7 +439,7 @@ As shown above, the PEGKit grammar syntax consists of individual language produc
     freezing = 'freezing';
 
 <a name="rules"></a>
-####Rules
+#### Rules
 
 Every PEGKit grammar begins with the *highest-level* or *outermost* rule in the language. This rule must be declared first, but it may have any name you like. For *Cold Beer*, the outermost rule is:
 
@@ -462,7 +462,7 @@ In turn, `adjectives` is a *sequence* of a single instance of the `cold` rule fo
 The `adjective` rule is an *alternation* of either an instance of the `cold` or the `freezing` rule. The `cold` rule is the literal string `cold` and `freezing` the literal string `freezing`.
 
 <a name="grouping"></a>
-####Grouping
+#### Grouping
 
 A language may be expressed in many different, yet equivalent grammars. Rules may be referenced in any order (even before they are defined) and grouped using parentheses (`»(«` and `»)«`).
 
@@ -471,7 +471,7 @@ For example, the *Cold Beer* language could also be represented by the following
     start = ('cold' ('cold' | 'freezing')* 'beer' '.')+;
 
 <a name="discarding"></a>
-####Discarding
+#### Discarding
 
 The post-fix `!` operator can be used to discard a token which is not needed to compute a result. 
 
@@ -483,7 +483,7 @@ Example:
  The `+` token will not be necessary to calculate the result of matched addition expressions, so we can discard it.
  
 <a name="actions"></a>
-####Actions
+#### Actions
 
 Actions are small pieces of Objective-C source code embedded directly in a PEGKit grammar rule. Actions are enclosed in curly braces and placed after any rule reference.
 
@@ -522,7 +522,7 @@ Example 2:
     item  = Word;
 
 <a name="rule-actions"></a>
-####Rule Actions
+#### Rule Actions
 * **`@before`** - setup code goes here. executed before parsing of this rule begins.
 * **`@after`** - tear down code goes here. executed after parsing of this rule ends.
 
@@ -547,16 +547,16 @@ Example:
     num = Number;
 
 <a name="grammar-actions"></a>
-####Grammar Actions
+#### Grammar Actions
 PEGKit has a feature inspired by ANTLR called **"Grammar Actions"**. Grammar Actions are a way to do exactly what you are looking for: inserting arbitrary code in various places in your Parser's .h and .m files. They must be placed at the top of your grammar before any rules are listed.
 
 Here are all of the Grammar Actions currently available, along with a description of where their bodies are inserted in the source code of your generated parser:
 
-#####**In the .h file:**
+##### **In the .h file:**
 * **`@h`** - top of .h file
 * **`@interface`** - inside the `@interface` portion of header
 
-#####**In the .m file:**
+##### **In the .m file:**
 * **`@m`** - top of .m file
 * **`@extension`** - inside a private `@interface MyParser ()` class extension in the .m file
 * **`@ivars`** - private ivars inside the `@implementation MyParser {}` in the .m file
@@ -569,7 +569,7 @@ Here are all of the Grammar Actions currently available, along with a descriptio
 (notice that the `@before` and `@after` Grammar Actions listed here are distinct from the `@before` and `@after` which may also be placed in each individual rule.)
 
 <a name="semantic-predicates"></a>
-####Semantic Predicates
+#### Semantic Predicates
 Semantic Predicates are another feature lifted directly from ANTLR. Consider:
 
     lowercaseWord = { islower([LS(1) characterAtIndex:0]) }? Word;
