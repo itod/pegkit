@@ -206,6 +206,8 @@
 		D31BBD0618E4F52D0003FFA3 /* TDWhitespaceStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE518E4F1EF0003FFA3 /* TDWhitespaceStateTest.m */; };
 		D31BBD0718E4F53F0003FFA3 /* TDWordStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE718E4F1EF0003FFA3 /* TDWordStateTest.m */; };
 		D31BBD0918E4F5900003FFA3 /* TDURLStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBCE318E4F1EF0003FFA3 /* TDURLStateTest.m */; };
+		D31E3EC61F1C210D004BD0C6 /* PKAST.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A1492816F8C6BD00770DEE /* PKAST.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D31E3EC71F1C2151004BD0C6 /* PKParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D3382F98171C80E100CCE513 /* PKParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D31FE9CC191017580039886B /* INIParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FE9CB191017580039886B /* INIParser.m */; };
 		D31FE9CE191017DE0039886B /* ini.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D31FE9CD191017DE0039886B /* ini.grammar */; };
 		D3344F4917405B4B00598362 /* JSRecoveryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3344F4817405B4B00598362 /* JSRecoveryTest.m */; };
@@ -1617,6 +1619,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D31E3EC71F1C2151004BD0C6 /* PKParser.h in Headers */,
+				D31E3EC61F1C210D004BD0C6 /* PKAST.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
