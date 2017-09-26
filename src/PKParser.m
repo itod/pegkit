@@ -287,7 +287,7 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
         NSString *domain = PEGKitErrorDomain;
         NSString *name = rex.currentName;
         NSString *reason = rex.currentReason;
-        NSLog(@"%@: %@", name, reason);
+        //NSLog(@"%@: %@", name, reason);
 
         if (outError) {
             *outError = [self errorWithDomain:domain name:name reason:reason range:rex.range lineNumber:rex.lineNumber];
@@ -299,7 +299,7 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
         NSString *domain = PEGKitErrorDomain;
         NSString *name = [ex name];
         NSString *reason = [ex reason];
-        NSLog(@"%@", reason);
+        //NSLog(@"%@", reason);
         
         if (outError) {
             *outError = [self errorWithDomain:domain name:name reason:reason range:NSMakeRange(NSNotFound, 0) lineNumber:0];
