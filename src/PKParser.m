@@ -774,10 +774,11 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
 
 
 - (void)parseRule:(SEL)ruleSelector withMemo:(NSMutableDictionary *)memoization {
+    if (self.isSpeculating && [self alreadyParsedRule:memoization]) return;
+    
     BOOL failed = NO;
     NSInteger startTokenIndex = self.p;
-    if (self.isSpeculating && [self alreadyParsedRule:memoization]) return;
-                                
+
     @try { [self performSelector:ruleSelector]; }
     @catch (PKRecognitionException *ex) { failed = YES; @throw ex; }
     @finally {
