@@ -30,7 +30,7 @@ extern NSString * const PEGKitErrorRangeKey;
 extern NSString * const PEGKitErrorLineNumberKey;
 
 extern NSInteger PEGKitRecognitionErrorCode;
-extern NSString * const PEGKitRecognitionTokenMatchFailed;
+extern NSString * const PEGKitRecognitionRuleMatchFailed;
 extern NSString * const PEGKitRecognitionPredicateFailed;
 
 typedef void (^PKSActionBlock)   (void);

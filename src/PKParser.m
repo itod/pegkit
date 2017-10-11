@@ -38,6 +38,7 @@ NSString * const PEGKitErrorLineNumberKey = @"lineNumber";
 
 NSInteger PEGKitRecognitionErrorCode = 1;
 NSString * const PEGKitRecognitionTokenMatchFailed = @"Failed to match next input token";
+NSString * const PEGKitRecognitionRuleMatchFailed = @"Failed to match next rule";
 NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
 
 @interface NSObject ()
@@ -287,10 +288,12 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
         NSString *domain = PEGKitErrorDomain;
         NSString *name = rex.currentName;
         NSString *reason = rex.currentReason;
+        NSRange range = rex.range;
+        NSUInteger lineNumber = rex.lineNumber;
         //NSLog(@"%@: %@", name, reason);
 
         if (outError) {
-            *outError = [self errorWithDomain:domain name:name reason:reason range:rex.range lineNumber:rex.lineNumber];
+            *outError = [self errorWithDomain:domain name:name reason:reason range:range lineNumber:lineNumber];
         } else {
             [rex raise];
         }
@@ -366,7 +369,7 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
         }
     } else {
         NSString *msg = [NSString stringWithFormat:@"Expected : %@\n", [self stringForTokenKind:tokenKind]];
-        [self raise:msg];
+        [self raiseWithName:PEGKitRecognitionTokenMatchFailed message:msg];
     }
 }
 
@@ -573,6 +576,7 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
 
     va_end(vargs);
 
+    NSAssert(_exception, @"");
     _exception.currentName = name;
     _exception.currentReason = str;
     _exception.lineNumber = lineNum;
@@ -586,7 +590,7 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
 
 
 - (void)raise:(NSString *)msg {
-    [self raiseWithName:PEGKitRecognitionTokenMatchFailed message:msg];
+    [self raiseWithName:PEGKitRecognitionRuleMatchFailed message:msg];
 }
 
     
