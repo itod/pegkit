@@ -61,6 +61,9 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
 @property (nonatomic, retain) NSMutableArray *tokenSource;
 @property (nonatomic, assign) NSUInteger tokenSourceIndex;
 @property (nonatomic, assign) NSUInteger tokenSourceCount;
+@property (nonatomic, assign) NSUInteger depth;
+@property (nonatomic, assign) NSUInteger deepest;
+@property (nonatomic, retain) NSDictionary *userInfo;
 
 - (NSInteger)tokenKindForString:(NSString *)str;
 - (NSString *)stringForTokenKind:(NSInteger)tokenKind;
@@ -136,6 +139,7 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
     self.tokenKindNameTab = nil;
     self.resyncSet = nil;
     self.tokenSource = nil;
+    self.userInfo = nil;
     self.startRuleName = nil;
     self.statementTerminator = nil;
     self.singleLineCommentMarker = nil;
@@ -253,6 +257,9 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
         _assembly.preservesWhitespaceTokens = YES;
     }
 
+    self.depth = 0;
+    self.deepest = 0;
+    
     // setup speculation
     self.p = 0;
     self.lookahead = [NSMutableArray array];
@@ -286,10 +293,10 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
     }
     @catch (PKRecognitionException *rex) {
         NSString *domain = PEGKitErrorDomain;
-        NSString *name = rex.currentName;
-        NSString *reason = rex.currentReason;
-        NSRange range = rex.range;
-        NSUInteger lineNumber = rex.lineNumber;
+        NSString *name = _userInfo[@"name"]; //rex.currentName;
+        NSString *reason = _userInfo[@"reason"]; //rex.currentReason;
+        NSRange range = [_userInfo[@"range"] rangeValue]; //rex.range;
+        NSUInteger lineNumber = [_userInfo[@"lineNumber"] unsignedIntegerValue]; //rex.lineNumber;
         //NSLog(@"%@: %@", name, reason);
 
         if (outError) {
@@ -369,6 +376,11 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
         }
     } else {
         NSString *msg = [NSString stringWithFormat:@"Expected : %@\n", [self stringForTokenKind:tokenKind]];
+//        NSMutableString *buf = [NSMutableString string];
+//        for (NSUInteger i = 0; i < _depth; ++i) {
+//            [buf appendString:@"  "];
+//        }
+//        NSLog(@"%@%ld:%@", buf, _depth, msg);
         [self raiseWithName:PEGKitRecognitionTokenMatchFailed message:msg];
     }
 }
@@ -380,6 +392,7 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
         //NSLog(@"%@", _assembly);
     }
 
+    self.depth++;
     self.p++;
     
     // have we hit end of buffer when not backtracking?
@@ -572,16 +585,26 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
     va_list vargs;
     va_start(vargs, fmt);
     
-    NSString *str = [[[NSString alloc] initWithFormat:fmt arguments:vargs] autorelease];
+    NSString *reason = [[[NSString alloc] initWithFormat:fmt arguments:vargs] autorelease];
 
     va_end(vargs);
 
     NSAssert(_exception, @"");
     _exception.currentName = name;
-    _exception.currentReason = str;
+    _exception.currentReason = reason;
     _exception.lineNumber = lineNum;
     _exception.range = r;
     
+    if (_depth >= _deepest) {
+        self.deepest = _depth;
+        self.userInfo = @{
+                          @"name": name,
+                          @"reason": reason,
+                          @"lineNumber" : @(lineNum),
+                          @"range": [NSValue valueWithRange:r],
+                          };
+    }
+
     //NSLog(@"%@", str);
 
     // reuse
@@ -786,11 +809,16 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
     
     BOOL failed = NO;
     NSInteger startTokenIndex = self.p;
+    
+    NSUInteger depth = _depth;
 
     @try { [self performSelector:ruleSelector]; }
     @catch (PKRecognitionException *ex) { failed = YES; @throw ex; }
     @finally {
-        if (self.isSpeculating) [self memoize:memoization atIndex:startTokenIndex failed:failed];
+        if (self.isSpeculating) {
+            [self memoize:memoization atIndex:startTokenIndex failed:failed];
+            self.depth = depth;
+        }
     }
 }
 
