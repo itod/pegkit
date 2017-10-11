@@ -593,6 +593,10 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
 - (void)raiseWithName:(NSString *)name message:(NSString *)msg {
     PKToken *lt = LT(1);
     
+    if (lt.isEOF && [_lookahead count]) {
+        lt = [_lookahead firstObject];
+    }
+    
     NSUInteger lineNum = lt.lineNumber;
     //NSAssert(NSNotFound != lineNum, @"");
 
@@ -618,7 +622,7 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
     }
     
     id lineNumVal = NSNotFound == lineNum ? @"Unknown" : @(lineNum);
-    [self raiseInRange:r lineNumber:lineNum name:PEGKitRecognitionTokenMatchFailed format:fmt, msg, lineNumVal, after, found];
+    [self raiseInRange:r lineNumber:lineNum name:name format:fmt, msg, lineNumVal, after, found];
 }
 
 
