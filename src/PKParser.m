@@ -649,7 +649,8 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
         found = lt ? lt.stringValue : @"-nothing-";
     }
     
-    //id lineNumVal = NSNotFound == lineNum ? @"Unknown" : @(lineNum);
+//    id lineNumVal = NSNotFound == lineNum ? @"Unknown" : @(lineNum);
+//    [self raiseInRange:r lineNumber:lineNum name:name format:fmt, msg, lineNumVal, after, found];
     [self raiseInRange:r lineNumber:lineNum name:name format:fmt, msg, after, found];
 }
 
