@@ -631,7 +631,8 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
 
     id after = @"";
     id found = @"";
-    NSString *fmt = @"%@\nLine : %@\n%@%@";
+    //NSString *fmt = @"%@\nLine : %@\n%@%@";
+    NSString *fmt = @"%@\n%@%@";
 
     if (_enableVerboseErrorReporting) {
         fmt = @"%@\nLine : %@\nNear : %@\nFound : %@";
@@ -648,8 +649,8 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
         found = lt ? lt.stringValue : @"-nothing-";
     }
     
-    id lineNumVal = NSNotFound == lineNum ? @"Unknown" : @(lineNum);
-    [self raiseInRange:r lineNumber:lineNum name:name format:fmt, msg, lineNumVal, after, found];
+    //id lineNumVal = NSNotFound == lineNum ? @"Unknown" : @(lineNum);
+    [self raiseInRange:r lineNumber:lineNum name:name format:fmt, msg, after, found];
 }
 
 
