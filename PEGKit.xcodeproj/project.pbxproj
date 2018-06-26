@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B076D401DDBED0B00589371 /* MarkerLineNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B076D3B1DDBED0B00589371 /* MarkerLineNumberView.m */; };
+		1B076D411DDBED0B00589371 /* NoodleLineNumberMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B076D3D1DDBED0B00589371 /* NoodleLineNumberMarker.m */; };
+		1B076D421DDBED0B00589371 /* NoodleLineNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B076D3F1DDBED0B00589371 /* NoodleLineNumberView.m */; };
 		3D0466A918E1D9770022A1BC /* OCMock.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D37214CA18DF3B0100525058 /* OCMock.framework */; };
 		D30502961CE5571100AB4B68 /* PEGKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D3F8A4A017581A3C00056188 /* PEGKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D30502971CE5571300AB4B68 /* PKTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C221910FFE8B8C004514FE /* PKTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -537,6 +540,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1B076D3A1DDBED0B00589371 /* MarkerLineNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkerLineNumberView.h; sourceTree = "<group>"; };
+		1B076D3B1DDBED0B00589371 /* MarkerLineNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkerLineNumberView.m; sourceTree = "<group>"; };
+		1B076D3C1DDBED0B00589371 /* NoodleLineNumberMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoodleLineNumberMarker.h; sourceTree = "<group>"; };
+		1B076D3D1DDBED0B00589371 /* NoodleLineNumberMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoodleLineNumberMarker.m; sourceTree = "<group>"; };
+		1B076D3E1DDBED0B00589371 /* NoodleLineNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoodleLineNumberView.h; sourceTree = "<group>"; };
+		1B076D3F1DDBED0B00589371 /* NoodleLineNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoodleLineNumberView.m; sourceTree = "<group>"; };
 		D302272A17020F9400594F16 /* PGClassImplementationTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PGClassImplementationTemplate.txt; path = res/PGClassImplementationTemplate.txt; sourceTree = "<group>"; };
 		D305025D1CE5560F00AB4B68 /* PEGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PEGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30502651CE5567700AB4B68 /* PEGKitiOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PEGKitiOS-Info.plist"; path = "res/PEGKitiOS-Info.plist"; sourceTree = "<group>"; };
@@ -1051,6 +1060,19 @@
 			name = Desktop;
 			sourceTree = "<group>";
 		};
+		1B076D391DDBED0B00589371 /* lineNumbers */ = {
+			isa = PBXGroup;
+			children = (
+				1B076D3A1DDBED0B00589371 /* MarkerLineNumberView.h */,
+				1B076D3B1DDBED0B00589371 /* MarkerLineNumberView.m */,
+				1B076D3C1DDBED0B00589371 /* NoodleLineNumberMarker.h */,
+				1B076D3D1DDBED0B00589371 /* NoodleLineNumberMarker.m */,
+				1B076D3E1DDBED0B00589371 /* NoodleLineNumberView.h */,
+				1B076D3F1DDBED0B00589371 /* NoodleLineNumberView.m */,
+			);
+			path = lineNumbers;
+			sourceTree = "<group>";
+		};
 		D31BBCC618E4F1A50003FFA3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1201,15 +1223,16 @@
 		D3383037171C923700CCE513 /* ParserGenApp */ = {
 			isa = PBXGroup;
 			children = (
-				D3383049171C923700CCE513 /* PGMainMenu.xib */,
 				D3383043171C923700CCE513 /* PGDocument.h */,
 				D3383044171C923700CCE513 /* PGDocument.m */,
 				D3383046171C923700CCE513 /* PGDocument.xib */,
-				D3B22A571703D03F00446945 /* PGTemplates */,
-				D3A1492A16F8C79600770DEE /* visitor */,
+				D3383049171C923700CCE513 /* PGMainMenu.xib */,
 				D325FFBC161E4E3200D4EBCC /* ast */,
 				D34BAC0F0FF87ED200D7773A /* factory */,
+				1B076D391DDBED0B00589371 /* lineNumbers */,
+				D3B22A571703D03F00446945 /* PGTemplates */,
 				D3383038171C923700CCE513 /* Supporting Files */,
+				D3A1492A16F8C79600770DEE /* visitor */,
 			);
 			path = ParserGenApp;
 			sourceTree = "<group>";
@@ -2071,11 +2094,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B076D401DDBED0B00589371 /* MarkerLineNumberView.m in Sources */,
 				D376F6E318D0B5090064C888 /* PEGKitParser.m in Sources */,
 				D376F6D018D0B3990064C888 /* PGDelimitedNode.m in Sources */,
 				D338303E171C923700CCE513 /* main.m in Sources */,
 				D376F6D418D0B3990064C888 /* PGMultipleNode.m in Sources */,
 				D376F6CC18D0B3990064C888 /* PGConstantNode.m in Sources */,
+				1B076D421DDBED0B00589371 /* NoodleLineNumberView.m in Sources */,
 				D366C1B11A5311F700D69669 /* PGRepetitionNode.m in Sources */,
 				D3383045171C923700CCE513 /* PGDocument.m in Sources */,
 				D376F6CA18D0B3990064C888 /* PGCompositeNode.m in Sources */,
@@ -2091,6 +2116,7 @@
 				D376F6C818D0B3990064C888 /* PGCollectionNode.m in Sources */,
 				D376F6C418D0B3990064C888 /* PGAlternationNode.m in Sources */,
 				D376F6D218D0B3990064C888 /* PGLiteralNode.m in Sources */,
+				1B076D411DDBED0B00589371 /* NoodleLineNumberMarker.m in Sources */,
 				D376F6D618D0B3990064C888 /* PGOptionalNode.m in Sources */,
 				D376F6C618D0B3990064C888 /* PGBaseNode.m in Sources */,
 				D376F6F218D0B5190064C888 /* PGParserGenVisitor.m in Sources */,
