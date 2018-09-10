@@ -30,8 +30,6 @@
 
 @property (nonatomic, copy) NSString *destinationPath;
 @property (nonatomic, copy) NSString *parserName;
-@property (nonatomic, copy) NSString *grammar;
-@property (nonatomic, assign) BOOL busy;
 @property (nonatomic, retain) NSError *error;
 
 @property (nonatomic, assign) BOOL enableARC;
@@ -40,6 +38,11 @@
 @property (nonatomic, assign) BOOL enableAutomaticErrorRecovery;
 @property (nonatomic, assign) NSInteger delegatePreMatchCallbacksOn;
 @property (nonatomic, assign) NSInteger delegatePostMatchCallbacksOn;
+
+// These two are here for backwards compatibiltly with old saved files
+@property (nonatomic, copy) NSString *grammar;
+@property (nonatomic, assign) BOOL busy;
+
 
 @property (nonatomic, retain) IBOutlet NSTextView *textView;
 @end
