@@ -638,8 +638,6 @@
 		D3383041171C923700CCE513 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		D3383043171C923700CCE513 /* PGDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGDocument.h; sourceTree = "<group>"; };
 		D3383044171C923700CCE513 /* PGDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGDocument.m; sourceTree = "<group>"; };
-		D3383047171C923700CCE513 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PGDocument.xib; sourceTree = "<group>"; };
-		D338304A171C923700CCE513 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PGMainMenu.xib; sourceTree = "<group>"; };
 		D33830C7171DBE8A00CCE513 /* named_action.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = named_action.grammar; path = res/named_action.grammar; sourceTree = "<group>"; };
 		D33830C9171DBEB100CCE513 /* NamedActionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NamedActionParser.h; path = test/NamedActionParser.h; sourceTree = "<group>"; };
 		D33830CA171DBEB100CCE513 /* NamedActionParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NamedActionParser.m; path = test/NamedActionParser.m; sourceTree = "<group>"; };
@@ -766,6 +764,8 @@
 		D38BC8B01716006C00BF530D /* SemanticPredicateParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticPredicateParser.m; path = test/SemanticPredicateParser.m; sourceTree = "<group>"; };
 		D38BC8B21716008D00BF530D /* semantic_predicate.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = semantic_predicate.grammar; path = res/semantic_predicate.grammar; sourceTree = "<group>"; };
 		D38BC8B5171600A900BF530D /* SemanticPredicateParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemanticPredicateParserTest.m; path = test/SemanticPredicateParserTest.m; sourceTree = "<group>"; };
+		D392370822710B53009B5F83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PGMainMenu.xib; sourceTree = "<group>"; };
+		D392370922710B53009B5F83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PGDocument.xib; sourceTree = "<group>"; };
 		D398E30018EB6770004B883C /* quote_symbol.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = quote_symbol.grammar; path = res/quote_symbol.grammar; sourceTree = "<group>"; };
 		D398E30218EB67F6004B883C /* QuoteSymbolParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuoteSymbolParserTest.m; path = test/QuoteSymbolParserTest.m; sourceTree = "<group>"; };
 		D398E30418EB684D004B883C /* QuoteSymbolParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuoteSymbolParser.h; path = test/QuoteSymbolParser.h; sourceTree = "<group>"; };
@@ -1790,14 +1790,11 @@
 			};
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "PEGKit" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				English,
-				Japanese,
-				French,
-				German,
 				en,
+				Base,
 			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* TODParseKit */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
@@ -2347,7 +2344,7 @@
 		D3383046171C923700CCE513 /* PGDocument.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D3383047171C923700CCE513 /* en */,
+				D392370922710B53009B5F83 /* Base */,
 			);
 			name = PGDocument.xib;
 			sourceTree = "<group>";
@@ -2355,7 +2352,7 @@
 		D3383049171C923700CCE513 /* PGMainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D338304A171C923700CCE513 /* en */,
+				D392370822710B53009B5F83 /* Base */,
 			);
 			name = PGMainMenu.xib;
 			sourceTree = "<group>";
