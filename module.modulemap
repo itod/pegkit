@@ -1,0 +1,3 @@
+module PEGKit {
+    umbrella header "Headers/PEGKit.h"
+}
