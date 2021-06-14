@@ -176,4 +176,11 @@
 
 @property (nonatomic, readonly) NSUInteger lineNumber;
 @property (nonatomic, assign) id <PKTokenizerDelegate>delegate;
+
+/*!
+    @property   isStreamInUTF8
+    @brief      Passthrough to PKReader.isStreamInUTF8.
+*/
+@property (nonatomic) BOOL isStreamInUTF8;
+
 @end

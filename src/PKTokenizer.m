@@ -274,6 +274,16 @@
 }
 
 
+-(void)setIsStreamInUTF8:(BOOL)isStreamInUTF8 {
+    self.reader.isStreamInUTF8 = isStreamInUTF8;
+}
+
+
+-(BOOL)isStreamInUTF8 {
+    return self.reader.isStreamInUTF8;
+}
+
+
 #pragma mark -
 
 - (PKTokenizerState *)tokenizerStateFor:(PKUniChar)c {
