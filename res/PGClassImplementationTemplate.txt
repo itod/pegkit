@@ -37,6 +37,18 @@
 {%/for%}}
 {%/if%}
 - (void)start {
+    if (!self.isEmptyOK || [self speculate:^{
+            [self startSpeculate];
+        }]) {
+        [self startSpeculate];
+    }
+    else {
+        [self matchEOF:YES];
+        PUSH(PEGKitSuccessfulEmptyParse);
+    }
+}
+
+- (void)startSpeculate {
 {{beforeAction}}
 {{startMethodBody}}
 {{afterAction}}}
