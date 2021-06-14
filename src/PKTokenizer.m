@@ -145,8 +145,12 @@
 
 
 - (void)dealloc {
-    self.string = nil;
-    self.stream = nil;
+    if (self.string != nil) {
+        self.string = nil;
+    }
+    if (self.stream != nil) {
+        self.stream = nil;
+    }
     self.reader = nil;
     self.tokenizerStates = nil;
     self.numberState = nil;
