@@ -41,10 +41,6 @@ NSString * const PEGKitRecognitionTokenMatchFailed = @"Failed to match next inpu
 NSString * const PEGKitRecognitionRuleMatchFailed = @"Failed to match next rule";
 NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
 
-@interface NSObject ()
-- (void)parser:(PKParser *)p didFailToMatch:(PKAssembly *)a;
-@end
-
 @interface PKAssembly ()
 - (void)consume:(PKToken *)tok;
 @property (nonatomic, readwrite, retain) NSMutableArray *stack;
@@ -403,10 +399,25 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
 
 
 - (void)fireDelegateSelector:(SEL)sel {
-    if (self.isSpeculating) return;
-    
-    if (_delegate && [_delegate respondsToSelector:sel]) {
+    if (self.isSpeculating || _delegate == nil) return;
+
+    [self fireDelegateMatchRule:sel delegateSelector:@selector(parser:willMatch:)];
+    [self fireDelegateMatchRule:sel delegateSelector:@selector(parser:didMatch:)];
+
+    if ([_delegate respondsToSelector:sel]) {
         [_delegate performSelector:sel withObject:self withObject:_assembly];
+    }
+}
+
+
+- (void)fireDelegateMatchRule:(SEL)sel delegateSelector:(SEL)delegateSelector {
+    NSString * selStr = NSStringFromSelector(sel);
+    NSString * prefix = NSStringFromSelector(delegateSelector);
+    prefix = [prefix substringToIndex:prefix.length - 1];
+
+    if ([selStr hasPrefix:prefix] && [_delegate respondsToSelector:delegateSelector]) {
+        NSString * rule = [selStr substringWithRange:NSMakeRange(prefix.length, selStr.length - prefix.length - 1)];
+        [_delegate performSelector:delegateSelector withObject:self withObject:rule];
     }
 }
 
