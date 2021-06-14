@@ -175,5 +175,13 @@
 #endif
 
 @property (nonatomic, readonly) NSUInteger lineNumber;
+
+/*!
+ @property   lineStartOffset
+ @brief      The offset within the original string where the current line started.
+ @details    This is set by PKWhitespaceState and used to compute PKToken.column.
+ */
+@property (nonatomic, readonly) NSUInteger lineStartOffset;
+
 @property (nonatomic, assign) id <PKTokenizerDelegate>delegate;
 @end

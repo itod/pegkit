@@ -35,6 +35,7 @@
 
 @interface PKTokenizer ()
 @property (nonatomic, readwrite) NSUInteger lineNumber;
+@property (nonatomic, readwrite) NSUInteger lineStartOffset;
 @end
 
 @interface PKTokenizerState ()
@@ -102,6 +103,7 @@
     while ([self isWhitespaceChar:c]) {
         if ('\n' == c) {
             t.lineNumber++;
+            t.lineStartOffset = r.offset;
         }
         if (_reportsWhitespaceTokens) {
             [self append:c];
