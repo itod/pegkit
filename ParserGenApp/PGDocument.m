@@ -190,7 +190,7 @@
     [panel setCanChooseFiles:NO];
     
     [panel beginSheetModalForWindow:win completionHandler:^(NSInteger result) {
-        if (NSOKButton == result) {
+        if (NSModalResponseOK == result) {
             NSString *path = [[panel URL] relativePath];
             self.destinationPath = path;
             
