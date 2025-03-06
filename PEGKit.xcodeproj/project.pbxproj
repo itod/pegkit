@@ -992,6 +992,7 @@
 				D3C7D8220A411F31005DD154 /* PEGKit Tests */,
 				D3383037171C923700CCE513 /* ParserGenApp */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
+				D3022E382D7A1EFD0047BF19 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
 			name = TODParseKit;
@@ -1049,6 +1050,13 @@
 				D37214CF18DF3BDC00525058 /* Cocoa.framework */,
 			);
 			name = Desktop;
+			sourceTree = "<group>";
+		};
+		D3022E382D7A1EFD0047BF19 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D31BBCC618E4F1A50003FFA3 /* Tests */ = {
@@ -2879,6 +2887,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath/";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib/OCMock",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
@@ -3110,6 +3122,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath/";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib/OCMock",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
@@ -3134,6 +3150,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath/";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib/OCMock",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
