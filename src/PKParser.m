@@ -30,7 +30,7 @@
 #import "NSArray+PEGKitAdditions.h"
 #import "NSString+PEGKitAdditions.h"
 
-#define FAILED -1
+#define TD_FAILED -1
 
 NSString * const PEGKitErrorDomain = @"PEGKitErrorDomain";
 NSString * const PEGKitErrorRangeKey = @"range";
@@ -802,7 +802,7 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
     if (!memoObj) return NO;
     
     NSInteger memo = [memoObj integerValue];
-    if (FAILED == memo) {
+    if (TD_FAILED == memo) {
         [self raiseFormat:@"already failed prior attempt at start token index %@", idxKey];
     }
     
@@ -814,7 +814,7 @@ NSString * const PEGKitRecognitionPredicateFailed = @"Predicate failed";
 - (void)memoize:(NSMutableDictionary *)memoization atIndex:(NSInteger)startTokenIndex failed:(BOOL)failed {
     id idxKey = @(startTokenIndex);
     
-    NSInteger stopTokenIdex = failed ? FAILED : self.p;
+    NSInteger stopTokenIdex = failed ? TD_FAILED : self.p;
     id idxVal = @(stopTokenIdex);
 
     memoization[idxKey] = idxVal;
