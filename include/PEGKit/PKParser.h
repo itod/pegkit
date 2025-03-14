@@ -33,6 +33,11 @@ extern NSInteger PEGKitRecognitionErrorCode;
 extern NSString * const PEGKitRecognitionRuleMatchFailed;
 extern NSString * const PEGKitRecognitionPredicateFailed;
 
+/**
+ * Returned by the parse* methods if isEmptyOK is set and the input is empty.
+ */
+extern NSString * const PEGKitSuccessfulEmptyParse;
+
 typedef void (^PKSActionBlock)   (void);
 typedef void (^PKSSpeculateBlock)(void);
 typedef BOOL (^PKSPredicateBlock)(void);
@@ -72,4 +77,11 @@ enum {
 @property (nonatomic, assign) BOOL enableActions; // default YES
 @property (nonatomic, assign) BOOL enableAutomaticErrorRecovery; // default NO
 @property (nonatomic, assign) BOOL enableVerboseErrorReporting; // default NO
+
+/**
+ * Set this if you want to accept empty input.
+ * The parse* methods will return PEGKitSuccessfulEmptyParse in this case.
+ */
+@property (nonatomic) BOOL isEmptyOK;
+
 @end
