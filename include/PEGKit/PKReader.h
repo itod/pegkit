@@ -78,9 +78,16 @@
 
 /*!
     @property   offset
-    @brief      This reader's current offset in string
+    @brief      This reader's current offset in string or the offset from the start of the stream.
 */
 @property (nonatomic, readonly) NSUInteger offset;
+
+/*!
+    @property   isStreamInUTF8
+    @brief      true if self.stream is parsed as UTF-8, with each result from [self read] being a UTF-16 code point.
+                false if self.stream is unparsed, with each result from [self read] being a byte from the stream.
+ */
+@property (nonatomic) BOOL isStreamInUTF8;
 
 - (NSString *)debugDescription;
 @end
