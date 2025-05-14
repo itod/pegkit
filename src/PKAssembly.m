@@ -144,7 +144,7 @@ static NSString * const PKAssemblyDefaultCursor = @"^";
 - (NSArray *)objectsAbove:(id)fence {
     NSMutableArray *result = [NSMutableArray array];
     
-    while (![self isStackEmpty]) {        
+    while (![self isStackEmpty]) {
         id obj = [self pop];
         
         if ([obj isEqual:fence]) {
