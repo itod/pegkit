@@ -190,7 +190,7 @@
     [panel setCanChooseFiles:NO];
     
     [panel beginSheetModalForWindow:win completionHandler:^(NSInteger result) {
-        if (NSOKButton == result) {
+        if (NSModalResponseOK == result) {
             NSString *path = [[panel URL] relativePath];
             self.destinationPath = path;
             
@@ -315,9 +315,16 @@ done:
     NSString *title = NSLocalizedString(@"Error parsing grammar", @"");
     NSString *msg = [error localizedFailureReason];
     NSString *defaultButton = NSLocalizedString(@"OK", @"");
-    NSString *altButton = nil;
-    NSString *otherButton = nil;
-    NSRunAlertPanel(title, @"%@", defaultButton, altButton, otherButton, msg);
+    
+    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    alert.messageText = title;
+    alert.informativeText = msg;
+    [alert addButtonWithTitle:defaultButton];
+    [alert runModal];
+
+    //NSString *altButton = nil;
+    //NSString *otherButton = nil;
+    //NSRunAlertPanel(title, @"%@", defaultButton, altButton, otherButton, msg);
 }
 
 @end
