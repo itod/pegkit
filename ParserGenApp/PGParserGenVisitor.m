@@ -378,7 +378,7 @@
     BOOL isTerminal = 1 == [node.children count] && [[self concreteNodeForNode:node.children[0]] isTerminal];
     NSString *templateName = isPre ? @"PGPreCallbackTemplate" : @"PGPostCallbackTemplate";
     
-    BOOL flag = isPre ? _delegatePreMatchCallbacksOn : _delegatePostMatchCallbacksOn;
+    NSInteger flag = isPre ? _delegatePreMatchCallbacksOn : _delegatePostMatchCallbacksOn;
 
     switch (flag) {
         case PGParserFactoryDelegateCallbacksOnNone:
