@@ -337,8 +337,8 @@
 		D376F6EE18D0B5190064C888 /* PGBaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6E518D0B5190064C888 /* PGBaseVisitor.m */; };
 		D376F6EF18D0B5190064C888 /* PGDefinitionPhaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6E718D0B5190064C888 /* PGDefinitionPhaseVisitor.m */; };
 		D376F6F018D0B5190064C888 /* PGDefinitionPhaseVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6E718D0B5190064C888 /* PGDefinitionPhaseVisitor.m */; };
-		D376F6F118D0B5190064C888 /* PGParserGenVisitor.mm in Sources */ = {isa = PBXBuildFile; fileRef = D376F6EA18D0B5190064C888 /* PGParserGenVisitor.mm */; };
-		D376F6F218D0B5190064C888 /* PGParserGenVisitor.mm in Sources */ = {isa = PBXBuildFile; fileRef = D376F6EA18D0B5190064C888 /* PGParserGenVisitor.mm */; };
+		D376F6F118D0B5190064C888 /* PGParserGenVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6EA18D0B5190064C888 /* PGParserGenVisitor.m */; };
+		D376F6F218D0B5190064C888 /* PGParserGenVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6EA18D0B5190064C888 /* PGParserGenVisitor.m */; };
 		D376F6F318D0B5190064C888 /* PGTokenKindDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6EC18D0B5190064C888 /* PGTokenKindDescriptor.m */; };
 		D376F6F418D0B5190064C888 /* PGTokenKindDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D376F6EC18D0B5190064C888 /* PGTokenKindDescriptor.m */; };
 		D37D8E361571A5A200CDB822 /* css.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D380B5080F0D71A90009EC13 /* css.grammar */; };
@@ -739,7 +739,7 @@
 		D376F6E718D0B5190064C888 /* PGDefinitionPhaseVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGDefinitionPhaseVisitor.m; path = ParserGenApp/PGDefinitionPhaseVisitor.m; sourceTree = "<group>"; };
 		D376F6E818D0B5190064C888 /* PGNodeVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGNodeVisitor.h; path = ParserGenApp/PGNodeVisitor.h; sourceTree = "<group>"; };
 		D376F6E918D0B5190064C888 /* PGParserGenVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGParserGenVisitor.h; path = ParserGenApp/PGParserGenVisitor.h; sourceTree = "<group>"; };
-		D376F6EA18D0B5190064C888 /* PGParserGenVisitor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PGParserGenVisitor.mm; path = ParserGenApp/PGParserGenVisitor.mm; sourceTree = "<group>"; };
+		D376F6EA18D0B5190064C888 /* PGParserGenVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGParserGenVisitor.m; path = ParserGenApp/PGParserGenVisitor.m; sourceTree = "<group>"; };
 		D376F6EB18D0B5190064C888 /* PGTokenKindDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGTokenKindDescriptor.h; path = ParserGenApp/PGTokenKindDescriptor.h; sourceTree = "<group>"; };
 		D376F6EC18D0B5190064C888 /* PGTokenKindDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGTokenKindDescriptor.m; path = ParserGenApp/PGTokenKindDescriptor.m; sourceTree = "<group>"; };
 		D376F6F518D0B5700064C888 /* PGParserFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PGParserFactory.h; path = ParserGenApp/PGParserFactory.h; sourceTree = "<group>"; };
@@ -1338,7 +1338,7 @@
 				D376F6E618D0B5190064C888 /* PGDefinitionPhaseVisitor.h */,
 				D376F6E718D0B5190064C888 /* PGDefinitionPhaseVisitor.m */,
 				D376F6E918D0B5190064C888 /* PGParserGenVisitor.h */,
-				D376F6EA18D0B5190064C888 /* PGParserGenVisitor.mm */,
+				D376F6EA18D0B5190064C888 /* PGParserGenVisitor.m */,
 				D376F6EB18D0B5190064C888 /* PGTokenKindDescriptor.h */,
 				D376F6EC18D0B5190064C888 /* PGTokenKindDescriptor.m */,
 			);
@@ -2103,7 +2103,7 @@
 				D376F6D218D0B3990064C888 /* PGLiteralNode.m in Sources */,
 				D376F6D618D0B3990064C888 /* PGOptionalNode.m in Sources */,
 				D376F6C618D0B3990064C888 /* PGBaseNode.m in Sources */,
-				D376F6F218D0B5190064C888 /* PGParserGenVisitor.mm in Sources */,
+				D376F6F218D0B5190064C888 /* PGParserGenVisitor.m in Sources */,
 				D376F6D818D0B3990064C888 /* PGPatternNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2234,7 +2234,7 @@
 				D376F6D518D0B3990064C888 /* PGOptionalNode.m in Sources */,
 				D3A29E1E18E70F1C00DC591E /* GrammarActionsParserTest.m in Sources */,
 				D376F6D118D0B3990064C888 /* PGLiteralNode.m in Sources */,
-				D376F6F118D0B5190064C888 /* PGParserGenVisitor.mm in Sources */,
+				D376F6F118D0B5190064C888 /* PGParserGenVisitor.m in Sources */,
 				D398E30D18EB7039004B883C /* DupeLiteralsParser.m in Sources */,
 				D33830CB171DBEB100CCE513 /* NamedActionParser.m in Sources */,
 				D31BBCB318E4725F0003FFA3 /* CreateTableStmtParser.m in Sources */,
