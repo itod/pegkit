@@ -1,0 +1,8 @@
+[.]
+scm = git
+
+[lib/TDTemplateEngine]
+repository = git@github.com:itod/tdtemplateengine.git
+scm = git
+path = lib/TDTemplateEngine
+
